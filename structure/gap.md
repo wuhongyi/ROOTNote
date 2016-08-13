@@ -1,0 +1,10 @@
+# gap
+
+## gap.txt
+
+```
+//  A gap (free segment in middle of file) has the following format.
+// ------------------------
+//  byte 0->3  Nbytes    = Negative of number of bytes in gap
+//       4->.. irrelevant
+```
