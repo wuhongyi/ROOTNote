@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TCanvas · GitBook</title>
+        <title>TCanvas* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis
+                    TAttAxis*
             
                 </a>
             
@@ -142,12 +142,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="Taxis.html">
+        <li class="chapter " data-level="1.2.3" data-path="TAxis.html">
             
-                <a href="Taxis.html">
+                <a href="TAxis.html">
             
                     
-                    Taxis
+                    TAxis*
             
                 </a>
             
@@ -173,7 +173,7 @@
                 <a href="TBenchmark.html">
             
                     
-                    TBenchmark
+                    TBenchmark*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch
+                    TBranch*
             
                 </a>
             
@@ -199,7 +199,7 @@
                 <a href="TBuffer.html">
             
                     
-                    TBuffer
+                    TBuffer*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas
+                    TCanvas*
             
                 </a>
             
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1
+                    TH1*
             
                 </a>
             
@@ -524,7 +524,7 @@
                 <a href="TH2.html">
             
                     
-                    TH2
+                    TH2*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex
+                    TLatex*
             
                 </a>
             
@@ -1252,7 +1252,7 @@
                 <a href="TText.html">
             
                     
-                    TText
+                    TText*
             
                 </a>
             
@@ -1304,7 +1304,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime
+                    TTime*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer
+                    TTimer*
             
                 </a>
             
@@ -1807,7 +1807,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TCanvas</a>
+        <a href=".." >TCanvas*</a>
     </h1>
 </div>
 
@@ -1828,27 +1828,136 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 五 8月 12 21:55:38 2016 (+0800)
+;; Last-Updated: 日 9月 25 21:01:35 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 11
+;;     Update #: 12
 ;; URL: http://wuhongyi.github.io -->
 
 
-<h1 id="tcanvas">TCanvas</h1><h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Update</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//&#x5237;&#x65B0;&#x753B;&#x677F;</span>
+<h1 id="tcanvas">TCanvas</h1><p>&#x7EE7;&#x627F; TPad</p><p>A Canvas is an area mapped to a window directly under the control of the display
+manager. A ROOT session may have several canvases open at any given time.</p><p>A Canvas may be subdivided into independent graphical areas: the <strong>Pads</strong>.
+A canvas has a default pad which has the name of the canvas itself.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// TCanvas status bits</span>
+   <span class="hljs-keyword">enum</span> {
+      kShowEventStatus  = BIT(<span class="hljs-number">15</span>),
+      kAutoExec         = BIT(<span class="hljs-number">16</span>),
+      kMenuBar          = BIT(<span class="hljs-number">17</span>),
+      kShowToolBar      = BIT(<span class="hljs-number">18</span>),
+      kShowEditor       = BIT(<span class="hljs-number">19</span>),
+      kMoveOpaque       = BIT(<span class="hljs-number">20</span>),
+      kResizeOpaque     = BIT(<span class="hljs-number">21</span>),
+      kIsGrayscale      = BIT(<span class="hljs-number">22</span>),
+      kShowToolTips     = BIT(<span class="hljs-number">23</span>)
+   };
 
-<span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   TCanvas(Bool_t build=kTRUE);
+   TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>, Int_t form=<span class="hljs-number">1</span>);
+   TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t ww, Int_t wh);
+   TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t wtopx, Int_t wtopy,
+           Int_t ww, Int_t wh);
+   TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Int_t ww, Int_t wh, Int_t winid);
+   <span class="hljs-keyword">virtual</span> ~TCanvas();
+
+   <span class="hljs-comment">//-- used by friend TThread class</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Constructor</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Constructor</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t form)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Constructor</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t ww, Int_t wh)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Constructor</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+           Int_t wtopx, Int_t wtopy, Int_t ww, Int_t wh)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Destructor</span><span class="hljs-params">()</span></span>;
+
+   <span class="hljs-function">TVirtualPad      *<span class="hljs-title">cd</span><span class="hljs-params">(Int_t subpadnumber=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Set current canvas &amp; pad. Returns the new current pad,</span>
+<span class="hljs-comment">/// or 0 in case of failure.</span>
+<span class="hljs-comment">/// See TPad::cd() for an explanation of the parameter.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
 <span class="hljs-comment">// Remove all primitives from the canvas.</span>
 <span class="hljs-comment">// If option &quot;D&quot; is specified, direct subpads are cleared but not deleted.</span>
 <span class="hljs-comment">// This option is not recursive, i.e. pads in direct subpads are deleted.</span>
 
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Close</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Delete</span><span class="hljs-params">(Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span> </span>{ MayNotUse(<span class="hljs-string">&quot;Delete()&quot;</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">DisconnectWidget</span><span class="hljs-params">()</span></span>;  <span class="hljs-comment">// used by TCanvasImp</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Draw</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">DrawClone</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Draw a clone of this canvas</span>
+<span class="hljs-comment">/// A new canvas is created that is a clone of this canvas</span>
 
-TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>, Int_t form=<span class="hljs-number">1</span>);
-TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t ww, Int_t wh);
-TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t wtopx, Int_t wtopy, Int_t ww, Int_t wh);
-TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Int_t ww, Int_t wh, Int_t winid);
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">DrawClonePad</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Draw a clone of this canvas into the current pad</span>
+<span class="hljs-comment">/// In an interactive session, select the destination/current pad</span>
+<span class="hljs-comment">/// with the middle mouse button, then point to the canvas area to select</span>
+<span class="hljs-comment">/// the canvas context menu item DrawClonePad.</span>
+<span class="hljs-comment">/// Note that the original canvas may have subpads.</span>
 
-
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SaveSource</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename, Option_t *option)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">EditorBar</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">EmbedInto</span><span class="hljs-params">(Int_t winid, Int_t ww, Int_t wh)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">EnterLeave</span><span class="hljs-params">(TPad *prevSelPad, TObject *prevSelObj)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">FeedbackMode</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Flush</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">UseCurrentStyle</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">ForceUpdate</span><span class="hljs-params">()</span> </span>{ fCanvasImp-&gt;ForceUpdate(); }
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>       *<span class="hljs-title">GetDISPLAY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fDISPLAY.Data();}
+   <span class="hljs-function">TContextMenu     *<span class="hljs-title">GetContextMenu</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fContextMenu;};
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetDoubleBuffer</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fDoubleBuffer;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetEvent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEvent; }
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetEventX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEventX; }
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetEventY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEventY; }
+   <span class="hljs-function">Color_t           <span class="hljs-title">GetHighLightColor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fHighLightColor; }
+   <span class="hljs-function">TVirtualPad      *<span class="hljs-title">GetPadSave</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPadSave; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">ClearPadSave</span><span class="hljs-params">()</span> </span>{ fPadSave = <span class="hljs-number">0</span>; }
+   <span class="hljs-function">TObject          *<span class="hljs-title">GetSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSelected;}
+   <span class="hljs-function">TObject          *<span class="hljs-title">GetClickSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fClickSelected;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetSelectedX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSelectedX;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetSelectedY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSelectedY;}
+   <span class="hljs-function">Option_t         *<span class="hljs-title">GetSelectedOpt</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSelectedOpt.Data();}
+   <span class="hljs-function">TVirtualPad      *<span class="hljs-title">GetSelectedPad</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fSelectedPad; }
+   <span class="hljs-function">TVirtualPad      *<span class="hljs-title">GetClickSelectedPad</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fClickSelectedPad; }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetShowEventStatus</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kShowEventStatus); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetShowToolBar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kShowToolBar); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetShowEditor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kShowEditor); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetShowToolTips</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kShowToolTips); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetAutoExec</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kAutoExec); }
+   <span class="hljs-function">Size_t            <span class="hljs-title">GetXsizeUser</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXsizeUser;}
+   <span class="hljs-function">Size_t            <span class="hljs-title">GetYsizeUser</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fYsizeUser;}
+   <span class="hljs-function">Size_t            <span class="hljs-title">GetXsizeReal</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXsizeReal;}
+   <span class="hljs-function">Size_t            <span class="hljs-title">GetYsizeReal</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fYsizeReal;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetCanvasID</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fCanvasID;}
+   <span class="hljs-function">TCanvasImp       *<span class="hljs-title">GetCanvasImp</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fCanvasImp;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetWindowTopX</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetWindowTopY</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function">UInt_t            <span class="hljs-title">GetWindowWidth</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWindowWidth; }
+   <span class="hljs-function">UInt_t            <span class="hljs-title">GetWindowHeight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWindowHeight; }
+   <span class="hljs-function">UInt_t            <span class="hljs-title">GetWw</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fCw; }
+   <span class="hljs-function">UInt_t            <span class="hljs-title">GetWh</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fCh; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">GetCanvasPar</span><span class="hljs-params">(Int_t &amp;wtopx, Int_t &amp;wtopy, UInt_t &amp;ww, UInt_t &amp;wh)</span>
+                     </span>{wtopx=GetWindowTopX(); wtopy=fWindowTopY; ww=fWindowWidth; wh=fWindowHeight;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">HandleInput</span><span class="hljs-params">(EEventType button, Int_t x, Int_t y)</span></span>;
+   <span class="hljs-function">Bool_t            <span class="hljs-title">HasMenuBar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kMenuBar); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Iconify</span><span class="hljs-params">()</span> </span>{ fCanvasImp-&gt;Iconify(); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsBatch</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fBatch; }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsDrawn</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fDrawn; }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsFolder</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsGrayscale</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsRetained</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fRetained; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">MoveOpaque</span><span class="hljs-params">(Int_t <span class="hljs-built_in">set</span>=<span class="hljs-number">1</span>)</span></span>;
+   <span class="hljs-function">Bool_t            <span class="hljs-title">OpaqueMoving</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kMoveOpaque); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">OpaqueResizing</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kResizeOpaque); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TPad     *<span class="hljs-title">Pick</span><span class="hljs-params">(Int_t px, Int_t py, TObjLink *&amp;pickobj)</span> </span>{ <span class="hljs-keyword">return</span> TPad::Pick(px, py, pickobj); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TPad     *<span class="hljs-title">Pick</span><span class="hljs-params">(Int_t px, Int_t py, TObject *prevSelObj)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Picked</span><span class="hljs-params">(TPad *selpad, TObject *selected, Int_t event)</span></span>;             <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ProcessedEvent</span><span class="hljs-params">(Int_t event, Int_t x, Int_t y, TObject *selected)</span></span>; <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Selected</span><span class="hljs-params">(TVirtualPad *pad, TObject *obj, Int_t event)</span></span>;            <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Cleared</span><span class="hljs-params">(TVirtualPad *pad)</span></span>;                                        <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Closed</span><span class="hljs-params">()</span></span>;                                                         <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">RaiseWindow</span><span class="hljs-params">()</span> </span>{ fCanvasImp-&gt;RaiseWindow(); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">ResetDrawn</span><span class="hljs-params">()</span> </span>{ fDrawn=kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Resize</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">ResizeOpaque</span><span class="hljs-params">(Int_t <span class="hljs-built_in">set</span>=<span class="hljs-number">1</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SaveSource</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename=<span class="hljs-string">&quot;&quot;</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
 <span class="hljs-comment">// Save primitives in this canvas as a C++ macro file.</span>
 <span class="hljs-comment">// This function loops on all the canvas primitives and for each primitive</span>
 <span class="hljs-comment">// calls the object SavePrimitive function.</span>
@@ -1856,9 +1965,42 @@ TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char<
 <span class="hljs-comment">// The precision can be changed (via system.rootrc) by changing the value</span>
 <span class="hljs-comment">// of the environment variable &quot;Canvas.SavePrecision&quot;</span>
 
-  <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option <span class="hljs-comment">/*= &quot;&quot;*/</span>)</span>
-<span class="hljs-comment">// Save primitives in this canvas in C++ macro file with GUI.</span>
-</span></code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-comment">// Save primitives in this canvas in C++ macro file with GUI.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetCursor</span><span class="hljs-params">(ECursor cursor)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetDoubleBuffer</span><span class="hljs-params">(Int_t mode=<span class="hljs-number">1</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFixedAspectRatio</span><span class="hljs-params">(Bool_t fixed = kTRUE)</span></span>;  <span class="hljs-comment">// *TOGGLE*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetGrayscale</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span> = kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=IsGrayscale</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetWindowPosition</span><span class="hljs-params">(Int_t x, Int_t y)</span> </span>{ fCanvasImp-&gt;SetWindowPosition(x, y); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetWindowSize</span><span class="hljs-params">(UInt_t ww, UInt_t wh)</span> </span>{ fCanvasImp-&gt;SetWindowSize(ww, wh); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetCanvasSize</span><span class="hljs-params">(UInt_t ww, UInt_t wh)</span></span>; <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetHighLightColor</span><span class="hljs-params">(Color_t col)</span> </span>{ fHighLightColor = col; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetSelected</span><span class="hljs-params">(TObject *obj)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetClickSelected</span><span class="hljs-params">(TObject *obj)</span> </span>{ fClickSelected = obj; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetSelectedPad</span><span class="hljs-params">(TPad *pad)</span> </span>{ fSelectedPad = pad; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetClickSelectedPad</span><span class="hljs-params">(TPad *pad)</span> </span>{ fClickSelectedPad = pad; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Show</span><span class="hljs-params">()</span> </span>{ fCanvasImp-&gt;Show(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Size</span><span class="hljs-params">(Float_t xsizeuser=<span class="hljs-number">0</span>, Float_t ysizeuser=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetBatch</span><span class="hljs-params">(Bool_t batch=kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFolder</span><span class="hljs-params">(Bool_t isfolder=kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetPadSave</span><span class="hljs-params">(TPad *pad)</span> </span>{fPadSave = pad;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetRetained</span><span class="hljs-params">(Bool_t retained=kTRUE)</span> </span>{ fRetained=retained;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleEventStatus</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleAutoExec</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleToolBar</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleEditor</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleToolTips</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Update</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//&#x5237;&#x65B0;&#x753B;&#x677F;</span>
+
+   <span class="hljs-function">Bool_t              <span class="hljs-title">UseGL</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fUseGL; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetSupportGL</span><span class="hljs-params">(Bool_t support)</span> </span>{fUseGL = support;}
+   <span class="hljs-function">TVirtualPadPainter *<span class="hljs-title">GetCanvasPainter</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">DeleteCanvasPainter</span><span class="hljs-params">()</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">static</span> TCanvas   *<span class="hljs-title">MakeDefCanvas</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t     <span class="hljs-title">SupportAlpha</span><span class="hljs-params">()</span></span>;</code></pre>
 <h2 id="code">code</h2><pre><code class="lang-cpp">TCanvas *MyC = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;MyC&quot;</span>,<span class="hljs-string">&quot;Test canvas&quot;</span>,<span class="hljs-number">1</span>)     <span class="hljs-comment">//&#x65B0;&#x5EFA;&#x753B;&#x677F;</span>
 MyC-&gt;SetFillColor(<span class="hljs-number">42</span>);                                <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x753B;&#x677F;&#x80CC;&#x666F;&#x989C;&#x8272;</span>
 MyC-&gt;Divide(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>);                                     <span class="hljs-comment">//&#x5C06;&#x753B;&#x677F;&#x5206;&#x6210;2*2&#x56DB;&#x4E2A;&#x533A;&#x57DF;</span>
@@ -1966,7 +2108,7 @@ canv-&gt;SetBottomMargin(<span class="hljs-number">0.01</span>);</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCanvas","level":"1.2.9","depth":2,"next":{"title":"TChain","level":"1.2.10","depth":2,"path":"class/TChain.md","ref":"class/TChain.md","articles":[]},"previous":{"title":"TBufferFile","level":"1.2.8","depth":2,"path":"class/TBufferFile.md","ref":"class/TBufferFile.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TCanvas.md","mtime":"2016-08-12T13:55:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-07T12:14:50.731Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCanvas*","level":"1.2.9","depth":2,"next":{"title":"TChain","level":"1.2.10","depth":2,"path":"class/TChain.md","ref":"class/TChain.md","articles":[]},"previous":{"title":"TBufferFile","level":"1.2.8","depth":2,"path":"class/TBufferFile.md","ref":"class/TBufferFile.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TCanvas.md","mtime":"2016-09-25T13:01:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-26T14:31:12.201Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

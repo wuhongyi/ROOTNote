@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TTimer · GitBook</title>
+        <title>TTimer* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis
+                    TAttAxis*
             
                 </a>
             
@@ -142,12 +142,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="Taxis.html">
+        <li class="chapter " data-level="1.2.3" data-path="TAxis.html">
             
-                <a href="Taxis.html">
+                <a href="TAxis.html">
             
                     
-                    Taxis
+                    TAxis*
             
                 </a>
             
@@ -173,7 +173,7 @@
                 <a href="TBenchmark.html">
             
                     
-                    TBenchmark
+                    TBenchmark*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch
+                    TBranch*
             
                 </a>
             
@@ -199,7 +199,7 @@
                 <a href="TBuffer.html">
             
                     
-                    TBuffer
+                    TBuffer*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas
+                    TCanvas*
             
                 </a>
             
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1
+                    TH1*
             
                 </a>
             
@@ -524,7 +524,7 @@
                 <a href="TH2.html">
             
                     
-                    TH2
+                    TH2*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex
+                    TLatex*
             
                 </a>
             
@@ -1252,7 +1252,7 @@
                 <a href="TText.html">
             
                     
-                    TText
+                    TText*
             
                 </a>
             
@@ -1304,7 +1304,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime
+                    TTime*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer
+                    TTimer*
             
                 </a>
             
@@ -1807,7 +1807,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TTimer</a>
+        <a href=".." >TTimer*</a>
     </h1>
 </div>
 
@@ -1828,13 +1828,60 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:31:46 2014 (+0800)
-;; Last-Updated: 六 8月 13 13:18:25 2016 (+0800)
+;; Last-Updated: 二 9月 13 19:52:39 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 5
+;;     Update #: 7
 ;; URL: http://wuhongyi.github.io -->
 
 
-<h1 id="ttimer">TTimer</h1><h2 id="class">class</h2><h2 id="code">code</h2><h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-comment">// demo of Timers</span>
+<h1 id="ttimer">TTimer</h1><p>&#x7EE7;&#x627F; TSysEvtHandler</p><p>&#x53EF;&#x7528;&#x4E8E;&#x56FE;&#x5F62;&#x754C;&#x9762;</p><p>Handles synchronous and a-synchronous timer events. You can use  this class in one of the following ways:</p><ul><li>Sub-class TTimer and override the Notify() method.
+</li>
+<li>Re-implement the TObject::HandleTimer() method in your class and pass a pointer to this object to timer, see the SetObject() method.
+</li>
+<li>Pass an interpreter command to timer, see SetCommand() method.
+</li>
+<li>Create a TTimer, connect its Timeout() signal to the appropriate methods. Then when the time is up it will emit a Timeout() signal and call connected slots.
+</li></ul>
+<p>Minimum timeout interval is defined in TSystem::ESysConstants as kItimerResolution (currently 10 ms).</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TTimer(Long_t milliSec = <span class="hljs-number">0</span>, Bool_t mode = kTRUE);
+   TTimer(TObject *obj, Long_t milliSec, Bool_t mode = kTRUE);
+   TTimer(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *command, Long_t milliSec, Bool_t mode = kTRUE);
+   <span class="hljs-keyword">virtual</span> ~TTimer() { Remove(); }
+
+   <span class="hljs-function">Bool_t         <span class="hljs-title">CheckTimer</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TTime &amp;now)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>    *<span class="hljs-title">GetCommand</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fCommand.Data(); }
+   <span class="hljs-function">TObject       *<span class="hljs-title">GetObject</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fObject; }
+   <span class="hljs-function">TTime          <span class="hljs-title">GetTime</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTime; }
+   <span class="hljs-function">UInt_t         <span class="hljs-title">GetTimerID</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fTimeID;}
+   <span class="hljs-function">TTime          <span class="hljs-title">GetAbsTime</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAbsTime; }
+   <span class="hljs-function">Bool_t         <span class="hljs-title">HasTimedOut</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTimeout; }
+   <span class="hljs-function">Bool_t         <span class="hljs-title">IsSync</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fSync; }
+   <span class="hljs-function">Bool_t         <span class="hljs-title">IsAsync</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> !fSync; }
+   <span class="hljs-function">Bool_t         <span class="hljs-title">IsInterruptingSyscalls</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fIntSyscalls; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">Notify</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">Add</span><span class="hljs-params">()</span> </span>{ TurnOn(); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">Remove</span><span class="hljs-params">()</span> </span>{ TurnOff(); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">Reset</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">SetCommand</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *command)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">SetObject</span><span class="hljs-params">(TObject *object)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">SetInterruptSyscalls</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span> = kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">SetTime</span><span class="hljs-params">(Long_t milliSec)</span> </span>{ fTime = milliSec; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">SetTimerID</span><span class="hljs-params">(UInt_t id = <span class="hljs-number">0</span>)</span> </span>{ fTimeID = id; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Start</span><span class="hljs-params">(Long_t milliSec = <span class="hljs-number">-1</span>, Bool_t singleShot = kFALSE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Stop</span><span class="hljs-params">()</span> </span>{ TurnOff(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">TurnOn</span><span class="hljs-params">()</span></span>;                         <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">TurnOff</span><span class="hljs-params">()</span></span>;                        <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Timeout</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;Timeout()&quot;</span>); }  <span class="hljs-comment">//*SIGNAL*</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SingleShot</span><span class="hljs-params">(Int_t milliSec, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *receiver_class,
+                             <span class="hljs-keyword">void</span> *receiver, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *method)</span></span>;</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">//  Signal/slots example: </span>
+TTimer *timer = <span class="hljs-keyword">new</span> TTimer();
+timer-&gt;Connect(<span class="hljs-string">&quot;Timeout()&quot;</span>, <span class="hljs-string">&quot;myObjectClassName&quot;</span>, myObject, <span class="hljs-string">&quot;TimerDone()&quot;</span>);
+timer-&gt;Start(<span class="hljs-number">2000</span>, kTRUE);   <span class="hljs-comment">// 2 seconds single-shot</span>
+
+<span class="hljs-comment">// Timeout signal is emitted repeadetly with minimum timeout</span>
+<span class="hljs-comment">// timer-&gt;Start(0, kFALSE);</span></code></pre>
+<h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-comment">// demo of Timers</span>
 Int_t i;
 Float_t ratio;
 TSlider *slider;
@@ -1929,7 +1976,7 @@ TCanvas *c1;
 
             
                 
-                <a href="TTime.html" class="navigation navigation-prev " aria-label="Previous page: TTime">
+                <a href="TTime.html" class="navigation navigation-prev " aria-label="Previous page: TTime*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1945,7 +1992,7 @@ TCanvas *c1;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TTimer","level":"1.2.93","depth":2,"next":{"title":"TTimeStamp","level":"1.2.94","depth":2,"path":"class/TTimeStamp.md","ref":"class/TTimeStamp.md","articles":[]},"previous":{"title":"TTime","level":"1.2.92","depth":2,"path":"class/TTime.md","ref":"class/TTime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTimer.md","mtime":"2016-08-13T05:18:25.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-07T12:14:50.731Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TTimer*","level":"1.2.93","depth":2,"next":{"title":"TTimeStamp","level":"1.2.94","depth":2,"path":"class/TTimeStamp.md","ref":"class/TTimeStamp.md","articles":[]},"previous":{"title":"TTime*","level":"1.2.92","depth":2,"path":"class/TTime.md","ref":"class/TTime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTimer.md","mtime":"2016-09-13T11:52:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-26T14:31:12.201Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

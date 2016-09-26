@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TBuffer · GitBook</title>
+        <title>TBuffer* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis
+                    TAttAxis*
             
                 </a>
             
@@ -142,12 +142,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="Taxis.html">
+        <li class="chapter " data-level="1.2.3" data-path="TAxis.html">
             
-                <a href="Taxis.html">
+                <a href="TAxis.html">
             
                     
-                    Taxis
+                    TAxis*
             
                 </a>
             
@@ -173,7 +173,7 @@
                 <a href="TBenchmark.html">
             
                     
-                    TBenchmark
+                    TBenchmark*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch
+                    TBranch*
             
                 </a>
             
@@ -199,7 +199,7 @@
                 <a href="TBuffer.html">
             
                     
-                    TBuffer
+                    TBuffer*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas
+                    TCanvas*
             
                 </a>
             
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1
+                    TH1*
             
                 </a>
             
@@ -524,7 +524,7 @@
                 <a href="TH2.html">
             
                     
-                    TH2
+                    TH2*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex
+                    TLatex*
             
                 </a>
             
@@ -1252,7 +1252,7 @@
                 <a href="TText.html">
             
                     
-                    TText
+                    TText*
             
                 </a>
             
@@ -1304,7 +1304,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime
+                    TTime*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer
+                    TTimer*
             
                 </a>
             
@@ -1807,7 +1807,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TBuffer</a>
+        <a href=".." >TBuffer*</a>
     </h1>
 </div>
 
@@ -1822,7 +1822,276 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tbuffer">TBuffer</h1>
+                                <!-- TBuffer.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 二 9月 13 20:54:28 2016 (+0800)
+;; Last-Updated: 二 9月 13 20:57:04 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 1
+;; URL: http://wuhongyi.github.io -->
+
+
+<h1 id="tbuffer">TBuffer</h1><p>&#x7EE7;&#x627F; TObject</p><p>Buffer base class used for serializing objects.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span> EMode { kRead = <span class="hljs-number">0</span>, kWrite = <span class="hljs-number">1</span> };
+   <span class="hljs-keyword">enum</span> { kIsOwner = BIT(<span class="hljs-number">16</span>) };                        <span class="hljs-comment">//if set TBuffer owns fBuffer</span>
+   <span class="hljs-keyword">enum</span> { kCannotHandleMemberWiseStreaming = BIT(<span class="hljs-number">17</span>)}; <span class="hljs-comment">//if set TClonesArray should not use member wise streaming</span>
+   <span class="hljs-keyword">enum</span> { kInitialSize = <span class="hljs-number">1024</span>, kMinimalSize = <span class="hljs-number">128</span> };
+
+   TBuffer(EMode mode);
+   TBuffer(EMode mode, Int_t bufsiz);
+   TBuffer(EMode mode, Int_t bufsiz, <span class="hljs-keyword">void</span> *buf, Bool_t adopt = kTRUE, ReAllocCharFun_t reallocfunc = <span class="hljs-number">0</span>);
+   <span class="hljs-keyword">virtual</span> ~TBuffer();
+
+   <span class="hljs-function">Int_t    <span class="hljs-title">GetBufferVersion</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVersion; }
+   <span class="hljs-function">Bool_t   <span class="hljs-title">IsReading</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (fMode &amp; kWrite) == <span class="hljs-number">0</span>; }
+   <span class="hljs-function">Bool_t   <span class="hljs-title">IsWriting</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (fMode &amp; kWrite) != <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">SetReadMode</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">SetWriteMode</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">SetBuffer</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *buf, UInt_t bufsiz = <span class="hljs-number">0</span>, Bool_t adopt = kTRUE, ReAllocCharFun_t reallocfunc = <span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function">ReAllocCharFun_t <span class="hljs-title">GetReAllocFunc</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">SetReAllocFunc</span><span class="hljs-params">(ReAllocCharFun_t reallocfunc = <span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">SetBufferOffset</span><span class="hljs-params">(Int_t offset = <span class="hljs-number">0</span>)</span> </span>{ fBufCur = fBuffer+offset; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">SetParent</span><span class="hljs-params">(TObject *parent)</span></span>;
+   <span class="hljs-function">TObject *<span class="hljs-title">GetParent</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">char</span>    *<span class="hljs-title">Buffer</span><span class="hljs-params">()</span>     <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fBuffer; }
+   <span class="hljs-function">Int_t    <span class="hljs-title">BufferSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fBufSize; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">DetachBuffer</span><span class="hljs-params">()</span> </span>{ fBuffer = <span class="hljs-number">0</span>; }
+   <span class="hljs-function">Int_t    <span class="hljs-title">Length</span><span class="hljs-params">()</span>     <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (Int_t)(fBufCur - fBuffer); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">Expand</span><span class="hljs-params">(Int_t newsize, Bool_t copy = kTRUE)</span></span>;  <span class="hljs-comment">// expand buffer to newsize</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">AutoExpand</span><span class="hljs-params">(Int_t size_needed)</span></span>;  <span class="hljs-comment">// expand buffer to newsize</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t     <span class="hljs-title">CheckObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t     <span class="hljs-title">CheckObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *obj, <span class="hljs-keyword">const</span> TClass *ptrClass)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">ReadBuf</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *buf, Int_t max)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">WriteBuf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *buf, Int_t max)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">char</span>      *<span class="hljs-title">ReadString</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *s, Int_t max)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">WriteString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">GetVersionOwner</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">GetMapCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">GetMappedObject</span><span class="hljs-params">(UInt_t tag, <span class="hljs-keyword">void</span>* &amp;ptr, TClass* &amp;ClassPtr)</span> <span class="hljs-keyword">const</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">MapObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj, UInt_t offset = <span class="hljs-number">1</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">MapObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *obj, <span class="hljs-keyword">const</span> TClass *cl, UInt_t offset = <span class="hljs-number">1</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Reset</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">InitMap</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ResetMap</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetReadParam</span><span class="hljs-params">(Int_t mapsize)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetWriteParam</span><span class="hljs-params">(Int_t mapsize)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">CheckByteCount</span><span class="hljs-params">(UInt_t startpos, UInt_t bcnt, <span class="hljs-keyword">const</span> TClass *clss)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">CheckByteCount</span><span class="hljs-params">(UInt_t startpos, UInt_t bcnt, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *classname)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetByteCount</span><span class="hljs-params">(UInt_t cntpos, Bool_t packInVersion = kFALSE)</span></span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SkipVersion</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl = <span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Version_t  <span class="hljs-title">ReadVersion</span><span class="hljs-params">(UInt_t *start = <span class="hljs-number">0</span>, UInt_t *bcnt = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> TClass *cl = <span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Version_t  <span class="hljs-title">ReadVersionNoCheckSum</span><span class="hljs-params">(UInt_t *start = <span class="hljs-number">0</span>, UInt_t *bcnt = <span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Version_t  <span class="hljs-title">ReadVersionForMemberWise</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl = <span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> UInt_t     <span class="hljs-title">WriteVersion</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl, Bool_t useBcnt = kFALSE)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> UInt_t     <span class="hljs-title">WriteVersionMemberWise</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl, Bool_t useBcnt = kFALSE)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      *<span class="hljs-title">ReadObjectAny</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass* cast)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SkipObjectAny</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">TagStreamerInfo</span><span class="hljs-params">(TVirtualStreamerInfo* info)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">IncrementLevel</span><span class="hljs-params">(TVirtualStreamerInfo* info)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetStreamerElementNumber</span><span class="hljs-params">(TStreamerElement *elem, Int_t comp_type)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">DecrementLevel</span><span class="hljs-params">(TVirtualStreamerInfo*)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ClassBegin</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass*, Version_t = <span class="hljs-number">-1</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ClassEnd</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass*)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ClassMember</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>*, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* = <span class="hljs-number">0</span>, Int_t = <span class="hljs-number">-1</span>, Int_t = <span class="hljs-number">-1</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TVirtualStreamerInfo *<span class="hljs-title">GetInfo</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TVirtualArray *<span class="hljs-title">PeekDataCache</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TVirtualArray *<span class="hljs-title">PopDataCache</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>           <span class="hljs-title">PushDataCache</span><span class="hljs-params">(TVirtualArray *)</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TClass    *<span class="hljs-title">ReadClass</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl = <span class="hljs-number">0</span>, UInt_t *objTag = <span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">WriteClass</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject   *<span class="hljs-title">ReadObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">WriteObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">WriteObjectAny</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *obj, <span class="hljs-keyword">const</span> TClass *ptrClass)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> UShort_t   <span class="hljs-title">GetPidOffset</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetPidOffset</span><span class="hljs-params">(UShort_t offset)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">GetBufferDisplacement</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetBufferDisplacement</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetBufferDisplacement</span><span class="hljs-params">(Int_t skipped)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-comment">// basic types and arrays of basic types</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFloat16</span> <span class="hljs-params">(Float_t *f, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFloat16</span><span class="hljs-params">(Float_t *f, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadDouble32</span> <span class="hljs-params">(Double_t *d, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteDouble32</span><span class="hljs-params">(Double_t *d, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadWithFactor</span><span class="hljs-params">(Float_t *ptr, Double_t factor, Double_t minvalue)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadWithNbits</span><span class="hljs-params">(Float_t *ptr, Int_t nbits)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadWithFactor</span><span class="hljs-params">(Double_t *ptr, Double_t factor, Double_t minvalue)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadWithNbits</span><span class="hljs-params">(Double_t *ptr, Int_t nbits)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(Bool_t    *&amp;b)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(Char_t    *&amp;c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(UChar_t   *&amp;c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(Short_t   *&amp;h)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(UShort_t  *&amp;h)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(Int_t     *&amp;i)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(UInt_t    *&amp;i)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(Long_t    *&amp;l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(ULong_t   *&amp;l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(Long64_t  *&amp;l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(ULong64_t *&amp;l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(Float_t   *&amp;f)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArray</span><span class="hljs-params">(Double_t  *&amp;d)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArrayFloat16</span><span class="hljs-params">(Float_t *&amp;f, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadArrayDouble32</span><span class="hljs-params">(Double_t *&amp;d, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(Bool_t    *b)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(Char_t    *c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(UChar_t   *c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(Short_t   *h)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(UShort_t  *h)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(Int_t     *i)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(UInt_t    *i)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(Long_t    *l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(ULong_t   *l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(Long64_t  *l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(ULong64_t *l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(Float_t   *f)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArray</span><span class="hljs-params">(Double_t  *d)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArrayFloat16</span><span class="hljs-params">(Float_t  *f, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadStaticArrayDouble32</span><span class="hljs-params">(Double_t  *d, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(Bool_t    *b, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(Char_t    *c, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArrayString</span><span class="hljs-params">(Char_t *c, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(UChar_t   *c, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(Short_t   *h, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(UShort_t  *h, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(Int_t     *i, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(UInt_t    *i, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(Long_t    *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(ULong_t   *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(Long64_t  *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(ULong64_t *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(Float_t   *f, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(Double_t  *d, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArrayFloat16</span><span class="hljs-params">(Float_t  *f, Int_t n, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArrayDouble32</span><span class="hljs-params">(Double_t  *d, Int_t n, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArrayWithFactor</span><span class="hljs-params">(Float_t *ptr, Int_t n, Double_t factor, Double_t minvalue)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArrayWithNbits</span><span class="hljs-params">(Float_t *ptr, Int_t n, Int_t nbits)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArrayWithFactor</span><span class="hljs-params">(Double_t *ptr, Int_t n, Double_t factor, Double_t minvalue)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArrayWithNbits</span><span class="hljs-params">(Double_t *ptr, Int_t n, Int_t nbits)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(<span class="hljs-keyword">void</span>  *start , <span class="hljs-keyword">const</span> TClass *cl, Int_t n=<span class="hljs-number">1</span>, TMemberStreamer *s=<span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> TClass *onFileClass=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFastArray</span><span class="hljs-params">(<span class="hljs-keyword">void</span> **startp, <span class="hljs-keyword">const</span> TClass *cl, Int_t n=<span class="hljs-number">1</span>, Bool_t isPreAlloc=kFALSE, TMemberStreamer *s=<span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> TClass *onFileClass=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Bool_t    *b, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Char_t    *c, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> UChar_t   *c, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Short_t   *h, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> UShort_t  *h, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t     *i, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> UInt_t    *i, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Long_t    *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> ULong_t   *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Long64_t  *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> ULong64_t *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Float_t   *f, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t  *d, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArrayFloat16</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Float_t  *f, Int_t n, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteArrayDouble32</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t  *d, Int_t n, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Bool_t    *b, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Char_t    *c, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArrayString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Char_t    *c, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> UChar_t   *c, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Short_t   *h, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> UShort_t  *h, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t     *i, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> UInt_t    *i, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Long_t    *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> ULong_t   *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Long64_t  *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> ULong64_t *l, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Float_t   *f, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t  *d, Int_t n)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArrayFloat16</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Float_t  *f, Int_t n, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArrayDouble32</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t  *d, Int_t n, TStreamerElement *ele=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">void</span>  *start,  <span class="hljs-keyword">const</span> TClass *cl, Int_t n=<span class="hljs-number">1</span>, TMemberStreamer *s=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">WriteFastArray</span><span class="hljs-params">(<span class="hljs-keyword">void</span> **startp, <span class="hljs-keyword">const</span> TClass *cl, Int_t n=<span class="hljs-number">1</span>, Bool_t isPreAlloc=kFALSE, TMemberStreamer *s=<span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">StreamObject</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *obj, <span class="hljs-keyword">const</span> type_info &amp;typeinfo, <span class="hljs-keyword">const</span> TClass* onFileClass = <span class="hljs-number">0</span> )</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">StreamObject</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *obj, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *className, <span class="hljs-keyword">const</span> TClass* onFileClass = <span class="hljs-number">0</span> )</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">StreamObject</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *obj, <span class="hljs-keyword">const</span> TClass *cl, <span class="hljs-keyword">const</span> TClass* onFileClass = <span class="hljs-number">0</span> )</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">StreamObject</span><span class="hljs-params">(TObject *obj)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadBool</span><span class="hljs-params">(Bool_t       &amp;b)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadChar</span><span class="hljs-params">(Char_t       &amp;c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadUChar</span><span class="hljs-params">(UChar_t     &amp;c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadShort</span><span class="hljs-params">(Short_t     &amp;s)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadUShort</span><span class="hljs-params">(UShort_t   &amp;s)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadInt</span><span class="hljs-params">(Int_t         &amp;i)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadUInt</span><span class="hljs-params">(UInt_t       &amp;i)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadLong</span><span class="hljs-params">(Long_t       &amp;l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadULong</span><span class="hljs-params">(ULong_t     &amp;l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadLong64</span><span class="hljs-params">(Long64_t   &amp;l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadULong64</span><span class="hljs-params">(ULong64_t &amp;l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFloat</span><span class="hljs-params">(Float_t     &amp;f)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadDouble</span><span class="hljs-params">(Double_t   &amp;d)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadCharP</span><span class="hljs-params">(Char_t      *c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadTString</span><span class="hljs-params">(TString   &amp;s)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadStdString</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;s)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteBool</span><span class="hljs-params">(Bool_t       b)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteChar</span><span class="hljs-params">(Char_t       c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteUChar</span><span class="hljs-params">(UChar_t     c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteShort</span><span class="hljs-params">(Short_t     s)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteUShort</span><span class="hljs-params">(UShort_t   s)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteInt</span><span class="hljs-params">(Int_t         i)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteUInt</span><span class="hljs-params">(UInt_t       i)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteLong</span><span class="hljs-params">(Long_t       l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteULong</span><span class="hljs-params">(ULong_t     l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteLong64</span><span class="hljs-params">(Long64_t   l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteULong64</span><span class="hljs-params">(ULong64_t l)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteFloat</span><span class="hljs-params">(Float_t     f)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteDouble</span><span class="hljs-params">(Double_t   d)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteCharP</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Char_t *c)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteTString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TString &amp;s)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteStdString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;s)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-comment">// Special basic ROOT objects and collections</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   TProcessID *<span class="hljs-title">GetLastProcessID</span><span class="hljs-params">(TRefTable *reftable)</span> <span class="hljs-keyword">const</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   UInt_t      <span class="hljs-title">GetTRefExecId</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   TProcessID *<span class="hljs-title">ReadProcessID</span><span class="hljs-params">(UShort_t pidf)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   UShort_t    <span class="hljs-title">WriteProcessID</span><span class="hljs-params">(TProcessID *pid)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-comment">// Utilities for TStreamerInfo</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ForceWriteInfo</span><span class="hljs-params">(TVirtualStreamerInfo *info, Bool_t force)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">ForceWriteInfoClones</span><span class="hljs-params">(TClonesArray *a)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadClones</span> <span class="hljs-params">(TClonesArray *a, Int_t nobjects, Version_t objvers)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">WriteClones</span><span class="hljs-params">(TClonesArray *a, Int_t nobjects)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-comment">// Utilities for TClass</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadClassEmulated</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl, <span class="hljs-keyword">void</span> *object, <span class="hljs-keyword">const</span> TClass *onfile_class = <span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadClassBuffer</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl, <span class="hljs-keyword">void</span> *pointer, <span class="hljs-keyword">const</span> TClass *onfile_class = <span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">ReadClassBuffer</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl, <span class="hljs-keyword">void</span> *pointer, Int_t version, UInt_t start, UInt_t count, <span class="hljs-keyword">const</span> TClass *onfile_class = <span class="hljs-number">0</span>)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>   Int_t    <span class="hljs-title">WriteClassBuffer</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TClass *cl, <span class="hljs-keyword">void</span> *pointer)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-comment">// Utilites to streamer using sequences.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">ApplySequence</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TStreamerInfoActions::TActionSequence &amp;sequence, <span class="hljs-keyword">void</span> *object)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">ApplySequenceVecPtr</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TStreamerInfoActions::TActionSequence &amp;sequence, <span class="hljs-keyword">void</span> *start_collection, <span class="hljs-keyword">void</span> *end_collection)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">ApplySequence</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TStreamerInfoActions::TActionSequence &amp;sequence, <span class="hljs-keyword">void</span> *start_collection, <span class="hljs-keyword">void</span> *end_collection)</span> </span>= <span class="hljs-number">0</span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">static</span> TClass *<span class="hljs-title">GetClass</span><span class="hljs-params">(<span class="hljs-keyword">const</span> type_info &amp;typeinfo)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> TClass *<span class="hljs-title">GetClass</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *className)</span></span>;</code></pre>
+<!-- TBuffer.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1849,7 +2118,7 @@
 
             
                 
-                <a href="TBranch.html" class="navigation navigation-prev " aria-label="Previous page: TBranch">
+                <a href="TBranch.html" class="navigation navigation-prev " aria-label="Previous page: TBranch*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1865,7 +2134,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TBuffer","level":"1.2.7","depth":2,"next":{"title":"TBufferFile","level":"1.2.8","depth":2,"path":"class/TBufferFile.md","ref":"class/TBufferFile.md","articles":[]},"previous":{"title":"TBranch","level":"1.2.6","depth":2,"path":"class/TBranch.md","ref":"class/TBranch.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TBuffer.md","mtime":"2016-08-13T03:02:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-07T12:14:50.731Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TBuffer*","level":"1.2.7","depth":2,"next":{"title":"TBufferFile","level":"1.2.8","depth":2,"path":"class/TBufferFile.md","ref":"class/TBufferFile.md","articles":[]},"previous":{"title":"TBranch*","level":"1.2.6","depth":2,"path":"class/TBranch.md","ref":"class/TBranch.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TBuffer.md","mtime":"2016-09-13T12:57:04.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-26T14:31:12.201Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

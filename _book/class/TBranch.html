@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TBranch · GitBook</title>
+        <title>TBranch* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis
+                    TAttAxis*
             
                 </a>
             
@@ -142,12 +142,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="Taxis.html">
+        <li class="chapter " data-level="1.2.3" data-path="TAxis.html">
             
-                <a href="Taxis.html">
+                <a href="TAxis.html">
             
                     
-                    Taxis
+                    TAxis*
             
                 </a>
             
@@ -173,7 +173,7 @@
                 <a href="TBenchmark.html">
             
                     
-                    TBenchmark
+                    TBenchmark*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch
+                    TBranch*
             
                 </a>
             
@@ -199,7 +199,7 @@
                 <a href="TBuffer.html">
             
                     
-                    TBuffer
+                    TBuffer*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas
+                    TCanvas*
             
                 </a>
             
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1
+                    TH1*
             
                 </a>
             
@@ -524,7 +524,7 @@
                 <a href="TH2.html">
             
                     
-                    TH2
+                    TH2*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex
+                    TLatex*
             
                 </a>
             
@@ -1252,7 +1252,7 @@
                 <a href="TText.html">
             
                     
-                    TText
+                    TText*
             
                 </a>
             
@@ -1304,7 +1304,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime
+                    TTime*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer
+                    TTimer*
             
                 </a>
             
@@ -1807,7 +1807,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TBranch</a>
+        <a href=".." >TBranch*</a>
     </h1>
 </div>
 
@@ -1822,7 +1822,118 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tbranch">TBranch</h1>
+                                <!-- TBranch.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 二 9月 13 20:58:30 2016 (+0800)
+;; Last-Updated: 二 9月 13 22:34:29 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 1
+;; URL: http://wuhongyi.github.io -->
+
+
+<h1 id="tbranch">TBranch</h1><p>&#x7EE7;&#x627F; TNamed , TAttFill</p><p>A TTree object is a list of TBranchs.</p><p>A TBranch describes the branch data structure and supports :</p><ul><li>the list of TBaskets (branch buffers) associated to this branch.
+</li>
+<li>the list of TLeaves (branch description) 
+</li></ul>
+<h2 id="class">class</h2><pre><code class="lang-cpp">   TBranch();
+   TBranch(TTree *tree, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">void</span> *address, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *leaflist, Int_t basketsize=<span class="hljs-number">32000</span>, Int_t compress=<span class="hljs-number">-1</span>);
+   TBranch(TBranch *parent, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">void</span> *address, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *leaflist, Int_t basketsize=<span class="hljs-number">32000</span>, Int_t compress=<span class="hljs-number">-1</span>);
+   <span class="hljs-keyword">virtual</span> ~TBranch();
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddBasket</span><span class="hljs-params">(TBasket &amp;b, Bool_t ondisk, Long64_t startEntry)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddLastBasket</span><span class="hljs-params">(Long64_t startEntry)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">DeleteBaskets</span><span class="hljs-params">(Option_t* option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">DropBaskets</span><span class="hljs-params">(Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+           <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">ExpandBasketArrays</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch  *<span class="hljs-title">FindBranch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">FindLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">FlushBaskets</span><span class="hljs-params">()</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">FlushOneBasket</span><span class="hljs-params">(UInt_t which)</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">char</span>     *<span class="hljs-title">GetAddress</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fAddress;}
+           <span class="hljs-function">TBasket  *<span class="hljs-title">GetBasket</span><span class="hljs-params">(Int_t basket)</span></span>;
+           <span class="hljs-function">Int_t    *<span class="hljs-title">GetBasketBytes</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fBasketBytes;}
+           <span class="hljs-function">Long64_t *<span class="hljs-title">GetBasketEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fBasketEntry;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetBasketSeek</span><span class="hljs-params">(Int_t basket)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetBasketSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fBasketSize;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TList    *<span class="hljs-title">GetBrowsables</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* <span class="hljs-title">GetClassName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetCompressionAlgorithm</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetCompressionLevel</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetCompressionSettings</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">TDirectory       *<span class="hljs-title">GetDirectory</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fDirectory;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetEntry</span><span class="hljs-params">(Long64_t entry=<span class="hljs-number">0</span>, Int_t getall = <span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetEntryExport</span><span class="hljs-params">(Long64_t entry, Int_t getall, TClonesArray *<span class="hljs-built_in">list</span>, Int_t n)</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetEntryOffsetLen</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEntryOffsetLen; }
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetEvent</span><span class="hljs-params">(Long64_t entry=<span class="hljs-number">0</span>)</span> </span>{<span class="hljs-keyword">return</span> GetEntry(entry);}
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>       *<span class="hljs-title">GetIconName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetExpectedType</span><span class="hljs-params">(TClass *&amp;clptr,EDataType &amp;type)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">GetLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFile    *<span class="hljs-title">GetFile</span><span class="hljs-params">(Int_t mode=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>       *<span class="hljs-title">GetFileName</span><span class="hljs-params">()</span>    <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fFileName.Data();}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetOffset</span><span class="hljs-params">()</span>      <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fOffset;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetReadBasket</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fReadBasket;}
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetReadEntry</span><span class="hljs-params">()</span>   <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fReadEntry;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetWriteBasket</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fWriteBasket;}
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetTotalSize</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span>   <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetTotBytes</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span>    <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetZipBytes</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span>    <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetEntryNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fEntryNumber;}
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetFirstEntry</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fFirstEntry; }
+         <span class="hljs-function">TObjArray  *<span class="hljs-title">GetListOfBaskets</span><span class="hljs-params">()</span>  </span>{<span class="hljs-keyword">return</span> &amp;fBaskets;}
+         <span class="hljs-function">TObjArray  *<span class="hljs-title">GetListOfBranches</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> &amp;fBranches;}
+         <span class="hljs-function">TObjArray  *<span class="hljs-title">GetListOfLeaves</span><span class="hljs-params">()</span>   </span>{<span class="hljs-keyword">return</span> &amp;fLeaves;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetMaxBaskets</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span>  </span>{<span class="hljs-keyword">return</span> fMaxBaskets;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetNleaves</span><span class="hljs-params">()</span>     <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNleaves;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetSplitLevel</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSplitLevel;}
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetEntries</span><span class="hljs-params">()</span>     <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fEntries;}
+           <span class="hljs-function">TTree    *<span class="hljs-title">GetTree</span><span class="hljs-params">()</span>        <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTree;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetRow</span><span class="hljs-params">(Int_t row)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">GetMakeClass</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">TBranch          *<span class="hljs-title">GetMother</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">TBranch          *<span class="hljs-title">GetSubBranch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TBranch *br)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsAutoDelete</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsFolder</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">KeepCircular</span><span class="hljs-params">(Long64_t maxEntries)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">LoadBaskets</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ReadBasket</span><span class="hljs-params">(TBuffer &amp;b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Refresh</span><span class="hljs-params">(TBranch *b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Reset</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetAfterMerge</span><span class="hljs-params">(TFileMergeInfo *)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetAddress</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetReadEntry</span><span class="hljs-params">()</span> </span>{fReadEntry = <span class="hljs-number">-1</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetAddress</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *add)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetObject</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *objadd)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetAutoDelete</span><span class="hljs-params">(Bool_t autodel=kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetBasketSize</span><span class="hljs-params">(Int_t buffsize)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetBufferAddress</span><span class="hljs-params">(TBuffer *entryBuffer)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetCompressionAlgorithm</span><span class="hljs-params">(Int_t algorithm=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetCompressionLevel</span><span class="hljs-params">(Int_t level=<span class="hljs-number">1</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetCompressionSettings</span><span class="hljs-params">(Int_t settings=<span class="hljs-number">1</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEntries</span><span class="hljs-params">(Long64_t entries)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEntryOffsetLen</span><span class="hljs-params">(Int_t len, Bool_t updateSubBranches = kFALSE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFirstEntry</span><span class="hljs-params">( Long64_t entry )</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFile</span><span class="hljs-params">(TFile *file=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">SetMakeClass</span><span class="hljs-params">(Bool_t decomposeObj = kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetOffset</span><span class="hljs-params">(Int_t offset=<span class="hljs-number">0</span>)</span> </span>{fOffset=offset;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetStatus</span><span class="hljs-params">(Bool_t status=<span class="hljs-number">1</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetTree</span><span class="hljs-params">(TTree *tree)</span> </span>{ fTree = tree;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetupAddresses</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">UpdateAddress</span><span class="hljs-params">()</span> </span>{;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">UpdateFile</span><span class="hljs-params">()</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetCount</span><span class="hljs-params">()</span></span>;</code></pre>
+<h2 id="code">code</h2><h2 id="example">example</h2><!-- TBranch.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1849,12 +1960,12 @@
 
             
                 
-                <a href="TBenchmark.html" class="navigation navigation-prev " aria-label="Previous page: TBenchmark">
+                <a href="TBenchmark.html" class="navigation navigation-prev " aria-label="Previous page: TBenchmark*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="TBuffer.html" class="navigation navigation-next " aria-label="Next page: TBuffer">
+                <a href="TBuffer.html" class="navigation navigation-next " aria-label="Next page: TBuffer*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1865,7 +1976,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TBranch","level":"1.2.6","depth":2,"next":{"title":"TBuffer","level":"1.2.7","depth":2,"path":"class/TBuffer.md","ref":"class/TBuffer.md","articles":[]},"previous":{"title":"TBenchmark","level":"1.2.5","depth":2,"path":"class/TBenchmark.md","ref":"class/TBenchmark.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TBranch.md","mtime":"2016-08-12T14:22:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-07T12:14:50.731Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TBranch*","level":"1.2.6","depth":2,"next":{"title":"TBuffer*","level":"1.2.7","depth":2,"path":"class/TBuffer.md","ref":"class/TBuffer.md","articles":[]},"previous":{"title":"TBenchmark*","level":"1.2.5","depth":2,"path":"class/TBenchmark.md","ref":"class/TBenchmark.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TBranch.md","mtime":"2016-09-13T14:34:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-26T14:31:12.201Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

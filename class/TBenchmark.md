@@ -4,14 +4,18 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:31:46 2014 (+0800)
-;; Last-Updated: 六 8月 13 13:18:25 2016 (+0800)
+;; Last-Updated: 二 9月 13 18:16:24 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 5
+;;     Update #: 6
 ;; URL: http://wuhongyi.github.io -->
 
 # TBenchmark
 
 系统自带计时
+
+继承 TNamed
+
+## class
 
 ```cpp
 Int_t              GetBench(const char *name) const;

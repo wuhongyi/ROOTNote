@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis
+                    TAttAxis*
             
                 </a>
             
@@ -142,12 +142,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="Taxis.html">
+        <li class="chapter " data-level="1.2.3" data-path="TAxis.html">
             
-                <a href="Taxis.html">
+                <a href="TAxis.html">
             
                     
-                    Taxis
+                    TAxis*
             
                 </a>
             
@@ -173,7 +173,7 @@
                 <a href="TBenchmark.html">
             
                     
-                    TBenchmark
+                    TBenchmark*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch
+                    TBranch*
             
                 </a>
             
@@ -199,7 +199,7 @@
                 <a href="TBuffer.html">
             
                     
-                    TBuffer
+                    TBuffer*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas
+                    TCanvas*
             
                 </a>
             
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1
+                    TH1*
             
                 </a>
             
@@ -524,7 +524,7 @@
                 <a href="TH2.html">
             
                     
-                    TH2
+                    TH2*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex
+                    TLatex*
             
                 </a>
             
@@ -1252,7 +1252,7 @@
                 <a href="TText.html">
             
                     
-                    TText
+                    TText*
             
                 </a>
             
@@ -1304,7 +1304,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime
+                    TTime*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer
+                    TTimer*
             
                 </a>
             
@@ -1822,7 +1822,132 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ttimestamp">TTimeStamp</h1>
+                                <!-- TTimeStamp.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 二 9月 13 19:58:48 2016 (+0800)
+;; Last-Updated: 二 9月 13 20:09:39 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 1
+;; URL: http://wuhongyi.github.io -->
+
+
+<h1 id="ttimestamp">TTimeStamp</h1><p>// The TTimeStamp encapsulates seconds and ns since EPOCH
+//
+// This extends (and isolates) struct timespec
+//    struct timespec
+//       {
+//          time_t   tv_sec;   /<em> seconds </em>/
+//          long     tv_nsec;  /<em> nanoseconds </em>/
+//       }
+//    time_t seconds is relative to Jan 1, 1970 00:00:00 UTC
+//
+// No accounting of leap seconds is made.
+//
+// Due to ROOT/CINT limitations TTimeStamp does not explicitly
+// hold a timespec struct; attempting to do so means the Streamer
+// must be hand written.  Instead we have chosen to simply contain
+// similar fields within the private area of this class.
+//
+// NOTE: the use of time_t (and its default implementation as a 32 int)
+//       implies overflow conditions occurs somewhere around
+//       Jan 18, 19:14:07, 2038.
+//       If this experiment is still going when it becomes significant
+//       someone will have to deal with it.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// empty ctor (builds current time with nsec field incremented from static)</span>
+   TTimeStamp();
+
+   <span class="hljs-comment">// construction from timespec struct</span>
+   TTimeStamp(<span class="hljs-keyword">const</span> <span class="hljs-keyword">timespec_t</span> &amp;ts) :
+      fSec(Int_t(ts.tv_sec)), fNanoSec(ts.tv_nsec) { NormalizeNanoSec(); }
+
+   <span class="hljs-comment">// construction from time_t and separate nsec</span>
+   TTimeStamp(<span class="hljs-keyword">time_t</span> t, Int_t nsec) :
+      fSec(Int_t(t)), fNanoSec(nsec) { NormalizeNanoSec(); }
+
+   <span class="hljs-comment">// construction from bits and pieces</span>
+   TTimeStamp(UInt_t year, UInt_t month,
+              UInt_t day,  UInt_t hour,
+              UInt_t min,  UInt_t sec,
+              UInt_t nsec = <span class="hljs-number">0</span>, Bool_t isUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>);
+
+   <span class="hljs-comment">// compatibility with TDatime</span>
+   TTimeStamp(UInt_t date, UInt_t time, UInt_t nsec,
+              Bool_t isUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>);
+
+   <span class="hljs-comment">// compatability with time() and DOS date</span>
+   TTimeStamp(UInt_t tloc, Bool_t isUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>,
+              Bool_t dosDate = kFALSE);
+
+   <span class="hljs-keyword">virtual</span> ~TTimeStamp() { }
+
+   <span class="hljs-comment">// initialize to current time with nsec field incremented from static</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set</span><span class="hljs-params">()</span></span>;
+
+   <span class="hljs-comment">// construction from bits and pieces</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set</span><span class="hljs-params">(Int_t year, Int_t month,  Int_t day,
+            Int_t hour, Int_t min,    Int_t sec,
+            Int_t nsec, Bool_t isUTC, Int_t secOffset)</span></span>;
+
+   <span class="hljs-comment">// compatibility with TDatime</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set</span><span class="hljs-params">(Int_t date,   Int_t time, Int_t nsec,
+            Bool_t isUTC, Int_t secOffset)</span></span>;
+
+   <span class="hljs-comment">// compatability with time() and DOS date</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set</span><span class="hljs-params">(UInt_t tloc, Bool_t isUTC, Int_t secOffset, Bool_t dosDate)</span></span>;
+
+   <span class="hljs-comment">// direct setters</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetSec</span><span class="hljs-params">(Int_t sec)</span> </span>{ fSec = sec; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetNanoSec</span><span class="hljs-params">(Int_t nsec)</span> </span>{ fNanoSec = nsec; }
+
+   <span class="hljs-keyword">timespec_t</span>   GetTimeSpec() <span class="hljs-keyword">const</span>
+      { <span class="hljs-keyword">timespec_t</span> value = {fSec,fNanoSec}; <span class="hljs-keyword">return</span> value; }
+   <span class="hljs-keyword">time_t</span>       GetSec() <span class="hljs-keyword">const</span> { <span class="hljs-keyword">return</span> fSec; }
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetNanoSec</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNanoSec; }
+
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsDouble</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fSec + <span class="hljs-number">1e-9</span> * fNanoSec; }
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsJulianDate</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (AsDouble()/<span class="hljs-number">86400.0</span> + <span class="hljs-number">2440587.5</span>); }
+
+   <span class="hljs-comment">// return stored time values converted to sidereal time</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsGMST</span><span class="hljs-params">(Double_t UT1Offset = <span class="hljs-number">0</span> <span class="hljs-comment">/*milliseconds*/</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//rval in hours</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsGAST</span><span class="hljs-params">(Double_t UT1Offset = <span class="hljs-number">0</span> <span class="hljs-comment">/*milliseconds*/</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//rval in hours</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsLMST</span><span class="hljs-params">(Double_t Longitude <span class="hljs-comment">/*degrees*/</span>, Double_t UT1Offset = <span class="hljs-number">0</span> <span class="hljs-comment">/*milliseconds*/</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//rval in hours</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsLAST</span><span class="hljs-params">(Double_t Longitude <span class="hljs-comment">/*degrees*/</span>, Double_t UT1Offset = <span class="hljs-number">0</span> <span class="hljs-comment">/*milliseconds*/</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//rval in hours</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">AsString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Copy</span><span class="hljs-params">(TTimeStamp &amp;ts)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">UInt_t       <span class="hljs-title">GetDate</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>,
+                        UInt_t *year = <span class="hljs-number">0</span>, UInt_t *month = <span class="hljs-number">0</span>,
+                        UInt_t *day = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">UInt_t       <span class="hljs-title">GetTime</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>,
+                        UInt_t *hour = <span class="hljs-number">0</span>, UInt_t *min = <span class="hljs-number">0</span>,
+                        UInt_t *sec = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetDayOfYear</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetDayOfWeek</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetMonth</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetWeek</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Bool_t       <span class="hljs-title">IsLeapYear</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TTimeStamp &amp;offset)</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Print</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">double</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> AsDouble(); }
+
+   <span class="hljs-comment">// Utility functions</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetZoneOffset</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> time_t  <span class="hljs-title">MktimeFromUTC</span><span class="hljs-params">(tm_t *tmstruct)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">DumpTMStruct</span><span class="hljs-params">(<span class="hljs-keyword">const</span> tm_t &amp;tmstruct)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetDayOfYear</span><span class="hljs-params">(Int_t day, Int_t month, Int_t year)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetDayOfWeek</span><span class="hljs-params">(Int_t day, Int_t month, Int_t year)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetWeek</span><span class="hljs-params">(Int_t day, Int_t month, Int_t year)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">IsLeapYear</span><span class="hljs-params">(Int_t year)</span></span>;</code></pre>
+<h2 id="code">code</h2><h2 id="example">example</h2><!-- TTimeStamp.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1849,7 +1974,7 @@
 
             
                 
-                <a href="TTimer.html" class="navigation navigation-prev " aria-label="Previous page: TTimer">
+                <a href="TTimer.html" class="navigation navigation-prev " aria-label="Previous page: TTimer*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1865,7 +1990,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TTimeStamp","level":"1.2.94","depth":2,"next":{"title":"TTree","level":"1.2.95","depth":2,"path":"class/TTree.md","ref":"class/TTree.md","articles":[]},"previous":{"title":"TTimer","level":"1.2.93","depth":2,"path":"class/TTimer.md","ref":"class/TTimer.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTimeStamp.md","mtime":"2016-08-13T05:13:33.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-07T12:14:50.731Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TTimeStamp","level":"1.2.94","depth":2,"next":{"title":"TTree","level":"1.2.95","depth":2,"path":"class/TTree.md","ref":"class/TTree.md","articles":[]},"previous":{"title":"TTimer*","level":"1.2.93","depth":2,"path":"class/TTimer.md","ref":"class/TTimer.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTimeStamp.md","mtime":"2016-09-13T12:09:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-26T14:31:12.201Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

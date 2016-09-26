@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis
+                    TAttAxis*
             
                 </a>
             
@@ -142,12 +142,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="Taxis.html">
+        <li class="chapter " data-level="1.2.3" data-path="TAxis.html">
             
-                <a href="Taxis.html">
+                <a href="TAxis.html">
             
                     
-                    Taxis
+                    TAxis*
             
                 </a>
             
@@ -173,7 +173,7 @@
                 <a href="TBenchmark.html">
             
                     
-                    TBenchmark
+                    TBenchmark*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch
+                    TBranch*
             
                 </a>
             
@@ -199,7 +199,7 @@
                 <a href="TBuffer.html">
             
                     
-                    TBuffer
+                    TBuffer*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas
+                    TCanvas*
             
                 </a>
             
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1
+                    TH1*
             
                 </a>
             
@@ -524,7 +524,7 @@
                 <a href="TH2.html">
             
                     
-                    TH2
+                    TH2*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex
+                    TLatex*
             
                 </a>
             
@@ -1252,7 +1252,7 @@
                 <a href="TText.html">
             
                     
-                    TText
+                    TText*
             
                 </a>
             
@@ -1304,7 +1304,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime
+                    TTime*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer
+                    TTimer*
             
                 </a>
             
@@ -1822,7 +1822,259 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tchain">TChain</h1>
+                                <p>3<!-- TChain.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 一 9月 26 22:08:06 2016 (+0800)
+;; Last-Updated: 一 9月 26 22:30:43 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 2
+;; URL: http://wuhongyi.github.io --></p><h1 id="tchain">TChain</h1><h2 id="class">class</h2><p>&#x7EE7;&#x627F; TTree</p><p>A chain is a collection of files containg TTree objects.
+When the chain is created, the first parameter is the default name for the Tree to be processed later on.</p><p>Enter a new element in the chain via the TChain::Add function.
+Once a chain is defined, one can use the normal TTree functions to Draw,Scan,etc.</p><p>Use TChain::SetBranchStatus to activate one or more branches for all the trees in the chain.</p><pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   <span class="hljs-comment">// TChain constants</span>
+   <span class="hljs-keyword">enum</span> {
+      kGlobalWeight   = BIT(<span class="hljs-number">15</span>),
+      kAutoDelete     = BIT(<span class="hljs-number">16</span>),
+      kProofUptodate  = BIT(<span class="hljs-number">17</span>),
+      kProofLite      = BIT(<span class="hljs-number">18</span>)
+   };
+
+   <span class="hljs-comment">// This used to be 1234567890, if user code hardcoded this number, the user code will need to change.</span>
+   <span class="hljs-keyword">static</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">auto</span> kBigNumber = TTree::kMaxEntries;
+
+<span class="hljs-keyword">public</span>:
+   TChain();
+   TChain(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* title = <span class="hljs-string">&quot;&quot;</span>);
+   <span class="hljs-keyword">virtual</span> ~TChain();
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Add</span><span class="hljs-params">(TChain* chain)</span></span>;
+<span class="hljs-comment">/// Add all files referenced by the passed chain to this chain.</span>
+<span class="hljs-comment">/// The function returns the total number of files connected.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, Long64_t nentries = TTree::kMaxEntries)</span></span>;
+<span class="hljs-comment">/// Add a new file to this chain.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Argument name may have either of two formats. The first:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     [//machine]/path/file_name.root[/tree_name]</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// If tree_name is missing the chain name will be assumed.</span>
+<span class="hljs-comment">/// Wildcard treatment is triggered by the any of the special characters []*?</span>
+<span class="hljs-comment">/// which may be used in the file name, eg. specifying &quot;xxx*.root&quot; adds</span>
+<span class="hljs-comment">/// all files starting with xxx in the current file system directory.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Alternatively name may have the format of a url, eg.</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///         root://machine/path/file_name.root</span>
+<span class="hljs-comment">///     or  root://machine/path/file_name.root/tree_name</span>
+<span class="hljs-comment">///     or  root://machine/path/file_name.root/tree_name?query</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// where &quot;query&quot; is to be interpreted by the remote server. Wildcards may be</span>
+<span class="hljs-comment">/// supported in urls, depending on the protocol plugin and the remote server.</span>
+<span class="hljs-comment">/// http or https urls can contain a query identifier without tree_name, but</span>
+<span class="hljs-comment">/// generally urls can not be written with them because of ambiguity with the</span>
+<span class="hljs-comment">/// wildcard character. (Also see the documentaiton for TChain::AddFile,</span>
+<span class="hljs-comment">/// which does not support wildcards but allows the url to contain query)</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// NB. To add all the files of a TChain to a chain, use Add(TChain *chain).</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// A. if nentries &lt;= 0, the file is connected and the tree header read</span>
+<span class="hljs-comment">///    in memory to get the number of entries.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// B. if (nentries &gt; 0, the file is not connected, nentries is assumed to be</span>
+<span class="hljs-comment">///    the number of entries in the file. In this case, no check is made that</span>
+<span class="hljs-comment">///    the file exists and the Tree existing in the file. This second mode</span>
+<span class="hljs-comment">///    is interesting in case the number of entries in the file is already stored</span>
+<span class="hljs-comment">///    in a run data base for example.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// C. if (nentries == TTree::kMaxEntries) (default), the file is not connected.</span>
+<span class="hljs-comment">///    the number of entries in each file will be read only when the file</span>
+<span class="hljs-comment">///    will need to be connected to read an entry.</span>
+<span class="hljs-comment">///    This option is the default and very efficient if one process</span>
+<span class="hljs-comment">///    the chain sequentially. Note that in case TChain::GetEntry(entry)</span>
+<span class="hljs-comment">///    is called and entry refers to an entry in the 3rd file, for example,</span>
+<span class="hljs-comment">///    this forces the Tree headers in the first and second file</span>
+<span class="hljs-comment">///    to be read to find the number of entries in these files.</span>
+<span class="hljs-comment">///    Note that if one calls TChain::GetEntriesFast() after having created</span>
+<span class="hljs-comment">///    a chain with this default, GetEntriesFast will return TTree::kMaxEntries!</span>
+<span class="hljs-comment">///    TChain::GetEntries will force of the Tree headers in the chain to be</span>
+<span class="hljs-comment">///    read to read the number of entries in each Tree.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// D. The TChain data structure</span>
+<span class="hljs-comment">///    Each TChainElement has a name equal to the tree name of this TChain</span>
+<span class="hljs-comment">///    and a title equal to the file name. So, to loop over the</span>
+<span class="hljs-comment">///    TFiles that have been added to this chain:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///        TObjArray *fileElements=chain-&gt;GetListOfFiles();</span>
+<span class="hljs-comment">///        TIter next(fileElements);</span>
+<span class="hljs-comment">///        TChainElement *chEl=0;</span>
+<span class="hljs-comment">///        while (( chEl=(TChainElement*)next() )) {</span>
+<span class="hljs-comment">///           TFile f(chEl-&gt;GetTitle());</span>
+<span class="hljs-comment">///           ... do something with f ...</span>
+<span class="hljs-comment">///        }</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// Return value:</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// - If nentries&gt;0 (including the default of TTree::kMaxEntries) and no</span>
+<span class="hljs-comment">///   wildcarding is used, ALWAYS returns 1 without regard to whether</span>
+<span class="hljs-comment">///   the file exists or contains the correct tree.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// - If wildcarding is used, regardless of the value of nentries,</span>
+<span class="hljs-comment">///   returns the number of files matching the name without regard to</span>
+<span class="hljs-comment">///   whether they contain the correct tree.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// - If nentries&lt;=0 and wildcarding is not used, return 1 if the file</span>
+<span class="hljs-comment">///  exists and contains the correct tree and 0 otherwise.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">AddFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, Long64_t nentries = TTree::kMaxEntries, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* tname = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Filename formats are similar to TChain::Add. Wildcards are not</span>
+<span class="hljs-comment">/// applied. urls may also contain query and fragment identifiers</span>
+<span class="hljs-comment">/// where the tree name can be specified in the url fragment.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">AddFileInfoList</span><span class="hljs-params">(TCollection* <span class="hljs-built_in">list</span>, Long64_t nfiles = TTree::kMaxEntries)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFriendElement *<span class="hljs-title">AddFriend</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* chainname, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* dummy = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFriendElement *<span class="hljs-title">AddFriend</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* chainname, TFile* dummy)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFriendElement *<span class="hljs-title">AddFriend</span><span class="hljs-params">(TTree* chain, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* alias = <span class="hljs-string">&quot;&quot;</span>, Bool_t warn = kFALSE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser*)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">CanDeleteRefs</span><span class="hljs-params">(Bool_t flag = kTRUE)</span></span>;
+<span class="hljs-comment">/// When closing a file during the chain processing, the file</span>
+<span class="hljs-comment">/// may be closed with option &quot;R&quot; if flag is set to kTRUE.</span>
+<span class="hljs-comment">/// by default flag is kTRUE.</span>
+<span class="hljs-comment">/// When closing a file with option &quot;R&quot;, all TProcessIDs referenced by this</span>
+<span class="hljs-comment">/// file are deleted.</span>
+<span class="hljs-comment">/// Calling TFile::Close(&quot;R&quot;) might be necessary in case one reads a long list</span>
+<span class="hljs-comment">/// of files having TRef, writing some of the referenced objects or TRef</span>
+<span class="hljs-comment">/// to a new file. If the TRef or referenced objects of the file being closed</span>
+<span class="hljs-comment">/// will not be referenced again, it is possible to minimize the size</span>
+<span class="hljs-comment">/// of the TProcessID data structures in memory by forcing a delete of</span>
+<span class="hljs-comment">/// the unused TProcessID.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">CreatePackets</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">DirectoryAutoAdd</span><span class="hljs-params">(TDirectory *)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Draw</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* varexp, <span class="hljs-keyword">const</span> TCut&amp; selection, Option_t* option = <span class="hljs-string">&quot;&quot;</span>, Long64_t nentries = kMaxEntries, Long64_t firstentry = <span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Draw</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* varexp, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* selection, Option_t* option = <span class="hljs-string">&quot;&quot;</span>, Long64_t nentries = kMaxEntries, Long64_t firstentry = <span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Draw</span><span class="hljs-params">(Option_t* opt)</span> </span>{ Draw(opt, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, kMaxEntries, <span class="hljs-number">0</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">()</span> </span>{ MayNotUse(<span class="hljs-string">&quot;Fill()&quot;</span>); <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch  *<span class="hljs-title">FindBranch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">FindLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch  *<span class="hljs-title">GetBranch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">GetBranchStatus</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* branchname)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetCacheSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTree ? fTree-&gt;GetCacheSize() : fCacheSize; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetChainEntryNumber</span><span class="hljs-params">(Long64_t entry)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return absolute entry number in the chain.</span>
+<span class="hljs-comment">/// The input parameter entry is the entry number in</span>
+<span class="hljs-comment">/// the current tree of this chain.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TClusterIterator <span class="hljs-title">GetClusterIterator</span><span class="hljs-params">(Long64_t firstentry)</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetNtrees</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNtrees; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetEntries</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return the total number of entries in the chain.</span>
+<span class="hljs-comment">/// In case the number of entries in each tree is not yet known,</span>
+<span class="hljs-comment">/// the offset table is computed.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetEntries</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *sel)</span> </span>{ <span class="hljs-keyword">return</span> TTree::GetEntries(sel); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetEntry</span><span class="hljs-params">(Long64_t entry=<span class="hljs-number">0</span>, Int_t getall=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Get entry from the file to memory.</span>
+<span class="hljs-comment">/// - getall = 0 : get only active branches</span>
+<span class="hljs-comment">/// - getall = 1 : get all branches</span>
+<span class="hljs-comment">/// Return the total number of bytes read,</span>
+<span class="hljs-comment">/// 0 bytes read indicates a failure.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetEntryNumber</span><span class="hljs-params">(Long64_t entry)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return entry number corresponding to entry.</span>
+<span class="hljs-comment">/// if no TEntryList set returns entry</span>
+<span class="hljs-comment">/// else returns entry #entry from this entry list and</span>
+<span class="hljs-comment">/// also computes the global entry number (loads all tree headers)</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetEntryWithIndex</span><span class="hljs-params">(Int_t major, Int_t minor=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function">TFile            *<span class="hljs-title">GetFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">GetLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* branchname, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* leafname)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">GetLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name)</span></span>;
+<span class="hljs-comment">/// Return a pointer to the leaf name in the current tree.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObjArray *<span class="hljs-title">GetListOfBranches</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-comment">//                Warning, GetListOfFiles returns the list of TChainElements (not the list of files)</span>
+   <span class="hljs-comment">//                see TChain::AddFile to see how to get the corresponding TFile objects</span>
+   <span class="hljs-function">TObjArray        *<span class="hljs-title">GetListOfFiles</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fFiles;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObjArray *<span class="hljs-title">GetListOfLeaves</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetAlias</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *aliasName)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t  <span class="hljs-title">GetMaximum</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *columname)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t  <span class="hljs-title">GetMinimum</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *columname)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetNbranches</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetReadEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">TList            *<span class="hljs-title">GetStatus</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStatus; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TTree    *<span class="hljs-title">GetTree</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTree; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetTreeNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTreeNumber; }
+           <span class="hljs-function">Long64_t *<span class="hljs-title">GetTreeOffset</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTreeOffset; }
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetTreeOffsetLen</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTreeOffsetLen; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t  <span class="hljs-title">GetWeight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">LoadBaskets</span><span class="hljs-params">(Long64_t maxmemory)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">LoadTree</span><span class="hljs-params">(Long64_t entry)</span></span>;
+           <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">Lookup</span><span class="hljs-params">(Bool_t force = kFALSE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Loop</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>, Long64_t nentries=kMaxEntries, Long64_t firstentry=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Merge</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Merge</span><span class="hljs-params">(TCollection *<span class="hljs-built_in">list</span>, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Merge</span><span class="hljs-params">(TCollection *<span class="hljs-built_in">list</span>, TFileMergeInfo *info)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Merge</span><span class="hljs-params">(TFile *file, Int_t basketsize, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Process</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename, Option_t *option=<span class="hljs-string">&quot;&quot;</span>, Long64_t nentries=kMaxEntries, Long64_t firstentry=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Process</span><span class="hljs-params">(TSelector* selector, Option_t* option = <span class="hljs-string">&quot;&quot;</span>, Long64_t nentries = kMaxEntries, Long64_t firstentry = <span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">RecursiveRemove</span><span class="hljs-params">(TObject *obj)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">RemoveFriend</span><span class="hljs-params">(TTree*)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Reset</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetAfterMerge</span><span class="hljs-params">(TFileMergeInfo *)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetBranchAddress</span><span class="hljs-params">(TBranch *)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetBranchAddresses</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Scan</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *varexp=<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *selection=<span class="hljs-string">&quot;&quot;</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>, Long64_t nentries=kMaxEntries, Long64_t firstentry=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetAutoDelete</span><span class="hljs-params">(Bool_t autodel=kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname,<span class="hljs-keyword">void</span> *add, TBranch **ptr = <span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname,<span class="hljs-keyword">void</span> *add, TBranch **ptr, TClass *realClass, EDataType datatype, Bool_t isptr)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname,<span class="hljs-keyword">void</span> *add, TClass *realClass, EDataType datatype, Bool_t isptr)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> T&gt; <span class="hljs-function">Int_t <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname, T **add, TBranch **ptr = <span class="hljs-number">0</span>)</span> </span>{
+     <span class="hljs-keyword">return</span> TTree::SetBranchAddress&lt;T&gt;(bname, add, ptr);
+   }
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> R__NO_CLASS_TEMPLATE_SPECIALIZATION</span>
+   <span class="hljs-comment">// This can only be used when the template overload resolution can distringuish between</span>
+   <span class="hljs-comment">// T* and T**</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> T&gt; <span class="hljs-function">Int_t <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname, T *add, TBranch **ptr = <span class="hljs-number">0</span>)</span> </span>{
+     <span class="hljs-keyword">return</span> TTree::SetBranchAddress&lt;T&gt;(bname, add, ptr);
+   }
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetBranchStatus</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname, Bool_t status=<span class="hljs-number">1</span>, UInt_t *found=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">SetCacheSize</span><span class="hljs-params">(Long64_t cacheSize = <span class="hljs-number">-1</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetDirectory</span><span class="hljs-params">(TDirectory *dir)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEntryList</span><span class="hljs-params">(TEntryList *elist, Option_t *opt=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEntryListFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename=<span class="hljs-string">&quot;&quot;</span>, Option_t *opt=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEventList</span><span class="hljs-params">(TEventList *evlist)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetMakeClass</span><span class="hljs-params">(Int_t make)</span> </span>{ TTree::SetMakeClass(make); <span class="hljs-keyword">if</span> (fTree) fTree-&gt;SetMakeClass(make);}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetPacketSize</span><span class="hljs-params">(Int_t size = <span class="hljs-number">100</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetProof</span><span class="hljs-params">(Bool_t on = kTRUE, Bool_t refresh = kFALSE, Bool_t gettreeheader = kFALSE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetWeight</span><span class="hljs-params">(Double_t w=<span class="hljs-number">1</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">UseCache</span><span class="hljs-params">(Int_t maxCacheSize = <span class="hljs-number">10</span>, Int_t pageSize = <span class="hljs-number">0</span>)</span></span>;</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">///  Suppose we have 3 files f1.root, f2.root and f3.root. Each file contains a TTree object named &quot;T&quot;.</span>
+<span class="hljs-function">TChain <span class="hljs-title">ch</span><span class="hljs-params">(<span class="hljs-string">&quot;T&quot;</span>)</span></span>;  creates a chain to process a Tree called <span class="hljs-string">&quot;T&quot;</span>
+ch.Add(<span class="hljs-string">&quot;f1.root&quot;</span>);
+ch.Add(<span class="hljs-string">&quot;f2.root&quot;</span>);
+ch.Add(<span class="hljs-string">&quot;f3.root&quot;</span>);
+ch.Draw(<span class="hljs-string">&quot;x&quot;</span>);</code></pre>
+<pre><code class="lang-cpp">/// Each TChainElement has a name equal to the tree name of this TChain and a title equal to the file name. So, to loop over the TFiles that have been added to this chain:
+
+TObjArray *fileElements=chain-&gt;GetListOfFiles();
+TIter next(fileElements);
+TChainElement *chEl=0;
+while (( chEl=(TChainElement*)next() )) {
+   TFile f(chEl-&gt;GetTitle());
+//   ... do something with f ...
+}</code></pre>
+<h2 id="example">example</h2><!-- TChain.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1849,7 +2101,7 @@
 
             
                 
-                <a href="TCanvas.html" class="navigation navigation-prev " aria-label="Previous page: TCanvas">
+                <a href="TCanvas.html" class="navigation navigation-prev " aria-label="Previous page: TCanvas*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1865,7 +2117,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TChain","level":"1.2.10","depth":2,"next":{"title":"TCut","level":"1.2.11","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"previous":{"title":"TCanvas","level":"1.2.9","depth":2,"path":"class/TCanvas.md","ref":"class/TCanvas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TChain.md","mtime":"2016-08-12T14:22:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-07T12:14:50.731Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TChain","level":"1.2.10","depth":2,"next":{"title":"TCut","level":"1.2.11","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"previous":{"title":"TCanvas*","level":"1.2.9","depth":2,"path":"class/TCanvas.md","ref":"class/TCanvas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TChain.md","mtime":"2016-09-26T14:30:43.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-26T14:31:12.201Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

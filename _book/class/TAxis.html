@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Taxis · GitBook</title>
+        <title>TAxis* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis
+                    TAttAxis*
             
                 </a>
             
@@ -142,12 +142,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="Taxis.html">
+        <li class="chapter active" data-level="1.2.3" data-path="TAxis.html">
             
-                <a href="Taxis.html">
+                <a href="TAxis.html">
             
                     
-                    Taxis
+                    TAxis*
             
                 </a>
             
@@ -173,7 +173,7 @@
                 <a href="TBenchmark.html">
             
                     
-                    TBenchmark
+                    TBenchmark*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch
+                    TBranch*
             
                 </a>
             
@@ -199,7 +199,7 @@
                 <a href="TBuffer.html">
             
                     
-                    TBuffer
+                    TBuffer*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas
+                    TCanvas*
             
                 </a>
             
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1
+                    TH1*
             
                 </a>
             
@@ -524,7 +524,7 @@
                 <a href="TH2.html">
             
                     
-                    TH2
+                    TH2*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex
+                    TLatex*
             
                 </a>
             
@@ -1252,7 +1252,7 @@
                 <a href="TText.html">
             
                     
-                    TText
+                    TText*
             
                 </a>
             
@@ -1304,7 +1304,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime
+                    TTime*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer
+                    TTimer*
             
                 </a>
             
@@ -1807,7 +1807,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Taxis</a>
+        <a href=".." >TAxis*</a>
     </h1>
 </div>
 
@@ -1822,22 +1822,148 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- Taxis.md --- 
+                                <!-- TAxis.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 五 8月 12 21:55:37 2016 (+0800)
+;; Last-Updated: 二 9月 13 18:14:12 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 9
+;;     Update #: 11
 ;; URL: http://wuhongyi.github.io -->
 
 
-<h1 id="taxis">Taxis</h1><h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetBinLabel</span><span class="hljs-params">(Int_t bin, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span></span>;<span class="hljs-comment">//&#x8BBE;&#x7F6E;bin&#x540D;&#x79F0;</span>
+<h1 id="taxis">TAxis</h1><p>&#x7EE7;&#x627F; TNamed, TAttAxis</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TAxis();
+   TAxis(Int_t nbins, Double_t xmin, Double_t xmax);
+   TAxis(Int_t nbins, <span class="hljs-keyword">const</span> Double_t *xbins);
+   TAxis(<span class="hljs-keyword">const</span> TAxis &amp;axis);
+   <span class="hljs-keyword">virtual</span> ~TAxis();
+   TAxis&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TAxis&amp;);
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetRangeUser</span><span class="hljs-params">(Double_t ufirst, Double_t ulast)</span></span>;  <span class="hljs-comment">// *MENU* &#x4EBA;&#x4E3A;&#x8BBE;&#x7F6E;&#x5750;&#x6807;&#x8303;&#x56F4;&#xFF01;</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTicks</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;+&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*    //  option = &quot;+&quot;  ticks drawn on the &quot;positive side&quot; (default) ; option = &quot;-&quot;  ticks drawn on the &quot;negative side&quot; ; option = &quot;+-&quot; ticks drawn on both sides</span></code></pre>
+   <span class="hljs-function">Bool_t     <span class="hljs-title">CanExtend</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (fBits2 &amp; kCanExtend);  }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetCanExtend</span><span class="hljs-params">(Bool_t canExtend)</span> </span>{ fBits2 = canExtend ? (fBits2 | kCanExtend) : (fBits2 &amp; ~kCanExtend); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetNoAlphanumeric</span><span class="hljs-params">(Bool_t noalpha = kTRUE)</span> </span>{
+      fBits2 = noalpha ? (fBits2 | kNotAlpha) : (fBits2 &amp; ~kNotAlpha);
+      <span class="hljs-keyword">if</span> (IsAlphanumeric() ) {
+         SetCanExtend(kFALSE);
+         SetAlphanumeric(kFALSE);
+      }
+   }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>               <span class="hljs-title">CenterLabels</span><span class="hljs-params">(Bool_t center=kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>               <span class="hljs-title">CenterTitle</span><span class="hljs-params">(Bool_t center=kTRUE)</span></span>;
+
+<span class="hljs-comment">/// Choose a reasonable time format from the coordinates in the active pad and the number of divisions in this axis</span>
+<span class="hljs-comment">/// If orientation = &quot;X&quot;, the horizontal axis of the pad will be used for ref.</span>
+<span class="hljs-comment">/// If orientation = &quot;Y&quot;, the vertical axis of the pad will be used for ref.   </span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>        *<span class="hljs-title">ChooseTimeFormat</span><span class="hljs-params">(Double_t axislength=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;axis)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Delete</span><span class="hljs-params">(Option_t * <span class="hljs-comment">/*option*/</span> =<span class="hljs-string">&quot;&quot;</span>)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject   *<span class="hljs-title">DrawClone</span><span class="hljs-params">(Option_t * <span class="hljs-comment">/*option*/</span> =<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+
+<span class="hljs-comment">/// Execute action corresponding to one event</span>
+<span class="hljs-comment">///  This member function is called when an axis is clicked with the locator.</span>
+<span class="hljs-comment">///  The axis range is set between the position where the mouse is pressed and the position where it is released.</span>
+<span class="hljs-comment">///  If the mouse position is outside the current axis range when it is released the axis is unzoomed with the corresponding proportions.</span>
+<span class="hljs-comment">///  Note that the mouse does not need to be in the pad or even canvas when it is released.   </span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
+
+<span class="hljs-comment">/// Find bin number corresponding to abscissa x. <span class="hljs-doctag">NOTE:</span> this method does not work with alphanumeric bins !!!</span>
+<span class="hljs-comment">/// If x is underflow or overflow, attempt to extend the axis if TAxis::kCanExtend is true. Otherwise, return 0 or fNbins+1.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindBin</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindBin</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> FindFixBin(x); }
+
+<span class="hljs-comment">/// Find bin number with label.</span>
+<span class="hljs-comment">/// If the List of labels does not exist create it and make the axis alphanumeric</span>
+<span class="hljs-comment">/// If one wants just to add a single label- just call TAxis::SetBinLabel</span>
+<span class="hljs-comment">/// If label is not in the list of labels do the following depending on the</span>
+<span class="hljs-comment">/// bit TAxis::kCanExtend; of the axis.</span>
+<span class="hljs-comment">///   - if the bit is set add the new label and if the number of labels exceeds</span>
+<span class="hljs-comment">///      the number of bins, double the number of bins via TH1::LabelsInflate</span>
+<span class="hljs-comment">///   - if the bit is not set and the histogram has labels in each bin</span>
+<span class="hljs-comment">///        set the bit automatically and consider the histogram as alphanumeric</span>
+<span class="hljs-comment">///     if histogram has only some bins with labels then the histogram is not</span>
+<span class="hljs-comment">///     consider alphanumeric and return -1</span>
+<span class="hljs-comment">/// -1 is returned only when the Axis has no parent histogram</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindBin</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span></span>;
+
+<span class="hljs-comment">/// Find bin number corresponding to abscissa x</span>
+<span class="hljs-comment">/// Identical to TAxis::FindBin except that if x is an underflow/overflow no attempt is made to extend the axis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindFixBin</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>;
+
+<span class="hljs-comment">/// Find bin number with label.</span>
+<span class="hljs-comment">/// If the List of labels does not exist or the label doe not exist just return -1 .</span>
+<span class="hljs-comment">/// Do not attempt to modify the axis. This is different than FindBin</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindFixBin</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinCenter</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinCenterLog</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>        *<span class="hljs-title">GetBinLabel</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinLowEdge</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinUpEdge</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinWidth</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">GetCenter</span><span class="hljs-params">(Double_t *center)</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetCenterLabels</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kCenterLabels); }
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetCenterTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kCenterTitle); }
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetDecimals</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kDecimals); }
+   <span class="hljs-function">THashList         *<span class="hljs-title">GetLabels</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLabels; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">GetLowEdge</span><span class="hljs-params">(Double_t *edge)</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetMoreLogLabels</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kMoreLogLabels); }
+           <span class="hljs-function">Int_t      <span class="hljs-title">GetNbins</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNbins; }
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetNoExponent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kNoExponent); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject   *<span class="hljs-title">GetParent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fParent;}
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetRotateTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kRotateTitle); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTicks</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t     <span class="hljs-title">GetTimeDisplay</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTimeDisplay;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTimeFormat</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTimeFormat.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTimeFormatOnly</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>        *<span class="hljs-title">GetTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTitle.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TArrayD     *<span class="hljs-title">GetXbins</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> &amp;fXbins;}
+           <span class="hljs-function">Int_t      <span class="hljs-title">GetFirst</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Int_t      <span class="hljs-title">GetLast</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Double_t   <span class="hljs-title">GetXmin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXmin;}
+           <span class="hljs-function">Double_t   <span class="hljs-title">GetXmax</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXmax;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ImportAttributes</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TAxis *axis)</span></span>;
+   <span class="hljs-function">Bool_t             <span class="hljs-title">IsVariableBinSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+                         <span class="hljs-comment">// true if axis has variable bin sizes, false otherwise</span>
+                         <span class="hljs-keyword">return</span> (fXbins.GetSize() != <span class="hljs-number">0</span>);
+                      }
+
+<span class="hljs-comment">///  Set option(s) to draw axis with labels</span>
+<span class="hljs-comment">///  option = &quot;a&quot; sort by alphabetic order</span>
+<span class="hljs-comment">///         = &quot;&gt;&quot; sort by decreasing values</span>
+<span class="hljs-comment">///         = &quot;&lt;&quot; sort by increasing values</span>
+<span class="hljs-comment">///         = &quot;h&quot; draw labels horizonthal</span>
+<span class="hljs-comment">///         = &quot;v&quot; draw labels vertical</span>
+<span class="hljs-comment">///         = &quot;u&quot; draw labels up (end of label right adjusted)</span>
+<span class="hljs-comment">///         = &quot;d&quot; draw labels down (start of label left adjusted)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">LabelsOption</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;h&quot;</span>)</span></span>;  <span class="hljs-comment">// *MENU*</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">RotateTitle</span><span class="hljs-params">(Bool_t rotate=kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=GetRotateTitle</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SaveAttributes</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *subname)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Set</span><span class="hljs-params">(Int_t nbins, Double_t xmin, Double_t xmax)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Set</span><span class="hljs-params">(Int_t nbins, <span class="hljs-keyword">const</span> Float_t *xbins)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Set</span><span class="hljs-params">(Int_t nbins, <span class="hljs-keyword">const</span> Double_t *xbins)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetBinLabel</span><span class="hljs-params">(Int_t bin, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span></span>;<span class="hljs-comment">//&#x8BBE;&#x7F6E;bin&#x540D;&#x79F0;</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetDecimals</span><span class="hljs-params">(Bool_t dot = kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=GetDecimals</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetDefaults</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetDrawOption</span><span class="hljs-params">(Option_t * <span class="hljs-comment">/*option*/</span> =<span class="hljs-string">&quot;&quot;</span>)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetLimits</span><span class="hljs-params">(Double_t xmin, Double_t xmax)</span> </span>{ <span class="hljs-comment">/* set axis limits */</span> fXmin = xmin; fXmax = xmax; }
+           <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetMoreLogLabels</span><span class="hljs-params">(Bool_t more=kTRUE)</span></span>;  <span class="hljs-comment">// *TOGGLE* *GETTER=GetMoreLogLabels</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetNoExponent</span><span class="hljs-params">(Bool_t noExponent=kTRUE)</span></span>;  <span class="hljs-comment">// *TOGGLE* *GETTER=GetNoExponent</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetParent</span><span class="hljs-params">(TObject *obj)</span> </span>{fParent = obj;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetRange</span><span class="hljs-params">(Int_t first=<span class="hljs-number">0</span>, Int_t last=<span class="hljs-number">0</span>)</span></span>;  <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetRangeUser</span><span class="hljs-params">(Double_t ufirst, Double_t ulast)</span></span>;  <span class="hljs-comment">// *MENU* &#x4EBA;&#x4E3A;&#x8BBE;&#x7F6E;&#x5750;&#x6807;&#x8303;&#x56F4;&#xFF01;</span>
+
+<span class="hljs-comment">///  Set ticks orientation.</span>
+<span class="hljs-comment">///  option = &quot;+&quot;  ticks drawn on the &quot;positive side&quot; (default)</span>
+<span class="hljs-comment">///  option = &quot;-&quot;  ticks drawn on the &quot;negative side&quot;</span>
+<span class="hljs-comment">///  option = &quot;+-&quot; ticks drawn on both sides</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTicks</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;+&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*  //  option = &quot;+&quot;  ticks drawn on the &quot;positive side&quot; (default) ; option = &quot;-&quot;  ticks drawn on the &quot;negative side&quot; ; option = &quot;+-&quot; ticks drawn on both sides</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTimeDisplay</span><span class="hljs-params">(Int_t value)</span> </span>{fTimeDisplay = (value != <span class="hljs-number">0</span>);} <span class="hljs-comment">// *TOGGLE*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTimeFormat</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *format=<span class="hljs-string">&quot;&quot;</span>)</span></span>;  <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTimeOffset</span><span class="hljs-params">(Double_t toffset, Option_t *option=<span class="hljs-string">&quot;local&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">UnZoom</span><span class="hljs-params">()</span></span>;  <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ZoomOut</span><span class="hljs-params">(Double_t factor=<span class="hljs-number">0</span>, Double_t offset=<span class="hljs-number">0</span>)</span></span>;  <span class="hljs-comment">// *MENU*</span></code></pre>
 <h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x5750;&#x6807;&#x8303;&#x56F4;</span>
 TAxis *axis=h1-&gt;GetXaxis();
 axis-&gt;SetRangeUser(<span class="hljs-number">950</span>,<span class="hljs-number">1300</span>);
@@ -1875,7 +2001,45 @@ h-&gt;GetYaxis()-&gt;CenterTitle();
 
 h1-&gt;SetFrameFillColor(<span class="hljs-number">33</span>);    <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x56FE;&#x7247;&#x80CC;&#x666F;&#x989C;&#x8272;</span>
 </code></pre>
-<!-- Taxis.md ends here -->
+<pre><code class="lang-cpp"><span class="hljs-comment">/// Change the format used for time plotting</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// The format string for date and time use the same options as the one used</span>
+<span class="hljs-comment">/// in the standard strftime C function, i.e. :</span>
+<span class="hljs-comment">/// for date :</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///          %a abbreviated weekday name</span>
+<span class="hljs-comment">///          %b abbreviated month name</span>
+<span class="hljs-comment">///          %d day of the month (01-31)</span>
+<span class="hljs-comment">///          %m month (01-12)</span>
+<span class="hljs-comment">///          %y year without century</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// for time :</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///          %H hour (24-hour clock)</span>
+<span class="hljs-comment">///          %I hour (12-hour clock)</span>
+<span class="hljs-comment">///          %p local equivalent of AM or PM</span>
+<span class="hljs-comment">///          %M minute (00-59)</span>
+<span class="hljs-comment">///          %S seconds (00-61)</span>
+<span class="hljs-comment">///          %% %</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// This function allows also to define the time offset. It is done via %F</span>
+<span class="hljs-comment">/// which should be appended at the end of the format string. The time</span>
+<span class="hljs-comment">/// offset has the following format: &apos;yyyy-mm-dd hh:mm:ss&apos;</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">///</span>
+h = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;Test&quot;</span>,<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-number">3000</span>,<span class="hljs-number">0.</span>,<span class="hljs-number">200000.</span>);
+h-&gt;GetXaxis()-&gt;SetTimeDisplay(<span class="hljs-number">1</span>);
+h-&gt;GetXaxis()-&gt;SetTimeFormat(<span class="hljs-string">&quot;%d\/%m\/%y%F2000-02-28 13:00:01&quot;</span>);
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// This defines the time format being &quot;dd/mm/yy&quot; and the time offset as the</span>
+<span class="hljs-comment">/// February 28th 2003 at 13:00:01</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// If %F is not specified, the time offset used will be the one defined by:</span>
+<span class="hljs-comment">/// gStyle-&gt;SetTimeOffset. For example like that:</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-function">TDatime <span class="hljs-title">da</span><span class="hljs-params">(<span class="hljs-number">2003</span>,<span class="hljs-number">02</span>,<span class="hljs-number">28</span>,<span class="hljs-number">12</span>,<span class="hljs-number">00</span>,<span class="hljs-number">00</span>)</span></span>;
+gStyle-&gt;SetTimeOffset(da.Convert());</code></pre>
+<h2 id="example">example</h2><!-- TAxis.md ends here -->
 
 
 
@@ -1905,7 +2069,7 @@ h1-&gt;SetFrameFillColor(<span class="hljs-number">33</span>);    <span class="h
 
             
                 
-                <a href="TAttAxis.html" class="navigation navigation-prev " aria-label="Previous page: TAttAxis">
+                <a href="TAttAxis.html" class="navigation navigation-prev " aria-label="Previous page: TAttAxis*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1921,7 +2085,7 @@ h1-&gt;SetFrameFillColor(<span class="hljs-number">33</span>);    <span class="h
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Taxis","level":"1.2.3","depth":2,"next":{"title":"TBackCompFitter","level":"1.2.4","depth":2,"path":"class/TBackCompFitter.md","ref":"class/TBackCompFitter.md","articles":[]},"previous":{"title":"TAttAxis","level":"1.2.2","depth":2,"path":"class/TAttAxis.md","ref":"class/TAttAxis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/Taxis.md","mtime":"2016-08-12T13:55:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-07T12:14:50.731Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TAxis*","level":"1.2.3","depth":2,"next":{"title":"TBackCompFitter","level":"1.2.4","depth":2,"path":"class/TBackCompFitter.md","ref":"class/TBackCompFitter.md","articles":[]},"previous":{"title":"TAttAxis*","level":"1.2.2","depth":2,"path":"class/TAttAxis.md","ref":"class/TAttAxis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TAxis.md","mtime":"2016-09-13T10:14:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-26T14:31:12.201Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,14 +4,13 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:38:01 2014 (+0800)
-;; Last-Updated: 六 8月 13 21:02:48 2016 (+0800)
+;; Last-Updated: 一 9月 26 22:13:59 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 10
+;;     Update #: 11
 ;; URL: http://wuhongyi.github.io -->
 
 # TFile
 
-## class
 
 继承TDirectoryFile
 
@@ -63,6 +62,8 @@ Byte Range      | Record Name | Description
 42->45 [54->57] | fNbytesInfo | Number of bytes in TStreamerInfo record
 46->63 [58->75] | fUUID       | Universal Unique ID
 ```
+
+## class
 
 
 ```cpp
