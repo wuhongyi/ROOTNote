@@ -1828,9 +1828,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 日 8月 21 15:14:48 2016 (+0800)
+;; Last-Updated: 一 10月  3 21:38:23 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 12
+;;     Update #: 13
 ;; URL: http://wuhongyi.github.io -->
 
 
@@ -1862,7 +1862,16 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawGraph</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Float_t *x, <span class="hljs-keyword">const</span> Float_t *y, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawGraph</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Double_t *x=<span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> Double_t *y=<span class="hljs-number">0</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawPanel</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t x, TSpline *spline=<span class="hljs-number">0</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t x, TSpline *spline=<span class="hljs-number">0</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//&#x901A;&#x8FC7; x &#x63D2;&#x503C;&#x627E; y &#x503C;&#xFF0C;&#x63D0;&#x4F9B;&#x591A;&#x79CD;&#x63D2;&#x503C;&#x7B97;&#x6CD5;&#xFF1A;&#x7EBF;&#x6027;&#x63D2;&#x503C;&#x3001;&#x5149;&#x6ED1;&#x63D2;&#x503C;&#x7B49;</span>
+<span class="hljs-comment">/// Interpolate points in this graph at x using a TSpline</span>
+<span class="hljs-comment">///  -if spline==0 and option=&quot;&quot; a linear interpolation between the two points</span>
+<span class="hljs-comment">///   close to x is computed. If x is outside the graph range, a linear</span>
+<span class="hljs-comment">///   extrapolation is computed.</span>
+<span class="hljs-comment">///  -if spline==0 and option=&quot;S&quot; a TSpline3 object is created using this graph</span>
+<span class="hljs-comment">///   and the interpolated value from the spline is returned.</span>
+<span class="hljs-comment">///   the internally created spline is deleted on return.</span>
+<span class="hljs-comment">///  -if spline is specified, it is used to return the interpolated value.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Expand</span><span class="hljs-params">(Int_t newsize)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Expand</span><span class="hljs-params">(Int_t newsize, Int_t step)</span></span>;
@@ -2414,7 +2423,7 @@ gr5-&gt;Draw(<span class="hljs-string">&quot;C&quot;</span>);</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGraph*","level":"1.2.26","depth":2,"next":{"title":"TGraph2D","level":"1.2.27","depth":2,"path":"class/TGraph2D.md","ref":"class/TGraph2D.md","articles":[]},"previous":{"title":"TGaxis","level":"1.2.25","depth":2,"path":"class/TGaxis.md","ref":"class/TGaxis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TGraph.md","mtime":"2016-09-10T07:34:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-26T14:31:12.201Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGraph*","level":"1.2.26","depth":2,"next":{"title":"TGraph2D","level":"1.2.27","depth":2,"path":"class/TGraph2D.md","ref":"class/TGraph2D.md","articles":[]},"previous":{"title":"TGaxis","level":"1.2.25","depth":2,"path":"class/TGaxis.md","ref":"class/TGaxis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TGraph.md","mtime":"2016-10-03T13:38:23.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-03T13:41:47.087Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

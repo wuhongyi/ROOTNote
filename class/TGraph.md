@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 日 8月 21 15:14:48 2016 (+0800)
+;; Last-Updated: 一 10月  3 21:38:23 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 12
+;;     Update #: 13
 ;; URL: http://wuhongyi.github.io -->
 
 # TGraph
@@ -44,7 +44,16 @@
    virtual void          DrawGraph(Int_t n, const Float_t *x, const Float_t *y, Option_t *option="");
    virtual void          DrawGraph(Int_t n, const Double_t *x=0, const Double_t *y=0, Option_t *option="");
    virtual void          DrawPanel(); // *MENU*
-   virtual Double_t      Eval(Double_t x, TSpline *spline=0, Option_t *option="") const;
+   virtual Double_t      Eval(Double_t x, TSpline *spline=0, Option_t *option="") const; //通过 x 插值找 y 值，提供多种插值算法：线性插值、光滑插值等
+/// Interpolate points in this graph at x using a TSpline
+///  -if spline==0 and option="" a linear interpolation between the two points
+///   close to x is computed. If x is outside the graph range, a linear
+///   extrapolation is computed.
+///  -if spline==0 and option="S" a TSpline3 object is created using this graph
+///   and the interpolated value from the spline is returned.
+///   the internally created spline is deleted on return.
+///  -if spline is specified, it is used to return the interpolated value.
+
    virtual void          ExecuteEvent(Int_t event, Int_t px, Int_t py);
    virtual void          Expand(Int_t newsize);
    virtual void          Expand(Int_t newsize, Int_t step);
