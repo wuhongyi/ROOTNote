@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TSpectrumTransform · GitBook</title>
+        <title>TSpline* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="TSpline.html" />
+    <link rel="next" href="TStopwatch.html" />
     
     
-    <link rel="prev" href="TSpectrumFit.html" />
+    <link rel="prev" href="TSpectrumTransform.html" />
     
 
     </head>
@@ -1182,7 +1182,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.83" data-path="TSpectrumTransform.html">
+        <li class="chapter " data-level="1.2.83" data-path="TSpectrumTransform.html">
             
                 <a href="TSpectrumTransform.html">
             
@@ -1195,7 +1195,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.84" data-path="TSpline.html">
+        <li class="chapter active" data-level="1.2.84" data-path="TSpline.html">
             
                 <a href="TSpline.html">
             
@@ -1820,7 +1820,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TSpectrumTransform</a>
+        <a href=".." >TSpline*</a>
     </h1>
 </div>
 
@@ -1835,7 +1835,188 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tspectrumtransform">TSpectrumTransform</h1>
+                                <!-- TSpline.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 三 10月  5 10:40:31 2016 (+0800)
+;; Last-Updated: 三 10月  5 10:54:57 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 2
+;; URL: http://wuhongyi.github.io -->
+
+
+<h1 id="tspline">TSpline</h1><p>&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x7684;&#x63D2;&#x503C;&#x7C7B;&#xFF1A;TSpline3&#x3001;TSpline5</p><p>TSpline3 &#x7EE7;&#x627F;&#x4E8E; TSpline
+TSpline5 &#x7EE7;&#x627F;&#x4E8E; TSpline</p><p>&#x62BD;&#x8C61;&#x57FA;&#x7C7B; TSpline &#x7EE7;&#x627F;&#x4E8E; TNamed, TAttLine, TAttFill, TAttMarker</p><p>TSplinePoly &#x7EE7;&#x627F;&#x4E8E; TObject
+TSplinePoly3 &#x7EE7;&#x627F;&#x4E8E; TSplinePoly
+TSplinePoly5 &#x7EE7;&#x627F;&#x4E8E; TSplinePoly</p><h2 id="class">class</h2><h3 id="tspline3">TSpline3</h3><pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   TSpline3() : TSpline() , fPoly(<span class="hljs-number">0</span>), fValBeg(<span class="hljs-number">0</span>), fValEnd(<span class="hljs-number">0</span>),
+      fBegCond(<span class="hljs-number">-1</span>), fEndCond(<span class="hljs-number">-1</span>) {}
+   TSpline3(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            Double_t x[], Double_t y[], Int_t n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>,
+            Double_t valbeg=<span class="hljs-number">0</span>, Double_t valend=<span class="hljs-number">0</span>);
+   TSpline3(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            Double_t xmin, Double_t xmax,
+            Double_t y[], Int_t n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>,
+            Double_t valbeg=<span class="hljs-number">0</span>, Double_t valend=<span class="hljs-number">0</span>);
+   TSpline3(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            Double_t x[], <span class="hljs-keyword">const</span> TF1 *func, Int_t n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>,
+            Double_t valbeg=<span class="hljs-number">0</span>, Double_t valend=<span class="hljs-number">0</span>);
+   TSpline3(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            Double_t xmin, Double_t xmax,
+            <span class="hljs-keyword">const</span> TF1 *func, Int_t n, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>,
+            Double_t valbeg=<span class="hljs-number">0</span>, Double_t valend=<span class="hljs-number">0</span>);
+   TSpline3(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            <span class="hljs-keyword">const</span> TGraph *g, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>,
+            Double_t valbeg=<span class="hljs-number">0</span>, Double_t valend=<span class="hljs-number">0</span>);
+   TSpline3(<span class="hljs-keyword">const</span> TH1 *h, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>,
+            Double_t valbeg=<span class="hljs-number">0</span>, Double_t valend=<span class="hljs-number">0</span>);
+   TSpline3(<span class="hljs-keyword">const</span> TSpline3&amp;);
+   TSpline3&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TSpline3&amp;);
+   <span class="hljs-function">Int_t    <span class="hljs-title">FindX</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">Derivative</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-keyword">virtual</span> ~TSpline3() {<span class="hljs-keyword">if</span> (fPoly) <span class="hljs-keyword">delete</span> [] fPoly;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GetCoeff</span><span class="hljs-params">(Int_t i, Double_t &amp;x, Double_t &amp;y, Double_t &amp;b,
+                 Double_t &amp;c, Double_t &amp;d)</span> </span>{x=fPoly[i].X();y=fPoly[i].Y();
+                  b=fPoly[i].B();c=fPoly[i].C();d=fPoly[i].D();}
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GetKnot</span><span class="hljs-params">(Int_t i, Double_t &amp;x, Double_t &amp;y)</span> <span class="hljs-keyword">const</span>
+      </span>{x=fPoly[i].X(); y=fPoly[i].Y();}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SaveAs</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename,Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetPoint</span><span class="hljs-params">(Int_t i, Double_t x, Double_t y)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetPointCoeff</span><span class="hljs-params">(Int_t i, Double_t b, Double_t c, Double_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Test</span><span class="hljs-params">()</span></span>;</code></pre>
+<h3 id="tspline5">TSpline5</h3><pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   TSpline5() : TSpline() , fPoly(<span class="hljs-number">0</span>) {}
+   TSpline5(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            Double_t x[], Double_t y[], Int_t n,
+            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>, Double_t b1=<span class="hljs-number">0</span>, Double_t e1=<span class="hljs-number">0</span>,
+            Double_t b2=<span class="hljs-number">0</span>, Double_t e2=<span class="hljs-number">0</span>);
+   TSpline5(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            Double_t xmin, Double_t xmax,
+            Double_t y[], Int_t n,
+            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>, Double_t b1=<span class="hljs-number">0</span>, Double_t e1=<span class="hljs-number">0</span>,
+            Double_t b2=<span class="hljs-number">0</span>, Double_t e2=<span class="hljs-number">0</span>);
+   TSpline5(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            Double_t x[], <span class="hljs-keyword">const</span> TF1 *func, Int_t n,
+            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>, Double_t b1=<span class="hljs-number">0</span>, Double_t e1=<span class="hljs-number">0</span>,
+            Double_t b2=<span class="hljs-number">0</span>, Double_t e2=<span class="hljs-number">0</span>);
+   TSpline5(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            Double_t xmin, Double_t xmax,
+            <span class="hljs-keyword">const</span> TF1 *func, Int_t n,
+            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>, Double_t b1=<span class="hljs-number">0</span>, Double_t e1=<span class="hljs-number">0</span>,
+            Double_t b2=<span class="hljs-number">0</span>, Double_t e2=<span class="hljs-number">0</span>);
+   TSpline5(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+            <span class="hljs-keyword">const</span> TGraph *g,
+            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>, Double_t b1=<span class="hljs-number">0</span>, Double_t e1=<span class="hljs-number">0</span>,
+            Double_t b2=<span class="hljs-number">0</span>, Double_t e2=<span class="hljs-number">0</span>);
+   TSpline5(<span class="hljs-keyword">const</span> TH1 *h,
+            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *opt=<span class="hljs-number">0</span>, Double_t b1=<span class="hljs-number">0</span>, Double_t e1=<span class="hljs-number">0</span>,
+            Double_t b2=<span class="hljs-number">0</span>, Double_t e2=<span class="hljs-number">0</span>);
+   TSpline5(<span class="hljs-keyword">const</span> TSpline5&amp;);
+   TSpline5&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TSpline5&amp;);
+   <span class="hljs-function">Int_t    <span class="hljs-title">FindX</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">Derivative</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-keyword">virtual</span> ~TSpline5() {<span class="hljs-keyword">if</span> (fPoly) <span class="hljs-keyword">delete</span> [] fPoly;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GetCoeff</span><span class="hljs-params">(Int_t i, Double_t &amp;x, Double_t &amp;y, Double_t &amp;b,
+                 Double_t &amp;c, Double_t &amp;d, Double_t &amp;e, Double_t &amp;f)</span>
+      </span>{x=fPoly[i].X();y=fPoly[i].Y();b=fPoly[i].B();
+      c=fPoly[i].C();d=fPoly[i].D();
+      e=fPoly[i].E();f=fPoly[i].F();}
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GetKnot</span><span class="hljs-params">(Int_t i, Double_t &amp;x, Double_t &amp;y)</span> <span class="hljs-keyword">const</span>
+      </span>{x=fPoly[i].X(); y=fPoly[i].Y();}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SaveAs</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename,Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetPoint</span><span class="hljs-params">(Int_t i, Double_t x, Double_t y)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetPointCoeff</span><span class="hljs-params">(Int_t i, Double_t b, Double_t c, Double_t d,
+                                   Double_t e, Double_t f)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Test</span><span class="hljs-params">()</span></span>;</code></pre>
+<h3 id="tspline">TSpline</h3><pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   TSpline() : fDelta(<span class="hljs-number">-1</span>), fXmin(<span class="hljs-number">0</span>), fXmax(<span class="hljs-number">0</span>),
+      fNp(<span class="hljs-number">0</span>), fKstep(kFALSE), fHistogram(<span class="hljs-number">0</span>), fGraph(<span class="hljs-number">0</span>), fNpx(<span class="hljs-number">100</span>) {}
+   TSpline(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Double_t delta, Double_t xmin,
+      Double_t xmax, Int_t np, Bool_t step) :
+      TNamed(<span class="hljs-string">&quot;Spline&quot;</span>,title), TAttFill(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>),
+      fDelta(delta), fXmin(xmin),
+      fXmax(xmax), fNp(np), fKstep(step),
+      fHistogram(<span class="hljs-number">0</span>), fGraph(<span class="hljs-number">0</span>), fNpx(<span class="hljs-number">100</span>) {}
+   <span class="hljs-keyword">virtual</span> ~TSpline();
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetKnot</span><span class="hljs-params">(Int_t i, Double_t &amp;x, Double_t &amp;y)</span> <span class="hljs-keyword">const</span> </span>=<span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Draw</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetDelta</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fDelta;}
+   <span class="hljs-function">TH1F            *<span class="hljs-title">GetHistogram</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fHistogram;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetNp</span><span class="hljs-params">()</span>    <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNp;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetNpx</span><span class="hljs-params">()</span>   <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNpx;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetXmin</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXmin;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetXmax</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXmax;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>=<span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SaveAs</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*filename*/</span>,Option_t * <span class="hljs-comment">/*option*/</span>)</span> <span class="hljs-keyword">const</span> </span>{;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">SetNpx</span><span class="hljs-params">(Int_t n)</span> </span>{fNpx=n;}</code></pre>
+<h3 id="tsplinepoly">TSplinePoly</h3><pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   TSplinePoly() :
+      fX(<span class="hljs-number">0</span>), fY(<span class="hljs-number">0</span>) {}
+   TSplinePoly(Double_t x, Double_t y) :
+      fX(x), fY(y) {}
+   TSplinePoly(TSplinePoly <span class="hljs-keyword">const</span> &amp;other);
+   TSplinePoly &amp;<span class="hljs-keyword">operator</span>=(TSplinePoly <span class="hljs-keyword">const</span> &amp;other);
+
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">X</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fX;}
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">Y</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fY;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GetKnot</span><span class="hljs-params">(Double_t &amp;x, Double_t &amp;y)</span> <span class="hljs-keyword">const</span> </span>{x=fX; y=fY;}
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fY;}</code></pre>
+<h3 id="tsplinepoly3">TSplinePoly3</h3><pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   TSplinePoly3() :
+      fB(<span class="hljs-number">0</span>), fC(<span class="hljs-number">0</span>), fD(<span class="hljs-number">0</span>) {}
+   TSplinePoly3(Double_t x, Double_t y, Double_t b, Double_t c, Double_t d) :
+      TSplinePoly(x,y), fB(b), fC(c), fD(d) {}
+   TSplinePoly3(TSplinePoly3 <span class="hljs-keyword">const</span> &amp;other);
+   TSplinePoly3 &amp;<span class="hljs-keyword">operator</span>=(TSplinePoly3 <span class="hljs-keyword">const</span> &amp;other);
+
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">B</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fB;}
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">C</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fC;}
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">D</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fD;}
+   <span class="hljs-function">Double_t <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span> </span>{
+      Double_t dx=x-fX;
+      <span class="hljs-keyword">return</span> (fY+dx*(fB+dx*(fC+dx*fD)));
+   }
+   <span class="hljs-function">Double_t <span class="hljs-title">Derivative</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span> </span>{
+      Double_t dx=x-fX;
+      <span class="hljs-keyword">return</span> (fB+dx*(<span class="hljs-number">2</span>*fC+<span class="hljs-number">3</span>*fD*dx));      
+   }</code></pre>
+<h3 id="tsplinepoly5">TSplinePoly5</h3><pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   TSplinePoly5() :
+      fB(<span class="hljs-number">0</span>), fC(<span class="hljs-number">0</span>), fD(<span class="hljs-number">0</span>), fE(<span class="hljs-number">0</span>), fF(<span class="hljs-number">0</span>) {}
+   TSplinePoly5(Double_t x, Double_t y, Double_t b, Double_t c,
+      Double_t d, Double_t e, Double_t f) :
+      TSplinePoly(x,y), fB(b), fC(c), fD(d), fE(e), fF(f) {}
+   TSplinePoly5(TSplinePoly5 <span class="hljs-keyword">const</span> &amp;other);
+   TSplinePoly5 &amp;<span class="hljs-keyword">operator</span>=(TSplinePoly5 <span class="hljs-keyword">const</span> &amp;other);
+
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">B</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fB;}
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">C</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fC;}
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">D</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fD;}
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">E</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fE;}
+   <span class="hljs-function">Double_t &amp;<span class="hljs-title">F</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> fF;}
+   <span class="hljs-function">Double_t <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span> </span>{
+      Double_t dx=x-fX;
+      <span class="hljs-keyword">return</span> (fY+dx*(fB+dx*(fC+dx*(fD+dx*(fE+dx*fF)))));
+   }
+   <span class="hljs-function">Double_t <span class="hljs-title">Derivative</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>{
+      Double_t dx=x-fX;
+      <span class="hljs-keyword">return</span> (fB+dx*(<span class="hljs-number">2</span>*fC+dx*(<span class="hljs-number">3</span>*fD+dx*(<span class="hljs-number">4</span>*fE+dx*(<span class="hljs-number">5</span>*fF)))));
+   }</code></pre>
+<h2 id="code">code</h2><h2 id="example">example</h2><!-- TSpline.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1862,12 +2043,12 @@
 
             
                 
-                <a href="TSpectrumFit.html" class="navigation navigation-prev " aria-label="Previous page: TSpectrumFit">
+                <a href="TSpectrumTransform.html" class="navigation navigation-prev " aria-label="Previous page: TSpectrumTransform">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="TSpline.html" class="navigation navigation-next " aria-label="Next page: TSpline*">
+                <a href="TStopwatch.html" class="navigation navigation-next " aria-label="Next page: TStopwatch">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1878,7 +2059,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TSpectrumTransform","level":"1.2.83","depth":2,"next":{"title":"TSpline*","level":"1.2.84","depth":2,"path":"class/TSpline.md","ref":"class/TSpline.md","articles":[]},"previous":{"title":"TSpectrumFit","level":"1.2.82","depth":2,"path":"class/TSpectrumFit.md","ref":"class/TSpectrumFit.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TSpectrumTransform.md","mtime":"2016-09-27T05:36:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-05T05:22:33.379Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TSpline*","level":"1.2.84","depth":2,"next":{"title":"TStopwatch","level":"1.2.85","depth":2,"path":"class/TStopwatch.md","ref":"class/TStopwatch.md","articles":[]},"previous":{"title":"TSpectrumTransform","level":"1.2.83","depth":2,"path":"class/TSpectrumTransform.md","ref":"class/TSpectrumTransform.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TSpline.md","mtime":"2016-10-05T02:54:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-05T05:22:33.379Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
