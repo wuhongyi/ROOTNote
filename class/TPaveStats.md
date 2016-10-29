@@ -7,7 +7,7 @@
 ;; Last-Updated: 五 8月 12 22:31:52 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 3
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TPaveStats
 

@@ -7,7 +7,7 @@
 ;; Last-Updated: 六 8月 13 14:24:43 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 8
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TRandom
 

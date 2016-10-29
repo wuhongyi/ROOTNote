@@ -7,7 +7,7 @@
 ;; Last-Updated: 二 9月 13 17:51:30 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TLatex
 

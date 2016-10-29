@@ -7,7 +7,7 @@
 // Last-Updated: 四 6月 30 10:58:15 2016 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
 //     Update #: 43
-// URL: http://wuhongyi.github.io 
+// URL: http://wuhongyi.cn 
 
 // WidgetMessageTypes
 enum EWidgetMessageTypes {

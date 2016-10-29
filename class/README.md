@@ -7,7 +7,7 @@
 ;; Last-Updated: 六 8月 13 14:01:28 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 16
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # 类的使用
 

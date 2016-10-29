@@ -7,7 +7,7 @@
 ;; Last-Updated: 四 9月  1 23:05:30 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 17
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TH1
 

@@ -7,7 +7,7 @@
 ;; Last-Updated: 六 8月 13 18:54:13 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TSystemFile
 

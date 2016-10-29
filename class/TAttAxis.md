@@ -7,7 +7,7 @@
 ;; Last-Updated: 二 9月 13 17:57:24 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TAttAxis
 

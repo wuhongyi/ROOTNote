@@ -7,7 +7,7 @@
 ;; Last-Updated: 二 9月 13 20:09:39 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TTimeStamp
 

@@ -7,7 +7,7 @@
 ;; Last-Updated: 一 10月  3 21:38:23 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 13
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TGraph
 

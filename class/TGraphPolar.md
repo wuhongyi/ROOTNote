@@ -7,7 +7,7 @@
 ;; Last-Updated: 六 8月 13 12:33:42 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TGraphPolar
 

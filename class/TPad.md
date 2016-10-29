@@ -7,7 +7,7 @@
 ;; Last-Updated: 五 8月 12 21:50:35 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 22
-;; URL: http://wuhongyi.github.io -->
+;; URL: http://wuhongyi.cn -->
 
 # TPad
 
