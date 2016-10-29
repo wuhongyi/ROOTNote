@@ -4,70 +4,65 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 五 8月 12 22:31:34 2016 (+0800)
+;; Last-Updated: 六 10月 29 21:45:32 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 10
+;;     Update #: 11
 ;; URL: http://wuhongyi.cn -->
 
 # TLegend
 
+继承 TPave , TAttText
+
 ## class
 
-<!-- ```cpp -->
-
-<!-- ``` -->
-
 ```cpp
-// `TLegend` inherits from `TAttText` therefore changing any
-// text attributes (text alignment, font, color...) on a legend will changed the
-// text attributes on each line.
+   TLegend();
+   TLegend( Double_t x1, Double_t y1, Double_t x2, Double_t y2,
+            const char* header = "", Option_t* option="brNDC" );
+   virtual ~TLegend();
+   TLegend( const TLegend &legend );
 
-// In particular it can be interesting to change the text alignement that way. In
-// order to have a base-line vertical alignment instead of a centered one simply do:
-// ~~~ {.cpp}
-//    leg->SetTextAlign(13);
-// ~~~
-// or
-// ~~~ {.cpp}
-//    leg->SetTextAlign(11);
-// ~~~
-// The default value of some `TLegend` attributes can be changed using
-// `gStyle`. The default settings are:
-// ~~~ {.cpp}
-//    SetLegendBorderSize(1);
-//    SetLegendFillColor(0);
-//    SetLegendFont(42);
-//    SetLegendTextSize(0.);
-// ~~~
-// The global attributes change the default values for the next created legends.
-
-// Text attributes can be also changed individually on each legend entry:
-// ~~~ {.cpp}
-//    TLegendEntry *le = leg->AddEntry(h1,"Histogram filled with random numbers","f");
-//    le->SetTextColor(kBlue);;
-// ~~~
-
-// Note that the `TPad` class has a method to build automatically a legend
-// for all objects in the pad. It is called `TPad::BuildLegend()`.
-
-// Each item in the legend is added using the `AddEntry` method. This
-// method defines the object to be added (by reference or name), the label
-// associated to this object and an option which a combination of:
-
-//   - L: draw line associated with TAttLine if obj inherits from TAttLine
-//   - P: draw polymarker associated with TAttMarker if obj inherits from TAttMarker
-//   - F: draw a box with fill associated wit TAttFill if obj inherits TAttFill
-//   - E: draw vertical error bar
-
+   TLegendEntry   *AddEntry(const TObject* obj, const char* label = "", Option_t* option = "lpf" );
+   TLegendEntry   *AddEntry(const char *name, const char* label = "", Option_t* option = "lpf" );
+   virtual void    Clear( Option_t* option = "" ); // *MENU*
+   virtual void    Copy( TObject &obj ) const;
+   virtual void    DeleteEntry(); // *MENU*
+   virtual void    Draw( Option_t* option = "" );
+   virtual void    EditEntryAttFill();
+   virtual void    EditEntryAttLine();
+   virtual void    EditEntryAttMarker();
+   virtual void    EditEntryAttText();
+   Float_t         GetColumnSeparation() const { return fColumnSeparation; }
+   TLegendEntry   *GetEntry() const;
+   Float_t         GetEntrySeparation() const { return fEntrySeparation; }
+   virtual const char *GetHeader() const;
+   TList          *GetListOfPrimitives() const {return fPrimitives;}
+   Float_t         GetMargin() const { return fMargin; }
+   Int_t           GetNColumns() const { return fNColumns; }
+   Int_t           GetNRows() const;
+   virtual void    InsertEntry( const char* objectName = "",const char* label = "",
+                             Option_t* option = "lpf" ); // *MENU*
+   virtual void    Paint( Option_t* option = "" );
+   virtual void    PaintPrimitives();
+   virtual void    Print( Option_t* option = "" ) const;
+   virtual void    RecursiveRemove(TObject *obj);
+   virtual void    SavePrimitive(std::ostream &out, Option_t *option  = "");
+   void            SetDefaults() { fEntrySeparation = 0.1f; fMargin = 0.25f; fNColumns = 1; fColumnSeparation = 0.0f; }
+   void            SetColumnSeparation( Float_t columnSeparation )
+                     { fColumnSeparation = columnSeparation; } // *MENU*
+   virtual void    SetEntryLabel( const char* label ); // *MENU*
+   virtual void    SetEntryOption( Option_t* option ); // *MENU*
+   void            SetEntrySeparation( Float_t entryseparation )
+                     { fEntrySeparation = entryseparation; } // *MENU*
+   virtual void    SetHeader( const char *header = "" );  // *MENU*
+   void            SetMargin( Float_t margin ) { fMargin = margin; } // *MENU*
+   void            SetNColumns( Int_t nColumns ); // *MENU*
 ```
+
+
 
 ## code
 
-```cpp
-
-```
-
-## example
 
 ```cpp
 TLegend *legend = new TLegend(0.55,0.65,0.76,0.82);
@@ -78,5 +73,9 @@ legend->AddEntry(h1,"All nations","");
 legend->AddEntry(h2,"French only","");
 legend->Draw();
 ```
+
+## example
+
+
 
 <!-- TLegend.md ends here -->
