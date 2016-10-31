@@ -4,12 +4,14 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 9月 13 18:18:45 2016 (+0800)
-;; Last-Updated: 二 9月 13 18:20:22 2016 (+0800)
+;; Last-Updated: 一 10月 31 20:50:13 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # TTime
+
+基类
 
 Basic time type with millisecond precision.
 

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:27:32 2014 (+0800)
-;; Last-Updated: 六 8月 13 14:01:28 2016 (+0800)
+;; Last-Updated: 一 10月 31 21:53:53 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 16
+;;     Update #: 17
 ;; URL: http://wuhongyi.cn -->
 
 # 类的使用
@@ -47,6 +47,30 @@ F: a 32 bit floating point
 D: a 64 bit floating point
 O: [the letter ‘o’, not a zero] a boolean (Bool_t)
 ```
+
+```
+The type of information shown in the histogram statistics box can be selected with:
+      gStyle->SetOptStat(mode);
+
+The "mode" has up to nine digits that can be set to on (1 or 2), off (0).
+
+      mode = ksiourmen  (default = 000001111)
+      k = 1;  kurtosis printed
+      k = 2;  kurtosis and kurtosis error printed
+      s = 1;  skewness printed
+      s = 2;  skewness and skewness error printed
+      i = 1;  integral of bins printed
+      o = 1;  number of overflows printed
+      u = 1;  number of underflows printed
+      r = 1;  rms printed
+      r = 2;  rms and rms error printed
+      m = 1;  mean value printed
+      m = 2;  mean and mean error values printed
+      e = 1;  number of entries printed
+      n = 1;  name of histogram is printed
+```
+
+
 
 ```cpp
 gROOT->GetListOfClasses()

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:31:46 2014 (+0800)
-;; Last-Updated: 二 9月 13 19:52:39 2016 (+0800)
+;; Last-Updated: 一 10月 31 20:48:36 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
+;;     Update #: 8
 ;; URL: http://wuhongyi.cn -->
 
 # TTimer
@@ -52,13 +52,33 @@ Minimum timeout interval is defined in TSystem::ESysConstants as kItimerResoluti
    void           SetTime(Long_t milliSec) { fTime = milliSec; }
    void           SetTimerID(UInt_t id = 0) { fTimeID = id; }
    virtual void   Start(Long_t milliSec = -1, Bool_t singleShot = kFALSE);
+   // Starts the timer with a milliSec timeout. If milliSec is 0
+   // then the timeout will be the minimum timeout (see TSystem::ESysConstants,
+   // i.e. 10 ms), if milliSec is -1 then the time interval as previously
+   // specified (in ctor or SetTime()) will be used.
+   // If singleShot is kTRUE, the timer will be activated only once,
+   // otherwise it will continue until it is stopped.
+   // See also TurnOn(), Stop(), TurnOff().
+
    virtual void   Stop() { TurnOff(); }
    virtual void   TurnOn();                         //*SIGNAL*
+   // Add the timer to the system timer list. If a TTimer subclass has to be
+   // placed on another list, override TurnOn() to add the timer to the correct
+   // list.
+
    virtual void   TurnOff();                        //*SIGNAL*
+   // Remove timer from system timer list. This requires that a timer
+   // has been placed in the system timer list (using TurnOn()).
+   // If a TTimer subclass is placed on another list, override TurnOff() to
+   // remove the timer from the correct list.
+
    virtual void   Timeout() { Emit("Timeout()"); }  //*SIGNAL*
 
    static void    SingleShot(Int_t milliSec, const char *receiver_class,
                              void *receiver, const char *method);
+   // This static function calls a slot after a given time interval.
+   // Created internal timer will be deleted after that.
+
 ```
 
 ## code
