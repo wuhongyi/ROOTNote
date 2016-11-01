@@ -4,21 +4,21 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 9月 13 17:52:38 2016 (+0800)
-;; Last-Updated: 二 9月 13 17:57:24 2016 (+0800)
+;; Last-Updated: 二 11月  1 19:00:26 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # TAttAxis
 
-
+基类
 
 ## class
 
 ```cpp
    TAttAxis();
    virtual          ~TAttAxis();
-   void     Copy(TAttAxis &attaxis) const;
+   void     Copy(TAttAxis &attaxis) const;/// Copy of the object.
    virtual Int_t    GetNdivisions()  const {return fNdivisions;}
    virtual Color_t  GetAxisColor()   const {return fAxisColor;}
    virtual Color_t  GetLabelColor()  const {return fLabelColor;}
@@ -30,8 +30,8 @@
    virtual Float_t  GetTickLength()  const {return fTickLength;}
    virtual Color_t  GetTitleColor()  const {return fTitleColor;}
    virtual Style_t  GetTitleFont()   const {return fTitleFont;}
-   virtual void     ResetAttAxis(Option_t *option="");
-   virtual void     SaveAttributes(std::ostream &out, const char *name, const char *subname);
+   virtual void     ResetAttAxis(Option_t *option="");/// Reset axis attributes
+   virtual void     SaveAttributes(std::ostream &out, const char *name, const char *subname);/// Save axis attributes as C++ statement(s) on output stream out
 
 /// Set the number of divisions for this axis.
 ///
@@ -46,12 +46,15 @@
 /// If the number of divisions is "optimized" (see above) n1, n2, n3 are maximum values.
    virtual void     SetNdivisions(Int_t n=510, Bool_t optim=kTRUE);   // *MENU*
    virtual void     SetNdivisions(Int_t n1, Int_t n2, Int_t n3, Bool_t optim=kTRUE);
-   virtual void     SetAxisColor(Color_t color=1, Float_t alpha=1.);  // *MENU*
-   virtual void     SetLabelColor(Color_t color=1, Float_t alpha=1.); // *MENU*
-   virtual void     SetLabelFont(Style_t font=62);                    // *MENU*
+   virtual void     SetAxisColor(Color_t color=1, Float_t alpha=1.);  // *MENU* /// Set color of the line axis and tick marks
+   virtual void     SetLabelColor(Color_t color=1, Float_t alpha=1.); // *MENU* /// Set color of labels
+   virtual void     SetLabelFont(Style_t font=62);                    // *MENU* /// Set labels' font.
+
+/// Set distance between the axis and the labels
+/// The distance is expressed in per cent of the pad width
    virtual void     SetLabelOffset(Float_t offset=0.005);             // *MENU*
-   virtual void     SetLabelSize(Float_t size=0.04);                  // *MENU*
-   virtual void     SetTickLength(Float_t length=0.03);               // *MENU*
+   virtual void     SetLabelSize(Float_t size=0.04);                  // *MENU* /// Set size of axis labels. The size is expressed in per cent of the pad width
+   virtual void     SetTickLength(Float_t length=0.03);               // *MENU* /// Set tick mark length. The length is expressed in per cent of the pad width
    virtual void     SetTickSize(Float_t size=0.03) {SetTickLength(size);}
 
 /// Set distance between the axis and the axis title
@@ -60,9 +63,9 @@
 ///                 of the label offset and size.
 ///  - offset = 1.2 will add 20 per cent more to the default offset.
    virtual void     SetTitleOffset(Float_t offset=1);                 // *MENU*
-   virtual void     SetTitleSize(Float_t size=0.04);                  // *MENU*
-   virtual void     SetTitleColor(Color_t color=1);                   // *MENU*
-   virtual void     SetTitleFont(Style_t font=62);                    // *MENU*
+   virtual void     SetTitleSize(Float_t size=0.04);                  // *MENU* /// Set size of axis title. The size is expressed in per cent of the pad width
+   virtual void     SetTitleColor(Color_t color=1);                   // *MENU* /// Set color of axis title
+   virtual void     SetTitleFont(Style_t font=62);                    // *MENU* /// Set the title font.
 ```
 
 ## code

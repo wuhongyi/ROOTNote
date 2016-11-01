@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TText+ · GitBook</title>
+        <title>TText* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis+
+                    TAttAxis*
             
                 </a>
             
@@ -147,7 +147,7 @@
                 <a href="TAxis.html">
             
                     
-                    TAxis+
+                    TAxis*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch+
+                    TBranch*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas+
+                    TCanvas*
             
                 </a>
             
@@ -238,7 +238,7 @@
                 <a href="TChain.html">
             
                     
-                    TChain
+                    TChain*
             
                 </a>
             
@@ -264,7 +264,7 @@
                 <a href="TCutG.html">
             
                     
-                    TCutG
+                    TCutG*
             
                 </a>
             
@@ -290,7 +290,7 @@
                 <a href="TEventList.html">
             
                     
-                    TEventList
+                    TEventList*
             
                 </a>
             
@@ -433,7 +433,7 @@
                 <a href="TGaxis.html">
             
                     
-                    TGaxis
+                    TGaxis*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex+
+                    TLatex*
             
                 </a>
             
@@ -576,7 +576,7 @@
                 <a href="TLegend.html">
             
                     
-                    TLegend+
+                    TLegend*
             
                 </a>
             
@@ -589,7 +589,7 @@
                 <a href="TLegendEntry.html">
             
                     
-                    TLegendEntry
+                    TLegendEntry*
             
                 </a>
             
@@ -602,7 +602,7 @@
                 <a href="TLine.html">
             
                     
-                    TLine
+                    TLine*
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="TList.html">
             
                     
-                    TList
+                    TList*
             
                 </a>
             
@@ -849,7 +849,7 @@
                 <a href="TNtuple.html">
             
                     
-                    TNtuple
+                    TNtuple*
             
                 </a>
             
@@ -862,7 +862,7 @@
                 <a href="TNtupleD.html">
             
                     
-                    TNtupleD
+                    TNtupleD*
             
                 </a>
             
@@ -875,7 +875,7 @@
                 <a href="TPad.html">
             
                     
-                    TPad+
+                    TPad*
             
                 </a>
             
@@ -888,7 +888,7 @@
                 <a href="TPaveStats.html">
             
                     
-                    TPaveStats
+                    TPaveStats*
             
                 </a>
             
@@ -914,7 +914,7 @@
                 <a href="TPaveText.html">
             
                     
-                    TPaveText
+                    TPaveText*
             
                 </a>
             
@@ -1265,7 +1265,7 @@
                 <a href="TText.html">
             
                     
-                    TText+
+                    TText*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime+
+                    TTime*
             
                 </a>
             
@@ -1330,7 +1330,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer+
+                    TTimer*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree
+                    TTree+
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TText+</a>
+        <a href=".." >TText*</a>
     </h1>
 </div>
 
@@ -1854,58 +1854,141 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 9月 13 17:13:44 2016 (+0800)
-;; Last-Updated: 二 9月 13 17:51:30 2016 (+0800)
+;; Last-Updated: 一 10月 31 21:04:32 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 
-<h1 id="ttext">TText</h1><p>&#x7EE7;&#x627F; TNamed, TAttText, TAttBBox2D</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TText();
+<h1 id="ttext">TText</h1><p>&#x7EE7;&#x627F; TNamed, TAttText, TAttBBox2D</p><p>Base class for several text objects.</p><p>See TAttText for a list of text attributes or fonts,
+and also for a discussion on text speed and font quality.</p><p>By default, the text is drawn in the pad coordinates system.
+One can draw in NDC coordinates [0,1] if the function SetNDC
+is called for a TText object.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TText();
    TText(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text);
    TText(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *text);
    TText(<span class="hljs-keyword">const</span> TText &amp;text);
    <span class="hljs-keyword">virtual</span> ~TText();
    <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Copy this text to text.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;
+<span class="hljs-comment">/// Compute distance from point px,py to a string.</span>
+<span class="hljs-comment">/// The rectangle surrounding this string is evaluated.</span>
+<span class="hljs-comment">/// If the point (px,py) is in the rectangle, the distance is set to zero.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TText   *<span class="hljs-title">DrawText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TText   *<span class="hljs-title">DrawText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> wchar_t *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TText   *<span class="hljs-title">DrawTextNDC</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates in NDC.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TText   *<span class="hljs-title">DrawTextNDC</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> wchar_t *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates in NDC.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
+<span class="hljs-comment">/// Execute action corresponding to one event.</span>
+<span class="hljs-comment">///  This member function must be implemented to realize the action</span>
+<span class="hljs-comment">///  corresponding to the mouse click on the object in the window</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetControlBox</span><span class="hljs-params">(Int_t x, Int_t y, Double_t theta,
                                   Int_t cBoxX[<span class="hljs-number">4</span>], Int_t cBoxY[<span class="hljs-number">4</span>])</span></span>;
+<span class="hljs-comment">/// Return the text control box. The text position coordinates is (x,y) and</span>
+<span class="hljs-comment">/// the text angle is theta. The control box coordinates are returned in cBoxX</span>
+<span class="hljs-comment">/// and cBoxY.</span>
+
    <span class="hljs-function">Double_t         <span class="hljs-title">GetX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{ <span class="hljs-keyword">return</span> fX; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetBoundingBox</span><span class="hljs-params">(UInt_t &amp;w, UInt_t &amp;h, Bool_t angle = kFALSE)</span></span>;
+<span class="hljs-comment">/// Return text size in pixels. By default the size returned does not take</span>
+<span class="hljs-comment">/// into account the text angle (angle = kFALSE). If angle is set to kTRUE</span>
+<span class="hljs-comment">/// w and h take the angle into account.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextAscentDescent</span><span class="hljs-params">(UInt_t &amp;a, UInt_t &amp;d, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text ascent and descent for string text</span>
+<span class="hljs-comment">///  - in a return total text ascent</span>
+<span class="hljs-comment">///  - in d return text descent</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextAscentDescent</span><span class="hljs-params">(UInt_t &amp;a, UInt_t &amp;d, <span class="hljs-keyword">const</span> wchar_t *text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text ascent and descent for string text</span>
+<span class="hljs-comment">///  - in a return total text ascent</span>
+<span class="hljs-comment">///  - in d return text descent</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextExtent</span><span class="hljs-params">(UInt_t &amp;w, UInt_t &amp;h, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text extent for string text</span>
+<span class="hljs-comment">///  - in w return total text width</span>
+<span class="hljs-comment">///  - in h return text height</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextExtent</span><span class="hljs-params">(UInt_t &amp;w, UInt_t &amp;h, <span class="hljs-keyword">const</span> wchar_t *text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text extent for string text</span>
+<span class="hljs-comment">///  - in w return total text width</span>
+<span class="hljs-comment">///  - in h return text height</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextAdvance</span><span class="hljs-params">(UInt_t &amp;a, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, <span class="hljs-keyword">const</span> Bool_t kern=kTRUE)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text advance for string text</span>
+<span class="hljs-comment">/// if kern is true (default) kerning is taken into account. If it is false</span>
+<span class="hljs-comment">/// the kerning is not taken into account.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *     <span class="hljs-title">GetWcsTitle</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the text as UNICODE.</span>
+
    <span class="hljs-function">Double_t         <span class="hljs-title">GetY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{ <span class="hljs-keyword">return</span> fY; }
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// List this text with its attributes.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Paint this text with its current attributes.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintControlBox</span><span class="hljs-params">(Int_t x, Int_t y, Double_t theta)</span></span>;
+<span class="hljs-comment">/// Paint the text control box. (x,y) are the coordinates where the control</span>
+<span class="hljs-comment">/// box should be painted and theta is the angle of the box.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> wchar_t *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintTextNDC</span><span class="hljs-params">(Double_t u, Double_t v, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates in NDC.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintTextNDC</span><span class="hljs-params">(Double_t u, Double_t v, <span class="hljs-keyword">const</span> wchar_t *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates in NDC.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Dump this text with its attributes.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetMbTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> wchar_t *title=<span class="hljs-string">L&quot;&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Change (i.e. set) the title of the TNamed.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetNDC</span><span class="hljs-params">(Bool_t isNDC=kTRUE)</span></span>;
+<span class="hljs-comment">/// Set NDC mode on if isNDC = kTRUE, off otherwise</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span> </span>{fX=x; fY=y; SetTitle(text);} <span class="hljs-comment">// *MENU* *ARGS={x=&gt;fX,y=&gt;fY,text=&gt;fTitle}</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> wchar_t *text)</span> </span>{fX=x; fY=y; SetMbTitle(text);}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetX</span><span class="hljs-params">(Double_t x)</span> </span>{ fX = x; } <span class="hljs-comment">// *MENU*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetY</span><span class="hljs-params">(Double_t y)</span> </span>{ fY = y; } <span class="hljs-comment">// *MENU*</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Rectangle_t  <span class="hljs-title">GetBBox</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Return the &quot;bounding Box&quot; of the Box</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TPoint       <span class="hljs-title">GetBBoxCenter</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Return the point given by Alignment as &apos;center&apos;</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenter</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TPoint &amp;p)</span></span>;
+<span class="hljs-comment">/// Set the point given by Alignment as &apos;center&apos;</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenterX</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>;
+<span class="hljs-comment">/// Set X coordinate of the point given by Alignment as &apos;center&apos;</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenterY</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>;
+<span class="hljs-comment">/// Set Y coordinate of the point given by Alignment as &apos;center&apos;</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxX1</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>; <span class="hljs-comment">//Not Implemented</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxX2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>; <span class="hljs-comment">//Not Implemented</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxY1</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>; <span class="hljs-comment">//Not Implemented</span>
@@ -1964,7 +2047,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TText+","level":"1.2.89","depth":2,"next":{"title":"TThread","level":"1.2.90","depth":2,"path":"class/TThread.md","ref":"class/TThread.md","articles":[]},"previous":{"title":"TSystem+","level":"1.2.88","depth":2,"path":"class/TSystem.md","ref":"class/TSystem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TText.md","mtime":"2016-10-29T01:26:39.399Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-29T13:46:06.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TText*","level":"1.2.89","depth":2,"next":{"title":"TThread","level":"1.2.90","depth":2,"path":"class/TThread.md","ref":"class/TThread.md","articles":[]},"previous":{"title":"TSystem+","level":"1.2.88","depth":2,"path":"class/TSystem.md","ref":"class/TSystem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TText.md","mtime":"2016-10-31T13:04:32.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TTimer+ · GitBook</title>
+        <title>TTimer* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis+
+                    TAttAxis*
             
                 </a>
             
@@ -147,7 +147,7 @@
                 <a href="TAxis.html">
             
                     
-                    TAxis+
+                    TAxis*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch+
+                    TBranch*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas+
+                    TCanvas*
             
                 </a>
             
@@ -238,7 +238,7 @@
                 <a href="TChain.html">
             
                     
-                    TChain
+                    TChain*
             
                 </a>
             
@@ -264,7 +264,7 @@
                 <a href="TCutG.html">
             
                     
-                    TCutG
+                    TCutG*
             
                 </a>
             
@@ -290,7 +290,7 @@
                 <a href="TEventList.html">
             
                     
-                    TEventList
+                    TEventList*
             
                 </a>
             
@@ -433,7 +433,7 @@
                 <a href="TGaxis.html">
             
                     
-                    TGaxis
+                    TGaxis*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex+
+                    TLatex*
             
                 </a>
             
@@ -576,7 +576,7 @@
                 <a href="TLegend.html">
             
                     
-                    TLegend+
+                    TLegend*
             
                 </a>
             
@@ -589,7 +589,7 @@
                 <a href="TLegendEntry.html">
             
                     
-                    TLegendEntry
+                    TLegendEntry*
             
                 </a>
             
@@ -602,7 +602,7 @@
                 <a href="TLine.html">
             
                     
-                    TLine
+                    TLine*
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="TList.html">
             
                     
-                    TList
+                    TList*
             
                 </a>
             
@@ -849,7 +849,7 @@
                 <a href="TNtuple.html">
             
                     
-                    TNtuple
+                    TNtuple*
             
                 </a>
             
@@ -862,7 +862,7 @@
                 <a href="TNtupleD.html">
             
                     
-                    TNtupleD
+                    TNtupleD*
             
                 </a>
             
@@ -875,7 +875,7 @@
                 <a href="TPad.html">
             
                     
-                    TPad+
+                    TPad*
             
                 </a>
             
@@ -888,7 +888,7 @@
                 <a href="TPaveStats.html">
             
                     
-                    TPaveStats
+                    TPaveStats*
             
                 </a>
             
@@ -914,7 +914,7 @@
                 <a href="TPaveText.html">
             
                     
-                    TPaveText
+                    TPaveText*
             
                 </a>
             
@@ -1265,7 +1265,7 @@
                 <a href="TText.html">
             
                     
-                    TText+
+                    TText*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime+
+                    TTime*
             
                 </a>
             
@@ -1330,7 +1330,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer+
+                    TTimer*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree
+                    TTree+
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TTimer+</a>
+        <a href=".." >TTimer*</a>
     </h1>
 </div>
 
@@ -1854,9 +1854,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:31:46 2014 (+0800)
-;; Last-Updated: 二 9月 13 19:52:39 2016 (+0800)
+;; Last-Updated: 一 10月 31 20:48:36 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
+;;     Update #: 8
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -1893,13 +1893,33 @@
    <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">SetTime</span><span class="hljs-params">(Long_t milliSec)</span> </span>{ fTime = milliSec; }
    <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">SetTimerID</span><span class="hljs-params">(UInt_t id = <span class="hljs-number">0</span>)</span> </span>{ fTimeID = id; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Start</span><span class="hljs-params">(Long_t milliSec = <span class="hljs-number">-1</span>, Bool_t singleShot = kFALSE)</span></span>;
+   <span class="hljs-comment">// Starts the timer with a milliSec timeout. If milliSec is 0</span>
+   <span class="hljs-comment">// then the timeout will be the minimum timeout (see TSystem::ESysConstants,</span>
+   <span class="hljs-comment">// i.e. 10 ms), if milliSec is -1 then the time interval as previously</span>
+   <span class="hljs-comment">// specified (in ctor or SetTime()) will be used.</span>
+   <span class="hljs-comment">// If singleShot is kTRUE, the timer will be activated only once,</span>
+   <span class="hljs-comment">// otherwise it will continue until it is stopped.</span>
+   <span class="hljs-comment">// See also TurnOn(), Stop(), TurnOff().</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Stop</span><span class="hljs-params">()</span> </span>{ TurnOff(); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">TurnOn</span><span class="hljs-params">()</span></span>;                         <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-comment">// Add the timer to the system timer list. If a TTimer subclass has to be</span>
+   <span class="hljs-comment">// placed on another list, override TurnOn() to add the timer to the correct</span>
+   <span class="hljs-comment">// list.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">TurnOff</span><span class="hljs-params">()</span></span>;                        <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-comment">// Remove timer from system timer list. This requires that a timer</span>
+   <span class="hljs-comment">// has been placed in the system timer list (using TurnOn()).</span>
+   <span class="hljs-comment">// If a TTimer subclass is placed on another list, override TurnOff() to</span>
+   <span class="hljs-comment">// remove the timer from the correct list.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Timeout</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;Timeout()&quot;</span>); }  <span class="hljs-comment">//*SIGNAL*</span>
 
    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SingleShot</span><span class="hljs-params">(Int_t milliSec, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *receiver_class,
-                             <span class="hljs-keyword">void</span> *receiver, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *method)</span></span>;</code></pre>
+                             <span class="hljs-keyword">void</span> *receiver, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *method)</span></span>;
+   <span class="hljs-comment">// This static function calls a slot after a given time interval.</span>
+   <span class="hljs-comment">// Created internal timer will be deleted after that.</span>
+</code></pre>
 <h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">//  Signal/slots example: </span>
 TTimer *timer = <span class="hljs-keyword">new</span> TTimer();
 timer-&gt;Connect(<span class="hljs-string">&quot;Timeout()&quot;</span>, <span class="hljs-string">&quot;myObjectClassName&quot;</span>, myObject, <span class="hljs-string">&quot;TimerDone()&quot;</span>);
@@ -2002,7 +2022,7 @@ TCanvas *c1;
 
             
                 
-                <a href="TTime.html" class="navigation navigation-prev " aria-label="Previous page: TTime+">
+                <a href="TTime.html" class="navigation navigation-prev " aria-label="Previous page: TTime*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2018,7 +2038,7 @@ TCanvas *c1;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TTimer+","level":"1.2.94","depth":2,"next":{"title":"TTimeStamp","level":"1.2.95","depth":2,"path":"class/TTimeStamp.md","ref":"class/TTimeStamp.md","articles":[]},"previous":{"title":"TTime+","level":"1.2.93","depth":2,"path":"class/TTime.md","ref":"class/TTime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTimer.md","mtime":"2016-10-29T01:26:39.401Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-29T13:46:06.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TTimer*","level":"1.2.94","depth":2,"next":{"title":"TTimeStamp","level":"1.2.95","depth":2,"path":"class/TTimeStamp.md","ref":"class/TTimeStamp.md","articles":[]},"previous":{"title":"TTime*","level":"1.2.93","depth":2,"path":"class/TTime.md","ref":"class/TTime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTimer.md","mtime":"2016-10-31T12:48:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

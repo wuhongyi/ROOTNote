@@ -4,18 +4,43 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 二 9月 13 18:14:12 2016 (+0800)
+;; Last-Updated: 二 11月  1 18:55:41 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 11
+;;     Update #: 13
 ;; URL: http://wuhongyi.cn -->
 
 # TAxis
 
 继承 TNamed, TAttAxis
 
+This class manages histogram axis. It is referenced by TH1 and TGraph.
+To make a graphical representation of an histogram axis, this class
+references the TGaxis class. TAxis supports axis with fixed or variable bin sizes.
+Labels may be associated to individual bins.
+
+
 ## class
 
 ```cpp
+   // TAxis status bits
+   enum {
+          kDecimals      = BIT(7),
+          kTickPlus      = BIT(9),
+          kTickMinus     = BIT(10),
+          kAxisRange     = BIT(11),
+          kCenterTitle   = BIT(12),
+          kCenterLabels  = BIT(14), //bit 13 is used by TObject
+          kRotateTitle   = BIT(15),
+          kPalette       = BIT(16),
+          kNoExponent    = BIT(17),
+          kLabelsHori    = BIT(18),
+          kLabelsVert    = BIT(19),
+          kLabelsDown    = BIT(20),
+          kLabelsUp      = BIT(21),
+          kIsInteger     = BIT(22),
+          kMoreLogLabels = BIT(23)
+   };
+
    TAxis();
    TAxis(Int_t nbins, Double_t xmin, Double_t xmax);
    TAxis(Int_t nbins, const Double_t *xbins);
@@ -32,16 +57,23 @@
          SetAlphanumeric(kFALSE);
       }
    }
+
+/// Center axis labels. If center = kTRUE axis labels will be centered
+/// (hori axes only) on the bin center default is to center on the primary tick marks
+/// This option does not make sense if there are more bins than tick marks
    void               CenterLabels(Bool_t center=kTRUE);
+
+/// Center axis title. If center = kTRUE axis title will be centered
+/// default is right adjusted
    void               CenterTitle(Bool_t center=kTRUE);
-   
+
 /// Choose a reasonable time format from the coordinates in the active pad and the number of divisions in this axis
 /// If orientation = "X", the horizontal axis of the pad will be used for ref.
 /// If orientation = "Y", the vertical axis of the pad will be used for ref.   
    const char        *ChooseTimeFormat(Double_t axislength=0);
-   virtual void       Copy(TObject &axis) const;
+   virtual void       Copy(TObject &axis) const;/// Copy axis structure to another axis
    virtual void       Delete(Option_t * /*option*/ ="") { }
-   virtual Int_t      DistancetoPrimitive(Int_t px, Int_t py);
+   virtual Int_t      DistancetoPrimitive(Int_t px, Int_t py);/// Compute distance from point px,py to an axis
    virtual TObject   *DrawClone(Option_t * /*option*/ ="") const {return 0;}
    
 /// Execute action corresponding to one event
@@ -78,34 +110,51 @@
 /// If the List of labels does not exist or the label doe not exist just return -1 .
 /// Do not attempt to modify the axis. This is different than FindBin
    virtual Int_t      FindFixBin(const char *label) const;
-   virtual Double_t   GetBinCenter(Int_t bin) const;
+   virtual Double_t   GetBinCenter(Int_t bin) const;/// Return center of bin
+
+/// Return center of bin in log
+/// With a log-equidistant binning for a bin with low and up edges, the mean is :
+/// 0.5*(ln low + ln up) i.e. sqrt(low*up) in logx (e.g. sqrt(10^0*10^2) = 10).
+/// Imagine a bin with low=1 and up=100 :
+/// - the center in lin is (100-1)/2=50.5
+/// - the center in log would be sqrt(1*100)=10 (!=log(50.5))
+/// NB: if the low edge of the bin is negative, the function returns the bin center
+///     as computed by TAxis::GetBinCenter
    virtual Double_t   GetBinCenterLog(Int_t bin) const;
-   const char        *GetBinLabel(Int_t bin) const;
-   virtual Double_t   GetBinLowEdge(Int_t bin) const;
-   virtual Double_t   GetBinUpEdge(Int_t bin) const;
-   virtual Double_t   GetBinWidth(Int_t bin) const;
-   virtual void       GetCenter(Double_t *center) const;
+   const char        *GetBinLabel(Int_t bin) const;/// Return label for bin
+   virtual Double_t   GetBinLowEdge(Int_t bin) const;/// Return low edge of bin
+   virtual Double_t   GetBinUpEdge(Int_t bin) const;/// Return up edge of bin
+   virtual Double_t   GetBinWidth(Int_t bin) const;/// Return bin width
+   virtual void       GetCenter(Double_t *center) const;/// Return an array with the center of all bins
            Bool_t     GetCenterLabels() const { return TestBit(kCenterLabels); }
            Bool_t     GetCenterTitle() const { return TestBit(kCenterTitle); }
            Bool_t     GetDecimals() const { return TestBit(kDecimals); }
    THashList         *GetLabels() const { return fLabels; }
-   virtual void       GetLowEdge(Double_t *edge) const;
+   virtual void       GetLowEdge(Double_t *edge) const;/// Return an array with the lod edge of all bins
            Bool_t     GetMoreLogLabels() const { return TestBit(kMoreLogLabels); }
            Int_t      GetNbins() const { return fNbins; }
            Bool_t     GetNoExponent() const { return TestBit(kNoExponent); }
    virtual TObject   *GetParent() const {return fParent;}
            Bool_t     GetRotateTitle() const { return TestBit(kRotateTitle); }
-   virtual const char *GetTicks() const;
+   virtual const char *GetTicks() const;/// Return the ticks option (see SetTicks)
    virtual Bool_t     GetTimeDisplay() const {return fTimeDisplay;}
    virtual const char *GetTimeFormat() const {return fTimeFormat.Data();}
-   virtual const char *GetTimeFormatOnly() const;
+   virtual const char *GetTimeFormatOnly() const;/// Return *only* the time format from the string fTimeFormat
    const char        *GetTitle() const {return fTitle.Data();}
    const TArrayD     *GetXbins() const {return &fXbins;}
+
+/// Return first bin on the axis
+/// i.e. 1 if no range defined
+/// NOTE: in some cases a zero is returned (see TAxis::SetRange)
            Int_t      GetFirst() const;
+
+/// Return last bin on the axis
+/// i.e. fNbins if no range defined
+/// NOTE: in some cases a zero is returned (see TAxis::SetRange)
            Int_t      GetLast() const;
            Double_t   GetXmin() const {return fXmin;}
            Double_t   GetXmax() const {return fXmax;}
-   virtual void       ImportAttributes(const TAxis *axis);
+   virtual void       ImportAttributes(const TAxis *axis);/// Copy axis attributes to this
    Bool_t             IsVariableBinSize() const {
                          // true if axis has variable bin sizes, false otherwise
                          return (fXbins.GetSize() != 0);
@@ -120,20 +169,48 @@
 ///         = "u" draw labels up (end of label right adjusted)
 ///         = "d" draw labels down (start of label left adjusted)
    virtual void       LabelsOption(Option_t *option="h");  // *MENU*
+
+/// Rotate title by 180 degrees. By default the title is drawn right adjusted.
+/// If rotate is TRUE, the title is left adjusted at the end of the axis and rotated by 180 degrees
            void       RotateTitle(Bool_t rotate=kTRUE); // *TOGGLE* *GETTER=GetRotateTitle
-   virtual void       SaveAttributes(std::ostream &out, const char *name, const char *subname);
-   virtual void       Set(Int_t nbins, Double_t xmin, Double_t xmax);
-   virtual void       Set(Int_t nbins, const Float_t *xbins);
-   virtual void       Set(Int_t nbins, const Double_t *xbins);
+   virtual void       SaveAttributes(std::ostream &out, const char *name, const char *subname);/// Save axis attributes as C++ statement(s) on output stream out
+   virtual void       Set(Int_t nbins, Double_t xmin, Double_t xmax);/// Initialize axis with fix bins
+   virtual void       Set(Int_t nbins, const Float_t *xbins);/// Initialize axis with variable bins
+   virtual void       Set(Int_t nbins, const Double_t *xbins);/// Initialize axis with variable bins
+
+/// Set label for bin.
+/// If no label list exists, it is created. If all the bins have labels, the
+/// axis becomes alphanumeric and extendable.
+/// New labels will not be added with the Fill method but will end-up in the
+/// underflow bin. See documentation of TAxis::FindBin(const char*)
    virtual void       SetBinLabel(Int_t bin, const char *label);//设置bin名称
+
+/// Sets the decimals flag
+/// By default, blank characters are stripped, and then the label is correctly aligned.
+/// If the dot is the last character of the string, it is also stripped, unless this option is specified.
            void       SetDecimals(Bool_t dot = kTRUE); // *TOGGLE* *GETTER=GetDecimals
-   virtual void       SetDefaults();
+   virtual void       SetDefaults();/// Set axis default values (from TStyle)
    virtual void       SetDrawOption(Option_t * /*option*/ ="") { }
    virtual void       SetLimits(Double_t xmin, Double_t xmax) { /* set axis limits */ fXmin = xmin; fXmax = xmax; }
-           void       SetMoreLogLabels(Bool_t more=kTRUE);  // *TOGGLE* *GETTER=GetMoreLogLabels
+
+/// Set the kMoreLogLabels bit flag
+/// When this option is selected more labels are drawn when in log scale and there is a small number
+/// of decades  (<3).
+/// The flag (in fBits) is passed to the drawing function TGaxis::PaintAxis
+   void       SetMoreLogLabels(Bool_t more=kTRUE);  // *TOGGLE* *GETTER=GetMoreLogLabels
+
+/// Set the NoExponent flag
+/// By default, an exponent of the form 10^N is used when the label value are either all very small or very large.
+/// The flag (in fBits) is passed to the drawing function TGaxis::PaintAxis
            void       SetNoExponent(Bool_t noExponent=kTRUE);  // *TOGGLE* *GETTER=GetNoExponent
    virtual void       SetParent(TObject *obj) {fParent = obj;}
+
+///  Set the viewing range for the axis from bin first to last.
+///  To set a range using the axis coordinates, use TAxis::SetRangeUser.
    virtual void       SetRange(Int_t first=0, Int_t last=0);  // *MENU*
+
+///  Set the viewing range for the axis from ufirst to ulast (in user coordinates).
+///  To set a range using the axis bin numbers, use TAxis::SetRange.
    virtual void       SetRangeUser(Double_t ufirst, Double_t ulast);  // *MENU* 人为设置坐标范围！
 
 ///  Set ticks orientation.
@@ -142,9 +219,38 @@
 ///  option = "+-" ticks drawn on both sides
    virtual void       SetTicks(Option_t *option="+"); // *MENU*  //  option = "+"  ticks drawn on the "positive side" (default) ; option = "-"  ticks drawn on the "negative side" ; option = "+-" ticks drawn on both sides
    virtual void       SetTimeDisplay(Int_t value) {fTimeDisplay = (value != 0);} // *TOGGLE*
+
+/// Change the format used for time plotting
+/// The format string for date and time use the same options as the one used
+/// in the standard strftime C function, i.e. :
+/// for date :
+///          %a abbreviated weekday name
+///          %b abbreviated month name
+///          %d day of the month (01-31)
+///          %m month (01-12)
+///          %y year without century
+/// for time :
+///
+///          %H hour (24-hour clock)
+///          %I hour (12-hour clock)
+///          %p local equivalent of AM or PM
+///          %M minute (00-59)
+///          %S seconds (00-61)
+///          %% %
+/// This function allows also to define the time offset. It is done via %F
+/// which should be appended at the end of the format string. The time
+/// offset has the following format: 'yyyy-mm-dd hh:mm:ss'
    virtual void       SetTimeFormat(const char *format="");  // *MENU*
+
+/// Change the time offset
+/// If option = "gmt", set display mode to GMT.
    virtual void       SetTimeOffset(Double_t toffset, Option_t *option="local");
-   virtual void       UnZoom();  // *MENU*
+   virtual void       UnZoom();  // *MENU* /// Reset first & last bin to the full range
+
+/// Zoom out by a factor of 'factor' (default =2)
+///   uses previous zoom factor by default
+/// Keep center defined by 'offset' fixed
+///   ie. -1 at left of current range, 0 in center, +1 at right
    virtual void       ZoomOut(Double_t factor=0, Double_t offset=0);  // *MENU*
 ```
 
@@ -193,41 +299,34 @@ h1->SetFrameFillColor(33);    //设置图片背景颜色
 
 ```cpp
 /// Change the format used for time plotting
-///
 /// The format string for date and time use the same options as the one used
 /// in the standard strftime C function, i.e. :
 /// for date :
-///
 ///          %a abbreviated weekday name
 ///          %b abbreviated month name
 ///          %d day of the month (01-31)
 ///          %m month (01-12)
 ///          %y year without century
-///
 /// for time :
-///
 ///          %H hour (24-hour clock)
 ///          %I hour (12-hour clock)
 ///          %p local equivalent of AM or PM
 ///          %M minute (00-59)
 ///          %S seconds (00-61)
 ///          %% %
-///
 /// This function allows also to define the time offset. It is done via %F
 /// which should be appended at the end of the format string. The time
 /// offset has the following format: 'yyyy-mm-dd hh:mm:ss'
 /// Example:
-///
 h = new TH1F("Test","h",3000,0.,200000.);
 h->GetXaxis()->SetTimeDisplay(1);
 h->GetXaxis()->SetTimeFormat("%d\/%m\/%y%F2000-02-28 13:00:01");
-///
+
 /// This defines the time format being "dd/mm/yy" and the time offset as the
 /// February 28th 2003 at 13:00:01
-///
 /// If %F is not specified, the time offset used will be the one defined by:
 /// gStyle->SetTimeOffset. For example like that:
-///
+
 TDatime da(2003,02,28,12,00,00);
 gStyle->SetTimeOffset(da.Convert());
 ```

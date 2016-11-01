@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TCutG · GitBook</title>
+        <title>TCutG* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis+
+                    TAttAxis*
             
                 </a>
             
@@ -147,7 +147,7 @@
                 <a href="TAxis.html">
             
                     
-                    TAxis+
+                    TAxis*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch+
+                    TBranch*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas+
+                    TCanvas*
             
                 </a>
             
@@ -238,7 +238,7 @@
                 <a href="TChain.html">
             
                     
-                    TChain
+                    TChain*
             
                 </a>
             
@@ -264,7 +264,7 @@
                 <a href="TCutG.html">
             
                     
-                    TCutG
+                    TCutG*
             
                 </a>
             
@@ -290,7 +290,7 @@
                 <a href="TEventList.html">
             
                     
-                    TEventList
+                    TEventList*
             
                 </a>
             
@@ -433,7 +433,7 @@
                 <a href="TGaxis.html">
             
                     
-                    TGaxis
+                    TGaxis*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex+
+                    TLatex*
             
                 </a>
             
@@ -576,7 +576,7 @@
                 <a href="TLegend.html">
             
                     
-                    TLegend+
+                    TLegend*
             
                 </a>
             
@@ -589,7 +589,7 @@
                 <a href="TLegendEntry.html">
             
                     
-                    TLegendEntry
+                    TLegendEntry*
             
                 </a>
             
@@ -602,7 +602,7 @@
                 <a href="TLine.html">
             
                     
-                    TLine
+                    TLine*
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="TList.html">
             
                     
-                    TList
+                    TList*
             
                 </a>
             
@@ -849,7 +849,7 @@
                 <a href="TNtuple.html">
             
                     
-                    TNtuple
+                    TNtuple*
             
                 </a>
             
@@ -862,7 +862,7 @@
                 <a href="TNtupleD.html">
             
                     
-                    TNtupleD
+                    TNtupleD*
             
                 </a>
             
@@ -875,7 +875,7 @@
                 <a href="TPad.html">
             
                     
-                    TPad+
+                    TPad*
             
                 </a>
             
@@ -888,7 +888,7 @@
                 <a href="TPaveStats.html">
             
                     
-                    TPaveStats
+                    TPaveStats*
             
                 </a>
             
@@ -914,7 +914,7 @@
                 <a href="TPaveText.html">
             
                     
-                    TPaveText
+                    TPaveText*
             
                 </a>
             
@@ -1265,7 +1265,7 @@
                 <a href="TText.html">
             
                     
-                    TText+
+                    TText*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime+
+                    TTime*
             
                 </a>
             
@@ -1330,7 +1330,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer+
+                    TTimer*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree
+                    TTree+
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TCutG</a>
+        <a href=".." >TCutG*</a>
     </h1>
 </div>
 
@@ -1854,24 +1854,97 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:48:25 2014 (+0800)
-;; Last-Updated: 五 8月 12 22:30:42 2016 (+0800)
+;; Last-Updated: 二 11月  1 19:11:37 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 6
+;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
 
 
-<h1 id="tcutg">TCutG</h1><h2 id="class">class</h2><!-- ```cpp -->
+<h1 id="tcutg">TCutG</h1><p>&#x7EE7;&#x627F; TGraph</p><p>A Graphical cut.</p><p>A TCutG object is a closed polygon defining a closed region in a x,y plot.
+It can be created via the graphics editor option &quot;CutG&quot; or directly by
+invoking its constructor. The first and last points should be the same.</p><p>To create a TCutG via the graphics editor, use the left button to select the
+points building the contour of the cut. Click on the right button to close the
+TCutG. When it is created via the graphics editor, the TCutG object is named
+&quot;CUTG&quot;. It is recommended to immediately change the name by using the context
+menu item &quot;SetName&quot;. When the graphics editor is used, the names of the
+variables X,Y are automatically taken from the current pad title.</p><p>A Graphical cut may be drawn via TGraph::Draw. It can be edited like a normal
+TGraph.</p><p>A Graphical cut may be saved to a file via TCutG::Write.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TCutG();<span class="hljs-comment">/// TCutG default constructor.</span>
+   TCutG(<span class="hljs-keyword">const</span> TCutG &amp;cutg);<span class="hljs-comment">/// TCutG copy constructor</span>
+   TCutG(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Int_t n);<span class="hljs-comment">/// TCutG normal constructor.</span>
+   TCutG(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Int_t n, <span class="hljs-keyword">const</span> Float_t *x, <span class="hljs-keyword">const</span> Float_t *y);<span class="hljs-comment">/// TCutG normal constructor.</span>
+   TCutG(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Int_t n, <span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *y);<span class="hljs-comment">/// TCutG normal constructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TCutG();
 
+   TCutG &amp;<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TCutG &amp;);
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Area</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Compute the area inside this TCutG</span>
+<span class="hljs-comment">/// The algorithm uses Stoke&apos;s theorem over the border of the closed polygon.</span>
+<span class="hljs-comment">/// Just as a reminder: Stoke&apos;s theorem reduces a surface integral</span>
+<span class="hljs-comment">/// to a line integral over the border of the surface integral.</span>
 
-<!-- ``` -->
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Center</span><span class="hljs-params">(Double_t &amp;cx, Double_t &amp;cy)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Compute the center x,y of this TCutG</span>
+<span class="hljs-comment">/// The algorithm uses Stoke&apos;s theorem over the border of the closed polygon.</span>
+<span class="hljs-comment">/// Just as a reminder: Stoke&apos;s theorem reduces a surface integral</span>
+<span class="hljs-comment">/// to a line integral over the border of the surface integral.</span>
 
+   <span class="hljs-function">TObject         *<span class="hljs-title">GetObjectX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fObjectX;}
+   <span class="hljs-function">TObject         *<span class="hljs-title">GetObjectY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fObjectY;}
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>      *<span class="hljs-title">GetVarX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fVarX.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>      *<span class="hljs-title">GetVarY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fVarY.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">IntegralHist</span><span class="hljs-params">(TH2 *h, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Compute the integral of 2-d histogram h for all bins inside the cut</span>
+<span class="hljs-comment">/// if option &quot;width&quot; is specified, the integral is the sum of</span>
+<span class="hljs-comment">/// the bin contents multiplied by the bin width in x and in y.</span>
 
-<h2 id="code">code</h2><!-- ```cpp -->
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetObjectX</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Set the X object (and delete the previous one if any).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetObjectY</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Set the Y object (and delete the previous one if any).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetVarX</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *varx)</span></span>; <span class="hljs-comment">// *MENU* /// Set X variable.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetVarY</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *vary)</span></span>; <span class="hljs-comment">// *MENU* /// Set Y variable.</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// Assume a TTree object T and:</span>
 
+Root &gt; T.Draw(<span class="hljs-string">&quot;abs(fMomemtum)%fEtot&quot;</span>)
 
-<!-- ``` -->
+<span class="hljs-comment">// the TCutG members fVarX, fVary will be set to:</span>
 
+fVarx = fEtot
+fVary = <span class="hljs-built_in">abs</span>(fMomemtum)
 
+<span class="hljs-comment">// A graphical cut can be used in a TTree selection expression:</span>
+
+Root &gt; T.Draw(<span class="hljs-string">&quot;fEtot&quot;</span>,<span class="hljs-string">&quot;cutg1&quot;</span>)
+
+<span class="hljs-comment">// where &quot;cutg1&quot; is the name of an existing graphical cut.</span>
+
+<span class="hljs-comment">// Note that, as shown in the example above, a graphical cut may be used in a</span>
+<span class="hljs-comment">// selection expression when drawing TTrees expressions of 1-d, 2-d or</span>
+<span class="hljs-comment">// 3-dimensions. The expressions used in TTree::Draw can reference the variables in</span>
+<span class="hljs-comment">// the fVarX, fVarY of the graphical cut plus other variables.</span></code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">// When the TCutG object is created by TTree::Draw, it is added to the list of special objects in</span>
+<span class="hljs-comment">// the main TROOT object pointed by gROOT. To retrieve a pointer to this object</span>
+<span class="hljs-comment">// from the code or command line, do:</span>
+
+    TCutG *mycutg;
+    mycutg = (TCutG*)gROOT-&gt;GetListOfSpecials()-&gt;FindObject(<span class="hljs-string">&quot;CUTG&quot;</span>)
+    mycutg-&gt;SetName(<span class="hljs-string">&quot;mycutg&quot;</span>);
+
+<span class="hljs-comment">// When the TCutG is not created via TTree::Draw, one must set the variable names</span>
+<span class="hljs-comment">// corresponding to x,y if one wants to use the cut as input to TTree::Draw,eg</span>
+
+    TCutG *cutg = <span class="hljs-keyword">new</span> TCutG(<span class="hljs-string">&quot;mycut&quot;</span>,<span class="hljs-number">5</span>);
+    cutg-&gt;SetVarX(<span class="hljs-string">&quot;y&quot;</span>);
+    cutg-&gt;SetVarY(<span class="hljs-string">&quot;x&quot;</span>);
+    cutg-&gt;SetPoint(<span class="hljs-number">0</span>,<span class="hljs-number">-0.3586207</span>,<span class="hljs-number">1.509534</span>);
+    cutg-&gt;SetPoint(<span class="hljs-number">1</span>,<span class="hljs-number">-1.894181</span>,<span class="hljs-number">-0.529661</span>);
+    cutg-&gt;SetPoint(<span class="hljs-number">2</span>,<span class="hljs-number">0.07780173</span>,<span class="hljs-number">-1.21822</span>);
+    cutg-&gt;SetPoint(<span class="hljs-number">3</span>,<span class="hljs-number">-1.0375</span>,<span class="hljs-number">-0.07944915</span>);
+    cutg-&gt;SetPoint(<span class="hljs-number">4</span>,<span class="hljs-number">0.756681</span>,<span class="hljs-number">0.1853814</span>);
+    cutg-&gt;SetPoint(<span class="hljs-number">5</span>,<span class="hljs-number">-0.3586207</span>,<span class="hljs-number">1.509534</span>);
+
+<span class="hljs-comment">// Example of use of a TCutG in TTree::Draw:</span>
+
+    tree.Draw(<span class="hljs-string">&quot;x:y&quot;</span>,<span class="hljs-string">&quot;mycutg &amp;&amp; z&gt;0 %% sqrt(x)&gt;1&quot;</span>)</code></pre>
 <h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-comment">//&#x56FE;&#x50CF;&#x4E0A;&#x6570;&#x636E;&#x7B5B;&#x9009;  &#x66F2;&#x7EBF;&#x62DF;&#x5408;</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TF2.h&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TH2.h&quot;</span></span>
@@ -2059,7 +2132,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCutG","level":"1.2.12","depth":2,"next":{"title":"TEllipse","level":"1.2.13","depth":2,"path":"class/TEllipse.md","ref":"class/TEllipse.md","articles":[]},"previous":{"title":"TCut*","level":"1.2.11","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TCutG.md","mtime":"2016-10-29T01:26:39.400Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-29T13:46:06.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCutG*","level":"1.2.12","depth":2,"next":{"title":"TEllipse","level":"1.2.13","depth":2,"path":"class/TEllipse.md","ref":"class/TEllipse.md","articles":[]},"previous":{"title":"TCut*","level":"1.2.11","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TCutG.md","mtime":"2016-11-01T11:11:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

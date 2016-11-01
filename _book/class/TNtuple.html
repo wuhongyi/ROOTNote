@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TNtuple · GitBook</title>
+        <title>TNtuple* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis+
+                    TAttAxis*
             
                 </a>
             
@@ -147,7 +147,7 @@
                 <a href="TAxis.html">
             
                     
-                    TAxis+
+                    TAxis*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch+
+                    TBranch*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas+
+                    TCanvas*
             
                 </a>
             
@@ -238,7 +238,7 @@
                 <a href="TChain.html">
             
                     
-                    TChain
+                    TChain*
             
                 </a>
             
@@ -264,7 +264,7 @@
                 <a href="TCutG.html">
             
                     
-                    TCutG
+                    TCutG*
             
                 </a>
             
@@ -290,7 +290,7 @@
                 <a href="TEventList.html">
             
                     
-                    TEventList
+                    TEventList*
             
                 </a>
             
@@ -433,7 +433,7 @@
                 <a href="TGaxis.html">
             
                     
-                    TGaxis
+                    TGaxis*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex+
+                    TLatex*
             
                 </a>
             
@@ -576,7 +576,7 @@
                 <a href="TLegend.html">
             
                     
-                    TLegend+
+                    TLegend*
             
                 </a>
             
@@ -589,7 +589,7 @@
                 <a href="TLegendEntry.html">
             
                     
-                    TLegendEntry
+                    TLegendEntry*
             
                 </a>
             
@@ -602,7 +602,7 @@
                 <a href="TLine.html">
             
                     
-                    TLine
+                    TLine*
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="TList.html">
             
                     
-                    TList
+                    TList*
             
                 </a>
             
@@ -849,7 +849,7 @@
                 <a href="TNtuple.html">
             
                     
-                    TNtuple
+                    TNtuple*
             
                 </a>
             
@@ -862,7 +862,7 @@
                 <a href="TNtupleD.html">
             
                     
-                    TNtupleD
+                    TNtupleD*
             
                 </a>
             
@@ -875,7 +875,7 @@
                 <a href="TPad.html">
             
                     
-                    TPad+
+                    TPad*
             
                 </a>
             
@@ -888,7 +888,7 @@
                 <a href="TPaveStats.html">
             
                     
-                    TPaveStats
+                    TPaveStats*
             
                 </a>
             
@@ -914,7 +914,7 @@
                 <a href="TPaveText.html">
             
                     
-                    TPaveText
+                    TPaveText*
             
                 </a>
             
@@ -1265,7 +1265,7 @@
                 <a href="TText.html">
             
                     
-                    TText+
+                    TText*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime+
+                    TTime*
             
                 </a>
             
@@ -1330,7 +1330,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer+
+                    TTimer*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree
+                    TTree+
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TNtuple</a>
+        <a href=".." >TNtuple*</a>
     </h1>
 </div>
 
@@ -1848,7 +1848,75 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tntuple">TNtuple</h1>
+                                <!-- TNtuple.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 二 11月  1 22:45:16 2016 (+0800)
+;; Last-Updated: 二 11月  1 22:54:33 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 1
+;; URL: http://wuhongyi.cn -->
+
+
+<h1 id="tntuple">TNtuple</h1><p>&#x7EE7;&#x627F; TTree</p><p>A simple tree with branches of floats.</p><p>A simple TTree restricted to a list of float variables only.</p><p>Each variable goes to a separate branch.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TNtuple();
+   TNtuple(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *varlist, Int_t bufsize=<span class="hljs-number">32000</span>);
+<span class="hljs-comment">/// Create an Ntuple.</span>
+<span class="hljs-comment">/// The parameter varlist describes the list of the ntuple variables</span>
+<span class="hljs-comment">/// separated by a colon:</span>
+<span class="hljs-comment">/// Example:  `x:y:z:energy`</span>
+<span class="hljs-comment">/// For each variable in the list a separate branch is created.</span>
+<span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span></span>
+<span class="hljs-comment">///  - Use TTree to create branches with variables of different data types.</span>
+<span class="hljs-comment">///  - Use TTree when the number of branches is large (&gt; 100).</span>
+
+   <span class="hljs-keyword">virtual</span> ~TNtuple();
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;<span class="hljs-comment">/// Browse content of the ntuple</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TTree    *<span class="hljs-title">CloneTree</span><span class="hljs-params">(Long64_t nentries = <span class="hljs-number">-1</span>, Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Create a clone of this tree and copy nentries.</span>
+<span class="hljs-comment">/// By default copy all entries.</span>
+<span class="hljs-comment">/// Note that only active branches are copied.</span>
+<span class="hljs-comment">/// The compression level of the cloned tree is set to the destination file&apos;s</span>
+<span class="hljs-comment">/// compression level.</span>
+<span class="hljs-comment">/// See TTree::CloneTree for more details.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Float_t *x)</span></span>;<span class="hljs-comment">/// Fill a Ntuple with an array of floats</span>
+           <span class="hljs-function">Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">(Int_t x0)</span> </span>{ <span class="hljs-keyword">return</span> Fill((Float_t)x0); }
+           <span class="hljs-function">Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">(Double_t x0)</span> </span>{ <span class="hljs-keyword">return</span> Fill((Float_t)x0); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">(Float_t x0, Float_t x1=<span class="hljs-number">0</span>, Float_t x2=<span class="hljs-number">0</span>, Float_t x3=<span class="hljs-number">0</span>,
+                          Float_t x4=<span class="hljs-number">0</span>, Float_t x5=<span class="hljs-number">0</span>, Float_t x6=<span class="hljs-number">0</span>, Float_t x7=<span class="hljs-number">0</span>,
+                          Float_t x8=<span class="hljs-number">0</span>, Float_t x9=<span class="hljs-number">0</span>, Float_t x10=<span class="hljs-number">0</span>,
+                          Float_t x11=<span class="hljs-number">0</span>, Float_t x12=<span class="hljs-number">0</span>, Float_t x13=<span class="hljs-number">0</span>,
+                          Float_t x14=<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">/// Fill a Ntuple: Each Ntuple item is an argument</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetNvar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNvar; }
+           <span class="hljs-function">Float_t  *<span class="hljs-title">GetArgs</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fArgs; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">ReadStream</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::istream&amp; inputStream, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *branchDescriptor=<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-keyword">char</span> delimiter = <span class="hljs-string">&apos; &apos;</span>)</span></span>;
+<span class="hljs-comment">/// Read from filename as many columns as variables in the ntuple</span>
+<span class="hljs-comment">/// the function returns the number of rows found in the file</span>
+<span class="hljs-comment">/// The second argument &quot;branchDescriptor&quot; is currently not used.</span>
+<span class="hljs-comment">/// Lines in the input file starting with &quot;#&quot; are ignored.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetBranchAddress</span><span class="hljs-params">(TBranch *)</span></span>;
+<span class="hljs-comment">/// Reset the branch addresses to the internal fArgs array. Use this</span>
+<span class="hljs-comment">/// method when the addresses were changed via calls to SetBranchAddress().</span>
+
+           <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">ResetBranchAddresses</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Reset the branch addresses to the internal fArgs array. Use this</span>
+<span class="hljs-comment">/// method when the addresses were changed via calls to SetBranchAddress().</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// A Ntuple is created via</span>
+
+TNtuple(name,title,varlist,bufsize)
+
+<span class="hljs-comment">// It is filled via:</span>
+
+TNtuple::Fill(*x)  or
+TNtuple::Fill(v1,v2,v3.....)</code></pre>
+<h2 id="example">example</h2><!-- TNtuple.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1880,7 +1948,7 @@
                 </a>
                 
                 
-                <a href="TNtupleD.html" class="navigation navigation-next " aria-label="Next page: TNtupleD">
+                <a href="TNtupleD.html" class="navigation navigation-next " aria-label="Next page: TNtupleD*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1891,7 +1959,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TNtuple","level":"1.2.57","depth":2,"next":{"title":"TNtupleD","level":"1.2.58","depth":2,"path":"class/TNtupleD.md","ref":"class/TNtupleD.md","articles":[]},"previous":{"title":"TNeuron","level":"1.2.56","depth":2,"path":"class/TNeuron.md","ref":"class/TNeuron.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TNtuple.md","mtime":"2016-09-27T05:36:57.313Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-29T13:46:06.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TNtuple*","level":"1.2.57","depth":2,"next":{"title":"TNtupleD*","level":"1.2.58","depth":2,"path":"class/TNtupleD.md","ref":"class/TNtupleD.md","articles":[]},"previous":{"title":"TNeuron","level":"1.2.56","depth":2,"path":"class/TNeuron.md","ref":"class/TNeuron.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TNtuple.md","mtime":"2016-11-01T14:54:33.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

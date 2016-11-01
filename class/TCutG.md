@@ -4,24 +4,123 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:48:25 2014 (+0800)
-;; Last-Updated: 五 8月 12 22:30:42 2016 (+0800)
+;; Last-Updated: 二 11月  1 19:11:37 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 6
+;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
 
 # TCutG
 
+继承 TGraph
+
+A Graphical cut.
+
+A TCutG object is a closed polygon defining a closed region in a x,y plot.
+It can be created via the graphics editor option "CutG" or directly by
+invoking its constructor. The first and last points should be the same.
+
+To create a TCutG via the graphics editor, use the left button to select the
+points building the contour of the cut. Click on the right button to close the
+TCutG. When it is created via the graphics editor, the TCutG object is named
+"CUTG". It is recommended to immediately change the name by using the context
+menu item "SetName". When the graphics editor is used, the names of the
+variables X,Y are automatically taken from the current pad title.
+
+A Graphical cut may be drawn via TGraph::Draw. It can be edited like a normal
+TGraph.
+
+A Graphical cut may be saved to a file via TCutG::Write.
+
 ## class
 
-<!-- ```cpp -->
+```cpp
+   TCutG();/// TCutG default constructor.
+   TCutG(const TCutG &cutg);/// TCutG copy constructor
+   TCutG(const char *name, Int_t n);/// TCutG normal constructor.
+   TCutG(const char *name, Int_t n, const Float_t *x, const Float_t *y);/// TCutG normal constructor.
+   TCutG(const char *name, Int_t n, const Double_t *x, const Double_t *y);/// TCutG normal constructor.
+   virtual ~TCutG();
 
-<!-- ``` -->
+   TCutG &operator=(const TCutG &);
+   virtual Double_t Area() const;
+/// Compute the area inside this TCutG
+/// The algorithm uses Stoke's theorem over the border of the closed polygon.
+/// Just as a reminder: Stoke's theorem reduces a surface integral
+/// to a line integral over the border of the surface integral.
+
+   virtual void     Center(Double_t &cx, Double_t &cy) const;
+/// Compute the center x,y of this TCutG
+/// The algorithm uses Stoke's theorem over the border of the closed polygon.
+/// Just as a reminder: Stoke's theorem reduces a surface integral
+/// to a line integral over the border of the surface integral.
+
+   TObject         *GetObjectX() const {return fObjectX;}
+   TObject         *GetObjectY() const {return fObjectY;}
+   const char      *GetVarX() const {return fVarX.Data();}
+   const char      *GetVarY() const {return fVarY.Data();}
+   virtual Double_t IntegralHist(TH2 *h, Option_t *option="") const;
+/// Compute the integral of 2-d histogram h for all bins inside the cut
+/// if option "width" is specified, the integral is the sum of
+/// the bin contents multiplied by the bin width in x and in y.
+
+   virtual void     SavePrimitive(std::ostream &out, Option_t *option = "");/// Save primitive as a C++ statement(s) on output stream out.
+   virtual void     SetObjectX(TObject *obj);/// Set the X object (and delete the previous one if any).
+   virtual void     SetObjectY(TObject *obj);/// Set the Y object (and delete the previous one if any).
+   virtual void     SetVarX(const char *varx); // *MENU* /// Set X variable.
+   virtual void     SetVarY(const char *vary); // *MENU* /// Set Y variable.
+```
 
 ## code
 
-<!-- ```cpp -->
+```cpp
+// Assume a TTree object T and:
 
-<!-- ``` -->
+Root > T.Draw("abs(fMomemtum)%fEtot")
+
+// the TCutG members fVarX, fVary will be set to:
+
+fVarx = fEtot
+fVary = abs(fMomemtum)
+
+// A graphical cut can be used in a TTree selection expression:
+
+Root > T.Draw("fEtot","cutg1")
+
+// where "cutg1" is the name of an existing graphical cut.
+
+// Note that, as shown in the example above, a graphical cut may be used in a
+// selection expression when drawing TTrees expressions of 1-d, 2-d or
+// 3-dimensions. The expressions used in TTree::Draw can reference the variables in
+// the fVarX, fVarY of the graphical cut plus other variables.
+```
+
+```cpp
+// When the TCutG object is created by TTree::Draw, it is added to the list of special objects in
+// the main TROOT object pointed by gROOT. To retrieve a pointer to this object
+// from the code or command line, do:
+
+    TCutG *mycutg;
+    mycutg = (TCutG*)gROOT->GetListOfSpecials()->FindObject("CUTG")
+    mycutg->SetName("mycutg");
+
+// When the TCutG is not created via TTree::Draw, one must set the variable names
+// corresponding to x,y if one wants to use the cut as input to TTree::Draw,eg
+
+    TCutG *cutg = new TCutG("mycut",5);
+    cutg->SetVarX("y");
+    cutg->SetVarY("x");
+    cutg->SetPoint(0,-0.3586207,1.509534);
+    cutg->SetPoint(1,-1.894181,-0.529661);
+    cutg->SetPoint(2,0.07780173,-1.21822);
+    cutg->SetPoint(3,-1.0375,-0.07944915);
+    cutg->SetPoint(4,0.756681,0.1853814);
+    cutg->SetPoint(5,-0.3586207,1.509534);
+
+// Example of use of a TCutG in TTree::Draw:
+
+    tree.Draw("x:y","mycutg && z>0 %% sqrt(x)>1")
+```
+
 
 
 ## example

@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TNtupleD · GitBook</title>
+        <title>TNtupleD* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis+
+                    TAttAxis*
             
                 </a>
             
@@ -147,7 +147,7 @@
                 <a href="TAxis.html">
             
                     
-                    TAxis+
+                    TAxis*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch+
+                    TBranch*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas+
+                    TCanvas*
             
                 </a>
             
@@ -238,7 +238,7 @@
                 <a href="TChain.html">
             
                     
-                    TChain
+                    TChain*
             
                 </a>
             
@@ -264,7 +264,7 @@
                 <a href="TCutG.html">
             
                     
-                    TCutG
+                    TCutG*
             
                 </a>
             
@@ -290,7 +290,7 @@
                 <a href="TEventList.html">
             
                     
-                    TEventList
+                    TEventList*
             
                 </a>
             
@@ -433,7 +433,7 @@
                 <a href="TGaxis.html">
             
                     
-                    TGaxis
+                    TGaxis*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex+
+                    TLatex*
             
                 </a>
             
@@ -576,7 +576,7 @@
                 <a href="TLegend.html">
             
                     
-                    TLegend+
+                    TLegend*
             
                 </a>
             
@@ -589,7 +589,7 @@
                 <a href="TLegendEntry.html">
             
                     
-                    TLegendEntry
+                    TLegendEntry*
             
                 </a>
             
@@ -602,7 +602,7 @@
                 <a href="TLine.html">
             
                     
-                    TLine
+                    TLine*
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="TList.html">
             
                     
-                    TList
+                    TList*
             
                 </a>
             
@@ -849,7 +849,7 @@
                 <a href="TNtuple.html">
             
                     
-                    TNtuple
+                    TNtuple*
             
                 </a>
             
@@ -862,7 +862,7 @@
                 <a href="TNtupleD.html">
             
                     
-                    TNtupleD
+                    TNtupleD*
             
                 </a>
             
@@ -875,7 +875,7 @@
                 <a href="TPad.html">
             
                     
-                    TPad+
+                    TPad*
             
                 </a>
             
@@ -888,7 +888,7 @@
                 <a href="TPaveStats.html">
             
                     
-                    TPaveStats
+                    TPaveStats*
             
                 </a>
             
@@ -914,7 +914,7 @@
                 <a href="TPaveText.html">
             
                     
-                    TPaveText
+                    TPaveText*
             
                 </a>
             
@@ -1265,7 +1265,7 @@
                 <a href="TText.html">
             
                     
-                    TText+
+                    TText*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime+
+                    TTime*
             
                 </a>
             
@@ -1330,7 +1330,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer+
+                    TTimer*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree
+                    TTree+
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TNtupleD</a>
+        <a href=".." >TNtupleD*</a>
     </h1>
 </div>
 
@@ -1848,7 +1848,57 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tntupled">TNtupleD</h1>
+                                <!-- TNtupleD.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 二 11月  1 22:55:16 2016 (+0800)
+;; Last-Updated: 二 11月  1 23:00:56 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 1
+;; URL: http://wuhongyi.cn -->
+
+
+<h1 id="tntupled">TNtupleD</h1><p>&#x7EE7;&#x627F; TTree</p><p>A simple tree with branches of doubles.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TNtupleD();
+   TNtupleD(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *varlist, Int_t bufsize=<span class="hljs-number">32000</span>);
+<span class="hljs-comment">/// Create an Ntuple.</span>
+<span class="hljs-comment">/// The parameter varlist describes the list of the ntuple variables</span>
+<span class="hljs-comment">/// separated by a colon:</span>
+<span class="hljs-comment">/// Example:  `x:y:z:energy`</span>
+<span class="hljs-comment">/// For each variable in the list a separate branch is created.</span>
+<span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span></span>
+<span class="hljs-comment">///  - Use TTree to create branches with variables of different data types.</span>
+<span class="hljs-comment">///  - Use TTree when the number of branches is large (&gt; 100).</span>
+
+   <span class="hljs-keyword">virtual</span> ~TNtupleD();
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;<span class="hljs-comment">/// Browse content.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *x)</span></span>;<span class="hljs-comment">/// Fill a Ntuple with an array of floats.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">(Double_t x0, Double_t x1, Double_t x2=<span class="hljs-number">0</span>, Double_t x3=<span class="hljs-number">0</span>,
+                          Double_t x4=<span class="hljs-number">0</span>, Double_t x5=<span class="hljs-number">0</span>, Double_t x6=<span class="hljs-number">0</span>, Double_t x7=<span class="hljs-number">0</span>,
+                          Double_t x8=<span class="hljs-number">0</span>, Double_t x9=<span class="hljs-number">0</span>, Double_t x10=<span class="hljs-number">0</span>,
+                          Double_t x11=<span class="hljs-number">0</span>, Double_t x12=<span class="hljs-number">0</span>, Double_t x13=<span class="hljs-number">0</span>,
+                          Double_t x14=<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">/// Fill a Ntuple: Each Ntuple item is an argument.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetNvar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNvar; }
+           <span class="hljs-function">Double_t *<span class="hljs-title">GetArgs</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fArgs; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">ReadStream</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::istream&amp; inputstream, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *branchDescriptor=<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-keyword">char</span> delimiter = <span class="hljs-string">&apos; &apos;</span>)</span></span>;
+<span class="hljs-comment">/// Read from filename as many columns as variables in the ntuple</span>
+<span class="hljs-comment">/// the function returns the number of rows found in the file</span>
+<span class="hljs-comment">/// The second argument &quot;branchDescriptor&quot; is currently not used.</span>
+<span class="hljs-comment">/// Lines in the input file starting with &quot;#&quot; are ignored.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetBranchAddress</span><span class="hljs-params">(TBranch *)</span></span>;
+<span class="hljs-comment">/// Reset the branch addresses to the internal fArgs array. Use this</span>
+<span class="hljs-comment">/// method when the addresses were changed via calls to SetBranchAddress().</span>
+
+           <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">ResetBranchAddresses</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Reset the branch addresses to the internal fArgs array. Use this</span>
+<span class="hljs-comment">/// method when the addresses were changed via calls to SetBranchAddress().</span></code></pre>
+<h2 id="code">code</h2><h1 id="example">example</h1><!-- TNtupleD.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1875,12 +1925,12 @@
 
             
                 
-                <a href="TNtuple.html" class="navigation navigation-prev " aria-label="Previous page: TNtuple">
+                <a href="TNtuple.html" class="navigation navigation-prev " aria-label="Previous page: TNtuple*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="TPad.html" class="navigation navigation-next " aria-label="Next page: TPad+">
+                <a href="TPad.html" class="navigation navigation-next " aria-label="Next page: TPad*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1891,7 +1941,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TNtupleD","level":"1.2.58","depth":2,"next":{"title":"TPad+","level":"1.2.59","depth":2,"path":"class/TPad.md","ref":"class/TPad.md","articles":[]},"previous":{"title":"TNtuple","level":"1.2.57","depth":2,"path":"class/TNtuple.md","ref":"class/TNtuple.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TNtupleD.md","mtime":"2016-09-27T05:36:57.300Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-29T13:46:06.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TNtupleD*","level":"1.2.58","depth":2,"next":{"title":"TPad*","level":"1.2.59","depth":2,"path":"class/TPad.md","ref":"class/TPad.md","articles":[]},"previous":{"title":"TNtuple*","level":"1.2.57","depth":2,"path":"class/TNtuple.md","ref":"class/TNtuple.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TNtupleD.md","mtime":"2016-11-01T15:00:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

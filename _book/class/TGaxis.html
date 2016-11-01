@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGaxis · GitBook</title>
+        <title>TGaxis* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis+
+                    TAttAxis*
             
                 </a>
             
@@ -147,7 +147,7 @@
                 <a href="TAxis.html">
             
                     
-                    TAxis+
+                    TAxis*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch+
+                    TBranch*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas+
+                    TCanvas*
             
                 </a>
             
@@ -238,7 +238,7 @@
                 <a href="TChain.html">
             
                     
-                    TChain
+                    TChain*
             
                 </a>
             
@@ -264,7 +264,7 @@
                 <a href="TCutG.html">
             
                     
-                    TCutG
+                    TCutG*
             
                 </a>
             
@@ -290,7 +290,7 @@
                 <a href="TEventList.html">
             
                     
-                    TEventList
+                    TEventList*
             
                 </a>
             
@@ -433,7 +433,7 @@
                 <a href="TGaxis.html">
             
                     
-                    TGaxis
+                    TGaxis*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex+
+                    TLatex*
             
                 </a>
             
@@ -576,7 +576,7 @@
                 <a href="TLegend.html">
             
                     
-                    TLegend+
+                    TLegend*
             
                 </a>
             
@@ -589,7 +589,7 @@
                 <a href="TLegendEntry.html">
             
                     
-                    TLegendEntry
+                    TLegendEntry*
             
                 </a>
             
@@ -602,7 +602,7 @@
                 <a href="TLine.html">
             
                     
-                    TLine
+                    TLine*
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="TList.html">
             
                     
-                    TList
+                    TList*
             
                 </a>
             
@@ -849,7 +849,7 @@
                 <a href="TNtuple.html">
             
                     
-                    TNtuple
+                    TNtuple*
             
                 </a>
             
@@ -862,7 +862,7 @@
                 <a href="TNtupleD.html">
             
                     
-                    TNtupleD
+                    TNtupleD*
             
                 </a>
             
@@ -875,7 +875,7 @@
                 <a href="TPad.html">
             
                     
-                    TPad+
+                    TPad*
             
                 </a>
             
@@ -888,7 +888,7 @@
                 <a href="TPaveStats.html">
             
                     
-                    TPaveStats
+                    TPaveStats*
             
                 </a>
             
@@ -914,7 +914,7 @@
                 <a href="TPaveText.html">
             
                     
-                    TPaveText
+                    TPaveText*
             
                 </a>
             
@@ -1265,7 +1265,7 @@
                 <a href="TText.html">
             
                     
-                    TText+
+                    TText*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime+
+                    TTime*
             
                 </a>
             
@@ -1330,7 +1330,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer+
+                    TTimer*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree
+                    TTree+
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TGaxis</a>
+        <a href=".." >TGaxis*</a>
     </h1>
 </div>
 
@@ -1848,7 +1848,388 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tgaxis">TGaxis</h1>
+                                <!-- TGaxis.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 二 11月  1 16:41:34 2016 (+0800)
+;; Last-Updated: 二 11月  1 17:13:27 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 3
+;; URL: http://wuhongyi.cn -->
+
+
+<h1 id="tgaxis">TGaxis</h1><p>&#x7EE7;&#x627F; TLine, TAttText</p><p>Service class for the graphical representation of axis.</p><p>Instances of this class are generated by the histograms and graphs painting
+classes when TAxis are drawn. TGaxis is the &quot;painter class&quot;of
+TAxis. Therefore it is mainly used via TAxis` even if is some
+occasion  it can be used directly to draw an axis which is not part of a graph
+or an instance. For instance to draw an extra scale on a plot.</p><ul><li>Basic definition
+</li>
+<li>Definition with a function
+</li>
+<li>Logarithmic axis
+</li>
+<li>Blank axis
+</li>
+<li>Tick marks&apos; orientation
+</li>
+<li>Tick marks&apos; size
+</li>
+<li>Labels&apos; positionning
+</li>
+<li>Labels&apos; orientation
+</li>
+<li>Labels&apos; position on tick marks
+</li>
+<li>Labels&apos; format
+</li>
+<li>Alphanumeric labels
+</li>
+<li>Number of divisions optimisation
+</li>
+<li>Maximum Number of Digits for the axis labels
+</li>
+<li>Optional grid
+</li>
+<li>Time axis
+</li></ul>
+<h3 id="logarithmic-axis">Logarithmic axis</h3><p>By default axis are linear. To define a TGaxis as logarithmic, it is
+enough to create it with the option &quot;G&quot;.</p><p>When plotting an histogram or a graph the logarithmic scale can be set using:</p><ul><li>gPad-&gt;SetLogx(1); set the logarithmic scale on the X axis
+</li>
+<li>gPad-&gt;SetLogy(1); set the logarithmic scale on the Y axis
+</li></ul>
+<p>When the SetMoreLogLabels() method is called more labels are drawn
+when in logarithmic scale and there is a small number of decades  (less than 3).</p><h3 id="tick-marks-orientation">Tick marks&apos; orientation</h3><p>By default tick marks are drawn on the positive side of the axis, except for
+vertical axis for which the default is negative. The chop parameter
+allows to control the tick marks orientation:</p><ul><li>chopt = &quot;+&quot;:  tick marks are drawn on Positive side. (default)
+</li>
+<li>chopt =&quot;-&quot;:   tick mark are drawn on the negative side.
+</li>
+<li>chopt = &quot;+-&quot;: tick marks are drawn on both sides of the axis.
+</li>
+<li>chopt = &quot;U&quot;:  Unlabelled axis, default is labeled.
+</li></ul>
+<h3 id="tick-marks-size">Tick marks&apos; size</h3><p>By default, tick marks have a length equal to 3 per cent of the axis length.
+When the option &quot;S&quot; is specified, the length of the tick marks is equal to
+fTickSize*axis_length, where fTickSize may be set via TGaxis::SetTickSize.</p><p>When plotting an histogram <strong>h</strong> the tick marks size can be changed using:</p><ul><li>h-&gt;GetXaxis()-&gt;SetTickLength(0.02); set the tick length for the X axis
+</li>
+<li>gStyle-&gt;SetTickLength(0.02,&quot;x&quot;); set the tick length for the X axis
+ of all histograms drawn after this instruction.
+</li></ul>
+<p>A good way to remove tick marks on an axis is to set the tick length to 0:
+h-&gt;GetXaxis()-&gt;SetTickLength(0.);</p><h3 id="labels-positionning">Labels&apos; positionning</h3><p>Labels are normally drawn on side opposite to tick marks. However the option
+&quot;=&quot; allows to draw them on the same side.</p><h3 id="labels-orientation">Labels&apos; orientation</h3><p>By default axis labels are drawn parallel to the axis. However if the axis is vertical
+then are drawn perpendicular to the axis.</p><h3 id="labels-position-on-tick-marks">Labels&apos; position on tick marks</h3><p>By default axis labels are centered on tick marks. However, for vertical axis,
+they are right adjusted. The chop parameter allows to control the labels&apos;
+position on tick marks:</p><ul><li>chopt = &quot;R&quot;: labels are Right adjusted on tick mark.(default is centered)
+</li>
+<li>chopt = &quot;L&quot;: labels are Left adjusted on tick mark.
+</li>
+<li>chopt = &quot;C&quot;: labels are Centered on tick mark.
+</li>
+<li>chopt = &quot;M&quot;: In the Middle of the divisions.
+</li></ul>
+<h3 id="labels-format">Labels&apos; format</h3><p>Blank characters are stripped, and then the label is correctly aligned. the dot,
+if last character of the string, is also stripped, unless the option &quot;.&quot;
+(a dot, or period) is specified. if SetDecimals(kTRUE) has been called
+all labels have the same number of decimals after the &quot;.&quot;
+The same is true if gStyle-&gt;SetStripDecimals(kFALSE) has been called.</p><p>In the following, we have some parameters, like tick marks length and characters
+height (in percentage of the length of the axis (user&apos;s coordinates))
+The default values are as follows:</p><ul><li>Primary tick marks: 3.0 %
+</li>
+<li>Secondary tick marks: 1.5 %
+</li>
+<li>Third order tick marks: .75 %
+</li>
+<li>Characters height for labels: 4%
+</li>
+<li>Labels offset: 1.0 %
+</li></ul>
+<p>By default, an exponent of the form 10^N is used when the label values are either
+all very small or very large. One can disable the exponent by calling
+axis.SetNoExponent(kTRUE).</p><p>TGaxis::SetExponentOffset(Float_t xoff, Float_t yoff, Option_t <em>axis) is
+static function to set X and Y offset of the axis 10^n notation. It is in % of
+the pad size. It can be negative. </em>*axis__ specifies which axis
+(&quot;x&quot; or/and &quot;y&quot;), default is &quot;x&quot; if axis = &quot;xz&quot;
+set the two axes</p><h3 id="alphanumeric-labels">Alphanumeric labels</h3><p>Axis labels can be any alphanumeric character strings. Such axis can be produced
+only with histograms because the labels&apos;definition is stored in TAxis.</p><p>Because the alphanumeric labels are usually longer that the numeric labels, their
+size is by default equal to &quot;0.66666 * the_numeric_labels_size&quot;.</p><h3 id="number-of-divisions-optimisation">Number of divisions optimisation</h3><p>By default the number of divisions on axis is optimised to show a coherent
+labelling of the main tick marks. The number of division (ndiv) is a
+composite integer given by:</p><pre><code> ndiv = N1 + 100*N2 + 10000*N3</code></pre>
+<ul><li>N1 = number of 1st divisions.
+</li>
+<li>N2 = number of 2nd divisions.
+</li>
+<li>N3 = number of 3rd divisions.
+</li></ul>
+<p>by default the value of N1, N2 and N3 are maximum
+values. After optimisation the real number of divisions will be smaller or
+equal to these value. If one wants to bypass the optimisation, the option &quot;N&quot;
+should be given when the TGaxis is created. The option  &quot;I&quot;
+also act on the number of division as it will force an integer labelling of
+the axis.</p><p>On an histogram pointer <strong>h</strong> the number of divisions can be set in different ways:.</p><ul><li><p>Directly on the histogram. The following will set the number of division
+to 510 on the X axis of <strong>h</strong>. To avoid optimization the number of divisions
+should be negative (ie: -510);</p><pre><code class="lang-cpp">  h-&gt;SetNdivisions(<span class="hljs-number">510</span>, <span class="hljs-string">&quot;X&quot;</span>);</code></pre>
+<ul><li>On the axis itself:
+<pre><code class="lang-cpp">h-&gt;GetXaxis()-&gt;SetNdivisions(<span class="hljs-number">510</span>, kTRUE);</code></pre>
+</li></ul>
+</li></ul>
+<p>The first parameter is the number of division. If it is negative of if the
+second parameter is kFALSE then the number of divisions is not optimised.
+And other signature is also allowed:</p><pre><code class="lang-cpp">    h-&gt;GetXaxis()-&gt;SetNdivisions(<span class="hljs-number">10</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0</span>, kTRUE);</code></pre>
+<h3 id="maximum-number-of-digits-for-the-axis-labels">Maximum Number of Digits for the axis labels</h3><p>The static function TGaxis::SetMaxDigits sets the maximum number of
+digits permitted for the axis labels above which the notation with 10^N is used.
+For example, to accept 6 digits number like 900000 on an axis call
+TGaxis::SetMaxDigits(6). The default value is 5.
+fgMaxDigits must be greater than 0.</p><h3 id="optional-grid">Optional grid</h3><p>The option &quot;W&quot; allows to draw a grid on the primary tick marks. In case
+of a log axis, the grid is only drawn for the primary tick marks if the number
+of secondary and tertiary divisions is 0. SetGridLength() allows to define
+the length of the grid.</p><p>When plotting an histogram or a graph the grid can be set ON or OFF using:</p><ul><li>gPad-&gt;SetGridy(1); set the grid on the X axis
+</li>
+<li>gPad-&gt;SetGridx(1); set the grid on the Y axis
+</li>
+<li>gPad-&gt;SetGrid(1,1); set the grid on both axis.
+</li></ul>
+<h3 id="time-axis">Time axis</h3><p>Axis labels may be considered as times, plotted in a defined time format.
+The format is set with SetTimeFormat().
+The TGaxis minimum (wmin) and maximum (wmax) values
+are considered as two time values in seconds.
+The time axis will be spread around the time offset value (set with
+SetTimeOffset()). Actually it will go from &quot;TimeOffset+wmin&quot; to
+&quot;TimeOffset+wmax&quot;</p><p>Usually time axis are created automatically via histograms, but one may also
+want to draw a time axis outside an &quot;histogram context&quot;. This can be done
+thanks to the option &quot;T&quot; of TGaxis.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TGaxis();
+   TGaxis(Double_t xmin,Double_t ymin,Double_t xmax,Double_t ymax,
+          Double_t wmin,Double_t wmax,Int_t ndiv=<span class="hljs-number">510</span>, Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>,
+          Double_t gridlength = <span class="hljs-number">0</span>);
+<span class="hljs-comment">// Where:</span>
+<span class="hljs-comment">// - xmin : X origin coordinate in user&apos;s coordinates space.</span>
+<span class="hljs-comment">// - xmax : X end axis coordinate in user&apos;s coordinates space.</span>
+<span class="hljs-comment">// - ymin : Y origin coordinate in user&apos;s coordinates space.</span>
+<span class="hljs-comment">// - ymax : Y end axis coordinate in user&apos;s coordinates space.</span>
+<span class="hljs-comment">// - wmin : Lowest value for the tick mark labels written on the axis.</span>
+<span class="hljs-comment">// - wmax : Highest value for the tick mark labels written on the axis.</span>
+<span class="hljs-comment">// - ndiv : Number of divisions.</span>
+<span class="hljs-comment">//    - ndiv=N1 + 100*N2 + 10000*N3</span>
+<span class="hljs-comment">//    - N1=number of 1st divisions.</span>
+<span class="hljs-comment">//    - N2=number of 2nd divisions.</span>
+<span class="hljs-comment">//    - N3=number of 3rd divisions. e.g.:</span>
+<span class="hljs-comment">//       - ndiv=0 --&gt; no tick marks.</span>
+<span class="hljs-comment">//       - ndiv=2 --&gt; 2 divisions, one tick mark in the middle of the axis.</span>
+<span class="hljs-comment">// - chopt : Drawing options (see below).</span>
+<span class="hljs-comment">// - gridlength: grid length on main tick marks.</span>
+
+   TGaxis(Double_t xmin,Double_t ymin,Double_t xmax,Double_t ymax,
+          <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *funcname, Int_t ndiv=<span class="hljs-number">510</span>, Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>,
+          Double_t gridlength = <span class="hljs-number">0</span>);
+   <span class="hljs-keyword">virtual</span> ~TGaxis();
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">AdjustBinSize</span><span class="hljs-params">(Double_t A1,  Double_t A2,  Int_t nold
+                                    ,Double_t &amp;BinLow, Double_t &amp;BinHigh, Int_t &amp;nbins, Double_t &amp;BinWidth)</span></span>;
+<span class="hljs-comment">/// Internal method for axis labels optimisation. This method adjusts the bining</span>
+<span class="hljs-comment">/// of the axis in order to have integer values for the labels.</span>
+<span class="hljs-comment">/// \param[in]  A1,A2            Old WMIN,WMAX</span>
+<span class="hljs-comment">/// \param[out] binLow,binHigh   New WMIN,WMAX</span>
+<span class="hljs-comment">/// \param[in]  nold             Old NDIV (primary divisions)</span>
+<span class="hljs-comment">/// \param[out] nbins            New NDIV</span>
+<span class="hljs-comment">/// \param[out] binWidth         Bin width</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">CenterLabels</span><span class="hljs-params">(Bool_t center=kTRUE)</span></span>;
+<span class="hljs-comment">/// If center = kTRUE axis labels are centered in the center of the bin.</span>
+<span class="hljs-comment">/// The default is to center on the primary tick marks.</span>
+<span class="hljs-comment">/// This option does not make sense if there are more bins than tick marks.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">CenterTitle</span><span class="hljs-params">(Bool_t center=kTRUE)</span></span>;<span class="hljs-comment">/// If center = kTRUE axis title will be centered. The default is right adjusted.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">DrawAxis</span><span class="hljs-params">(Double_t xmin,Double_t ymin,Double_t xmax,Double_t ymax,
+                                Double_t wmin,Double_t wmax,Int_t ndiv=<span class="hljs-number">510</span>, Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>,
+                                Double_t gridlength = <span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">/// Draw this axis with new attributes.</span>
+   <span class="hljs-function">Float_t             <span class="hljs-title">GetGridLength</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>   </span>{<span class="hljs-keyword">return</span> fGridLength;}
+   <span class="hljs-function">TF1                *<span class="hljs-title">GetFunction</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>     </span>{<span class="hljs-keyword">return</span> fFunction;}
+   <span class="hljs-function">Int_t               <span class="hljs-title">GetLabelColor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>   </span>{<span class="hljs-keyword">return</span> fLabelColor;}
+   <span class="hljs-function">Int_t               <span class="hljs-title">GetLabelFont</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>    </span>{<span class="hljs-keyword">return</span> fLabelFont;}
+   <span class="hljs-function">Float_t             <span class="hljs-title">GetLabelOffset</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{<span class="hljs-keyword">return</span> fLabelOffset;}
+   <span class="hljs-function">Float_t             <span class="hljs-title">GetLabelSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>    </span>{<span class="hljs-keyword">return</span> fLabelSize;}
+   <span class="hljs-function">Float_t             <span class="hljs-title">GetTitleOffset</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{<span class="hljs-keyword">return</span> fTitleOffset;}
+   <span class="hljs-function">Float_t             <span class="hljs-title">GetTitleSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>    </span>{<span class="hljs-keyword">return</span> fTitleSize;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{<span class="hljs-keyword">return</span> fName.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetOption</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fChopt.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTitle.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t        <span class="hljs-title">GetMaxDigits</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static function returning fgMaxDigits (See SetMaxDigits).</span>
+   <span class="hljs-function">Int_t               <span class="hljs-title">GetNdiv</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>         </span>{<span class="hljs-keyword">return</span> fNdiv;}
+   <span class="hljs-function">Double_t            <span class="hljs-title">GetWmin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>         </span>{<span class="hljs-keyword">return</span> fWmin;}
+   <span class="hljs-function">Double_t            <span class="hljs-title">GetWmax</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span>        </span>{<span class="hljs-keyword">return</span> fWmax;}
+   <span class="hljs-function">Float_t             <span class="hljs-title">GetTickSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>     </span>{<span class="hljs-keyword">return</span> fTickSize;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">ImportAxisAttributes</span><span class="hljs-params">(TAxis *axis)</span></span>;<span class="hljs-comment">/// Internal method to import TAxis attributes to this TGaxis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">LabelsLimits</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label, Int_t &amp;first, Int_t &amp;last)</span></span>;<span class="hljs-comment">/// Internal method to find first and last character of a label.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Draw this axis with its current attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">PaintAxis</span><span class="hljs-params">(Double_t xmin,Double_t ymin,Double_t xmax,Double_t ymax,
+                                 Double_t &amp;wmin,Double_t &amp;wmax,Int_t &amp;ndiv, Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>,
+                                 Double_t gridlength = <span class="hljs-number">0</span>, Bool_t drawGridOnly = kFALSE)</span></span>;<span class="hljs-comment">/// Control function to draw an axis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Rotate</span><span class="hljs-params">(Double_t X,  Double_t Y,  Double_t CFI, Double_t SFI
+                             ,Double_t XT, Double_t YT, Double_t &amp;U,   Double_t &amp;V)</span></span>;<span class="hljs-comment">///    Internal method to rotate axis coordinates.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetFunction</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *funcname=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Specify a function to map the axis values.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetOption</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// To set axis options.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetLabelColor</span><span class="hljs-params">(Int_t labelcolor)</span> </span>{fLabelColor = labelcolor;} <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetLabelFont</span><span class="hljs-params">(Int_t labelfont)</span> </span>{fLabelFont = labelfont;} <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetLabelOffset</span><span class="hljs-params">(Float_t labeloffset)</span> </span>{fLabelOffset = labeloffset;} <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetLabelSize</span><span class="hljs-params">(Float_t labelsize)</span> </span>{fLabelSize = labelsize;} <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetMaxDigits</span><span class="hljs-params">(Int_t maxd=<span class="hljs-number">5</span>)</span></span>;
+<span class="hljs-comment">/// Static function to set `fgMaxDigits` for axis.`fgMaxDigits` is</span>
+<span class="hljs-comment">/// the maximum number of digits permitted for the axis labels above which the</span>
+<span class="hljs-comment">/// notation with 10^N is used.For example, to accept 6 digits number like 900000</span>
+<span class="hljs-comment">/// on an axis call `TGaxis::SetMaxDigits(6)`. The default value is 5.</span>
+<span class="hljs-comment">/// `fgMaxDigits` must be greater than 0.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>; <span class="hljs-comment">// *MENU* /// Change the name of the axis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetNdivisions</span><span class="hljs-params">(Int_t ndiv)</span> </span>{fNdiv = ndiv;} <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetMoreLogLabels</span><span class="hljs-params">(Bool_t more=kTRUE)</span></span>;  <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set the kMoreLogLabels bit flag. When this option is selected more labels are</span>
+<span class="hljs-comment">/// drawn when in logarithmic scale and there is a small number of decades (less than 3).</span>
+<span class="hljs-comment">/// Note that this option is automatically inherited from TAxis</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetNoExponent</span><span class="hljs-params">(Bool_t noExponent=kTRUE)</span></span>;  <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set the NoExponent flag. By default, an exponent of the form 10^N is used</span>
+<span class="hljs-comment">/// when the label values are either all very small or very large. One can disable</span>
+<span class="hljs-comment">/// the exponent by calling axis.SetNoExponent(kTRUE).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetDecimals</span><span class="hljs-params">(Bool_t dot=kTRUE)</span></span>;  <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set the decimals flag. By default, blank characters are stripped, and then the</span>
+<span class="hljs-comment">/// label is correctly aligned. The dot, if last character of the string, is also</span>
+<span class="hljs-comment">/// stripped, unless this option is specified. One can disable the option by</span>
+<span class="hljs-comment">/// calling `axis.SetDecimals(kTRUE)`.</span>
+<span class="hljs-comment">/// Note the bit is set in fBits (as opposed to fBits2 in TAxis!)</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetTickSize</span><span class="hljs-params">(Float_t ticksize)</span> </span>{fTickSize = ticksize;} <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetTickLength</span><span class="hljs-params">(Float_t ticklength)</span> </span>{SetTickSize(ticklength);}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetGridLength</span><span class="hljs-params">(Float_t gridlength)</span> </span>{fGridLength = gridlength;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetTimeFormat</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *tformat)</span></span>;
+<span class="hljs-comment">/// Change the format used for time plotting.</span>
+<span class="hljs-comment">/// The format string for date and time use the same options as the one used</span>
+<span class="hljs-comment">/// in the standard strftime C function, i.e. :</span>
+<span class="hljs-comment">/// for date :</span>
+<span class="hljs-comment">///  - `%a` abbreviated weekday name</span>
+<span class="hljs-comment">///  - `%b` abbreviated month name</span>
+<span class="hljs-comment">///  - `%d` day of the month (01-31)</span>
+<span class="hljs-comment">///  - `%m` month (01-12)</span>
+<span class="hljs-comment">///  - `%y` year without century</span>
+<span class="hljs-comment">/// for time :</span>
+<span class="hljs-comment">///  - `%H` hour (24-hour clock)</span>
+<span class="hljs-comment">///  - `%I` hour (12-hour clock)</span>
+<span class="hljs-comment">///  - `%p` local equivalent of AM or PM</span>
+<span class="hljs-comment">///  - `%M` minute (00-59)</span>
+<span class="hljs-comment">///  - `%S` seconds (00-61)</span>
+<span class="hljs-comment">///  - `%%` %</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetTimeOffset</span><span class="hljs-params">(Double_t toffset, Option_t *option=<span class="hljs-string">&quot;local&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU* /// Change the title of the axis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetTitleOffset</span><span class="hljs-params">(Float_t titleoffset=<span class="hljs-number">1</span>)</span> </span>{fTitleOffset = titleoffset;} <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Change the time offset. If option = &quot;gmt&quot;, set display mode to GMT.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetTitleSize</span><span class="hljs-params">(Float_t titlesize)</span> </span>{fTitleSize = titlesize;} <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetTitleFont</span><span class="hljs-params">(Int_t titlefont)</span> </span>{SetTextFont(titlefont);} <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetTitleColor</span><span class="hljs-params">(Int_t titlecolor)</span> </span>{SetTextColor(titlecolor);} <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetWmin</span><span class="hljs-params">(Double_t wmin)</span> </span>{fWmin = wmin;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetWmax</span><span class="hljs-params">(Double_t wmax)</span> </span>{fWmax = wmax;}
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetExponentOffset</span><span class="hljs-params">(Float_t xoff=<span class="hljs-number">0.</span>, Float_t yoff=<span class="hljs-number">0.</span>, Option_t *axis=<span class="hljs-string">&quot;xy&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Static function to set X and Y offset of the axis 10^n notation.</span>
+<span class="hljs-comment">/// It is in % of the pad size. It can be negative.</span>
+<span class="hljs-comment">/// axis specifies which axis (&quot;x&quot;,&quot;y&quot;), default = &quot;x&quot;</span>
+<span class="hljs-comment">/// if axis=&quot;xz&quot; set the two axes   </span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// Instead of the wmin,wmax arguments of the normal definition, the</span>
+<span class="hljs-comment">// name of a TF1 function can be specified. This function will be used to</span>
+<span class="hljs-comment">// map the user coordinates to the axis values and ticks.</span>
+
+   TCanvas *c2 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c2&quot;</span>,<span class="hljs-string">&quot;c2&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">500</span>);
+
+   gStyle-&gt;SetOptStat(<span class="hljs-number">0</span>);
+
+   TH2F *h2 = <span class="hljs-keyword">new</span> TH2F(<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-string">&quot;Axes&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">100</span>,<span class="hljs-number">-2</span>,<span class="hljs-number">2</span>);
+   h2-&gt;Draw();
+
+   TF1 *f1=<span class="hljs-keyword">new</span> TF1(<span class="hljs-string">&quot;f1&quot;</span>,<span class="hljs-string">&quot;-x&quot;</span>,<span class="hljs-number">-10</span>,<span class="hljs-number">10</span>);
+   TGaxis *A1 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">10</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&quot;f1&quot;</span>,<span class="hljs-number">510</span>,<span class="hljs-string">&quot;-&quot;</span>);
+   A1-&gt;SetTitle(<span class="hljs-string">&quot;axis with decreasing values&quot;</span>);
+   A1-&gt;Draw();
+
+   TF1 *f2=<span class="hljs-keyword">new</span> TF1(<span class="hljs-string">&quot;f2&quot;</span>,<span class="hljs-string">&quot;exp(x)&quot;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>);
+   TGaxis *A2 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>,<span class="hljs-number">1</span>,<span class="hljs-string">&quot;f2&quot;</span>);
+   A2-&gt;SetTitle(<span class="hljs-string">&quot;exponential axis&quot;</span>);
+   A2-&gt;SetLabelSize(<span class="hljs-number">0.03</span>);
+   A2-&gt;SetTitleSize(<span class="hljs-number">0.03</span>);
+   A2-&gt;SetTitleOffset(<span class="hljs-number">1.2</span>);
+   A2-&gt;Draw();
+
+   TF1 *f3=<span class="hljs-keyword">new</span> TF1(<span class="hljs-string">&quot;f3&quot;</span>,<span class="hljs-string">&quot;log10(x)&quot;</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1000</span>);
+   TGaxis *A3 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">2</span>,<span class="hljs-number">-2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-string">&quot;f3&quot;</span>,<span class="hljs-number">505</span>,<span class="hljs-string">&quot;G&quot;</span>);
+   A3-&gt;SetTitle(<span class="hljs-string">&quot;logarithmic axis&quot;</span>);
+   A3-&gt;SetLabelSize(<span class="hljs-number">0.03</span>);
+   A3-&gt;SetTitleSize(<span class="hljs-number">0.03</span>);
+   A3-&gt;SetTitleOffset(<span class="hljs-number">1.2</span>);
+   A3-&gt;Draw();
+   <span class="hljs-keyword">return</span> c2;</code></pre>
+<pre><code class="lang-cpp">   c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;Examples of TGaxis&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">100</span>);
+   c1-&gt;Range(<span class="hljs-number">-10</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">10</span>,<span class="hljs-number">1</span>);
+
+   TGaxis *axis = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">-8</span>,<span class="hljs-number">0.</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0.</span>,<span class="hljs-number">-100000</span>,<span class="hljs-number">150000</span>,<span class="hljs-number">2405</span>,<span class="hljs-string">&quot;tS&quot;</span>);
+   axis-&gt;SetLabelSize(<span class="hljs-number">0.3</span>);
+   axis-&gt;SetTickSize(<span class="hljs-number">0.2</span>);
+
+   <span class="hljs-function">TDatime <span class="hljs-title">da</span><span class="hljs-params">(<span class="hljs-number">2003</span>,<span class="hljs-number">02</span>,<span class="hljs-number">28</span>,<span class="hljs-number">12</span>,<span class="hljs-number">00</span>,<span class="hljs-number">00</span>)</span></span>;
+   axis-&gt;SetTimeOffset(da.Convert());
+   axis-&gt;SetTimeFormat(<span class="hljs-string">&quot;%d-%m-%Y&quot;</span>);
+   axis-&gt;Draw();
+   <span class="hljs-keyword">return</span> c1;</code></pre>
+<h1 id="example">example</h1><pre><code class="lang-cpp"><span class="hljs-comment">// The example below generates various kind of axis.</span>
+
+   TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;Examples of TGaxis&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">500</span>);
+
+   c1-&gt;Range(<span class="hljs-number">-10</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">10</span>,<span class="hljs-number">1</span>);
+
+   TGaxis *axis1 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">-4.5</span>,<span class="hljs-number">-0.2</span>,<span class="hljs-number">5.5</span>,<span class="hljs-number">-0.2</span>,<span class="hljs-number">-6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">510</span>,<span class="hljs-string">&quot;&quot;</span>);
+   axis1-&gt;SetName(<span class="hljs-string">&quot;axis1&quot;</span>);
+   axis1-&gt;Draw();
+
+   TGaxis *axis2 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">-4.5</span>,<span class="hljs-number">0.2</span>,<span class="hljs-number">5.5</span>,<span class="hljs-number">0.2</span>,<span class="hljs-number">0.001</span>,<span class="hljs-number">10000</span>,<span class="hljs-number">510</span>,<span class="hljs-string">&quot;G&quot;</span>);
+   axis2-&gt;SetName(<span class="hljs-string">&quot;axis2&quot;</span>);
+   axis2-&gt;Draw();
+
+   TGaxis *axis3 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">-9</span>,<span class="hljs-number">-0.8</span>,<span class="hljs-number">-9</span>,<span class="hljs-number">0.8</span>,<span class="hljs-number">-8</span>,<span class="hljs-number">8</span>,<span class="hljs-number">50510</span>,<span class="hljs-string">&quot;&quot;</span>);
+   axis3-&gt;SetName(<span class="hljs-string">&quot;axis3&quot;</span>);
+   axis3-&gt;Draw();
+
+   TGaxis *axis4 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">-7</span>,<span class="hljs-number">-0.8</span>,<span class="hljs-number">-7</span>,<span class="hljs-number">0.8</span>,<span class="hljs-number">1</span>,<span class="hljs-number">10000</span>,<span class="hljs-number">50510</span>,<span class="hljs-string">&quot;G&quot;</span>);
+   axis4-&gt;SetName(<span class="hljs-string">&quot;axis4&quot;</span>);
+   axis4-&gt;Draw();
+
+   TGaxis *axis5 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">-4.5</span>,<span class="hljs-number">-0.6</span>,<span class="hljs-number">5.5</span>,<span class="hljs-number">-0.6</span>,<span class="hljs-number">1.2</span>,<span class="hljs-number">1.32</span>,<span class="hljs-number">80506</span>,<span class="hljs-string">&quot;-+&quot;</span>);
+   axis5-&gt;SetName(<span class="hljs-string">&quot;axis5&quot;</span>);
+   axis5-&gt;SetLabelSize(<span class="hljs-number">0.03</span>);
+   axis5-&gt;SetTextFont(<span class="hljs-number">72</span>);
+   axis5-&gt;SetLabelOffset(<span class="hljs-number">0.025</span>);
+
+   axis5-&gt;Draw();
+
+   TGaxis *axis6 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">-4.5</span>,<span class="hljs-number">0.6</span>,<span class="hljs-number">5.5</span>,<span class="hljs-number">0.6</span>,<span class="hljs-number">100</span>,<span class="hljs-number">900</span>,<span class="hljs-number">50510</span>,<span class="hljs-string">&quot;-&quot;</span>);
+   axis6-&gt;SetName(<span class="hljs-string">&quot;axis6&quot;</span>);
+   axis6-&gt;Draw();
+
+   TGaxis *axis7 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">8</span>,<span class="hljs-number">-0.8</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0.8</span>,<span class="hljs-number">0</span>,<span class="hljs-number">9000</span>,<span class="hljs-number">50510</span>,<span class="hljs-string">&quot;+L&quot;</span>);
+   axis7-&gt;SetName(<span class="hljs-string">&quot;axis7&quot;</span>);
+   axis7-&gt;SetLabelOffset(<span class="hljs-number">0.01</span>);
+   axis7-&gt;Draw();
+
+   <span class="hljs-comment">//one can make axis going top-&gt;bottom. However because of a long standing</span>
+   <span class="hljs-comment">//problem, the two x values should not be equal</span>
+   TGaxis *axis8 = <span class="hljs-keyword">new</span> TGaxis(<span class="hljs-number">6.5</span>,<span class="hljs-number">0.8</span>,<span class="hljs-number">6.499</span>,<span class="hljs-number">-0.8</span>,<span class="hljs-number">0</span>,<span class="hljs-number">90</span>,<span class="hljs-number">50510</span>,<span class="hljs-string">&quot;-&quot;</span>);
+   axis8-&gt;SetName(<span class="hljs-string">&quot;axis8&quot;</span>);
+   axis8-&gt;Draw();
+   <span class="hljs-keyword">return</span> c1;</code></pre>
+<!-- TGaxis.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1891,7 +2272,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGaxis","level":"1.2.25","depth":2,"next":{"title":"TGraph+","level":"1.2.26","depth":2,"path":"class/TGraph.md","ref":"class/TGraph.md","articles":[]},"previous":{"title":"TFractionFitter","level":"1.2.24","depth":2,"path":"class/TFractionFitter.md","ref":"class/TFractionFitter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TGaxis.md","mtime":"2016-09-27T05:36:57.159Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-29T13:46:06.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGaxis*","level":"1.2.25","depth":2,"next":{"title":"TGraph+","level":"1.2.26","depth":2,"path":"class/TGraph.md","ref":"class/TGraph.md","articles":[]},"previous":{"title":"TFractionFitter","level":"1.2.24","depth":2,"path":"class/TFractionFitter.md","ref":"class/TFractionFitter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TGaxis.md","mtime":"2016-11-01T09:13:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

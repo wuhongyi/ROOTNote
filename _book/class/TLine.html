@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TLine · GitBook</title>
+        <title>TLine* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis+
+                    TAttAxis*
             
                 </a>
             
@@ -147,7 +147,7 @@
                 <a href="TAxis.html">
             
                     
-                    TAxis+
+                    TAxis*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch+
+                    TBranch*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas+
+                    TCanvas*
             
                 </a>
             
@@ -238,7 +238,7 @@
                 <a href="TChain.html">
             
                     
-                    TChain
+                    TChain*
             
                 </a>
             
@@ -264,7 +264,7 @@
                 <a href="TCutG.html">
             
                     
-                    TCutG
+                    TCutG*
             
                 </a>
             
@@ -290,7 +290,7 @@
                 <a href="TEventList.html">
             
                     
-                    TEventList
+                    TEventList*
             
                 </a>
             
@@ -433,7 +433,7 @@
                 <a href="TGaxis.html">
             
                     
-                    TGaxis
+                    TGaxis*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex+
+                    TLatex*
             
                 </a>
             
@@ -576,7 +576,7 @@
                 <a href="TLegend.html">
             
                     
-                    TLegend+
+                    TLegend*
             
                 </a>
             
@@ -589,7 +589,7 @@
                 <a href="TLegendEntry.html">
             
                     
-                    TLegendEntry
+                    TLegendEntry*
             
                 </a>
             
@@ -602,7 +602,7 @@
                 <a href="TLine.html">
             
                     
-                    TLine
+                    TLine*
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="TList.html">
             
                     
-                    TList
+                    TList*
             
                 </a>
             
@@ -849,7 +849,7 @@
                 <a href="TNtuple.html">
             
                     
-                    TNtuple
+                    TNtuple*
             
                 </a>
             
@@ -862,7 +862,7 @@
                 <a href="TNtupleD.html">
             
                     
-                    TNtupleD
+                    TNtupleD*
             
                 </a>
             
@@ -875,7 +875,7 @@
                 <a href="TPad.html">
             
                     
-                    TPad+
+                    TPad*
             
                 </a>
             
@@ -888,7 +888,7 @@
                 <a href="TPaveStats.html">
             
                     
-                    TPaveStats
+                    TPaveStats*
             
                 </a>
             
@@ -914,7 +914,7 @@
                 <a href="TPaveText.html">
             
                     
-                    TPaveText
+                    TPaveText*
             
                 </a>
             
@@ -1265,7 +1265,7 @@
                 <a href="TText.html">
             
                     
-                    TText+
+                    TText*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime+
+                    TTime*
             
                 </a>
             
@@ -1330,7 +1330,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer+
+                    TTimer*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree
+                    TTree+
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TLine</a>
+        <a href=".." >TLine*</a>
     </h1>
 </div>
 
@@ -1848,7 +1848,92 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tline">TLine</h1>
+                                <!-- TLine.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 一 10月 31 23:23:26 2016 (+0800)
+;; Last-Updated: 一 10月 31 23:32:10 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 1
+;; URL: http://wuhongyi.cn -->
+
+
+<h1 id="tline">TLine</h1><p>&#x7EE7;&#x627F; TObject, TAttLine, TAttBBox2D</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// TLine status bits</span>
+   <span class="hljs-keyword">enum</span> {
+      kLineNDC    = BIT(<span class="hljs-number">14</span>), <span class="hljs-comment">// Use NDC coordinates</span>
+      kVertical   = BIT(<span class="hljs-number">15</span>), <span class="hljs-comment">// Line is vertical</span>
+      kHorizontal = BIT(<span class="hljs-number">16</span>)  <span class="hljs-comment">// Line is horizontal</span>
+   };
+
+   TLine();<span class="hljs-comment">/// Line default constructor.</span>
+   TLine(Double_t x1, Double_t y1,Double_t x2, Double_t  y2);<span class="hljs-comment">/// Line normal constructor.</span>
+   TLine(<span class="hljs-keyword">const</span> TLine &amp;line);<span class="hljs-comment">/// Line copy constructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TLine();
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                 <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;line)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Copy this line to line.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t        <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;<span class="hljs-comment">/// Compute distance from point px,py to a line.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLine       *<span class="hljs-title">DrawLine</span><span class="hljs-params">(Double_t x1, Double_t y1,Double_t x2, Double_t y2)</span></span>;<span class="hljs-comment">/// Draw this line with new coordinates.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLine       *<span class="hljs-title">DrawLineNDC</span><span class="hljs-params">(Double_t x1, Double_t y1,Double_t x2, Double_t y2)</span></span>;<span class="hljs-comment">/// Draw this line with new coordinates in NDC.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
+<span class="hljs-comment">/// Execute action corresponding to one event.</span>
+<span class="hljs-comment">///  This member function is called when a line is clicked with the locator</span>
+<span class="hljs-comment">///  If Left button clicked on one of the line end points, this point</span>
+<span class="hljs-comment">///     follows the cursor until button is released.</span>
+<span class="hljs-comment">///  if Middle button clicked, the line is moved parallel to itself</span>
+<span class="hljs-comment">///     until the button is released.</span>
+
+   <span class="hljs-function">Double_t             <span class="hljs-title">GetX1</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fX1;}
+   <span class="hljs-function">Double_t             <span class="hljs-title">GetX2</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fX2;}
+   <span class="hljs-function">Double_t             <span class="hljs-title">GetY1</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fY1;}
+   <span class="hljs-function">Double_t             <span class="hljs-title">GetY2</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fY2;}
+   <span class="hljs-function">Bool_t               <span class="hljs-title">IsHorizontal</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Check whether this line is to be drawn horizontally.</span>
+   <span class="hljs-function">Bool_t               <span class="hljs-title">IsVertical</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Check whether this line is to be drawn vertically.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List this line with its attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Paint this line with its current attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">PaintLine</span><span class="hljs-params">(Double_t x1, Double_t y1,Double_t x2, Double_t  y2)</span></span>;<span class="hljs-comment">/// Draw this line with new coordinates.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">PaintLineNDC</span><span class="hljs-params">(Double_t u1, Double_t v1,Double_t u2, Double_t  v2)</span></span>;<span class="hljs-comment">/// Draw this line with new coordinates in NDC.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetNDC</span><span class="hljs-params">(Bool_t isNDC=kTRUE)</span></span>;<span class="hljs-comment">/// Set NDC mode on if isNDC = kTRUE, off otherwise</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                 <span class="hljs-title">SetHorizontal</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span> = kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=IsHorizontal</span>
+<span class="hljs-comment">/// Force the line to be drawn horizontally.</span>
+<span class="hljs-comment">/// Makes fY2 equal to fY1. The line length is kept.</span>
+<span class="hljs-comment">/// TArrow and TGaxis also get this function by inheritance.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                 <span class="hljs-title">SetVertical</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span> = kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=IsVertical</span>
+<span class="hljs-comment">/// Force the line to be drawn vertically.</span>
+<span class="hljs-comment">/// Makes fX2 equal to fX1. The line length is kept.</span>
+<span class="hljs-comment">/// TArrow and TGaxis also get this function by inheritance.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetX1</span><span class="hljs-params">(Double_t x1)</span> </span>{fX1=x1;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetX2</span><span class="hljs-params">(Double_t x2)</span> </span>{fX2=x2;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetY1</span><span class="hljs-params">(Double_t y1)</span> </span>{fY1=y1;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetY2</span><span class="hljs-params">(Double_t y2)</span> </span>{fY2=y2;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Rectangle_t  <span class="hljs-title">GetBBox</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return the bounding Box of the Line</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TPoint       <span class="hljs-title">GetBBoxCenter</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return the center of the BoundingBox as TPoint in pixels</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenter</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TPoint &amp;p)</span></span>;<span class="hljs-comment">/// Set center of the BoundingBox</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenterX</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>;<span class="hljs-comment">/// Set X coordinate of the center of the BoundingBox</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenterY</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>;<span class="hljs-comment">/// Set Y coordinate of the center of the BoundingBox</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxX1</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>;
+<span class="hljs-comment">/// Set left hand side of BoundingBox to a value</span>
+<span class="hljs-comment">/// (resize in x direction on left)</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxX2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>;
+<span class="hljs-comment">/// Set right hand side of BoundingBox to a value</span>
+<span class="hljs-comment">/// (resize in x direction on right)</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxY1</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>;
+<span class="hljs-comment">/// Set top of BoundingBox to a value (resize in y direction on top)</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxY2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>;
+<span class="hljs-comment">/// Set bottom of BoundingBox to a value</span>
+<span class="hljs-comment">/// (resize in y direction on bottom)</span></code></pre>
+<h2 id="code">code</h2><h2 id="example">example</h2><!-- TLine.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1875,7 +1960,7 @@
 
             
                 
-                <a href="TLegendEntry.html" class="navigation navigation-prev " aria-label="Previous page: TLegendEntry">
+                <a href="TLegendEntry.html" class="navigation navigation-prev " aria-label="Previous page: TLegendEntry*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1891,7 +1976,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TLine","level":"1.2.38","depth":2,"next":{"title":"TLinearFitter","level":"1.2.39","depth":2,"path":"class/TLinearFitter.md","ref":"class/TLinearFitter.md","articles":[]},"previous":{"title":"TLegendEntry","level":"1.2.37","depth":2,"path":"class/TLegendEntry.md","ref":"class/TLegendEntry.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TLine.md","mtime":"2016-09-27T05:36:57.397Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-29T13:46:06.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TLine*","level":"1.2.38","depth":2,"next":{"title":"TLinearFitter","level":"1.2.39","depth":2,"path":"class/TLinearFitter.md","ref":"class/TLinearFitter.md","articles":[]},"previous":{"title":"TLegendEntry*","level":"1.2.37","depth":2,"path":"class/TLegendEntry.md","ref":"class/TLegendEntry.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TLine.md","mtime":"2016-10-31T15:32:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

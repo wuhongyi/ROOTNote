@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TList · GitBook</title>
+        <title>TList* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis+
+                    TAttAxis*
             
                 </a>
             
@@ -147,7 +147,7 @@
                 <a href="TAxis.html">
             
                     
-                    TAxis+
+                    TAxis*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch+
+                    TBranch*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas+
+                    TCanvas*
             
                 </a>
             
@@ -238,7 +238,7 @@
                 <a href="TChain.html">
             
                     
-                    TChain
+                    TChain*
             
                 </a>
             
@@ -264,7 +264,7 @@
                 <a href="TCutG.html">
             
                     
-                    TCutG
+                    TCutG*
             
                 </a>
             
@@ -290,7 +290,7 @@
                 <a href="TEventList.html">
             
                     
-                    TEventList
+                    TEventList*
             
                 </a>
             
@@ -433,7 +433,7 @@
                 <a href="TGaxis.html">
             
                     
-                    TGaxis
+                    TGaxis*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex+
+                    TLatex*
             
                 </a>
             
@@ -576,7 +576,7 @@
                 <a href="TLegend.html">
             
                     
-                    TLegend+
+                    TLegend*
             
                 </a>
             
@@ -589,7 +589,7 @@
                 <a href="TLegendEntry.html">
             
                     
-                    TLegendEntry
+                    TLegendEntry*
             
                 </a>
             
@@ -602,7 +602,7 @@
                 <a href="TLine.html">
             
                     
-                    TLine
+                    TLine*
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="TList.html">
             
                     
-                    TList
+                    TList*
             
                 </a>
             
@@ -849,7 +849,7 @@
                 <a href="TNtuple.html">
             
                     
-                    TNtuple
+                    TNtuple*
             
                 </a>
             
@@ -862,7 +862,7 @@
                 <a href="TNtupleD.html">
             
                     
-                    TNtupleD
+                    TNtupleD*
             
                 </a>
             
@@ -875,7 +875,7 @@
                 <a href="TPad.html">
             
                     
-                    TPad+
+                    TPad*
             
                 </a>
             
@@ -888,7 +888,7 @@
                 <a href="TPaveStats.html">
             
                     
-                    TPaveStats
+                    TPaveStats*
             
                 </a>
             
@@ -914,7 +914,7 @@
                 <a href="TPaveText.html">
             
                     
-                    TPaveText
+                    TPaveText*
             
                 </a>
             
@@ -1265,7 +1265,7 @@
                 <a href="TText.html">
             
                     
-                    TText+
+                    TText*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime+
+                    TTime*
             
                 </a>
             
@@ -1330,7 +1330,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer+
+                    TTimer*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree
+                    TTree+
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TList</a>
+        <a href=".." >TList*</a>
     </h1>
 </div>
 
@@ -1848,7 +1848,167 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tlist">TList</h1>
+                                <!-- TList.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 二 11月  1 22:08:29 2016 (+0800)
+;; Last-Updated: 二 11月  1 22:43:26 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 1
+;; URL: http://wuhongyi.cn -->
+
+
+<h1 id="tlist">TList</h1><p>&#x7EE7;&#x627F; TSeqCollection</p><p>A doubly linked list. All classes inheriting from TObject can be inserted in a TList.</p><p>All classes inheriting from TObject can be
+inserted in a TList. Before being inserted into the list the object
+pointer is wrapped in a TObjLink object which contains, besides
+the object pointer also a previous and next pointer.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-keyword">typedef</span> TListIter Iterator_t;
+
+   TList() : fFirst(<span class="hljs-number">0</span>), fLast(<span class="hljs-number">0</span>), fCache(<span class="hljs-number">0</span>), fAscending(kTRUE) { }
+   TList(TObject *) : fFirst(<span class="hljs-number">0</span>), fLast(<span class="hljs-number">0</span>), fCache(<span class="hljs-number">0</span>), fAscending(kTRUE) { } <span class="hljs-comment">// for backward compatibility, don&apos;t use</span>
+   <span class="hljs-keyword">virtual</span>           ~TList();
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Remove all objects from the list. Does not delete the objects</span>
+<span class="hljs-comment">/// unless the TList is the owner (set via SetOwner()) and option</span>
+<span class="hljs-comment">/// &quot;nodelete&quot; is not set.</span>
+<span class="hljs-comment">/// If option=&quot;nodelete&quot; then don&apos;t delete any heap objects that were</span>
+<span class="hljs-comment">/// marked with the kCanDelete bit, otherwise these objects will be</span>
+<span class="hljs-comment">/// deleted (this option is used by THashTable::Clear()).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Delete</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Remove all objects from the list AND delete all heap based objects.</span>
+<span class="hljs-comment">/// If option=&quot;slow&quot; then keep list consistent during delete. This allows</span>
+<span class="hljs-comment">/// recursive list operations during the delete (e.g. during the dtor</span>
+<span class="hljs-comment">/// of an object in this list one can still access the list to search for</span>
+<span class="hljs-comment">/// other not yet deleted objects).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find an object in this list using its name. Requires a sequential</span>
+<span class="hljs-comment">/// scan till the object has been found. Returns 0 if object with specified</span>
+<span class="hljs-comment">/// name is not found. This method overrides the generic FindObject()</span>
+<span class="hljs-comment">/// of TCollection for efficiency reasons.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find an object in this list using the object&apos;s IsEqual()</span>
+<span class="hljs-comment">/// member function. Requires a sequential scan till the object has</span>
+<span class="hljs-comment">/// been found. Returns 0 if object is not found.</span>
+<span class="hljs-comment">/// This method overrides the generic FindObject() of TCollection for</span>
+<span class="hljs-comment">/// efficiency reasons.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TIterator *<span class="hljs-title">MakeIterator</span><span class="hljs-params">(Bool_t dir = kIterForward)</span> <span class="hljs-keyword">const</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Add</span><span class="hljs-params">(TObject *obj)</span> </span>{ AddLast(obj); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Add</span><span class="hljs-params">(TObject *obj, Option_t *opt)</span> </span>{ AddLast(obj, opt); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddFirst</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Add object at the beginning of the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddFirst</span><span class="hljs-params">(TObject *obj, Option_t *opt)</span></span>;
+<span class="hljs-comment">/// Add object at the beginning of the list and also store option.</span>
+<span class="hljs-comment">/// Storing an option is useful when one wants to change the behaviour</span>
+<span class="hljs-comment">/// of an object a little without having to create a complete new</span>
+<span class="hljs-comment">/// copy of the object. This feature is used, for example, by the Draw()</span>
+<span class="hljs-comment">/// method. It allows the same object to be drawn in different ways.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddLast</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Add object at the end of the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddLast</span><span class="hljs-params">(TObject *obj, Option_t *opt)</span></span>;
+<span class="hljs-comment">/// Add object at the end of the list and also store option.</span>
+<span class="hljs-comment">/// Storing an option is useful when one wants to change the behaviour</span>
+<span class="hljs-comment">/// of an object a little without having to create a complete new</span>
+<span class="hljs-comment">/// copy of the object. This feature is used, for example, by the Draw()</span>
+<span class="hljs-comment">/// method. It allows the same object to be drawn in different ways.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddAt</span><span class="hljs-params">(TObject *obj, Int_t idx)</span></span>;<span class="hljs-comment">/// Insert object at position idx in the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddAfter</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *after, TObject *obj)</span></span>;<span class="hljs-comment">/// Insert object after object after in the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddAfter</span><span class="hljs-params">(TObjLink *after, TObject *obj)</span></span>;
+<span class="hljs-comment">/// Insert object after the specified ObjLink object. If after = 0 then add</span>
+<span class="hljs-comment">/// to the tail of the list. An ObjLink can be obtained by looping over a list</span>
+<span class="hljs-comment">/// using the above describe iterator method 3.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddBefore</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *before, TObject *obj)</span></span>;<span class="hljs-comment">/// Insert object before object before in the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddBefore</span><span class="hljs-params">(TObjLink *before, TObject *obj)</span></span>;
+<span class="hljs-comment">/// Insert object before the specified ObjLink object. If before = 0 then add</span>
+<span class="hljs-comment">/// to the head of the list. An ObjLink can be obtained by looping over a list</span>
+<span class="hljs-comment">/// using the above describe iterator method 3.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">Remove</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Remove object from the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">Remove</span><span class="hljs-params">(TObjLink *lnk)</span></span>;<span class="hljs-comment">/// Remove object link (and therefore the object it contains) from the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">RemoveLast</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Remove the last object of the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">RecursiveRemove</span><span class="hljs-params">(TObject *obj)</span></span>;
+<span class="hljs-comment">/// Remove object from this collection and recursively remove the object</span>
+<span class="hljs-comment">/// from all other objects (and collections).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">At</span><span class="hljs-params">(Int_t idx)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns the object at position idx. Returns 0 if idx is out of range.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">After</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the object after object obj. Obj is found using the</span>
+<span class="hljs-comment">/// object&apos;s IsEqual() method.  Returns 0 if obj is last in list.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">Before</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the object before object obj. Obj is found using the</span>
+<span class="hljs-comment">/// object&apos;s IsEqual() method.  Returns 0 if obj is first in list.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">First</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the first object in the list. Returns 0 when list is empty.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObjLink *<span class="hljs-title">FirstLink</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFirst; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject **<span class="hljs-title">GetObjectRef</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return address of pointer to obj</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">Last</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the last object in the list. Returns 0 when list is empty.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObjLink *<span class="hljs-title">LastLink</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLast; }
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Sort</span><span class="hljs-params">(Bool_t order = kSortAscending)</span></span>;
+<span class="hljs-comment">/// Sort linked list. Real sorting is done in private function DoSort().</span>
+<span class="hljs-comment">/// The list can only be sorted when is contains objects of a sortable</span>
+<span class="hljs-comment">/// class.</span>
+
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsAscending</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fAscending; }</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp">// There are basically four ways to iterate over a TList (in order
+// of preference, if not forced by other constraints):
+
+//   1. Using the R__FOR_EACH macro:
+
+GetListOfPrimitives()-&gt;R__FOR_EACH(TObject,Paint)(option);
+
+//  2. Using the TList iterator TListIter (via the wrapper class TIter):
+
+TIter next(GetListOfPrimitives());
+while ((TObject *obj = next()))
+   obj-&gt;Draw(next.GetOption());
+
+//  3. Using the TList iterator TListIter and std::for_each algorithm:
+
+  // A function object, which will be applied to each element
+  // of the given range.
+struct STestFunctor {
+   bool operator()(TObject *aObj) {
+      ...
+      return true;
+   }
+}
+...
+...
+TIter iter(mylist);
+for_each( iter.Begin(), TIter::End(), STestFunctor() );
+
+//  4. Using the TObjLink list entries (that wrap the TObject*):
+
+TObjLink *lnk = GetListOfPrimitives()-&gt;FirstLink();
+while (lnk) {
+   lnk-&gt;GetObject()-&gt;Draw(lnk-&gt;GetOption());
+   lnk = lnk-&gt;Next();
+}
+
+//  5. Using the TList&apos;s After() and Before() member functions:
+
+TFree *idcur = this;
+while (idcur) {
+   ...
+   ...
+   idcur = (TFree*)GetListOfFree()-&gt;After(idcur);
+         }
+
+// Methods 2, 3 and 4 can also easily iterate backwards using either
+// a backward TIter (using argument kIterBackward) or by using
+// LastLink() and lnk-&gt;Prev() or by using the Before() member.</code></pre>
+<h2 id="example">example</h2><!-- TList.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1891,7 +2051,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TList","level":"1.2.40","depth":2,"next":{"title":"TMath","level":"1.2.41","depth":2,"path":"class/TMath.md","ref":"class/TMath.md","articles":[]},"previous":{"title":"TLinearFitter","level":"1.2.39","depth":2,"path":"class/TLinearFitter.md","ref":"class/TLinearFitter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TList.md","mtime":"2016-09-27T05:36:57.392Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-29T13:46:06.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TList*","level":"1.2.40","depth":2,"next":{"title":"TMath","level":"1.2.41","depth":2,"path":"class/TMath.md","ref":"class/TMath.md","articles":[]},"previous":{"title":"TLinearFitter","level":"1.2.39","depth":2,"path":"class/TLinearFitter.md","ref":"class/TLinearFitter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TList.md","mtime":"2016-11-01T14:43:26.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

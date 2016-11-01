@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TLegendEntry · GitBook</title>
+        <title>TLegendEntry* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -134,7 +134,7 @@
                 <a href="TAttAxis.html">
             
                     
-                    TAttAxis+
+                    TAttAxis*
             
                 </a>
             
@@ -147,7 +147,7 @@
                 <a href="TAxis.html">
             
                     
-                    TAxis+
+                    TAxis*
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="TBranch.html">
             
                     
-                    TBranch+
+                    TBranch*
             
                 </a>
             
@@ -225,7 +225,7 @@
                 <a href="TCanvas.html">
             
                     
-                    TCanvas+
+                    TCanvas*
             
                 </a>
             
@@ -238,7 +238,7 @@
                 <a href="TChain.html">
             
                     
-                    TChain
+                    TChain*
             
                 </a>
             
@@ -264,7 +264,7 @@
                 <a href="TCutG.html">
             
                     
-                    TCutG
+                    TCutG*
             
                 </a>
             
@@ -290,7 +290,7 @@
                 <a href="TEventList.html">
             
                     
-                    TEventList
+                    TEventList*
             
                 </a>
             
@@ -433,7 +433,7 @@
                 <a href="TGaxis.html">
             
                     
-                    TGaxis
+                    TGaxis*
             
                 </a>
             
@@ -563,7 +563,7 @@
                 <a href="TLatex.html">
             
                     
-                    TLatex+
+                    TLatex*
             
                 </a>
             
@@ -576,7 +576,7 @@
                 <a href="TLegend.html">
             
                     
-                    TLegend+
+                    TLegend*
             
                 </a>
             
@@ -589,7 +589,7 @@
                 <a href="TLegendEntry.html">
             
                     
-                    TLegendEntry
+                    TLegendEntry*
             
                 </a>
             
@@ -602,7 +602,7 @@
                 <a href="TLine.html">
             
                     
-                    TLine
+                    TLine*
             
                 </a>
             
@@ -628,7 +628,7 @@
                 <a href="TList.html">
             
                     
-                    TList
+                    TList*
             
                 </a>
             
@@ -849,7 +849,7 @@
                 <a href="TNtuple.html">
             
                     
-                    TNtuple
+                    TNtuple*
             
                 </a>
             
@@ -862,7 +862,7 @@
                 <a href="TNtupleD.html">
             
                     
-                    TNtupleD
+                    TNtupleD*
             
                 </a>
             
@@ -875,7 +875,7 @@
                 <a href="TPad.html">
             
                     
-                    TPad+
+                    TPad*
             
                 </a>
             
@@ -888,7 +888,7 @@
                 <a href="TPaveStats.html">
             
                     
-                    TPaveStats
+                    TPaveStats*
             
                 </a>
             
@@ -914,7 +914,7 @@
                 <a href="TPaveText.html">
             
                     
-                    TPaveText
+                    TPaveText*
             
                 </a>
             
@@ -1265,7 +1265,7 @@
                 <a href="TText.html">
             
                     
-                    TText+
+                    TText*
             
                 </a>
             
@@ -1317,7 +1317,7 @@
                 <a href="TTime.html">
             
                     
-                    TTime+
+                    TTime*
             
                 </a>
             
@@ -1330,7 +1330,7 @@
                 <a href="TTimer.html">
             
                     
-                    TTimer+
+                    TTimer*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree
+                    TTree+
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TLegendEntry</a>
+        <a href=".." >TLegendEntry*</a>
     </h1>
 </div>
 
@@ -1848,7 +1848,51 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tlegendentry">TLegendEntry</h1>
+                                <!-- TLegendEntry.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 一 10月 31 23:32:48 2016 (+0800)
+;; Last-Updated: 二 11月  1 12:35:35 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 2
+;; URL: http://wuhongyi.cn -->
+
+
+<h1 id="tlegendentry">TLegendEntry</h1><p>&#x7EE7;&#x627F; TObject, TAttText, TAttLine, TAttFill, TAttMarker</p><p>Storage class for one entry of a TLegend</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TLegendEntry();
+   TLegendEntry(<span class="hljs-keyword">const</span> TObject *obj, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label = <span class="hljs-number">0</span>, Option_t *option=<span class="hljs-string">&quot;lpf&quot;</span> );
+<span class="hljs-comment">/// TLegendEntry normal constructor for one entry in a TLegend.</span>
+<span class="hljs-comment">/// obj is the object this entry will represent. If obj has</span>
+<span class="hljs-comment">/// line/fill/marker attributes, then the TLegendEntry will display</span>
+<span class="hljs-comment">/// these attributes.</span>
+<span class="hljs-comment">/// label is the text that will describe the entry, it is displayed using</span>
+<span class="hljs-comment">/// TLatex, so may have a complex format.</span>
+<span class="hljs-comment">/// option may have values</span>
+<span class="hljs-comment">///  - L draw line associated w/ TAttLine if obj inherits from TAttLine</span>
+<span class="hljs-comment">///  - P draw polymarker assoc. w/ TAttMarker if obj inherits from TAttMarker</span>
+<span class="hljs-comment">///  - F draw a box with fill associated w/ TAttFill if obj inherits TAttFill</span>
+<span class="hljs-comment">///    default is object = &quot;LPF&quot;</span>
+
+   TLegendEntry( <span class="hljs-keyword">const</span> TLegendEntry &amp;entry );
+   <span class="hljs-keyword">virtual</span> ~TLegendEntry();
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Copy</span><span class="hljs-params">( TObject &amp;obj )</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// copy this TLegendEntry into obj</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>   *<span class="hljs-title">GetLabel</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLabel.Data(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject      *<span class="hljs-title">GetObject</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fObject; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Option_t     *<span class="hljs-title">GetOption</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fOption.Data(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Print</span><span class="hljs-params">( Option_t *option = <span class="hljs-string">&quot;&quot;</span> )</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// dump this TLegendEntry to std::cout</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SaveEntry</span><span class="hljs-params">( <span class="hljs-built_in">std</span>::ostream &amp;out, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name )</span></span>;
+<span class="hljs-comment">/// Save this TLegendEntry as C++ statements on output stream out</span>
+<span class="hljs-comment">///  to be used with the SaveAs .C option</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetLabel</span><span class="hljs-params">( <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label = <span class="hljs-string">&quot;&quot;</span> )</span> </span>{ fLabel = label; } <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetObject</span><span class="hljs-params">(TObject* obj )</span></span>;<span class="hljs-comment">/// (re)set the obj pointed to by this entry</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetObject</span><span class="hljs-params">( <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *objectName )</span></span>;  <span class="hljs-comment">// *MENU* /// (re)set the obj pointed to by this entry</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetOption</span><span class="hljs-params">( Option_t *option=<span class="hljs-string">&quot;lpf&quot;</span> )</span> </span>{ fOption = option; } <span class="hljs-comment">// *MENU*</span></code></pre>
+<h2 id="code">code</h2><h2 id="example">example</h2><!-- TLegendEntry.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -1875,12 +1919,12 @@
 
             
                 
-                <a href="TLegend.html" class="navigation navigation-prev " aria-label="Previous page: TLegend+">
+                <a href="TLegend.html" class="navigation navigation-prev " aria-label="Previous page: TLegend*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="TLine.html" class="navigation navigation-next " aria-label="Next page: TLine">
+                <a href="TLine.html" class="navigation navigation-next " aria-label="Next page: TLine*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1891,7 +1935,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TLegendEntry","level":"1.2.37","depth":2,"next":{"title":"TLine","level":"1.2.38","depth":2,"path":"class/TLine.md","ref":"class/TLine.md","articles":[]},"previous":{"title":"TLegend+","level":"1.2.36","depth":2,"path":"class/TLegend.md","ref":"class/TLegend.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TLegendEntry.md","mtime":"2016-09-27T05:36:57.051Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-29T13:46:06.231Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TLegendEntry*","level":"1.2.37","depth":2,"next":{"title":"TLine*","level":"1.2.38","depth":2,"path":"class/TLine.md","ref":"class/TLine.md","articles":[]},"previous":{"title":"TLegend*","level":"1.2.36","depth":2,"path":"class/TLegend.md","ref":"class/TLegend.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TLegendEntry.md","mtime":"2016-11-01T04:35:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
