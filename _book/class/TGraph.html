@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGraph+ · GitBook</title>
+        <title>TGraph* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -446,7 +446,7 @@
                 <a href="TGraph.html">
             
                     
-                    TGraph+
+                    TGraph*
             
                 </a>
             
@@ -1833,7 +1833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TGraph+</a>
+        <a href=".." >TGraph*</a>
     </h1>
 </div>
 
@@ -1854,40 +1854,114 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 一 10月  3 21:38:23 2016 (+0800)
+;; Last-Updated: 一 11月  7 21:50:42 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 13
+;;     Update #: 15
 ;; URL: http://wuhongyi.cn -->
 
 
-<h1 id="tgraph">TGraph</h1><p>&#x7EE7;&#x627F; TNamed, TAttLine, TAttFill, TAttMarker</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TGraph();
+<h1 id="tgraph">TGraph</h1><p>&#x7EE7;&#x627F; TNamed, TAttLine, TAttFill, TAttMarker</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// TGraph status bits</span>
+   <span class="hljs-keyword">enum</span> {
+      kClipFrame     = BIT(<span class="hljs-number">10</span>),  <span class="hljs-comment">// clip to the frame boundary</span>
+      kNotEditable   = BIT(<span class="hljs-number">18</span>)   <span class="hljs-comment">// bit set if graph is non editable</span>
+   };
+
+   TGraph();<span class="hljs-comment">/// Graph default constructor.</span>
    TGraph(Int_t n);
-   TGraph(Int_t n, <span class="hljs-keyword">const</span> Int_t *x, <span class="hljs-keyword">const</span> Int_t *y);
-   TGraph(Int_t n, <span class="hljs-keyword">const</span> Float_t *x, <span class="hljs-keyword">const</span> Float_t *y);
-   TGraph(Int_t n, <span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *y);
-   TGraph(<span class="hljs-keyword">const</span> TGraph &amp;gr);
-   TGraph&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TGraph&amp;);
+<span class="hljs-comment">/// Constructor with only the number of points set</span>
+<span class="hljs-comment">/// the arrays x and y will be set later</span>
+
+   TGraph(Int_t n, <span class="hljs-keyword">const</span> Int_t *x, <span class="hljs-keyword">const</span> Int_t *y);<span class="hljs-comment">/// Graph normal constructor with ints.</span>
+   TGraph(Int_t n, <span class="hljs-keyword">const</span> Float_t *x, <span class="hljs-keyword">const</span> Float_t *y);<span class="hljs-comment">/// Graph normal constructor with floats.</span>
+   TGraph(Int_t n, <span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *y);<span class="hljs-comment">/// Graph normal constructor with doubles.</span>
+   TGraph(<span class="hljs-keyword">const</span> TGraph &amp;gr);<span class="hljs-comment">/// Copy constructor for this graph</span>
+   TGraph&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TGraph&amp;);<span class="hljs-comment">/// Equal operator for this graph</span>
    TGraph(<span class="hljs-keyword">const</span> TVectorF &amp;vx, <span class="hljs-keyword">const</span> TVectorF &amp;vy);
+<span class="hljs-comment">/// Graph constructor with two vectors of floats in input</span>
+<span class="hljs-comment">/// A graph is build with the X coordinates taken from vx and Y coord from vy</span>
+<span class="hljs-comment">/// The number of points in the graph is the minimum of number of points</span>
+<span class="hljs-comment">/// in vx and vy.</span>
+
    TGraph(<span class="hljs-keyword">const</span> TVectorD &amp;vx, <span class="hljs-keyword">const</span> TVectorD &amp;vy);
-   TGraph(<span class="hljs-keyword">const</span> TH1 *h);
+<span class="hljs-comment">/// Graph constructor with two vectors of doubles in input</span>
+<span class="hljs-comment">/// A graph is build with the X coordinates taken from vx and Y coord from vy</span>
+<span class="hljs-comment">/// The number of points in the graph is the minimum of number of points</span>
+<span class="hljs-comment">/// in vx and vy.</span>
+
+   TGraph(<span class="hljs-keyword">const</span> TH1 *h);<span class="hljs-comment">/// Graph constructor importing its parameters from the TH1 object passed as argument</span>
    TGraph(<span class="hljs-keyword">const</span> TF1 *f, Option_t *option=<span class="hljs-string">&quot;&quot;</span>);
+<span class="hljs-comment">/// Graph constructor importing its parameters from the TF1 object passed as argument</span>
+<span class="hljs-comment">/// - if option ==&quot;&quot; (default), a TGraph is created with points computed</span>
+<span class="hljs-comment">///                at the fNpx points of f.</span>
+<span class="hljs-comment">/// - if option ==&quot;d&quot;, a TGraph is created with points computed with the derivatives</span>
+<span class="hljs-comment">///                at the fNpx points of f.</span>
+<span class="hljs-comment">/// - if option ==&quot;i&quot;, a TGraph is created with points computed with the integral</span>
+<span class="hljs-comment">///                at the fNpx points of f.</span>
+<span class="hljs-comment">/// - if option ==&quot;I&quot;, a TGraph is created with points computed with the integral</span>
+<span class="hljs-comment">///                at the fNpx+1 points of f and the integral is normalized to 1.</span>
+
    TGraph(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *format=<span class="hljs-string">&quot;%lg %lg&quot;</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>);
-   <span class="hljs-keyword">virtual</span> ~TGraph();
+<span class="hljs-comment">/// Graph constructor reading input from filename.</span>
+<span class="hljs-comment">/// filename is assumed to contain at least two columns of numbers.</span>
+<span class="hljs-comment">/// the string format is by default &quot;%lg %lg&quot;.</span>
+<span class="hljs-comment">/// this is a standard c formatting for scanf. If columns of numbers should be</span>
+<span class="hljs-comment">/// skipped, a &quot;%*lg&quot; or &quot;%*s&quot; for each column can be added,</span>
+<span class="hljs-comment">/// e.g. &quot;%lg %*lg %lg&quot; would read x-values from the first and y-values from</span>
+<span class="hljs-comment">/// the third column.</span>
+<span class="hljs-comment">/// For files separated by a specific delimiter different from &apos; &apos; and &apos;\t&apos; (e.g. &apos;;&apos; in csv files)</span>
+<span class="hljs-comment">/// you can avoid using %*s to bypass this delimiter by explicitly specify the &quot;option&quot; argument,</span>
+<span class="hljs-comment">/// e.g. option=&quot; \t,;&quot; for columns of figures separated by any of these characters (&apos; &apos;, &apos;\t&apos;, &apos;,&apos;, &apos;;&apos;)</span>
+<span class="hljs-comment">/// used once (e.g. &quot;1;1&quot;) or in a combined way (&quot; 1;,;;  1&quot;).</span>
+<span class="hljs-comment">/// Note in that case, the instantiation is about 2 times slower.</span>
+
+   <span class="hljs-keyword">virtual</span> ~TGraph();<span class="hljs-comment">/// Graph default destructor.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Apply</span><span class="hljs-params">(TF1 *f)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;
+<span class="hljs-comment">/// Apply function f to all the data points</span>
+<span class="hljs-comment">/// f may be a 1-D function TF1 or 2-d function TF2</span>
+<span class="hljs-comment">/// The Y values of the graph are replaced by the new values computed</span>
+<span class="hljs-comment">/// using the function</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;<span class="hljs-comment">/// Browse</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">Chisquare</span><span class="hljs-params">(TF1 *f1, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return the chisquare of this graph with respect to f1.</span>
+<span class="hljs-comment">/// The chisquare is computed as the sum of the quantity below at each point:</span>
+<span class="hljs-comment">/// \f[</span>
+<span class="hljs-comment">///   \frac{(y-f1(x))^{2}}{ey^{2}+(\frac{1}{2}(exl+exh)f1&apos;(x))^{2}}</span>
+<span class="hljs-comment">/// \f]</span>
+<span class="hljs-comment">/// where x and y are the graph point coordinates and f1&apos;(x) is the derivative of function f1(x).</span>
+<span class="hljs-comment">/// This method to approximate the uncertainty in y because of the errors in x, is called</span>
+<span class="hljs-comment">/// &quot;effective variance&quot; method.</span>
+<span class="hljs-comment">/// In case of a pure TGraph, the denominator is 1.</span>
+<span class="hljs-comment">/// In case of a TGraphErrors or TGraphAsymmErrors the errors are taken</span>
+<span class="hljs-comment">/// into account.</span>
+<span class="hljs-comment">/// By default the range of the graph is used whatever function range.</span>
+<span class="hljs-comment">/// Use option &quot;R&quot; to use the function range</span>
+
    <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t         <span class="hljs-title">CompareArg</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGraph* gr, Int_t left, Int_t right)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t         <span class="hljs-title">CompareX</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGraph* gr, Int_t left, Int_t right)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t         <span class="hljs-title">CompareY</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGraph* gr, Int_t left, Int_t right)</span></span>;
+<span class="hljs-comment">/// Return kTRUE if point number &quot;left&quot;&apos;s argument (angle with respect to positive</span>
+<span class="hljs-comment">/// x-axis) is bigger than that of point number &quot;right&quot;. Can be used by Sort.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t         <span class="hljs-title">CompareX</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGraph* gr, Int_t left, Int_t right)</span></span>;<span class="hljs-comment">/// Return kTRUE if fX[left] &gt; fX[right]. Can be used by Sort.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t         <span class="hljs-title">CompareY</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGraph* gr, Int_t left, Int_t right)</span></span>;<span class="hljs-comment">/// Return kTRUE if fY[left] &gt; fY[right]. Can be used by Sort.</span>
    <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t         <span class="hljs-title">CompareRadius</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGraph* gr, Int_t left, Int_t right)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">ComputeRange</span><span class="hljs-params">(Double_t &amp;xmin, Double_t &amp;ymin, Double_t &amp;xmax, Double_t &amp;ymax)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return kTRUE if point number &quot;left&quot;&apos;s distance to origin is bigger than</span>
+<span class="hljs-comment">/// that of point number &quot;right&quot;. Can be used by Sort.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">ComputeRange</span><span class="hljs-params">(Double_t &amp;xmin, Double_t &amp;ymin, Double_t &amp;xmax, Double_t &amp;ymax)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">/// Compute the x/y range of the points in this graph</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;
+<span class="hljs-comment">/// Compute distance from point px,py to a graph.</span>
+<span class="hljs-comment">///  Compute the closest distance of approach from point px,py to this line.</span>
+<span class="hljs-comment">///  The distance is computed in pixels units.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Draw</span><span class="hljs-params">(Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawGraph</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Int_t *x, <span class="hljs-keyword">const</span> Int_t *y, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawGraph</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Float_t *x, <span class="hljs-keyword">const</span> Float_t *y, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawGraph</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Double_t *x=<span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> Double_t *y=<span class="hljs-number">0</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawPanel</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Draw this graph with its current attributes.</span>
+<span class="hljs-comment">/// The options to draw a graph are described in TGraphPainter class.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawGraph</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Int_t *x, <span class="hljs-keyword">const</span> Int_t *y, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Draw this graph with new attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawGraph</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Float_t *x, <span class="hljs-keyword">const</span> Float_t *y, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Draw this graph with new attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawGraph</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Double_t *x=<span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> Double_t *y=<span class="hljs-number">0</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Draw this graph with new attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">DrawPanel</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU* /// Display a panel with all graph drawing options.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t x, TSpline *spline=<span class="hljs-number">0</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//&#x901A;&#x8FC7; x &#x63D2;&#x503C;&#x627E; y &#x503C;&#xFF0C;&#x63D0;&#x4F9B;&#x591A;&#x79CD;&#x63D2;&#x503C;&#x7B97;&#x6CD5;&#xFF1A;&#x7EBF;&#x6027;&#x63D2;&#x503C;&#x3001;&#x5149;&#x6ED1;&#x63D2;&#x503C;&#x7B49;</span>
 <span class="hljs-comment">/// Interpolate points in this graph at x using a TSpline</span>
 <span class="hljs-comment">///  -if spline==0 and option=&quot;&quot; a linear interpolation between the two points</span>
@@ -1899,11 +1973,32 @@
 <span class="hljs-comment">///  -if spline is specified, it is used to return the interpolated value.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Expand</span><span class="hljs-params">(Int_t newsize)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Expand</span><span class="hljs-params">(Int_t newsize, Int_t step)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject      *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject      *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Execute action corresponding to one event.</span>
+<span class="hljs-comment">///  This member function is called when a graph is clicked with the locator</span>
+<span class="hljs-comment">///  If Left button clicked on one of the line end points, this point</span>
+<span class="hljs-comment">///     follows the cursor until button is released.</span>
+<span class="hljs-comment">///  if Middle button clicked, the line is moved parallel to itself</span>
+<span class="hljs-comment">///     until the button is released.</span>
 
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Expand</span><span class="hljs-params">(Int_t newsize)</span></span>;<span class="hljs-comment">/// If array sizes &lt;= newsize, expand storage to 2*newsize.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Expand</span><span class="hljs-params">(Int_t newsize, Int_t step)</span></span>;
+<span class="hljs-comment">/// If graph capacity is less than newsize points then make array sizes</span>
+<span class="hljs-comment">/// equal to least multiple of step to contain newsize points.</span>
+<span class="hljs-comment">/// Returns kTRUE if size was altered</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject      *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Search object named name in the list of functions</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject      *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Search object obj in the list of functions</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFitResultPtr <span class="hljs-title">Fit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *formula ,Option_t *option=<span class="hljs-string">&quot;&quot;</span> ,Option_t *goption=<span class="hljs-string">&quot;&quot;</span>, Axis_t xmin=<span class="hljs-number">0</span>, Axis_t xmax=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*   &#x8FD4;&#x56DE;0&#x8868;&#x793A;&#x62DF;&#x5408;&#x6B63;&#x5E38;</span>
+<span class="hljs-comment">/// Fit this graph with function with name fname.</span>
+<span class="hljs-comment">/// interface to TGraph::Fit(TF1 *f1...</span>
+<span class="hljs-comment">/// fname is the name of an already predefined function created by TF1 or TF2</span>
+<span class="hljs-comment">/// Predefined functions such as gaus, expo and poln are automatically</span>
+<span class="hljs-comment">/// created by ROOT.</span>
+<span class="hljs-comment">/// fname can also be a formula, accepted by the linear fitter (linear parts divided</span>
+<span class="hljs-comment">/// by &quot;++&quot; sign), for example &quot;x++sin(x)&quot; for fitting &quot;[0]*x+[1]*sin(x)&quot;</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFitResultPtr <span class="hljs-title">Fit</span><span class="hljs-params">(TF1 *f1 ,Option_t *option=<span class="hljs-string">&quot;&quot;</span> ,Option_t *goption=<span class="hljs-string">&quot;&quot;</span>, Axis_t xmin=<span class="hljs-number">0</span>, Axis_t xmax=<span class="hljs-number">0</span>)</span></span>;
 <span class="hljs-comment">////////////////////////////////////////////////////////////////////////////////</span>
 <span class="hljs-comment">/// Fit this graph with function f1.</span>
 <span class="hljs-comment">///</span>
@@ -1987,23 +2082,17 @@
 <span class="hljs-comment">///     - specify rxmax &gt; rxmin (default is rxmin=rxmax=0)</span>
 <span class="hljs-comment">///     - specify the option &quot;R&quot;. In this case, the function will be taken</span>
 <span class="hljs-comment">///       instead of the full graph range.</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">/// ## Changing the fitting function:</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">///   By default a chi2 fitting function is used for fitting a TGraph.</span>
 <span class="hljs-comment">///   The function is implemented in FitUtil::EvaluateChi2.</span>
 <span class="hljs-comment">///   In case of TGraphErrors an effective chi2 is used (see below TGraphErrors fit)</span>
 <span class="hljs-comment">///   To specify a User defined fitting function, specify option &quot;U&quot; and</span>
 <span class="hljs-comment">///   call the following functions:</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">///      TVirtualFitter::Fitter(mygraph)-&gt;SetFCN(MyFittingFunction)</span>
 <span class="hljs-comment">///   where MyFittingFunction is of type:</span>
 <span class="hljs-comment">///   extern void MyFittingFunction(Int_t &amp;npar, Double_t *gin, Double_t &amp;f,</span>
 <span class="hljs-comment">///                                 Double_t *u, Int_t flag);</span>
-<span class="hljs-comment">///</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">/// ## TGraphErrors fit:</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">///   In case of a TGraphErrors object, when x errors are present, the error along x,</span>
 <span class="hljs-comment">///   is projected along the y-direction by calculating the function at the points x-exlow and</span>
 <span class="hljs-comment">///   x+exhigh. The chisquare is then computed as the sum of the quantity below at each point:</span>
@@ -2060,26 +2149,20 @@
 <span class="hljs-comment">///      Double_t err0   = r-&gt;ParError(0); // retrieve the error for the parameter 0</span>
 <span class="hljs-comment">///      r-&gt;Print(&quot;V&quot;);     // print full information of fit including covariance matrix</span>
 <span class="hljs-comment">///      r-&gt;Write();        // store the result in a file</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">///  The fit parameters, error and chi2 (but not covariance matrix) can be retrieved also</span>
 <span class="hljs-comment">///  from the fitted function.</span>
 <span class="hljs-comment">///  If the histogram is made persistent, the list of</span>
 <span class="hljs-comment">///  associated functions is also persistent. Given a pointer (see above)</span>
 <span class="hljs-comment">///  to an associated function myfunc, one can retrieve the function/fit</span>
 <span class="hljs-comment">///  parameters with calls such as:</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">///      Double_t chi2 = myfunc-&gt;GetChisquare();</span>
 <span class="hljs-comment">///      Double_t par0 = myfunc-&gt;GetParameter(0); //value of 1st parameter</span>
 <span class="hljs-comment">///      Double_t err0 = myfunc-&gt;GetParError(0);  //error on first parameter</span>
-<span class="hljs-comment">///</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">/// ## Access to the fit status</span>
 <span class="hljs-comment">///  The status of the fit can be obtained converting the TFitResultPtr to an integer</span>
 <span class="hljs-comment">///  independently if the fit option &quot;S&quot; is used or not:</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">///       TFitResultPtr r = h-&gt;Fit(myFunc,opt);</span>
 <span class="hljs-comment">///       Int_t fitStatus = r;</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">///  The fitStatus is 0 if the fit is OK (i.e. no error occurred).</span>
 <span class="hljs-comment">///  The value of the fit status code is negative in case of an error not connected with the</span>
 <span class="hljs-comment">///  minimization procedure, for example when a wrong function is used.</span>
@@ -2125,31 +2208,61 @@
 <span class="hljs-comment">///   prints the fit probability, parameter names/values, and errors.</span>
 <span class="hljs-comment">///   You can change the position of the statistics box with these lines</span>
 <span class="hljs-comment">///   (where g is a pointer to the TGraph):</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">///       Root &gt; TPaveStats *st = (TPaveStats*)g-&gt;GetListOfFunctions()-&gt;FindObject(&quot;stats&quot;)</span>
 <span class="hljs-comment">///       Root &gt; st-&gt;SetX1NDC(newx1); //new x start position</span>
 <span class="hljs-comment">///       Root &gt; st-&gt;SetX2NDC(newx2); //new x end position</span>
-<span class="hljs-comment">///</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFitResultPtr <span class="hljs-title">Fit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *formula ,Option_t *option=<span class="hljs-string">&quot;&quot;</span> ,Option_t *goption=<span class="hljs-string">&quot;&quot;</span>, Axis_t xmin=<span class="hljs-number">0</span>, Axis_t xmax=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*   &#x8FD4;&#x56DE;0&#x8868;&#x793A;&#x62DF;&#x5408;&#x6B63;&#x5E38;</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFitResultPtr <span class="hljs-title">Fit</span><span class="hljs-params">(TF1 *f1 ,Option_t *option=<span class="hljs-string">&quot;&quot;</span> ,Option_t *goption=<span class="hljs-string">&quot;&quot;</span>, Axis_t xmin=<span class="hljs-number">0</span>, Axis_t xmax=<span class="hljs-number">0</span>)</span></span>;
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">FitPanel</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
-   <span class="hljs-function">Bool_t                <span class="hljs-title">GetEditable</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Display a GUI panel with all graph fit options.</span>
+<span class="hljs-comment">/// See class TFitEditor for example</span>
+
+   <span class="hljs-function">Bool_t                <span class="hljs-title">GetEditable</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">/// Return kTRUE if kNotEditable bit is not set, kFALSE otherwise.</span>
    <span class="hljs-function">TF1                  *<span class="hljs-title">GetFunction</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">//&#x83B7;&#x5F97;&#x62DF;&#x5408;&#x51FD;&#x6570;&#xFF0C;&#x7531;&#x62DF;&#x5408;&#x51FD;&#x6570;&#x53EF;&#x5F97;&#x5230;&#x62DF;&#x5408;&#x53C2;&#x6570;</span>
+<span class="hljs-comment">/// Return pointer to function with name.</span>
+<span class="hljs-comment">/// Functions such as TGraph::Fit store the fitted function in the list of</span>
+<span class="hljs-comment">/// functions of this graph.</span>
+
    <span class="hljs-function">TH1F                 *<span class="hljs-title">GetHistogram</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns a pointer to the histogram used to draw the axis</span>
+<span class="hljs-comment">/// Takes into account the two following cases.</span>
+<span class="hljs-comment">///  1. option &apos;A&apos; was specified in TGraph::Draw. Return fHistogram</span>
+<span class="hljs-comment">///  2. user had called TPad::DrawFrame. return pointer to hframe histogram</span>
+
    <span class="hljs-function">TList                *<span class="hljs-title">GetListOfFunctions</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFunctions; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetCorrelationFactor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetCovariance</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetMean</span><span class="hljs-params">(Int_t axis=<span class="hljs-number">1</span>)</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetRMS</span><span class="hljs-params">(Int_t axis=<span class="hljs-number">1</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetCorrelationFactor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return graph correlation factor</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetCovariance</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return covariance of vectors x,y</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetMean</span><span class="hljs-params">(Int_t axis=<span class="hljs-number">1</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return mean value of X (axis=1)  or Y (axis=2)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetRMS</span><span class="hljs-params">(Int_t axis=<span class="hljs-number">1</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">/// Return RMS of X (axis=1)  or Y (axis=2)</span>
    <span class="hljs-function">Int_t                 <span class="hljs-title">GetMaxSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fMaxSize;}
    <span class="hljs-function">Int_t                 <span class="hljs-title">GetN</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNpoints;}<span class="hljs-comment">//&#x83B7;&#x5F97;&#x586B;&#x5145;&#x70B9;&#x4E2A;&#x6570;</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetErrorX</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// This function is called by GraphFitChisquare.</span>
+<span class="hljs-comment">/// It always returns a negative value. Real implementation in TGraphErrors</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetErrorY</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// This function is called by GraphFitChisquare.</span>
+<span class="hljs-comment">/// It always returns a negative value. Real implementation in TGraphErrors</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetErrorXhigh</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// This function is called by GraphFitChisquare.</span>
+<span class="hljs-comment">/// It always returns a negative value. Real implementation in TGraphErrors</span>
+<span class="hljs-comment">/// and TGraphAsymmErrors</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetErrorXlow</span><span class="hljs-params">(Int_t bin)</span>  <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// This function is called by GraphFitChisquare.</span>
+<span class="hljs-comment">/// It always returns a negative value. Real implementation in TGraphErrors</span>
+<span class="hljs-comment">/// and TGraphAsymmErrors</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetErrorYhigh</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// This function is called by GraphFitChisquare.</span>
+<span class="hljs-comment">/// It always returns a negative value. Real implementation in TGraphErrors</span>
+<span class="hljs-comment">/// and TGraphAsymmErrors</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">GetErrorYlow</span><span class="hljs-params">(Int_t bin)</span>  <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// This function is called by GraphFitChisquare.</span>
+<span class="hljs-comment">/// It always returns a negative value. Real implementation in TGraphErrors</span>
+<span class="hljs-comment">/// and TGraphAsymmErrors</span>
+
    <span class="hljs-function">Double_t             *<span class="hljs-title">GetX</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fX;}
    <span class="hljs-function">Double_t             *<span class="hljs-title">GetY</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fY;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t     *<span class="hljs-title">GetEX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
@@ -2164,41 +2277,131 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t     *<span class="hljs-title">GetEYhighd</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
    <span class="hljs-function">Double_t              <span class="hljs-title">GetMaximum</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fMaximum;}
    <span class="hljs-function">Double_t              <span class="hljs-title">GetMinimum</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fMinimum;}
-   <span class="hljs-function">TAxis                *<span class="hljs-title">GetXaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;
-   <span class="hljs-function">TAxis                *<span class="hljs-title">GetYaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;
+   <span class="hljs-function">TAxis                *<span class="hljs-title">GetXaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>; <span class="hljs-comment">/// Get x axis of the graph.</span>
+   <span class="hljs-function">TAxis                *<span class="hljs-title">GetYaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>; <span class="hljs-comment">/// Get y axis of the graph.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">GetPoint</span><span class="hljs-params">(Int_t i, Double_t &amp;x, Double_t &amp;y)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Get x and y values for point number i.</span>
+<span class="hljs-comment">/// The function returns -1 in case of an invalid request or the point number otherwise</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">InitExpo</span><span class="hljs-params">(Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">InitGaus</span><span class="hljs-params">(Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">InitPolynom</span><span class="hljs-params">(Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">InsertPoint</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">InitExpo</span><span class="hljs-params">(Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">/// Compute Initial values of parameters for an exponential.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">InitGaus</span><span class="hljs-params">(Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">/// Compute Initial values of parameters for a gaussian.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">InitPolynom</span><span class="hljs-params">(Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">/// Compute Initial values of parameters for a polynom.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">InsertPoint</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU* /// Insert a new point at the mouse position</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t      <span class="hljs-title">Integral</span><span class="hljs-params">(Int_t first=<span class="hljs-number">0</span>, Int_t last=<span class="hljs-number">-1</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Integrate the TGraph data within a given (index) range.</span>
+<span class="hljs-comment">/// Note that this function computes the area of the polygon enclosed by the points of the TGraph.</span>
+<span class="hljs-comment">/// The polygon segments, which are defined by the points of the TGraph, do not need to form a closed polygon,</span>
+<span class="hljs-comment">/// since the last polygon segment, which closes the polygon, is taken as the line connecting the last TGraph point</span>
+<span class="hljs-comment">/// with the first one. It is clear that the order of the point is essential in defining the polygon.</span>
+<span class="hljs-comment">/// Also note that the segments should not intersect.</span>
+<span class="hljs-comment">/// NB:</span>
+<span class="hljs-comment">///  - if last=-1 (default) last is set to the last point.</span>
+<span class="hljs-comment">///  - if (first &lt;0) the first point (0) is taken.</span>
+<span class="hljs-comment">/// ### Method:</span>
+<span class="hljs-comment">/// There are many ways to calculate the surface of a polygon. It all depends on what kind of data</span>
+<span class="hljs-comment">/// you have to deal with. The most evident solution would be to divide the polygon in triangles and</span>
+<span class="hljs-comment">/// calculate the surface of them. But this can quickly become complicated as you will have to test</span>
+<span class="hljs-comment">/// every segments of every triangles and check if they are intersecting with a current polygon&apos;s</span>
+<span class="hljs-comment">/// segment or if it goes outside the polygon. Many calculations that would lead to many problems...</span>
+<span class="hljs-comment">/// ### The solution (implemented by R.Brun)</span>
+<span class="hljs-comment">/// Fortunately for us, there is a simple way to solve this problem, as long as the polygon&apos;s</span>
+<span class="hljs-comment">/// segments don&apos;t intersect.</span>
+<span class="hljs-comment">/// It takes the x coordinate of the current vertex and multiply it by the y coordinate of the next</span>
+<span class="hljs-comment">/// vertex. Then it subtracts from it the result of the y coordinate of the current vertex multiplied</span>
+<span class="hljs-comment">/// by the x coordinate of the next vertex. Then divide the result by 2 to get the surface/area.</span>
+<span class="hljs-comment">/// ### Sources</span>
+<span class="hljs-comment">///  - http://forums.wolfram.com/mathgroup/archive/1998/Mar/msg00462.html</span>
+<span class="hljs-comment">///  - http://stackoverflow.com/questions/451426/how-do-i-calculate-the-surface-area-of-a-2d-polygon</span>
+
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t        <span class="hljs-title">IsEditable</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> !TestBit(kNotEditable);}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">IsInside</span><span class="hljs-params">(Double_t x, Double_t y)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">//&#x5224;&#x65AD;&#xFF08;x&#xFF0C;y&#xFF09;&#x662F;&#x5426;&#x5728;TCut&#x9009;&#x5B9A;&#x7684;&#x8303;&#x56F4;</span>
+<span class="hljs-comment">/// Return 1 if the point (x,y) is inside the polygon defined by</span>
+<span class="hljs-comment">/// the graph vertices 0 otherwise.</span>
+<span class="hljs-comment">/// Algorithm:</span>
+<span class="hljs-comment">/// The loop is executed with the end-point coordinates of a line segment</span>
+<span class="hljs-comment">/// (X1,Y1)-(X2,Y2) and the Y-coordinate of a horizontal line.</span>
+<span class="hljs-comment">/// The counter inter is incremented if the line (X1,Y1)-(X2,Y2) intersects</span>
+<span class="hljs-comment">/// the horizontal line. In this case XINT is set to the X-coordinate of the</span>
+<span class="hljs-comment">/// intersection point. If inter is an odd number, then the point x,y is within</span>
+<span class="hljs-comment">/// the polygon.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">LeastSquareFit</span><span class="hljs-params">(Int_t m, Double_t *a, Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Least squares polynomial fitting without weights.</span>
+<span class="hljs-comment">/// \param [in] m     number of parameters</span>
+<span class="hljs-comment">/// \param [in] ma     array of parameters</span>
+<span class="hljs-comment">/// \param [in] mfirst 1st point number to fit (default =0)</span>
+<span class="hljs-comment">/// \param [in] mlast  last point number to fit (default=fNpoints-1)</span>
+<span class="hljs-comment">/// based on CERNLIB routine LSQ: Translated to C++ by Rene Brun</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">LeastSquareLinearFit</span><span class="hljs-params">(Int_t n, Double_t &amp;a0, Double_t &amp;a1, Int_t &amp;ifail, Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Least square linear fit without weights.</span>
+<span class="hljs-comment">///  Fit a straight line (a0 + a1*x) to the data in this graph.</span>
+<span class="hljs-comment">/// \param [in] ndata        if ndata&lt;0, fits the logarithm of the graph (used in InitExpo() to set</span>
+<span class="hljs-comment">///                          the initial parameter values for a fit with exponential function.</span>
+<span class="hljs-comment">/// \param [in] a0           constant</span>
+<span class="hljs-comment">/// \param [in] a1           slope</span>
+<span class="hljs-comment">/// \param [in] ifail        return parameter indicating the status of the fit (ifail=0, fit is OK)</span>
+<span class="hljs-comment">/// \param [in] xmin, xmax   fitting range</span>
+<span class="hljs-comment">///  extracted from CERNLIB LLSQ: Translated to C++ by Rene Brun</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">Merge</span><span class="hljs-params">(TCollection* <span class="hljs-built_in">list</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span>                  <span class="hljs-title">PaintGraph</span><span class="hljs-params">(Int_t npoints, <span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *y, Option_t *chopt)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span>                  <span class="hljs-title">PaintGrapHist</span><span class="hljs-params">(Int_t npoints, <span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *y, Option_t *chopt)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">PaintStats</span><span class="hljs-params">(TF1 *fit)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">RecursiveRemove</span><span class="hljs-params">(TObject *obj)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">RemovePoint</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">RemovePoint</span><span class="hljs-params">(Int_t ipoint)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Adds all graphs from the collection to this graph.</span>
+<span class="hljs-comment">/// Returns the total number of poins in the result or -1 in case of an error.   </span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Draw this graph with its current attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                  <span class="hljs-title">PaintGraph</span><span class="hljs-params">(Int_t npoints, <span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *y, Option_t *chopt)</span></span>;<span class="hljs-comment">/// Draw the (x,y) as a graph.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                  <span class="hljs-title">PaintGrapHist</span><span class="hljs-params">(Int_t npoints, <span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *y, Option_t *chopt)</span></span>;<span class="hljs-comment">/// Draw the (x,y) as a histogram.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">PaintStats</span><span class="hljs-params">(TF1 *fit)</span></span>;<span class="hljs-comment">/// Draw the stats</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *chopt=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Print graph values.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">RecursiveRemove</span><span class="hljs-params">(TObject *obj)</span></span>; <span class="hljs-comment">/// Recursively remove object from the list of functions</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">RemovePoint</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU* /// Delete point close to the mouse position</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t         <span class="hljs-title">RemovePoint</span><span class="hljs-params">(Int_t ipoint)</span></span>; <span class="hljs-comment">/// Delete point number ipoint</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>; <span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetEditable</span><span class="hljs-params">(Bool_t editable=kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=GetEditable</span>
+<span class="hljs-comment">/// if editable=kFALSE, the graph cannot be modified with the mouse</span>
+<span class="hljs-comment">///  by default a TGraph is editable</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetHistogram</span><span class="hljs-params">(TH1F *h)</span> </span>{fHistogram = h;}
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetMaximum</span><span class="hljs-params">(Double_t maximum=<span class="hljs-number">-1111</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetMinimum</span><span class="hljs-params">(Double_t minimum=<span class="hljs-number">-1111</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetMaximum</span><span class="hljs-params">(Double_t maximum=<span class="hljs-number">-1111</span>)</span></span>; <span class="hljs-comment">// *MENU* /// Set the maximum of the graph.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetMinimum</span><span class="hljs-params">(Double_t minimum=<span class="hljs-number">-1111</span>)</span></span>; <span class="hljs-comment">// *MENU* /// Set the minimum of the graph.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Set</span><span class="hljs-params">(Int_t n)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetPoint</span><span class="hljs-params">(Int_t i, Double_t x, Double_t y)</span></span>;/&#x9010;&#x4E2A;&#x70B9;&#x586B;&#x5145;&#xFF0C;i&#x4ECE;<span class="hljs-number">0</span>&#x5F00;&#x59CB;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>)</span></span>;    <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set number of points in the graph</span>
+<span class="hljs-comment">/// Existing coordinates are preserved</span>
+<span class="hljs-comment">/// New coordinates above fNpoints are preset to 0.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetPoint</span><span class="hljs-params">(Int_t i, Double_t x, Double_t y)</span></span>;<span class="hljs-comment">/// Set x and y values for point number i. &#x9010;&#x4E2A;&#x70B9;&#x586B;&#x5145;&#xFF0C;i&#x4ECE;0&#x5F00;&#x59CB;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>)</span></span>;    <span class="hljs-comment">// *MENU* /// Set graph title.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">Sort</span><span class="hljs-params">(Bool_t (*greater)</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGraph*, Int_t, Int_t)</span></span>=&amp;TGraph::CompareX,
                               Bool_t ascending=kTRUE, Int_t low=<span class="hljs-number">0</span>, Int_t high=<span class="hljs-number">-1111</span>);
+<span class="hljs-comment">/// Sorts the points of this TGraph using in-place quicksort (see e.g. older glibc).</span>
+<span class="hljs-comment">/// To compare two points the function parameter greaterfunc is used (see TGraph::CompareX for an</span>
+<span class="hljs-comment">/// example of such a method, which is also the default comparison function for Sort). After</span>
+<span class="hljs-comment">/// the sort, greaterfunc(this, i, j) will return kTRUE for all i&gt;j if ascending == kTRUE, and</span>
+<span class="hljs-comment">/// kFALSE otherwise.</span>
+<span class="hljs-comment">/// The last two parameters are used for the recursive quick sort, stating the range to be sorted</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>          <span class="hljs-title">UseCurrentStyle</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span>                  <span class="hljs-title">Zero</span><span class="hljs-params">(Int_t &amp;k,Double_t AZ,Double_t BZ,Double_t E2,Double_t &amp;X,Double_t &amp;Y,Int_t maxiterations)</span></span>;</code></pre>
-<h2 id="code">code</h2><h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-keyword">const</span> Int_t n = <span class="hljs-number">20</span>;
+<span class="hljs-comment">/// Set current style settings in this graph</span>
+<span class="hljs-comment">/// This function is called when either TCanvas::UseCurrentStyle</span>
+<span class="hljs-comment">/// or TROOT::ForceStyle have been invoked.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                  <span class="hljs-title">Zero</span><span class="hljs-params">(Int_t &amp;k,Double_t AZ,Double_t BZ,Double_t E2,Double_t &amp;X,Double_t &amp;Y,Int_t maxiterations)</span></span>;
+<span class="hljs-comment">/// Find zero of a continuous function.</span>
+<span class="hljs-comment">/// This function finds a real zero of the continuous real</span>
+<span class="hljs-comment">/// function Y(X) in a given interval (A,B). See accompanying</span>
+<span class="hljs-comment">/// notes for details of the argument list and calling sequence</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// sort points along x axis</span>
+graph-&gt;Sort();
+<span class="hljs-comment">// sort points along their distance to origin</span>
+graph-&gt;Sort(&amp;TGraph::CompareRadius);
+
+<span class="hljs-function">Bool_t <span class="hljs-title">CompareErrors</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGraph* gr, Int_t i, Int_t j)</span> </span>{
+  <span class="hljs-keyword">const</span> TGraphErrors* ge=(<span class="hljs-keyword">const</span> TGraphErrors*)gr;
+  <span class="hljs-keyword">return</span> (ge-&gt;GetEY()[i]&gt;ge-&gt;GetEY()[j]); }
+<span class="hljs-comment">// sort using the above comparison function, largest errors first</span>
+graph-&gt;Sort(&amp;CompareErrors, kFALSE);</code></pre>
+<h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-keyword">const</span> Int_t n = <span class="hljs-number">20</span>;
 Double_t x[n], y[n];
 <span class="hljs-keyword">for</span> (Int_t i=<span class="hljs-number">0</span>;i&lt;n;i++) {
 x[i] = i*<span class="hljs-number">0.1</span>;
@@ -2449,7 +2652,7 @@ gr5-&gt;Draw(<span class="hljs-string">&quot;C&quot;</span>);</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGraph+","level":"1.2.26","depth":2,"next":{"title":"TGraph2D","level":"1.2.27","depth":2,"path":"class/TGraph2D.md","ref":"class/TGraph2D.md","articles":[]},"previous":{"title":"TGaxis*","level":"1.2.25","depth":2,"path":"class/TGaxis.md","ref":"class/TGaxis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TGraph.md","mtime":"2016-10-30T11:28:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-01T16:41:15.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGraph*","level":"1.2.26","depth":2,"next":{"title":"TGraph2D","level":"1.2.27","depth":2,"path":"class/TGraph2D.md","ref":"class/TGraph2D.md","articles":[]},"previous":{"title":"TGaxis*","level":"1.2.25","depth":2,"path":"class/TGaxis.md","ref":"class/TGaxis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TGraph.md","mtime":"2016-11-07T13:50:42.824Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-07T13:51:13.241Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

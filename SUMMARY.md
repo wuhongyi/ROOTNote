@@ -27,7 +27,7 @@
     * [TFitResultPtr](class/TFitResultPtr.md)
     * [TFractionFitter](class/TFractionFitter.md)
     * [TGaxis*](class/TGaxis.md)
-    * [TGraph+](class/TGraph.md)
+    * [TGraph*](class/TGraph.md)
     * [TGraph2D](class/TGraph2D.md)
     * [TGraph2DErrors](class/TGraph2DErrors.md)
     * [TGraphErrors](class/TGraphErrors.md)
