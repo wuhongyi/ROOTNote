@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGLabel+ · GitBook</title>
+        <title>TGLabel* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -1609,7 +1609,7 @@
                 <a href="TGIcon.html">
             
                     
-                    TGIcon+
+                    TGIcon*
             
                 </a>
             
@@ -1635,7 +1635,7 @@
                 <a href="TGLabel.html">
             
                     
-                    TGLabel+
+                    TGLabel*
             
                 </a>
             
@@ -2411,7 +2411,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >TGLabel+</a>
+        <a href="../.." >TGLabel*</a>
     </h1>
 </div>
 
@@ -2432,50 +2432,79 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 13:39:02 2016 (+0800)
-;; Last-Updated: 二 11月  8 20:56:41 2016 (+0800)
+;; Last-Updated: 四 11月 10 20:59:32 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 
-<h1 id="tglabel">TGLabel</h1><p>TGLabel &#x7EE7;&#x627F; TGFrame</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;
+<h1 id="tglabel">TGLabel</h1><p>TGLabel &#x7EE7;&#x627F; TGFrame</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static returning label default font struct.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static returning label default graphics context.</span>
 
    TGLabel(<span class="hljs-keyword">const</span> TGWindow *p, TGString *text,
            GContext_t norm = GetDefaultGC()(),
            FontStruct_t font = GetDefaultFontStruct(),
            UInt_t options = kChildFrame,
            Pixel_t back = GetDefaultFrameBackground());
+<span class="hljs-comment">/// Create a label GUI object. TGLabel will become the owner of the</span>
+<span class="hljs-comment">/// text and will delete it in its dtor.</span>
+
    TGLabel(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text = <span class="hljs-number">0</span>,
            GContext_t norm = GetDefaultGC()(),
            FontStruct_t font = GetDefaultFontStruct(),
            UInt_t options = kChildFrame,
            Pixel_t back = GetDefaultFrameBackground());
+<span class="hljs-comment">/// Create a label GUI object.</span>
 
-   <span class="hljs-keyword">virtual</span> ~TGLabel();
+   <span class="hljs-keyword">virtual</span> ~TGLabel();<span class="hljs-comment">/// Delete label.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return default size.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGString *<span class="hljs-title">GetText</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fText; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fText-&gt;Data(); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetText</span><span class="hljs-params">(TGString *newText)</span></span>;
+<span class="hljs-comment">/// Set new text in label. After calling this method one needs to call</span>
+<span class="hljs-comment">/// the parents frame&apos;s Layout() method to force updating of the label size.</span>
+<span class="hljs-comment">/// The new_text is adopted by the TGLabel and will be properly deleted.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *newText)</span> </span>{ SetText(<span class="hljs-keyword">new</span> TGString(newText)); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ChangeText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *newText)</span> </span>{ SetText(newText); } <span class="hljs-comment">//*MENU*icon=bld_rename.png*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span> </span>{ SetText(label); }
    <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">SetText</span><span class="hljs-params">(Int_t number)</span> </span>{ SetText(<span class="hljs-keyword">new</span> TGString(number)); }
    <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">SetTextJustify</span><span class="hljs-params">(Int_t tmode)</span></span>;
+<span class="hljs-comment">/// Set text justification. Mode is an OR of the bits:</span>
+<span class="hljs-comment">/// kTextTop, kTextBottom, kTextLeft, kTextRight, kTextCenterX and</span>
+<span class="hljs-comment">/// kTextCenterY.</span>
+
    <span class="hljs-function">Int_t <span class="hljs-title">GetTextJustify</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTMode; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTextFont</span><span class="hljs-params">(TGFont *font, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font specified by pointer to TGFont object.</span>
+<span class="hljs-comment">/// If global is true font is changed globally - otherwise locally.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTextFont</span><span class="hljs-params">(FontStruct_t font, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font.</span>
+<span class="hljs-comment">/// If global is true font is changed globally - otherwise locally.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTextFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fontName, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font specified by name.</span>
+<span class="hljs-comment">/// If global is true font is changed globally - otherwise locally.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTextColor</span><span class="hljs-params">(Pixel_t color, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text color.</span>
+<span class="hljs-comment">/// If global is true color is changed globally - otherwise locally.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTextColor</span><span class="hljs-params">(TColor *color, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text color.</span>
+<span class="hljs-comment">/// If global is true color is changed globally - otherwise locally.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetForegroundColor</span><span class="hljs-params">(Pixel_t fore)</span> </span>{ SetTextColor(fore); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Disable</span><span class="hljs-params">(Bool_t on = kTRUE)</span>
                </span>{ fDisabled = on; fClient-&gt;NeedRedraw(<span class="hljs-keyword">this</span>); } <span class="hljs-comment">//*TOGGLE* *GETTER=IsDisabled</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Enable</span><span class="hljs-params">()</span> </span>{ fDisabled = kFALSE; fClient-&gt;NeedRedraw(<span class="hljs-keyword">this</span>); }
    <span class="hljs-function">Bool_t <span class="hljs-title">IsDisabled</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fDisabled; }
    <span class="hljs-function">Bool_t <span class="hljs-title">HasOwnFont</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns kTRUE if text attributes are unique.</span>
+<span class="hljs-comment">/// Returns kFALSE if text attributes are shared (global).</span>
 
    <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">SetWrapLength</span><span class="hljs-params">(Int_t wl)</span> </span>{ fWrapLength = wl; Layout(); }
    <span class="hljs-function">Int_t <span class="hljs-title">GetWrapLength</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWrapLength; }
@@ -2495,7 +2524,8 @@
    <span class="hljs-function">TGFont      *<span class="hljs-title">GetFont</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{ <span class="hljs-keyword">return</span> fFont; }
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a label widget as a C++ statement(s) on output stream out.</span></code></pre>
 <h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGLabel.h&quot;</span></span>
 
 <span class="hljs-comment">// TGLabel</span>
@@ -2558,7 +2588,7 @@ frame-&gt;AddFrame(fStatus, <span class="hljs-keyword">new</span> TGLayoutHints(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGLabel+","level":"1.3.15","depth":2,"next":{"title":"TGLayout+","level":"1.3.16","depth":2,"path":"class/gui/TGLayout.md","ref":"class/gui/TGLayout.md","articles":[]},"previous":{"title":"TGImageMap+","level":"1.3.14","depth":2,"path":"class/gui/TGImageMap.md","ref":"class/gui/TGImageMap.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGLabel.md","mtime":"2016-11-08T12:56:41.719Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-09T07:31:38.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGLabel*","level":"1.3.15","depth":2,"next":{"title":"TGLayout+","level":"1.3.16","depth":2,"path":"class/gui/TGLayout.md","ref":"class/gui/TGLayout.md","articles":[]},"previous":{"title":"TGImageMap+","level":"1.3.14","depth":2,"path":"class/gui/TGImageMap.md","ref":"class/gui/TGImageMap.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGLabel.md","mtime":"2016-11-10T12:59:32.640Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-10T14:06:53.766Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

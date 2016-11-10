@@ -4,14 +4,22 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 6月 25 16:11:28 2016 (+0800)
-;; Last-Updated: 二 11月  8 20:59:51 2016 (+0800)
+;; Last-Updated: 四 11月 10 21:59:17 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 52
+;;     Update #: 53
 ;; URL: http://wuhongyi.cn -->
 
 # README
 
 ```cpp
+// System predefined widget message types. Message types are constants  
+// that indicate which widget sent the message and by which widget      
+// function (sub-message). Make sure your own message types don't clash  
+// whith the ones defined in this file. ROOT reserves all message ids   
+// between 0 - 1000. User defined messages should be in the range       
+// 1001 - 10000. Sub-messages must always be in the range 1-255.        
+// To use MK_MSG() just cast your message id's to an EWidgetMessageType.
+
 // WidgetMessageTypes
 enum EWidgetMessageTypes {
    kC_COMMAND          = 1,

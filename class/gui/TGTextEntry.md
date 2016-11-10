@@ -4,12 +4,24 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 13:52:02 2016 (+0800)
-;; Last-Updated: 二 11月  8 20:57:05 2016 (+0800)
+;; Last-Updated: 四 11月 10 22:06:29 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 # TGTextEntry
+
+```cpp
+// A TGTextEntry is a one line text input widget.                       //
+//                                                                      //
+// Changing text in the text entry widget will generate the event:      //
+// kC_TEXTENTRY, kTE_TEXTCHANGED, widget id, 0.                         //
+// Hitting the enter key will generate:                                 //
+// kC_TEXTENTRY, kTE_ENTER, widget id, 0.                               //
+// Hitting the tab key will generate:                                   //
+// kC_TEXTENTRY, kTE_TAB, widget id, 0.                                 //
+```
+
 
 TGTextEntry 继承 TGFrame, TGWidget
 
