@@ -104,7 +104,7 @@
     * [TVectorT](class/TVectorT.md)
     * [TVirtualFitter](class/TVirtualFitter.md)
 * [图形界面的使用](class/gui/README.md)
-	* [TGButton+](class/gui/TGButton.md)
+	* [TGButton*](class/gui/TGButton.md)
 	* [TGButtonGroup](class/gui/TGButtonGroup.md)
     * [TGCanvas+](class/gui/TGCanvas.md)
 	* [TGClient+](class/gui/TGClient.md)

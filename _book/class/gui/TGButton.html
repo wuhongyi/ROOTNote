@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGButton+ · GitBook</title>
+        <title>TGButton* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -1453,7 +1453,7 @@
                 <a href="TGButton.html">
             
                     
-                    TGButton+
+                    TGButton*
             
                 </a>
             
@@ -2411,7 +2411,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >TGButton+</a>
+        <a href="../.." >TGButton*</a>
     </h1>
 </div>
 
@@ -2432,9 +2432,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 10:18:00 2016 (+0800)
-;; Last-Updated: 四 11月 10 21:39:55 2016 (+0800)
+;; Last-Updated: 五 11月 11 21:06:20 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 5
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -2505,23 +2505,27 @@
 <span class="hljs-comment">// The mode of operation of a SplitButton can be changed on the fly     //</span>
 <span class="hljs-comment">// by calling the SetSplit(Bool_t) method.                              //</span>
 <span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span></code></pre>
-<p>TGButton &#x7EE7;&#x627F; TGFrame, TGWidget &#xFF0C; friend TGButtonGroup</p><p>TGTextButton &#x7EE7;&#x627F; TGButton</p><p>TGPictureButton &#x7EE7;&#x627F; TGButton</p><p>TGCheckButton &#x7EE7;&#x627F; TGButton</p><p>TGRadioButton &#x7EE7;&#x627F; TGButton</p><p>TGSplitButton &#x7EE7;&#x627F; TGTextButton</p><h2 id="class">class</h2><p><strong>TGButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetHibckgndGC</span><span class="hljs-params">()</span></span>;
+<p>TGButton &#x7EE7;&#x627F; TGFrame, TGWidget &#xFF0C; friend TGButtonGroup</p><p>TGTextButton &#x7EE7;&#x627F; TGButton</p><p>TGPictureButton &#x7EE7;&#x627F; TGButton</p><p>TGCheckButton &#x7EE7;&#x627F; TGButton</p><p>TGRadioButton &#x7EE7;&#x627F; TGButton</p><p>TGSplitButton &#x7EE7;&#x627F; TGTextButton</p><h2 id="class">class</h2><p><strong>TGButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetHibckgndGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return graphics context for highlighted frame background.</span>
 
    TGButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
             UInt_t option = kRaisedFrame | kDoubleBorder);
    <span class="hljs-keyword">virtual</span> ~TGButton();
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse crossing event.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetUserData</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *userData)</span> </span>{ fUserData = userData; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        *<span class="hljs-title">GetUserData</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fUserData; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetToolTipText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, Long_t delayms = <span class="hljs-number">400</span>)</span></span>;  <span class="hljs-comment">//*MENU*</span>
+<span class="hljs-comment">/// Set tool tip text associated with this button. The delay is in</span>
+<span class="hljs-comment">/// milliseconds (minimum 250). To remove tool tip call method with</span>
+<span class="hljs-comment">/// text = 0.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGToolTip   *<span class="hljs-title">GetToolTip</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTip; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;<span class="hljs-comment">/// Set button state.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> EButtonState <span class="hljs-title">GetState</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fState; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">AllowStayDown</span><span class="hljs-params">(Bool_t a)</span> </span>{ fStayDown = a; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetGroup</span><span class="hljs-params">(TGButtonGroup *gr)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetGroup</span><span class="hljs-params">(TGButtonGroup *gr)</span></span>;<span class="hljs-comment">/// Sets new button-group for this button.</span>
    <span class="hljs-function">TGButtonGroup       *<span class="hljs-title">GetGroup</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fGroup; }
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">IsDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// { return !(fOptions &amp; kRaisedFrame); }</span>
@@ -2532,11 +2536,14 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">IsExclusiveToggle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">Toggle</span><span class="hljs-params">(Bool_t emit = kFALSE)</span> </span>{ SetDown(IsDown() ? kFALSE : kTRUE, emit); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetEnabled</span><span class="hljs-params">(Bool_t e = kTRUE)</span></span>; <span class="hljs-comment">//*TOGGLE* *GETTER=IsEnabled</span>
+<span class="hljs-comment">/// Set enabled or disabled state of button</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> UInt_t       <span class="hljs-title">GetStyle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStyle; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetStyle</span><span class="hljs-params">(UInt_t newstyle)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetStyle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *style)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetStyle</span><span class="hljs-params">(UInt_t newstyle)</span></span>;<span class="hljs-comment">/// Set the button style (modern or classic).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetStyle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *style)</span></span>;<span class="hljs-comment">/// Set the button style (modern or classic).</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a button widget as a C++ statement(s) on output stream out.</span>
 
    <span class="hljs-function">GContext_t <span class="hljs-title">GetNormGC</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNormGC; }
 
@@ -2544,39 +2551,63 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Released</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;Released()&quot;</span>); }  <span class="hljs-comment">// *SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">()</span>  </span>{ Emit(<span class="hljs-string">&quot;Clicked()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Toggled</span><span class="hljs-params">(Bool_t on)</span> </span>{ Emit(<span class="hljs-string">&quot;Toggled(Bool_t)&quot;</span>, on); }  <span class="hljs-comment">// *SIGNAL*</span></code></pre>
-<p><strong>TGTextButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;
+<p><strong>TGTextButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
 
    TGTextButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *s, Int_t id = <span class="hljs-number">-1</span>,
                 GContext_t norm = GetDefaultGC()(),
                 FontStruct_t font = GetDefaultFontStruct(),
                 UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a text button widget. The hotstring will be adopted and deleted</span>
+<span class="hljs-comment">/// by the text button.</span>
+
    TGTextButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
                 GContext_t norm = GetDefaultGC()(),
                 FontStruct_t font = GetDefaultFontStruct(),
                 UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a text button widget.</span>
+
    TGTextButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cmd,
                 Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
                 FontStruct_t font = GetDefaultFontStruct(),
                 UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a text button widget and set cmd string at same time.</span>
 
-   <span class="hljs-keyword">virtual</span> ~TGTextButton();
+   <span class="hljs-keyword">virtual</span> ~TGTextButton();<span class="hljs-comment">/// Delete a text button widget.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// returns default size</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t     <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;
+<span class="hljs-comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGHotString *<span class="hljs-title">GetText</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLabel; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLabel-&gt;Data(); }
    <span class="hljs-function">TString            <span class="hljs-title">GetString</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TString(fLabel-&gt;GetString()); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTextJustify</span><span class="hljs-params">(Int_t tmode)</span></span>;
+<span class="hljs-comment">/// Set text justification. Mode is an OR of the bits:</span>
+<span class="hljs-comment">/// kTextTop, kTextBottom, kTextLeft, kTextRight, kTextCenterX and</span>
+<span class="hljs-comment">/// kTextCenterY.</span>
+
    <span class="hljs-function">Int_t <span class="hljs-title">GetTextJustify</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTMode; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetText</span><span class="hljs-params">(TGHotString *new_label)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TString &amp;new_label)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetText</span><span class="hljs-params">(TGHotString *new_label)</span></span>;<span class="hljs-comment">/// Set new button text.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TString &amp;new_label)</span></span>;<span class="hljs-comment">/// Set new button text.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span> </span>{ SetText(label); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetFont</span><span class="hljs-params">(FontStruct_t font, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font.</span>
+<span class="hljs-comment">/// If global is kTRUE font is changed globally, otherwise - locally.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fontName, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font specified by name.</span>
+<span class="hljs-comment">/// If global is true color is changed globally, otherwise - locally.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTextColor</span><span class="hljs-params">(Pixel_t color, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text color.</span>
+<span class="hljs-comment">/// If global is true color is changed globally, otherwise - locally.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetForegroundColor</span><span class="hljs-params">(Pixel_t fore)</span> </span>{ SetTextColor(fore); }
    <span class="hljs-function">Bool_t             <span class="hljs-title">HasOwnFont</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns kTRUE if text attributes are unique,</span>
+<span class="hljs-comment">/// returns kFALSE if text attributes are shared (global).</span>
+
    <span class="hljs-function"><span class="hljs-keyword">void</span>               <span class="hljs-title">SetWrapLength</span><span class="hljs-params">(Int_t wl)</span> </span>{ fWrapLength = wl; Layout(); }
    <span class="hljs-function">Int_t              <span class="hljs-title">GetWrapLength</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWrapLength; }
    <span class="hljs-function"><span class="hljs-keyword">void</span>               <span class="hljs-title">SetMargins</span><span class="hljs-params">(Int_t left=<span class="hljs-number">0</span>, Int_t right=<span class="hljs-number">0</span>, Int_t top=<span class="hljs-number">0</span>, Int_t bottom=<span class="hljs-number">0</span>)</span>
@@ -2596,105 +2627,150 @@
 
    <span class="hljs-function">FontStruct_t <span class="hljs-title">GetFontStruct</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFontStruct; }
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// layout text button</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a text button widget as a C++ statement(s) on output stream out.   </span></code></pre>
 <p><strong>TGPictureButton</strong></p><pre><code class="lang-cpp">   TGPictureButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> TGPicture *pic, Int_t id = <span class="hljs-number">-1</span>,
                    GContext_t norm = GetDefaultGC()(),
                    UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a picture button widget. The picture is not adopted and must</span>
+<span class="hljs-comment">/// later be freed by the user once the picture button is deleted (a single</span>
+<span class="hljs-comment">/// picture reference might be used by other buttons).</span>
+
    TGPictureButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> TGPicture *pic, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cmd,
                    Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
                    UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a picture button widget and set action command. The picture is</span>
+<span class="hljs-comment">/// not adopted and must later be freed by the user once the picture button</span>
+<span class="hljs-comment">/// is deleted (a single picture reference might be used by other</span>
+<span class="hljs-comment">/// buttons).</span>
+
    TGPictureButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* pic = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
                    GContext_t norm = GetDefaultGC()(),
                    UInt_t option = kRaisedFrame | kDoubleBorder);
-   <span class="hljs-keyword">virtual</span> ~TGPictureButton();
+<span class="hljs-comment">/// Create a picture button. Where pic is the file name of the picture.</span>
+
+   <span class="hljs-keyword">virtual</span> ~TGPictureButton();<span class="hljs-comment">/// Destructor.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetPicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *new_pic)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetDisabledPicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *pic)</span></span>;
+<span class="hljs-comment">/// Change a picture in a picture button. The picture is not adopted and</span>
+<span class="hljs-comment">/// must later be freed by the user once the picture button is deleted</span>
+<span class="hljs-comment">/// (a single picture reference might be used by other buttons).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetDisabledPicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *pic)</span></span>;<span class="hljs-comment">/// Changes disabled picture.</span>
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetPicture</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPic; };
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetDisabledPicture</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPicD; };
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
-<p><strong>TGCheckButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a picture button widget as a C++ statement(s) on output stream out.</span></code></pre>
+<p><strong>TGCheckButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
 
    TGCheckButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *s, Int_t id = <span class="hljs-number">-1</span>,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
                  UInt_t option = <span class="hljs-number">0</span>);
+<span class="hljs-comment">/// Create a check button widget. The hotstring will be adopted and deleted</span>
+<span class="hljs-comment">/// by the check button.</span>
+
    TGCheckButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
-                 UInt_t option = <span class="hljs-number">0</span>);
+                 UInt_t option = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a check button widget.</span>
+
    TGCheckButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cmd, Int_t id = <span class="hljs-number">-1</span>,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
-                 UInt_t option = <span class="hljs-number">0</span>);
-   <span class="hljs-keyword">virtual</span> ~TGCheckButton();
+                 UInt_t option = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a check button widget.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-keyword">virtual</span> ~TGCheckButton();<span class="hljs-comment">/// Delete a check button.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// default size</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse crossing event.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsToggleButton</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsOn</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fState == kButtonDown; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fState == kButtonDown; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDisabledAndSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> ((fState == kButtonDisabled) &amp;&amp; fStateOn); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetDisabledAndSelected</span><span class="hljs-params">(Bool_t)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
-<p><strong>TGRadioButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Set the state of a check button to disabled and either on or off.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;<span class="hljs-comment">/// Set check button state.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a check button widget as a C++ statement(s) on output stream out.</span></code></pre>
+<p><strong>TGRadioButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
 
    TGRadioButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *s, Int_t id = <span class="hljs-number">-1</span>,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
                  UInt_t option = <span class="hljs-number">0</span>);
+<span class="hljs-comment">/// Create a radio button widget. The hotstring will be adopted and deleted</span>
+<span class="hljs-comment">/// by the radio button.</span>
+
    TGRadioButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
-                 UInt_t option = <span class="hljs-number">0</span>);
+                 UInt_t option = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a radio button widget.</span>
    TGRadioButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cmd, Int_t id = <span class="hljs-number">-1</span>,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
-                 UInt_t option = <span class="hljs-number">0</span>);
-   <span class="hljs-keyword">virtual</span> ~TGRadioButton();
+                 UInt_t option = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a radio button widget.</span>
+   <span class="hljs-keyword">virtual</span> ~TGRadioButton();<span class="hljs-comment">/// Delete a radio button.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// default size</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;
+   <span class="hljs-comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse crossing event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;<span class="hljs-comment">/// Set radio button state.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetDisabledAndSelected</span><span class="hljs-params">(Bool_t)</span></span>;
+<span class="hljs-comment">/// Set the state of a radio button to disabled and either on or off.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsToggleButton</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsExclusiveToggle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsOn</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStateOn; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStateOn; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDisabledAndSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> ((fState == kButtonDisabled) &amp;&amp; fStateOn); }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a radio button widget as a C++ statement(s) on output stream out.</span></code></pre>
 <p><strong>TGSplitButton</strong></p><pre><code class="lang-cpp">   TGSplitButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *menulabel,
                 TGPopupMenu *popmenu, Bool_t split = kTRUE,
                 Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
                 FontStruct_t fontstruct = GetDefaultFontStruct(),
                 UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a menu button widget. The hotstring will be adopted and</span>
+<span class="hljs-comment">/// deleted by the menu button. This constructior creates a</span>
+<span class="hljs-comment">/// menubutton with a popup menu attached that appears when the</span>
+<span class="hljs-comment">/// button for it is clicked. The popup menu is adopted.</span>
 
-   <span class="hljs-keyword">virtual</span> ~TGSplitButton();
+   <span class="hljs-keyword">virtual</span> ~TGSplitButton();<span class="hljs-comment">/// Delete a split button widget.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;<span class="hljs-comment">/// returns default size</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetText</span><span class="hljs-params">(TGHotString *new_label)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TString &amp;new_label)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetText</span><span class="hljs-params">(TGHotString *new_label)</span></span>;<span class="hljs-comment">/// Set new button text.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TString &amp;new_label)</span></span>;<span class="hljs-comment">/// Set new button text.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetFont</span><span class="hljs-params">(FontStruct_t font, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font.</span>
+<span class="hljs-comment">/// If global is kTRUE font is changed globally, otherwise - locally.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fontName, Bool_t global = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetMBState</span><span class="hljs-params">(EButtonState state)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetSplit</span><span class="hljs-params">(Bool_t split)</span></span>;
+<span class="hljs-comment">/// Changes text font specified by name.</span>
+<span class="hljs-comment">/// If global is true color is changed globally, otherwise - locally.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetMBState</span><span class="hljs-params">(EButtonState state)</span></span>;<span class="hljs-comment">/// Set the state of the Menu Button part</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetSplit</span><span class="hljs-params">(Bool_t split)</span></span>;<span class="hljs-comment">/// Set the split status of a button.</span>
    <span class="hljs-function">Bool_t         <span class="hljs-title">IsSplit</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fSplit; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle button events.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse crossing event.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle a motion event in a TGSplitButton.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// layout text button</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MBPressed</span><span class="hljs-params">()</span>  </span>{ Emit(<span class="hljs-string">&quot;MBPressed()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MBReleased</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;MBReleased()&quot;</span>); }  <span class="hljs-comment">// *SIGNAL*</span>
@@ -2818,7 +2894,7 @@ frame-&gt;AddFrame(fButtonGroup, <span class="hljs-keyword">new</span> TGLayoutH
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGButton+","level":"1.3.1","depth":2,"next":{"title":"TGButtonGroup","level":"1.3.2","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"previous":{"title":"图形界面的使用","level":"1.3","depth":1,"path":"class/gui/README.md","ref":"class/gui/README.md","articles":[{"title":"TGButton+","level":"1.3.1","depth":2,"path":"class/gui/TGButton.md","ref":"class/gui/TGButton.md","articles":[]},{"title":"TGButtonGroup","level":"1.3.2","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},{"title":"TGCanvas+","level":"1.3.3","depth":2,"path":"class/gui/TGCanvas.md","ref":"class/gui/TGCanvas.md","articles":[]},{"title":"TGClient+","level":"1.3.4","depth":2,"path":"class/gui/TGClient.md","ref":"class/gui/TGClient.md","articles":[]},{"title":"TGColorDialog+","level":"1.3.5","depth":2,"path":"class/gui/TGColorDialog.md","ref":"class/gui/TGColorDialog.md","articles":[]},{"title":"TGColorSelect+","level":"1.3.6","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},{"title":"TGComboBox+","level":"1.3.7","depth":2,"path":"class/gui/TGComboBox.md","ref":"class/gui/TGComboBox.md","articles":[]},{"title":"TGDoubleSlider+","level":"1.3.8","depth":2,"path":"class/gui/TGDoubleSlider.md","ref":"class/gui/TGDoubleSlider.md","articles":[]},{"title":"TGFont","level":"1.3.9","depth":2,"path":"class/gui/TGFont.md","ref":"class/gui/TGFont.md","articles":[]},{"title":"TGFontDialog","level":"1.3.10","depth":2,"path":"class/gui/TGFontDialog.md","ref":"class/gui/TGFontDialog.md","articles":[]},{"title":"TGFrame*","level":"1.3.11","depth":2,"path":"class/gui/TGFrame.md","ref":"class/gui/TGFrame.md","articles":[]},{"title":"TGGC","level":"1.3.12","depth":2,"path":"class/gui/TGGC.md","ref":"class/gui/TGGC.md","articles":[]},{"title":"TGIcon*","level":"1.3.13","depth":2,"path":"class/gui/TGIcon.md","ref":"class/gui/TGIcon.md","articles":[]},{"title":"TGImageMap+","level":"1.3.14","depth":2,"path":"class/gui/TGImageMap.md","ref":"class/gui/TGImageMap.md","articles":[]},{"title":"TGLabel*","level":"1.3.15","depth":2,"path":"class/gui/TGLabel.md","ref":"class/gui/TGLabel.md","articles":[]},{"title":"TGLayout+","level":"1.3.16","depth":2,"path":"class/gui/TGLayout.md","ref":"class/gui/TGLayout.md","articles":[]},{"title":"TGListBox+","level":"1.3.17","depth":2,"path":"class/gui/TGListBox.md","ref":"class/gui/TGListBox.md","articles":[]},{"title":"TGListTree+","level":"1.3.18","depth":2,"path":"class/gui/TGListTree.md","ref":"class/gui/TGListTree.md","articles":[]},{"title":"TGListView+","level":"1.3.19","depth":2,"path":"class/gui/TGListView.md","ref":"class/gui/TGListView.md","articles":[]},{"title":"TGMdiDecorFrame","level":"1.3.20","depth":2,"path":"class/gui/TGMdiDecorFrame.md","ref":"class/gui/TGMdiDecorFrame.md","articles":[]},{"title":"TGMdiFrame","level":"1.3.21","depth":2,"path":"class/gui/TGMdiFrame.md","ref":"class/gui/TGMdiFrame.md","articles":[]},{"title":"TGMdiMainFrame","level":"1.3.22","depth":2,"path":"class/gui/TGMdiMainFrame.md","ref":"class/gui/TGMdiMainFrame.md","articles":[]},{"title":"TGMdiMenu","level":"1.3.23","depth":2,"path":"class/gui/TGMdiMenu.md","ref":"class/gui/TGMdiMenu.md","articles":[]},{"title":"TGMenu+","level":"1.3.24","depth":2,"path":"class/gui/TGMenu.md","ref":"class/gui/TGMenu.md","articles":[]},{"title":"TGNumberEntry+","level":"1.3.25","depth":2,"path":"class/gui/TGNumberEntry.md","ref":"class/gui/TGNumberEntry.md","articles":[]},{"title":"TGObject*","level":"1.3.26","depth":2,"path":"class/gui/TGObject.md","ref":"class/gui/TGObject.md","articles":[]},{"title":"TGPicture+","level":"1.3.27","depth":2,"path":"class/gui/TGPicture.md","ref":"class/gui/TGPicture.md","articles":[]},{"title":"TGScrollBar+","level":"1.3.28","depth":2,"path":"class/gui/TGScrollBar.md","ref":"class/gui/TGScrollBar.md","articles":[]},{"title":"TGSimpleTable+","level":"1.3.29","depth":2,"path":"class/gui/TGSimpleTable.md","ref":"class/gui/TGSimpleTable.md","articles":[]},{"title":"TGSlider+","level":"1.3.30","depth":2,"path":"class/gui/TGSlider.md","ref":"class/gui/TGSlider.md","articles":[]},{"title":"TGTab+","level":"1.3.31","depth":2,"path":"class/gui/TGTab.md","ref":"class/gui/TGTab.md","articles":[]},{"title":"TGTable+","level":"1.3.32","depth":2,"path":"class/gui/TGTable.md","ref":"class/gui/TGTable.md","articles":[]},{"title":"TGTableCell","level":"1.3.33","depth":2,"path":"class/gui/TGTableCell.md","ref":"class/gui/TGTableCell.md","articles":[]},{"title":"TGTableContainer","level":"1.3.34","depth":2,"path":"class/gui/TGTableContainer.md","ref":"class/gui/TGTableContainer.md","articles":[]},{"title":"TGTableHeader","level":"1.3.35","depth":2,"path":"class/gui/TGTableHeader.md","ref":"class/gui/TGTableHeader.md","articles":[]},{"title":"TGTableLayout","level":"1.3.36","depth":2,"path":"class/gui/TGTableLayout.md","ref":"class/gui/TGTableLayout.md","articles":[]},{"title":"TGTextEntry+","level":"1.3.37","depth":2,"path":"class/gui/TGTextEntry.md","ref":"class/gui/TGTextEntry.md","articles":[]},{"title":"TGTextViewStream+","level":"1.3.38","depth":2,"path":"class/gui/TGTextViewStream.md","ref":"class/gui/TGTextViewStream.md","articles":[]},{"title":"TGTripleSlider+","level":"1.3.39","depth":2,"path":"class/gui/TGTripleSlider.md","ref":"class/gui/TGTripleSlider.md","articles":[]},{"title":"TGView+","level":"1.3.40","depth":2,"path":"class/gui/TGView.md","ref":"class/gui/TGView.md","articles":[]},{"title":"TGWidget*","level":"1.3.41","depth":2,"path":"class/gui/TGWidget.md","ref":"class/gui/TGWidget.md","articles":[]},{"title":"TGWindow*","level":"1.3.42","depth":2,"path":"class/gui/TGWindow.md","ref":"class/gui/TGWindow.md","articles":[]},{"title":"TQObject*","level":"1.3.43","depth":2,"path":"class/gui/TQObject.md","ref":"class/gui/TQObject.md","articles":[]},{"title":"TRootEmbeddedCanvas+","level":"1.3.44","depth":2,"path":"class/gui/TRootEmbeddedCanvas.md","ref":"class/gui/TRootEmbeddedCanvas.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGButton.md","mtime":"2016-11-10T13:39:55.864Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-10T14:06:53.766Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGButton*","level":"1.3.1","depth":2,"next":{"title":"TGButtonGroup","level":"1.3.2","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"previous":{"title":"图形界面的使用","level":"1.3","depth":1,"path":"class/gui/README.md","ref":"class/gui/README.md","articles":[{"title":"TGButton*","level":"1.3.1","depth":2,"path":"class/gui/TGButton.md","ref":"class/gui/TGButton.md","articles":[]},{"title":"TGButtonGroup","level":"1.3.2","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},{"title":"TGCanvas+","level":"1.3.3","depth":2,"path":"class/gui/TGCanvas.md","ref":"class/gui/TGCanvas.md","articles":[]},{"title":"TGClient+","level":"1.3.4","depth":2,"path":"class/gui/TGClient.md","ref":"class/gui/TGClient.md","articles":[]},{"title":"TGColorDialog+","level":"1.3.5","depth":2,"path":"class/gui/TGColorDialog.md","ref":"class/gui/TGColorDialog.md","articles":[]},{"title":"TGColorSelect+","level":"1.3.6","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},{"title":"TGComboBox+","level":"1.3.7","depth":2,"path":"class/gui/TGComboBox.md","ref":"class/gui/TGComboBox.md","articles":[]},{"title":"TGDoubleSlider+","level":"1.3.8","depth":2,"path":"class/gui/TGDoubleSlider.md","ref":"class/gui/TGDoubleSlider.md","articles":[]},{"title":"TGFont","level":"1.3.9","depth":2,"path":"class/gui/TGFont.md","ref":"class/gui/TGFont.md","articles":[]},{"title":"TGFontDialog","level":"1.3.10","depth":2,"path":"class/gui/TGFontDialog.md","ref":"class/gui/TGFontDialog.md","articles":[]},{"title":"TGFrame*","level":"1.3.11","depth":2,"path":"class/gui/TGFrame.md","ref":"class/gui/TGFrame.md","articles":[]},{"title":"TGGC","level":"1.3.12","depth":2,"path":"class/gui/TGGC.md","ref":"class/gui/TGGC.md","articles":[]},{"title":"TGIcon*","level":"1.3.13","depth":2,"path":"class/gui/TGIcon.md","ref":"class/gui/TGIcon.md","articles":[]},{"title":"TGImageMap+","level":"1.3.14","depth":2,"path":"class/gui/TGImageMap.md","ref":"class/gui/TGImageMap.md","articles":[]},{"title":"TGLabel*","level":"1.3.15","depth":2,"path":"class/gui/TGLabel.md","ref":"class/gui/TGLabel.md","articles":[]},{"title":"TGLayout+","level":"1.3.16","depth":2,"path":"class/gui/TGLayout.md","ref":"class/gui/TGLayout.md","articles":[]},{"title":"TGListBox+","level":"1.3.17","depth":2,"path":"class/gui/TGListBox.md","ref":"class/gui/TGListBox.md","articles":[]},{"title":"TGListTree+","level":"1.3.18","depth":2,"path":"class/gui/TGListTree.md","ref":"class/gui/TGListTree.md","articles":[]},{"title":"TGListView+","level":"1.3.19","depth":2,"path":"class/gui/TGListView.md","ref":"class/gui/TGListView.md","articles":[]},{"title":"TGMdiDecorFrame","level":"1.3.20","depth":2,"path":"class/gui/TGMdiDecorFrame.md","ref":"class/gui/TGMdiDecorFrame.md","articles":[]},{"title":"TGMdiFrame","level":"1.3.21","depth":2,"path":"class/gui/TGMdiFrame.md","ref":"class/gui/TGMdiFrame.md","articles":[]},{"title":"TGMdiMainFrame","level":"1.3.22","depth":2,"path":"class/gui/TGMdiMainFrame.md","ref":"class/gui/TGMdiMainFrame.md","articles":[]},{"title":"TGMdiMenu","level":"1.3.23","depth":2,"path":"class/gui/TGMdiMenu.md","ref":"class/gui/TGMdiMenu.md","articles":[]},{"title":"TGMenu+","level":"1.3.24","depth":2,"path":"class/gui/TGMenu.md","ref":"class/gui/TGMenu.md","articles":[]},{"title":"TGNumberEntry+","level":"1.3.25","depth":2,"path":"class/gui/TGNumberEntry.md","ref":"class/gui/TGNumberEntry.md","articles":[]},{"title":"TGObject*","level":"1.3.26","depth":2,"path":"class/gui/TGObject.md","ref":"class/gui/TGObject.md","articles":[]},{"title":"TGPicture+","level":"1.3.27","depth":2,"path":"class/gui/TGPicture.md","ref":"class/gui/TGPicture.md","articles":[]},{"title":"TGScrollBar+","level":"1.3.28","depth":2,"path":"class/gui/TGScrollBar.md","ref":"class/gui/TGScrollBar.md","articles":[]},{"title":"TGSimpleTable+","level":"1.3.29","depth":2,"path":"class/gui/TGSimpleTable.md","ref":"class/gui/TGSimpleTable.md","articles":[]},{"title":"TGSlider+","level":"1.3.30","depth":2,"path":"class/gui/TGSlider.md","ref":"class/gui/TGSlider.md","articles":[]},{"title":"TGTab+","level":"1.3.31","depth":2,"path":"class/gui/TGTab.md","ref":"class/gui/TGTab.md","articles":[]},{"title":"TGTable+","level":"1.3.32","depth":2,"path":"class/gui/TGTable.md","ref":"class/gui/TGTable.md","articles":[]},{"title":"TGTableCell","level":"1.3.33","depth":2,"path":"class/gui/TGTableCell.md","ref":"class/gui/TGTableCell.md","articles":[]},{"title":"TGTableContainer","level":"1.3.34","depth":2,"path":"class/gui/TGTableContainer.md","ref":"class/gui/TGTableContainer.md","articles":[]},{"title":"TGTableHeader","level":"1.3.35","depth":2,"path":"class/gui/TGTableHeader.md","ref":"class/gui/TGTableHeader.md","articles":[]},{"title":"TGTableLayout","level":"1.3.36","depth":2,"path":"class/gui/TGTableLayout.md","ref":"class/gui/TGTableLayout.md","articles":[]},{"title":"TGTextEntry+","level":"1.3.37","depth":2,"path":"class/gui/TGTextEntry.md","ref":"class/gui/TGTextEntry.md","articles":[]},{"title":"TGTextViewStream+","level":"1.3.38","depth":2,"path":"class/gui/TGTextViewStream.md","ref":"class/gui/TGTextViewStream.md","articles":[]},{"title":"TGTripleSlider+","level":"1.3.39","depth":2,"path":"class/gui/TGTripleSlider.md","ref":"class/gui/TGTripleSlider.md","articles":[]},{"title":"TGView+","level":"1.3.40","depth":2,"path":"class/gui/TGView.md","ref":"class/gui/TGView.md","articles":[]},{"title":"TGWidget*","level":"1.3.41","depth":2,"path":"class/gui/TGWidget.md","ref":"class/gui/TGWidget.md","articles":[]},{"title":"TGWindow*","level":"1.3.42","depth":2,"path":"class/gui/TGWindow.md","ref":"class/gui/TGWindow.md","articles":[]},{"title":"TQObject*","level":"1.3.43","depth":2,"path":"class/gui/TQObject.md","ref":"class/gui/TQObject.md","articles":[]},{"title":"TRootEmbeddedCanvas+","level":"1.3.44","depth":2,"path":"class/gui/TRootEmbeddedCanvas.md","ref":"class/gui/TRootEmbeddedCanvas.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGButton.md","mtime":"2016-11-11T13:06:20.712Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-11T13:06:45.778Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

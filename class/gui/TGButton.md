@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 10:18:00 2016 (+0800)
-;; Last-Updated: 四 11月 10 21:39:55 2016 (+0800)
+;; Last-Updated: 五 11月 11 21:06:20 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 5
 ;; URL: http://wuhongyi.cn -->
 
 # TGButton
@@ -99,23 +99,27 @@ TGSplitButton 继承 TGTextButton
 **TGButton**
 
 ```cpp
-   static const TGGC   &GetDefaultGC();
-   static const TGGC   &GetHibckgndGC();
+   static const TGGC   &GetDefaultGC();/// Return default graphics context.
+   static const TGGC   &GetHibckgndGC();/// Return graphics context for highlighted frame background.
 
    TGButton(const TGWindow *p = 0, Int_t id = -1, GContext_t norm = GetDefaultGC()(),
             UInt_t option = kRaisedFrame | kDoubleBorder);
    virtual ~TGButton();
 
-   virtual Bool_t       HandleButton(Event_t *event);
-   virtual Bool_t       HandleCrossing(Event_t *event);
+   virtual Bool_t       HandleButton(Event_t *event);/// Handle mouse button event.
+   virtual Bool_t       HandleCrossing(Event_t *event);/// Handle mouse crossing event.
    virtual void         SetUserData(void *userData) { fUserData = userData; }
    virtual void        *GetUserData() const { return fUserData; }
    virtual void         SetToolTipText(const char *text, Long_t delayms = 400);  //*MENU*
+/// Set tool tip text associated with this button. The delay is in
+/// milliseconds (minimum 250). To remove tool tip call method with
+/// text = 0.
+
    virtual TGToolTip   *GetToolTip() const { return fTip; }
-   virtual void         SetState(EButtonState state, Bool_t emit = kFALSE);
+   virtual void         SetState(EButtonState state, Bool_t emit = kFALSE);/// Set button state.
    virtual EButtonState GetState() const { return fState; }
    virtual void         AllowStayDown(Bool_t a) { fStayDown = a; }
-   virtual void         SetGroup(TGButtonGroup *gr);
+   virtual void         SetGroup(TGButtonGroup *gr);/// Sets new button-group for this button.
    TGButtonGroup       *GetGroup() const { return fGroup; }
 
    virtual Bool_t       IsDown() const;// { return !(fOptions & kRaisedFrame); }
@@ -126,11 +130,14 @@ TGSplitButton 继承 TGTextButton
    virtual Bool_t       IsExclusiveToggle() const { return kFALSE; }
    virtual void         Toggle(Bool_t emit = kFALSE) { SetDown(IsDown() ? kFALSE : kTRUE, emit); }
    virtual void         SetEnabled(Bool_t e = kTRUE); //*TOGGLE* *GETTER=IsEnabled
+/// Set enabled or disabled state of button
+
    virtual UInt_t       GetStyle() const { return fStyle; }
-   virtual void         SetStyle(UInt_t newstyle);
-   virtual void         SetStyle(const char *style);
+   virtual void         SetStyle(UInt_t newstyle);/// Set the button style (modern or classic).
+   virtual void         SetStyle(const char *style);/// Set the button style (modern or classic).
 
    virtual void         SavePrimitive(std::ostream &out, Option_t *option = "");
+/// Save a button widget as a C++ statement(s) on output stream out.
 
    GContext_t GetNormGC() const { return fNormGC; }
 
@@ -144,39 +151,63 @@ TGSplitButton 继承 TGTextButton
 **TGTextButton**
 
 ```cpp
-   static FontStruct_t GetDefaultFontStruct();
+   static FontStruct_t GetDefaultFontStruct();/// Return default font structure.
 
    TGTextButton(const TGWindow *p, TGHotString *s, Int_t id = -1,
                 GContext_t norm = GetDefaultGC()(),
                 FontStruct_t font = GetDefaultFontStruct(),
                 UInt_t option = kRaisedFrame | kDoubleBorder);
+/// Create a text button widget. The hotstring will be adopted and deleted
+/// by the text button.
+
    TGTextButton(const TGWindow *p = 0, const char *s = 0, Int_t id = -1,
                 GContext_t norm = GetDefaultGC()(),
                 FontStruct_t font = GetDefaultFontStruct(),
                 UInt_t option = kRaisedFrame | kDoubleBorder);
+/// Create a text button widget.
+
    TGTextButton(const TGWindow *p, const char *s, const char *cmd,
                 Int_t id = -1, GContext_t norm = GetDefaultGC()(),
                 FontStruct_t font = GetDefaultFontStruct(),
                 UInt_t option = kRaisedFrame | kDoubleBorder);
+/// Create a text button widget and set cmd string at same time.
 
-   virtual ~TGTextButton();
+   virtual ~TGTextButton();/// Delete a text button widget.
 
-   virtual TGDimension GetDefaultSize() const;
+   virtual TGDimension GetDefaultSize() const;/// returns default size
 
    virtual Bool_t     HandleKey(Event_t *event);
+/// Handle key event. This function will be called when the hotkey is hit.
+
    const TGHotString *GetText() const { return fLabel; }
    virtual const char *GetTitle() const { return fLabel->Data(); }
    TString            GetString() const { return TString(fLabel->GetString()); }
    virtual void       SetTextJustify(Int_t tmode);
+/// Set text justification. Mode is an OR of the bits:
+/// kTextTop, kTextBottom, kTextLeft, kTextRight, kTextCenterX and
+/// kTextCenterY.
+
    Int_t GetTextJustify() const { return fTMode; }
-   virtual void       SetText(TGHotString *new_label);
-   virtual void       SetText(const TString &new_label);
+   virtual void       SetText(TGHotString *new_label);/// Set new button text.
+   virtual void       SetText(const TString &new_label);/// Set new button text.
    virtual void       SetTitle(const char *label) { SetText(label); }
    virtual void       SetFont(FontStruct_t font, Bool_t global = kFALSE);
+/// Changes text font.
+/// If global is kTRUE font is changed globally, otherwise - locally.
+
    virtual void       SetFont(const char *fontName, Bool_t global = kFALSE);
+/// Changes text font specified by name.
+/// If global is true color is changed globally, otherwise - locally.
+
    virtual void       SetTextColor(Pixel_t color, Bool_t global = kFALSE);
+/// Changes text color.
+/// If global is true color is changed globally, otherwise - locally.
+
    virtual void       SetForegroundColor(Pixel_t fore) { SetTextColor(fore); }
    Bool_t             HasOwnFont() const;
+/// Returns kTRUE if text attributes are unique,
+/// returns kFALSE if text attributes are shared (global).
+
    void               SetWrapLength(Int_t wl) { fWrapLength = wl; Layout(); }
    Int_t              GetWrapLength() const { return fWrapLength; }
    void               SetMargins(Int_t left=0, Int_t right=0, Int_t top=0, Int_t bottom=0)
@@ -196,8 +227,9 @@ TGSplitButton 继承 TGTextButton
 
    FontStruct_t GetFontStruct() const { return fFontStruct; }
 
-   virtual void       Layout();
+   virtual void       Layout();/// layout text button
    virtual void       SavePrimitive(std::ostream &out, Option_t *option = "");
+/// Save a text button widget as a C++ statement(s) on output stream out.   
 ```
 
 
@@ -207,90 +239,122 @@ TGSplitButton 继承 TGTextButton
    TGPictureButton(const TGWindow *p, const TGPicture *pic, Int_t id = -1,
                    GContext_t norm = GetDefaultGC()(),
                    UInt_t option = kRaisedFrame | kDoubleBorder);
+/// Create a picture button widget. The picture is not adopted and must
+/// later be freed by the user once the picture button is deleted (a single
+/// picture reference might be used by other buttons).
+
    TGPictureButton(const TGWindow *p, const TGPicture *pic, const char *cmd,
                    Int_t id = -1, GContext_t norm = GetDefaultGC()(),
                    UInt_t option = kRaisedFrame | kDoubleBorder);
+/// Create a picture button widget and set action command. The picture is
+/// not adopted and must later be freed by the user once the picture button
+/// is deleted (a single picture reference might be used by other
+/// buttons).
+
    TGPictureButton(const TGWindow *p = 0, const char* pic = 0, Int_t id = -1,
                    GContext_t norm = GetDefaultGC()(),
                    UInt_t option = kRaisedFrame | kDoubleBorder);
-   virtual ~TGPictureButton();
+/// Create a picture button. Where pic is the file name of the picture.
+
+   virtual ~TGPictureButton();/// Destructor.
 
    virtual void     SetPicture(const TGPicture *new_pic);
-   virtual void     SetDisabledPicture(const TGPicture *pic);
+/// Change a picture in a picture button. The picture is not adopted and
+/// must later be freed by the user once the picture button is deleted
+/// (a single picture reference might be used by other buttons).
+
+   virtual void     SetDisabledPicture(const TGPicture *pic);/// Changes disabled picture.
    const TGPicture *GetPicture() const { return fPic; };
    const TGPicture *GetDisabledPicture() const { return fPicD; };
    virtual void     SavePrimitive(std::ostream &out, Option_t *option = "");
+/// Save a picture button widget as a C++ statement(s) on output stream out.
 ```
 
 
 **TGCheckButton**
 
 ```cpp
-   static FontStruct_t  GetDefaultFontStruct();
-   static const TGGC   &GetDefaultGC();
+   static FontStruct_t  GetDefaultFontStruct();/// Return default font structure.
+   static const TGGC   &GetDefaultGC();/// Return default graphics context.
 
    TGCheckButton(const TGWindow *p, TGHotString *s, Int_t id = -1,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
                  UInt_t option = 0);
+/// Create a check button widget. The hotstring will be adopted and deleted
+/// by the check button.
+
    TGCheckButton(const TGWindow *p = 0, const char *s = 0, Int_t id = -1,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
-                 UInt_t option = 0);
+                 UInt_t option = 0);/// Create a check button widget.
+
    TGCheckButton(const TGWindow *p, const char *s, const char *cmd, Int_t id = -1,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
-                 UInt_t option = 0);
-   virtual ~TGCheckButton();
+                 UInt_t option = 0);/// Create a check button widget.
 
-   virtual TGDimension GetDefaultSize() const;
+   virtual ~TGCheckButton();/// Delete a check button.
 
-   virtual Bool_t HandleButton(Event_t *event);
-   virtual Bool_t HandleKey(Event_t *event);
-   virtual Bool_t HandleCrossing(Event_t *event);
+   virtual TGDimension GetDefaultSize() const;/// default size
+
+   virtual Bool_t HandleButton(Event_t *event);/// Handle mouse button event.
+   virtual Bool_t HandleKey(Event_t *event);/// Handle key event. This function will be called when the hotkey is hit.
+   virtual Bool_t HandleCrossing(Event_t *event);/// Handle mouse crossing event.
    virtual Bool_t IsToggleButton() const { return kTRUE; }
    virtual Bool_t IsOn() const { return fState == kButtonDown; }
    virtual Bool_t IsDown() const { return fState == kButtonDown; }
    virtual Bool_t IsDisabledAndSelected() const { return ((fState == kButtonDisabled) && fStateOn); }
    virtual void   SetDisabledAndSelected(Bool_t);
-   virtual void   SetState(EButtonState state, Bool_t emit = kFALSE);
+/// Set the state of a check button to disabled and either on or off.
+
+   virtual void   SetState(EButtonState state, Bool_t emit = kFALSE);/// Set check button state.
    virtual void   SavePrimitive(std::ostream &out, Option_t *option = "");
+/// Save a check button widget as a C++ statement(s) on output stream out.
 ```
 
 
 **TGRadioButton**
 
 ```cpp
-   static FontStruct_t  GetDefaultFontStruct();
-   static const TGGC   &GetDefaultGC();
+   static FontStruct_t  GetDefaultFontStruct();/// Return default font structure.
+   static const TGGC   &GetDefaultGC();/// Return default graphics context.
 
    TGRadioButton(const TGWindow *p, TGHotString *s, Int_t id = -1,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
                  UInt_t option = 0);
+/// Create a radio button widget. The hotstring will be adopted and deleted
+/// by the radio button.
+
    TGRadioButton(const TGWindow *p = 0, const char *s = 0, Int_t id = -1,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
-                 UInt_t option = 0);
+                 UInt_t option = 0);/// Create a radio button widget.
    TGRadioButton(const TGWindow *p, const char *s, const char *cmd, Int_t id = -1,
                  GContext_t norm = GetDefaultGC()(),
                  FontStruct_t font = GetDefaultFontStruct(),
-                 UInt_t option = 0);
-   virtual ~TGRadioButton();
+                 UInt_t option = 0);/// Create a radio button widget.
+   virtual ~TGRadioButton();/// Delete a radio button.
 
-   virtual TGDimension GetDefaultSize() const;
+   virtual TGDimension GetDefaultSize() const;/// default size
 
-   virtual Bool_t HandleButton(Event_t *event);
+   virtual Bool_t HandleButton(Event_t *event);/// Handle mouse button event.
    virtual Bool_t HandleKey(Event_t *event);
-   virtual Bool_t HandleCrossing(Event_t *event);
-   virtual void   SetState(EButtonState state, Bool_t emit = kFALSE);
+   /// Handle key event. This function will be called when the hotkey is hit.
+
+   virtual Bool_t HandleCrossing(Event_t *event);/// Handle mouse crossing event.
+   virtual void   SetState(EButtonState state, Bool_t emit = kFALSE);/// Set radio button state.
    virtual void   SetDisabledAndSelected(Bool_t);
+/// Set the state of a radio button to disabled and either on or off.
+
    virtual Bool_t IsToggleButton() const { return kTRUE; }
    virtual Bool_t IsExclusiveToggle() const { return kTRUE; }
    virtual Bool_t IsOn() const { return fStateOn; }
    virtual Bool_t IsDown() const { return fStateOn; }
    virtual Bool_t IsDisabledAndSelected() const { return ((fState == kButtonDisabled) && fStateOn); }
    virtual void   SavePrimitive(std::ostream &out, Option_t *option = "");
+/// Save a radio button widget as a C++ statement(s) on output stream out.
 ```
 
 
@@ -302,23 +366,35 @@ TGSplitButton 继承 TGTextButton
                 Int_t id = -1, GContext_t norm = GetDefaultGC()(),
                 FontStruct_t fontstruct = GetDefaultFontStruct(),
                 UInt_t option = kRaisedFrame | kDoubleBorder);
+/// Create a menu button widget. The hotstring will be adopted and
+/// deleted by the menu button. This constructior creates a
+/// menubutton with a popup menu attached that appears when the
+/// button for it is clicked. The popup menu is adopted.
 
-   virtual ~TGSplitButton();
+   virtual ~TGSplitButton();/// Delete a split button widget.
 
-   virtual TGDimension GetDefaultSize() const ;
+   virtual TGDimension GetDefaultSize() const ;/// returns default size
 
-   virtual void   SetText(TGHotString *new_label);
-   virtual void   SetText(const TString &new_label);
+   virtual void   SetText(TGHotString *new_label);/// Set new button text.
+   virtual void   SetText(const TString &new_label);/// Set new button text.
    virtual void   SetFont(FontStruct_t font, Bool_t global = kFALSE);
+/// Changes text font.
+/// If global is kTRUE font is changed globally, otherwise - locally.
+
    virtual void   SetFont(const char *fontName, Bool_t global = kFALSE);
-   virtual void   SetMBState(EButtonState state);
-   virtual void   SetSplit(Bool_t split);
+/// Changes text font specified by name.
+/// If global is true color is changed globally, otherwise - locally.
+
+   virtual void   SetMBState(EButtonState state);/// Set the state of the Menu Button part
+   virtual void   SetSplit(Bool_t split);/// Set the split status of a button.
    Bool_t         IsSplit() { return fSplit; }
-   virtual Bool_t HandleButton(Event_t *event);
-   virtual Bool_t HandleCrossing(Event_t *event);
+   virtual Bool_t HandleButton(Event_t *event);/// Handle button events.
+   virtual Bool_t HandleCrossing(Event_t *event);/// Handle mouse crossing event.
    virtual Bool_t HandleKey(Event_t *event);
-   virtual Bool_t HandleMotion(Event_t *event);
-   virtual void   Layout();
+/// Handle key event. This function will be called when the hotkey is hit.
+
+   virtual Bool_t HandleMotion(Event_t *event);/// Handle a motion event in a TGSplitButton.
+   virtual void   Layout();/// layout text button
 
    virtual void MBPressed()  { Emit("MBPressed()"); }   // *SIGNAL*
    virtual void MBReleased() { Emit("MBReleased()"); }  // *SIGNAL*
