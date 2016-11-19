@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGCanvas+ · GitBook</title>
+        <title>TGCanvas* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -1466,7 +1466,7 @@
                 <a href="TGButtonGroup.html">
             
                     
-                    TGButtonGroup
+                    TGButtonGroup*
             
                 </a>
             
@@ -1479,7 +1479,7 @@
                 <a href="TGCanvas.html">
             
                     
-                    TGCanvas+
+                    TGCanvas*
             
                 </a>
             
@@ -1492,7 +1492,7 @@
                 <a href="TGClient.html">
             
                     
-                    TGClient+
+                    TGClient*
             
                 </a>
             
@@ -1505,7 +1505,7 @@
                 <a href="TGColorDialog.html">
             
                     
-                    TGColorDialog+
+                    TGColorDialog*
             
                 </a>
             
@@ -1518,7 +1518,7 @@
                 <a href="TGColorSelect.html">
             
                     
-                    TGColorSelect+
+                    TGColorSelect*
             
                 </a>
             
@@ -1531,7 +1531,7 @@
                 <a href="TGComboBox.html">
             
                     
-                    TGComboBox+
+                    TGComboBox*
             
                 </a>
             
@@ -1544,7 +1544,7 @@
                 <a href="TGDoubleSlider.html">
             
                     
-                    TGDoubleSlider+
+                    TGDoubleSlider*
             
                 </a>
             
@@ -1557,7 +1557,7 @@
                 <a href="TGFont.html">
             
                     
-                    TGFont
+                    TGFont*
             
                 </a>
             
@@ -2463,7 +2463,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >TGCanvas+</a>
+        <a href="../.." >TGCanvas*</a>
     </h1>
 </div>
 
@@ -2484,104 +2484,169 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 18:30:40 2016 (+0800)
-;; Last-Updated: 二 11月  8 19:08:57 2016 (+0800)
+;; Last-Updated: 六 11月 19 14:16:12 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 
-<h1 id="tgcanvas">TGCanvas</h1><p>A TGCanvas is a frame containing two scrollbars (horizontal and</p><p>vertical) and a viewport. The viewport acts as the window through</p><p>which we look at the contents of the container frame.</p><p>TGContainer &#x7EE7;&#x627F; TGCompositeFrame , friend TGViewPort , TGCanvas , TGContainerKeyboardTimer , TGContainerScrollTimer , TGListView</p><p>TGViewPort &#x7EE7;&#x627F; TGCompositeFrame</p><p>TGCanvas &#x7EE7;&#x627F; TGFrame</p><h2 id="class">class</h2><p><strong>TGContainer</strong></p><pre><code class="lang-cpp">   TGContainer(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
+<h1 id="tgcanvas">TGCanvas</h1><p>A TGCanvas is a frame containing two scrollbars (horizontal and</p><p>vertical) and a viewport. The viewport acts as the window through</p><p>which we look at the contents of the container frame.</p><p>A TGContainer frame manages a content area. It can display and</p><p>control a hierarchy of multi-column items, and provides the ability</p><p>to add new items at any time. By default it doesn&apos;t map subwindows</p><p>which are items of the container. In this case subwindow must</p><p>provide DrawCopy method, see for example TGLVEntry class.</p><p>It is also possible to use option which allow to map subwindows.</p><p>This option has much slower drawing speed in case of more than 1000</p><p>items placed in container. To activate this option the fMapSubwindows</p><p>data member must be set to kTRUE (for example TTVLVContainer class)</p><p>The TGContainer class can handle the keys:</p><ul><li>F7, Ctnrl-F - activate search dialog                           
+</li>
+<li>F3, Ctnrl-G - continue search                                  
+</li>
+<li>End - go to the last item in container                         
+</li>
+<li>Home - go to the first item in container                       
+</li>
+<li>PageUp,PageDown,arrow keys - navigate inside container         
+</li>
+<li>Return/Enter - equivalent to double click of the mouse button  
+</li>
+<li>Contrl-A - select/activate all items.                          
+</li>
+<li>Space - invert selection.                                      
+</li></ul>
+<p>TGContainer &#x7EE7;&#x627F; TGCompositeFrame , friend TGViewPort , TGCanvas , TGContainerKeyboardTimer , TGContainerScrollTimer , TGListView</p><p>TGViewPort &#x7EE7;&#x627F; TGCompositeFrame</p><p>TGCanvas &#x7EE7;&#x627F; TGFrame</p><h2 id="class">class</h2><p><strong>TGContainer</strong></p><pre><code class="lang-cpp">   TGContainer(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
                UInt_t options = kSunkenFrame,
                Pixel_t back = GetDefaultFrameBackground());
+<span class="hljs-comment">/// Create a canvas container. This is the (large) frame that contains</span>
+<span class="hljs-comment">/// all the list items. It will be shown through a TGViewPort (which is</span>
+<span class="hljs-comment">/// created by the TGCanvas).</span>
+
    TGContainer(TGCanvas *p,UInt_t options = kSunkenFrame,
                Pixel_t back = GetDefaultFrameBackground());
+<span class="hljs-comment">/// Create a canvas container. This is the (large) frame that contains</span>
+<span class="hljs-comment">/// all the list items. It will be shown through a TGViewPort (which is</span>
+<span class="hljs-comment">/// created by the TGCanvas).</span>
 
-   <span class="hljs-keyword">virtual</span> ~TGContainer();
+   <span class="hljs-keyword">virtual</span> ~TGContainer();<span class="hljs-comment">/// Delete canvas container.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DrawRegion</span><span class="hljs-params">(Int_t x, Int_t y, UInt_t w, UInt_t h)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ClearViewPort</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Draw a region of container in viewport.</span>
+<span class="hljs-comment">/// x, y, w, h are position and dimension of area to be</span>
+<span class="hljs-comment">/// redrawn in viewport coordinates.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ClearViewPort</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Clear view port and redraw full content</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Associate</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGWindow *w)</span> </span>{ fMsgWindow = w; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AdjustPosition</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPagePosition</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPosition&amp; pos)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPagePosition</span><span class="hljs-params">(Int_t x, Int_t y)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPageDimension</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGDimension&amp; dim)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPageDimension</span><span class="hljs-params">(UInt_t w, UInt_t h)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveAll</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveItem</span><span class="hljs-params">(TGFrame *item)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AdjustPosition</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Move content to position of highlighted/activated frame.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPagePosition</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPosition&amp; pos)</span></span>;<span class="hljs-comment">/// Set page position.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPagePosition</span><span class="hljs-params">(Int_t x, Int_t y)</span></span>;<span class="hljs-comment">/// Set page position.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPageDimension</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGDimension&amp; dim)</span></span>;<span class="hljs-comment">/// Set page dimension.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPageDimension</span><span class="hljs-params">(UInt_t w, UInt_t h)</span></span>;<span class="hljs-comment">/// Set page dimension.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveAll</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Remove all items from the container.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveItem</span><span class="hljs-params">(TGFrame *item)</span></span>;<span class="hljs-comment">/// Remove item from container.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Layout container entries.</span>
 
    <span class="hljs-function">TGCanvas         *<span class="hljs-title">GetCanvas</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fCanvas; }
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGWindow   *<span class="hljs-title">GetMessageWindow</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMsgWindow; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGPosition   <span class="hljs-title">GetPagePosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension  <span class="hljs-title">GetPageDimension</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGPosition   <span class="hljs-title">GetPagePosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns page position.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension  <span class="hljs-title">GetPageDimension</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns page dimension.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t  <span class="hljs-title">NumSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fSelected; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t  <span class="hljs-title">NumItems</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTotal; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGFrameElement *<span class="hljs-title">FindFrame</span><span class="hljs-params">(Int_t x,Int_t y,Bool_t exclude=kTRUE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGFrame        *<span class="hljs-title">FindFrameByName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGHScrollBar *<span class="hljs-title">GetHScrollbar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGVScrollBar *<span class="hljs-title">GetVScrollbar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetHsbPosition</span><span class="hljs-params">(Int_t newPos)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetVsbPosition</span><span class="hljs-params">(Int_t newPos)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LineUp</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LineDown</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LineLeft</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LineRight</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PageUp</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PageDown</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Home</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">End</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Search</span><span class="hljs-params">(Bool_t close = kTRUE)</span></span>;
+<span class="hljs-comment">/// Find frame located int container at position x,y.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGFrame        *<span class="hljs-title">FindFrameByName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;<span class="hljs-comment">/// Find frame by name.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGHScrollBar *<span class="hljs-title">GetHScrollbar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// returns pointer to hor. scroll bar</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGVScrollBar *<span class="hljs-title">GetVScrollbar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// returns pointer to vert. scroll bar</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetHsbPosition</span><span class="hljs-params">(Int_t newPos)</span></span>;<span class="hljs-comment">/// set new hor. position</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetVsbPosition</span><span class="hljs-params">(Int_t newPos)</span></span>;<span class="hljs-comment">/// Set position of vertical scrollbar.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LineUp</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;<span class="hljs-comment">/// Make current position first line in window by scrolling up.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LineDown</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;<span class="hljs-comment">/// Move one line down.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LineLeft</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;<span class="hljs-comment">/// Move current position one column left.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LineRight</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;<span class="hljs-comment">/// Move current position one column right.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PageUp</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;<span class="hljs-comment">/// Move  position one page up.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PageDown</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;<span class="hljs-comment">/// Move position one page down.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Home</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;<span class="hljs-comment">/// Move to upper-left corner of container.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">End</span><span class="hljs-params">(Bool_t select = kFALSE)</span></span>;<span class="hljs-comment">/// Move to the bottom-right corner of container.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Search</span><span class="hljs-params">(Bool_t close = kTRUE)</span></span>;<span class="hljs-comment">/// Invokes search dialog. Looks for item with the entered name.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> *<span class="hljs-title">FindItem</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TString&amp; name,
                           Bool_t direction = kTRUE,
                           Bool_t caseSensitive = kTRUE,
                           Bool_t subString = kFALSE)</span></span>;
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> TGFrame *<span class="hljs-title">GetNextSelected</span><span class="hljs-params">(<span class="hljs-keyword">void</span> **current)</span></span>;
+<span class="hljs-comment">/// Return the next selected item. If the &quot;current&quot; pointer is 0, the first</span>
+<span class="hljs-comment">/// selected item will be returned.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGFrame *<span class="hljs-title">GetLastActive</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLastActiveEl ? fLastActiveEl-&gt;fFrame : <span class="hljs-number">0</span>; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a canvas container as a C++ statement(s) on output stream out.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleDNDFinished</span><span class="hljs-params">()</span> </span>{ fBdown = kFALSE; <span class="hljs-keyword">return</span> kTRUE; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleExpose</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleDoubleClick</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleExpose</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle expose events. Do not use double buffer.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event in container.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleDoubleClick</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle double click mouse event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion events.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// The key press event handler converts a key press to some line editor action.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetObjPicture</span><span class="hljs-params">(TGFrame *f)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDragPixmap</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *pic)</span></span>;
+<span class="hljs-comment">/// Retrieve icons associated with class &quot;name&quot;. Association is made</span>
+<span class="hljs-comment">/// via the user&apos;s ~/.root.mimes file or via $ROOTSYS/etc/root.mimes.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDragPixmap</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *pic)</span></span>;<span class="hljs-comment">/// Set drag window pixmaps and hotpoint.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SelectAll</span><span class="hljs-params">()</span></span>;                    <span class="hljs-comment">//*SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UnSelectAll</span><span class="hljs-params">()</span></span>;                  <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// Select all items in the container.</span>
+<span class="hljs-comment">/// SelectAll() signal emitted.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UnSelectAll</span><span class="hljs-params">()</span></span>;                  <span class="hljs-comment">//*SIGNAL*  /// Unselect all items in the container.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InvertSelection</span><span class="hljs-params">()</span></span>;              <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// Invert the selection, all selected items become unselected and vice versa.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReturnPressed</span><span class="hljs-params">(TGFrame*)</span></span>;        <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// Signal emitted when Return/Enter key pressed.</span>
+<span class="hljs-comment">/// It&apos;s equivalent to &quot;double click&quot; of mouse button.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SpacePressed</span><span class="hljs-params">(TGFrame*)</span></span>;         <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// Signal emitted when space key pressed.</span>
+<span class="hljs-comment">/// Pressing space key inverts selection.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">KeyPressed</span><span class="hljs-params">(TGFrame*, UInt_t keysym, UInt_t mask)</span></span>; <span class="hljs-comment">//*SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnMouseOver</span><span class="hljs-params">(TGFrame*)</span></span>;          <span class="hljs-comment">//*SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">CurrentChanged</span><span class="hljs-params">(Int_t x,Int_t y)</span></span>;<span class="hljs-comment">//*SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">CurrentChanged</span><span class="hljs-params">(TGFrame* f)</span></span>;     <span class="hljs-comment">//*SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(TGFrame *f, Int_t btn)</span></span>; <span class="hljs-comment">//*SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGFrame *f, Int_t btn)</span></span>;  <span class="hljs-comment">//*SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGFrame *f, Int_t btn, Int_t x, Int_t y)</span></span>; <span class="hljs-comment">//*SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(TGFrame *f, Int_t btn, Int_t x, Int_t y)</span></span>;       <span class="hljs-comment">//*SIGNAL*</span></code></pre>
+<span class="hljs-comment">/// Signal emitted when keyboard key pressed</span>
+<span class="hljs-comment">/// frame - activated frame</span>
+<span class="hljs-comment">/// keysym - defined in &quot;KeySymbols.h&quot;</span>
+<span class="hljs-comment">/// mask - modifier key mask, defined in &quot;GuiTypes.h&quot;</span>
+<span class="hljs-comment">/// const Mask_t kKeyShiftMask   = BIT(0);</span>
+<span class="hljs-comment">/// const Mask_t kKeyLockMask    = BIT(1);</span>
+<span class="hljs-comment">/// const Mask_t kKeyControlMask = BIT(2);</span>
+<span class="hljs-comment">/// const Mask_t kKeyMod1Mask    = BIT(3);   // typically the Alt key</span>
+<span class="hljs-comment">/// const Mask_t kButton1Mask    = BIT(8);</span>
+<span class="hljs-comment">/// const Mask_t kButton2Mask    = BIT(9);</span>
+<span class="hljs-comment">/// const Mask_t kButton3Mask    = BIT(10);</span>
+<span class="hljs-comment">/// const Mask_t kButton4Mask    = BIT(11);</span>
+<span class="hljs-comment">/// const Mask_t kButton5Mask    = BIT(12);</span>
+<span class="hljs-comment">/// const Mask_t kAnyModifier    = BIT(15);</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnMouseOver</span><span class="hljs-params">(TGFrame*)</span></span>;          <span class="hljs-comment">//*SIGNAL*  /// Signal emitted when pointer is over entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">CurrentChanged</span><span class="hljs-params">(Int_t x,Int_t y)</span></span>;<span class="hljs-comment">//*SIGNAL*  /// Emit signal when current position changed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">CurrentChanged</span><span class="hljs-params">(TGFrame* f)</span></span>;     <span class="hljs-comment">//*SIGNAL*  /// Emit signal when current selected frame changed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(TGFrame *f, Int_t btn)</span></span>; <span class="hljs-comment">//*SIGNAL*  /// Emit Clicked() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGFrame *f, Int_t btn)</span></span>;  <span class="hljs-comment">//*SIGNAL*  /// Emit DoubleClicked() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGFrame *f, Int_t btn, Int_t x, Int_t y)</span></span>; <span class="hljs-comment">//*SIGNAL*  /// Emit DoubleClicked() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(TGFrame *f, Int_t btn, Int_t x, Int_t y)</span></span>;       <span class="hljs-comment">//*SIGNAL*  /// Emit Clicked() signal.</span></code></pre>
 <p><strong>TGViewPort</strong></p><pre><code class="lang-cpp">   TGViewPort(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
               UInt_t options = kChildFrame,
-              Pixel_t back = GetDefaultFrameBackground());
+              Pixel_t back = GetDefaultFrameBackground());<span class="hljs-comment">/// Create a viewport object.</span>
 
    <span class="hljs-function">TGFrame *<span class="hljs-title">GetContainer</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fContainer; }
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetContainer</span><span class="hljs-params">(TGFrame *f)</span></span>;
+<span class="hljs-comment">/// Add container frame to the viewport. We must make sure that the added</span>
+<span class="hljs-comment">/// container is at least a TGCompositeFrame (TGCanvas::AddFrame depends</span>
+<span class="hljs-comment">/// on it).</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span> </span>{ };
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span> </span>{ }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TGDimension(fWidth, fHeight); }
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetHPos</span><span class="hljs-params">(Int_t xpos)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetVPos</span><span class="hljs-params">(Int_t ypos)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetPos</span><span class="hljs-params">(Int_t xpos, Int_t ypos)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetHPos</span><span class="hljs-params">(Int_t xpos)</span></span>;<span class="hljs-comment">/// Moves content of container frame in horizontal direction.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetVPos</span><span class="hljs-params">(Int_t ypos)</span></span>;<span class="hljs-comment">/// Moves content of container frame in vertical direction.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetPos</span><span class="hljs-params">(Int_t xpos, Int_t ypos)</span></span>;<span class="hljs-comment">/// Goto new position.</span>
 
    <span class="hljs-function">Int_t <span class="hljs-title">GetHPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fX0; }
    <span class="hljs-function">Int_t <span class="hljs-title">GetVPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fY0; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleConfigureNotify</span><span class="hljs-params">(Event_t *event)</span></span>;</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleConfigureNotify</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle resize events.</span></code></pre>
 <p><strong>TGCanvas</strong></p><pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span> { kCanvasNoScroll         = <span class="hljs-number">0</span>,
           kCanvasScrollHorizontal = BIT(<span class="hljs-number">0</span>),
           kCanvasScrollVertical   = BIT(<span class="hljs-number">1</span>),
@@ -2590,8 +2655,9 @@
 
    TGCanvas(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
             UInt_t options = kSunkenFrame | kDoubleBorder,
-            Pixel_t back = GetDefaultFrameBackground());
-   <span class="hljs-keyword">virtual</span> ~TGCanvas();
+            Pixel_t back = GetDefaultFrameBackground());<span class="hljs-comment">/// Create a canvas object.</span>
+
+   <span class="hljs-keyword">virtual</span> ~TGCanvas();<span class="hljs-comment">/// Delete canvas.</span>
 
    <span class="hljs-function">TGFrame      *<span class="hljs-title">GetContainer</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVport-&gt;GetContainer(); }
    <span class="hljs-function">TGViewPort   *<span class="hljs-title">GetViewPort</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVport; }
@@ -2599,22 +2665,33 @@
    <span class="hljs-function">TGVScrollBar *<span class="hljs-title">GetVScrollbar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVScrollbar; }
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">AddFrame</span><span class="hljs-params">(TGFrame *f, TGLayoutHints *l = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Adding a frame to a canvas is actually adding the frame to the</span>
+<span class="hljs-comment">/// viewport container. The viewport container must be at least a</span>
+<span class="hljs-comment">/// TGCompositeFrame for this method to succeed.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetContainer</span><span class="hljs-params">(TGFrame *f)</span> </span>{ fVport-&gt;SetContainer(f); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">MapSubwindows</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw canvas border.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">ClearViewPort</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetHsbPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetVsbPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetHsbPosition</span><span class="hljs-params">(Int_t newPos)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetVsbPosition</span><span class="hljs-params">(Int_t newPos)</span></span>;
+<span class="hljs-comment">/// Create layout for canvas. Depending on the size of the container</span>
+<span class="hljs-comment">/// we need to add the scrollbars.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">ClearViewPort</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Clear view port and redraw content.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetHsbPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Set position of horizontal scrollbar.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetVsbPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Get position of vertical scrollbar.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetHsbPosition</span><span class="hljs-params">(Int_t newPos)</span></span>;<span class="hljs-comment">/// Get position of horizontal scrollbar.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetVsbPosition</span><span class="hljs-params">(Int_t newPos)</span></span>;<span class="hljs-comment">/// Set position of vertical scrollbar.</span>
    <span class="hljs-function"><span class="hljs-keyword">void</span>          <span class="hljs-title">SetScrolling</span><span class="hljs-params">(Int_t scrolling)</span></span>;
+<span class="hljs-comment">/// Set scrolling policy. Use values defined by the enum: kCanvasNoScroll,</span>
+<span class="hljs-comment">/// kCanvasScrollHorizontal, kCanvasScrollVertical, kCanvasScrollBoth.</span>
+
    <span class="hljs-function">Int_t         <span class="hljs-title">GetScrolling</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fScrolling; }
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TGDimension(fWidth, fHeight); }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;<span class="hljs-comment">/// Handle message generated by the canvas scrollbars.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a canvas widget as a C++ statement(s) on output stream out.</span></code></pre>
 <h2 id="code">code</h2><h2 id="example">example</h2><!-- TGCanvas.md ends here -->
 
 
@@ -2645,12 +2722,12 @@
 
             
                 
-                <a href="TGButtonGroup.html" class="navigation navigation-prev " aria-label="Previous page: TGButtonGroup">
+                <a href="TGButtonGroup.html" class="navigation navigation-prev " aria-label="Previous page: TGButtonGroup*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="TGClient.html" class="navigation navigation-next " aria-label="Next page: TGClient+">
+                <a href="TGClient.html" class="navigation navigation-next " aria-label="Next page: TGClient*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2661,7 +2738,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGCanvas+","level":"1.3.3","depth":2,"next":{"title":"TGClient+","level":"1.3.4","depth":2,"path":"class/gui/TGClient.md","ref":"class/gui/TGClient.md","articles":[]},"previous":{"title":"TGButtonGroup","level":"1.3.2","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGCanvas.md","mtime":"2016-11-08T11:08:57.720Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-14T13:03:00.640Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGCanvas*","level":"1.3.3","depth":2,"next":{"title":"TGClient*","level":"1.3.4","depth":2,"path":"class/gui/TGClient.md","ref":"class/gui/TGClient.md","articles":[]},"previous":{"title":"TGButtonGroup*","level":"1.3.2","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGCanvas.md","mtime":"2016-11-19T06:16:12.769Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-19T08:17:57.912Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

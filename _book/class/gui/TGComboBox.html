@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGComboBox+ · GitBook</title>
+        <title>TGComboBox* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -1466,7 +1466,7 @@
                 <a href="TGButtonGroup.html">
             
                     
-                    TGButtonGroup
+                    TGButtonGroup*
             
                 </a>
             
@@ -1479,7 +1479,7 @@
                 <a href="TGCanvas.html">
             
                     
-                    TGCanvas+
+                    TGCanvas*
             
                 </a>
             
@@ -1492,7 +1492,7 @@
                 <a href="TGClient.html">
             
                     
-                    TGClient+
+                    TGClient*
             
                 </a>
             
@@ -1505,7 +1505,7 @@
                 <a href="TGColorDialog.html">
             
                     
-                    TGColorDialog+
+                    TGColorDialog*
             
                 </a>
             
@@ -1518,7 +1518,7 @@
                 <a href="TGColorSelect.html">
             
                     
-                    TGColorSelect+
+                    TGColorSelect*
             
                 </a>
             
@@ -1531,7 +1531,7 @@
                 <a href="TGComboBox.html">
             
                     
-                    TGComboBox+
+                    TGComboBox*
             
                 </a>
             
@@ -1544,7 +1544,7 @@
                 <a href="TGDoubleSlider.html">
             
                     
-                    TGDoubleSlider+
+                    TGDoubleSlider*
             
                 </a>
             
@@ -1557,7 +1557,7 @@
                 <a href="TGFont.html">
             
                     
-                    TGFont
+                    TGFont*
             
                 </a>
             
@@ -2463,7 +2463,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >TGComboBox+</a>
+        <a href="../.." >TGComboBox*</a>
     </h1>
 </div>
 
@@ -2484,9 +2484,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 10:55:03 2016 (+0800)
-;; Last-Updated: 二 11月  8 20:44:19 2016 (+0800)
+;; Last-Updated: 六 11月 19 15:40:00 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -2494,22 +2494,25 @@
 kC_COMMAND, kCM_COMBOBOX, combobox id, item id.</code></pre>
 <p>TGLineStyleComboBox &#x7EE7;&#x627F; TGComboBox</p><p>The TGLineStyleComboBox user callable and it creates a combobox for selecting the line style.</p><p>TGLineWidthComboBox &#x7EE7;&#x627F; TGComboBox</p><p>The TGLineWidthComboBox user callable and it creates a combobox for selecting the line width.</p><p>TGFontTypeComboBox &#x7EE7;&#x627F; TGComboBox</p><p>The TGFontTypeComboBox is user callable and it creates a combobox for selecting the font.</p><h2 id="class">class</h2><p><strong>TGComboBox</strong></p><pre><code class="lang-cpp">   TGComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
               UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
-              Pixel_t back = GetWhitePixel());
+              Pixel_t back = GetWhitePixel());<span class="hljs-comment">/// Create a combo box widget.</span>
    TGComboBox(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, Int_t id = <span class="hljs-number">-1</span>,
               UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
-              Pixel_t back = GetWhitePixel());
+              Pixel_t back = GetWhitePixel());<span class="hljs-comment">/// Create an editable combo box widget.</span>
 
-   <span class="hljs-keyword">virtual</span> ~TGComboBox();
+   <span class="hljs-keyword">virtual</span> ~TGComboBox();<span class="hljs-comment">/// Delete a combo box widget.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw border of combo box widget.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TGDimension(fWidth, fHeight); }
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleDoubleClick</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleSelection</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleSelectionRequest</span><span class="hljs-params">(Event_t *event)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button events in the combo box.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleDoubleClick</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle double click in text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle pointer motion in text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleSelection</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle selection in text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleSelectionRequest</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle selection request in text entry.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
+<span class="hljs-comment">/// Process messages generated by the listbox and forward</span>
+<span class="hljs-comment">/// messages to the combobox message handling window. Parm2 contains</span>
+<span class="hljs-comment">/// the id of the selected listbox entry.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntry</span><span class="hljs-params">(TGString *s, Int_t id)</span>
                         </span>{ fListBox-&gt;AddEntry(s, id); Resize(); }
@@ -2526,10 +2529,16 @@ kC_COMMAND, kCM_COMBOBOX, combobox id, item id.</code></pre>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">NewEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s = <span class="hljs-string">&quot;Entry&quot;</span>)</span>
                         </span>{ fListBox-&gt;NewEntry(s); Resize(); }       <span class="hljs-comment">//*MENU*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveEntry</span><span class="hljs-params">(Int_t id = <span class="hljs-number">-1</span>)</span></span>;                        <span class="hljs-comment">//*MENU*</span>
+<span class="hljs-comment">/// Remove entry. If id == -1, the currently selected entry is removed</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveAll</span><span class="hljs-params">()</span></span>;                                       <span class="hljs-comment">//*MENU*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Remove all entries from combo box.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// layout combobox</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsTextInputEnabled</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (fTextEntry != <span class="hljs-number">0</span>); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">EnableTextInput</span><span class="hljs-params">(Bool_t on)</span></span>;    <span class="hljs-comment">//*TOGGLE* *GETTER=IsTextInputEnabled</span>
+<span class="hljs-comment">/// Switch text input or readonly mode of combobox (not perfect yet).</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveEntries</span><span class="hljs-params">(Int_t from_ID, Int_t to_ID)</span>
                         </span>{ fListBox-&gt;RemoveEntries(from_ID, to_ID); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetNumberOfEntries</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
@@ -2537,13 +2546,21 @@ kC_COMMAND, kCM_COMBOBOX, combobox id, item id.</code></pre>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGListBox    *<span class="hljs-title">GetListBox</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fListBox; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGTextEntry  *<span class="hljs-title">GetTextEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTextEntry; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLBEntry    *<span class="hljs-title">FindEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s)</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Select</span><span class="hljs-params">(Int_t id, Bool_t emit = kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLBEntry    *<span class="hljs-title">FindEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Find entry by name.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Select</span><span class="hljs-params">(Int_t id, Bool_t emit = kTRUE)</span></span>;<span class="hljs-comment">/// Emit signal.</span>
+<span class="hljs-comment">/// Make the selected item visible in the combo box window</span>
+<span class="hljs-comment">/// and emit signals according to the second parameter.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fListBox-&gt;GetSelected(); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLBEntry *<span class="hljs-title">GetSelectedEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
                         </span>{ <span class="hljs-keyword">return</span> fListBox-&gt;GetSelectedEntry(); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTopEntry</span><span class="hljs-params">(TGLBEntry *e, TGLayoutHints *lh)</span></span>;
+<span class="hljs-comment">/// Set a new combo box value (normally update of text string in</span>
+<span class="hljs-comment">/// fSelEntry is done via fSelEntry::Update()).</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetEnabled</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;   <span class="hljs-comment">//*TOGGLE* *GETTER=IsEnabled</span>
+<span class="hljs-comment">/// Set state of combo box. If kTRUE=enabled, kFALSE=disabled.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsEnabled</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span>  fDDButton-&gt;IsEnabled(); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SortByName</span><span class="hljs-params">(Bool_t ascend = kTRUE)</span>
                   </span>{ fListBox-&gt;SortByName(ascend); }            <span class="hljs-comment">//*MENU*icon=bld_sortup.png*</span>
@@ -2552,21 +2569,29 @@ kC_COMMAND, kCM_COMBOBOX, combobox id, item id.</code></pre>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Selected</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;Selected(Int_t)&quot;</span>, id); }  <span class="hljs-comment">// *SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Selected</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *txt)</span> </span>{ Emit(<span class="hljs-string">&quot;Selected(char*)&quot;</span>, txt); } <span class="hljs-comment">// *SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReturnPressed</span><span class="hljs-params">()</span></span>;                                     <span class="hljs-comment">// *SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+<span class="hljs-comment">/// Add new entry to combo box when return key pressed inside text entry</span>
+<span class="hljs-comment">/// ReturnPressed signal is emitted.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a combo box widget as a C++ statement(s) on output stream out.</span></code></pre>
 <p><strong>TGLineStyleComboBox</strong></p><pre><code class="lang-cpp">   TGLineStyleComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
               UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
-              Pixel_t back = GetWhitePixel());
+              Pixel_t back = GetWhitePixel());<span class="hljs-comment">/// Create a line style combo box.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a line style combo box widget as a C++ statement(s).</span></code></pre>
 <p><strong>TGLineWidthComboBox</strong></p><pre><code class="lang-cpp">   TGLineWidthComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
               UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
               Pixel_t back = GetWhitePixel(), Bool_t none=kFALSE);
+<span class="hljs-comment">/// Create a line width combo box.</span>
+<span class="hljs-comment">/// If &quot;none&quot; is equal to kTRUE the first entry is &quot;None&quot;.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a line width combo box widget as a C++ statement(s).</span></code></pre>
 <p><strong>TGFontTypeComboBox</strong></p><pre><code class="lang-cpp">   TGFontTypeComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
             UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
-            Pixel_t bask = GetWhitePixel());
-   <span class="hljs-keyword">virtual</span> ~TGFontTypeComboBox();</code></pre>
+            Pixel_t bask = GetWhitePixel());<span class="hljs-comment">/// Create a text font combo box.</span>
+   <span class="hljs-keyword">virtual</span> ~TGFontTypeComboBox();<span class="hljs-comment">/// Text font combo box dtor.</span></code></pre>
 <h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGComboBox.h&quot;</span></span>
 
 <span class="hljs-comment">// TGComboBox</span>
@@ -2609,12 +2634,12 @@ fMonthBox-&gt;Select(<span class="hljs-number">1</span>);
 
             
                 
-                <a href="TGColorSelect.html" class="navigation navigation-prev " aria-label="Previous page: TGColorSelect+">
+                <a href="TGColorSelect.html" class="navigation navigation-prev " aria-label="Previous page: TGColorSelect*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="TGDoubleSlider.html" class="navigation navigation-next " aria-label="Next page: TGDoubleSlider+">
+                <a href="TGDoubleSlider.html" class="navigation navigation-next " aria-label="Next page: TGDoubleSlider*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2625,7 +2650,7 @@ fMonthBox-&gt;Select(<span class="hljs-number">1</span>);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGComboBox+","level":"1.3.7","depth":2,"next":{"title":"TGDoubleSlider+","level":"1.3.8","depth":2,"path":"class/gui/TGDoubleSlider.md","ref":"class/gui/TGDoubleSlider.md","articles":[]},"previous":{"title":"TGColorSelect+","level":"1.3.6","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGComboBox.md","mtime":"2016-11-08T12:44:19.690Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-14T13:03:00.640Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGComboBox*","level":"1.3.7","depth":2,"next":{"title":"TGDoubleSlider*","level":"1.3.8","depth":2,"path":"class/gui/TGDoubleSlider.md","ref":"class/gui/TGDoubleSlider.md","articles":[]},"previous":{"title":"TGColorSelect*","level":"1.3.6","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGComboBox.md","mtime":"2016-11-19T07:40:00.060Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-19T08:17:57.912Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

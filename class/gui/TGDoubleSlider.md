@@ -4,12 +4,51 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 12:51:36 2016 (+0800)
-;; Last-Updated: 二 11月  8 13:06:09 2016 (+0800)
+;; Last-Updated: 六 11月 19 15:44:16 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # TGDoubleSlider
+
+```cpp
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+// TGDoubleSlider, TGDoubleVSlider and TGDoubleHSlider                  //
+//                                                                      //
+// DoubleSlider widgets allow easy selection of a min and a max value   //
+// out of a range.                                                      //
+// DoubleSliders can be either horizontal or vertical oriented and      //
+// there is a choice of three different types of tick marks.            //
+//                                                                      //
+// To change the min value press the mouse near to the left / bottom    //
+// edge of the slider.                                                  //
+// To change the max value press the mouse near to the right / top      //
+// edge of the slider.                                                  //
+// To change both values simultaneously press the mouse near to the     //
+// center of the slider.                                                //
+//                                                                      //
+// TGDoubleSlider is an abstract base class. Use the concrete           //
+// TGDoubleVSlider and TGDoubleHSlider.                                 //
+//                                                                      //
+// Dragging the slider will generate the event:                         //
+// kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             //
+// kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           //
+//                                                                      //
+// Pressing the mouse will generate the event:                          //
+// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //
+// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //
+//                                                                      //
+// Releasing the mouse will generate the event:                         //
+// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //
+// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //
+//                                                                      //
+// Use the functions GetMinPosition(), GetMaxPosition() and             //
+// GetPosition() to retrieve the position of the slider.                //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+```
+
 
 TGDoubleSlider 继承 TGFrame, TGWidget
 
@@ -19,6 +58,23 @@ TGDoubleHSlider 继承 TGDoubleSlider
 
 ## class
 
+```cpp
+enum EDoubleSliderSize {
+   //--- sizes for vert. and horz. sliders
+   kDoubleSliderWidth  = 24,
+   kDoubleSliderHeight = kDoubleSliderWidth
+};
+
+
+enum EDoubleSliderScale {
+   //--- type of slider scale
+   kDoubleScaleNo        = BIT(0),
+   kDoubleScaleDownRight = BIT(1),
+   kDoubleScaleBoth      = BIT(2)
+};
+```
+
+
 **TGDoubleSlider**
 
 ```cpp
@@ -26,7 +82,7 @@ TGDoubleHSlider 继承 TGDoubleSlider
                   UInt_t options = kChildFrame,
                   Pixel_t back = GetDefaultFrameBackground(),
                   Bool_t reversed = kFALSE,
-                  Bool_t mark_ends = kFALSE);
+                  Bool_t mark_ends = kFALSE);/// Slider constructor.
 
    virtual ~TGDoubleSlider() { }
 
@@ -77,15 +133,16 @@ TGDoubleHSlider 继承 TGDoubleSlider
                    UInt_t options = kVerticalFrame,
                    Pixel_t back = GetDefaultFrameBackground(),
                    Bool_t reversed = kFALSE,
-                   Bool_t mark_ends = kFALSE);
+                   Bool_t mark_ends = kFALSE);/// Create a vertical slider widget.
 
-   virtual ~TGDoubleVSlider();
+   virtual ~TGDoubleVSlider();/// Delete vertical slider widget.
 
-   virtual Bool_t HandleButton(Event_t *event);
-   virtual Bool_t HandleMotion(Event_t *event);
+   virtual Bool_t HandleButton(Event_t *event);/// Handle mouse button event in vertical slider.
+   virtual Bool_t HandleMotion(Event_t *event);/// Handle mouse motion event in vertical slider.
    virtual TGDimension GetDefaultSize() const
                      { return TGDimension(kDoubleSliderWidth, fHeight); }
    virtual void   SavePrimitive(std::ostream &out, Option_t *option = "");
+/// Save an horizontal slider as a C++ statement(s) on output stream out.
 ```
 
 
@@ -96,15 +153,16 @@ TGDoubleHSlider 继承 TGDoubleSlider
                    UInt_t options = kHorizontalFrame,
                    Pixel_t back = GetDefaultFrameBackground(),
                    Bool_t reversed = kFALSE,
-                   Bool_t mark_ends = kFALSE);
+                   Bool_t mark_ends = kFALSE);/// Create horizontal slider widget.
 
-   virtual ~TGDoubleHSlider();
+   virtual ~TGDoubleHSlider();/// Delete a horizontal slider widget.
 
-   virtual Bool_t HandleButton(Event_t *event);
-   virtual Bool_t HandleMotion(Event_t *event);
+   virtual Bool_t HandleButton(Event_t *event);/// Handle mouse button event in horizontal slider widget.
+   virtual Bool_t HandleMotion(Event_t *event);/// Handle mouse motion event in horizontal slide widget.
    virtual TGDimension GetDefaultSize() const
                      { return TGDimension(fWidth, kDoubleSliderHeight); }
    virtual void   SavePrimitive(std::ostream &out, Option_t *option = "");
+/// Save an horizontal slider as a C++ statement(s) on output stream out.
 ```
 
 ## code

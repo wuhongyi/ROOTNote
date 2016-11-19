@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGColorDialog+ · GitBook</title>
+        <title>TGColorDialog* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -1466,7 +1466,7 @@
                 <a href="TGButtonGroup.html">
             
                     
-                    TGButtonGroup
+                    TGButtonGroup*
             
                 </a>
             
@@ -1479,7 +1479,7 @@
                 <a href="TGCanvas.html">
             
                     
-                    TGCanvas+
+                    TGCanvas*
             
                 </a>
             
@@ -1492,7 +1492,7 @@
                 <a href="TGClient.html">
             
                     
-                    TGClient+
+                    TGClient*
             
                 </a>
             
@@ -1505,7 +1505,7 @@
                 <a href="TGColorDialog.html">
             
                     
-                    TGColorDialog+
+                    TGColorDialog*
             
                 </a>
             
@@ -1518,7 +1518,7 @@
                 <a href="TGColorSelect.html">
             
                     
-                    TGColorSelect+
+                    TGColorSelect*
             
                 </a>
             
@@ -1531,7 +1531,7 @@
                 <a href="TGComboBox.html">
             
                     
-                    TGComboBox+
+                    TGComboBox*
             
                 </a>
             
@@ -1544,7 +1544,7 @@
                 <a href="TGDoubleSlider.html">
             
                     
-                    TGDoubleSlider+
+                    TGDoubleSlider*
             
                 </a>
             
@@ -1557,7 +1557,7 @@
                 <a href="TGFont.html">
             
                     
-                    TGFont
+                    TGFont*
             
                 </a>
             
@@ -2463,7 +2463,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >TGColorDialog+</a>
+        <a href="../.." >TGColorDialog*</a>
     </h1>
 </div>
 
@@ -2484,9 +2484,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 19:46:57 2016 (+0800)
-;; Last-Updated: 二 11月  8 19:52:48 2016 (+0800)
+;; Last-Updated: 六 11月 19 15:18:19 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -2497,23 +2497,31 @@ and the signal:
 ColorSelected(Pixel_t color)                                         </code></pre>
 <p>The TGColorDialog presents a full featured color selection dialog.</p><p>It uses 2 TGColorPalette&apos;s and the TGColorPick widgets.</p><p>TGColorPalette &#x7EE7;&#x627F; TGFrame, TGWidget</p><p>Color palette widget</p><p>TGColorPick &#x7EE7;&#x627F; TGFrame, TGWidget</p><p>Color picker widget</p><p>TGColorDialog &#x7EE7;&#x627F; TGTransientFrame</p><p>Color selection dialog</p><h2 id="class">class</h2><p><strong>TGColorPalette</strong></p><p>```cpp
    TGColorPalette(const TGWindow *p = 0, Int_t cols = 8, Int_t rows = 8, Int_t id = -1);
-   virtual ~TGColorPalette();</p><p>virtual Bool_t HandleButton(Event_t _event);
-   virtual Bool_t HandleMotion(Event_t _event);
-   virtual Bool_t HandleKey(Event_t *event);</p><p>virtual TGDimension GetDefaultSize() const
-            { return TGDimension((fCw + 5) <em> fCols, (fCh + 5) </em> fRows); }</p><p>void    SetColors(Pixel_t colors[]);
-   void    SetColor(Int_t ix, Pixel_t color);
-   void    SetCurrentCellColor(Pixel_t color);</p><p>void    SetCellSize(Int_t w = 20, Int_t h = 17);</p><p>Pixel_t GetColorByIndex(Int_t ix) const { return fPixels[ix]; }
-   Pixel_t GetCurrentColor() const;</p><p>virtual void ColorSelected(Pixel_t col = 0)
+/// TGColorPalette widget: this is just a grid of color cells of the
+/// specified size. Colors can be selected by clicking on them or by
+/// using the arrow keys.</p><p>virtual ~TGColorPalette();/// Destructor.</p><p>virtual Bool_t HandleButton(Event_t _event);/// Handle button events in color palette
+   virtual Bool_t HandleMotion(Event_t _event);/// Handle mouse motion events in color palette.
+   virtual Bool_t HandleKey(Event_t *event);/// Handle keyboard events in color palette.</p><p>virtual TGDimension GetDefaultSize() const
+            { return TGDimension((fCw + 5) <em> fCols, (fCh + 5) </em> fRows); }</p><p>void    SetColors(Pixel_t colors[]);/// Set color entries in color samples.
+   void    SetColor(Int_t ix, Pixel_t color);/// Set color at index ix of color entries.
+   void    SetCurrentCellColor(Pixel_t color);/// Set current cell color.</p><p>void    SetCellSize(Int_t w = 20, Int_t h = 17);/// Set color cell size.</p><p>Pixel_t GetColorByIndex(Int_t ix) const { return fPixels[ix]; }
+   Pixel_t GetCurrentColor() const;/// Return currently selected color value.</p><p>virtual void ColorSelected(Pixel_t col = 0)
             { Emit(&quot;ColorSelected(Pixel_t)&quot;, col ? col : GetCurrentColor()); }  //<em>SIGNAL</em></p><pre><code>**TGColorPick**
 
 ```cpp
    TGColorPick(const TGWindow *p = 0, Int_t w = 1, Int_t h = 1, Int_t id = -1);
-   virtual ~TGColorPick();
+/// TGColorPick constructor.
+/// TGColorPick is a widget which allows a color to be picked from HLS space.
+/// It consists of two elements: a color map window from where the user can
+/// select the hue and saturation level of a color, and a slider to select
+/// color&apos;s lightness.
 
-   virtual Bool_t HandleButton(Event_t *event);
-   virtual Bool_t HandleMotion(Event_t *event);
+   virtual ~TGColorPick();/// TGColorPick destructor.
 
-   void     SetColor(Pixel_t color);
+   virtual Bool_t HandleButton(Event_t *event);/// Handle mouse button events in color pick widget.
+   virtual Bool_t HandleMotion(Event_t *event);/// Handle mouse motion events in color pick widget.
+
+   void     SetColor(Pixel_t color);/// Position the slider cursor on right color position.
    Pixel_t  GetCurrentColor() const { return fCurrentColor; }
 
    virtual  void ColorSelected(Pixel_t col = 0)
@@ -2521,12 +2529,15 @@ ColorSelected(Pixel_t color)                                         </code></pr
 <p><strong>TGColorDialog</strong></p><p>```cpp
    TGColorDialog(const TGWindow _p = 0, const TGWindow _m = 0, Int_t _retc = 0,
                  Pixel_t _color = 0, Bool_t wait = kTRUE);
-   virtual ~TGColorDialog();</p><p>TGColorPalette _GetPalette() const { return fPalette; }
-   TGColorPalette _GetCustomPalette() const { return fCpalette; }</p><p>virtual void ColorSelected(Pixel_t); //<em>SIGNAL</em>
-   virtual void AlphaColorSelected(ULong_t); //<em>SIGNAL</em>
-           void DoPreview();
-   virtual void SetCurrentColor(Pixel_t col);
+/// Color selection dialog constructor.
+/// The TGColorDialog presents a full featured color selection dialog.
+/// It uses 2 TGColorPalette&apos;s and the TGColorPick widgets.</p><p>virtual ~TGColorDialog();/// TGColorDialog destructor.</p><p>TGColorPalette _GetPalette() const { return fPalette; }
+   TGColorPalette _GetCustomPalette() const { return fCpalette; }</p><p>virtual void ColorSelected(Pixel_t); //<em>SIGNAL</em>  /// Emit signal about selected color.
+   virtual void AlphaColorSelected(ULong_t); //<em>SIGNAL</em>  /// Emit signal about selected alpha and color.
+           void DoPreview();/// Slot method called when Preview button is clicked.
+   virtual void SetCurrentColor(Pixel_t col);/// Change current color.
            void SetColorInfo(Int_t event, Int_t px, Int_t py, TObject *selected);
+///  Set the color info in RGB and HLS parts
 ````</p><h2 id="code">code</h2><h2 id="example">example</h2><!-- TGColorDialog.md ends here -->
 
 
@@ -2557,12 +2568,12 @@ ColorSelected(Pixel_t color)                                         </code></pr
 
             
                 
-                <a href="TGClient.html" class="navigation navigation-prev " aria-label="Previous page: TGClient+">
+                <a href="TGClient.html" class="navigation navigation-prev " aria-label="Previous page: TGClient*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="TGColorSelect.html" class="navigation navigation-next " aria-label="Next page: TGColorSelect+">
+                <a href="TGColorSelect.html" class="navigation navigation-next " aria-label="Next page: TGColorSelect*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2573,7 +2584,7 @@ ColorSelected(Pixel_t color)                                         </code></pr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGColorDialog+","level":"1.3.5","depth":2,"next":{"title":"TGColorSelect+","level":"1.3.6","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},"previous":{"title":"TGClient+","level":"1.3.4","depth":2,"path":"class/gui/TGClient.md","ref":"class/gui/TGClient.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGColorDialog.md","mtime":"2016-11-08T11:52:48.986Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-14T13:03:00.640Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGColorDialog*","level":"1.3.5","depth":2,"next":{"title":"TGColorSelect*","level":"1.3.6","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},"previous":{"title":"TGClient*","level":"1.3.4","depth":2,"path":"class/gui/TGClient.md","ref":"class/gui/TGClient.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGColorDialog.md","mtime":"2016-11-19T07:18:19.841Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-19T08:17:57.912Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

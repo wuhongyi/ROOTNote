@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGFont · GitBook</title>
+        <title>TGFont* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -1466,7 +1466,7 @@
                 <a href="TGButtonGroup.html">
             
                     
-                    TGButtonGroup
+                    TGButtonGroup*
             
                 </a>
             
@@ -1479,7 +1479,7 @@
                 <a href="TGCanvas.html">
             
                     
-                    TGCanvas+
+                    TGCanvas*
             
                 </a>
             
@@ -1492,7 +1492,7 @@
                 <a href="TGClient.html">
             
                     
-                    TGClient+
+                    TGClient*
             
                 </a>
             
@@ -1505,7 +1505,7 @@
                 <a href="TGColorDialog.html">
             
                     
-                    TGColorDialog+
+                    TGColorDialog*
             
                 </a>
             
@@ -1518,7 +1518,7 @@
                 <a href="TGColorSelect.html">
             
                     
-                    TGColorSelect+
+                    TGColorSelect*
             
                 </a>
             
@@ -1531,7 +1531,7 @@
                 <a href="TGComboBox.html">
             
                     
-                    TGComboBox+
+                    TGComboBox*
             
                 </a>
             
@@ -1544,7 +1544,7 @@
                 <a href="TGDoubleSlider.html">
             
                     
-                    TGDoubleSlider+
+                    TGDoubleSlider*
             
                 </a>
             
@@ -1557,7 +1557,7 @@
                 <a href="TGFont.html">
             
                     
-                    TGFont
+                    TGFont*
             
                 </a>
             
@@ -2463,7 +2463,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >TGFont</a>
+        <a href="../.." >TGFont*</a>
     </h1>
 </div>
 
@@ -2484,13 +2484,394 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 11月  9 15:30:31 2016 (+0800)
-;; Last-Updated: 三 11月  9 15:30:37 2016 (+0800)
+;; Last-Updated: 六 11月 19 16:10:43 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 
-<h1 id="tgfont">TGFont</h1><!-- TGFont.md ends here -->
+<h1 id="tgfont">TGFont</h1><p>TGFont and TGFontPool</p><p>Encapsulate fonts used in the GUI system.</p><p>TGFontPool provides a pool of fonts.
+TGTextLayout is used to keep track of string  measurement</p><p>information when  using the text layout facilities.</p><p>It can be displayed with respect to any origin.</p><p>TGTextLayout &#x7EE7;&#x627F; TObject , friend TGFont</p><p>TGFont &#x7EE7;&#x627F; TNamed, TRefCnt ,friend TGFontPool, TGTextLayout;</p><p>TGFontPool &#x7EE7;&#x627F; TGObject</p><h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-comment">// Flags passed to TGFont::MeasureChars and TGFont::ComputeTextLayout</span>
+
+<span class="hljs-keyword">enum</span> ETextLayoutFlags {
+   kTextWholeWords = BIT(<span class="hljs-number">0</span>),
+   kTextAtLeastOne = BIT(<span class="hljs-number">1</span>),
+   kTextPartialOK  = BIT(<span class="hljs-number">2</span>),
+   kTextIgnoreTabs = BIT(<span class="hljs-number">3</span>),
+   kTextIgnoreNewlines = BIT(<span class="hljs-number">4</span>)
+};
+
+<span class="hljs-keyword">enum</span> EFontWeight {
+   kFontWeightNormal = <span class="hljs-number">0</span>,
+   kFontWeightMedium = <span class="hljs-number">0</span>,
+   kFontWeightBold = <span class="hljs-number">1</span>,
+   kFontWeightLight = <span class="hljs-number">2</span>,
+   kFontWeightDemibold = <span class="hljs-number">3</span>,
+   kFontWeightBlack = <span class="hljs-number">4</span>,
+   kFontWeightUnknown = <span class="hljs-number">-1</span>
+};
+
+<span class="hljs-keyword">enum</span> EFontSlant {
+   kFontSlantRoman = <span class="hljs-number">0</span>,
+   kFontSlantItalic = <span class="hljs-number">1</span>,
+   kFontSlantOblique = <span class="hljs-number">2</span>,
+   kFontSlantUnknown = <span class="hljs-number">-1</span>
+};
+
+
+<span class="hljs-keyword">struct</span> FontMetrics_t {
+   Int_t   fAscent;          <span class="hljs-comment">// from baseline to top of font</span>
+   Int_t   fDescent;         <span class="hljs-comment">// from baseline to bottom of font</span>
+   Int_t   fLinespace;       <span class="hljs-comment">// the sum of the ascent and descent</span>
+   Int_t   fMaxWidth;        <span class="hljs-comment">// width of widest character in font</span>
+   Bool_t  fFixed;           <span class="hljs-comment">// true if monospace, false otherwise</span>
+};
+
+
+<span class="hljs-keyword">struct</span> FontAttributes_t {
+
+   <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fFamily; <span class="hljs-comment">// Font family. The most important field.</span>
+   Int_t fPointsize;    <span class="hljs-comment">// Pointsize of font, 0 for default size, or negative number meaning pixel size.</span>
+   Int_t fWeight;       <span class="hljs-comment">// Weight flag; see below for def&apos;n.</span>
+   Int_t fSlant;        <span class="hljs-comment">// Slant flag; see below for def&apos;n.</span>
+   Int_t fUnderline;    <span class="hljs-comment">// Non-zero for underline font.</span>
+   Int_t fOverstrike;   <span class="hljs-comment">// Non-zero for overstrike font.</span>
+
+   FontAttributes_t():  <span class="hljs-comment">// default constructor</span>
+      fFamily    (<span class="hljs-number">0</span>),
+      fPointsize (<span class="hljs-number">0</span>),
+      fWeight    (kFontWeightNormal),
+      fSlant     (kFontSlantRoman),
+      fUnderline (<span class="hljs-number">0</span>),
+      fOverstrike(<span class="hljs-number">0</span>) { }
+
+   FontAttributes_t(<span class="hljs-keyword">const</span> FontAttributes_t&amp; f): <span class="hljs-comment">// copy constructor</span>
+      fFamily    (f.fFamily),
+      fPointsize (f.fPointsize),
+      fWeight    (f.fWeight),
+      fSlant     (f.fSlant),
+      fUnderline (f.fUnderline),
+      fOverstrike(f.fOverstrike) { }
+
+   FontAttributes_t&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> FontAttributes_t&amp; f) <span class="hljs-comment">// assignment operator</span>
+   {
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> != &amp;f) {
+         fFamily     = f.fFamily;
+         fPointsize  = f.fPointsize;
+         fWeight     = f.fWeight;
+         fSlant      = f.fSlant;
+         fUnderline  = f.fUnderline;
+         fOverstrike = f.fOverstrike;
+      }
+      <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+   }
+
+};</code></pre>
+<p><strong>TGTextLayout</strong></p><pre><code class="lang-cpp">   TGTextLayout(): fFont(<span class="hljs-literal">NULL</span>), fString(<span class="hljs-string">&quot;&quot;</span>), fWidth(<span class="hljs-number">0</span>), fNumChunks(<span class="hljs-number">0</span>), fChunks(<span class="hljs-literal">NULL</span>) {}
+   <span class="hljs-keyword">virtual</span> ~TGTextLayout();<span class="hljs-comment">/// destructor</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>   <span class="hljs-title">DrawText</span><span class="hljs-params">(Drawable_t dst, GContext_t gc, Int_t x, Int_t y,
+                   Int_t firstChar, Int_t lastChar)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Use the information in the TGTextLayout object to display a multi-line,</span>
+<span class="hljs-comment">/// justified string of text.</span>
+<span class="hljs-comment">/// This procedure is useful for simple widgets that need to display</span>
+<span class="hljs-comment">/// single-font, multi-line text and want TGFont to handle the details.</span>
+<span class="hljs-comment">/// dst       -- Window or pixmap in which to draw.</span>
+<span class="hljs-comment">/// gc        -- Graphics context to use for drawing text.</span>
+<span class="hljs-comment">/// x, y      -- Upper-left hand corner of rectangle in which to draw</span>
+<span class="hljs-comment">///              (pixels).</span>
+<span class="hljs-comment">/// firstChar -- The index of the first character to draw from the given</span>
+<span class="hljs-comment">///              text item. 0 specfies the beginning.</span>
+<span class="hljs-comment">/// lastChar  -- The index just after the last character to draw from the</span>
+<span class="hljs-comment">///              given text item. A number &lt; 0 means to draw all characters.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>   <span class="hljs-title">UnderlineChar</span><span class="hljs-params">(Drawable_t dst, GContext_t gc,
+                        Int_t x, Int_t y, Int_t underline)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Use the information in the TGTextLayout object to display an underline</span>
+<span class="hljs-comment">/// below an individual character. This procedure does not draw the text,</span>
+<span class="hljs-comment">/// just the underline.</span>
+<span class="hljs-comment">/// This procedure is useful for simple widgets that need to display</span>
+<span class="hljs-comment">/// single-font, multi-line text with an individual character underlined</span>
+<span class="hljs-comment">/// and want TGFont to handle the details. To display larger amounts of</span>
+<span class="hljs-comment">/// underlined text, construct and use an underlined font.</span>
+<span class="hljs-comment">/// dst       -- Window or pixmap in which to draw.</span>
+<span class="hljs-comment">/// gc        -- Graphics context to use for drawing text.</span>
+<span class="hljs-comment">/// x, y      -- Upper-left hand corner of rectangle in which to draw</span>
+<span class="hljs-comment">///              (pixels).</span>
+<span class="hljs-comment">/// underline -- Index of the single character to underline, or -1 for</span>
+<span class="hljs-comment">///              no underline.</span>
+
+   <span class="hljs-function">Int_t  <span class="hljs-title">PointToChar</span><span class="hljs-params">(Int_t x, Int_t y)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Use the information in the TGTextLayout token to determine the character</span>
+<span class="hljs-comment">/// closest to the given point. The point must be specified with respect to</span>
+<span class="hljs-comment">/// the upper-left hand corner of the text layout, which is considered to be</span>
+<span class="hljs-comment">/// located at (0, 0).</span>
+<span class="hljs-comment">/// Any point whose y-value is less that 0 will be considered closest to the</span>
+<span class="hljs-comment">/// first character in the text layout; any point whose y-value is greater</span>
+<span class="hljs-comment">/// than the height of the text layout will be considered closest to the last</span>
+<span class="hljs-comment">/// character in the text layout.</span>
+<span class="hljs-comment">/// Any point whose x-value is less than 0 will be considered closest to the</span>
+<span class="hljs-comment">/// first character on that line; any point whose x-value is greater than the</span>
+<span class="hljs-comment">/// width of the text layout will be considered closest to the last character</span>
+<span class="hljs-comment">/// on that line.</span>
+<span class="hljs-comment">/// The return value is the index of the character that was closest to the</span>
+<span class="hljs-comment">/// point. Given a text layout with no characters, the value 0 will always</span>
+<span class="hljs-comment">/// be returned, referring to a hypothetical zero-width placeholder character.</span>
+
+   <span class="hljs-function">Int_t  <span class="hljs-title">CharBbox</span><span class="hljs-params">(Int_t index, Int_t *x, Int_t *y, Int_t *w, Int_t *h)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Use the information in the TGTextLayout token to return the bounding box</span>
+<span class="hljs-comment">/// for the character specified by index.</span>
+<span class="hljs-comment">/// The width of the bounding box is the advance width of the character, and</span>
+<span class="hljs-comment">/// does not include and left- or right-bearing. Any character that extends</span>
+<span class="hljs-comment">/// partially outside of the text layout is considered to be truncated at the</span>
+<span class="hljs-comment">/// edge. Any character which is located completely outside of the text</span>
+<span class="hljs-comment">/// layout is considered to be zero-width and pegged against the edge.</span>
+<span class="hljs-comment">/// The height of the bounding box is the line height for this font,</span>
+<span class="hljs-comment">/// extending from the top of the ascent to the bottom of the descent.</span>
+<span class="hljs-comment">/// Information about the actual height of the individual letter is not</span>
+<span class="hljs-comment">/// available.</span>
+<span class="hljs-comment">/// A text layout that contains no characters is considered to contain a</span>
+<span class="hljs-comment">/// single zero-width placeholder character.</span>
+<span class="hljs-comment">/// The return value is 0 if the index did not specify a character in the</span>
+<span class="hljs-comment">/// text layout, or non-zero otherwise. In that case, *bbox is filled with</span>
+<span class="hljs-comment">/// the bounding box of the character.</span>
+<span class="hljs-comment">/// layout -- Layout information, from a previous call to ComputeTextLayout().</span>
+<span class="hljs-comment">/// index  -- The index of the character whose bbox is desired.</span>
+<span class="hljs-comment">/// x, y   -- Filled with the upper-left hand corner, in pixels, of the</span>
+<span class="hljs-comment">///           bounding box for the character specified by index, if non-NULL.</span>
+<span class="hljs-comment">/// w, h   -- Filled with the width and height of the bounding box for the</span>
+<span class="hljs-comment">///           character specified by index, if non-NULL.</span>
+
+   <span class="hljs-function">Int_t  <span class="hljs-title">DistanceToText</span><span class="hljs-params">(Int_t x, Int_t y)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Computes the distance in pixels from the given point to the given</span>
+<span class="hljs-comment">/// text layout. Non-displaying space characters that occur at the end of</span>
+<span class="hljs-comment">/// individual lines in the text layout are ignored for hit detection</span>
+<span class="hljs-comment">/// purposes.</span>
+<span class="hljs-comment">/// The return value is 0 if the point (x, y) is inside the text layout.</span>
+<span class="hljs-comment">/// If the point isn&apos;t inside the text layout then the return value is the</span>
+<span class="hljs-comment">/// distance in pixels from the point to the text item.</span>
+<span class="hljs-comment">/// x, y -- Coordinates of point to check, with respect to the upper-left</span>
+<span class="hljs-comment">///         corner of the text layout (in pixels).</span>
+
+   <span class="hljs-function">Int_t  <span class="hljs-title">IntersectText</span><span class="hljs-params">(Int_t x, Int_t y, Int_t w, Int_t h)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Determines whether a text layout lies entirely inside, entirely outside,</span>
+<span class="hljs-comment">/// or overlaps a given rectangle. Non-displaying space characters that occur</span>
+<span class="hljs-comment">/// at the end of individual lines in the text layout are ignored for</span>
+<span class="hljs-comment">/// intersection calculations.</span>
+<span class="hljs-comment">/// The return value is -1 if the text layout is entirely outside of the</span>
+<span class="hljs-comment">/// rectangle, 0 if it overlaps, and 1 if it is entirely inside of the</span>
+<span class="hljs-comment">/// rectangle.</span>
+<span class="hljs-comment">/// x, y -- Upper-left hand corner, in pixels, of rectangular area to compare</span>
+<span class="hljs-comment">///         with text layout. Coordinates are with respect to the upper-left</span>
+<span class="hljs-comment">///         hand corner of the text layout itself.</span>
+<span class="hljs-comment">/// w, h -- The width and height of the above rectangular area, in pixels.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>   <span class="hljs-title">ToPostscript</span><span class="hljs-params">(TString *dst)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Outputs the contents of a text layout in Postscript format. The set of</span>
+<span class="hljs-comment">/// lines in the text layout will be rendered by the user supplied Postscript</span>
+<span class="hljs-comment">/// function. The function should be of the form:</span>
+<span class="hljs-comment">///     justify x y string  function  --</span>
+<span class="hljs-comment">/// Justify is -1, 0, or 1, depending on whether the following string should</span>
+<span class="hljs-comment">/// be left, center, or right justified, x and y is the location for the</span>
+<span class="hljs-comment">/// origin of the string, string is the sequence of characters to be printed,</span>
+<span class="hljs-comment">/// and function is the name of the caller-provided function; the function</span>
+<span class="hljs-comment">/// should leave nothing on the stack.</span>
+<span class="hljs-comment">/// The meaning of the origin of the string (x and y) depends on the</span>
+<span class="hljs-comment">/// justification. For left justification, x is where the left edge of the</span>
+<span class="hljs-comment">/// string should appear. For center justification, x is where the center of</span>
+<span class="hljs-comment">/// the string should appear. And for right justification, x is where the</span>
+<span class="hljs-comment">/// right edge of the string should appear. This behavior is necessary</span>
+<span class="hljs-comment">/// because, for example, right justified text on the screen is justified</span>
+<span class="hljs-comment">/// with screen metrics. The same string needs to be justified with printer</span>
+<span class="hljs-comment">/// metrics on the printer to appear in the correct place with respect to</span>
+<span class="hljs-comment">/// other similarly justified strings. In all circumstances, y is the</span>
+<span class="hljs-comment">/// location of the baseline for the string.</span>
+<span class="hljs-comment">/// result is modified to hold the Postscript code that will render the text</span>
+<span class="hljs-comment">/// layout.</span></code></pre>
+<p><strong>TGFont</strong></p><pre><code class="lang-cpp">   <span class="hljs-keyword">virtual</span> ~TGFont();<span class="hljs-comment">/// Delete font.</span>
+
+   <span class="hljs-function">FontH_t      <span class="hljs-title">GetFontHandle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFontH; }
+   <span class="hljs-function">FontStruct_t <span class="hljs-title">GetFontStruct</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFontStruct; }
+   <span class="hljs-function">FontStruct_t <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">GetFontMetrics</span><span class="hljs-params">(FontMetrics_t *m)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Get font metrics.</span>
+   <span class="hljs-function">FontAttributes_t <span class="hljs-title">GetFontAttributes</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFA; }
+
+   <span class="hljs-function">Int_t  <span class="hljs-title">PostscriptFontName</span><span class="hljs-params">(TString *dst)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return the name of the corresponding Postscript font for this TGFont.</span>
+<span class="hljs-comment">/// The return value is the pointsize of the TGFont. The name of the</span>
+<span class="hljs-comment">/// Postscript font is appended to ds.</span>
+<span class="hljs-comment">/// If the font does not exist on the printer, the print job will fail at</span>
+<span class="hljs-comment">/// print time. Given a &quot;reasonable&quot; Postscript printer, the following</span>
+<span class="hljs-comment">/// TGFont font families should print correctly:</span>
+<span class="hljs-comment">///     Avant Garde, Arial, Bookman, Courier, Courier New, Geneva,</span>
+<span class="hljs-comment">///     Helvetica, Monaco, New Century Schoolbook, New York,</span>
+<span class="hljs-comment">///     Palatino, Symbol, Times, Times New Roman, Zapf Chancery,</span>
+<span class="hljs-comment">///     and Zapf Dingbats.</span>
+<span class="hljs-comment">/// Any other TGFont font families may not print correctly because the</span>
+<span class="hljs-comment">/// computed Postscript font name may be incorrect.</span>
+<span class="hljs-comment">/// dst -- Pointer to an initialized TString object to which the name of the</span>
+<span class="hljs-comment">///        Postscript font that corresponds to the font will be appended.</span>
+
+   <span class="hljs-function">Int_t  <span class="hljs-title">TextWidth</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-built_in">string</span>, Int_t numChars = <span class="hljs-number">-1</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// A wrapper function for the more complicated interface of MeasureChars.</span>
+<span class="hljs-comment">/// Computes how much space the given simple string needs.</span>
+<span class="hljs-comment">/// The return value is the width (in pixels) of the given string.</span>
+<span class="hljs-comment">/// string   -- String whose width will be computed.</span>
+<span class="hljs-comment">/// numChars -- Number of characters to consider from string, or &lt; 0 for</span>
+<span class="hljs-comment">///             strlen().</span>
+
+   <span class="hljs-function">Int_t  <span class="hljs-title">XTextWidth</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-built_in">string</span>, Int_t numChars = <span class="hljs-number">-1</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return text widht in pixels</span>
+   <span class="hljs-function">Int_t  <span class="hljs-title">TextHeight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFM.fLinespace; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>   <span class="hljs-title">UnderlineChars</span><span class="hljs-params">(Drawable_t dst, GContext_t gc,
+                        <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-built_in">string</span>, Int_t x, Int_t y,
+                        Int_t firstChar, Int_t lastChar)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// This procedure draws an underline for a given range of characters in a</span>
+<span class="hljs-comment">/// given string. It doesn&apos;t draw the characters (which are assumed to have</span>
+<span class="hljs-comment">/// been displayed previously); it just draws the underline. This procedure</span>
+<span class="hljs-comment">/// would mainly be used to quickly underline a few characters without having</span>
+<span class="hljs-comment">/// to construct an underlined font. To produce properly underlined text, the</span>
+<span class="hljs-comment">/// appropriate underlined font should be constructed and used.</span>
+<span class="hljs-comment">/// dst       -- Window or pixmap in which to draw.</span>
+<span class="hljs-comment">/// gc        -- Graphics context for actually drawing line.</span>
+<span class="hljs-comment">/// string    -- String containing characters to be underlined or overstruck.</span>
+<span class="hljs-comment">/// x, y      -- Coordinates at which first character of string is drawn.</span>
+<span class="hljs-comment">/// firstChar -- Index of first character.</span>
+<span class="hljs-comment">/// lastChar  -- Index of one after the last character.</span>
+
+   <span class="hljs-function">TGTextLayout *<span class="hljs-title">ComputeTextLayout</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-built_in">string</span>, Int_t numChars,
+                                  Int_t wrapLength, Int_t justify, Int_t flags,
+                                  UInt_t *width, UInt_t *height)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Computes the amount of screen space needed to display a multi-line,</span>
+<span class="hljs-comment">/// justified string of text. Records all the measurements that were done</span>
+<span class="hljs-comment">/// to determine to size and positioning of the individual lines of text;</span>
+<span class="hljs-comment">/// this information can be used by the TGTextLayout::DrawText() procedure</span>
+<span class="hljs-comment">/// to display the text quickly (without remeasuring it).</span>
+<span class="hljs-comment">/// This procedure is useful for simple widgets that want to display</span>
+<span class="hljs-comment">/// single-font, multi-line text and want TGFont to handle the details.</span>
+<span class="hljs-comment">/// The return value is a TGTextLayout token that holds the measurement</span>
+<span class="hljs-comment">/// information for the given string. The token is only valid for the given</span>
+<span class="hljs-comment">/// string. If the string is freed, the token is no longer valid and must</span>
+<span class="hljs-comment">/// also be deleted.</span>
+<span class="hljs-comment">/// The dimensions of the screen area needed to display the text are stored</span>
+<span class="hljs-comment">/// in *width and *height.</span>
+<span class="hljs-comment">/// string     -- String whose dimensions are to be computed.</span>
+<span class="hljs-comment">/// numChars   -- Number of characters to consider from string, or &lt; 0 for</span>
+<span class="hljs-comment">///               strlen().</span>
+<span class="hljs-comment">/// wrapLength -- Longest permissible line length, in pixels. &lt;= 0 means no</span>
+<span class="hljs-comment">///               automatic wrapping: just let lines get as long as needed.</span>
+<span class="hljs-comment">/// justify    -- How to justify lines.</span>
+<span class="hljs-comment">/// flags      -- Flag bits OR-ed together. kTextIgnoreTabs means that tab</span>
+<span class="hljs-comment">///               characters should not be expanded. kTextIgnoreNewlines</span>
+<span class="hljs-comment">///               means that newline characters should not cause a line break.</span>
+<span class="hljs-comment">/// width      -- Filled with width of string.</span>
+<span class="hljs-comment">/// height     -- Filled with height of string.</span>
+
+   <span class="hljs-function">Int_t  <span class="hljs-title">MeasureChars</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *source, Int_t numChars, Int_t maxLength,
+                      Int_t flags, Int_t *length)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Determine the number of characters from the string that will fit in the</span>
+<span class="hljs-comment">/// given horizontal span. The measurement is done under the assumption that</span>
+<span class="hljs-comment">/// DrawChars() will be used to actually display the characters.</span>
+<span class="hljs-comment">/// The return value is the number of characters from source that fit into</span>
+<span class="hljs-comment">/// the span that extends from 0 to maxLength. *length is filled with the</span>
+<span class="hljs-comment">/// x-coordinate of the right edge of the last character that did fit.</span>
+<span class="hljs-comment">/// source    -- Characters to be displayed. Need not be &apos;\0&apos; terminated.</span>
+<span class="hljs-comment">/// numChars  -- Maximum number of characters to consider from source string.</span>
+<span class="hljs-comment">/// maxLength -- If &gt; 0, maxLength specifies the longest permissible line</span>
+<span class="hljs-comment">///              length; don&apos;t consider any character that would cross this</span>
+<span class="hljs-comment">///              x-position. If &lt;= 0, then line length is unbounded and the</span>
+<span class="hljs-comment">///              flags argument is ignored.</span>
+<span class="hljs-comment">/// flags     -- Various flag bits OR-ed together:</span>
+<span class="hljs-comment">///              TEXT_PARTIAL_OK means include the last char which only</span>
+<span class="hljs-comment">///              partially fit on this line.</span>
+<span class="hljs-comment">///              TEXT_WHOLE_WORDS means stop on a word boundary, if possible.</span>
+<span class="hljs-comment">///              TEXT_AT_LEAST_ONE means return at least one character even</span>
+<span class="hljs-comment">///              if no characters fit.</span>
+<span class="hljs-comment">/// *length   -- Filled with x-location just after the terminating character.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>   <span class="hljs-title">DrawCharsExp</span><span class="hljs-params">(Drawable_t dst, GContext_t gc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *source,
+                      Int_t numChars, Int_t x, Int_t y)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Draw a string of characters on the screen. DrawCharsExp() expands</span>
+<span class="hljs-comment">/// control characters that occur in the string to \X or \xXX sequences.</span>
+<span class="hljs-comment">/// DrawChars() just draws the strings.</span>
+<span class="hljs-comment">/// dst      -- Window or pixmap in which to draw.</span>
+<span class="hljs-comment">/// gc       -- Graphics context for drawing characters.</span>
+<span class="hljs-comment">/// source   -- Characters to be displayed. Need not be&apos;\0&apos; terminated.</span>
+<span class="hljs-comment">///             For DrawChars(), all meta-characters (tabs, control</span>
+<span class="hljs-comment">///             characters, and newlines) should be stripped out of the</span>
+<span class="hljs-comment">///             string that is passed to this function. If they are not</span>
+<span class="hljs-comment">///             stripped out, they will be displayed as regular printing</span>
+<span class="hljs-comment">///             characters.</span>
+<span class="hljs-comment">/// numChars -- Number of characters in string.</span>
+<span class="hljs-comment">/// x, y     -- Coordinates at which to place origin of string when drawing.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>   <span class="hljs-title">DrawChars</span><span class="hljs-params">(Drawable_t dst, GContext_t gc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *source,
+                   Int_t numChars, Int_t x, Int_t y)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Perform a quick sanity check to ensure we won&apos;t overflow the X</span>
+<span class="hljs-comment">/// coordinate space.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Print font info.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save the used font as a C++ statement(s) on output stream out.</span></code></pre>
+<p><strong>TGFontPool</strong></p><pre><code class="lang-cpp">   TGFontPool(TGClient *client);<span class="hljs-comment">/// Create a font pool.</span>
+   <span class="hljs-keyword">virtual</span> ~TGFontPool();<span class="hljs-comment">/// Cleanup font pool.</span>
+
+   <span class="hljs-function">TGFont  *<span class="hljs-title">GetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *font, Bool_t fixedDefault = kTRUE)</span></span>;
+<span class="hljs-comment">/// Get the specified font.</span>
+<span class="hljs-comment">/// The font can be one of the following forms:</span>
+<span class="hljs-comment">///        XLFD (see X documentation)</span>
+<span class="hljs-comment">///        &quot;Family [size [style] [style ...]]&quot;</span>
+<span class="hljs-comment">/// Returns 0 if error or no font can be found.</span>
+<span class="hljs-comment">/// If fixedDefault is false the &quot;fixed&quot; font will not be substituted</span>
+<span class="hljs-comment">/// as fallback when the asked for font does not exist.</span>
+
+   <span class="hljs-function">TGFont  *<span class="hljs-title">GetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGFont *font)</span></span>;
+<span class="hljs-comment">/// Use font, i.e. increases ref count of specified font. Returns 0</span>
+<span class="hljs-comment">/// if font is not found.</span>
+
+   <span class="hljs-function">TGFont  *<span class="hljs-title">GetFont</span><span class="hljs-params">(FontStruct_t font)</span></span>;<span class="hljs-comment">/// Use font, i.e. increases ref count of specified font.</span>
+   <span class="hljs-function">TGFont  *<span class="hljs-title">GetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *family, Int_t ptsize, Int_t weight, Int_t slant)</span></span>;
+<span class="hljs-comment">/// Returns font specified bay family, pixel/point size, weight and slant</span>
+<span class="hljs-comment">///  negative value of ptsize means size in pixels</span>
+<span class="hljs-comment">///  positive value of ptsize means size in points</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">FreeFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGFont *font)</span></span>;<span class="hljs-comment">/// Free font. If ref count is 0 delete font.</span>
+   <span class="hljs-function">TGFont  *<span class="hljs-title">FindFont</span><span class="hljs-params">(FontStruct_t font)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find font based on its font struct. Returns 0 if font is not found.</span>
+
+   <span class="hljs-function">TGFont  *<span class="hljs-title">FindFontByHandle</span><span class="hljs-params">(FontH_t font)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find font based on its font handle. Returns 0 if font is not found.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">char</span>   **<span class="hljs-title">GetAttributeInfo</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FontAttributes_t *fa)</span></span>;
+<span class="hljs-comment">/// Return information about the font attributes as an array of strings.</span>
+<span class="hljs-comment">/// An array of FONT_NUMFIELDS strings is returned holding the value of the</span>
+<span class="hljs-comment">/// font attributes in the following order:</span>
+<span class="hljs-comment">/// family size weight slant underline overstrike</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">FreeAttributeInfo</span><span class="hljs-params">(<span class="hljs-keyword">char</span> **info)</span></span>;<span class="hljs-comment">/// Free attributes info.</span>
+   <span class="hljs-function"><span class="hljs-keyword">char</span>   **<span class="hljs-title">GetFontFamilies</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Return information about the font families that are available on the</span>
+<span class="hljs-comment">/// current display.</span>
+<span class="hljs-comment">/// An array of strings is returned holding a list of all the available font</span>
+<span class="hljs-comment">/// families. The array is terminated with a NULL pointer.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">FreeFontFamilies</span><span class="hljs-params">(<span class="hljs-keyword">char</span> **f)</span></span>;<span class="hljs-comment">/// Delete an array of families allocated GetFontFamilies() method</span>
+   <span class="hljs-function">Bool_t   <span class="hljs-title">ParseFontName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-built_in">string</span>, FontAttributes_t *fa)</span></span>;
+<span class="hljs-comment">/// Converts a string into a set of font attributes that can be used to</span>
+<span class="hljs-comment">/// construct a font.</span>
+<span class="hljs-comment">/// The string can be one of the following forms:</span>
+<span class="hljs-comment">///        XLFD (see X documentation)</span>
+<span class="hljs-comment">///        &quot;Family [size [style] [style ...]]&quot;</span>
+<span class="hljs-comment">/// The return value is kFALSE if the object was syntactically</span>
+<span class="hljs-comment">/// invalid. Otherwise, fills the font attribute buffer with the values</span>
+<span class="hljs-comment">/// parsed from the string and returns kTRUE. The structure must already be</span>
+<span class="hljs-comment">/// properly initialized.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">NameOfFont</span><span class="hljs-params">(TGFont *font)</span></span>;<span class="hljs-comment">/// Given a font, return a textual string identifying it.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List all fonts in the pool.</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp">TGFont *font = fpool-&gt;GetFont(<span class="hljs-string">&quot;helvetica&quot;</span>, <span class="hljs-number">-9</span>, kFontWeightNormal, kFontSlantRoman);
+font-&gt;Print();</code></pre>
+<h2 id="example">example</h2><!-- TGFont.md ends here -->
 
 
 
@@ -2520,7 +2901,7 @@
 
             
                 
-                <a href="TGDoubleSlider.html" class="navigation navigation-prev " aria-label="Previous page: TGDoubleSlider+">
+                <a href="TGDoubleSlider.html" class="navigation navigation-prev " aria-label="Previous page: TGDoubleSlider*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2536,7 +2917,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGFont","level":"1.3.9","depth":2,"next":{"title":"TGFontDialog","level":"1.3.10","depth":2,"path":"class/gui/TGFontDialog.md","ref":"class/gui/TGFontDialog.md","articles":[]},"previous":{"title":"TGDoubleSlider+","level":"1.3.8","depth":2,"path":"class/gui/TGDoubleSlider.md","ref":"class/gui/TGDoubleSlider.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGFont.md","mtime":"2016-11-09T07:30:37.689Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-14T13:03:00.640Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGFont*","level":"1.3.9","depth":2,"next":{"title":"TGFontDialog","level":"1.3.10","depth":2,"path":"class/gui/TGFontDialog.md","ref":"class/gui/TGFontDialog.md","articles":[]},"previous":{"title":"TGDoubleSlider*","level":"1.3.8","depth":2,"path":"class/gui/TGDoubleSlider.md","ref":"class/gui/TGDoubleSlider.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGFont.md","mtime":"2016-11-19T08:10:43.298Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-19T08:17:57.912Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 19:35:20 2016 (+0800)
-;; Last-Updated: 二 11月  8 19:46:29 2016 (+0800)
+;; Last-Updated: 六 11月 19 15:26:03 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # TGColorSelect
@@ -51,10 +51,13 @@ Color selection checkbutton
 
 ```cpp
    TGColorFrame(const TGWindow *p = 0, Pixel_t c = 0, Int_t n = 1);
+/// TGColorFrame constructor.
+/// The TGColorFrame is a small frame with border showing a specific color.
+
    virtual ~TGColorFrame() { }
 
-   virtual Bool_t  HandleButton(Event_t *event);
-   virtual void    DrawBorder();
+   virtual Bool_t  HandleButton(Event_t *event);/// Handle button events in TGColorFrame.
+   virtual void    DrawBorder();/// Draw TGColorFrame border.
 
    void     SetActive(Bool_t in) { fActive = in; gClient->NeedRedraw(this); }
    Pixel_t  GetColor() const { return fColor; }
@@ -65,11 +68,14 @@ Color selection checkbutton
 
 ```cpp
    TG16ColorSelector(const TGWindow *p = 0);
-   virtual ~TG16ColorSelector();
+/// TG16ColorSelector constructor.
+/// The TG16ColorSelector is a composite frame with 16 TGColorFrames.
 
-   virtual Bool_t ProcessMessage(Long_t msg, Long_t parm1, Long_t parm2);
+   virtual ~TG16ColorSelector();/// TG16ColorSelector destructor.
 
-   void    SetActive(Int_t newat);
+   virtual Bool_t ProcessMessage(Long_t msg, Long_t parm1, Long_t parm2);/// Process messages for TG16ColorSelector.
+
+   void    SetActive(Int_t newat);/// Set active color frame.
    Int_t   GetActive() { return fActive; }
 ```
 
@@ -78,15 +84,19 @@ Color selection checkbutton
 
 ```cpp
    TGColorPopup(const TGWindow *p = 0, const TGWindow *m = 0, Pixel_t color = 0);
-   virtual ~TGColorPopup();
+/// TGColorPopup constructor.
+/// The TGColorPopup is a popup containing a TG16ColorSelector and a "More..."
+/// button which popups up a TGColorDialog allowing custom color selection.
 
-   virtual Bool_t HandleButton(Event_t *event);
-   virtual Bool_t ProcessMessage(Long_t msg, Long_t parm1, Long_t parm2);
+   virtual ~TGColorPopup();/// TGColorPopup destructor.
 
-   void    PlacePopup(Int_t x, Int_t y, UInt_t w, UInt_t h);
-   void    EndPopup();
-   void    PreviewColor(Pixel_t color);
-   void    PreviewAlphaColor(ULong_t color);
+   virtual Bool_t HandleButton(Event_t *event);/// Handle mouse button events for TGColorPopup.
+   virtual Bool_t ProcessMessage(Long_t msg, Long_t parm1, Long_t parm2);/// Process messages for TGColorPopup.
+
+   void    PlacePopup(Int_t x, Int_t y, UInt_t w, UInt_t h);/// Popup TGColorPopup at x,y position
+   void    EndPopup();/// Ungrab pointer and unmap window.
+   void    PreviewColor(Pixel_t color);/// Emit a signal to see preview.
+   void    PreviewAlphaColor(ULong_t color);/// Emit a signal to see preview.
 ```
 
 
@@ -95,16 +105,21 @@ Color selection checkbutton
 ```cpp
    TGColorSelect(const TGWindow *p = 0, Pixel_t color = 0,
                  Int_t id = -1);
-   virtual ~TGColorSelect();
+/// TGColorSelect constructor.
+/// The TGColorSelect widget is like a checkbutton but instead of the check
+/// mark there is color area with a little down arrow.
+/// When clicked on the arrow the TGColorPopup pops up.
 
-   virtual Bool_t HandleButton(Event_t *event);
-   virtual Bool_t ProcessMessage(Long_t msg, Long_t parm1, Long_t parm2);
+   virtual ~TGColorSelect();/// TGColorSelect destructor.
 
-   void    SetColor(Pixel_t color, Bool_t emit = kTRUE);
-   void    SetAlphaColor(ULong_t color, Bool_t emit = kTRUE);
+   virtual Bool_t HandleButton(Event_t *event);/// Handle button events for TGColorSelect.
+   virtual Bool_t ProcessMessage(Long_t msg, Long_t parm1, Long_t parm2);/// Process messages for TGColorSelect.
+
+   void    SetColor(Pixel_t color, Bool_t emit = kTRUE);/// Set color.
+   void    SetAlphaColor(ULong_t color, Bool_t emit = kTRUE);/// Set color.
    Pixel_t GetColor() const { return fColor; }
-   void    Enable(Bool_t on = kTRUE);  //*TOGGLE* *GETTER=IsEnabled
-   void    Disable();
+   void    Enable(Bool_t on = kTRUE);  //*TOGGLE* *GETTER=IsEnabled  /// Set state of widget as enabled.
+   void    Disable();/// Set state of widget as disabled.
 
    // dummy methods just to remove from context menu
    void SetDown(Bool_t on = kTRUE, Bool_t emit = kFALSE) { TGButton::SetDown(on, emit); }
@@ -113,6 +128,7 @@ Color selection checkbutton
 
    virtual TGDimension GetDefaultSize() const { return TGDimension(43, 21); }
    virtual void SavePrimitive(std::ostream &out, Option_t * = "");
+/// Save a color select widget as a C++ statement(s) on output stream out
 
    virtual void ColorSelected(Pixel_t color = 0)
             { Emit("ColorSelected(Pixel_t)", color ? color : GetColor()); }  //*SIGNAL*

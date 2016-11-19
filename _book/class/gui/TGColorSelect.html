@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGColorSelect+ · GitBook</title>
+        <title>TGColorSelect* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -1466,7 +1466,7 @@
                 <a href="TGButtonGroup.html">
             
                     
-                    TGButtonGroup
+                    TGButtonGroup*
             
                 </a>
             
@@ -1479,7 +1479,7 @@
                 <a href="TGCanvas.html">
             
                     
-                    TGCanvas+
+                    TGCanvas*
             
                 </a>
             
@@ -1492,7 +1492,7 @@
                 <a href="TGClient.html">
             
                     
-                    TGClient+
+                    TGClient*
             
                 </a>
             
@@ -1505,7 +1505,7 @@
                 <a href="TGColorDialog.html">
             
                     
-                    TGColorDialog+
+                    TGColorDialog*
             
                 </a>
             
@@ -1518,7 +1518,7 @@
                 <a href="TGColorSelect.html">
             
                     
-                    TGColorSelect+
+                    TGColorSelect*
             
                 </a>
             
@@ -1531,7 +1531,7 @@
                 <a href="TGComboBox.html">
             
                     
-                    TGComboBox+
+                    TGComboBox*
             
                 </a>
             
@@ -1544,7 +1544,7 @@
                 <a href="TGDoubleSlider.html">
             
                     
-                    TGDoubleSlider+
+                    TGDoubleSlider*
             
                 </a>
             
@@ -1557,7 +1557,7 @@
                 <a href="TGFont.html">
             
                     
-                    TGFont
+                    TGFont*
             
                 </a>
             
@@ -2463,7 +2463,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >TGColorSelect+</a>
+        <a href="../.." >TGColorSelect*</a>
     </h1>
 </div>
 
@@ -2484,9 +2484,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 19:35:20 2016 (+0800)
-;; Last-Updated: 二 11月  8 19:46:29 2016 (+0800)
+;; Last-Updated: 六 11月 19 15:26:03 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -2495,42 +2495,57 @@ kC_COLORSEL, kCOL_SELCHANGED, widget id, pixel.
 and the signal:                                                      
 ColorSelected(Pixel_t pixel)</code></pre>
 <p>TGColorFrame &#x7EE7;&#x627F; TGFrame</p><p>Frame for color cell</p><p>TG16ColorSelector &#x7EE7;&#x627F; TGCompositeFrame</p><p>16 color cells</p><p>TGColorPopup &#x7EE7;&#x627F; TGCompositeFrame</p><p>Color selector popup</p><p>TGColorSelect &#x7EE7;&#x627F; TGCheckButton</p><p>Color selection checkbutton</p><h2 id="class">class</h2><p><strong>TGColorFrame</strong></p><pre><code class="lang-cpp">   TGColorFrame(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Pixel_t c = <span class="hljs-number">0</span>, Int_t n = <span class="hljs-number">1</span>);
+<span class="hljs-comment">/// TGColorFrame constructor.</span>
+<span class="hljs-comment">/// The TGColorFrame is a small frame with border showing a specific color.</span>
+
    <span class="hljs-keyword">virtual</span> ~TGColorFrame() { }
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t  <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t  <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle button events in TGColorFrame.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw TGColorFrame border.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">SetActive</span><span class="hljs-params">(Bool_t in)</span> </span>{ fActive = in; gClient-&gt;NeedRedraw(<span class="hljs-keyword">this</span>); }
    <span class="hljs-function">Pixel_t  <span class="hljs-title">GetColor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fColor; }</code></pre>
 <p><strong>TG16ColorSelector</strong></p><pre><code class="lang-cpp">   TG16ColorSelector(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>);
-   <span class="hljs-keyword">virtual</span> ~TG16ColorSelector();
+<span class="hljs-comment">/// TG16ColorSelector constructor.</span>
+<span class="hljs-comment">/// The TG16ColorSelector is a composite frame with 16 TGColorFrames.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
+   <span class="hljs-keyword">virtual</span> ~TG16ColorSelector();<span class="hljs-comment">/// TG16ColorSelector destructor.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">SetActive</span><span class="hljs-params">(Int_t newat)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;<span class="hljs-comment">/// Process messages for TG16ColorSelector.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">SetActive</span><span class="hljs-params">(Int_t newat)</span></span>;<span class="hljs-comment">/// Set active color frame.</span>
    <span class="hljs-function">Int_t   <span class="hljs-title">GetActive</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fActive; }</code></pre>
 <p><strong>TGColorPopup</strong></p><pre><code class="lang-cpp">   TGColorPopup(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> TGWindow *m = <span class="hljs-number">0</span>, Pixel_t color = <span class="hljs-number">0</span>);
-   <span class="hljs-keyword">virtual</span> ~TGColorPopup();
+<span class="hljs-comment">/// TGColorPopup constructor.</span>
+<span class="hljs-comment">/// The TGColorPopup is a popup containing a TG16ColorSelector and a &quot;More...&quot;</span>
+<span class="hljs-comment">/// button which popups up a TGColorDialog allowing custom color selection.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
+   <span class="hljs-keyword">virtual</span> ~TGColorPopup();<span class="hljs-comment">/// TGColorPopup destructor.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PlacePopup</span><span class="hljs-params">(Int_t x, Int_t y, UInt_t w, UInt_t h)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">EndPopup</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PreviewColor</span><span class="hljs-params">(Pixel_t color)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PreviewAlphaColor</span><span class="hljs-params">(ULong_t color)</span></span>;</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button events for TGColorPopup.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;<span class="hljs-comment">/// Process messages for TGColorPopup.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PlacePopup</span><span class="hljs-params">(Int_t x, Int_t y, UInt_t w, UInt_t h)</span></span>;<span class="hljs-comment">/// Popup TGColorPopup at x,y position</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">EndPopup</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Ungrab pointer and unmap window.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PreviewColor</span><span class="hljs-params">(Pixel_t color)</span></span>;<span class="hljs-comment">/// Emit a signal to see preview.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PreviewAlphaColor</span><span class="hljs-params">(ULong_t color)</span></span>;<span class="hljs-comment">/// Emit a signal to see preview.</span></code></pre>
 <p><strong>TGColorSelect</strong></p><pre><code class="lang-cpp">   TGColorSelect(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Pixel_t color = <span class="hljs-number">0</span>,
                  Int_t id = <span class="hljs-number">-1</span>);
-   <span class="hljs-keyword">virtual</span> ~TGColorSelect();
+<span class="hljs-comment">/// TGColorSelect constructor.</span>
+<span class="hljs-comment">/// The TGColorSelect widget is like a checkbutton but instead of the check</span>
+<span class="hljs-comment">/// mark there is color area with a little down arrow.</span>
+<span class="hljs-comment">/// When clicked on the arrow the TGColorPopup pops up.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
+   <span class="hljs-keyword">virtual</span> ~TGColorSelect();<span class="hljs-comment">/// TGColorSelect destructor.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">SetColor</span><span class="hljs-params">(Pixel_t color, Bool_t emit = kTRUE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">SetAlphaColor</span><span class="hljs-params">(ULong_t color, Bool_t emit = kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle button events for TGColorSelect.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;<span class="hljs-comment">/// Process messages for TGColorSelect.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">SetColor</span><span class="hljs-params">(Pixel_t color, Bool_t emit = kTRUE)</span></span>;<span class="hljs-comment">/// Set color.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">SetAlphaColor</span><span class="hljs-params">(ULong_t color, Bool_t emit = kTRUE)</span></span>;<span class="hljs-comment">/// Set color.</span>
    <span class="hljs-function">Pixel_t <span class="hljs-title">GetColor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fColor; }
-   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">Enable</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;  <span class="hljs-comment">//*TOGGLE* *GETTER=IsEnabled</span>
-   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">Disable</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">Enable</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;  <span class="hljs-comment">//*TOGGLE* *GETTER=IsEnabled  /// Set state of widget as enabled.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">Disable</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Set state of widget as disabled.</span>
 
    <span class="hljs-comment">// dummy methods just to remove from context menu</span>
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetDown</span><span class="hljs-params">(Bool_t on = kTRUE, Bool_t emit = kFALSE)</span> </span>{ TGButton::SetDown(on, emit); }
@@ -2539,6 +2554,7 @@ ColorSelected(Pixel_t pixel)</code></pre>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TGDimension(<span class="hljs-number">43</span>, <span class="hljs-number">21</span>); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a color select widget as a C++ statement(s) on output stream out</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ColorSelected</span><span class="hljs-params">(Pixel_t color = <span class="hljs-number">0</span>)</span>
             </span>{ Emit(<span class="hljs-string">&quot;ColorSelected(Pixel_t)&quot;</span>, color ? color : GetColor()); }  <span class="hljs-comment">//*SIGNAL*</span>
@@ -2574,12 +2590,12 @@ ColorSelected(Pixel_t pixel)</code></pre>
 
             
                 
-                <a href="TGColorDialog.html" class="navigation navigation-prev " aria-label="Previous page: TGColorDialog+">
+                <a href="TGColorDialog.html" class="navigation navigation-prev " aria-label="Previous page: TGColorDialog*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="TGComboBox.html" class="navigation navigation-next " aria-label="Next page: TGComboBox+">
+                <a href="TGComboBox.html" class="navigation navigation-next " aria-label="Next page: TGComboBox*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2590,7 +2606,7 @@ ColorSelected(Pixel_t pixel)</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGColorSelect+","level":"1.3.6","depth":2,"next":{"title":"TGComboBox+","level":"1.3.7","depth":2,"path":"class/gui/TGComboBox.md","ref":"class/gui/TGComboBox.md","articles":[]},"previous":{"title":"TGColorDialog+","level":"1.3.5","depth":2,"path":"class/gui/TGColorDialog.md","ref":"class/gui/TGColorDialog.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGColorSelect.md","mtime":"2016-11-08T11:46:29.148Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-14T13:03:00.640Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGColorSelect*","level":"1.3.6","depth":2,"next":{"title":"TGComboBox*","level":"1.3.7","depth":2,"path":"class/gui/TGComboBox.md","ref":"class/gui/TGComboBox.md","articles":[]},"previous":{"title":"TGColorDialog*","level":"1.3.5","depth":2,"path":"class/gui/TGColorDialog.md","ref":"class/gui/TGColorDialog.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGColorSelect.md","mtime":"2016-11-19T07:26:03.845Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-19T08:17:57.912Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

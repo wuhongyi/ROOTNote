@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 6月 25 16:11:28 2016 (+0800)
-;; Last-Updated: 四 11月 10 21:59:17 2016 (+0800)
+;; Last-Updated: 六 11月 19 15:29:28 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 53
+;;     Update #: 54
 ;; URL: http://wuhongyi.cn -->
 
 # README
@@ -455,8 +455,32 @@ enum EWidgetMessageTypes {
 ```
 
 
-```cpp
 
+```cpp
+static const char *gFonts[][2] = {    //   unix name,     name
+   { "",                                           ""                         }, //not used
+   { "-*-times-medium-i-*-*-12-*-*-*-*-*-*-*",     "1. times italic"          },
+   { "-*-times-bold-r-*-*-12-*-*-*-*-*-*-*",       "2. times bold"            },
+   { "-*-times-bold-i-*-*-12-*-*-*-*-*-*-*",       "3. times bold italic"     },
+   { "-*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*", "4. helvetica"             },
+   { "-*-helvetica-medium-o-*-*-12-*-*-*-*-*-*-*", "5. helvetica italic"      },
+   { "-*-helvetica-bold-r-*-*-12-*-*-*-*-*-*-*",   "6. helvetica bold"        },
+   { "-*-helvetica-bold-o-*-*-12-*-*-*-*-*-*-*",   "7. helvetica bold italic" },
+   { "-*-courier-medium-r-*-*-12-*-*-*-*-*-*-*",   "8. courier"               },
+   { "-*-courier-medium-o-*-*-12-*-*-*-*-*-*-*",   "9. courier italic"        },
+   { "-*-courier-bold-r-*-*-12-*-*-*-*-*-*-*",     "10. courier bold"         },
+   { "-*-courier-bold-o-*-*-12-*-*-*-*-*-*-*",     "11. courier bold italic"  },
+   { "-*-symbol-medium-r-*-*-12-*-*-*-*-*-*-*",    "12. symbol"               },
+   { "-*-times-medium-r-*-*-12-*-*-*-*-*-*-*",     "13. times"                },
+   { 0, 0}
+};
+```
+
+
+
+
+
+```cpp
 
 TGGC *fTextGC;
 const TGFont *font = gClient->GetFont("-*-times-bold-r-*-*-18-*-*-*-*-*-*-*");

@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGButtonGroup · GitBook</title>
+        <title>TGButtonGroup* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -1466,7 +1466,7 @@
                 <a href="TGButtonGroup.html">
             
                     
-                    TGButtonGroup
+                    TGButtonGroup*
             
                 </a>
             
@@ -1479,7 +1479,7 @@
                 <a href="TGCanvas.html">
             
                     
-                    TGCanvas+
+                    TGCanvas*
             
                 </a>
             
@@ -1492,7 +1492,7 @@
                 <a href="TGClient.html">
             
                     
-                    TGClient+
+                    TGClient*
             
                 </a>
             
@@ -1505,7 +1505,7 @@
                 <a href="TGColorDialog.html">
             
                     
-                    TGColorDialog+
+                    TGColorDialog*
             
                 </a>
             
@@ -1518,7 +1518,7 @@
                 <a href="TGColorSelect.html">
             
                     
-                    TGColorSelect+
+                    TGColorSelect*
             
                 </a>
             
@@ -1531,7 +1531,7 @@
                 <a href="TGComboBox.html">
             
                     
-                    TGComboBox+
+                    TGComboBox*
             
                 </a>
             
@@ -1544,7 +1544,7 @@
                 <a href="TGDoubleSlider.html">
             
                     
-                    TGDoubleSlider+
+                    TGDoubleSlider*
             
                 </a>
             
@@ -1557,7 +1557,7 @@
                 <a href="TGFont.html">
             
                     
-                    TGFont
+                    TGFont*
             
                 </a>
             
@@ -2463,7 +2463,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >TGButtonGroup</a>
+        <a href="../.." >TGButtonGroup*</a>
     </h1>
 </div>
 
@@ -2484,13 +2484,168 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 11月  9 15:21:17 2016 (+0800)
-;; Last-Updated: 三 11月  9 15:21:26 2016 (+0800)
+;; Last-Updated: 六 11月 19 13:48:57 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 
-<h1 id="tgbuttongroup">TGButtonGroup</h1><!-- TGButtonGroup.md ends here -->
+<h1 id="tgbuttongroup">TGButtonGroup</h1><p>TGButtonGroup, TGVButtonGroup and TGHButtonGroup</p><p>This header defines button group frames.</p><p>The TGButtonGroup widget organizes TGButton widgets in a group.</p><p>A button group widget makes it easier to deal with groups of buttons.</p><p>A button in a button group is associated with a unique identifier.</p><p>The button group emits a Clicked() signal with this identifier when</p><p>the button is clicked. Thus, a button group is an ideal solution</p><p>when you have several similar buttons and want to connect all their</p><p>Clicked() signals, for example, to one slot.</p><p>An exclusive button group switches off all toggle buttons except</p><p>the one that was clicked. A button group is by default non-exclusive.</p><p>All radio buttons that are inserted, will be mutually exclusive even</p><p>if the button group is non-exclusive.</p><p>There are two ways of using a button group:</p><p>The button group is a parent widget of a number of buttons,</p><p>i.e. the button group is the parent argument in the button</p><p>constructor. The buttons are assigned identifiers 1, 2, 3 etc.</p><p>in the order they are created or you can specify button id in</p><p>the button constructor. A TGButtonGroup can display a frame and</p><p>a title because it inherits from TGGroupFrame.</p><p>NOTE: there is no need to call AddFrame() since the buttons are</p><p>automatically added with a default layout hint to their parent,</p><p>i.e. the buttongroup. To override the default layout hints use the</p><p>SetLayoutHints() method.</p><pre><code> ButtonGroup Signals:                                                
+
+   Pressed(Int_t id)  --&gt;  is emitted when a button in the group is  
+                           pressed down. The id argument is the      
+                           button&apos;s identifier.                      
+   Released(Int_t id) --&gt;  is emitted when a button in the group is  
+                           released. The id argument is the button&apos;s 
+                           identifier.                               
+   Clicked(Int_t id)  --&gt;  is emitted when a button in the group is  
+                           clicked. The id argument is the button&apos;s  
+                           identifier.                               </code></pre>
+<p>The TGHButtonGroup widget organizes TGButton widgets in a group</p><p>with one horizontal row. TGHButtonGroup is a convenience class that</p><p>offers a thin layer on top of TGButtonGroup. It inherits from</p><p>TGButtonGroup.</p><p>The TGVButtonGroup widget organizes TGButton widgets in a group</p><p>with one vertical column. TGVButtonGroup is a convenience class that</p><p>offers a thin layer on top of TGButtonGroup. It inherits from</p><p>TGButtonGroup.</p><p>TGButtonGroup &#x7EE7;&#x627F; TGGroupFrame , friend TGButton</p><p>TGVButtonGroup &#x7EE7;&#x627F; TGButtonGroup</p><p>TGHButtonGroup &#x7EE7;&#x627F; TGButtonGroup</p><h2 id="class">class</h2><p><strong>TGButtonGroup</strong></p><pre><code class="lang-cpp">   TGButtonGroup(<span class="hljs-keyword">const</span> TGWindow *parent = <span class="hljs-number">0</span>,
+                 <span class="hljs-keyword">const</span> TString &amp;title = <span class="hljs-string">&quot;&quot;</span>,
+                 UInt_t options = kChildFrame | kVerticalFrame,
+                 GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 Pixel_t back = GetDefaultFrameBackground());
+<span class="hljs-comment">/// Constructor. Layout 1 row or 1 column.</span>
+
+   TGButtonGroup(<span class="hljs-keyword">const</span> TGWindow *parent,
+                 UInt_t r, UInt_t c, Int_t s = <span class="hljs-number">0</span>, Int_t h = <span class="hljs-number">0</span> ,
+                 <span class="hljs-keyword">const</span> TString &amp;title = <span class="hljs-string">&quot;&quot;</span>,
+                 GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 Pixel_t back = GetDefaultFrameBackground());
+<span class="hljs-comment">/// Constructor. Layout defined by TGMatrixLayout:</span>
+<span class="hljs-comment">///    r = number of rows</span>
+<span class="hljs-comment">///    c = number of columns</span>
+<span class="hljs-comment">///    s = interval between frames</span>
+<span class="hljs-comment">///    h = layout hints</span>
+
+   <span class="hljs-keyword">virtual</span> ~TGButtonGroup();<span class="hljs-comment">/// Destructor, we do not delete the buttons.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Pressed</span><span class="hljs-params">(Int_t id)</span>  </span>{ Emit(<span class="hljs-string">&quot;Pressed(Int_t)&quot;</span>,id); }   <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Released</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;Released(Int_t)&quot;</span>,id);}   <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(Int_t id)</span>  </span>{ Emit(<span class="hljs-string">&quot;Clicked(Int_t)&quot;</span>,id); }   <span class="hljs-comment">//*SIGNAL*</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ButtonPressed</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// This slot is activated when one of the buttons in the group emits the</span>
+<span class="hljs-comment">/// Pressed() signal.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ButtonReleased</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// This slot is activated when one of the buttons in the group emits the</span>
+<span class="hljs-comment">/// Released() signal.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ButtonClicked</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// This slot is activated when one of the buttons in the group emits the</span>
+<span class="hljs-comment">/// Clicked() signal.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReleaseButtons</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// This slot is activated when one of the buttons in the</span>
+<span class="hljs-comment">/// exclusive group emits the Pressed() signal.</span>
+
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsEnabled</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fState; }
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsExclusive</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fExclGroup; }
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsRadioButtonExclusive</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{ <span class="hljs-keyword">return</span> fRadioExcl; }
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsBorderDrawn</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fDrawBorder; }
+   <span class="hljs-function">Int_t  <span class="hljs-title">GetCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMapOfButtons-&gt;GetSize(); }
+   <span class="hljs-function">Int_t  <span class="hljs-title">GetId</span><span class="hljs-params">(TGButton *button)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Finds and returns the id of the button.</span>
+<span class="hljs-comment">/// Returns -1 if the button is not a member of this group.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetExclusive</span><span class="hljs-params">(Bool_t flag = kTRUE)</span></span>;
+<span class="hljs-comment">/// Sets the button group to be exclusive if enable is kTRUE,</span>
+<span class="hljs-comment">/// or to be non-exclusive if enable is kFALSE.</span>
+<span class="hljs-comment">/// An exclusive button group switches off all other toggle buttons when</span>
+<span class="hljs-comment">/// one is switched on. This is ideal for groups of radio-buttons</span>
+<span class="hljs-comment">/// A non-exclusive group allow many buttons to be switched on at the same</span>
+<span class="hljs-comment">/// time. The default setting is kFALSE.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetRadioButtonExclusive</span><span class="hljs-params">(Bool_t flag = kTRUE)</span></span>;
+<span class="hljs-comment">/// If enable is kTRUE, this button group will treat radio buttons as</span>
+<span class="hljs-comment">/// mutually exclusive, and other buttons according to IsExclusive().</span>
+<span class="hljs-comment">/// This function is called automatically whenever a TGRadioButton</span>
+<span class="hljs-comment">/// is inserted, so you should normally never have to call it.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetState</span><span class="hljs-params">(Bool_t state = kTRUE)</span></span>;
+<span class="hljs-comment">/// Sets the state of all the buttons in the group to enable or disable.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetBorderDrawn</span><span class="hljs-params">(Bool_t enable = kTRUE)</span></span>;<span class="hljs-comment">/// Makes border to be visible/invisible.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetButton</span><span class="hljs-params">(Int_t id, Bool_t down = kTRUE)</span></span>;
+<span class="hljs-comment">/// Sets the button with id to be on/down, and if this is an</span>
+<span class="hljs-comment">/// exclusive group, all other button in the group to be off/up.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTitle</span><span class="hljs-params">(TGString *title)</span></span>;<span class="hljs-comment">/// Set or change title.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title)</span></span>;<span class="hljs-comment">/// Set or change title.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Insert</span><span class="hljs-params">(TGButton *button, <span class="hljs-keyword">int</span> id = <span class="hljs-number">-1</span>)</span></span>;
+<span class="hljs-comment">/// Inserts a button with the identifier id into the button group.</span>
+<span class="hljs-comment">/// Returns the button identifier.</span>
+<span class="hljs-comment">/// It is not necessary to manually insert buttons that have this button</span>
+<span class="hljs-comment">/// group as their parent widget. An exception is when you want custom</span>
+<span class="hljs-comment">/// identifiers instead of the default 1, 2, 3 etc.</span>
+<span class="hljs-comment">/// The button is assigned the identifier id or an automatically</span>
+<span class="hljs-comment">/// generated identifier.  It works as follows: If id &gt; 0, this</span>
+<span class="hljs-comment">/// identifier is assigned.  If id == -1 (default), the identifier is</span>
+<span class="hljs-comment">/// equal to the number of buttons in the group+1.  If id is any other</span>
+<span class="hljs-comment">/// negative integer, for instance -2, a unique identifier (negative</span>
+<span class="hljs-comment">/// integer &lt;= -2) is generated.</span>
+<span class="hljs-comment">/// Inserting several buttons with id = -1 assigns the identifiers 1,</span>
+<span class="hljs-comment">/// 2, 3, etc.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Remove</span><span class="hljs-params">(TGButton *button)</span></span>;<span class="hljs-comment">/// Removes a button from the button group.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGButton *<span class="hljs-title">Find</span><span class="hljs-params">(Int_t id)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Finds and returns a pointer to the button with the specified</span>
+<span class="hljs-comment">/// identifier id. Returns null if the button was not found.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGButton *<span class="hljs-title">GetButton</span><span class="hljs-params">(Int_t id)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> Find(id); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Show</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Show group of buttons.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Hide</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Hide group of buttons.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Draw border of around the group frame.</span>
+<span class="hljs-comment">/// if frame is kRaisedFrame  - a frame border is of &quot;wall style&quot;,</span>
+<span class="hljs-comment">/// otherwise of &quot;groove style&quot;.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetLayoutHints</span><span class="hljs-params">(TGLayoutHints *l, TGButton *button = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Set layout hints for the specified button or if button=0 for all</span>
+<span class="hljs-comment">/// buttons.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a button group widget as a C++ statement(s) on output stream out.</span></code></pre>
+<p><strong>TGVButtonGroup</strong></p><pre><code class="lang-cpp">   TGVButtonGroup(<span class="hljs-keyword">const</span> TGWindow *parent,
+                  <span class="hljs-keyword">const</span> TString &amp;title = <span class="hljs-string">&quot;&quot;</span>,
+                  GContext_t norm = GetDefaultGC()(),
+                  FontStruct_t font = GetDefaultFontStruct(),
+                  Pixel_t back = GetDefaultFrameBackground()) :
+      TGButtonGroup(parent, title, kChildFrame | kVerticalFrame,
+                    norm, font, back) { }
+
+   <span class="hljs-keyword">virtual</span> ~TGVButtonGroup() { }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a button group widget as a C++ statement(s) on output stream out.</span></code></pre>
+<p><strong>TGHButtonGroup</strong></p><pre><code class="lang-cpp">   TGHButtonGroup(<span class="hljs-keyword">const</span> TGWindow *parent,
+                  <span class="hljs-keyword">const</span> TString &amp;title = <span class="hljs-string">&quot;&quot;</span>,
+                  GContext_t norm = GetDefaultGC()(),
+                  FontStruct_t font = GetDefaultFontStruct(),
+                  Pixel_t back = GetDefaultFrameBackground()) :
+      TGButtonGroup(parent, title, kChildFrame | kHorizontalFrame,
+                    norm, font, back) { }
+
+   <span class="hljs-keyword">virtual</span> ~TGHButtonGroup() { }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a button group widget as a C++ statement(s) on output stream out.   </span></code></pre>
+<h2 id="code">code</h2><p>// Example:                                                             //
+//                                                                      //
+//    // vertical frame without border and title                        //
+//    TGVButtonGroup _bg = new TGVButtonGroup(main_frame);              //
+//                                                                      //
+//    // create text button with id=1                                   //
+//    TGTextButton _button1 = new TGTextButton(bg,&quot;some text&quot;);         //
+//                                                                      //
+//    // create another text button with id=2                           //
+//    TGTextButton *button2 = new TGTextButton(bg,&quot;another text&quot;);      //
+//                                                                      //
+//    // map all buttons                                                //
+//    bg-&gt;Show();                                                       //</p><h2 id="example">example</h2><!-- TGButtonGroup.md ends here -->
 
 
 
@@ -2525,7 +2680,7 @@
                 </a>
                 
                 
-                <a href="TGCanvas.html" class="navigation navigation-next " aria-label="Next page: TGCanvas+">
+                <a href="TGCanvas.html" class="navigation navigation-next " aria-label="Next page: TGCanvas*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2536,7 +2691,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGButtonGroup","level":"1.3.2","depth":2,"next":{"title":"TGCanvas+","level":"1.3.3","depth":2,"path":"class/gui/TGCanvas.md","ref":"class/gui/TGCanvas.md","articles":[]},"previous":{"title":"TGButton*","level":"1.3.1","depth":2,"path":"class/gui/TGButton.md","ref":"class/gui/TGButton.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGButtonGroup.md","mtime":"2016-11-09T07:21:26.714Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-14T13:03:00.640Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGButtonGroup*","level":"1.3.2","depth":2,"next":{"title":"TGCanvas*","level":"1.3.3","depth":2,"path":"class/gui/TGCanvas.md","ref":"class/gui/TGCanvas.md","articles":[]},"previous":{"title":"TGButton*","level":"1.3.1","depth":2,"path":"class/gui/TGButton.md","ref":"class/gui/TGButton.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGButtonGroup.md","mtime":"2016-11-19T05:48:57.351Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-19T08:17:57.912Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

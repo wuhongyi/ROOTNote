@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 10:18:00 2016 (+0800)
-;; Last-Updated: 五 11月 11 21:06:20 2016 (+0800)
+;; Last-Updated: 六 11月 19 13:30:31 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 5
+;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
 
 # TGButton
@@ -95,6 +95,18 @@ TGSplitButton 继承 TGTextButton
 
 
 ## class
+
+```cpp
+//--- Button states
+
+enum EButtonState {
+   kButtonUp,
+   kButtonDown,
+   kButtonEngaged,
+   kButtonDisabled
+};
+```
+
 
 **TGButton**
 
