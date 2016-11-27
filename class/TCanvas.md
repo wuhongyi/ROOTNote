@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 二 11月  1 18:40:04 2016 (+0800)
+;; Last-Updated: 日 11月 27 19:26:22 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 14
+;;     Update #: 16
 ;; URL: http://wuhongyi.cn -->
 
 # TCanvas
@@ -24,6 +24,7 @@ A canvas has a default pad which has the name of the canvas itself.
 ## class
 
 ```cpp
+public:
    // TCanvas status bits
    enum {
       kShowEventStatus  = BIT(15),

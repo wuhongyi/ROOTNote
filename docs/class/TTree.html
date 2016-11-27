@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TTree+ · GitBook</title>
+        <title>TTree* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -641,7 +641,7 @@
                 <a href="TMath.html">
             
                     
-                    TMath
+                    TMath*
             
                 </a>
             
@@ -654,7 +654,7 @@
                 <a href="TMathBase.html">
             
                     
-                    TMathBase
+                    TMathBase*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree+
+                    TTree*
             
                 </a>
             
@@ -2463,7 +2463,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TTree+</a>
+        <a href=".." >TTree*</a>
     </h1>
 </div>
 
@@ -2484,13 +2484,13 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 3月 14 08:35:28 2015 (+0800)
-;; Last-Updated: 三 11月  2 00:40:26 2016 (+0800)
+;; Last-Updated: 日 11月 27 20:33:35 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
 
 
-<p>&#x5230; 4240</p><h1 id="ttree">TTree</h1><p>&#x7EE7;&#x627F; TNamed, TAttLine, TAttFill, TAttMarker</p><p>A TTree object is a list of TBranch.
+<h1 id="ttree">TTree</h1><p>&#x7EE7;&#x627F; TNamed, TAttLine, TAttFill, TAttMarker</p><p>A TTree object is a list of TBranch.
 To Create a TTree object one must:</p><ul><li>Create the TTree header via the TTree constructor
 </li>
 <li>Call the TBranch constructor for every branch.
@@ -2566,16 +2566,125 @@ The Fill function loops on all defined TBranch.</p><h2 id="class">class</h2><pre
    };
 
    TTree();
+<span class="hljs-comment">/// Default constructor and I/O constructor.</span>
+<span class="hljs-comment">/// Note: We do *not* insert ourself into the current directory.</span>
+
    TTree(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* title, Int_t splitlevel = <span class="hljs-number">99</span>);
+<span class="hljs-comment">/// Normal tree constructor.</span>
+<span class="hljs-comment">/// The tree is created in the current directory.</span>
+<span class="hljs-comment">/// Use the various functions Branch below to add branches to this tree.</span>
+<span class="hljs-comment">/// If the first character of title is a &quot;/&quot;, the function assumes a folder name.</span>
+<span class="hljs-comment">/// In this case, it creates automatically branches following the folder hierarchy.</span>
+<span class="hljs-comment">/// splitlevel may be used in this case to control the split level.</span>
+
    <span class="hljs-keyword">virtual</span> ~TTree();
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">AddBranchToCache</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname, Bool_t subbranches = kFALSE)</span></span>;
+<span class="hljs-comment">/// Add branch with name bname to the Tree cache.</span>
+<span class="hljs-comment">/// If bname=&quot;*&quot; all branches are added to the cache.</span>
+<span class="hljs-comment">/// if subbranches is true all the branches of the subbranches are</span>
+<span class="hljs-comment">/// also put to the cache.</span>
+<span class="hljs-comment">/// Returns:</span>
+<span class="hljs-comment">/// - 0 branch added or already included</span>
+<span class="hljs-comment">/// - -1 on error</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">AddBranchToCache</span><span class="hljs-params">(TBranch *branch,   Bool_t subbranches = kFALSE)</span></span>;
+<span class="hljs-comment">/// Add branch b to the Tree cache.</span>
+<span class="hljs-comment">/// if subbranches is true all the branches of the subbranches are</span>
+<span class="hljs-comment">/// also put to the cache.</span>
+<span class="hljs-comment">/// Returns:</span>
+<span class="hljs-comment">/// - 0 branch added or already included</span>
+<span class="hljs-comment">/// - -1 on error</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">DropBranchFromCache</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname, Bool_t subbranches = kFALSE)</span></span>;
+<span class="hljs-comment">/// Remove the branch with name &apos;bname&apos; from the Tree cache.</span>
+<span class="hljs-comment">/// If bname=&quot;*&quot; all branches are removed from the cache.</span>
+<span class="hljs-comment">/// if subbranches is true all the branches of the subbranches are</span>
+<span class="hljs-comment">/// also removed from the cache.</span>
+<span class="hljs-comment">/// Returns:</span>
+<span class="hljs-comment">/// - 0 branch dropped or not in cache</span>
+<span class="hljs-comment">/// - -1 on error</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">DropBranchFromCache</span><span class="hljs-params">(TBranch *branch,   Bool_t subbranches = kFALSE)</span></span>;
+<span class="hljs-comment">/// Remove the branch b from the Tree cache.</span>
+<span class="hljs-comment">/// if subbranches is true all the branches of the subbranches are</span>
+<span class="hljs-comment">/// also removed from the cache.</span>
+<span class="hljs-comment">/// Returns:</span>
+<span class="hljs-comment">/// - 0 branch dropped or not in cache</span>
+<span class="hljs-comment">/// - -1 on error</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFriendElement *<span class="hljs-title">AddFriend</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* treename, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* filename = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Add a TFriendElement to the list of friends.</span>
+<span class="hljs-comment">/// This function:</span>
+<span class="hljs-comment">/// - opens a file if filename is specified</span>
+<span class="hljs-comment">/// - reads a Tree with name treename from the file (current directory)</span>
+<span class="hljs-comment">/// - adds the Tree to the list of friends</span>
+<span class="hljs-comment">/// see other AddFriend functions</span>
+<span class="hljs-comment">/// A TFriendElement TF describes a TTree object TF in a file.</span>
+<span class="hljs-comment">/// When a TFriendElement TF is added to the the list of friends of an</span>
+<span class="hljs-comment">/// existing TTree T, any variable from TF can be referenced in a query</span>
+<span class="hljs-comment">/// to T.</span>
+<span class="hljs-comment">///   A tree keeps a list of friends. In the context of a tree (or a chain),</span>
+<span class="hljs-comment">/// friendship means unrestricted access to the friends data. In this way</span>
+<span class="hljs-comment">/// it is much like adding another branch to the tree without taking the risk</span>
+<span class="hljs-comment">/// of damaging it. To add a friend to the list, you can use the TTree::AddFriend</span>
+<span class="hljs-comment">/// method.  The tree in the diagram below has two friends (friend_tree1 and</span>
+<span class="hljs-comment">/// friend_tree2) and now has access to the variables a,b,c,i,j,k,l and m.</span>
+<span class="hljs-comment">/// The AddFriend method has two parameters, the first is the tree name and the</span>
+<span class="hljs-comment">/// second is the name of the ROOT file where the friend tree is saved.</span>
+<span class="hljs-comment">/// AddFriend automatically opens the friend file. If no file name is given,</span>
+<span class="hljs-comment">/// the tree called ft1 is assumed to be in the same file as the original tree.</span>
+<span class="hljs-comment">/// tree.AddFriend(&quot;ft1&quot;,&quot;friendfile1.root&quot;);</span>
+<span class="hljs-comment">/// If the friend tree has the same name as the original tree, you can give it</span>
+<span class="hljs-comment">/// an alias in the context of the friendship:</span>
+<span class="hljs-comment">/// tree.AddFriend(&quot;tree1 = tree&quot;,&quot;friendfile1.root&quot;);</span>
+<span class="hljs-comment">/// Once the tree has friends, we can use TTree::Draw as if the friend&apos;s</span>
+<span class="hljs-comment">/// variables were in the original tree. To specify which tree to use in</span>
+<span class="hljs-comment">/// the Draw method, use the syntax:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     &lt;treeName&gt;.&lt;branchname&gt;.&lt;varname&gt;</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// If the variablename is enough to uniquely identify the variable, you can</span>
+<span class="hljs-comment">/// leave out the tree and/or branch name.</span>
+<span class="hljs-comment">/// For example, these commands generate a 3-d scatter plot of variable &quot;var&quot;</span>
+<span class="hljs-comment">/// in the TTree tree versus variable v1 in TTree ft1 versus variable v2 in</span>
+<span class="hljs-comment">/// TTree ft2.</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.AddFriend(&quot;ft1&quot;,&quot;friendfile1.root&quot;);</span>
+<span class="hljs-comment">///     tree.AddFriend(&quot;ft2&quot;,&quot;friendfile2.root&quot;);</span>
+<span class="hljs-comment">///     tree.Draw(&quot;var:ft1.v1:ft2.v2&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// When AddFriend is called, the ROOT file is automatically opened and the</span>
+<span class="hljs-comment">/// friend tree (ft1) is read into memory. The new friend (ft1) is added to</span>
+<span class="hljs-comment">/// the list of friends of tree.</span>
+<span class="hljs-comment">/// The number of entries in the friend must be equal or greater to the number</span>
+<span class="hljs-comment">/// of entries of the original tree. If the friend tree has fewer entries a</span>
+<span class="hljs-comment">/// warning is given and the missing entries are not included in the histogram.</span>
+<span class="hljs-comment">/// To retrieve the list of friends from a tree use TTree::GetListOfFriends.</span>
+<span class="hljs-comment">/// When the tree is written to file (TTree::Write), the friends list is saved</span>
+<span class="hljs-comment">/// with it. And when the tree is retrieved, the trees on the friends list are</span>
+<span class="hljs-comment">/// also retrieved and the friendship restored.</span>
+<span class="hljs-comment">/// When a tree is deleted, the elements of the friend list are also deleted.</span>
+<span class="hljs-comment">/// It is possible to declare a friend tree that has the same internal</span>
+<span class="hljs-comment">/// structure (same branches and leaves) as the original tree, and compare the</span>
+<span class="hljs-comment">/// same values by specifying the tree.</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;var:ft1.var:ft2.var&quot;)</span>
+<span class="hljs-comment">/// ~~~</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFriendElement *<span class="hljs-title">AddFriend</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* treename, TFile* file)</span></span>;
+<span class="hljs-comment">/// Add a TFriendElement to the list of friends.</span>
+<span class="hljs-comment">/// The TFile is managed by the user (e.g. the user must delete the file).</span>
+<span class="hljs-comment">/// For complete description see AddFriend(const char *, const char *).</span>
+<span class="hljs-comment">/// This function:</span>
+<span class="hljs-comment">/// - reads a Tree with name treename from the file</span>
+<span class="hljs-comment">/// - adds the Tree to the list of friends</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFriendElement *<span class="hljs-title">AddFriend</span><span class="hljs-params">(TTree* tree, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* alias = <span class="hljs-string">&quot;&quot;</span>, Bool_t warn = kFALSE)</span></span>;
+<span class="hljs-comment">/// Add a TFriendElement to the list of friends.</span>
+<span class="hljs-comment">/// The TTree is managed by the user (e.g., the user must delete the file).</span>
+<span class="hljs-comment">/// For a complete description see AddFriend(const char *, const char *).</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">AddTotBytes</span><span class="hljs-params">(Int_t tot)</span> </span>{ fTotBytes += tot; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">AddZipBytes</span><span class="hljs-params">(Int_t zip)</span> </span>{ fZipBytes += zip; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t        <span class="hljs-title">AutoSave</span><span class="hljs-params">(Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
@@ -2612,9 +2721,99 @@ The Fill function loops on all defined TBranch.</p><h2 id="class">class</h2><pre
 <span class="hljs-comment">//   the header to the file.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">Branch</span><span class="hljs-params">(TCollection* <span class="hljs-built_in">list</span>, Int_t bufsize = <span class="hljs-number">32000</span>, Int_t splitlevel = <span class="hljs-number">99</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Create one branch for each element in the collection.</span>
+<span class="hljs-comment">/// Each entry in the collection becomes a top level branch if the</span>
+<span class="hljs-comment">/// corresponding class is not a collection. If it is a collection, the entry</span>
+<span class="hljs-comment">/// in the collection becomes in turn top level branches, etc.</span>
+<span class="hljs-comment">/// The splitlevel is decreased by 1 every time a new collection is found.</span>
+<span class="hljs-comment">/// For example if list is a TObjArray*</span>
+<span class="hljs-comment">///   - if splitlevel = 1, one top level branch is created for each element</span>
+<span class="hljs-comment">///      of the TObjArray.</span>
+<span class="hljs-comment">///   - if splitlevel = 2, one top level branch is created for each array element.</span>
+<span class="hljs-comment">///     if, in turn, one of the array elements is a TCollection, one top level</span>
+<span class="hljs-comment">///     branch will be created for each element of this collection.</span>
+<span class="hljs-comment">/// In case a collection element is a TClonesArray, the special Tree constructor</span>
+<span class="hljs-comment">/// for TClonesArray is called.</span>
+<span class="hljs-comment">/// The collection itself cannot be a TClonesArray.</span>
+<span class="hljs-comment">/// The function returns the total number of branches created.</span>
+<span class="hljs-comment">/// If name is given, all branch names will be prefixed with name_.</span>
+<span class="hljs-comment">/// IMPORTANT NOTE1: This function should not be called with splitlevel &lt; 1.</span>
+<span class="hljs-comment">/// IMPORTANT NOTE2: The branches created by this function will have names</span>
+<span class="hljs-comment">/// corresponding to the collection or object names. It is important</span>
+<span class="hljs-comment">/// to give names to collections to avoid misleading branch names or</span>
+<span class="hljs-comment">/// identical branch names. By default collections have a name equal to</span>
+<span class="hljs-comment">/// the corresponding class name, e.g. the default name for a TList is &quot;TList&quot;.</span>
+<span class="hljs-comment">/// And in general in any cases two or more master branches contain subbranches</span>
+<span class="hljs-comment">/// with identical names, one must add a &quot;.&quot; (dot) character at the end</span>
+<span class="hljs-comment">/// of the master branch name. This will force the name of the subbranch</span>
+<span class="hljs-comment">/// to be master.subbranch instead of simply subbranch.</span>
+<span class="hljs-comment">/// This situation happens when the top level object (say event)</span>
+<span class="hljs-comment">/// has two or more members referencing the same class.</span>
+<span class="hljs-comment">/// For example, if a Tree has two branches B1 and B2 corresponding</span>
+<span class="hljs-comment">/// to objects of the same class MyClass, one can do:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Branch(&quot;B1.&quot;,&quot;MyClass&quot;,&amp;b1,8000,1);</span>
+<span class="hljs-comment">///     tree.Branch(&quot;B2.&quot;,&quot;MyClass&quot;,&amp;b2,8000,1);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// if MyClass has 3 members a,b,c, the two instructions above will generate</span>
+<span class="hljs-comment">/// subbranches called B1.a, B1.b ,B1.c, B2.a, B2.b, B2.c</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">Branch</span><span class="hljs-params">(TList* <span class="hljs-built_in">list</span>, Int_t bufsize = <span class="hljs-number">32000</span>, Int_t splitlevel = <span class="hljs-number">99</span>)</span></span>;
+<span class="hljs-comment">/// Deprecated function. Use next function instead.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">Branch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* folder, Int_t bufsize = <span class="hljs-number">32000</span>, Int_t splitlevel = <span class="hljs-number">99</span>)</span></span>;
+<span class="hljs-comment">/// Create one branch for each element in the folder.</span>
+<span class="hljs-comment">/// Returns the total number of branches created.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch        *<span class="hljs-title">Branch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">void</span>* address, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* leaflist, Int_t bufsize = <span class="hljs-number">32000</span>)</span></span>;
+<span class="hljs-comment">/// Create a new TTree Branch.</span>
+<span class="hljs-comment">/// This Branch constructor is provided to support non-objects in</span>
+<span class="hljs-comment">/// a Tree. The variables described in leaflist may be simple</span>
+<span class="hljs-comment">/// variables or structures.  // See the two following</span>
+<span class="hljs-comment">/// constructors for writing objects in a Tree.</span>
+<span class="hljs-comment">/// By default the branch buffers are stored in the same file as the Tree.</span>
+<span class="hljs-comment">/// use TBranch::SetFile to specify a different file</span>
+<span class="hljs-comment">///    * address is the address of the first item of a structure.</span>
+<span class="hljs-comment">///    * leaflist is the concatenation of all the variable names and types</span>
+<span class="hljs-comment">///      separated by a colon character :</span>
+<span class="hljs-comment">///      The variable name and the variable type are separated by a slash (/).</span>
+<span class="hljs-comment">///      The variable type may be 0,1 or 2 characters. If no type is given,</span>
+<span class="hljs-comment">///      the type of the variable is assumed to be the same as the previous</span>
+<span class="hljs-comment">///      variable. If the first variable does not have a type, it is assumed</span>
+<span class="hljs-comment">///      of type F by default. The list of currently supported types is given below:</span>
+<span class="hljs-comment">///         - C : a character string terminated by the 0 character</span>
+<span class="hljs-comment">///         - B : an 8 bit signed integer (Char_t)</span>
+<span class="hljs-comment">///         - b : an 8 bit unsigned integer (UChar_t)</span>
+<span class="hljs-comment">///         - S : a 16 bit signed integer (Short_t)</span>
+<span class="hljs-comment">///         - s : a 16 bit unsigned integer (UShort_t)</span>
+<span class="hljs-comment">///         - I : a 32 bit signed integer (Int_t)</span>
+<span class="hljs-comment">///         - i : a 32 bit unsigned integer (UInt_t)</span>
+<span class="hljs-comment">///         - F : a 32 bit floating point (Float_t)</span>
+<span class="hljs-comment">///         - D : a 64 bit floating point (Double_t)</span>
+<span class="hljs-comment">///         - L : a 64 bit signed integer (Long64_t)</span>
+<span class="hljs-comment">///         - l : a 64 bit unsigned integer (ULong64_t)</span>
+<span class="hljs-comment">///         - O : [the letter &apos;o&apos;, not a zero] a boolean (Bool_t)</span>
+<span class="hljs-comment">///      Arrays of values are supported with the following syntax:</span>
+<span class="hljs-comment">///         - If leaf name has the form var[nelem], where nelem is alphanumeric, then</span>
+<span class="hljs-comment">///           if nelem is a leaf name, it is used as the variable size of the array,</span>
+<span class="hljs-comment">///           otherwise return 0.</span>
+<span class="hljs-comment">///         - If leaf name has the form var[nelem], where nelem is a non-negative integer, then</span>
+<span class="hljs-comment">///           it is used as the fixed size of the array.</span>
+<span class="hljs-comment">///         - If leaf name has the form of a multi-dimensional array (e.g. var[nelem][nelem2])</span>
+<span class="hljs-comment">///           where nelem and nelem2 are non-negative integer) then</span>
+<span class="hljs-comment">///           it is used as a 2 dimensional array of fixed size.</span>
+<span class="hljs-comment">///      Any of other form is not supported.</span>
+<span class="hljs-comment">/// Note that the TTree will assume that all the item are contiguous in memory.</span>
+<span class="hljs-comment">/// On some platform, this is not always true of the member of a struct or a class,</span>
+<span class="hljs-comment">/// due to padding and alignment.  Sorting your data member in order of decreasing</span>
+<span class="hljs-comment">/// sizeof usually leads to their being contiguous in memory.</span>
+<span class="hljs-comment">///    * bufsize is the buffer size in bytes for this branch</span>
+<span class="hljs-comment">///      The default value is 32000 bytes and should be ok for most cases.</span>
+<span class="hljs-comment">///      You can specify a larger value (e.g. 256000) if your Tree is not split</span>
+<span class="hljs-comment">///      and each entry is large (Megabytes)</span>
+<span class="hljs-comment">///      A small value for bufsize is optimum if you intend to access</span>
+<span class="hljs-comment">///      the entries in the Tree randomly and your Tree is in split mode.</span>
+
            <span class="hljs-function">TBranch        *<span class="hljs-title">Branch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">char</span>* address, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* leaflist, Int_t bufsize = <span class="hljs-number">32000</span>)</span>
    </span>{
       <span class="hljs-comment">// Overload to avoid confusion between this signature and the template instance.</span>
@@ -2632,6 +2831,22 @@ The Fill function loops on all defined TBranch.</p><h2 id="class">class</h2><pre
    }
 <span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> !defined(__CINT__)</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch        *<span class="hljs-title">Branch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* classname, <span class="hljs-keyword">void</span>* addobj, Int_t bufsize = <span class="hljs-number">32000</span>, Int_t splitlevel = <span class="hljs-number">99</span>)</span></span>;
+<span class="hljs-comment">/// Create a new branch with the object of class classname at address addobj.</span>
+<span class="hljs-comment">/// WARNING:</span>
+<span class="hljs-comment">/// Starting with Root version 3.01, the Branch function uses the new style</span>
+<span class="hljs-comment">/// branches (TBranchElement). To get the old behaviour, you can:</span>
+<span class="hljs-comment">///   - call BranchOld or</span>
+<span class="hljs-comment">///   - call TTree::SetBranchStyle(0)</span>
+<span class="hljs-comment">/// Note that with the new style, classname does not need to derive from TObject.</span>
+<span class="hljs-comment">/// It must derived from TObject if the branch style has been set to 0 (old)</span>
+<span class="hljs-comment">/// Note: See the comments in TBranchElement::SetAddress() for a more</span>
+<span class="hljs-comment">///       detailed discussion of the meaning of the addobj parameter in</span>
+<span class="hljs-comment">///       the case of new-style branches.</span>
+<span class="hljs-comment">/// Use splitlevel &lt; 0 instead of splitlevel=0 when the class</span>
+<span class="hljs-comment">/// has a custom Streamer</span>
+<span class="hljs-comment">/// Note: if the split level is set to the default (99),  TTree::Branch will</span>
+<span class="hljs-comment">/// not issue a warning if the class can not be split.</span>
+
 <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> T&gt; <span class="hljs-function">TBranch *<span class="hljs-title">Branch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* classname, T* obj, Int_t bufsize = <span class="hljs-number">32000</span>, Int_t splitlevel = <span class="hljs-number">99</span>)</span>
    </span>{
@@ -2654,23 +2869,896 @@ The Fill function loops on all defined TBranch.</p><h2 id="class">class</h2><pre
       <span class="hljs-keyword">return</span> BranchImpRef(name, TBuffer::GetClass(<span class="hljs-keyword">typeid</span>(T)), TDataType::GetType(<span class="hljs-keyword">typeid</span>(T)), obj, bufsize, splitlevel);
    }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch        *<span class="hljs-title">Bronch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* classname, <span class="hljs-keyword">void</span>* addobj, Int_t bufsize = <span class="hljs-number">32000</span>, Int_t splitlevel = <span class="hljs-number">99</span>)</span></span>;
+<span class="hljs-comment">/// Create a new TTree BranchElement.</span>
+<span class="hljs-comment">/// ## WARNING about this new function</span>
+<span class="hljs-comment">/// This function is designed to replace the internal</span>
+<span class="hljs-comment">/// implementation of the old TTree::Branch (whose implementation</span>
+<span class="hljs-comment">/// has been moved to BranchOld).</span>
+<span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span> The &apos;Bronch&apos; method supports only one possible calls</span>
+<span class="hljs-comment">/// signature (where the object type has to be specified</span>
+<span class="hljs-comment">/// explicitly and the address must be the address of a pointer).</span>
+<span class="hljs-comment">/// For more flexibility use &apos;Branch&apos;.  Use Bronch only in (rare)</span>
+<span class="hljs-comment">/// cases (likely to be legacy cases) where both the new and old</span>
+<span class="hljs-comment">/// implementation of Branch needs to be used at the same time.</span>
+<span class="hljs-comment">/// This function is far more powerful than the old Branch</span>
+<span class="hljs-comment">/// function.  It supports the full C++, including STL and has</span>
+<span class="hljs-comment">/// the same behaviour in split or non-split mode. classname does</span>
+<span class="hljs-comment">/// not have to derive from TObject.  The function is based on</span>
+<span class="hljs-comment">/// the new TStreamerInfo.</span>
+<span class="hljs-comment">/// Build a TBranchElement for an object of class classname.</span>
+<span class="hljs-comment">/// addr is the address of a pointer to an object of class</span>
+<span class="hljs-comment">/// classname.  The class dictionary must be available (ClassDef</span>
+<span class="hljs-comment">/// in class header).</span>
+<span class="hljs-comment">/// Note: See the comments in TBranchElement::SetAddress() for a more</span>
+<span class="hljs-comment">///       detailed discussion of the meaning of the addr parameter.</span>
+<span class="hljs-comment">/// This option requires access to the library where the</span>
+<span class="hljs-comment">/// corresponding class is defined. Accessing one single data</span>
+<span class="hljs-comment">/// member in the object implies reading the full object.</span>
+<span class="hljs-comment">/// By default the branch buffers are stored in the same file as the Tree.</span>
+<span class="hljs-comment">/// use TBranch::SetFile to specify a different file</span>
+<span class="hljs-comment">/// IMPORTANT NOTE about branch names:</span>
+<span class="hljs-comment">/// In case two or more master branches contain subbranches with</span>
+<span class="hljs-comment">/// identical names, one must add a &quot;.&quot; (dot) character at the end</span>
+<span class="hljs-comment">/// of the master branch name. This will force the name of the subbranch</span>
+<span class="hljs-comment">/// to be master.subbranch instead of simply subbranch.</span>
+<span class="hljs-comment">/// This situation happens when the top level object (say event)</span>
+<span class="hljs-comment">/// has two or more members referencing the same class.</span>
+<span class="hljs-comment">/// For example, if a Tree has two branches B1 and B2 corresponding</span>
+<span class="hljs-comment">/// to objects of the same class MyClass, one can do:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Branch(&quot;B1.&quot;,&quot;MyClass&quot;,&amp;b1,8000,1);</span>
+<span class="hljs-comment">///     tree.Branch(&quot;B2.&quot;,&quot;MyClass&quot;,&amp;b2,8000,1);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// if MyClass has 3 members a,b,c, the two instructions above will generate</span>
+<span class="hljs-comment">/// subbranches called B1.a, B1.b ,B1.c, B2.a, B2.b, B2.c</span>
+<span class="hljs-comment">/// bufsize is the buffer size in bytes for this branch</span>
+<span class="hljs-comment">/// The default value is 32000 bytes and should be ok for most cases.</span>
+<span class="hljs-comment">/// You can specify a larger value (e.g. 256000) if your Tree is not split</span>
+<span class="hljs-comment">/// and each entry is large (Megabytes)</span>
+<span class="hljs-comment">/// A small value for bufsize is optimum if you intend to access</span>
+<span class="hljs-comment">/// the entries in the Tree randomly and your Tree is in split mode.</span>
+<span class="hljs-comment">/// Use splitlevel &lt; 0 instead of splitlevel=0 when the class</span>
+<span class="hljs-comment">/// has a custom Streamer</span>
+<span class="hljs-comment">/// Note: if the split level is set to the default (99),  TTree::Branch will</span>
+<span class="hljs-comment">/// not issue a warning if the class can not be split.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch        *<span class="hljs-title">BranchOld</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* classname, <span class="hljs-keyword">void</span>* addobj, Int_t bufsize = <span class="hljs-number">32000</span>, Int_t splitlevel = <span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Create a new TTree BranchObject.</span>
+<span class="hljs-comment">/// Build a TBranchObject for an object of class classname.</span>
+<span class="hljs-comment">/// addobj is the address of a pointer to an object of class classname.</span>
+<span class="hljs-comment">/// IMPORTANT: classname must derive from TObject.</span>
+<span class="hljs-comment">/// The class dictionary must be available (ClassDef in class header).</span>
+<span class="hljs-comment">/// This option requires access to the library where the corresponding class</span>
+<span class="hljs-comment">/// is defined. Accessing one single data member in the object implies</span>
+<span class="hljs-comment">/// reading the full object.</span>
+<span class="hljs-comment">/// See the next Branch constructor for a more efficient storage</span>
+<span class="hljs-comment">/// in case the entry consists of arrays of identical objects.</span>
+<span class="hljs-comment">/// By default the branch buffers are stored in the same file as the Tree.</span>
+<span class="hljs-comment">/// use TBranch::SetFile to specify a different file</span>
+<span class="hljs-comment">/// IMPORTANT NOTE about branch names:</span>
+<span class="hljs-comment">/// In case two or more master branches contain subbranches with</span>
+<span class="hljs-comment">/// identical names, one must add a &quot;.&quot; (dot) character at the end</span>
+<span class="hljs-comment">/// of the master branch name. This will force the name of the subbranch</span>
+<span class="hljs-comment">/// to be master.subbranch instead of simply subbranch.</span>
+<span class="hljs-comment">/// This situation happens when the top level object (say event)</span>
+<span class="hljs-comment">/// has two or more members referencing the same class.</span>
+<span class="hljs-comment">/// For example, if a Tree has two branches B1 and B2 corresponding</span>
+<span class="hljs-comment">/// to objects of the same class MyClass, one can do:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Branch(&quot;B1.&quot;,&quot;MyClass&quot;,&amp;b1,8000,1);</span>
+<span class="hljs-comment">///     tree.Branch(&quot;B2.&quot;,&quot;MyClass&quot;,&amp;b2,8000,1);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// if MyClass has 3 members a,b,c, the two instructions above will generate</span>
+<span class="hljs-comment">/// subbranches called B1.a, B1.b ,B1.c, B2.a, B2.b, B2.c</span>
+<span class="hljs-comment">/// bufsize is the buffer size in bytes for this branch</span>
+<span class="hljs-comment">/// The default value is 32000 bytes and should be ok for most cases.</span>
+<span class="hljs-comment">/// You can specify a larger value (e.g. 256000) if your Tree is not split</span>
+<span class="hljs-comment">/// and each entry is large (Megabytes)</span>
+<span class="hljs-comment">/// A small value for bufsize is optimum if you intend to access</span>
+<span class="hljs-comment">/// the entries in the Tree randomly and your Tree is in split mode.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch        *<span class="hljs-title">BranchRef</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser*)</span></span>;
+<span class="hljs-comment">/// Build the optional branch supporting the TRefTable.</span>
+<span class="hljs-comment">/// This branch will keep all the information to find the branches</span>
+<span class="hljs-comment">/// containing referenced objects.</span>
+<span class="hljs-comment">/// At each Tree::Fill, the branch numbers containing the</span>
+<span class="hljs-comment">/// referenced objects are saved to the TBranchRef basket.</span>
+<span class="hljs-comment">/// When the Tree header is saved (via TTree::Write), the branch</span>
+<span class="hljs-comment">/// is saved keeping the information with the pointers to the branches</span>
+<span class="hljs-comment">/// having referenced objects.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser*)</span></span>;<span class="hljs-comment">/// Browse content of the TTree.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">BuildIndex</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* majorname, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* minorname = <span class="hljs-string">&quot;0&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Build a Tree Index (default is TTreeIndex).</span>
+<span class="hljs-comment">/// See a description of the parameters and functionality in</span>
+<span class="hljs-comment">/// TTreeIndex::TTreeIndex().</span>
+<span class="hljs-comment">/// The return value is the number of entries in the Index (&lt; 0 indicates failure).</span>
+<span class="hljs-comment">/// A TTreeIndex object pointed by fTreeIndex is created.</span>
+<span class="hljs-comment">/// This object will be automatically deleted by the TTree destructor.</span>
+<span class="hljs-comment">/// See also comments in TTree::SetTreeIndex().</span>
+
    <span class="hljs-function">TStreamerInfo          *<span class="hljs-title">BuildStreamerInfo</span><span class="hljs-params">(TClass* cl, <span class="hljs-keyword">void</span>* pointer = <span class="hljs-number">0</span>, Bool_t canOptimize = kTRUE)</span></span>;
+<span class="hljs-comment">/// Build StreamerInfo for class cl.</span>
+<span class="hljs-comment">/// pointer is an optional argument that may contain a pointer to an object of cl.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFile          *<span class="hljs-title">ChangeFile</span><span class="hljs-params">(TFile* file)</span></span>;
+<span class="hljs-comment">/// Called by TTree::Fill() when file has reached its maximum fgMaxTreeSize.</span>
+<span class="hljs-comment">/// Create a new file. If the original file is named &quot;myfile.root&quot;,</span>
+<span class="hljs-comment">/// subsequent files are named &quot;myfile_1.root&quot;, &quot;myfile_2.root&quot;, etc.</span>
+<span class="hljs-comment">/// Returns a pointer to the new file.</span>
+<span class="hljs-comment">/// Currently, the automatic change of file is restricted</span>
+<span class="hljs-comment">/// to the case where the tree is in the top level directory.</span>
+<span class="hljs-comment">/// The file should not contain sub-directories.</span>
+<span class="hljs-comment">/// Before switching to a new file, the tree header is written</span>
+<span class="hljs-comment">/// to the current file, then the current file is closed.</span>
+<span class="hljs-comment">/// To process the multiple files created by ChangeFile, one must use</span>
+<span class="hljs-comment">/// a TChain.</span>
+<span class="hljs-comment">/// The new file name has a suffix &quot;_N&quot; where N is equal to fFileNumber+1.</span>
+<span class="hljs-comment">/// By default a Root session starts with fFileNumber=0. One can set</span>
+<span class="hljs-comment">/// fFileNumber to a different value via TTree::SetFileNumber.</span>
+<span class="hljs-comment">/// In case a file named &quot;_N&quot; already exists, the function will try</span>
+<span class="hljs-comment">/// a file named &quot;__N&quot;, then &quot;___N&quot;, etc.</span>
+<span class="hljs-comment">/// fgMaxTreeSize can be set via the static function TTree::SetMaxTreeSize.</span>
+<span class="hljs-comment">/// The default value of fgMaxTreeSize is 100 Gigabytes.</span>
+<span class="hljs-comment">/// If the current file contains other objects like TH1 and TTree,</span>
+<span class="hljs-comment">/// these objects are automatically moved to the new file.</span>
+<span class="hljs-comment">/// IMPORTANT <span class="hljs-doctag">NOTE:</span></span>
+<span class="hljs-comment">/// Be careful when writing the final Tree header to the file!</span>
+<span class="hljs-comment">/// Don&apos;t do:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     TFile *file = new TFile(&quot;myfile.root&quot;,&quot;recreate&quot;);</span>
+<span class="hljs-comment">///     TTree *T = new TTree(&quot;T&quot;,&quot;title&quot;);</span>
+<span class="hljs-comment">///     T-&gt;Fill(); //loop</span>
+<span class="hljs-comment">///     file-&gt;Write();</span>
+<span class="hljs-comment">///     file-&gt;Close();</span>
+<span class="hljs-comment">///~~~</span>
+<span class="hljs-comment">/// but do the following:</span>
+<span class="hljs-comment">///~~~ {.cpp}</span>
+<span class="hljs-comment">///     TFile *file = new TFile(&quot;myfile.root&quot;,&quot;recreate&quot;);</span>
+<span class="hljs-comment">///     TTree *T = new TTree(&quot;T&quot;,&quot;title&quot;);</span>
+<span class="hljs-comment">///     T-&gt;Fill(); //loop</span>
+<span class="hljs-comment">///     file = T-&gt;GetCurrentFile(); //to get the pointer to the current file</span>
+<span class="hljs-comment">///     file-&gt;Write();</span>
+<span class="hljs-comment">///     file-&gt;Close();</span>
+<span class="hljs-comment">/// ~~~</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TTree          *<span class="hljs-title">CloneTree</span><span class="hljs-params">(Long64_t nentries = <span class="hljs-number">-1</span>, Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Create a clone of this tree and copy nentries.</span>
+<span class="hljs-comment">/// By default copy all entries.</span>
+<span class="hljs-comment">/// The compression level of the cloned tree is set to the destination</span>
+<span class="hljs-comment">/// file&apos;s compression level.</span>
+<span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span> Only active branches are copied.</span>
+<span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span> If the TTree is a TChain, the structure of the first TTree</span>
+<span class="hljs-comment">///       is used for the copy.</span>
+<span class="hljs-comment">/// IMPORTANT: The cloned tree stays connected with this tree until</span>
+<span class="hljs-comment">///            this tree is deleted. In particular, any changes in</span>
+<span class="hljs-comment">///            branch addresses in this tree are forwarded to the</span>
+<span class="hljs-comment">///            clone trees, unless a branch in a clone tree has had</span>
+<span class="hljs-comment">///            its address changed, in which case that change stays in</span>
+<span class="hljs-comment">///            effect. When this tree is deleted, all the addresses of</span>
+<span class="hljs-comment">///            the cloned tree are reset to their default values.</span>
+<span class="hljs-comment">/// If &apos;option&apos; contains the word &apos;fast&apos; and nentries is -1, the</span>
+<span class="hljs-comment">/// cloning will be done without unzipping or unstreaming the baskets</span>
+<span class="hljs-comment">/// (i.e., a direct copy of the raw bytes on disk).</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// When &apos;fast&apos; is specified, &apos;option&apos; can also contain a sorting</span>
+<span class="hljs-comment">/// order for the baskets in the output file.</span>
+<span class="hljs-comment">/// There are currently 3 supported sorting order:</span>
+<span class="hljs-comment">/// - SortBasketsByOffset (the default)</span>
+<span class="hljs-comment">/// - SortBasketsByBranch</span>
+<span class="hljs-comment">/// - SortBasketsByEntry</span>
+<span class="hljs-comment">/// When using SortBasketsByOffset the baskets are written in the</span>
+<span class="hljs-comment">/// output file in the same order as in the original file (i.e. the</span>
+<span class="hljs-comment">/// baskets are sorted by their offset in the original file; Usually</span>
+<span class="hljs-comment">/// this also means that the baskets are sorted by the index/number of</span>
+<span class="hljs-comment">/// the _last_ entry they contain)</span>
+<span class="hljs-comment">/// When using SortBasketsByBranch all the baskets of each individual</span>
+<span class="hljs-comment">/// branches are stored contiguously. This tends to optimize reading</span>
+<span class="hljs-comment">/// speed when reading a small number (1-&gt;5) of branches, since all</span>
+<span class="hljs-comment">/// their baskets will be clustered together instead of being spread</span>
+<span class="hljs-comment">/// across the file. However it might decrease the performance when</span>
+<span class="hljs-comment">/// reading more branches (or the full entry).</span>
+<span class="hljs-comment">/// When using SortBasketsByEntry the baskets with the lowest starting</span>
+<span class="hljs-comment">/// entry are written first. (i.e. the baskets are sorted by the</span>
+<span class="hljs-comment">/// index/number of the first entry they contain). This means that on</span>
+<span class="hljs-comment">/// the file the baskets will be in the order in which they will be</span>
+<span class="hljs-comment">/// needed when reading the whole tree sequentially.</span>
+<span class="hljs-comment">/// For examples of CloneTree, see tutorials:</span>
+<span class="hljs-comment">/// - copytree:</span>
+<span class="hljs-comment">///     A macro to copy a subset of a TTree to a new TTree.</span>
+<span class="hljs-comment">///     The input file has been generated by the program in</span>
+<span class="hljs-comment">///     $ROOTSYS/test/Event with: Event 1000 1 1 1</span>
+<span class="hljs-comment">/// - copytree2:</span>
+<span class="hljs-comment">///     A macro to copy a subset of a TTree to a new TTree.</span>
+<span class="hljs-comment">///     One branch of the new Tree is written to a separate file.</span>
+<span class="hljs-comment">///     The input file has been generated by the program in</span>
+<span class="hljs-comment">///     $ROOTSYS/test/Event with: Event 1000 1 1 1</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">CopyAddresses</span><span class="hljs-params">(TTree*,Bool_t undo = kFALSE)</span></span>;
+<span class="hljs-comment">/// Set branch addresses of passed tree equal to ours.</span>
+<span class="hljs-comment">/// If undo is true, reset the branch address instead of copying them.</span>
+<span class="hljs-comment">/// This insures &apos;separation&apos; of a cloned tree from its original</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t        <span class="hljs-title">CopyEntries</span><span class="hljs-params">(TTree* tree, Long64_t nentries = <span class="hljs-number">-1</span>, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Copy nentries from given tree to this tree.</span>
+<span class="hljs-comment">/// This routines assumes that the branches that intended to be copied are</span>
+<span class="hljs-comment">/// already connected.   The typical case is that this tree was created using</span>
+<span class="hljs-comment">/// tree-&gt;CloneTree(0).</span>
+<span class="hljs-comment">/// By default copy all entries.</span>
+<span class="hljs-comment">/// Returns number of bytes copied to this tree.</span>
+<span class="hljs-comment">/// If &apos;option&apos; contains the word &apos;fast&apos; and nentries is -1, the cloning will be</span>
+<span class="hljs-comment">/// done without unzipping or unstreaming the baskets (i.e., a direct copy of the</span>
+<span class="hljs-comment">/// raw bytes on disk).</span>
+<span class="hljs-comment">/// When &apos;fast&apos; is specified, &apos;option&apos; can also contains a sorting order for the</span>
+<span class="hljs-comment">/// baskets in the output file.</span>
+<span class="hljs-comment">/// There are currently 3 supported sorting order:</span>
+<span class="hljs-comment">/// - SortBasketsByOffset (the default)</span>
+<span class="hljs-comment">/// - SortBasketsByBranch</span>
+<span class="hljs-comment">/// - SortBasketsByEntry</span>
+<span class="hljs-comment">/// See TTree::CloneTree for a detailed explanation of the semantics of these 3 options.</span>
+<span class="hljs-comment">/// If the tree or any of the underlying tree of the chain has an index, that index and any</span>
+<span class="hljs-comment">/// index in the subsequent underlying TTree objects will be merged.</span>
+<span class="hljs-comment">/// There are currently three &apos;options&apos; to control this merging:</span>
+<span class="hljs-comment">/// - NoIndex             : all the TTreeIndex object are dropped.</span>
+<span class="hljs-comment">/// - DropIndexOnError    : if any of the underlying TTree object do no have a TTreeIndex,</span>
+<span class="hljs-comment">///                          they are all dropped.</span>
+<span class="hljs-comment">/// - AsIsIndexOnError [default]: In case of missing TTreeIndex, the resulting TTree index has gaps.</span>
+<span class="hljs-comment">/// - BuildIndexOnError : If any of the underlying TTree objects do not have a TTreeIndex,</span>
+<span class="hljs-comment">///                          all TTreeIndex are &apos;ignored&apos; and the missing piece are rebuilt.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TTree          *<span class="hljs-title">CopyTree</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* selection, Option_t* option = <span class="hljs-string">&quot;&quot;</span>, Long64_t nentries = kMaxEntries, Long64_t firstentry = <span class="hljs-number">0</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBasket        *<span class="hljs-title">CreateBasket</span><span class="hljs-params">(TBranch*)</span></span>;
+<span class="hljs-comment">/// Copy a tree with selection.</span>
+<span class="hljs-comment">/// IMPORTANT:</span>
+<span class="hljs-comment">/// The returned copied tree stays connected with the original tree</span>
+<span class="hljs-comment">/// until the original tree is deleted.  In particular, any changes</span>
+<span class="hljs-comment">/// to the branch addresses in the original tree are also made to</span>
+<span class="hljs-comment">/// the copied tree.  Any changes made to the branch addresses of the</span>
+<span class="hljs-comment">/// copied tree are overridden anytime the original tree changes its</span>
+<span class="hljs-comment">/// branch addresses.  When the original tree is deleted, all the</span>
+<span class="hljs-comment">/// branch addresses of the copied tree are set to zero.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// For examples of CopyTree, see the tutorials:</span>
+<span class="hljs-comment">/// - copytree:</span>
+<span class="hljs-comment">/// Example macro to copy a subset of a tree to a new tree.</span>
+<span class="hljs-comment">/// The input file was generated by running the program in</span>
+<span class="hljs-comment">/// $ROOTSYS/test/Event in this way:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     ./Event 1000 1 1 1</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// - copytree2</span>
+<span class="hljs-comment">/// Example macro to copy a subset of a tree to a new tree.</span>
+<span class="hljs-comment">/// One branch of the new tree is written to a separate file.</span>
+<span class="hljs-comment">/// The input file was generated by running the program in</span>
+<span class="hljs-comment">/// $ROOTSYS/test/Event in this way:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     ./Event 1000 1 1 1</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// - copytree3</span>
+<span class="hljs-comment">/// Example macro to copy a subset of a tree to a new tree.</span>
+<span class="hljs-comment">/// Only selected entries are copied to the new tree.</span>
+<span class="hljs-comment">/// NOTE that only the active branches are copied.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBasket        *<span class="hljs-title">CreateBasket</span><span class="hljs-params">(TBranch*)</span></span>;<span class="hljs-comment">/// Create a basket for this tree and given branch.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">DirectoryAutoAdd</span><span class="hljs-params">(TDirectory *)</span></span>;
+ <span class="hljs-comment">/// Called by TKey and TObject::Clone to automatically add us to a directory</span>
+ <span class="hljs-comment">/// when we are read from a file.</span>
+
    <span class="hljs-function">Int_t                   <span class="hljs-title">Debug</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fDebug; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">Delete</span><span class="hljs-params">(Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Delete this tree from memory or/and disk.</span>
+<span class="hljs-comment">/// - if option == &quot;all&quot; delete Tree object from memory AND from disk</span>
+<span class="hljs-comment">///                     all baskets on disk are deleted. All keys with same name</span>
+<span class="hljs-comment">///                     are deleted.</span>
+<span class="hljs-comment">/// - if option ==&quot;&quot; only Tree object in memory is deleted.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">Draw</span><span class="hljs-params">(Option_t* opt)</span> </span>{ Draw(opt, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, kMaxEntries, <span class="hljs-number">0</span>); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t        <span class="hljs-title">Draw</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* varexp, <span class="hljs-keyword">const</span> TCut&amp; selection, Option_t* option = <span class="hljs-string">&quot;&quot;</span>, Long64_t nentries = kMaxEntries, Long64_t firstentry = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Draw expression varexp for specified entries.</span>
+<span class="hljs-comment">/// Returns -1 in case of error or number of selected events in case of success.</span>
+<span class="hljs-comment">/// This function accepts TCut objects as arguments.</span>
+<span class="hljs-comment">/// Useful to use the string operator +</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">///     ntuple.Draw(&quot;x&quot;,cut1+cut2+cut3);</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t        <span class="hljs-title">Draw</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* varexp, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* selection, Option_t* option = <span class="hljs-string">&quot;&quot;</span>, Long64_t nentries = kMaxEntries, Long64_t firstentry = <span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Draw expression varexp for specified entries.</span>
+<span class="hljs-comment">/// Returns -1 in case of error or number of selected events in case of success.</span>
+<span class="hljs-comment">/// varexp is an expression of the general form</span>
+<span class="hljs-comment">///  - &quot;e1&quot;           produces a 1-d histogram (TH1F) of expression &quot;e1&quot;</span>
+<span class="hljs-comment">///  - &quot;e1:e2&quot;        produces an unbinned 2-d scatter-plot (TGraph) of &quot;e1&quot;</span>
+<span class="hljs-comment">///                   on the y-axis versus &quot;e2&quot; on the x-axis</span>
+<span class="hljs-comment">///  - &quot;e1:e2:e3&quot;     produces an unbinned 3-d scatter-plot (TPolyMarker3D) of &quot;e1&quot;</span>
+<span class="hljs-comment">///                   versus &quot;e2&quot; versus &quot;e3&quot; on the x-, y-, z-axis, respectively.</span>
+<span class="hljs-comment">///  - &quot;e1:e2:e3:e4&quot;  produces an unbinned 3-d scatter-plot (TPolyMarker3D) of &quot;e1&quot;</span>
+<span class="hljs-comment">///                   versus &quot;e2&quot; versus &quot;e3&quot; and &quot;e4&quot; mapped on the color number.</span>
+<span class="hljs-comment">/// (to create histograms in the 2, 3, and 4 dimensional case, see section &quot;Saving</span>
+<span class="hljs-comment">/// the result of Draw to an histogram&quot;)</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">///  -  varexp = x     simplest case: draw a 1-Dim distribution of column named x</span>
+<span class="hljs-comment">///  -  varexp = sqrt(x)            : draw distribution of sqrt(x)</span>
+<span class="hljs-comment">///  -  varexp = x*y/z</span>
+<span class="hljs-comment">///  -  varexp = y:sqrt(x) 2-Dim distribution of y versus sqrt(x)</span>
+<span class="hljs-comment">///  -  varexp = px:py:pz:2.5*E  produces a 3-d scatter-plot of px vs py ps pz</span>
+<span class="hljs-comment">///             and the color number of each marker will be 2.5*E.</span>
+<span class="hljs-comment">///             If the color number is negative it is set to 0.</span>
+<span class="hljs-comment">///             If the color number is greater than the current number of colors</span>
+<span class="hljs-comment">///             it is set to the highest color number.The default number of</span>
+<span class="hljs-comment">///             colors is 50. see TStyle::SetPalette for setting a new color palette.</span>
+<span class="hljs-comment">/// Note that the variables e1, e2 or e3 may contain a selection.</span>
+<span class="hljs-comment">/// example, if e1= x*(y&lt;0), the value histogrammed will be x if y&lt;0</span>
+<span class="hljs-comment">/// and will be 0 otherwise.</span>
+<span class="hljs-comment">/// The expressions can use all the operations and build-in functions</span>
+<span class="hljs-comment">/// supported by TFormula (See TFormula::Analyze), including free</span>
+<span class="hljs-comment">/// standing function taking numerical arguments (TMath::Bessel).</span>
+<span class="hljs-comment">/// In addition, you can call member functions taking numerical</span>
+<span class="hljs-comment">/// arguments. For example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     TMath::BreitWigner(fPx,3,2)</span>
+<span class="hljs-comment">///     event.GetHistogram().GetXaxis().GetXmax()</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// Note: You can only pass expression that depend on the TTree&apos;s data</span>
+<span class="hljs-comment">/// to static functions and you can only call non-static member function</span>
+<span class="hljs-comment">/// with &apos;fixed&apos; parameters.</span>
+<span class="hljs-comment">/// selection is an expression with a combination of the columns.</span>
+<span class="hljs-comment">/// In a selection all the C++ operators are authorized.</span>
+<span class="hljs-comment">/// The value corresponding to the selection expression is used as a weight</span>
+<span class="hljs-comment">/// to fill the histogram.</span>
+<span class="hljs-comment">/// If the expression includes only boolean operations, the result</span>
+<span class="hljs-comment">/// is 0 or 1. If the result is 0, the histogram is not filled.</span>
+<span class="hljs-comment">/// In general, the expression may be of the form:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     value*(boolean expression)</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// if boolean expression is true, the histogram is filled with</span>
+<span class="hljs-comment">/// a `weight = value`.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Examples:</span>
+<span class="hljs-comment">///  -  selection1 = &quot;x&lt;y &amp;&amp; sqrt(z)&gt;3.2&quot;</span>
+<span class="hljs-comment">///  -  selection2 = &quot;(x+y)*(sqrt(z)&gt;3.2)&quot;</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///  -  selection1 returns a weight = 0 or 1</span>
+<span class="hljs-comment">///  -  selection2 returns a weight = x+y if sqrt(z)&gt;3.2</span>
+<span class="hljs-comment">///                returns a weight = 0 otherwise.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// option is the drawing option.</span>
+<span class="hljs-comment">///  - See TH1::Draw for the list of all drawing options.</span>
+<span class="hljs-comment">///  - If option COL is specified when varexp has three fields:</span>
+<span class="hljs-comment">///~~~ {.cpp}</span>
+<span class="hljs-comment">///      tree.Draw(&quot;e1:e2:e3&quot;,&quot;&quot;,&quot;col&quot;);</span>
+<span class="hljs-comment">///~~~</span>
+<span class="hljs-comment">///    a 2D scatter is produced with e1 vs e2, and e3 is mapped on the color</span>
+<span class="hljs-comment">///    table. The colors for e3 are evaluated once in linear scale before</span>
+<span class="hljs-comment">///    painting. Therefore changing the pad to log scale along Z as no effect</span>
+<span class="hljs-comment">///    on the colors.</span>
+<span class="hljs-comment">///  - If option contains the string &quot;goff&quot;, no graphics is generated.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// `nentries` is the number of entries to process (default is all)</span>
+<span class="hljs-comment">/// first is the first entry to process (default is 0)</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// This function returns the number of selected entries. It returns -1</span>
+<span class="hljs-comment">/// if an error occurs.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Drawing expressions using arrays and array elements</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Let assumes, a leaf fMatrix, on the branch fEvent, which is a 3 by 3 array,</span>
+<span class="hljs-comment">/// or a TClonesArray.</span>
+<span class="hljs-comment">/// In a TTree::Draw expression you can now access fMatrix using the following</span>
+<span class="hljs-comment">/// syntaxes:</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// | String passed   | What is used for each entry of the tree</span>
+<span class="hljs-comment">/// |-----------------|--------------------------------------------------------|</span>
+<span class="hljs-comment">/// | `fMatrix`       | the 9 elements of fMatrix |</span>
+<span class="hljs-comment">/// | `fMatrix[][]`   | the 9 elements of fMatrix |</span>
+<span class="hljs-comment">/// | `fMatrix[2][2]` | only the elements fMatrix[2][2] |</span>
+<span class="hljs-comment">/// | `fMatrix[1]`    | the 3 elements fMatrix[1][0], fMatrix[1][1] and fMatrix[1][2] |</span>
+<span class="hljs-comment">/// | `fMatrix[1][]`  | the 3 elements fMatrix[1][0], fMatrix[1][1] and fMatrix[1][2] |</span>
+<span class="hljs-comment">/// | `fMatrix[][0]`  | the 3 elements fMatrix[0][0], fMatrix[1][0] and fMatrix[2][0] |</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// &quot;fEvent.fMatrix....&quot; same as &quot;fMatrix...&quot; (unless there is more than one leaf named fMatrix!).</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// In summary, if a specific index is not specified for a dimension, TTree::Draw</span>
+<span class="hljs-comment">/// will loop through all the indices along this dimension.  Leaving off the</span>
+<span class="hljs-comment">/// last (right most) dimension of specifying then with the two characters &apos;[]&apos;</span>
+<span class="hljs-comment">/// is equivalent.  For variable size arrays (and TClonesArray) the range</span>
+<span class="hljs-comment">/// of the first dimension is recalculated for each entry of the tree.</span>
+<span class="hljs-comment">/// You can also specify the index as an expression of any other variables from the</span>
+<span class="hljs-comment">/// tree.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// TTree::Draw also now properly handling operations involving 2 or more arrays.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Let assume a second matrix fResults[5][2], here are a sample of some</span>
+<span class="hljs-comment">/// of the possible combinations, the number of elements they produce and</span>
+<span class="hljs-comment">/// the loop used:</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// | expression                       | element(s) | Loop                     |</span>
+<span class="hljs-comment">/// |----------------------------------|------------|--------------------------|</span>
+<span class="hljs-comment">/// | `fMatrix[2][1] - fResults[5][2]` |  one       | no loop |</span>
+<span class="hljs-comment">/// | `fMatrix[2][]  - fResults[5][2]` |  three     | on 2nd dim fMatrix |</span>
+<span class="hljs-comment">/// | `fMatrix[2][]  - fResults[5][]`  |  two       | on both 2nd dimensions |</span>
+<span class="hljs-comment">/// | `fMatrix[][2]  - fResults[][1]`  |  three     | on both 1st dimensions |</span>
+<span class="hljs-comment">/// | `fMatrix[][2]  - fResults[][]`   |  six       | on both 1st and 2nd dimensions of fResults |</span>
+<span class="hljs-comment">/// | `fMatrix[][2]  - fResults[3][]`  |  two       | on 1st dim of fMatrix and 2nd of fResults (at the same time) |</span>
+<span class="hljs-comment">/// | `fMatrix[][]   - fResults[][]`   |  six       | on 1st dim then on  2nd dim |</span>
+<span class="hljs-comment">/// | `fMatrix[][fResult[][]]`         |  30        | on 1st dim of fMatrix then on both dimensions of fResults.  The value if fResults[j][k] is used as the second index of fMatrix.|</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// In summary, TTree::Draw loops through all unspecified dimensions.  To</span>
+<span class="hljs-comment">/// figure out the range of each loop, we match each unspecified dimension</span>
+<span class="hljs-comment">/// from left to right (ignoring ALL dimensions for which an index has been</span>
+<span class="hljs-comment">/// specified), in the equivalent loop matched dimensions use the same index</span>
+<span class="hljs-comment">/// and are restricted to the smallest range (of only the matched dimensions).</span>
+<span class="hljs-comment">/// When involving variable arrays, the range can of course be different</span>
+<span class="hljs-comment">/// for each entry of the tree.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// So the loop equivalent to &quot;fMatrix[][2] - fResults[3][]&quot; is:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     for (Int_t i0; i &lt; min(3,2); i++) {</span>
+<span class="hljs-comment">///        use the value of (fMatrix[i0][2] - fMatrix[3][i0])</span>
+<span class="hljs-comment">///     }</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// So the loop equivalent to &quot;fMatrix[][2] - fResults[][]&quot; is:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     for (Int_t i0; i &lt; min(3,5); i++) {</span>
+<span class="hljs-comment">///        for (Int_t i1; i1 &lt; 2; i1++) {</span>
+<span class="hljs-comment">///           use the value of (fMatrix[i0][2] - fMatrix[i0][i1])</span>
+<span class="hljs-comment">///        }</span>
+<span class="hljs-comment">///     }</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// So the loop equivalent to &quot;fMatrix[][] - fResults[][]&quot; is:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     for (Int_t i0; i &lt; min(3,5); i++) {</span>
+<span class="hljs-comment">///        for (Int_t i1; i1 &lt; min(3,2); i1++) {</span>
+<span class="hljs-comment">///           use the value of (fMatrix[i0][i1] - fMatrix[i0][i1])</span>
+<span class="hljs-comment">///        }</span>
+<span class="hljs-comment">///     }</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// So the loop equivalent to &quot;fMatrix[][fResults[][]]&quot; is:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     for (Int_t i0; i0 &lt; 3; i0++) {</span>
+<span class="hljs-comment">///        for (Int_t j2; j2 &lt; 5; j2++) {</span>
+<span class="hljs-comment">///           for (Int_t j3; j3 &lt; 2; j3++) {</span>
+<span class="hljs-comment">///              i1 = fResults[j2][j3];</span>
+<span class="hljs-comment">///              use the value of fMatrix[i0][i1]</span>
+<span class="hljs-comment">///        }</span>
+<span class="hljs-comment">///     }</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// ## Retrieving the result of Draw</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// By default the temporary histogram created is called &quot;htemp&quot;, but only in</span>
+<span class="hljs-comment">/// the one dimensional Draw(&quot;e1&quot;) it contains the TTree&apos;s data points. For</span>
+<span class="hljs-comment">/// a two dimensional Draw, the data is filled into a TGraph which is named</span>
+<span class="hljs-comment">/// &quot;Graph&quot;. They can be retrieved by calling</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     TH1F *htemp = (TH1F*)gPad-&gt;GetPrimitive(&quot;htemp&quot;); // 1D</span>
+<span class="hljs-comment">///     TGraph *graph = (TGraph*)gPad-&gt;GetPrimitive(&quot;Graph&quot;); // 2D</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// For a three and four dimensional Draw the TPolyMarker3D is unnamed, and</span>
+<span class="hljs-comment">/// cannot be retrieved.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// gPad always contains a TH1 derived object called &quot;htemp&quot; which allows to</span>
+<span class="hljs-comment">/// access the axes:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     TGraph *graph = (TGraph*)gPad-&gt;GetPrimitive(&quot;Graph&quot;); // 2D</span>
+<span class="hljs-comment">///     TH2F   *htemp = (TH2F*)gPad-&gt;GetPrimitive(&quot;htemp&quot;); // empty, but has axes</span>
+<span class="hljs-comment">///     TAxis  *xaxis = htemp-&gt;GetXaxis();</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// ## Saving the result of Draw to an histogram</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// If varexp0 contains &gt;&gt;hnew (following the variable(s) name(s),</span>
+<span class="hljs-comment">/// the new histogram created is called hnew and it is kept in the current</span>
+<span class="hljs-comment">/// directory (and also the current pad). This works for all dimensions.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;sqrt(x)&gt;&gt;hsqrt&quot;,&quot;y&gt;0&quot;)</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will draw `sqrt(x)` and save the histogram as &quot;hsqrt&quot; in the current</span>
+<span class="hljs-comment">/// directory. To retrieve it do:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     TH1F *hsqrt = (TH1F*)gDirectory-&gt;Get(&quot;hsqrt&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// The binning information is taken from the environment variables</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     Hist.Binning.?D.?</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// In addition, the name of the histogram can be followed by up to 9</span>
+<span class="hljs-comment">/// numbers between &apos;(&apos; and &apos;)&apos;, where the numbers describe the</span>
+<span class="hljs-comment">/// following:</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// -  1 - bins in x-direction</span>
+<span class="hljs-comment">/// -  2 - lower limit in x-direction</span>
+<span class="hljs-comment">/// -  3 - upper limit in x-direction</span>
+<span class="hljs-comment">/// -  4-6 same for y-direction</span>
+<span class="hljs-comment">/// -  7-9 same for z-direction</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// When a new binning is used the new value will become the default.</span>
+<span class="hljs-comment">/// Values can be skipped.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;sqrt(x)&gt;&gt;hsqrt(500,10,20)&quot;)</span>
+<span class="hljs-comment">///          // plot sqrt(x) between 10 and 20 using 500 bins</span>
+<span class="hljs-comment">///     tree.Draw(&quot;sqrt(x):sin(y)&gt;&gt;hsqrt(100,10,60,50,.1,.5)&quot;)</span>
+<span class="hljs-comment">///          // plot sqrt(x) against sin(y)</span>
+<span class="hljs-comment">///          // 100 bins in x-direction; lower limit on x-axis is 10; upper limit is 60</span>
+<span class="hljs-comment">///          //  50 bins in y-direction; lower limit on y-axis is .1; upper limit is .5</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// By default, the specified histogram is reset.</span>
+<span class="hljs-comment">/// To continue to append data to an existing histogram, use &quot;+&quot; in front</span>
+<span class="hljs-comment">/// of the histogram name.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// A &apos;+&apos; in front of the histogram name is ignored, when the name is followed by</span>
+<span class="hljs-comment">/// binning information as described in the previous paragraph.</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;sqrt(x)&gt;&gt;+hsqrt&quot;,&quot;y&gt;0&quot;)</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will not reset `hsqrt`, but will continue filling. This works for 1-D, 2-D</span>
+<span class="hljs-comment">/// and 3-D histograms.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Accessing collection objects</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// TTree::Draw default&apos;s handling of collections is to assume that any</span>
+<span class="hljs-comment">/// request on a collection pertain to it content.  For example, if fTracks</span>
+<span class="hljs-comment">/// is a collection of Track objects, the following:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;event.fTracks.fPx&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will plot the value of fPx for each Track objects inside the collection.</span>
+<span class="hljs-comment">/// Also</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;event.fTracks.size()&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// would plot the result of the member function Track::size() for each</span>
+<span class="hljs-comment">/// Track object inside the collection.</span>
+<span class="hljs-comment">/// To access information about the collection itself, TTree::Draw support</span>
+<span class="hljs-comment">/// the &apos;@&apos; notation.  If a variable which points to a collection is prefixed</span>
+<span class="hljs-comment">/// or postfixed with &apos;@&apos;, the next part of the expression will pertain to</span>
+<span class="hljs-comment">/// the collection object.  For example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;event.@fTracks.size()&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will plot the size of the collection referred to by `fTracks` (i.e the number</span>
+<span class="hljs-comment">/// of Track objects).</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Drawing &apos;objects&apos;</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// When a class has a member function named AsDouble or AsString, requesting</span>
+<span class="hljs-comment">/// to directly draw the object will imply a call to one of the 2 functions.</span>
+<span class="hljs-comment">/// If both AsDouble and AsString are present, AsDouble will be used.</span>
+<span class="hljs-comment">/// AsString can return either a char*, a std::string or a TString.s</span>
+<span class="hljs-comment">/// For example, the following</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;event.myTTimeStamp&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will draw the same histogram as</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;event.myTTimeStamp.AsDouble()&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// In addition, when the object is a type TString or std::string, TTree::Draw</span>
+<span class="hljs-comment">/// will call respectively `TString::Data` and `std::string::c_str()`</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// If the object is a TBits, the histogram will contain the index of the bit</span>
+<span class="hljs-comment">/// that are turned on.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Retrieving  information about the tree itself.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// You can refer to the tree (or chain) containing the data by using the</span>
+<span class="hljs-comment">/// string &apos;This&apos;.</span>
+<span class="hljs-comment">/// You can then could any TTree methods. For example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;This-&gt;GetReadEntry()&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will display the local entry numbers be read.</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;This-&gt;GetUserInfo()-&gt;At(0)-&gt;GetName()&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///  will display the name of the first &apos;user info&apos; object.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Special functions and variables</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// `Entry$`:  A TTree::Draw formula can use the special variable `Entry$`</span>
+<span class="hljs-comment">/// to access the entry number being read. For example to draw every</span>
+<span class="hljs-comment">/// other entry use:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;myvar&quot;,&quot;Entry$%2==0&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// - `Entry$`      : return the current entry number (`== TTree::GetReadEntry()`)</span>
+<span class="hljs-comment">/// - `LocalEntry$` : return the current entry number in the current tree of a</span>
+<span class="hljs-comment">///   chain (`== GetTree()-&gt;GetReadEntry()`)</span>
+<span class="hljs-comment">/// - `Entries$`    : return the total number of entries (== TTree::GetEntries())</span>
+<span class="hljs-comment">/// - `Length$`     : return the total number of element of this formula for this</span>
+<span class="hljs-comment">///   entry (`==TTreeFormula::GetNdata()`)</span>
+<span class="hljs-comment">/// - `Iteration$`  : return the current iteration over this formula for this</span>
+<span class="hljs-comment">///   entry (i.e. varies from 0 to `Length$`).</span>
+<span class="hljs-comment">/// - `Length$(formula )`  : return the total number of element of the formula</span>
+<span class="hljs-comment">///   given as a parameter.</span>
+<span class="hljs-comment">/// - `Sum$(formula )`  : return the sum of the value of the elements of the</span>
+<span class="hljs-comment">///   formula given as a parameter.  For example the mean for all the elements in</span>
+<span class="hljs-comment">///   one entry can be calculated with:</span>
+<span class="hljs-comment">///   `Sum$(formula )/Length$(formula )`</span>
+<span class="hljs-comment">/// - `Min$(formula )` : return the minimun (within one TTree entry) of the value of the</span>
+<span class="hljs-comment">///    elements of the formula given as a parameter.</span>
+<span class="hljs-comment">/// - `Max$(formula )` : return the maximum (within one TTree entry) of the value of the</span>
+<span class="hljs-comment">///   elements of the formula given as a parameter.</span>
+<span class="hljs-comment">/// - `MinIf$(formula,condition)`</span>
+<span class="hljs-comment">/// - `MaxIf$(formula,condition)` : return the minimum (maximum) (within one TTree entry)</span>
+<span class="hljs-comment">///   of the value of the elements of the formula given as a parameter</span>
+<span class="hljs-comment">///   if they match the condition. If no element matches the condition,</span>
+<span class="hljs-comment">///   the result is zero.  To avoid the resulting peak at zero, use the</span>
+<span class="hljs-comment">///   pattern:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///        tree-&gt;Draw(&quot;MinIf$(formula,condition)&quot;,&quot;condition&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///   which will avoid calculation `MinIf$` for the entries that have no match</span>
+<span class="hljs-comment">///   for the condition.</span>
+<span class="hljs-comment">/// - `Alt$(primary,alternate)` : return the value of &quot;primary&quot; if it is available</span>
+<span class="hljs-comment">///   for the current iteration otherwise return the value of &quot;alternate&quot;.</span>
+<span class="hljs-comment">///   For example, with arr1[3] and arr2[2]</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///        tree-&gt;Draw(&quot;arr1+Alt$(arr2,0)&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///   will draw arr1[0]+arr2[0] ; arr1[1]+arr2[1] and arr1[2]+0</span>
+<span class="hljs-comment">///   Or with a variable size array arr3</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///        tree-&gt;Draw(&quot;Alt$(arr3[0],0)+Alt$(arr3[1],0)+Alt$(arr3[2],0)&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///   will draw the sum arr3 for the index 0 to min(2,actual_size_of_arr3-1)</span>
+<span class="hljs-comment">///   As a comparison</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///        tree-&gt;Draw(&quot;arr3[0]+arr3[1]+arr3[2]&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///   will draw the sum arr3 for the index 0 to 2 only if the</span>
+<span class="hljs-comment">///   actual_size_of_arr3 is greater or equal to 3.</span>
+<span class="hljs-comment">///   Note that the array in &apos;primary&apos; is flattened/linearized thus using</span>
+<span class="hljs-comment">///   Alt$ with multi-dimensional arrays of different dimensions in unlikely</span>
+<span class="hljs-comment">///   to yield the expected results.  To visualize a bit more what elements</span>
+<span class="hljs-comment">///   would be matched by TTree::Draw, TTree::Scan can be used:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///        tree-&gt;Scan(&quot;arr1:Alt$(arr2,0)&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///   will print on one line the value of arr1 and (arr2,0) that will be</span>
+<span class="hljs-comment">///   matched by</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///        tree-&gt;Draw(&quot;arr1-Alt$(arr2,0)&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// The ternary operator is not directly supported in TTree::Draw however, to plot the</span>
+<span class="hljs-comment">/// equivalent of `var2&lt;20 ? -99 : var1`, you can use:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;(var2&lt;20)*99+(var2&gt;=20)*var1&quot;,&quot;&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// ## Drawing a user function accessing the TTree data directly</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// If the formula contains  a file name, TTree::MakeProxy will be used</span>
+<span class="hljs-comment">/// to load and execute this file.   In particular it will draw the</span>
+<span class="hljs-comment">/// result of a function with the same name as the file.  The function</span>
+<span class="hljs-comment">/// will be executed in a context where the name of the branches can</span>
+<span class="hljs-comment">/// be used as a C++ variable.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// For example draw px using the file hsimple.root (generated by the</span>
+<span class="hljs-comment">/// hsimple.C tutorial), we need a file named hsimple.cxx:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     double hsimple() {</span>
+<span class="hljs-comment">///        return px;</span>
+<span class="hljs-comment">///     }</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// MakeProxy can then be used indirectly via the TTree::Draw interface</span>
+<span class="hljs-comment">/// as follow:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     new TFile(&quot;hsimple.root&quot;)</span>
+<span class="hljs-comment">///     ntuple-&gt;Draw(&quot;hsimple.cxx&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// A more complete example is available in the tutorials directory:</span>
+<span class="hljs-comment">/// `h1analysisProxy.cxx`, `h1analysProxy.h` and `h1analysisProxyCut.C`</span>
+<span class="hljs-comment">/// which reimplement the selector found in `h1analysis.C`</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// The main features of this facility are:</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///  * on-demand loading of branches</span>
+<span class="hljs-comment">///  * ability to use the &apos;branchname&apos; as if it was a data member</span>
+<span class="hljs-comment">///  * protection against array out-of-bound</span>
+<span class="hljs-comment">///  * ability to use the branch data as object (when the user code is available)</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///  See TTree::MakeProxy for more details.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Making a Profile histogram</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///  In case of a 2-Dim expression, one can generate a TProfile histogram</span>
+<span class="hljs-comment">///  instead of a TH2F histogram by specifying option=prof or option=profs</span>
+<span class="hljs-comment">///  or option=profi or option=profg ; the trailing letter select the way</span>
+<span class="hljs-comment">///  the bin error are computed, See TProfile2D::SetErrorOption for</span>
+<span class="hljs-comment">///  details on the differences.</span>
+<span class="hljs-comment">///  The option=prof is automatically selected in case of y:x&gt;&gt;pf</span>
+<span class="hljs-comment">///  where pf is an existing TProfile histogram.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Making a 2D Profile histogram</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// In case of a 3-Dim expression, one can generate a TProfile2D histogram</span>
+<span class="hljs-comment">/// instead of a TH3F histogram by specifying option=prof or option=profs.</span>
+<span class="hljs-comment">/// or option=profi or option=profg ; the trailing letter select the way</span>
+<span class="hljs-comment">/// the bin error are computed, See TProfile2D::SetErrorOption for</span>
+<span class="hljs-comment">/// details on the differences.</span>
+<span class="hljs-comment">/// The option=prof is automatically selected in case of z:y:x&gt;&gt;pf</span>
+<span class="hljs-comment">/// where pf is an existing TProfile2D histogram.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Making a 5D plot using GL</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// If option GL5D is specified together with 5 variables, a 5D plot is drawn</span>
+<span class="hljs-comment">/// using OpenGL. See $ROOTSYS/tutorials/tree/staff.C as example.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Making a parallel coordinates plot</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// In case of a 2-Dim or more expression with the option=para, one can generate</span>
+<span class="hljs-comment">/// a parallel coordinates plot. With that option, the number of dimensions is</span>
+<span class="hljs-comment">/// arbitrary. Giving more than 4 variables without the option=para or</span>
+<span class="hljs-comment">/// option=candle or option=goff will produce an error.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Making a candle sticks chart</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// In case of a 2-Dim or more expression with the option=candle, one can generate</span>
+<span class="hljs-comment">/// a candle sticks chart. With that option, the number of dimensions is</span>
+<span class="hljs-comment">/// arbitrary. Giving more than 4 variables without the option=para or</span>
+<span class="hljs-comment">/// option=candle or option=goff will produce an error.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Normalizing the output histogram to 1</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// When option contains &quot;norm&quot; the output histogram is normalized to 1.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Saving the result of Draw to a TEventList, a TEntryList or a TEntryListArray</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// TTree::Draw can be used to fill a TEventList object (list of entry numbers)</span>
+<span class="hljs-comment">/// instead of histogramming one variable.</span>
+<span class="hljs-comment">/// If varexp0 has the form &gt;&gt;elist , a TEventList object named &quot;elist&quot;</span>
+<span class="hljs-comment">/// is created in the current directory. elist will contain the list</span>
+<span class="hljs-comment">/// of entry numbers satisfying the current selection.</span>
+<span class="hljs-comment">/// If option &quot;entrylist&quot; is used, a TEntryList object is created</span>
+<span class="hljs-comment">/// If the selection contains arrays, vectors or any container class and option</span>
+<span class="hljs-comment">/// &quot;entrylistarray&quot; is used, a TEntryListArray object is created</span>
+<span class="hljs-comment">/// containing also the subentries satisfying the selection, i.e. the indices of</span>
+<span class="hljs-comment">/// the branches which hold containers classes.</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;&gt;&gt;yplus&quot;,&quot;y&gt;0&quot;)</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will create a TEventList object named &quot;yplus&quot; in the current directory.</span>
+<span class="hljs-comment">/// In an interactive session, one can type (after TTree::Draw)</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     yplus.Print(&quot;all&quot;)</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// to print the list of entry numbers in the list.</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;&gt;&gt;yplus&quot;, &quot;y&gt;0&quot;, &quot;entrylist&quot;)</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will create a TEntryList object names &quot;yplus&quot; in the current directory</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;&gt;&gt;yplus&quot;, &quot;y&gt;0&quot;, &quot;entrylistarray&quot;)</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will create a TEntryListArray object names &quot;yplus&quot; in the current directory</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// By default, the specified entry list is reset.</span>
+<span class="hljs-comment">/// To continue to append data to an existing list, use &quot;+&quot; in front</span>
+<span class="hljs-comment">/// of the list name;</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;&gt;&gt;+yplus&quot;,&quot;y&gt;0&quot;)</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will not reset yplus, but will enter the selected entries at the end</span>
+<span class="hljs-comment">/// of the existing list.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Using a TEventList, TEntryList or TEntryListArray as Input</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Once a TEventList or a TEntryList object has been generated, it can be used as input</span>
+<span class="hljs-comment">/// for TTree::Draw. Use TTree::SetEventList or TTree::SetEntryList to set the</span>
+<span class="hljs-comment">/// current event list</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Example 1:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     TEventList *elist = (TEventList*)gDirectory-&gt;Get(&quot;yplus&quot;);</span>
+<span class="hljs-comment">///     tree-&gt;SetEventList(elist);</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;py&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// Example 2:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     TEntryList *elist = (TEntryList*)gDirectory-&gt;Get(&quot;yplus&quot;);</span>
+<span class="hljs-comment">///     tree-&gt;SetEntryList(elist);</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;py&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// If a TEventList object is used as input, a new TEntryList object is created</span>
+<span class="hljs-comment">/// inside the SetEventList function. In case of a TChain, all tree headers are loaded</span>
+<span class="hljs-comment">/// for this transformation. This new object is owned by the chain and is deleted</span>
+<span class="hljs-comment">/// with it, unless the user extracts it by calling GetEntryList() function.</span>
+<span class="hljs-comment">/// See also comments to SetEventList() function of TTree and TChain.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// If arrays are used in the selection criteria and TEntryListArray is not used,</span>
+<span class="hljs-comment">/// all the entries that have at least one element of the array that satisfy the selection</span>
+<span class="hljs-comment">/// are entered in the list.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;&gt;&gt;pyplus&quot;,&quot;fTracks.fPy&gt;0&quot;);</span>
+<span class="hljs-comment">///     tree-&gt;SetEventList(pyplus);</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;fTracks.fPy&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///  will draw the fPy of ALL tracks in event with at least one track with</span>
+<span class="hljs-comment">///  a positive fPy.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// To select only the elements that did match the original selection</span>
+<span class="hljs-comment">/// use TEventList::SetReapplyCut or TEntryList::SetReapplyCut.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;&gt;&gt;pyplus&quot;,&quot;fTracks.fPy&gt;0&quot;);</span>
+<span class="hljs-comment">///     pyplus-&gt;SetReapplyCut(kTRUE);</span>
+<span class="hljs-comment">///     tree-&gt;SetEventList(pyplus);</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;fTracks.fPy&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will draw the fPy of only the tracks that have a positive fPy.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// To draw only the elements that match a selection in case of arrays,</span>
+<span class="hljs-comment">/// you can also use TEntryListArray (faster in case of a more general selection).</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree.Draw(&quot;&gt;&gt;pyplus&quot;,&quot;fTracks.fPy&gt;0&quot;, &quot;entrylistarray&quot;);</span>
+<span class="hljs-comment">///     tree-&gt;SetEntryList(pyplus);</span>
+<span class="hljs-comment">///     tree-&gt;Draw(&quot;fTracks.fPy&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// will draw the fPy of only the tracks that have a positive fPy,</span>
+<span class="hljs-comment">/// but without redoing the selection.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///  Note: Use tree-&gt;SetEventList(0) if you do not want use the list as input.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## How to obtain more info from TTree::Draw</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///  Once TTree::Draw has been called, it is possible to access useful</span>
+<span class="hljs-comment">///  information still stored in the TTree object via the following functions:</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// - GetSelectedRows() // return the number of values accepted by the selection expression. In case where no selection was specified, returns the number of values processed.</span>
+<span class="hljs-comment">/// - GetV1()           // returns a pointer to the double array of V1</span>
+<span class="hljs-comment">/// - GetV2()           // returns a pointer to the double array of V2</span>
+<span class="hljs-comment">/// - GetV3()           // returns a pointer to the double array of V3</span>
+<span class="hljs-comment">/// - GetV4()           // returns a pointer to the double array of V4</span>
+<span class="hljs-comment">/// - GetW()            // returns a pointer to the double array of Weights where weight equal the result of the selection expression.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// where V1,V2,V3 correspond to the expressions in</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     TTree::Draw(&quot;V1:V2:V3:V4&quot;,selection);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// If the expression has more than 4 component use GetVal(index)</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     Root &gt; ntuple-&gt;Draw(&quot;py:px&quot;,&quot;pz&gt;4&quot;);</span>
+<span class="hljs-comment">///     Root &gt; TGraph *gr = new TGraph(ntuple-&gt;GetSelectedRows(),</span>
+<span class="hljs-comment">///                                   ntuple-&gt;GetV2(), ntuple-&gt;GetV1());</span>
+<span class="hljs-comment">///     Root &gt; gr-&gt;Draw(&quot;ap&quot;); //draw graph in current pad</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// creates a TGraph object with a number of points corresponding to the</span>
+<span class="hljs-comment">/// number of entries selected by the expression &quot;pz&gt;4&quot;, the x points of the graph</span>
+<span class="hljs-comment">/// being the px values of the Tree and the y points the py values.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Important note: By default TTree::Draw creates the arrays obtained</span>
+<span class="hljs-comment">/// with GetW, GetV1, GetV2, GetV3, GetV4, GetVal with a length corresponding</span>
+<span class="hljs-comment">/// to the parameter fEstimate.  The content will be the last `GetSelectedRows() % GetEstimate()`</span>
+<span class="hljs-comment">/// values calculated.</span>
+<span class="hljs-comment">/// By default fEstimate=1000000 and can be modified</span>
+<span class="hljs-comment">/// via TTree::SetEstimate. To keep in memory all the results (in case</span>
+<span class="hljs-comment">/// where there is only one result per entry), use</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     tree-&gt;SetEstimate(tree-&gt;GetEntries()+1); // same as tree-&gt;SetEstimate(-1);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// You must call SetEstimate if the expected number of selected rows</span>
+<span class="hljs-comment">/// you need to look at is greater than 1000000.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// You can use the option &quot;goff&quot; to turn off the graphics output</span>
+<span class="hljs-comment">/// of TTree::Draw in the above example.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ## Automatic interface to TTree::Draw via the TTreeViewer</span>
+<span class="hljs-comment">/// A complete graphical interface to this function is implemented</span>
+<span class="hljs-comment">/// in the class TTreeViewer.</span>
+<span class="hljs-comment">/// To start the TTreeViewer, three possibilities:</span>
+<span class="hljs-comment">/// - select TTree context menu item &quot;StartViewer&quot;</span>
+<span class="hljs-comment">/// - type the command  &quot;TTreeViewer TV(treeName)&quot;</span>
+<span class="hljs-comment">/// - execute statement &quot;tree-&gt;StartViewer();&quot;</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">DropBaskets</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Remove some baskets from memory.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">DropBuffers</span><span class="hljs-params">(Int_t nbytes)</span></span>;<span class="hljs-comment">/// Drop branch buffers to accommodate nbytes below MaxVirtualsize.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">Fill</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//&#x586B;&#x5145;&#x5230;buffer&#x4E2D;&#xFF0C;&#x4E00;&#x5B9A;&#x6570;&#x91CF;&#x4E4B;&#x540E;&#x5199;&#x5165;&#x786C;&#x76D8;</span>
@@ -2905,6 +3993,8 @@ The Fill function loops on all defined TBranch.</p><h2 id="class">class</h2><pre
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t        <span class="hljs-title">GetSelectedRows</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> GetPlayer()-&gt;GetSelectedRows(); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">GetTimerInterval</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTimerInterval; }
            <span class="hljs-function">TBuffer*        <span class="hljs-title">GetTransientBuffer</span><span class="hljs-params">(Int_t size)</span></span>;
+<span class="hljs-comment">/// Returns the transient buffer currently used by this TTree for reading/writing baskets.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t        <span class="hljs-title">GetTotBytes</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTotBytes; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TTree          *<span class="hljs-title">GetTree</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">const_cast</span>&lt;TTree*&gt;(<span class="hljs-keyword">this</span>); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TVirtualIndex  *<span class="hljs-title">GetTreeIndex</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTreeIndex; }
@@ -3823,7 +4913,196 @@ Long64_t clusterStart;
 <span class="hljs-comment">/// directory.</span>
 
 <span class="hljs-comment">/// See also TTree::UnbinnedFit</span></code></pre>
-<h2 id="example">example</h2><!-- TTree.md ends here -->
+<pre><code class="lang-cpp"><span class="hljs-comment">// virtual Int_t           Branch(TCollection* list, Int_t bufsize = 32000, Int_t splitlevel = 99, const char* name = &quot;&quot;);</span>
+
+{
+      <span class="hljs-function">TTree <span class="hljs-title">T</span><span class="hljs-params">(<span class="hljs-string">&quot;T&quot;</span>,<span class="hljs-string">&quot;test list&quot;</span>)</span></span>;
+      TList *<span class="hljs-built_in">list</span> = <span class="hljs-keyword">new</span> TList();
+
+      TObjArray *a1 = <span class="hljs-keyword">new</span> TObjArray();
+      a1-&gt;SetName(<span class="hljs-string">&quot;a1&quot;</span>);
+      <span class="hljs-built_in">list</span>-&gt;Add(a1);
+      TH1F *ha1a = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;ha1a&quot;</span>,<span class="hljs-string">&quot;ha1&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>);
+      TH1F *ha1b = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;ha1b&quot;</span>,<span class="hljs-string">&quot;ha1&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>);
+      a1-&gt;Add(ha1a);
+      a1-&gt;Add(ha1b);
+      TObjArray *b1 = <span class="hljs-keyword">new</span> TObjArray();
+      b1-&gt;SetName(<span class="hljs-string">&quot;b1&quot;</span>);
+      <span class="hljs-built_in">list</span>-&gt;Add(b1);
+      TH1F *hb1a = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;hb1a&quot;</span>,<span class="hljs-string">&quot;hb1&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>);
+      TH1F *hb1b = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;hb1b&quot;</span>,<span class="hljs-string">&quot;hb1&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>);
+      b1-&gt;Add(hb1a);
+      b1-&gt;Add(hb1b);
+
+      TObjArray *a2 = <span class="hljs-keyword">new</span> TObjArray();
+      a2-&gt;SetName(<span class="hljs-string">&quot;a2&quot;</span>);
+      <span class="hljs-built_in">list</span>-&gt;Add(a2);
+      TH1S *ha2a = <span class="hljs-keyword">new</span> TH1S(<span class="hljs-string">&quot;ha2a&quot;</span>,<span class="hljs-string">&quot;ha2&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>);
+      TH1S *ha2b = <span class="hljs-keyword">new</span> TH1S(<span class="hljs-string">&quot;ha2b&quot;</span>,<span class="hljs-string">&quot;ha2&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>);
+      a2-&gt;Add(ha2a);
+      a2-&gt;Add(ha2b);
+
+      T.Branch(<span class="hljs-built_in">list</span>,<span class="hljs-number">16000</span>,<span class="hljs-number">2</span>);
+      T.Print();
+}</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">// virtual Long64_t        AutoSave(Option_t* option = &quot;&quot;);</span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">treew</span><span class="hljs-params">()</span> </span>{
+   <span class="hljs-function">TFile <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-string">&quot;test.root&quot;</span>,<span class="hljs-string">&quot;recreate&quot;</span>)</span></span>;
+   TNtuple *ntuple = <span class="hljs-keyword">new</span> TNtuple(<span class="hljs-string">&quot;ntuple&quot;</span>,<span class="hljs-string">&quot;Demo&quot;</span>,<span class="hljs-string">&quot;px:py:pz:random:i&quot;</span>);
+   Float_t px, py, pz;
+   <span class="hljs-keyword">for</span> ( Int_t i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">10000000</span>; i++) {
+      gRandom-&gt;Rannor(px,py);
+      pz = px*px + py*py;
+      Float_t random = gRandom-&gt;Rndm(<span class="hljs-number">1</span>);
+      ntuple-&gt;Fill(px,py,pz,random,i);
+      <span class="hljs-keyword">if</span> (i%<span class="hljs-number">1000</span> == <span class="hljs-number">1</span>) ntuple-&gt;AutoSave(<span class="hljs-string">&quot;SaveSelf&quot;</span>);
+   }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">treer</span><span class="hljs-params">()</span> </span>{
+   <span class="hljs-function">TFile <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-string">&quot;test.root&quot;</span>)</span></span>;
+   TTree *ntuple = (TTree*)f.Get(<span class="hljs-string">&quot;ntuple&quot;</span>);
+   TCanvas c1;
+   Int_t first = <span class="hljs-number">0</span>;
+   <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) {
+      <span class="hljs-keyword">if</span> (first == <span class="hljs-number">0</span>) ntuple-&gt;Draw(<span class="hljs-string">&quot;px&gt;&gt;hpx&quot;</span>, <span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-number">10000000</span>,first);
+      <span class="hljs-keyword">else</span>            ntuple-&gt;Draw(<span class="hljs-string">&quot;px&gt;&gt;+hpx&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-number">10000000</span>,first);
+      first = (Int_t)ntuple-&gt;GetEntries();
+      c1.Update();
+      gSystem-&gt;Sleep(<span class="hljs-number">1000</span>); <span class="hljs-comment">//sleep 1 second</span>
+      ntuple-&gt;Refresh();
+   }
+}</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">// You may want to add a branch to an existing tree. For example,</span>
+<span class="hljs-comment">// if one variable in the tree was computed with a certain algorithm,</span>
+<span class="hljs-comment">// you may want to try another algorithm and compare the results.</span>
+<span class="hljs-comment">// One solution is to add a new branch, fill it, and save the tree.</span>
+<span class="hljs-comment">// The code below adds a simple branch to an existing tree.</span>
+<span class="hljs-comment">// Note the kOverwrite option in the Write method, it overwrites the</span>
+<span class="hljs-comment">// existing tree. If it is not specified, two copies of the tree headers</span>
+<span class="hljs-comment">// are saved.</span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tree3AddBranch</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-function">TFile <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-string">&quot;tree3.root&quot;</span>, <span class="hljs-string">&quot;update&quot;</span>)</span></span>;
+
+Float_t new_v;
+TTree *t3 = (TTree*)f-&gt;Get(<span class="hljs-string">&quot;t3&quot;</span>);
+TBranch *newBranch = t3-&gt;Branch(<span class="hljs-string">&quot;new_v&quot;</span>, &amp;new_v, <span class="hljs-string">&quot;new_v/F&quot;</span>);
+
+Long64_t nentries = t3-&gt;GetEntries(); <span class="hljs-comment">// read the number of entries in the t3</span>
+
+<span class="hljs-keyword">for</span> (Long64_t i = <span class="hljs-number">0</span>; i &lt; nentries; i++) {
+new_v= gRandom-&gt;Gaus(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+newBranch-&gt;Fill();
+}
+
+t3-&gt;Write(<span class="hljs-string">&quot;&quot;</span>, TObject::kOverwrite); <span class="hljs-comment">// save only the new version of the tree</span>
+}
+
+<span class="hljs-comment">// Adding a branch is often not possible because the tree is in a read-only</span>
+<span class="hljs-comment">// file and you do not have permission to save the modified tree with the</span>
+<span class="hljs-comment">// new branch. Even if you do have the permission, you risk losing the</span>
+<span class="hljs-comment">// original tree with an unsuccessful attempt to save  the modification.</span>
+<span class="hljs-comment">// Since trees are usually large, adding a branch could extend it over the</span>
+<span class="hljs-comment">// 2GB limit. In this case, the attempt to write the tree fails, and the</span>
+<span class="hljs-comment">// original data is erased.</span>
+<span class="hljs-comment">// In addition, adding a branch to a tree enlarges the tree and increases</span>
+<span class="hljs-comment">// the amount of memory needed to read an entry, and therefore decreases</span>
+<span class="hljs-comment">// the performance.</span></code></pre>
+<h2 id="example">example</h2><pre><code class="lang-cpp">    <span class="hljs-comment">// A simple example with histograms and a tree</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// This program creates :</span>
+    <span class="hljs-comment">//    - a one dimensional histogram</span>
+    <span class="hljs-comment">//    - a two dimensional histogram</span>
+    <span class="hljs-comment">//    - a profile histogram</span>
+    <span class="hljs-comment">//    - a tree</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// These objects are filled with some random numbers and saved on a file.</span>
+
+    <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TFile.h&quot;</span></span>
+    <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TH1.h&quot;</span></span>
+    <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TH2.h&quot;</span></span>
+    <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TProfile.h&quot;</span></span>
+    <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TRandom.h&quot;</span></span>
+    <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TTree.h&quot;</span></span>
+
+    <span class="hljs-comment">//__________________________________________________________________________</span>
+    main(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> **argv)
+    {
+    <span class="hljs-comment">// Create a new ROOT binary machine independent file.</span>
+    <span class="hljs-comment">// Note that this file may contain any kind of ROOT objects, histograms,trees</span>
+    <span class="hljs-comment">// pictures, graphics objects, detector geometries, tracks, events, etc..</span>
+    <span class="hljs-comment">// This file is now becoming the current directory.</span>
+    <span class="hljs-function">TFile <span class="hljs-title">hfile</span><span class="hljs-params">(<span class="hljs-string">&quot;htree.root&quot;</span>,<span class="hljs-string">&quot;RECREATE&quot;</span>,<span class="hljs-string">&quot;Demo ROOT file with histograms &amp; trees&quot;</span>)</span></span>;
+
+    <span class="hljs-comment">// Create some histograms and a profile histogram</span>
+    TH1F *hpx   = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;hpx&quot;</span>,<span class="hljs-string">&quot;This is the px distribution&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">-4</span>,<span class="hljs-number">4</span>);
+    TH2F *hpxpy = <span class="hljs-keyword">new</span> TH2F(<span class="hljs-string">&quot;hpxpy&quot;</span>,<span class="hljs-string">&quot;py ps px&quot;</span>,<span class="hljs-number">40</span>,<span class="hljs-number">-4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">40</span>,<span class="hljs-number">-4</span>,<span class="hljs-number">4</span>);
+    TProfile *hprof = <span class="hljs-keyword">new</span> TProfile(<span class="hljs-string">&quot;hprof&quot;</span>,<span class="hljs-string">&quot;Profile of pz versus px&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">-4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">0</span>,<span class="hljs-number">20</span>);
+
+    <span class="hljs-comment">// Define some simple structures</span>
+    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> {Float_t x,y,z;} POINT;
+    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> {
+       Int_t ntrack,nseg,nvertex;
+       UInt_t flag;
+       Float_t temperature;
+    } EVENTN;
+    <span class="hljs-keyword">static</span> POINT point;
+    <span class="hljs-keyword">static</span> EVENTN eventn;
+
+    <span class="hljs-comment">// Create a ROOT Tree</span>
+    TTree *tree = <span class="hljs-keyword">new</span> TTree(<span class="hljs-string">&quot;T&quot;</span>,<span class="hljs-string">&quot;An example of ROOT tree with a few branches&quot;</span>);
+    tree-&gt;Branch(<span class="hljs-string">&quot;point&quot;</span>,&amp;point,<span class="hljs-string">&quot;x:y:z&quot;</span>);
+    tree-&gt;Branch(<span class="hljs-string">&quot;eventn&quot;</span>,&amp;eventn,<span class="hljs-string">&quot;ntrack/I:nseg:nvertex:flag/i:temperature/F&quot;</span>);
+    tree-&gt;Branch(<span class="hljs-string">&quot;hpx&quot;</span>,<span class="hljs-string">&quot;TH1F&quot;</span>,&amp;hpx,<span class="hljs-number">128000</span>,<span class="hljs-number">0</span>);
+
+    Float_t px,py,pz;
+    <span class="hljs-keyword">static</span> Float_t p[<span class="hljs-number">3</span>];
+
+    <span class="hljs-comment">// Here we start a loop on 1000 events</span>
+    <span class="hljs-keyword">for</span> ( Int_t i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">1000</span>; i++) {
+       gRandom-&gt;Rannor(px,py);
+       pz = px*px + py*py;
+       Float_t random = gRandom-&gt;::Rndm(<span class="hljs-number">1</span>);
+
+       <span class="hljs-comment">// Fill histograms</span>
+       hpx-&gt;Fill(px);
+       hpxpy-&gt;Fill(px,py,<span class="hljs-number">1</span>);
+       hprof-&gt;Fill(px,pz,<span class="hljs-number">1</span>);
+
+       <span class="hljs-comment">// Fill structures</span>
+       p[<span class="hljs-number">0</span>] = px;
+       p[<span class="hljs-number">1</span>] = py;
+       p[<span class="hljs-number">2</span>] = pz;
+       point.x = <span class="hljs-number">10</span>*(random<span class="hljs-number">-1</span>);;
+       point.y = <span class="hljs-number">5</span>*random;
+       point.z = <span class="hljs-number">20</span>*random;
+       eventn.ntrack  = Int_t(<span class="hljs-number">100</span>*random);
+       eventn.nseg    = Int_t(<span class="hljs-number">2</span>*eventn.ntrack);
+       eventn.nvertex = <span class="hljs-number">1</span>;
+       eventn.flag    = Int_t(random+<span class="hljs-number">0.5</span>);
+       eventn.temperature = <span class="hljs-number">20</span>+random;
+
+       <span class="hljs-comment">// Fill the tree. For each event, save the 2 structures and 3 objects</span>
+       <span class="hljs-comment">// In this simple example, the objects hpx, hprof and hpxpy are slightly</span>
+       <span class="hljs-comment">// different from event to event. We expect a big compression factor!</span>
+       tree-&gt;Fill();
+    }
+    <span class="hljs-comment">// End of the loop</span>
+
+    tree-&gt;Print();
+
+    <span class="hljs-comment">// Save all objects in this file</span>
+    hfile.Write();
+
+    <span class="hljs-comment">// Close the file. Note that this is automatically done when you leave</span>
+    <span class="hljs-comment">// the application.</span>
+    hfile.Close();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>
+<!-- TTree.md ends here -->
 
 
 
@@ -3869,7 +5148,7 @@ Long64_t clusterStart;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TTree+","level":"1.2.96","depth":2,"next":{"title":"TTreePlayer","level":"1.2.97","depth":2,"path":"class/TTreePlayer.md","ref":"class/TTreePlayer.md","articles":[]},"previous":{"title":"TTimeStamp","level":"1.2.95","depth":2,"path":"class/TTimeStamp.md","ref":"class/TTimeStamp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTree.md","mtime":"2016-11-02T05:51:14.689Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-19T11:30:20.182Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TTree*","level":"1.2.96","depth":2,"next":{"title":"TTreePlayer","level":"1.2.97","depth":2,"path":"class/TTreePlayer.md","ref":"class/TTreePlayer.md","articles":[]},"previous":{"title":"TTimeStamp","level":"1.2.95","depth":2,"path":"class/TTimeStamp.md","ref":"class/TTimeStamp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTree.md","mtime":"2016-11-27T12:33:35.666Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-27T13:38:13.449Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

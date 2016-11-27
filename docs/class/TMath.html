@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TMath · GitBook</title>
+        <title>TMath* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -641,7 +641,7 @@
                 <a href="TMath.html">
             
                     
-                    TMath
+                    TMath*
             
                 </a>
             
@@ -654,7 +654,7 @@
                 <a href="TMathBase.html">
             
                     
-                    TMathBase
+                    TMathBase*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree+
+                    TTree*
             
                 </a>
             
@@ -2463,7 +2463,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TMath</a>
+        <a href=".." >TMath*</a>
     </h1>
 </div>
 
@@ -2478,7 +2478,769 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tmath">TMath</h1>
+                                <!-- TMath.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 日 11月 27 20:39:49 2016 (+0800)
+;; Last-Updated: 日 11月 27 21:37:00 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 4
+;; URL: http://wuhongyi.cn -->
+
+
+<h1 id="tmath">TMath</h1><p>Encapsulate most frequently used Math functions.</p><p>NB. The basic functions Min, Max, Abs and Sign are defined in TMathBase.</p><p><strong>namespace TMath</strong></p><h2 id="namespace">namespace</h2><pre><code class="lang-cpp">   <span class="hljs-comment">/* ************************* */</span>
+   <span class="hljs-comment">/* * Fundamental constants * */</span>
+   <span class="hljs-comment">/* ************************* */</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Pi</span><span class="hljs-params">()</span>       </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">3.14159265358979323846</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">TwoPi</span><span class="hljs-params">()</span>    </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">2.0</span> * Pi(); }
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">PiOver2</span><span class="hljs-params">()</span>  </span>{ <span class="hljs-keyword">return</span> Pi() / <span class="hljs-number">2.0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">PiOver4</span><span class="hljs-params">()</span>  </span>{ <span class="hljs-keyword">return</span> Pi() / <span class="hljs-number">4.0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">InvPi</span><span class="hljs-params">()</span>    </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span> / Pi(); }
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">RadToDeg</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">180.0</span> / Pi(); }
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">DegToRad</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> Pi() / <span class="hljs-number">180.0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Sqrt2</span><span class="hljs-params">()</span>    </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">1.4142135623730950488016887242097</span>; }
+
+   <span class="hljs-comment">// e (base of natural log)</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">E</span><span class="hljs-params">()</span>        </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">2.71828182845904523536</span>; }
+
+   <span class="hljs-comment">// natural log of 10 (to convert log to ln)</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Ln10</span><span class="hljs-params">()</span>     </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">2.30258509299404568402</span>; }
+
+   <span class="hljs-comment">// base-10 log of e  (to convert ln to log)</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">LogE</span><span class="hljs-params">()</span>     </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.43429448190325182765</span>; }
+
+   <span class="hljs-comment">// velocity of light</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">C</span><span class="hljs-params">()</span>        </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">2.99792458e8</span>; }        <span class="hljs-comment">// m s^-1</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Ccgs</span><span class="hljs-params">()</span>     </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">100.0</span> * C(); }         <span class="hljs-comment">// cm s^-1</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">CUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.0</span>; }             <span class="hljs-comment">// exact</span>
+
+   <span class="hljs-comment">// gravitational constant</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">G</span><span class="hljs-params">()</span>        </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">6.673e-11</span>; }           <span class="hljs-comment">// m^3 kg^-1 s^-2</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Gcgs</span><span class="hljs-params">()</span>     </span>{ <span class="hljs-keyword">return</span> G() / <span class="hljs-number">1000.0</span>; }        <span class="hljs-comment">// cm^3 g^-1 s^-2</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">GUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.010e-11</span>; }
+
+   <span class="hljs-comment">// G over h-bar C</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">GhbarC</span><span class="hljs-params">()</span>   </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">6.707e-39</span>; }           <span class="hljs-comment">// (GeV/c^2)^-2</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">GhbarCUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.010e-39</span>; }
+
+   <span class="hljs-comment">// standard acceleration of gravity</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Gn</span><span class="hljs-params">()</span>       </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">9.80665</span>; }             <span class="hljs-comment">// m s^-2</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">GnUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.0</span>; }            <span class="hljs-comment">// exact</span>
+
+   <span class="hljs-comment">// Planck&apos;s constant</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">H</span><span class="hljs-params">()</span>        </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">6.62606876e-34</span>; }      <span class="hljs-comment">// J s</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Hcgs</span><span class="hljs-params">()</span>     </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">1.0e7</span> * H(); }         <span class="hljs-comment">// erg s</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">HUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.00000052e-34</span>; }
+
+   <span class="hljs-comment">// h-bar (h over 2 pi)</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Hbar</span><span class="hljs-params">()</span>     </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">1.054571596e-34</span>; }     <span class="hljs-comment">// J s</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Hbarcgs</span><span class="hljs-params">()</span>  </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">1.0e7</span> * Hbar(); }      <span class="hljs-comment">// erg s</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">HbarUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.000000082e-34</span>; }
+
+   <span class="hljs-comment">// hc (h * c)</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">HC</span><span class="hljs-params">()</span>       </span>{ <span class="hljs-keyword">return</span> H() * C(); }           <span class="hljs-comment">// J m</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">HCcgs</span><span class="hljs-params">()</span>    </span>{ <span class="hljs-keyword">return</span> Hcgs() * Ccgs(); }     <span class="hljs-comment">// erg cm</span>
+
+   <span class="hljs-comment">// Boltzmann&apos;s constant</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">K</span><span class="hljs-params">()</span>        </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">1.3806503e-23</span>; }       <span class="hljs-comment">// J K^-1</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Kcgs</span><span class="hljs-params">()</span>     </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">1.0e7</span> * K(); }         <span class="hljs-comment">// erg K^-1</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">KUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.0000024e-23</span>; }
+
+   <span class="hljs-comment">// Stefan-Boltzmann constant</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Sigma</span><span class="hljs-params">()</span>    </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">5.6704e-8</span>; }           <span class="hljs-comment">// W m^-2 K^-4</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">SigmaUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.000040e-8</span>; }
+
+   <span class="hljs-comment">// Avogadro constant (Avogadro&apos;s Number)</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Na</span><span class="hljs-params">()</span>       </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">6.02214199e+23</span>; }      <span class="hljs-comment">// mol^-1</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">NaUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.00000047e+23</span>; }
+
+   <span class="hljs-comment">// universal gas constant (Na * K)</span>
+   <span class="hljs-comment">// http://scienceworld.wolfram.com/physics/UniversalGasConstant.html</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">R</span><span class="hljs-params">()</span>        </span>{ <span class="hljs-keyword">return</span> K() * Na(); }          <span class="hljs-comment">// J K^-1 mol^-1</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">RUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> R()*((KUncertainty()/K()) + (NaUncertainty()/Na())); }
+
+   <span class="hljs-comment">// Molecular weight of dry air</span>
+   <span class="hljs-comment">// 1976 US Standard Atmosphere,</span>
+   <span class="hljs-comment">// also see http://atmos.nmsu.edu/jsdap/encyclopediawork.html</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">MWair</span><span class="hljs-params">()</span>    </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">28.9644</span>; }             <span class="hljs-comment">// kg kmol^-1 (or gm mol^-1)</span>
+
+   <span class="hljs-comment">// Dry Air Gas Constant (R / MWair)</span>
+   <span class="hljs-comment">// http://atmos.nmsu.edu/education_and_outreach/encyclopedia/gas_constant.htm</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Rgair</span><span class="hljs-params">()</span>    </span>{ <span class="hljs-keyword">return</span> (<span class="hljs-number">1000.0</span> * R()) / MWair(); }  <span class="hljs-comment">// J kg^-1 K^-1</span>
+
+   <span class="hljs-comment">// Euler-Mascheroni Constant</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">EulerGamma</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.577215664901532860606512090082402431042</span>; }
+
+   <span class="hljs-comment">// Elementary charge</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Qe</span><span class="hljs-params">()</span>       </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">1.602176462e-19</span>; }     <span class="hljs-comment">// C</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">QeUncertainty</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0.000000063e-19</span>; }
+
+   <span class="hljs-comment">/* ************************** */</span>
+   <span class="hljs-comment">/* * Mathematical Functions * */</span>
+   <span class="hljs-comment">/* ************************** */</span>
+
+   <span class="hljs-comment">/* ***************************** */</span>
+   <span class="hljs-comment">/* * Trigonometrical Functions * */</span>
+   <span class="hljs-comment">/* ***************************** */</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Sin</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Cos</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Tan</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">SinH</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">CosH</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">TanH</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">ASin</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">ACos</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">ATan</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">ATan2</span><span class="hljs-params">(Double_t, Double_t)</span></span>;
+          <span class="hljs-function">Double_t <span class="hljs-title">ASinH</span><span class="hljs-params">(Double_t)</span></span>;
+          <span class="hljs-function">Double_t <span class="hljs-title">ACosH</span><span class="hljs-params">(Double_t)</span></span>;
+          <span class="hljs-function">Double_t <span class="hljs-title">ATanH</span><span class="hljs-params">(Double_t)</span></span>;
+          <span class="hljs-function">Double_t <span class="hljs-title">Hypot</span><span class="hljs-params">(Double_t x, Double_t y)</span></span>;
+
+
+   <span class="hljs-comment">/* ************************ */</span>
+   <span class="hljs-comment">/* * Elementary Functions * */</span>
+   <span class="hljs-comment">/* ************************ */</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Ceil</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t    <span class="hljs-title">CeilNint</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Floor</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t    <span class="hljs-title">FloorNint</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T&gt;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t    <span class="hljs-title">Nint</span><span class="hljs-params">(T x)</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Sq</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Sqrt</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Exp</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Ldexp</span><span class="hljs-params">(Double_t x, Int_t <span class="hljs-built_in">exp</span>)</span></span>;
+          <span class="hljs-function">Double_t <span class="hljs-title">Factorial</span><span class="hljs-params">(Int_t i)</span></span>;<span class="hljs-comment">/// Compute factorial(n).</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> LongDouble_t <span class="hljs-title">Power</span><span class="hljs-params">(LongDouble_t x, LongDouble_t y)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> LongDouble_t <span class="hljs-title">Power</span><span class="hljs-params">(LongDouble_t x, Long64_t y)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> LongDouble_t <span class="hljs-title">Power</span><span class="hljs-params">(Long64_t x, Long64_t y)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Power</span><span class="hljs-params">(Double_t x, Double_t y)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Power</span><span class="hljs-params">(Double_t x, Int_t y)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Log</span><span class="hljs-params">(Double_t x)</span></span>;
+          <span class="hljs-function">Double_t <span class="hljs-title">Log2</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Log10</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t    <span class="hljs-title">Finite</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t    <span class="hljs-title">IsNaN</span><span class="hljs-params">(Double_t x)</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">QuietNaN</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">SignalingNaN</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Infinity</span><span class="hljs-params">()</span></span>;
+
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+   <span class="hljs-keyword">struct</span> Limits {
+      <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">static</span> T <span class="hljs-title">Min</span><span class="hljs-params">()</span></span>;
+      <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">static</span> T <span class="hljs-title">Max</span><span class="hljs-params">()</span></span>;
+      <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">static</span> T <span class="hljs-title">Epsilon</span><span class="hljs-params">()</span></span>;
+   };
+
+   <span class="hljs-comment">// Some integer math</span>
+   <span class="hljs-function">Long_t   <span class="hljs-title">Hypot</span><span class="hljs-params">(Long_t x, Long_t y)</span></span>;     <span class="hljs-comment">// sqrt(px*px + py*py)</span>
+
+   <span class="hljs-comment">// Comparing floating points</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">AreEqualAbs</span><span class="hljs-params">(Double_t af, Double_t bf, Double_t epsilon)</span> </span>{
+      <span class="hljs-comment">//return kTRUE if absolute difference between af and bf is less than epsilon</span>
+      <span class="hljs-keyword">return</span> TMath::Abs(af-bf) &lt; epsilon;
+   }
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">AreEqualRel</span><span class="hljs-params">(Double_t af, Double_t bf, Double_t relPrec)</span> </span>{
+      <span class="hljs-comment">//return kTRUE if relative difference between af and bf is less than relPrec</span>
+      <span class="hljs-keyword">return</span> TMath::Abs(af-bf) &lt;= <span class="hljs-number">0.5</span>*relPrec*(TMath::Abs(af)+TMath::Abs(bf));
+   }
+
+   <span class="hljs-comment">/* ******************** */</span>
+   <span class="hljs-comment">/* * Array Algorithms * */</span>
+   <span class="hljs-comment">/* ******************** */</span>
+
+   <span class="hljs-comment">// Min, Max of an array</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">T <span class="hljs-title">MinElement</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T *a)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">T <span class="hljs-title">MaxElement</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T *a)</span></span>;
+
+   <span class="hljs-comment">// Locate Min, Max element number in an array</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Long64_t  <span class="hljs-title">LocMin</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T *a)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator&gt; <span class="hljs-function">Iterator <span class="hljs-title">LocMin</span><span class="hljs-params">(Iterator first, Iterator last)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Long64_t  <span class="hljs-title">LocMax</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T *a)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator&gt; <span class="hljs-function">Iterator <span class="hljs-title">LocMax</span><span class="hljs-params">(Iterator first, Iterator last)</span></span>;
+
+   <span class="hljs-comment">// Binary search</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Long64_t <span class="hljs-title">BinarySearch</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T  *<span class="hljs-built_in">array</span>, T value)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Long64_t <span class="hljs-title">BinarySearch</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T **<span class="hljs-built_in">array</span>, T value)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator, <span class="hljs-keyword">typename</span> Element&gt; <span class="hljs-function">Iterator <span class="hljs-title">BinarySearch</span><span class="hljs-params">(Iterator first, Iterator last, Element value)</span></span>;
+
+   <span class="hljs-comment">// Hashing</span>
+   <span class="hljs-function">ULong_t <span class="hljs-title">Hash</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *txt, Int_t ntxt)</span></span>;
+<span class="hljs-comment">/// Calculates hash index from any char string.</span>
+<span class="hljs-comment">/// Based on precalculated table of 256 specially selected numbers.</span>
+<span class="hljs-comment">/// These numbers are selected in such a way, that for string</span>
+<span class="hljs-comment">/// length == 4 (integer number) the hash is unambigous, i.e.</span>
+<span class="hljs-comment">/// from hash value we can recalculate input (no degeneration).</span>
+<span class="hljs-comment">/// The quality of hash method is good enough, that</span>
+<span class="hljs-comment">/// &quot;random&quot; numbers made as R = Hash(1), Hash(2), ...Hash(N)</span>
+<span class="hljs-comment">/// tested by &lt;R&gt;, &lt;R*R&gt;, &lt;Ri*Ri+1&gt; gives the same result</span>
+<span class="hljs-comment">/// as for libc rand().</span>
+<span class="hljs-comment">/// For string:  i = TMath::Hash(string,nstring);</span>
+<span class="hljs-comment">/// For int:     i = TMath::Hash(&amp;intword,sizeof(int));</span>
+<span class="hljs-comment">/// For pointer: i = TMath::Hash(&amp;pointer,sizeof(void*));</span>
+<span class="hljs-comment">///              V.Perev</span>
+<span class="hljs-comment">/// This function is kept for back compatibility. The code previously in this function</span>
+<span class="hljs-comment">/// has been moved to the static function TString::Hash</span>
+
+   <span class="hljs-function">ULong_t <span class="hljs-title">Hash</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *str)</span></span>;
+
+   <span class="hljs-comment">// Sorting</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Element, <span class="hljs-keyword">typename</span> Index&gt;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Sort</span><span class="hljs-params">(Index n, <span class="hljs-keyword">const</span> Element* a, Index* index, Bool_t down=kTRUE)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator, <span class="hljs-keyword">typename</span> IndexIterator&gt;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SortItr</span><span class="hljs-params">(Iterator first, Iterator last, IndexIterator index, Bool_t down=kTRUE)</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BubbleHigh</span><span class="hljs-params">(Int_t Narr, Double_t *arr1, Int_t *arr2)</span></span>;
+<span class="hljs-comment">/// Bubble sort variant to obtain the order of an array&apos;s elements into</span>
+<span class="hljs-comment">/// an index in order to do more useful things than the standard built</span>
+<span class="hljs-comment">/// in functions.</span>
+<span class="hljs-comment">/// *arr1 is unchanged;</span>
+<span class="hljs-comment">/// *arr2 is the array of indicies corresponding to the decending value</span>
+<span class="hljs-comment">/// of arr1 with arr2[0] corresponding to the largest arr1 value and</span>
+<span class="hljs-comment">/// arr2[Narr] the smallest.</span>
+<span class="hljs-comment">///  Author: Adrian Bevan (bevan@slac.stanford.edu)</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BubbleLow</span> <span class="hljs-params">(Int_t Narr, Double_t *arr1, Int_t *arr2)</span></span>;
+<span class="hljs-comment">/// Opposite ordering of the array arr2[] to that of BubbleHigh.</span>
+
+   <span class="hljs-function">Bool_t   <span class="hljs-title">Permute</span><span class="hljs-params">(Int_t n, Int_t *a)</span></span>; <span class="hljs-comment">// Find permutations</span>
+<span class="hljs-comment">/// Simple recursive algorithm to find the permutations of</span>
+<span class="hljs-comment">/// n natural numbers, not necessarily all distinct</span>
+<span class="hljs-comment">/// adapted from CERNLIB routine PERMU.</span>
+<span class="hljs-comment">/// The input array has to be initialised with a non descending</span>
+<span class="hljs-comment">/// sequence. The method returns kFALSE when</span>
+<span class="hljs-comment">/// all combinations are exhausted.</span>
+
+   <span class="hljs-comment">/* ************************* */</span>
+   <span class="hljs-comment">/* * Geometrical Functions * */</span>
+   <span class="hljs-comment">/* ************************* */</span>
+
+   <span class="hljs-comment">//Sample quantiles</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">Quantiles</span><span class="hljs-params">(Int_t n, Int_t nprob, Double_t *x, Double_t *quantiles, Double_t *prob,
+                       Bool_t isSorted=kTRUE, Int_t *index = <span class="hljs-number">0</span>, Int_t type=<span class="hljs-number">7</span>)</span></span>;
+<span class="hljs-comment">///Computes sample quantiles, corresponding to the given probabilities</span>
+<span class="hljs-comment">///Parameters:</span>
+<span class="hljs-comment">///  x -the data sample</span>
+<span class="hljs-comment">///  n - its size</span>
+<span class="hljs-comment">///  quantiles - computed quantiles are returned in there</span>
+<span class="hljs-comment">///  prob - probabilities where to compute quantiles</span>
+<span class="hljs-comment">///  nprob - size of prob array</span>
+<span class="hljs-comment">///  isSorted - is the input array x sorted?</span>
+<span class="hljs-comment">///  NOTE, that when the input is not sorted, an array of integers of size n needs</span>
+<span class="hljs-comment">///        to be allocated. It can be passed by the user in parameter index,</span>
+<span class="hljs-comment">///        or, if not passed, it will be allocated inside the function</span>
+<span class="hljs-comment">///  type - method to compute (from 1 to 9). Following types are provided:</span>
+<span class="hljs-comment">///  Discontinuous:</span>
+<span class="hljs-comment">///    type=1 - inverse of the empirical distribution function</span>
+<span class="hljs-comment">///    type=2 - like type 1, but with averaging at discontinuities</span>
+<span class="hljs-comment">///    type=3 - SAS definition: nearest even order statistic</span>
+<span class="hljs-comment">///  Piecwise linear continuous:</span>
+<span class="hljs-comment">///    In this case, sample quantiles can be obtained by linear interpolation</span>
+<span class="hljs-comment">///    between the k-th order statistic and p(k).</span>
+<span class="hljs-comment">///    type=4 - linear interpolation of empirical cdf, p(k)=k/n;</span>
+<span class="hljs-comment">///    type=5 - a very popular definition, p(k) = (k-0.5)/n;</span>
+<span class="hljs-comment">///    type=6 - used by Minitab and SPSS, p(k) = k/(n+1);</span>
+<span class="hljs-comment">///    type=7 - used by S-Plus and R, p(k) = (k-1)/(n-1);</span>
+<span class="hljs-comment">///    type=8 - resulting sample quantiles are approximately median unbiased</span>
+<span class="hljs-comment">///             regardless of the distribution of x. p(k) = (k-1/3)/(n+1/3);</span>
+<span class="hljs-comment">///    type=9 - resulting sample quantiles are approximately unbiased, when</span>
+<span class="hljs-comment">///             the sample comes from Normal distribution. p(k)=(k-3/8)/(n+1/4);</span>
+<span class="hljs-comment">///    default type = 7</span>
+<span class="hljs-comment">/// References:</span>
+<span class="hljs-comment">/// 1) Hyndman, R.J and Fan, Y, (1996) &quot;Sample quantiles in statistical packages&quot;</span>
+<span class="hljs-comment">///                                     American Statistician, 50, 361-365</span>
+<span class="hljs-comment">/// 2) R Project documentation for the function quantile of package {stats}</span>
+
+
+   <span class="hljs-comment">// IsInside</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Bool_t <span class="hljs-title">IsInside</span><span class="hljs-params">(T xp, T yp, Int_t np, T *x, T *y)</span></span>;
+
+   <span class="hljs-comment">// Calculate the Cross Product of two vectors</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">T *<span class="hljs-title">Cross</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T v1[<span class="hljs-number">3</span>],<span class="hljs-keyword">const</span> T v2[<span class="hljs-number">3</span>], T out[<span class="hljs-number">3</span>])</span></span>;
+
+   <span class="hljs-function">Float_t   <span class="hljs-title">Normalize</span><span class="hljs-params">(Float_t v[<span class="hljs-number">3</span>])</span></span>;  <span class="hljs-comment">// Normalize a vector</span>
+<span class="hljs-comment">/// Normalize a vector v in place.</span>
+<span class="hljs-comment">/// Returns the norm of the original vector.</span>
+
+   <span class="hljs-function">Double_t  <span class="hljs-title">Normalize</span><span class="hljs-params">(Double_t v[<span class="hljs-number">3</span>])</span></span>; <span class="hljs-comment">// Normalize a vector</span>
+<span class="hljs-comment">/// Normalize a vector v in place.</span>
+<span class="hljs-comment">/// Returns the norm of the original vector.</span>
+<span class="hljs-comment">/// This implementation (thanks Kevin Lynch &lt;krlynch@bu.edu&gt;) is protected</span>
+<span class="hljs-comment">/// against possible overflows.</span>
+
+   <span class="hljs-comment">//Calculate the Normalized Cross Product of two vectors</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> T <span class="hljs-title">NormCross</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T v1[<span class="hljs-number">3</span>],<span class="hljs-keyword">const</span> T v2[<span class="hljs-number">3</span>],T out[<span class="hljs-number">3</span>])</span></span>;
+
+   <span class="hljs-comment">// Calculate a normal vector of a plane</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">T *<span class="hljs-title">Normal2Plane</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T v1[<span class="hljs-number">3</span>],<span class="hljs-keyword">const</span> T v2[<span class="hljs-number">3</span>],<span class="hljs-keyword">const</span> T v3[<span class="hljs-number">3</span>], T normal[<span class="hljs-number">3</span>])</span></span>;
+
+   <span class="hljs-comment">/* ************************ */</span>
+   <span class="hljs-comment">/* * Polynomial Functions * */</span>
+   <span class="hljs-comment">/* ************************ */</span>
+
+   <span class="hljs-function">Bool_t    <span class="hljs-title">RootsCubic</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t coef[<span class="hljs-number">4</span>],Double_t &amp;a, Double_t &amp;b, Double_t &amp;c)</span></span>;
+<span class="hljs-comment">/// Calculates roots of polynomial of 3rd order a*x^3 + b*x^2 + c*x + d, where</span>
+<span class="hljs-comment">/// a == coef[3], b == coef[2], c == coef[1], d == coef[0]</span>
+<span class="hljs-comment">///coef[3] must be different from 0</span>
+<span class="hljs-comment">/// If the boolean returned by the method is false:</span>
+<span class="hljs-comment">///    ==&gt; there are 3 real roots a,b,c</span>
+<span class="hljs-comment">/// If the boolean returned by the method is true:</span>
+<span class="hljs-comment">///    ==&gt; there is one real root a and 2 complex conjugates roots (b+i*c,b-i*c)</span>
+<span class="hljs-comment">/// Author: Francois-Xavier Gentit</span>
+
+   <span class="hljs-comment">/* *********************** */</span>
+   <span class="hljs-comment">/* * Statistic Functions * */</span>
+   <span class="hljs-comment">/* *********************** */</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Binomial</span><span class="hljs-params">(Int_t n,Int_t k)</span></span>;  <span class="hljs-comment">// Calculate the binomial coefficient n over k</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BinomialI</span><span class="hljs-params">(Double_t p, Int_t n, Int_t k)</span></span>;
+<span class="hljs-comment">/// Suppose an event occurs with probability _p_ per trial</span>
+<span class="hljs-comment">/// Then the probability P of its occuring _k_ or more times</span>
+<span class="hljs-comment">/// in _n_ trials is termed a cumulative binomial probability</span>
+<span class="hljs-comment">/// the formula is P = sum_from_j=k_to_n(TMath::Binomial(n, j)*</span>
+<span class="hljs-comment">/// *TMath::Power(p, j)*TMath::Power(1-p, n-j)</span>
+<span class="hljs-comment">/// For _n_ larger than 12 BetaIncomplete is a much better way</span>
+<span class="hljs-comment">/// to evaluate the sum than would be the straightforward sum calculation</span>
+<span class="hljs-comment">/// for _n_ smaller than 12 either method is acceptable</span>
+<span class="hljs-comment">/// (&quot;Numerical Recipes&quot;)</span>
+<span class="hljs-comment">///     --implementation by Anna Kreshuk</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">BreitWigner</span><span class="hljs-params">(Double_t x, Double_t mean=<span class="hljs-number">0</span>, Double_t gamma=<span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Calculate a Breit Wigner function with mean and gamma.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">CauchyDist</span><span class="hljs-params">(Double_t x, Double_t t=<span class="hljs-number">0</span>, Double_t s=<span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Computes the density of Cauchy distribution at point x</span>
+<span class="hljs-comment">/// by default, standard Cauchy distribution is used (t=0, s=1)</span>
+<span class="hljs-comment">///    t is the location parameter</span>
+<span class="hljs-comment">///    s is the scale parameter</span>
+<span class="hljs-comment">/// The Cauchy distribution, also called Lorentzian distribution,</span>
+<span class="hljs-comment">/// is a continuous distribution describing resonance behavior</span>
+<span class="hljs-comment">/// The mean and standard deviation of the Cauchy distribution are undefined.</span>
+<span class="hljs-comment">/// The practical meaning of this is that collecting 1,000 data points gives</span>
+<span class="hljs-comment">/// no more accurate an estimate of the mean and standard deviation than</span>
+<span class="hljs-comment">/// does a single point.</span>
+<span class="hljs-comment">/// The formula was taken from &quot;Engineering Statistics Handbook&quot; on site</span>
+<span class="hljs-comment">/// http://www.itl.nist.gov/div898/handbook/eda/section3/eda3663.htm</span>
+<span class="hljs-comment">/// Implementation by Anna Kreshuk.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">ChisquareQuantile</span><span class="hljs-params">(Double_t p, Double_t ndf)</span></span>;
+<span class="hljs-comment">/// Evaluate the quantiles of the chi-squared probability distribution function.</span>
+<span class="hljs-comment">/// Algorithm AS 91   Appl. Statist. (1975) Vol.24, P.35</span>
+<span class="hljs-comment">/// implemented by Anna Kreshuk.</span>
+<span class="hljs-comment">/// Incorporates the suggested changes in AS R85 (vol.40(1), pp.233-5, 1991)</span>
+<span class="hljs-comment">/// Parameters:</span>
+<span class="hljs-comment">///   p   - the probability value, at which the quantile is computed</span>
+<span class="hljs-comment">///   ndf - number of degrees of freedom</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">FDist</span><span class="hljs-params">(Double_t F, Double_t N, Double_t M)</span></span>;
+<span class="hljs-comment">/// Computes the density function of F-distribution</span>
+<span class="hljs-comment">/// (probability function, integral of density, is computed in FDistI).</span>
+<span class="hljs-comment">/// Parameters N and M stand for degrees of freedom of chi-squares</span>
+<span class="hljs-comment">/// mentioned above parameter F is the actual variable x of the</span>
+<span class="hljs-comment">/// density function p(x) and the point at which the density function</span>
+<span class="hljs-comment">/// is calculated.</span>
+<span class="hljs-comment">/// About F distribution:</span>
+<span class="hljs-comment">/// F-distribution arises in testing whether two random samples</span>
+<span class="hljs-comment">/// have the same variance. It is the ratio of two chi-square</span>
+<span class="hljs-comment">/// distributions, with N and M degrees of freedom respectively,</span>
+<span class="hljs-comment">/// where each chi-square is first divided by it&apos;s number of degrees</span>
+<span class="hljs-comment">/// of freedom.</span>
+<span class="hljs-comment">/// Implementation by Anna Kreshuk.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">FDistI</span><span class="hljs-params">(Double_t F, Double_t N, Double_t M)</span></span>;
+<span class="hljs-comment">/// Calculates the cumulative distribution function of F-distribution,</span>
+<span class="hljs-comment">/// this function occurs in the statistical test of whether two observed</span>
+<span class="hljs-comment">/// samples have the same variance. For this test a certain statistic F,</span>
+<span class="hljs-comment">/// the ratio of observed dispersion of the first sample to that of the</span>
+<span class="hljs-comment">/// second sample, is calculated. N and M stand for numbers of degrees</span>
+<span class="hljs-comment">/// of freedom in the samples 1-FDistI() is the significance level at</span>
+<span class="hljs-comment">/// which the hypothesis &quot;1 has smaller variance than 2&quot; can be rejected.</span>
+<span class="hljs-comment">/// A small numerical value of 1 - FDistI() implies a very significant</span>
+<span class="hljs-comment">/// rejection, in turn implying high confidence in the hypothesis</span>
+<span class="hljs-comment">/// &quot;1 has variance greater than 2&quot;.</span>
+<span class="hljs-comment">/// Implementation by Anna Kreshuk.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Gaus</span><span class="hljs-params">(Double_t x, Double_t mean=<span class="hljs-number">0</span>, Double_t sigma=<span class="hljs-number">1</span>, Bool_t norm=kFALSE)</span></span>;
+<span class="hljs-comment">/// Calculate a gaussian function with mean and sigma.</span>
+<span class="hljs-comment">/// If norm=kTRUE (default is kFALSE) the result is divided</span>
+<span class="hljs-comment">/// by sqrt(2*Pi)*sigma.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">KolmogorovProb</span><span class="hljs-params">(Double_t z)</span></span>;<span class="hljs-comment">/// Calculates the Kolmogorov distribution function,</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">KolmogorovTest</span><span class="hljs-params">(Int_t na, <span class="hljs-keyword">const</span> Double_t *a, Int_t nb, <span class="hljs-keyword">const</span> Double_t *b, Option_t *option)</span></span>;
+<span class="hljs-comment">///  Statistical test whether two one-dimensional sets of points are compatible</span>
+<span class="hljs-comment">///  with coming from the same parent distribution, using the Kolmogorov test.</span>
+<span class="hljs-comment">///  That is, it is used to compare two experimental distributions of unbinned data.</span>
+<span class="hljs-comment">///  Input:</span>
+<span class="hljs-comment">///  a,b: One-dimensional arrays of length na, nb, respectively.</span>
+<span class="hljs-comment">///       The elements of a and b must be given in ascending order.</span>
+<span class="hljs-comment">///  option is a character string to specify options</span>
+<span class="hljs-comment">///         &quot;D&quot; Put out a line of &quot;Debug&quot; printout</span>
+<span class="hljs-comment">///         &quot;M&quot; Return the Maximum Kolmogorov distance instead of prob</span>
+<span class="hljs-comment">///  Output:</span>
+<span class="hljs-comment">/// The returned value prob is a calculated confidence level which gives a</span>
+<span class="hljs-comment">/// statistical test for compatibility of a and b.</span>
+<span class="hljs-comment">/// Values of prob close to zero are taken as indicating a small probability</span>
+<span class="hljs-comment">/// of compatibility. For two point sets drawn randomly from the same parent</span>
+<span class="hljs-comment">/// distribution, the value of prob should be uniformly distributed between</span>
+<span class="hljs-comment">/// zero and one.</span>
+<span class="hljs-comment">///   in case of error the function return -1</span>
+<span class="hljs-comment">///   If the 2 sets have a different number of points, the minimum of</span>
+<span class="hljs-comment">///   the two sets is used.</span>
+<span class="hljs-comment">/// Method:</span>
+<span class="hljs-comment">/// The Kolmogorov test is used. The test statistic is the maximum deviation</span>
+<span class="hljs-comment">/// between the two integrated distribution functions, multiplied by the</span>
+<span class="hljs-comment">/// normalizing factor (rdmax*sqrt(na*nb/(na+nb)).</span>
+<span class="hljs-comment">///  Code adapted by Rene Brun from CERNLIB routine TKOLMO (Fred James)</span>
+<span class="hljs-comment">///   (W.T. Eadie, D. Drijard, F.E. James, M. Roos and B. Sadoulet,</span>
+<span class="hljs-comment">///      Statistical Methods in Experimental Physics, (North-Holland,</span>
+<span class="hljs-comment">///      Amsterdam 1971) 269-271)</span>
+<span class="hljs-comment">///  Method Improvement by Jason A Detwiler (JADetwiler@lbl.gov)</span>
+<span class="hljs-comment">///  -----------------------------------------------------------</span>
+<span class="hljs-comment">///   The nuts-and-bolts of the TMath::KolmogorovTest() algorithm is a for-loop</span>
+<span class="hljs-comment">///   over the two sorted arrays a and b representing empirical distribution</span>
+<span class="hljs-comment">///   functions. The for-loop handles 3 cases: when the next points to be</span>
+<span class="hljs-comment">///   evaluated satisfy a&gt;b, a&lt;b, or a=b:</span>
+<span class="hljs-comment">///      for (Int_t i=0;i&lt;na+nb;i++) {</span>
+<span class="hljs-comment">///         if (a[ia-1] &lt; b[ib-1]) {</span>
+<span class="hljs-comment">///            rdiff -= sa;</span>
+<span class="hljs-comment">///            ia++;</span>
+<span class="hljs-comment">///            if (ia &gt; na) {ok = kTRUE; break;}</span>
+<span class="hljs-comment">///         } else if (a[ia-1] &gt; b[ib-1]) {</span>
+<span class="hljs-comment">///            rdiff += sb;</span>
+<span class="hljs-comment">///            ib++;</span>
+<span class="hljs-comment">///            if (ib &gt; nb) {ok = kTRUE; break;}</span>
+<span class="hljs-comment">///         } else {</span>
+<span class="hljs-comment">///            rdiff += sb - sa;</span>
+<span class="hljs-comment">///            ia++;</span>
+<span class="hljs-comment">///            ib++;</span>
+<span class="hljs-comment">///            if (ia &gt; na) {ok = kTRUE; break;}</span>
+<span class="hljs-comment">///            if (ib &gt; nb) {ok = kTRUE; break;}</span>
+<span class="hljs-comment">///        }</span>
+<span class="hljs-comment">///         rdmax = TMath::Max(rdmax,TMath::Abs(rdiff));</span>
+<span class="hljs-comment">///      }</span>
+<span class="hljs-comment">///   For the last case, a=b, the algorithm advances each array by one index in an</span>
+<span class="hljs-comment">///   attempt to move through the equality. However, this is incorrect when one or</span>
+<span class="hljs-comment">///   the other of a or b (or both) have a repeated value, call it x. For the KS</span>
+<span class="hljs-comment">///   statistic to be computed properly, rdiff needs to be calculated after all of</span>
+<span class="hljs-comment">///   the a and b at x have been tallied (this is due to the definition of the</span>
+<span class="hljs-comment">///   empirical distribution function; another way to convince yourself that the</span>
+<span class="hljs-comment">///   old CERNLIB method is wrong is that it implies that the function defined as the</span>
+<span class="hljs-comment">///   difference between a and b is multi-valued at x -- besides being ugly, this</span>
+<span class="hljs-comment">///   would invalidate Kolmogorov&apos;s theorem).</span>
+<span class="hljs-comment">///   The solution is to just add while-loops into the equality-case handling to</span>
+<span class="hljs-comment">///   perform the tally:</span>
+<span class="hljs-comment">///         } else {</span>
+<span class="hljs-comment">///            double x = a[ia-1];</span>
+<span class="hljs-comment">///            while(a[ia-1] == x &amp;&amp; ia &lt;= na) {</span>
+<span class="hljs-comment">///              rdiff -= sa;</span>
+<span class="hljs-comment">///              ia++;</span>
+<span class="hljs-comment">///            }</span>
+<span class="hljs-comment">///            while(b[ib-1] == x &amp;&amp; ib &lt;= nb) {</span>
+<span class="hljs-comment">///              rdiff += sb;</span>
+<span class="hljs-comment">///              ib++;</span>
+<span class="hljs-comment">///            }</span>
+<span class="hljs-comment">///            if (ia &gt; na) {ok = kTRUE; break;}</span>
+<span class="hljs-comment">///            if (ib &gt; nb) {ok = kTRUE; break;}</span>
+<span class="hljs-comment">///         }</span>
+<span class="hljs-comment">///  NOTE1</span>
+<span class="hljs-comment">///  A good description of the Kolmogorov test can be seen at:</span>
+<span class="hljs-comment">///    http://www.itl.nist.gov/div898/handbook/eda/section3/eda35g.htm</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Landau</span><span class="hljs-params">(Double_t x, Double_t mpv=<span class="hljs-number">0</span>, Double_t sigma=<span class="hljs-number">1</span>, Bool_t norm=kFALSE)</span></span>;
+<span class="hljs-comment">/// The LANDAU function.</span>
+<span class="hljs-comment">/// mu is a location parameter and correspond approximatly to the most probable value</span>
+<span class="hljs-comment">/// and sigma is a scale parameter (not the sigma of the full distribution which is not defined)</span>
+<span class="hljs-comment">/// Note that for mu=0 and sigma=1 (default values) the exact location of the maximum of the distribution</span>
+<span class="hljs-comment">/// (most proble value) is at x = -0.22278</span>
+<span class="hljs-comment">/// This function has been adapted from the CERNLIB routine G110 denlan.</span>
+<span class="hljs-comment">/// If norm=kTRUE (default is kFALSE) the result is divided by sigma</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">LandauI</span><span class="hljs-params">(Double_t x)</span></span>;
+<span class="hljs-comment">///Returns the value of the Landau distribution function at point x.</span>
+<span class="hljs-comment">///The algorithm was taken from the Cernlib function dislan(G110)</span>
+<span class="hljs-comment">///Reference: K.S.Kolbig and B.Schorr, &quot;A program package for the Landau</span>
+<span class="hljs-comment">///distribution&quot;, Computer Phys.Comm., 31(1984), 97-111</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">LaplaceDist</span><span class="hljs-params">(Double_t x, Double_t alpha=<span class="hljs-number">0</span>, Double_t beta=<span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Computes the probability density function of Laplace distribution</span>
+<span class="hljs-comment">/// at point x, with location parameter alpha and shape parameter beta.</span>
+<span class="hljs-comment">/// By default, alpha=0, beta=1</span>
+<span class="hljs-comment">/// This distribution is known under different names, most common is</span>
+<span class="hljs-comment">/// double exponential distribution, but it also appears as</span>
+<span class="hljs-comment">/// the two-tailed exponential or the bilateral exponential distribution</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">LaplaceDistI</span><span class="hljs-params">(Double_t x, Double_t alpha=<span class="hljs-number">0</span>, Double_t beta=<span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Computes the distribution function of Laplace distribution</span>
+<span class="hljs-comment">/// at point x, with location parameter alpha and shape parameter beta.</span>
+<span class="hljs-comment">/// By default, alpha=0, beta=1</span>
+<span class="hljs-comment">/// This distribution is known under different names, most common is</span>
+<span class="hljs-comment">/// double exponential distribution, but it also appears as</span>
+<span class="hljs-comment">/// the two-tailed exponential or the bilateral exponential distribution</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">LogNormal</span><span class="hljs-params">(Double_t x, Double_t sigma, Double_t theta=<span class="hljs-number">0</span>, Double_t m=<span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Computes the density of LogNormal distribution at point x.</span>
+<span class="hljs-comment">/// Variable X has lognormal distribution if Y=Ln(X) has normal distribution</span>
+<span class="hljs-comment">/// sigma is the shape parameter</span>
+<span class="hljs-comment">/// theta is the location parameter</span>
+<span class="hljs-comment">/// m is the scale parameter</span>
+<span class="hljs-comment">/// The formula was taken from &quot;Engineering Statistics Handbook&quot; on site</span>
+<span class="hljs-comment">/// http://www.itl.nist.gov/div898/handbook/eda/section3/eda3669.htm</span>
+<span class="hljs-comment">/// Implementation using ROOT::Math::lognormal_pdf</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">NormQuantile</span><span class="hljs-params">(Double_t p)</span></span>;
+<span class="hljs-comment">/// Computes quantiles for standard normal distribution N(0, 1)</span>
+<span class="hljs-comment">/// at probability p</span>
+<span class="hljs-comment">/// ALGORITHM AS241  APPL. STATIST. (1988) VOL. 37, NO. 3, 477-484.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Poisson</span><span class="hljs-params">(Double_t x, Double_t par)</span></span>;
+<span class="hljs-comment">/// compute the Poisson distribution function for (x,par)</span>
+<span class="hljs-comment">/// The Poisson PDF is implemented by means of Euler&apos;s Gamma-function</span>
+<span class="hljs-comment">/// (for the factorial), so for any x integer argument it is correct.</span>
+<span class="hljs-comment">/// BUT for non-integer x values, it IS NOT equal to the Poisson distribution.</span>
+<span class="hljs-comment">/// see TMath::PoissonI to get a non-smooth function.</span>
+<span class="hljs-comment">/// Note that for large values of par, it is better to call</span>
+<span class="hljs-comment">///     TMath::Gaus(x,par,sqrt(par),kTRUE)</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">PoissonI</span><span class="hljs-params">(Double_t x, Double_t par)</span></span>;
+<span class="hljs-comment">/// compute the Poisson distribution function for (x,par)</span>
+<span class="hljs-comment">/// This is a non-smooth function.</span>
+<span class="hljs-comment">/// This function is equivalent to ROOT::Math::poisson_pdf</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Prob</span><span class="hljs-params">(Double_t chi2,Int_t ndf)</span></span>;
+<span class="hljs-comment">/// Computation of the probability for a certain Chi-squared (chi2)</span>
+<span class="hljs-comment">/// and number of degrees of freedom (ndf).</span>
+<span class="hljs-comment">/// Calculations are based on the incomplete gamma function P(a,x),</span>
+<span class="hljs-comment">/// where a=ndf/2 and x=chi2/2.</span>
+<span class="hljs-comment">/// P(a,x) represents the probability that the observed Chi-squared</span>
+<span class="hljs-comment">/// for a correct model should be less than the value chi2.</span>
+<span class="hljs-comment">/// The returned probability corresponds to 1-P(a,x),</span>
+<span class="hljs-comment">/// which denotes the probability that an observed Chi-squared exceeds</span>
+<span class="hljs-comment">/// the value chi2 by chance, even for a correct model.</span>
+<span class="hljs-comment">///--- NvE 14-nov-1998 UU-SAP Utrecht</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Student</span><span class="hljs-params">(Double_t T, Double_t ndf)</span></span>;
+<span class="hljs-comment">/// Computes density function for Student&apos;s t- distribution</span>
+<span class="hljs-comment">/// (the probability function (integral of density) is computed in StudentI).</span>
+<span class="hljs-comment">/// First parameter stands for x - the actual variable of the</span>
+<span class="hljs-comment">/// density function p(x) and the point at which the density is calculated.</span>
+<span class="hljs-comment">/// Second parameter stands for number of degrees of freedom.</span>
+<span class="hljs-comment">/// About Student distribution:</span>
+<span class="hljs-comment">/// Student&apos;s t-distribution is used for many significance tests, for example,</span>
+<span class="hljs-comment">/// for the Student&apos;s t-tests for the statistical significance of difference</span>
+<span class="hljs-comment">/// between two sample means and for confidence intervals for the difference</span>
+<span class="hljs-comment">/// between two population means.</span>
+<span class="hljs-comment">/// Example: suppose we have a random sample of size n drawn from normal</span>
+<span class="hljs-comment">/// distribution with mean Mu and st.deviation Sigma. Then the variable</span>
+<span class="hljs-comment">///   t = (sample_mean - Mu)/(sample_deviation / sqrt(n))</span>
+<span class="hljs-comment">/// has Student&apos;s t-distribution with n-1 degrees of freedom.</span>
+<span class="hljs-comment">/// NOTE that this function&apos;s second argument is number of degrees of freedom,</span>
+<span class="hljs-comment">/// not the sample size.</span>
+<span class="hljs-comment">/// As the number of degrees of freedom grows, t-distribution approaches</span>
+<span class="hljs-comment">/// Normal(0,1) distribution.</span>
+<span class="hljs-comment">/// Implementation by Anna Kreshuk.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">StudentI</span><span class="hljs-params">(Double_t T, Double_t ndf)</span></span>;
+<span class="hljs-comment">/// Calculates the cumulative distribution function of Student&apos;s</span>
+<span class="hljs-comment">/// t-distribution second parameter stands for number of degrees of freedom,</span>
+<span class="hljs-comment">/// not for the number of samples</span>
+<span class="hljs-comment">/// if x has Student&apos;s t-distribution, the function returns the probability of</span>
+<span class="hljs-comment">/// x being less than T.</span>
+<span class="hljs-comment">/// Implementation by Anna Kreshuk.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">StudentQuantile</span><span class="hljs-params">(Double_t p, Double_t ndf, Bool_t lower_tail=kTRUE)</span></span>;
+<span class="hljs-comment">/// Computes quantiles of the Student&apos;s t-distribution</span>
+<span class="hljs-comment">/// 1st argument is the probability, at which the quantile is computed</span>
+<span class="hljs-comment">/// 2nd argument - the number of degrees of freedom of the</span>
+<span class="hljs-comment">/// Student distribution</span>
+<span class="hljs-comment">/// When the 3rd argument lower_tail is kTRUE (default)-</span>
+<span class="hljs-comment">/// the algorithm returns such x0, that</span>
+<span class="hljs-comment">///   P(x &lt; x0)=p</span>
+<span class="hljs-comment">/// upper tail (lower_tail is kFALSE)- the algorithm returns such x0, that</span>
+<span class="hljs-comment">///   P(x &gt; x0)=p</span>
+<span class="hljs-comment">/// the algorithm was taken from</span>
+<span class="hljs-comment">///   G.W.Hill, &quot;Algorithm 396, Student&apos;s t-quantiles&quot;</span>
+<span class="hljs-comment">///             &quot;Communications of the ACM&quot;, 13(10), October 1970</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Vavilov</span><span class="hljs-params">(Double_t x, Double_t kappa, Double_t beta2)</span></span>;
+<span class="hljs-comment">///Returns the value of the Vavilov density function</span>
+<span class="hljs-comment">///Parameters: 1st - the point were the density function is evaluated</span>
+<span class="hljs-comment">///            2nd - value of kappa (distribution parameter)</span>
+<span class="hljs-comment">///            3rd - value of beta2 (distribution parameter)</span>
+<span class="hljs-comment">///The algorithm was taken from the CernLib function vavden(G115)</span>
+<span class="hljs-comment">///Reference: A.Rotondi and P.Montagna, Fast Calculation of Vavilov distribution</span>
+<span class="hljs-comment">///Nucl.Instr. and Meth. B47(1990), 215-224</span>
+<span class="hljs-comment">///Accuracy: quote from the reference above:</span>
+<span class="hljs-comment">///&quot;The resuls of our code have been compared with the values of the Vavilov</span>
+<span class="hljs-comment">///density function computed numerically in an accurate way: our approximation</span>
+<span class="hljs-comment">///shows a difference of less than 3% around the peak of the density function, slowly</span>
+<span class="hljs-comment">///increasing going towards the extreme tails to the right and to the left&quot;</span>
+<span class="hljs-comment">///Begin_Html</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">VavilovI</span><span class="hljs-params">(Double_t x, Double_t kappa, Double_t beta2)</span></span>;
+<span class="hljs-comment">///Returns the value of the Vavilov distribution function</span>
+<span class="hljs-comment">///Parameters: 1st - the point were the density function is evaluated</span>
+<span class="hljs-comment">///            2nd - value of kappa (distribution parameter)</span>
+<span class="hljs-comment">///            3rd - value of beta2 (distribution parameter)</span>
+<span class="hljs-comment">///The algorithm was taken from the CernLib function vavden(G115)</span>
+<span class="hljs-comment">///Reference: A.Rotondi and P.Montagna, Fast Calculation of Vavilov distribution</span>
+<span class="hljs-comment">///Nucl.Instr. and Meth. B47(1990), 215-224</span>
+<span class="hljs-comment">///Accuracy: quote from the reference above:</span>
+<span class="hljs-comment">///&quot;The resuls of our code have been compared with the values of the Vavilov</span>
+<span class="hljs-comment">///density function computed numerically in an accurate way: our approximation</span>
+<span class="hljs-comment">///shows a difference of less than 3% around the peak of the density function, slowly</span>
+<span class="hljs-comment">///increasing going towards the extreme tails to the right and to the left&quot;</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Voigt</span><span class="hljs-params">(Double_t x, Double_t sigma, Double_t lg, Int_t r = <span class="hljs-number">4</span>)</span></span>;
+<span class="hljs-comment">/// Computation of Voigt function (normalised).</span>
+<span class="hljs-comment">/// Voigt is a convolution of</span>
+<span class="hljs-comment">/// gauss(xx) = 1/(sqrt(2*pi)*sigma) * exp(xx*xx/(2*sigma*sigma)</span>
+<span class="hljs-comment">/// and</span>
+<span class="hljs-comment">/// lorentz(xx) = (1/pi) * (lg/2) / (xx*xx + lg*lg/4)</span>
+<span class="hljs-comment">/// functions.</span>
+<span class="hljs-comment">/// The Voigt function is known to be the real part of Faddeeva function also</span>
+<span class="hljs-comment">/// called complex error function [2].</span>
+<span class="hljs-comment">/// The algoritm was developed by J. Humlicek [1].</span>
+<span class="hljs-comment">/// This code is based on fortran code presented by R. J. Wells [2].</span>
+<span class="hljs-comment">/// Translated and adapted by Miha D. Puc</span>
+<span class="hljs-comment">/// To calculate the Faddeeva function with relative error less than 10^(-r).</span>
+<span class="hljs-comment">/// r can be set by the the user subject to the constraints 2 &lt;= r &lt;= 5.</span>
+<span class="hljs-comment">/// [1] J. Humlicek, JQSRT, 21, 437 (1982).</span>
+<span class="hljs-comment">/// [2] R.J. Wells &quot;Rapid Approximation to the Voigt/Faddeeva Function and its</span>
+<span class="hljs-comment">/// Derivatives&quot; JQSRT 62 (1999), pp 29-48.</span>
+<span class="hljs-comment">/// http://www-atm.physics.ox.ac.uk/user/wells/voigt.html</span>
+
+   <span class="hljs-comment">/* ************************** */</span>
+   <span class="hljs-comment">/* * Statistics over arrays * */</span>
+   <span class="hljs-comment">/* ************************** */</span>
+
+   <span class="hljs-comment">//Mean, Geometric Mean, Median, RMS(sigma)</span>
+
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Double_t <span class="hljs-title">Mean</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T *a, <span class="hljs-keyword">const</span> Double_t *w=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator&gt; <span class="hljs-function">Double_t <span class="hljs-title">Mean</span><span class="hljs-params">(Iterator first, Iterator last)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator, <span class="hljs-keyword">typename</span> WeightIterator&gt; <span class="hljs-function">Double_t <span class="hljs-title">Mean</span><span class="hljs-params">(Iterator first, Iterator last, WeightIterator wfirst)</span></span>;
+
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Double_t <span class="hljs-title">GeomMean</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T *a)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator&gt; <span class="hljs-function">Double_t <span class="hljs-title">GeomMean</span><span class="hljs-params">(Iterator first, Iterator last)</span></span>;
+
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Double_t <span class="hljs-title">RMS</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T *a, <span class="hljs-keyword">const</span> Double_t *w=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator&gt; <span class="hljs-function">Double_t <span class="hljs-title">RMS</span><span class="hljs-params">(Iterator first, Iterator last)</span></span>;
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator, <span class="hljs-keyword">typename</span> WeightIterator&gt; <span class="hljs-function">Double_t <span class="hljs-title">RMS</span><span class="hljs-params">(Iterator first, Iterator last, WeightIterator wfirst)</span></span>;
+
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Double_t <span class="hljs-title">StdDev</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T *a, <span class="hljs-keyword">const</span> Double_t * w = <span class="hljs-number">0</span>)</span> </span>{ <span class="hljs-keyword">return</span> RMS&lt;T&gt;(n,a,w); }
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator&gt; <span class="hljs-function">Double_t <span class="hljs-title">StdDev</span><span class="hljs-params">(Iterator first, Iterator last)</span> </span>{ <span class="hljs-keyword">return</span> RMS&lt;Iterator&gt;(first,last); }
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator, <span class="hljs-keyword">typename</span> WeightIterator&gt; <span class="hljs-function">Double_t <span class="hljs-title">StdDev</span><span class="hljs-params">(Iterator first, Iterator last, WeightIterator wfirst)</span> </span>{ <span class="hljs-keyword">return</span> RMS&lt;Iterator,WeightIterator&gt;(first,last,wfirst); }
+
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">Double_t <span class="hljs-title">Median</span><span class="hljs-params">(Long64_t n, <span class="hljs-keyword">const</span> T *a,  <span class="hljs-keyword">const</span> Double_t *w=<span class="hljs-number">0</span>, Long64_t *work=<span class="hljs-number">0</span>)</span></span>;
+
+   <span class="hljs-comment">//k-th order statistic</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> Element, <span class="hljs-keyword">typename</span> Size&gt; <span class="hljs-function">Element <span class="hljs-title">KOrdStat</span><span class="hljs-params">(Size n, <span class="hljs-keyword">const</span> Element *a, Size k, Size *work = <span class="hljs-number">0</span>)</span></span>;
+
+   <span class="hljs-comment">/* ******************* */</span>
+   <span class="hljs-comment">/* * Special Functions */</span>
+   <span class="hljs-comment">/* ******************* */</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Beta</span><span class="hljs-params">(Double_t p, Double_t q)</span></span>;
+<span class="hljs-comment">/// Calculates Beta-function Gamma(p)*Gamma(q)/Gamma(p+q).</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">BetaCf</span><span class="hljs-params">(Double_t x, Double_t a, Double_t b)</span></span>;
+<span class="hljs-comment">/// Continued fraction evaluation by modified Lentz&apos;s method</span>
+<span class="hljs-comment">/// used in calculation of incomplete Beta function.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">BetaDist</span><span class="hljs-params">(Double_t x, Double_t p, Double_t q)</span></span>;
+<span class="hljs-comment">/// Computes the probability density function of the Beta distribution</span>
+<span class="hljs-comment">/// (the distribution function is computed in BetaDistI).</span>
+<span class="hljs-comment">/// The first argument is the point, where the function will be</span>
+<span class="hljs-comment">/// computed, second and third are the function parameters.</span>
+<span class="hljs-comment">/// Since the Beta distribution is bounded on both sides, it&apos;s often</span>
+<span class="hljs-comment">/// used to represent processes with natural lower and upper limits.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">BetaDistI</span><span class="hljs-params">(Double_t x, Double_t p, Double_t q)</span></span>;
+<span class="hljs-comment">/// Computes the distribution function of the Beta distribution.</span>
+<span class="hljs-comment">/// The first argument is the point, where the function will be</span>
+<span class="hljs-comment">/// computed, second and third are the function parameters.</span>
+<span class="hljs-comment">/// Since the Beta distribution is bounded on both sides, it&apos;s often</span>
+<span class="hljs-comment">/// used to represent processes with natural lower and upper limits.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">BetaIncomplete</span><span class="hljs-params">(Double_t x, Double_t a, Double_t b)</span></span>;<span class="hljs-comment">/// Calculates the incomplete Beta-function.</span>
+
+   <span class="hljs-comment">// Bessel functions</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselI</span><span class="hljs-params">(Int_t n,Double_t x)</span></span>;  <span class="hljs-comment">// integer order modified Bessel function I_n(x)</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselK</span><span class="hljs-params">(Int_t n,Double_t x)</span></span>;  <span class="hljs-comment">// integer order modified Bessel function K_n(x)</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselI0</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// modified Bessel function I_0(x)</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselK0</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// modified Bessel function K_0(x)</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselI1</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// modified Bessel function I_1(x)</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselK1</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// modified Bessel function K_1(x)</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselJ0</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// Bessel function J0(x) for any real x</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselJ1</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// Bessel function J1(x) for any real x</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselY0</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// Bessel function Y0(x) for positive x</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">BesselY1</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// Bessel function Y1(x) for positive x</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">StruveH0</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// Struve functions of order 0</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">StruveH1</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// Struve functions of order 1</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">StruveL0</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// Modified Struve functions of order 0</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">StruveL1</span><span class="hljs-params">(Double_t x)</span></span>;         <span class="hljs-comment">// Modified Struve functions of order 1</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">DiLog</span><span class="hljs-params">(Double_t x)</span></span>;<span class="hljs-comment">/// The DiLogarithm function</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">Erf</span><span class="hljs-params">(Double_t x)</span></span>;
+<span class="hljs-comment">/// Computation of the error function erf(x).</span>
+<span class="hljs-comment">/// Erf(x) = (2/sqrt(pi)) Integral(exp(-t^2))dt between 0 and x</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">ErfInverse</span><span class="hljs-params">(Double_t x)</span></span>;
+<span class="hljs-comment">/// returns  the inverse error function</span>
+<span class="hljs-comment">/// x must be  &lt;-1&lt;x&lt;1</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Erfc</span><span class="hljs-params">(Double_t x)</span></span>;
+<span class="hljs-comment">/// Compute the complementary error function erfc(x).</span>
+<span class="hljs-comment">/// Erfc(x) = (2/sqrt(pi)) Integral(exp(-t^2))dt between x and infinity</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">ErfcInverse</span><span class="hljs-params">(Double_t x)</span></span>;
+<span class="hljs-comment">// returns  the inverse of the complementary error function</span>
+<span class="hljs-comment">// x must be  0&lt;x&lt;2</span>
+<span class="hljs-comment">// implement using  the quantile of the normal distribution</span>
+<span class="hljs-comment">// instead of ErfInverse for better numerical precision for large x</span>
+<span class="hljs-comment">// erfc-1(x) = - 1/sqrt(2) * normal_quantile( 0.5 * x)</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Freq</span><span class="hljs-params">(Double_t x)</span></span>;
+<span class="hljs-comment">/// Computation of the normal frequency function freq(x).</span>
+<span class="hljs-comment">/// Freq(x) = (1/sqrt(2pi)) Integral(exp(-t^2/2))dt between -infinity and x.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Gamma</span><span class="hljs-params">(Double_t z)</span></span>;<span class="hljs-comment">/// Computation of gamma(z) for all z.</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">Gamma</span><span class="hljs-params">(Double_t a,Double_t x)</span></span>;
+<span class="hljs-comment">/// Computation of the normalized lower incomplete gamma function P(a,x) as defined in the</span>
+<span class="hljs-comment">/// Handbook of Mathematical Functions by Abramowitz and Stegun, formula 6.5.1 on page 260 .</span>
+<span class="hljs-comment">/// Its normalization is such that TMath::Gamma(a,+infinity) = 1 .</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">GammaDist</span><span class="hljs-params">(Double_t x, Double_t gamma, Double_t mu=<span class="hljs-number">0</span>, Double_t beta=<span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Computes the density function of Gamma distribution at point x.</span>
+<span class="hljs-comment">///   gamma - shape parameter</span>
+<span class="hljs-comment">///   mu    - location parameter</span>
+<span class="hljs-comment">///   beta  - scale parameter</span>
+<span class="hljs-comment">/// The definition can be found in &quot;Engineering Statistics Handbook&quot; on site</span>
+<span class="hljs-comment">/// http://www.itl.nist.gov/div898/handbook/eda/section3/eda366b.htm</span>
+<span class="hljs-comment">/// use now implementation in ROOT::Math::gamma_pdf</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">LnGamma</span><span class="hljs-params">(Double_t z)</span></span>;
+<span class="hljs-comment">/// Computation of ln[gamma(z)] for all z.</span>
+<span class="hljs-comment">/// C.Lanczos, SIAM Journal of Numerical Analysis B1 (1964), 86.</span>
+<span class="hljs-comment">/// The accuracy of the result is better than 2e-10.</span>
+<span class="hljs-comment">///--- Nve 14-nov-1998 UU-SAP Utrecht</span></code></pre>
+<pre><code class="lang-cpp">   <span class="hljs-function">Double_t <span class="hljs-title">GamCf</span><span class="hljs-params">(Double_t a,Double_t x)</span></span>;<span class="hljs-comment">/// Computation of the incomplete gamma function P(a,x) via its continued fraction representation.</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">GamSer</span><span class="hljs-params">(Double_t a,Double_t x)</span></span>;<span class="hljs-comment">/// Computation of the incomplete gamma function P(a,x) via its series representation.</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">VavilovDenEval</span><span class="hljs-params">(Double_t rlam, Double_t *AC, Double_t *HC, Int_t itype)</span></span>;<span class="hljs-comment">///Internal function, called by Vavilov and VavilovSet</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">VavilovSet</span><span class="hljs-params">(Double_t rkappa, Double_t beta2, Bool_t mode, Double_t *WCM, Double_t *AC, Double_t *HC, Int_t &amp;itype, Int_t &amp;npt)</span></span>;<span class="hljs-comment">///Internal function, called by Vavilov and VavilovI</span>
+</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp">TF1* fc = <span class="hljs-keyword">new</span> TF1(<span class="hljs-string">&quot;fc&quot;</span>, <span class="hljs-string">&quot;TMath::CauchyDist(x, [0], [1])&quot;</span>, <span class="hljs-number">-5</span>, <span class="hljs-number">5</span>);
+fc-&gt;SetParameters(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+fc-&gt;Draw();</code></pre>
+<h2 id="example">example</h2><!-- TMath.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -2510,7 +3272,7 @@
                 </a>
                 
                 
-                <a href="TMathBase.html" class="navigation navigation-next " aria-label="Next page: TMathBase">
+                <a href="TMathBase.html" class="navigation navigation-next " aria-label="Next page: TMathBase*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2521,7 +3283,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TMath","level":"1.2.41","depth":2,"next":{"title":"TMathBase","level":"1.2.42","depth":2,"path":"class/TMathBase.md","ref":"class/TMathBase.md","articles":[]},"previous":{"title":"TList*","level":"1.2.40","depth":2,"path":"class/TList.md","ref":"class/TList.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TMath.md","mtime":"2016-11-02T05:51:12.408Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-19T11:30:20.182Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TMath*","level":"1.2.41","depth":2,"next":{"title":"TMathBase*","level":"1.2.42","depth":2,"path":"class/TMathBase.md","ref":"class/TMathBase.md","articles":[]},"previous":{"title":"TList*","level":"1.2.40","depth":2,"path":"class/TList.md","ref":"class/TList.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TMath.md","mtime":"2016-11-27T13:37:00.775Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-27T13:38:13.449Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

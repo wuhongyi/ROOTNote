@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TMathBase · GitBook</title>
+        <title>TMathBase* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -641,7 +641,7 @@
                 <a href="TMath.html">
             
                     
-                    TMath
+                    TMath*
             
                 </a>
             
@@ -654,7 +654,7 @@
                 <a href="TMathBase.html">
             
                     
-                    TMathBase
+                    TMathBase*
             
                 </a>
             
@@ -1356,7 +1356,7 @@
                 <a href="TTree.html">
             
                     
-                    TTree+
+                    TTree*
             
                 </a>
             
@@ -2463,7 +2463,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TMathBase</a>
+        <a href=".." >TMathBase*</a>
     </h1>
 </div>
 
@@ -2478,7 +2478,86 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tmathbase">TMathBase</h1>
+                                <!-- TMathBase.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 日 11月 27 21:31:45 2016 (+0800)
+;; Last-Updated: 日 11月 27 21:37:00 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 1
+;; URL: http://wuhongyi.cn -->
+
+
+<h1 id="tmathbase">TMathBase</h1><p>Define the functions Min, Max, Abs, Sign, Range for all types.
+NB: These functions are unfortunately not available in a portable
+way in std::.</p><p>More functions are defined in TMath.h. TMathBase.h is designed to be
+a stable file and used in place of TMath.h in the ROOT miniCore.</p><p><strong>namespace TMath</strong></p><h2 id="namespace">namespace</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// Abs</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Short_t  <span class="hljs-title">Abs</span><span class="hljs-params">(Short_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t    <span class="hljs-title">Abs</span><span class="hljs-params">(Int_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long_t   <span class="hljs-title">Abs</span><span class="hljs-params">(Long_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long64_t <span class="hljs-title">Abs</span><span class="hljs-params">(Long64_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Float_t  <span class="hljs-title">Abs</span><span class="hljs-params">(Float_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Abs</span><span class="hljs-params">(Double_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> LongDouble_t <span class="hljs-title">Abs</span><span class="hljs-params">(LongDouble_t d)</span></span>;
+
+   <span class="hljs-comment">// Even/Odd</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t   <span class="hljs-title">Even</span><span class="hljs-params">(Long_t a)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t   <span class="hljs-title">Odd</span><span class="hljs-params">(Long_t a)</span></span>;
+
+   <span class="hljs-comment">// SignBit</span>
+   <span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> Integer&gt;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">SignBit</span><span class="hljs-params">(Integer a)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">SignBit</span><span class="hljs-params">(Float_t a)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">SignBit</span><span class="hljs-params">(Double_t a)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">SignBit</span><span class="hljs-params">(LongDouble_t a)</span></span>;
+
+   <span class="hljs-comment">// Sign</span>
+   <span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T1, <span class="hljs-keyword">typename</span> T2&gt;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> T1 <span class="hljs-title">Sign</span><span class="hljs-params">( T1 a, T2 b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Float_t  <span class="hljs-title">Sign</span><span class="hljs-params">(Float_t a, Float_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Sign</span><span class="hljs-params">(Double_t a, Double_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> LongDouble_t <span class="hljs-title">Sign</span><span class="hljs-params">(LongDouble_t a, LongDouble_t b)</span></span>;
+
+   <span class="hljs-comment">// Min, Max of two scalars</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Short_t   <span class="hljs-title">Min</span><span class="hljs-params">(Short_t a, Short_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> UShort_t  <span class="hljs-title">Min</span><span class="hljs-params">(UShort_t a, UShort_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t     <span class="hljs-title">Min</span><span class="hljs-params">(Int_t a, Int_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> UInt_t    <span class="hljs-title">Min</span><span class="hljs-params">(UInt_t a, UInt_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long_t    <span class="hljs-title">Min</span><span class="hljs-params">(Long_t a, Long_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong_t   <span class="hljs-title">Min</span><span class="hljs-params">(ULong_t a, ULong_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long64_t  <span class="hljs-title">Min</span><span class="hljs-params">(Long64_t a, Long64_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong64_t <span class="hljs-title">Min</span><span class="hljs-params">(ULong64_t a, ULong64_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Float_t   <span class="hljs-title">Min</span><span class="hljs-params">(Float_t a, Float_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t  <span class="hljs-title">Min</span><span class="hljs-params">(Double_t a, Double_t b)</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Short_t   <span class="hljs-title">Max</span><span class="hljs-params">(Short_t a, Short_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> UShort_t  <span class="hljs-title">Max</span><span class="hljs-params">(UShort_t a, UShort_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t     <span class="hljs-title">Max</span><span class="hljs-params">(Int_t a, Int_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> UInt_t    <span class="hljs-title">Max</span><span class="hljs-params">(UInt_t a, UInt_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long_t    <span class="hljs-title">Max</span><span class="hljs-params">(Long_t a, Long_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong_t   <span class="hljs-title">Max</span><span class="hljs-params">(ULong_t a, ULong_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long64_t  <span class="hljs-title">Max</span><span class="hljs-params">(Long64_t a, Long64_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong64_t <span class="hljs-title">Max</span><span class="hljs-params">(ULong64_t a, ULong64_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Float_t   <span class="hljs-title">Max</span><span class="hljs-params">(Float_t a, Float_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t  <span class="hljs-title">Max</span><span class="hljs-params">(Double_t a, Double_t b)</span></span>;
+
+   <span class="hljs-comment">// Range</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Short_t   <span class="hljs-title">Range</span><span class="hljs-params">(Short_t lb, Short_t ub, Short_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t     <span class="hljs-title">Range</span><span class="hljs-params">(Int_t lb, Int_t ub, Int_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long_t    <span class="hljs-title">Range</span><span class="hljs-params">(Long_t lb, Long_t ub, Long_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong_t   <span class="hljs-title">Range</span><span class="hljs-params">(ULong_t lb, ULong_t ub, ULong_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t  <span class="hljs-title">Range</span><span class="hljs-params">(Double_t lb, Double_t ub, Double_t x)</span></span>;
+
+   <span class="hljs-comment">//NextPrime is used by the Core classes.</span>
+   <span class="hljs-function">Long_t   <span class="hljs-title">NextPrime</span><span class="hljs-params">(Long_t x)</span></span>;   <span class="hljs-comment">// Least prime number greater than x</span>
+<span class="hljs-comment">/// Return next prime number after x, unless x is a prime in which case</span>
+<span class="hljs-comment">/// x is returned.   </span></code></pre>
+<h2 id="code">code</h2><h2 id="example">example</h2><!-- TMathBase.md ends here -->
+
+
+
                                 
                                 </section>
                             
@@ -2505,7 +2584,7 @@
 
             
                 
-                <a href="TMath.html" class="navigation navigation-prev " aria-label="Previous page: TMath">
+                <a href="TMath.html" class="navigation navigation-prev " aria-label="Previous page: TMath*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2521,7 +2600,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TMathBase","level":"1.2.42","depth":2,"next":{"title":"TMatrixT","level":"1.2.43","depth":2,"path":"class/TMatrixT.md","ref":"class/TMatrixT.md","articles":[]},"previous":{"title":"TMath","level":"1.2.41","depth":2,"path":"class/TMath.md","ref":"class/TMath.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TMathBase.md","mtime":"2016-11-02T05:51:13.649Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-19T11:30:20.182Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TMathBase*","level":"1.2.42","depth":2,"next":{"title":"TMatrixT","level":"1.2.43","depth":2,"path":"class/TMatrixT.md","ref":"class/TMatrixT.md","articles":[]},"previous":{"title":"TMath*","level":"1.2.41","depth":2,"path":"class/TMath.md","ref":"class/TMath.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TMathBase.md","mtime":"2016-11-27T13:37:00.889Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-27T13:38:13.449Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
