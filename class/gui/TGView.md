@@ -4,14 +4,17 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 15:35:27 2016 (+0800)
-;; Last-Updated: 二 11月  8 15:46:50 2016 (+0800)
+;; Last-Updated: 三 12月  7 15:43:58 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 # TGView
 
 TGView 继承 TGCompositeFrame, TGWidget , friend TGViewFrame
+
+TGViewFrame 继承 TGCompositeFrame
+   
 
 A TGView provides the infrastructure for text viewer and editor     
 widgets. It provides a canvas (TGViewFrame) and (optionally) a       
@@ -19,7 +22,15 @@ vertical and horizontal scrollbar and methods for marking and
 scrolling.
 
 
-TGViewFrame 继承 TGCompositeFrame
+The TGView (and derivatives) will generate the following event messages:    
+- kC_TEXTVIEW, kTXT_ISMARKED, widget id, [true|false]                  
+- kC_TEXTVIEW, kTXT_DATACHANGE, widget id, 0                           
+- kC_TEXTVIEW, kTXT_CLICK2, widget id, position (y << 16) | x)         
+- kC_TEXTVIEW, kTXT_CLICK3, widget id, position (y << 16) | x)         
+- kC_TEXTVIEW, kTXT_F3, widget id, true                                
+- kC_TEXTVIEW, kTXT_OPEN, widget id, 0
+- kC_TEXTVIEW, kTXT_CLOSE, widget id, 0
+- kC_TEXTVIEW, kTXT_SAVE, widget id, 0
 
 
 ## class
@@ -35,21 +46,27 @@ TGViewFrame 继承 TGCompositeFrame
           UInt_t options = kSunkenFrame | kDoubleBorder,
           UInt_t sboptions = 0,
           Pixel_t back = GetWhitePixel());
+/// Create an editor view, containing an TGEditorFrame and (optionally)
+/// a horizontal and vertical scrollbar.
 
-   virtual ~TGView();
+   virtual ~TGView();/// Delete view.
 
    TGViewFrame   *GetCanvas() const { return fCanvas; }
 
-   virtual void   Clear(Option_t * = "");
+   virtual void   Clear(Option_t * = "");/// Clear view.
    virtual void   SetVisibleStart(Int_t newTop, Int_t direction);
+/// Scroll view in specified direction to make newTop the visible location.
+
    virtual void   ScrollCanvas(Int_t newTop, Int_t direction);
+/// Scroll the canvas to new_top in the kVertical or kHorizontal direction.
+
    virtual Bool_t ProcessMessage(Long_t msg, Long_t parm1, Long_t parm2);
-   virtual void   DrawBorder();
-   virtual void   Layout();
+   virtual void   DrawBorder();/// Draw the border of the text edit widget.
+   virtual void   Layout();/// layout view
    virtual void   SetLayoutManager(TGLayoutManager*) { }
    virtual void   DrawRegion(Int_t x, Int_t y, UInt_t width, UInt_t height);
 
-   virtual void ScrollToPosition(TGLongPosition newPos);
+   virtual void ScrollToPosition(TGLongPosition newPos);/// Scroll the canvas to pos.
    void ScrollUp(Int_t pixels)
       { ScrollToPosition(TGLongPosition(fVisible.fX, fVisible.fY + pixels)); }
    void ScrollDown(Int_t pixels)
@@ -67,13 +84,13 @@ TGViewFrame 继承 TGCompositeFrame
    TGLongPosition ToVirtual(TGLongPosition coord)  const { return coord + fVisible; }
    TGLongPosition ToPhysical(TGLongPosition coord) const { return coord - fVisible; }
 
-   virtual Bool_t HandleButton(Event_t *event);
-   virtual Bool_t HandleExpose(Event_t *event);
+   virtual Bool_t HandleButton(Event_t *event);/// handle button
+   virtual Bool_t HandleExpose(Event_t *event);/// Handle expose events.
 
-   virtual void   ChangeBackground(Pixel_t);
-   virtual void   SetBackgroundColor(Pixel_t);
-   virtual void   SetBackgroundPixmap(Pixmap_t p);
-   virtual void   UpdateBackgroundStart();
+   virtual void   ChangeBackground(Pixel_t);/// Change background color of the canvas frame.
+   virtual void   SetBackgroundColor(Pixel_t);/// Set background color of the canvas frame.
+   virtual void   SetBackgroundPixmap(Pixmap_t p);/// Set backgound  pixmap
+   virtual void   UpdateBackgroundStart();/// set some gc values
 
    const TGGC &GetViewWhiteGC() { return fWhiteGC; }
 ```

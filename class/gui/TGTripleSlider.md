@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 20:49:32 2016 (+0800)
-;; Last-Updated: 二 11月  8 20:53:55 2016 (+0800)
+;; Last-Updated: 三 12月  7 15:50:28 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # TGTripleSlider
@@ -67,21 +67,22 @@ TGTripleHSlider 继承 TGDoubleHSlider
                    Bool_t constrained = kTRUE,
                    Bool_t relative = kFALSE);
 
-   virtual ~TGTripleVSlider();
+   virtual ~TGTripleVSlider();/// Delete vertical slider widget.
 
    virtual void      PointerPositionChanged() { Emit("PointerPositionChanged()"); } //*SIGNAL*
-   virtual void      DrawPointer();
+   virtual void      DrawPointer();/// Draw slider pointer
    virtual Float_t   GetPointerPosition() const {
       if (fReversedScale) return fVmin + fVmax - fSCz;
       else return fSCz;
    }
-   virtual Bool_t    HandleButton(Event_t *event);
-   virtual Bool_t    HandleConfigureNotify(Event_t* event);
-   virtual Bool_t    HandleMotion(Event_t *event);
-   virtual void      SetConstrained(Bool_t on = kTRUE);
-   virtual void      SetPointerPosition(Float_t pos);
+   virtual Bool_t    HandleButton(Event_t *event);/// Handle mouse button event in vertical slider.
+   virtual Bool_t    HandleConfigureNotify(Event_t* event);/// Handles resize events for this widget.
+   virtual Bool_t    HandleMotion(Event_t *event);/// Handle mouse motion event in vertical slider.
+   virtual void      SetConstrained(Bool_t on = kTRUE);/// Set pointer position constrained in the slider range.
+   virtual void      SetPointerPosition(Float_t pos);/// Set pointer position in scaled (real) value
    virtual void      SetRelative(Bool_t rel = kTRUE) { fRelative = rel; }
    virtual void      SavePrimitive(std::ostream &out, Option_t *option = "");
+/// Save an horizontal slider as a C++ statement(s) on output stream out.   
 ```
 
 
@@ -96,21 +97,22 @@ TGTripleHSlider 继承 TGDoubleHSlider
                    Bool_t constrained = kTRUE,
                    Bool_t relative = kFALSE);
 
-   virtual ~TGTripleHSlider();
+   virtual ~TGTripleHSlider();/// Delete a horizontal slider widget.
 
    virtual void      PointerPositionChanged() { Emit("PointerPositionChanged()"); } //*SIGNAL*
-   virtual void      DrawPointer();
+   virtual void      DrawPointer();/// Draw slider pointer
    virtual Float_t   GetPointerPosition() const {
       if (fReversedScale) return fVmin + fVmax - fSCz;
       else return fSCz;
    }
-   virtual Bool_t    HandleButton(Event_t *event);
-   virtual Bool_t    HandleConfigureNotify(Event_t* event);
-   virtual Bool_t    HandleMotion(Event_t *event);
-   virtual void      SetConstrained(Bool_t on = kTRUE);
-   virtual void      SetPointerPosition(Float_t pos);
+   virtual Bool_t    HandleButton(Event_t *event);/// Handle mouse button event in horizontal slider widget.
+   virtual Bool_t    HandleConfigureNotify(Event_t* event);/// Handles resize events for this widget.
+   virtual Bool_t    HandleMotion(Event_t *event);/// Handle mouse motion event in horizontal slide widget.
+   virtual void      SetConstrained(Bool_t on = kTRUE);/// Set pointer position constrained in the slider range.
+   virtual void      SetPointerPosition(Float_t pos);/// Set pointer position in scaled (real) value
    virtual void      SetRelative(Bool_t rel = kTRUE) { fRelative = rel; }
    virtual void      SavePrimitive(std::ostream &out, Option_t *option = "");
+/// Save an horizontal slider as a C++ statement(s) on output stream out.   
 ```
 
 ## code

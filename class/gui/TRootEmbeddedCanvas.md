@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 13:30:41 2016 (+0800)
-;; Last-Updated: 二 11月  8 20:55:00 2016 (+0800)
+;; Last-Updated: 三 12月  7 15:34:54 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 # TRootEmbeddedCanvas
@@ -23,19 +23,33 @@ This class creates a TGCanvas in which a TCanvas is created. Use
    TRootEmbeddedCanvas(const char *name = 0, const TGWindow *p = 0, UInt_t w = 10,
             UInt_t h = 10, UInt_t options = kSunkenFrame | kDoubleBorder,
             Pixel_t back = GetDefaultFrameBackground());
-   virtual ~TRootEmbeddedCanvas();
+/// Create an TCanvas embedded in a TGFrame. A pointer to the TCanvas can
+/// be obtained via the GetCanvas() member function. To embed a canvas
+/// derived from a TCanvas do the following:
+/// TRootEmbeddedCanvas *embedded = new TRootEmbeddedCanvas(0, p, w, h);
+///      [note name must be 0, not null string ""]
+/// Int_t wid = embedded->GetCanvasWindowId();
+/// TMyCanvas *myc = new TMyCanvas("myname", 10, 10, wid);
+/// embedded->AdoptCanvas(myc);
+///      [ the MyCanvas is adopted by the embedded canvas and will be
+///        destroyed by it ]
 
-   void       AdoptCanvas(TCanvas *c);
+   virtual ~TRootEmbeddedCanvas();/// Delete embedded ROOT canvas.
+
+   void       AdoptCanvas(TCanvas *c);/// Canvas c is adopted from this embedded canvas.
    TCanvas   *GetCanvas() const { return fCanvas; }
    Int_t      GetCanvasWindowId() const { return fCWinId; }
    Bool_t     GetAutoFit() const { return fAutoFit; }
    void       SetAutoFit(Bool_t fit = kTRUE) { fAutoFit = fit; }
    virtual void SavePrimitive(std::ostream &out, Option_t *option = "");
+// Save an embedded canvas as a C++ statement(s) on output stream out.
 
-   virtual Bool_t HandleDNDDrop(TDNDData *data);
+   virtual Bool_t HandleDNDDrop(TDNDData *data);/// Handle drop events.
    virtual Atom_t HandleDNDPosition(Int_t /*x*/, Int_t /*y*/, Atom_t action,
                                     Int_t /*xroot*/, Int_t /*yroot*/);
-   virtual Atom_t HandleDNDEnter(Atom_t * typelist);
+/// Handle dragging position events.
+
+   virtual Atom_t HandleDNDEnter(Atom_t * typelist);/// Handle drag enter events.
    virtual Bool_t HandleDNDLeave();
 ```
 
