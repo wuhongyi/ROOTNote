@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TF1+ · GitBook</title>
+        <title>TF1* · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -303,7 +303,7 @@
                 <a href="TF1.html">
             
                     
-                    TF1+
+                    TF1*
             
                 </a>
             
@@ -2866,7 +2866,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TF1+</a>
+        <a href=".." >TF1*</a>
     </h1>
 </div>
 
@@ -2887,9 +2887,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 三 10月  5 13:15:44 2016 (+0800)
+;; Last-Updated: 五 12月 16 22:35:54 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 13
+;;     Update #: 15
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -2913,14 +2913,52 @@
 
    TF1();
    TF1(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *formula, Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax = <span class="hljs-number">1</span>);
+<span class="hljs-comment">/// F1 constructor using a formula definition</span>
+<span class="hljs-comment">/// See TFormula constructor for explanation of the formula syntax.</span>
+<span class="hljs-comment">/// See tutorials: fillrandom, first, fit1, formula1, multifit</span>
+<span class="hljs-comment">/// for real examples.</span>
+<span class="hljs-comment">/// Creates a function of type A or B between xmin and xmax</span>
+<span class="hljs-comment">/// if formula has the form &quot;fffffff;xxxx;yyyy&quot;, it is assumed that</span>
+<span class="hljs-comment">/// the formula string is &quot;fffffff&quot; and &quot;xxxx&quot; and &quot;yyyy&quot; are the</span>
+<span class="hljs-comment">/// titles for the X and Y axis respectively.</span>
+
    TF1(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Double_t xmin, Double_t xmax, Int_t npar,Int_t ndim = <span class="hljs-number">1</span>);
+<span class="hljs-comment">/// F1 constructor using name of an interpreted function.</span>
+<span class="hljs-comment">///  Creates a function of type C between xmin and xmax.</span>
+<span class="hljs-comment">///  name is the name of an interpreted CINT cunction.</span>
+<span class="hljs-comment">///  The function is defined with npar parameters</span>
+<span class="hljs-comment">///  fcn must be a function of type:</span>
+<span class="hljs-comment">///     Double_t fcn(Double_t *x, Double_t *params)</span>
+<span class="hljs-comment">///  This constructor is called for functions of type C by CINT.</span>
+<span class="hljs-comment">/// WARNING! A function created with this constructor cannot be Cloned.   </span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> __CINT__</span>
    TF1(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Double_t (*fcn)(Double_t *, Double_t *), Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">1</span>, Int_t npar=<span class="hljs-number">0</span>, Int_t ndim = <span class="hljs-number">1</span>); <span class="hljs-comment">//fcn&#x4E3A;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;&#x66F2;&#x7EBF;&#xFF0C;npar&#x4E3A;&#x8C03;&#x7528;&#x7684;&#x53C2;&#x6570;&#x4E2A;&#x6570;</span>
+<span class="hljs-comment">/// Constructor using a pointer to a real function.</span>
+<span class="hljs-comment">/// \param npar is the number of free parameters used by the function</span>
+<span class="hljs-comment">/// This constructor creates a function of type C when invoked</span>
+<span class="hljs-comment">/// with the normal C++ compiler.</span>
+<span class="hljs-comment">/// see test program test/stress.cxx (function stress1) for an example.</span>
+<span class="hljs-comment">/// note the interface with an intermediate pointer.</span>
+<span class="hljs-comment">/// WARNING! A function created with this constructor cannot be Cloned.</span>
+
    TF1(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Double_t (*fcn)(<span class="hljs-keyword">const</span> Double_t *, <span class="hljs-keyword">const</span> Double_t *), Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">1</span>, Int_t npar=<span class="hljs-number">0</span>,Int_t ndim = <span class="hljs-number">1</span>);
+<span class="hljs-comment">/// Constructor using a pointer to real function.</span>
+<span class="hljs-comment">/// \param npar is the number of free parameters used by the function</span>
+<span class="hljs-comment">/// This constructor creates a function of type C when invoked</span>
+<span class="hljs-comment">/// with the normal C++ compiler.</span>
+<span class="hljs-comment">/// see test program test/stress.cxx (function stress1) for an example.</span>
+<span class="hljs-comment">/// note the interface with an intermediate pointer.</span>
+<span class="hljs-comment">/// WARNING! A function created with this constructor cannot be Cloned.</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 
    <span class="hljs-comment">// Constructors using functors (compiled mode only)</span>
    TF1(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, ROOT::Math::ParamFunctor f, Double_t xmin = <span class="hljs-number">0</span>, Double_t xmax = <span class="hljs-number">1</span>, Int_t npar = <span class="hljs-number">0</span>,Int_t ndim = <span class="hljs-number">1</span>);
+<span class="hljs-comment">/// Constructor using the Functor class.</span>
+<span class="hljs-comment">/// \param xmin and</span>
+<span class="hljs-comment">/// \param xmax define the plotting range of the function</span>
+<span class="hljs-comment">/// \param npar is the number of free parameters used by the function</span>
+<span class="hljs-comment">/// This constructor can be used only in compiled code</span>
+<span class="hljs-comment">/// WARNING! A function created with this constructor cannot be Cloned.</span>
 
    <span class="hljs-comment">// Template constructors from any  C++ callable object,  defining  the operator() (double * , double *)</span>
    <span class="hljs-comment">// and returning a double.</span>
@@ -3019,10 +3057,88 @@
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;f1)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Copy this F1 to a new F1.</span>
+<span class="hljs-comment">/// Note that the cached integral with its related arrays are not copied</span>
+<span class="hljs-comment">/// (they are also set as transient data members)</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Derivative</span> <span class="hljs-params">(Double_t x, Double_t *params=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">0.001</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the first derivative of the function at point x,</span>
+<span class="hljs-comment">/// computed by Richardson&apos;s extrapolation method (use 2 derivative estimates</span>
+<span class="hljs-comment">/// to compute a third, more accurate estimation)</span>
+<span class="hljs-comment">/// first, derivatives with steps h and h/2 are computed by central difference formulas</span>
+<span class="hljs-comment">///   D(h) = \frac{f(x+h) - f(x-h)}{2h}</span>
+<span class="hljs-comment">/// the final estimate</span>
+<span class="hljs-comment">///      D = \frac{4D(h/2) - D(h)}{3}</span>
+<span class="hljs-comment">/// &quot;Numerical Methods for Scientists and Engineers&quot;, H.M.Antia, 2nd edition&quot;</span>
+<span class="hljs-comment">/// if the argument params is null, the current function parameters are used,</span>
+<span class="hljs-comment">/// otherwise the parameters in params are used.</span>
+<span class="hljs-comment">/// the argument eps may be specified to control the step size (precision).</span>
+<span class="hljs-comment">/// the step size is taken as eps*(xmax-xmin).</span>
+<span class="hljs-comment">/// the default value (0.001) should be good enough for the vast majority</span>
+<span class="hljs-comment">/// of functions. Give a smaller value if your function has many changes</span>
+<span class="hljs-comment">/// of the second derivative in the function range.</span>
+<span class="hljs-comment">/// Getting the error via TF1::DerivativeError:</span>
+<span class="hljs-comment">///   (total error = roundoff error + interpolation error)</span>
+<span class="hljs-comment">/// the estimate of the roundoff error is taken as follows:</span>
+<span class="hljs-comment">///    err = k\sqrt{f(x)^{2} + x^{2}deriv^{2}}\sqrt{\sum ai^{2}},</span>
+<span class="hljs-comment">/// where k is the double precision, ai are coefficients used in</span>
+<span class="hljs-comment">/// central difference formulas</span>
+<span class="hljs-comment">/// interpolation error is decreased by making the step size h smaller.</span>
+<span class="hljs-comment">/// Author: Anna Kreshuk</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Derivative2</span><span class="hljs-params">(Double_t x, Double_t *params=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">0.001</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the second derivative of the function at point x,</span>
+<span class="hljs-comment">/// computed by Richardson&apos;s extrapolation method (use 2 derivative estimates</span>
+<span class="hljs-comment">/// to compute a third, more accurate estimation)</span>
+<span class="hljs-comment">/// first, derivatives with steps h and h/2 are computed by central difference formulas</span>
+<span class="hljs-comment">///    D(h) = \frac{f(x+h) - 2f(x) + f(x-h)}{h^{2}}</span>
+<span class="hljs-comment">/// the final estimate</span>
+<span class="hljs-comment">///    D = \frac{4D(h/2) - D(h)}{3}</span>
+<span class="hljs-comment">///  &quot;Numerical Methods for Scientists and Engineers&quot;, H.M.Antia, 2nd edition&quot;</span>
+<span class="hljs-comment">/// if the argument params is null, the current function parameters are used,</span>
+<span class="hljs-comment">/// otherwise the parameters in params are used.</span>
+<span class="hljs-comment">/// the argument eps may be specified to control the step size (precision).</span>
+<span class="hljs-comment">/// the step size is taken as eps*(xmax-xmin).</span>
+<span class="hljs-comment">/// the default value (0.001) should be good enough for the vast majority</span>
+<span class="hljs-comment">/// of functions. Give a smaller value if your function has many changes</span>
+<span class="hljs-comment">/// of the second derivative in the function range.</span>
+<span class="hljs-comment">/// Getting the error via TF1::DerivativeError:</span>
+<span class="hljs-comment">///   (total error = roundoff error + interpolation error)</span>
+<span class="hljs-comment">/// the estimate of the roundoff error is taken as follows:</span>
+<span class="hljs-comment">///    err = k\sqrt{f(x)^{2} + x^{2}deriv^{2}}\sqrt{\sum ai^{2}},</span>
+<span class="hljs-comment">/// where k is the double precision, ai are coefficients used in</span>
+<span class="hljs-comment">/// central difference formulas</span>
+<span class="hljs-comment">/// interpolation error is decreased by making the step size h smaller.</span>
+<span class="hljs-comment">/// Author: Anna Kreshuk</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Derivative3</span><span class="hljs-params">(Double_t x, Double_t *params=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">0.001</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the third derivative of the function at point x,</span>
+<span class="hljs-comment">/// computed by Richardson&apos;s extrapolation method (use 2 derivative estimates</span>
+<span class="hljs-comment">/// to compute a third, more accurate estimation)</span>
+<span class="hljs-comment">/// first, derivatives with steps h and h/2 are computed by central difference formulas</span>
+<span class="hljs-comment">///    D(h) = \frac{f(x+2h) - 2f(x+h) + 2f(x-h) - f(x-2h)}{2h^{3}}</span>
+<span class="hljs-comment">/// the final estimate</span>
+<span class="hljs-comment">///    D = \frac{4D(h/2) - D(h)}{3}</span>
+<span class="hljs-comment">///  &quot;Numerical Methods for Scientists and Engineers&quot;, H.M.Antia, 2nd edition&quot;</span>
+<span class="hljs-comment">/// if the argument params is null, the current function parameters are used,</span>
+<span class="hljs-comment">/// otherwise the parameters in params are used.</span>
+<span class="hljs-comment">/// the argument eps may be specified to control the step size (precision).</span>
+<span class="hljs-comment">/// the step size is taken as eps*(xmax-xmin).</span>
+<span class="hljs-comment">/// the default value (0.001) should be good enough for the vast majority</span>
+<span class="hljs-comment">/// of functions. Give a smaller value if your function has many changes</span>
+<span class="hljs-comment">/// of the second derivative in the function range.</span>
+<span class="hljs-comment">/// Getting the error via TF1::DerivativeError:</span>
+<span class="hljs-comment">///   (total error = roundoff error + interpolation error)</span>
+<span class="hljs-comment">/// the estimate of the roundoff error is taken as follows:</span>
+<span class="hljs-comment">///    err = k#sqrt{f(x)^{2} + x^{2}deriv^{2}}#sqrt{#sum ai^{2}},</span>
+<span class="hljs-comment">/// where k is the double precision, ai are coefficients used in</span>
+<span class="hljs-comment">/// central difference formulas</span>
+<span class="hljs-comment">/// interpolation error is decreased by making the step size h smaller.</span>
+<span class="hljs-comment">/// Author: Anna Kreshuk</span>
+
    <span class="hljs-function"><span class="hljs-keyword">static</span>  Double_t <span class="hljs-title">DerivativeError</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Static function returning the error of the last call to the of Derivative&apos;s functions</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;
 <span class="hljs-comment">/// Compute distance from point px,py to a function.</span>
 <span class="hljs-comment">/// Compute the closest distance of approach from point px,py to this</span>
@@ -3060,16 +3176,60 @@
 <span class="hljs-comment">/// of an existing picture, specify option &quot;LSAME&quot;</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject *<span class="hljs-title">DrawDerivative</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;al&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Draw derivative of this function</span>
+<span class="hljs-comment">/// An intermediate TGraph object is built and drawn with option.</span>
+<span class="hljs-comment">/// The function returns a pointer to the TGraph object. Do:</span>
+<span class="hljs-comment">///     TGraph *g = (TGraph*)myfunc.DrawDerivative(option);</span>
+<span class="hljs-comment">/// The resulting graph will be drawn into the current pad.</span>
+<span class="hljs-comment">/// If this function is used via the context menu, it recommended</span>
+<span class="hljs-comment">/// to create a new canvas/pad before invoking this function.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject *<span class="hljs-title">DrawIntegral</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;al&quot;</span>)</span></span>;   <span class="hljs-comment">// *MENU*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">DrawF1</span><span class="hljs-params">(Double_t xmin, Double_t xmax, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Draw integral of this function</span>
+<span class="hljs-comment">/// An intermediate TGraph object is built and drawn with option.</span>
+<span class="hljs-comment">/// The function returns a pointer to the TGraph object. Do:</span>
+<span class="hljs-comment">///     TGraph *g = (TGraph*)myfunc.DrawIntegral(option);</span>
+<span class="hljs-comment">/// The resulting graph will be drawn into the current pad.</span>
+<span class="hljs-comment">/// If this function is used via the context menu, it recommended</span>
+<span class="hljs-comment">/// to create a new canvas/pad before invoking this function.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">DrawF1</span><span class="hljs-params">(Double_t xmin, Double_t xmax, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Draw function between xmin and xmax.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Eval</span><span class="hljs-params">(Double_t x, Double_t y=<span class="hljs-number">0</span>, Double_t z=<span class="hljs-number">0</span>, Double_t t=<span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//&#x901A;&#x8FC7;&#x53D8;&#x91CF;x&#x83B7;&#x5F97;&#x5176;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;</span>
+<span class="hljs-comment">/// Evaluate this function.</span>
+<span class="hljs-comment">/// Computes the value of this function (general case for a 3-d function)</span>
+<span class="hljs-comment">/// at point x,y,z.</span>
+<span class="hljs-comment">/// For a 1-d function give y=0 and z=0</span>
+<span class="hljs-comment">/// The current value of variables x,y,z is passed through x, y and z.</span>
+<span class="hljs-comment">/// The parameters used will be the ones in the array params if params is given</span>
+<span class="hljs-comment">/// otherwise parameters will be taken from the stored data members fParams</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">EvalPar</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *params=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Evaluate function with given coordinates and parameters.</span>
+<span class="hljs-comment">/// Compute the value of this function at point defined by array x</span>
+<span class="hljs-comment">/// and current values of parameters in array params.</span>
+<span class="hljs-comment">/// If argument params is omitted or equal 0, the internal values</span>
+<span class="hljs-comment">/// of parameters (array fParams) will be used instead.</span>
+<span class="hljs-comment">/// For a 1-D function only x[0] must be given.</span>
+<span class="hljs-comment">/// In case of a multi-dimemsional function, the arrays x must be</span>
+<span class="hljs-comment">/// filled with the corresponding number of dimensions.</span>
+<span class="hljs-comment">/// WARNING. In case of an interpreted function (fType=2), it is the</span>
+<span class="hljs-comment">/// user&apos;s responsability to initialize the parameters via InitArgs</span>
+<span class="hljs-comment">/// before calling this function.</span>
+<span class="hljs-comment">/// InitArgs should be called at least once to specify the addresses</span>
+<span class="hljs-comment">/// of the arguments x and params.</span>
+<span class="hljs-comment">/// InitArgs should be called everytime these addresses change.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(Double_t x, Double_t y=<span class="hljs-number">0</span>, Double_t z = <span class="hljs-number">0</span>, Double_t t = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *params=<span class="hljs-number">0</span>)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
+<span class="hljs-comment">/// Execute action corresponding to one event.</span>
+<span class="hljs-comment">/// This member function is called when a F1 is clicked with the locator</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">FixParameter</span><span class="hljs-params">(Int_t ipar, Double_t value)</span></span>; <span class="hljs-comment">/// Fix the value of a parameter. The specified value will be used in a fit operation</span>
        <span class="hljs-function">Double_t     <span class="hljs-title">GetChisquare</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fChisquare;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TH1     *<span class="hljs-title">GetHistogram</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//&#x5C06;&#x5176;&#x8F6C;&#x4E3A;TH1&#x7C7B;&#x578B;</span>
+<span class="hljs-comment">/// Return a pointer to the histogram used to vusualize the function</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TH1     *<span class="hljs-title">CreateHistogram</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> DoCreateHistogram(fXmin, fXmax); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFormula *<span class="hljs-title">GetFormula</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fFormula;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> TFormula *<span class="hljs-title">GetFormula</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFormula;}
@@ -3104,7 +3264,38 @@
 <span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span> see also TF1::GetMaximumX and TF1::GetX</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetMaximumX</span><span class="hljs-params">(Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>, Double_t epsilon = <span class="hljs-number">1.E-10</span>, Int_t maxiter = <span class="hljs-number">100</span>, Bool_t logx = <span class="hljs-literal">false</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">/// Returns the X value corresponding to the maximum value of the function</span>
+<span class="hljs-comment">/// Returns the X value corresponding to the maximum value of the function</span>
+<span class="hljs-comment">/// Method:</span>
+<span class="hljs-comment">///  First, the grid search is used to bracket the maximum</span>
+<span class="hljs-comment">///  with the step size = (xmax-xmin)/fNpx.</span>
+<span class="hljs-comment">///  This way, the step size can be controlled via the SetNpx() function.</span>
+<span class="hljs-comment">///  If the function is unimodal or if its extrema are far apart, setting</span>
+<span class="hljs-comment">///  the fNpx to a small value speeds the algorithm up many times.</span>
+<span class="hljs-comment">///  Then, Brent&apos;s method is applied on the bracketed interval</span>
+<span class="hljs-comment">///  epsilon (default = 1.E-10) controls the relative accuracy (if |x| &gt; 1 )</span>
+<span class="hljs-comment">///  and absolute (if |x| &lt; 1)  and maxiter (default = 100) controls the maximum number</span>
+<span class="hljs-comment">///  of iteration of the Brent algorithm</span>
+<span class="hljs-comment">///  If the flag logx is set the grid search is done in log step size</span>
+<span class="hljs-comment">///  This is done automatically if the log scale is set in the current Pad</span>
+<span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span> see also TF1::GetX</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetMinimumX</span><span class="hljs-params">(Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>, Double_t epsilon = <span class="hljs-number">1.E-10</span>, Int_t maxiter = <span class="hljs-number">100</span>, Bool_t logx = <span class="hljs-literal">false</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">/// Returns the X value corresponding to the minimum value of the function</span>
+<span class="hljs-comment">/// Returns the X value corresponding to the minimum value of the function</span>
+<span class="hljs-comment">/// on the (xmin, xmax) interval</span>
+<span class="hljs-comment">/// Method:</span>
+<span class="hljs-comment">///  First, the grid search is used to bracket the maximum</span>
+<span class="hljs-comment">///  with the step size = (xmax-xmin)/fNpx. This way, the step size</span>
+<span class="hljs-comment">///  can be controlled via the SetNpx() function. If the function is</span>
+<span class="hljs-comment">///  unimodal or if its extrema are far apart, setting the fNpx to</span>
+<span class="hljs-comment">///  a small value speeds the algorithm up many times.</span>
+<span class="hljs-comment">///  Then, Brent&apos;s method is applied on the bracketed interval</span>
+<span class="hljs-comment">///  epsilon (default = 1.E-10) controls the relative accuracy (if |x| &gt; 1 )</span>
+<span class="hljs-comment">///  and absolute (if |x| &lt; 1)  and maxiter (default = 100) controls the maximum number</span>
+<span class="hljs-comment">///  of iteration of the Brent algorithm</span>
+<span class="hljs-comment">///  If the flag logx is set the grid search is done in log step size</span>
+<span class="hljs-comment">///  This is done automatically if the log scale is set in the current Pad</span>
+<span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span> see also TF1::GetX</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetMaximumStored</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fMaximum;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetMinimumStored</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fMinimum;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetNpar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNpar;}
@@ -3116,11 +3307,20 @@
 <span class="hljs-comment">/// used in the fit minus the number of free parameters.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetNpx</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNpx;} <span class="hljs-comment">//&#x83B7;&#x5F97;&#x533A;&#x95F4;&#x5206;&#x6210;&#x4EFD;&#x6570;</span>
+<span class="hljs-comment">/// Return the number of degrees of freedom in the fit</span>
+<span class="hljs-comment">/// the fNDF parameter has been previously computed during a fit.</span>
+<span class="hljs-comment">/// The number of degrees of freedom corresponds to the number of points</span>
+<span class="hljs-comment">/// used in the fit minus the number of free parameters.</span>
+
     <span class="hljs-function">TMethodCall    *<span class="hljs-title">GetMethodCall</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fMethodCall;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (fFormula) ? fFormula-&gt;GetNumber() : <span class="hljs-number">0</span>;}
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetNumberFreeParameters</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetNumberFreeParameters</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the number of free parameters</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetNumberFitPoints</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNpfits;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">char</span>    *<span class="hljs-title">GetObjectInfo</span><span class="hljs-params">(Int_t px, Int_t py)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Redefines TObject::GetObjectInfo.</span>
+<span class="hljs-comment">/// Displays the function info (x, function value)</span>
+<span class="hljs-comment">/// corresponding to cursor position px,py</span>
+
         <span class="hljs-function">TObject    *<span class="hljs-title">GetParent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fParent;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetParameter</span><span class="hljs-params">(Int_t ipar)</span> <span class="hljs-keyword">const</span> </span>{
       <span class="hljs-keyword">return</span> (fFormula) ? fFormula-&gt;GetParameter(ipar) : fParams-&gt;GetParameter(ipar);
@@ -3139,11 +3339,35 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetParNumber</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name)</span> <span class="hljs-keyword">const</span> </span>{
       <span class="hljs-keyword">return</span> (fFormula) ? fFormula-&gt;GetParNumber(name) : fParams-&gt;GetParNumber(name);
    }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetParError</span><span class="hljs-params">(Int_t ipar)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the parameter number given a name</span>
+<span class="hljs-comment">/// not very efficient but list of parameters is typically small</span>
+<span class="hljs-comment">/// could use a map if needed</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetParError</span><span class="hljs-params">(Int_t ipar)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return value of parameter number ipar</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> Double_t *<span class="hljs-title">GetParErrors</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fParErrors.data();}
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetParLimits</span><span class="hljs-params">(Int_t ipar, Double_t &amp;parmin, Double_t &amp;parmax)</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetProb</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetParLimits</span><span class="hljs-params">(Int_t ipar, Double_t &amp;parmin, Double_t &amp;parmax)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return limits for parameter ipar.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetProb</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the fit probability</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetQuantiles</span><span class="hljs-params">(Int_t nprobSum, Double_t *q, <span class="hljs-keyword">const</span> Double_t *probSum)</span></span>;
+<span class="hljs-comment">/// Compute Quantiles for density distribution of this function</span>
+<span class="hljs-comment">/// Quantile x_q of a probability distribution Function F is defined as</span>
+<span class="hljs-comment">///     F(x_{q}) = \int_{xmin}^{x_{q}} f dx = q with 0 &lt;= q &lt;= 1.</span>
+<span class="hljs-comment">/// For instance the median \f$ x_{\frac{1}{2}} \f$ of a distribution is defined as that value</span>
+<span class="hljs-comment">/// of the random variable for which the distribution function equals 0.5:</span>
+<span class="hljs-comment">///        F(x_{\frac{1}{2}}) = \prod(x &lt; x_{\frac{1}{2}}) = \frac{1}{2}</span>
+<span class="hljs-comment">/// code from Eddy Offermann, Renaissance</span>
+<span class="hljs-comment">/// \param[in] this TF1 function</span>
+<span class="hljs-comment">/// \param[in] nprobSum maximum size of array q and size of array probSum</span>
+<span class="hljs-comment">/// \param[in] probSum array of positions where quantiles will be computed.</span>
+<span class="hljs-comment">///     It is assumed to contain at least nprobSum values.</span>
+<span class="hljs-comment">/// \param[out] return value nq (&lt;=nprobSum) with the number of quantiles computed</span>
+<span class="hljs-comment">/// \param[out] array q filled with nq quantiles</span>
+<span class="hljs-comment">///  Getting quantiles from two histograms and storing results in a TGraph,</span>
+<span class="hljs-comment">///  a so-called QQ-plot</span>
+<span class="hljs-comment">///      TGraph *gr = new TGraph(nprob);</span>
+<span class="hljs-comment">///      f1-&gt;GetQuantiles(nprob,gr-&gt;GetX());</span>
+<span class="hljs-comment">///      f2-&gt;GetQuantiles(nprob,gr-&gt;GetY());</span>
+<span class="hljs-comment">///      gr-&gt;Draw(&quot;alp&quot;);</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetRandom</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">/// Return a random number following this function shape</span>
 <span class="hljs-comment">/// The distribution contained in the function fname (TF1) is integrated</span>
 <span class="hljs-comment">/// over the channel contents.</span>
@@ -3175,10 +3399,10 @@
 <span class="hljs-comment">///  has sharp peaks, you should increase the number of points (SetNpx)</span>
 <span class="hljs-comment">///  such that the peak is correctly tabulated at several points.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetRange</span><span class="hljs-params">(Double_t &amp;xmin, Double_t &amp;xmax)</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetRange</span><span class="hljs-params">(Double_t &amp;xmin, Double_t &amp;ymin, Double_t &amp;xmax, Double_t &amp;ymax)</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetRange</span><span class="hljs-params">(Double_t &amp;xmin, Double_t &amp;ymin, Double_t &amp;zmin, Double_t &amp;xmax, Double_t &amp;ymax, Double_t &amp;zmax)</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetSave</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetRange</span><span class="hljs-params">(Double_t &amp;xmin, Double_t &amp;xmax)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return range of a 1-D function.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetRange</span><span class="hljs-params">(Double_t &amp;xmin, Double_t &amp;ymin, Double_t &amp;xmax, Double_t &amp;ymax)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return range of a 2-D function.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetRange</span><span class="hljs-params">(Double_t &amp;xmin, Double_t &amp;ymin, Double_t &amp;zmin, Double_t &amp;xmax, Double_t &amp;ymax, Double_t &amp;zmax)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return range of function.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetSave</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *x)</span></span>;<span class="hljs-comment">/// Get value corresponding to X in array of fSave values</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetX</span><span class="hljs-params">(Double_t y, Double_t xmin=<span class="hljs-number">0</span>, Double_t xmax=<span class="hljs-number">0</span>, Double_t epsilon = <span class="hljs-number">1.E-10</span>, Int_t maxiter = <span class="hljs-number">100</span>, Bool_t logx = <span class="hljs-literal">false</span>)</span> <span class="hljs-keyword">const</span></span>;  <span class="hljs-comment">//&#x7531;y&#x627E;x</span>
 <span class="hljs-comment">/// Returns the X value corresponding to the function value fy for (xmin&lt;x&lt;xmax).</span>
 <span class="hljs-comment">/// in other words it can find the roots of the function when fy=0 and successive calls</span>
@@ -3198,47 +3422,204 @@
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetXmin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXmin;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetXmax</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXmax;}
-   <span class="hljs-function">TAxis           *<span class="hljs-title">GetXaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;
-   <span class="hljs-function">TAxis           *<span class="hljs-title">GetYaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;
-   <span class="hljs-function">TAxis           *<span class="hljs-title">GetZaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;
+   <span class="hljs-function">TAxis           *<span class="hljs-title">GetXaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;<span class="hljs-comment">/// Get x axis of the function.</span>
+   <span class="hljs-function">TAxis           *<span class="hljs-title">GetYaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;<span class="hljs-comment">/// Get y axis of the function.</span>
+   <span class="hljs-function">TAxis           *<span class="hljs-title">GetZaxis</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;<span class="hljs-comment">/// Get z axis of the function. (In case this object is a TF2 or TF3)</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetVariable</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TString &amp;name)</span> </span>{ <span class="hljs-keyword">return</span> (fFormula) ? fFormula-&gt;GetVariable(name) : <span class="hljs-number">0</span>;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GradientPar</span><span class="hljs-params">(Int_t ipar, <span class="hljs-keyword">const</span> Double_t *x, Double_t eps=<span class="hljs-number">0.01</span>)</span></span>;
+<span class="hljs-comment">/// Compute the gradient (derivative) wrt a parameter ipar</span>
+<span class="hljs-comment">/// \param ipar index of parameter for which the derivative is computed</span>
+<span class="hljs-comment">/// \param x point, where the derivative is computed</span>
+<span class="hljs-comment">/// \param eps - if the errors of parameters have been computed, the step used in</span>
+<span class="hljs-comment">/// numerical differentiation is eps*parameter_error.</span>
+<span class="hljs-comment">/// if the errors have not been computed, step=eps is used</span>
+<span class="hljs-comment">/// default value of eps = 0.01</span>
+<span class="hljs-comment">/// Method is the same as in Derivative() function</span>
+<span class="hljs-comment">/// If a parameter is fixed, the gradient on this parameter = 0</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GradientPar</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *x, Double_t *grad, Double_t eps=<span class="hljs-number">0.01</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">InitArgs</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *params)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">InitStandardFunctions</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Integral</span><span class="hljs-params">(Double_t a, Double_t b, Double_t epsrel=<span class="hljs-number">1.e-12</span>)</span></span>;
+<span class="hljs-comment">/// Compute the gradient wrt parameters</span>
+<span class="hljs-comment">/// \param x  point, were the gradient is computed</span>
+<span class="hljs-comment">/// \param grad  used to return the computed gradient, assumed to be of at least fNpar size</span>
+<span class="hljs-comment">/// \param eps if the errors of parameters have been computed, the step used in</span>
+<span class="hljs-comment">/// numerical differentiation is eps*parameter_error.</span>
+<span class="hljs-comment">/// if the errors have not been computed, step=eps is used</span>
+<span class="hljs-comment">/// default value of eps = 0.01</span>
+<span class="hljs-comment">/// Method is the same as in Derivative() function</span>
+<span class="hljs-comment">/// If a paramter is fixed, the gradient on this parameter = 0</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">InitArgs</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *params)</span></span>;<span class="hljs-comment">/// Initialize parameters addresses.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">InitStandardFunctions</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Create the basic function objects</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Integral</span><span class="hljs-params">(Double_t a, Double_t b, Double_t epsrel=<span class="hljs-number">1.e-12</span>)</span></span>;<span class="hljs-comment">/// IntegralOneDim or analytical integral</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">IntegralOneDim</span><span class="hljs-params">(Double_t a, Double_t b, Double_t epsrel, Double_t epsabs, Double_t &amp;err)</span></span>;
+<span class="hljs-comment">/// Return Integral of function between a and b using the given parameter values and</span>
+<span class="hljs-comment">/// relative and absolute tolerance.</span>
+<span class="hljs-comment">/// The defult integrator defined in ROOT::Math::IntegratorOneDimOptions::DefaultIntegrator() is used</span>
+<span class="hljs-comment">/// If ROOT contains the MathMore library the default integrator is set to be</span>
+<span class="hljs-comment">/// the adaptive ROOT::Math::GSLIntegrator (based on QUADPACK) or otherwise the</span>
+<span class="hljs-comment">/// ROOT::Math::GaussIntegrator is used</span>
+<span class="hljs-comment">/// See the reference documentation of these classes for more information about the</span>
+<span class="hljs-comment">/// integration algorithms</span>
+<span class="hljs-comment">/// To change integration algorithm just do :</span>
+<span class="hljs-comment">/// ROOT::Math::IntegratorOneDimOptions::SetDefaultIntegrator(IntegratorName);</span>
+<span class="hljs-comment">/// Valid integrator names are:</span>
+<span class="hljs-comment">///   - Gauss  :               for ROOT::Math::GaussIntegrator</span>
+<span class="hljs-comment">///   - GaussLegendre    :     for ROOT::Math::GaussLegendreIntegrator</span>
+<span class="hljs-comment">///   - Adaptive         :     for ROOT::Math::GSLIntegrator adaptive method (QAG)</span>
+<span class="hljs-comment">///   - AdaptiveSingular :     for ROOT::Math::GSLIntegrator adaptive singular method (QAGS)</span>
+<span class="hljs-comment">///   - NonAdaptive      :     for ROOT::Math::GSLIntegrator non adaptive (QNG)</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// In order to use the GSL integrators one needs to have the MathMore library installed</span>
+<span class="hljs-comment">/// Note 1:</span>
+<span class="hljs-comment">///   Values of the function f(x) at the interval end-points A and B are not</span>
+<span class="hljs-comment">///   required. The subprogram may therefore be used when these values are</span>
+<span class="hljs-comment">///   undefined.</span>
+<span class="hljs-comment">/// Note 2:</span>
+<span class="hljs-comment">///   Instead of TF1::Integral, you may want to use the combination of</span>
+<span class="hljs-comment">///   TF1::CalcGaussLegendreSamplingPoints and TF1::IntegralFast.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">IntegralError</span><span class="hljs-params">(Double_t a, Double_t b, <span class="hljs-keyword">const</span> Double_t *params=<span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> Double_t *covmat=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">1.E-2</span>)</span></span>;
+<span class="hljs-comment">/// Return Error on Integral of a parameteric function between a and b</span>
+<span class="hljs-comment">/// due to the parameter uncertainties.</span>
+<span class="hljs-comment">/// A pointer to a vector of parameter values and to the elements of the covariance matrix (covmat)</span>
+<span class="hljs-comment">/// can be optionally passed.  By default (i.e. when a zero pointer is passed) the current stored</span>
+<span class="hljs-comment">/// parameter values are used to estimate the integral error together with the covariance matrix</span>
+<span class="hljs-comment">/// from the last fit (retrieved from the global fitter instance)</span>
+<span class="hljs-comment">/// IMPORTANT NOTE1:</span>
+<span class="hljs-comment">/// When no covariance matrix is passed and in the meantime a fit is done</span>
+<span class="hljs-comment">/// using another function, the routine will signal an error and it will return zero only</span>
+<span class="hljs-comment">/// when the number of fit parameter is different than the values stored in TF1 (TF1::GetNpar() ).</span>
+<span class="hljs-comment">/// In the case that npar is the same, an incorrect result is returned.</span>
+<span class="hljs-comment">/// IMPORTANT NOTE2:</span>
+<span class="hljs-comment">/// The user must pass a pointer to the elements of the full covariance matrix</span>
+<span class="hljs-comment">/// dimensioned with the right size (npar*npar), where npar is the total number of parameters (TF1::GetNpar()),</span>
+<span class="hljs-comment">/// including also the fixed parameters. When there are fixed parameters, the pointer returned from</span>
+<span class="hljs-comment">/// TVirtualFitter::GetCovarianceMatrix() cannot be used.</span>
+<span class="hljs-comment">/// One should use the TFitResult class, as shown in the example below.</span>
+<span class="hljs-comment">/// To get the matrix and values from an old fit do for example:</span>
+<span class="hljs-comment">/// TFitResultPtr r = histo-&gt;Fit(func, &quot;S&quot;);</span>
+<span class="hljs-comment">/// ..... after performing other fits on the same function do</span>
+<span class="hljs-comment">///     func-&gt;IntegralError(x1,x2,r-&gt;GetParams(), r-&gt;GetCovarianceMatrix()-&gt;GetMatrixArray() );</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">IntegralError</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Double_t * a, <span class="hljs-keyword">const</span> Double_t * b, <span class="hljs-keyword">const</span> Double_t *params=<span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> Double_t *covmat=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">1.E-2</span>)</span></span>;
+<span class="hljs-comment">/// Return Error on Integral of a parameteric function with dimension larger tan one</span>
+<span class="hljs-comment">/// between a[] and b[]  due to the parameters uncertainties.</span>
+<span class="hljs-comment">/// For a TF1 with dimension larger than 1 (for example a TF2 or TF3)</span>
+<span class="hljs-comment">/// TF1::IntegralMultiple is used for the integral calculation</span>
+<span class="hljs-comment">/// A pointer to a vector of parameter values and to the elements of the covariance matrix (covmat) can be optionally passed.</span>
+<span class="hljs-comment">/// By default (i.e. when a zero pointer is passed) the current stored parameter values are used to estimate the integral error</span>
+<span class="hljs-comment">/// together with the covariance matrix from the last fit (retrieved from the global fitter instance).</span>
+<span class="hljs-comment">/// IMPORTANT NOTE1:</span>
+<span class="hljs-comment">/// When no covariance matrix is passed and in the meantime a fit is done</span>
+<span class="hljs-comment">/// using another function, the routine will signal an error and it will return zero only</span>
+<span class="hljs-comment">/// when the number of fit parameter is different than the values stored in TF1 (TF1::GetNpar() ).</span>
+<span class="hljs-comment">/// In the case that npar is the same, an incorrect result is returned.</span>
+<span class="hljs-comment">/// IMPORTANT NOTE2:</span>
+<span class="hljs-comment">/// The user must pass a pointer to the elements of the full covariance matrix</span>
+<span class="hljs-comment">/// dimensioned with the right size (npar*npar), where npar is the total number of parameters (TF1::GetNpar()),</span>
+<span class="hljs-comment">/// including also the fixed parameters. When there are fixed parameters, the pointer returned from</span>
+<span class="hljs-comment">/// TVirtualFitter::GetCovarianceMatrix() cannot be used.</span>
+<span class="hljs-comment">/// One should use the TFitResult class, as shown in the example below.</span>
+<span class="hljs-comment">/// To get the matrix and values from an old fit do for example:</span>
+<span class="hljs-comment">/// TFitResultPtr r = histo-&gt;Fit(func, &quot;S&quot;);</span>
+<span class="hljs-comment">/// ..... after performing other fits on the same function do</span>
+<span class="hljs-comment">///     func-&gt;IntegralError(x1,x2,r-&gt;GetParams(), r-&gt;GetCovarianceMatrix()-&gt;GetMatrixArray() );</span>
+
    <span class="hljs-comment">// virtual Double_t IntegralFast(const TGraph *g, Double_t a, Double_t b, Double_t *params=0);</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">IntegralFast</span><span class="hljs-params">(Int_t num, Double_t *x, Double_t *w, Double_t a, Double_t b, Double_t *params=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">1e-12</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">IntegralFast</span><span class="hljs-params">(Int_t num, Double_t *x, Double_t *w, Double_t a, Double_t b, Double_t *params=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">1e-12</span>)</span></span>;<span class="hljs-comment">/// Gauss-Legendre integral, see CalcGaussLegendreSamplingPoints</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">IntegralMultiple</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Double_t *a, <span class="hljs-keyword">const</span> Double_t *b, Int_t maxpts, Double_t epsrel, Double_t epsabs ,Double_t &amp;relerr,Int_t &amp;nfnevl, Int_t &amp;ifail)</span></span>;
+<span class="hljs-comment">/// This function computes, to an attempted specified accuracy, the value of</span>
+<span class="hljs-comment">/// the integral</span>
+<span class="hljs-comment">/// Input parameters:</span>
+<span class="hljs-comment">/// \param[in] n   Number of dimensions [2,15]</span>
+<span class="hljs-comment">/// \param[in] a,b One-dimensional arrays of length &gt;= N . On entry A[i],  and  B[i],</span>
+<span class="hljs-comment">///   contain the lower and upper limits of integration, respectively.</span>
+<span class="hljs-comment">/// \param[in] maxpts Maximum number of function evaluations to be allowed.</span>
+<span class="hljs-comment">///   maxpts &gt;= 2^n +2*n*(n+1) +1</span>
+<span class="hljs-comment">///   if maxpts&lt;minpts, maxpts is set to 10*minpts</span>
+<span class="hljs-comment">/// \param[in] epsrel Specified relative accuracy.</span>
+<span class="hljs-comment">/// \param[in] epsabs Specified absolute accuracy.</span>
+<span class="hljs-comment">///   The integration algorithm will attempt to reach either the relative or the absolute accuracy.</span>
+<span class="hljs-comment">///   In case the maximum funcion called is reached the algorithm will stop earlier without having reached</span>
+<span class="hljs-comment">///   the desired accuracy</span>
+<span class="hljs-comment">/// \param[out] relerr Contains, on exit, an estimation of the relative accuracy of the result.</span>
+<span class="hljs-comment">/// \param[out] nfnevl number of function evaluations performed.</span>
+<span class="hljs-comment">/// \param[out] ifail</span>
+<span class="hljs-comment">/// \parblock</span>
+<span class="hljs-comment">///        0 Normal exit. At least minpts and at most maxpts calls to the function were performed.</span>
+<span class="hljs-comment">///        1 maxpts is too small for the specified accuracy eps. The result and relerr contain the values obtainable for the</span>
+<span class="hljs-comment">///          specified value of maxpts.</span>
+<span class="hljs-comment">///        3 n&lt;2 or n&gt;15</span>
+<span class="hljs-comment">/// \endparblock</span>
+<span class="hljs-comment">/// Method:</span>
+<span class="hljs-comment">/// The defult method used is the Genz-Mallik adaptive multidimensional algorithm</span>
+<span class="hljs-comment">/// using the class ROOT::Math::AdaptiveIntegratorMultiDim (see the reference documentation of the class)</span>
+<span class="hljs-comment">/// Other methods can be used by setting ROOT::Math::IntegratorMultiDimOptions::SetDefaultIntegrator()</span>
+<span class="hljs-comment">/// to different integrators.</span>
+<span class="hljs-comment">/// Other possible integrators are MC integrators based on the ROOT::Math::GSLMCIntegrator class</span>
+<span class="hljs-comment">/// Possible methods are : Vegas, Miser or Plain</span>
+<span class="hljs-comment">/// IN case of MC integration the accuracy is determined by the number of function calls, one should be</span>
+<span class="hljs-comment">/// careful not to use a too large value of maxpts</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">IntegralMultiple</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Double_t *a, <span class="hljs-keyword">const</span> Double_t *b, Int_t <span class="hljs-comment">/*minpts*/</span>, Int_t maxpts, Double_t epsrel, Double_t &amp;relerr,Int_t &amp;nfnevl, Int_t &amp;ifail)</span> </span>{
       <span class="hljs-keyword">return</span>  IntegralMultiple(n,a,b,maxpts, epsrel, epsrel, relerr, nfnevl, ifail);
    }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">IntegralMultiple</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Double_t *a, <span class="hljs-keyword">const</span> Double_t *b, Double_t epsrel, Double_t &amp;relerr)</span></span>;
+<span class="hljs-comment">///  See more general prototype below.</span>
+<span class="hljs-comment">///  This interface kept for back compatibility</span>
+<span class="hljs-comment">/// It is reccomended to use the other interface where one can specify also epsabs and the maximum number of points</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t   <span class="hljs-title">IsEvalNormalized</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNormalized; }
    <span class="hljs-comment">/// return kTRUE if the point is inside the function range</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t   <span class="hljs-title">IsInside</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *x)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> !(  ( x[<span class="hljs-number">0</span>] &lt; fXmin) || ( x[<span class="hljs-number">0</span>] &gt; fXmax ) ); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t   <span class="hljs-title">IsLinear</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (fFormula) ? fFormula-&gt;IsLinear() : <span class="hljs-literal">false</span>;}
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t   <span class="hljs-title">IsValid</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t   <span class="hljs-title">IsValid</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return kTRUE if the function is valid</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Paint this function with its current attributes.</span>
+<span class="hljs-comment">/// The function is going to be converted in an histogram and the corresponding</span>
+<span class="hljs-comment">/// histogram is painted.</span>
+<span class="hljs-comment">/// The painted histogram can be retrieved calling afterwards the method TF1::GetHistogram()</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ReleaseParameter</span><span class="hljs-params">(Int_t ipar)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Save</span><span class="hljs-params">(Double_t xmin, Double_t xmax, Double_t ymin, Double_t ymax, Double_t zmin, Double_t zmax)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Release parameter number ipar If used in a fit, the parameter</span>
+<span class="hljs-comment">/// can vary freely. The parameter limits are reset to 0,0.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Save</span><span class="hljs-params">(Double_t xmin, Double_t xmax, Double_t ymin, Double_t ymax, Double_t zmin, Double_t zmax)</span></span>;<span class="hljs-comment">/// Save values of function in array fSave</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetChisquare</span><span class="hljs-params">(Double_t chi2)</span> </span>{fChisquare = chi2;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetFitResult</span><span class="hljs-params">(<span class="hljs-keyword">const</span> ROOT::Fit::FitResult &amp; result, <span class="hljs-keyword">const</span> Int_t * indpar = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Set the result from the fit</span>
+<span class="hljs-comment">/// parameter values, errors, chi2, etc...</span>
+<span class="hljs-comment">/// Optionally a pointer to a vector (with size fNpar) of the parameter indices in the FitResult can be passed</span>
+<span class="hljs-comment">/// This is useful in the case of a combined fit with different functions, and the FitResult contains the global result</span>
+<span class="hljs-comment">/// By default it is assume that indpar = {0,1,2,....,fNpar-1}.</span>
+
    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> PtrObj, <span class="hljs-keyword">typename</span> MemFn&gt;
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetFunction</span><span class="hljs-params">( PtrObj&amp; p, MemFn memFn )</span></span>;
    <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Func&gt;
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetFunction</span><span class="hljs-params">( Func f )</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetMaximum</span><span class="hljs-params">(Double_t maximum=<span class="hljs-number">-1111</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set the maximum value along Y for this function</span>
+<span class="hljs-comment">/// In case the function is already drawn, set also the maximum in the helper histogram</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetMinimum</span><span class="hljs-params">(Double_t minimum=<span class="hljs-number">-1111</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set the minimum value along Y for this function</span>
+<span class="hljs-comment">/// In case the function is already drawn, set also the minimum in the helper histogram</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetNDF</span><span class="hljs-params">(Int_t ndf)</span></span>;
+<span class="hljs-comment">/// Set the number of degrees of freedom</span>
+<span class="hljs-comment">/// ndf should be the number of points used in a fit - the number of free parameters</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetNumberFitPoints</span><span class="hljs-params">(Int_t npfits)</span> </span>{fNpfits = npfits;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetNormalized</span><span class="hljs-params">(Bool_t flag)</span> </span>{ fNormalized = flag; Update(); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetNpx</span><span class="hljs-params">(Int_t npx=<span class="hljs-number">100</span>)</span></span>; <span class="hljs-comment">// *MENU* &#x5982;&#x679C;&#x53D6;&#x70B9;&#x592A;&#x5C11;&#xFF08;&#x4E5F;&#x5C31;&#x662F;bin&#x592A;&#x5927;&#xFF09;&#xFF0C;&#x56FE;&#x4E0A;&#x663E;&#x793A;&#x7684;&#x5C31;&#x662F;&#x6298;&#x7EBF;&#x56FE;&#x8FDE;&#x6210;&#x7684;&#x66F2;&#x7EBF;&#xFF0C;&#x6548;&#x679C;&#x4E0D;&#x597D;&#x3002;&#x4E3A;&#x4E86;&#x66F2;&#x7EBF;&#x5149;&#x6ED1;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x533A;&#x95F4;&#x5206;&#x6210;&#x5C3D;&#x91CF;&#x591A;&#x7684;&#x4EFD;&#x6570;&#x3002;</span>
+<span class="hljs-comment">/// Set the number of points used to draw the function</span>
+<span class="hljs-comment">/// The default number of points along x is 100 for 1-d functions and 30 for 2-d/3-d functions</span>
+<span class="hljs-comment">/// You can increase this value to get a better resolution when drawing</span>
+<span class="hljs-comment">/// pictures with sharp peaks or to get a better result when using TF1::GetRandom</span>
+<span class="hljs-comment">/// the minimum number of points is 4, the maximum is 10000000 for 1-d and 10000 for 2-d/3-d functions</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetParameter</span><span class="hljs-params">(Int_t param, Double_t value)</span> </span>{
       (fFormula) ? fFormula-&gt;SetParameter(param,value) : fParams-&gt;SetParameter(param,value);
       Update();
@@ -3257,24 +3638,43 @@
       <span class="hljs-keyword">if</span> (fFormula) fFormula-&gt;SetParameters(p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10);
       <span class="hljs-keyword">else</span>          fParams-&gt;SetParameters(p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10);
       Update();
-   } <span class="hljs-comment">// *MENU*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetParName</span><span class="hljs-params">(Int_t ipar, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;
+   } <span class="hljs-comment">// *MENU* /// Set parameter values</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetParName</span><span class="hljs-params">(Int_t ipar, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;<span class="hljs-comment">/// Set name of parameter number ipar</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetParNames</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name0=<span class="hljs-string">&quot;p0&quot;</span>,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name1=<span class="hljs-string">&quot;p1&quot;</span>,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name2=<span class="hljs-string">&quot;p2&quot;</span>,
                                 <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name3=<span class="hljs-string">&quot;p3&quot;</span>,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name4=<span class="hljs-string">&quot;p4&quot;</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name5=<span class="hljs-string">&quot;p5&quot;</span>,
                                 <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name6=<span class="hljs-string">&quot;p6&quot;</span>,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name7=<span class="hljs-string">&quot;p7&quot;</span>,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name8=<span class="hljs-string">&quot;p8&quot;</span>,
-                                <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name9=<span class="hljs-string">&quot;p9&quot;</span>,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name10=<span class="hljs-string">&quot;p10&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetParError</span><span class="hljs-params">(Int_t ipar, Double_t error)</span></span>;
+                                <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name9=<span class="hljs-string">&quot;p9&quot;</span>,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name10=<span class="hljs-string">&quot;p10&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*  /// Set parameter names</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetParError</span><span class="hljs-params">(Int_t ipar, Double_t error)</span></span>;<span class="hljs-comment">/// Set error for parameter number ipar</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetParErrors</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *errors)</span></span>;
+<span class="hljs-comment">/// Set errors for all active parameters</span>
+<span class="hljs-comment">/// when calling this function, the array errors must have at least fNpar values</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetParLimits</span><span class="hljs-params">(Int_t ipar, Double_t parmin, Double_t parmax)</span></span>;
+<span class="hljs-comment">/// Set limits for parameter ipar.</span>
+<span class="hljs-comment">/// The specified limits will be used in a fit operation</span>
+<span class="hljs-comment">/// when the option &quot;B&quot; is specified (Bounds).</span>
+<span class="hljs-comment">/// To fix a parameter, use TF1::FixParameter</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetParent</span><span class="hljs-params">(TObject *p=<span class="hljs-number">0</span>)</span> </span>{fParent = p;}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetRange</span><span class="hljs-params">(Double_t xmin, Double_t xmax)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Initialize the upper and lower bounds to draw the function.</span>
+<span class="hljs-comment">/// The function range is also used in an histogram fit operation</span>
+<span class="hljs-comment">/// when the option &quot;R&quot; is specified.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetRange</span><span class="hljs-params">(Double_t xmin, Double_t ymin,  Double_t xmax, Double_t ymax)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetRange</span><span class="hljs-params">(Double_t xmin, Double_t ymin, Double_t zmin,  Double_t xmax, Double_t ymax, Double_t zmax)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetSavedPoint</span><span class="hljs-params">(Int_t point, Double_t value)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetSavedPoint</span><span class="hljs-params">(Int_t point, Double_t value)</span></span>;<span class="hljs-comment">/// Restore value of function saved at point</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Update</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Set function title</span>
+<span class="hljs-comment">///  if title has the form &quot;fffffff;xxxx;yyyy&quot;, it is assumed that</span>
+<span class="hljs-comment">///  the function title is &quot;fffffff&quot; and &quot;xxxx&quot; and &quot;yyyy&quot; are the</span>
+<span class="hljs-comment">///  titles for the X and Y axis respectively.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">static</span>  TF1     *<span class="hljs-title">GetCurrent</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Update</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Called by functions such as SetRange, SetNpx, SetParameters</span>
+<span class="hljs-comment">/// to force the deletion of the associated histogram or Integral</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  TF1     *<span class="hljs-title">GetCurrent</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static function returning the current function being processed</span>
    <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">AbsValue</span><span class="hljs-params">(Bool_t reject=kTRUE)</span></span>;
 <span class="hljs-comment">/// Static function: set the fgAbsValue flag.</span>
 <span class="hljs-comment">/// By default TF1::Integral uses the original function value to compute the integral</span>
@@ -3282,19 +3682,48 @@
 <span class="hljs-comment">/// using the absolute value of the function.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">RejectPoint</span><span class="hljs-params">(Bool_t reject=kTRUE)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span>  Bool_t   <span class="hljs-title">RejectedPoint</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Static function to set the global flag to reject points</span>
+<span class="hljs-comment">/// the fgRejectPoint global flag is tested by all fit functions</span>
+<span class="hljs-comment">/// if TRUE the point is not included in the fit.</span>
+<span class="hljs-comment">/// This flag can be set by a user in a fitting function.</span>
+<span class="hljs-comment">/// The fgRejectPoint flag is reset by the TH1 and TGraph fitting functions.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  Bool_t   <span class="hljs-title">RejectedPoint</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// See TF1::RejectPoint above</span>
    <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetCurrent</span><span class="hljs-params">(TF1 *f1)</span></span>;
+<span class="hljs-comment">/// Static function setting the current function.</span>
+<span class="hljs-comment">/// the current function may be accessed in static C-like functions</span>
+<span class="hljs-comment">/// when fitting or painting a function.</span>
 
    <span class="hljs-comment">//Moments</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Moment</span><span class="hljs-params">(Double_t n, Double_t a, Double_t b, <span class="hljs-keyword">const</span> Double_t *params=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">0.000001</span>)</span></span>;
+<span class="hljs-comment">/// Return nth moment of function between a and b</span>
+<span class="hljs-comment">/// See TF1::Integral() for parameter definitions</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">CentralMoment</span><span class="hljs-params">(Double_t n, Double_t a, Double_t b, <span class="hljs-keyword">const</span> Double_t *params=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">0.000001</span>)</span></span>;
+<span class="hljs-comment">/// Return nth central moment of function between a and b</span>
+<span class="hljs-comment">/// (i.e the n-th moment around the mean value)</span>
+<span class="hljs-comment">/// See TF1::Integral() for parameter definitions</span>
+<span class="hljs-comment">///   Author: Gene Van Buren &lt;gene@bnl.gov&gt;</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Mean</span><span class="hljs-params">(Double_t a, Double_t b, <span class="hljs-keyword">const</span> Double_t *params=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">0.000001</span>)</span> </span>{<span class="hljs-keyword">return</span> Moment(<span class="hljs-number">1</span>,a,b,params,epsilon);}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">Variance</span><span class="hljs-params">(Double_t a, Double_t b, <span class="hljs-keyword">const</span> Double_t *params=<span class="hljs-number">0</span>, Double_t epsilon=<span class="hljs-number">0.000001</span>)</span> </span>{<span class="hljs-keyword">return</span> CentralMoment(<span class="hljs-number">2</span>,a,b,params,epsilon);}
 
    <span class="hljs-comment">//some useful static utility functions to compute sampling points for Integral</span>
    <span class="hljs-comment">//static  void     CalcGaussLegendreSamplingPoints(TGraph *g, Double_t eps=3.0e-11);</span>
    <span class="hljs-comment">//static  TGraph  *CalcGaussLegendreSamplingPoints(Int_t num=21, Double_t eps=3.0e-11);</span>
-   <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">CalcGaussLegendreSamplingPoints</span><span class="hljs-params">(Int_t num, Double_t *x, Double_t *w, Double_t eps=<span class="hljs-number">3.0e-11</span>)</span></span>;</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">CalcGaussLegendreSamplingPoints</span><span class="hljs-params">(Int_t num, Double_t *x, Double_t *w, Double_t eps=<span class="hljs-number">3.0e-11</span>)</span></span>;
+<span class="hljs-comment">/// Type: unsafe but fast interface filling the arrays x and w (static method)</span>
+<span class="hljs-comment">/// Given the number of sampling points this routine fills the arrays x and w</span>
+<span class="hljs-comment">/// of length num, containing the abscissa and weight of the Gauss-Legendre</span>
+<span class="hljs-comment">/// n-point quadrature formula.</span>
+<span class="hljs-comment">/// Gauss-Legendre:</span>
+<span class="hljs-comment">///          W(x)=1  -1&lt;x&lt;1 </span>
+<span class="hljs-comment">///          (j+1)P_{j+1} = (2j+1)xP_j-jP_{j-1}</span>
+<span class="hljs-comment">/// num is the number of sampling points (&gt;0)</span>
+<span class="hljs-comment">/// x and w are arrays of size num</span>
+<span class="hljs-comment">/// eps is the relative precision</span>
+<span class="hljs-comment">/// If num&lt;=0 or eps&lt;=0 no action is done.</span>
+<span class="hljs-comment">/// Reference: Numerical Recipes in C, Second Edition   </span></code></pre>
 <p>&#x4E00;&#x7EF4;&#x76F4;&#x65B9;&#x56FE;&#x62DF;&#x5408;&#x53C2;&#x6570;&#x9009;&#x9879;&#xFF1A;</p><pre><code class="lang-cpp">TFitResultPtr TH1::Fit(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fname ,Option_t *option ,Option_t *goption, Double_t xxmin, Double_t xxmax);
 TFitResultPtr TH1::Fit(TF1 *f1 ,Option_t *option ,Option_t *goption, Double_t xxmin, Double_t xxmax);
 <span class="hljs-comment">//      The list of fit options is given in parameter option.</span>
@@ -3671,7 +4100,7 @@ fb2-&gt;SetParameters(<span class="hljs-number">0.2</span>,<span class="hljs-num
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TF1+","level":"1.2.15","depth":2,"next":{"title":"TF2","level":"1.2.16","depth":2,"path":"class/TF2.md","ref":"class/TF2.md","articles":[]},"previous":{"title":"TEventList*","level":"1.2.14","depth":2,"path":"class/TEventList.md","ref":"class/TEventList.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TF1.md","mtime":"2016-11-02T05:51:14.607Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-07T13:49:12.177Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TF1*","level":"1.2.15","depth":2,"next":{"title":"TF2","level":"1.2.16","depth":2,"path":"class/TF2.md","ref":"class/TF2.md","articles":[]},"previous":{"title":"TEventList*","level":"1.2.14","depth":2,"path":"class/TEventList.md","ref":"class/TEventList.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TF1.md","mtime":"2016-12-16T14:35:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-16T14:45:38.987Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

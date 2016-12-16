@@ -16,7 +16,7 @@
     * [TCutG*](class/TCutG.md)
     * [TEllipse](class/TEllipse.md)
     * [TEventList*](class/TEventList.md)
-    * [TF1+](class/TF1.md)
+    * [TF1*](class/TF1.md)
     * [TF2](class/TF2.md)
     * [TF3](class/TF3.md)
     * [TFile*](class/TFile.md)

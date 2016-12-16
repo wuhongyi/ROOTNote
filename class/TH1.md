@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 四 9月  1 23:05:30 2016 (+0800)
+;; Last-Updated: 五 12月 16 22:45:13 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 17
+;;     Update #: 18
 ;; URL: http://wuhongyi.cn -->
 
 # TH1
@@ -54,30 +54,6 @@ bin = nbins+1; overflow bin
 ## class
 
 ```cpp
-protected:
-   TH1();
-   TH1(const char *name,const char *title,Int_t nbinsx,Double_t xlow,Double_t xup);
-   TH1(const char *name,const char *title,Int_t nbinsx,const Float_t *xbins);
-   TH1(const char *name,const char *title,Int_t nbinsx,const Double_t *xbins);
-   virtual Int_t    BufferFill(Double_t x, Double_t w);
-   virtual Bool_t   FindNewAxisLimits(const TAxis* axis, const Double_t point, Double_t& newMin, Double_t &newMax);
-   virtual void     SavePrimitiveHelp(std::ostream &out, const char *hname, Option_t *option = "");
-   static Bool_t    RecomputeAxisLimits(TAxis& destAxis, const TAxis& anAxis);
-   static Bool_t    SameLimitsAndNBins(const TAxis& axis1, const TAxis& axis2);
-
-   virtual Double_t DoIntegral(Int_t ix1, Int_t ix2, Int_t iy1, Int_t iy2, Int_t iz1, Int_t iz2, Double_t & err,
-                               Option_t * opt, Bool_t doerr = kFALSE) const;
-
-   virtual void     DoFillN(Int_t ntimes, const Double_t *x, const Double_t *w, Int_t stride=1);
-
-   static bool CheckAxisLimits(const TAxis* a1, const TAxis* a2);
-   static bool CheckBinLimits(const TAxis* a1, const TAxis* a2);
-   static bool CheckBinLabels(const TAxis* a1, const TAxis* a2);
-   static bool CheckEqualAxes(const TAxis* a1, const TAxis* a2);
-   static bool CheckConsistentSubAxes(const TAxis *a1, Int_t firstBin1, Int_t lastBin1, const TAxis *a2, Int_t firstBin2=0, Int_t lastBin2=0);
-   static bool CheckConsistency(const TH1* h1, const TH1* h2);
-
-public:
    // TH1 status bits
    enum {
       kNoStats     = BIT(9),  // don't draw stats box

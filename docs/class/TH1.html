@@ -303,7 +303,7 @@
                 <a href="TF1.html">
             
                     
-                    TF1+
+                    TF1*
             
                 </a>
             
@@ -2887,9 +2887,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 四 9月  1 23:05:30 2016 (+0800)
+;; Last-Updated: 五 12月 16 22:45:13 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 17
+;;     Update #: 18
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -2914,31 +2914,7 @@ TH1::AddDirectory(kFALSE);   <span class="hljs-comment">// sets a global switch 
 bin = 1;       first bin with low-edge xlow INCLUDED
 bin = nbins;   last bin with upper-edge xup EXCLUDED
 bin = nbins+1; overflow bin</code></pre>
-<h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-keyword">protected</span>:
-   TH1();
-   TH1(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,Int_t nbinsx,Double_t xlow,Double_t xup);
-   TH1(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,Int_t nbinsx,<span class="hljs-keyword">const</span> Float_t *xbins);
-   TH1(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,Int_t nbinsx,<span class="hljs-keyword">const</span> Double_t *xbins);
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">BufferFill</span><span class="hljs-params">(Double_t x, Double_t w)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t   <span class="hljs-title">FindNewAxisLimits</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TAxis* axis, <span class="hljs-keyword">const</span> Double_t point, Double_t&amp; newMin, Double_t &amp;newMax)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitiveHelp</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *hname, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t    <span class="hljs-title">RecomputeAxisLimits</span><span class="hljs-params">(TAxis&amp; destAxis, <span class="hljs-keyword">const</span> TAxis&amp; anAxis)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t    <span class="hljs-title">SameLimitsAndNBins</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TAxis&amp; axis1, <span class="hljs-keyword">const</span> TAxis&amp; axis2)</span></span>;
-
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">DoIntegral</span><span class="hljs-params">(Int_t ix1, Int_t ix2, Int_t iy1, Int_t iy2, Int_t iz1, Int_t iz2, Double_t &amp; err,
-                               Option_t * opt, Bool_t doerr = kFALSE)</span> <span class="hljs-keyword">const</span></span>;
-
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">DoFillN</span><span class="hljs-params">(Int_t ntimes, <span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *w, Int_t stride=<span class="hljs-number">1</span>)</span></span>;
-
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">CheckAxisLimits</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TAxis* a1, <span class="hljs-keyword">const</span> TAxis* a2)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">CheckBinLimits</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TAxis* a1, <span class="hljs-keyword">const</span> TAxis* a2)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">CheckBinLabels</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TAxis* a1, <span class="hljs-keyword">const</span> TAxis* a2)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">CheckEqualAxes</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TAxis* a1, <span class="hljs-keyword">const</span> TAxis* a2)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">CheckConsistentSubAxes</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TAxis *a1, Int_t firstBin1, Int_t lastBin1, <span class="hljs-keyword">const</span> TAxis *a2, Int_t firstBin2=<span class="hljs-number">0</span>, Int_t lastBin2=<span class="hljs-number">0</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">CheckConsistency</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TH1* h1, <span class="hljs-keyword">const</span> TH1* h2)</span></span>;
-
-<span class="hljs-keyword">public</span>:
-   <span class="hljs-comment">// TH1 status bits</span>
+<h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// TH1 status bits</span>
    <span class="hljs-keyword">enum</span> {
       kNoStats     = BIT(<span class="hljs-number">9</span>),  <span class="hljs-comment">// don&apos;t draw stats box</span>
       kUserContour = BIT(<span class="hljs-number">10</span>), <span class="hljs-comment">// user specified contour levels</span>
@@ -3329,7 +3305,7 @@ hnew-&gt;Draw();</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TH1+","level":"1.2.31","depth":2,"next":{"title":"TH2+","level":"1.2.32","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"previous":{"title":"TGraphPolar","level":"1.2.30","depth":2,"path":"class/TGraphPolar.md","ref":"class/TGraphPolar.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH1.md","mtime":"2016-11-02T05:51:12.377Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-07T13:49:12.177Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TH1+","level":"1.2.31","depth":2,"next":{"title":"TH2+","level":"1.2.32","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"previous":{"title":"TGraphPolar","level":"1.2.30","depth":2,"path":"class/TGraphPolar.md","ref":"class/TGraphPolar.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH1.md","mtime":"2016-12-16T14:45:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-16T14:45:38.987Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
