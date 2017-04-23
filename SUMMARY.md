@@ -131,7 +131,7 @@
     * [TGLabel*](class/gui/TGLabel.md)
 	* [TGLayout+](class/gui/TGLayout.md)
     * [TGListBox+](class/gui/TGListBox.md)
-	* [TGListTree+](class/gui/TGListTree.md)
+	* [TGListTree*](class/gui/TGListTree.md)
 	* [TGListView+](class/gui/TGListView.md)
 	* [TGMdiDecorFrame](class/gui/TGMdiDecorFrame.md)
 	* [TGMdiFrame](class/gui/TGMdiFrame.md)
