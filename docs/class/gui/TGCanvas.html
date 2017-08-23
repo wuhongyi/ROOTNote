@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGCanvas* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TGCanvas* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="../TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,25 +2969,26 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tgcanvas">TGCanvas</h1><p>A TGCanvas is a frame containing two scrollbars (horizontal and</p><p>vertical) and a viewport. The viewport acts as the window through</p><p>which we look at the contents of the container frame.</p><p>A TGContainer frame manages a content area. It can display and</p><p>control a hierarchy of multi-column items, and provides the ability</p><p>to add new items at any time. By default it doesn&apos;t map subwindows</p><p>which are items of the container. In this case subwindow must</p><p>provide DrawCopy method, see for example TGLVEntry class.</p><p>It is also possible to use option which allow to map subwindows.</p><p>This option has much slower drawing speed in case of more than 1000</p><p>items placed in container. To activate this option the fMapSubwindows</p><p>data member must be set to kTRUE (for example TTVLVContainer class)</p><p>The TGContainer class can handle the keys:</p><ul><li>F7, Ctnrl-F - activate search dialog                           
-</li>
-<li>F3, Ctnrl-G - continue search                                  
-</li>
-<li>End - go to the last item in container                         
-</li>
-<li>Home - go to the first item in container                       
-</li>
-<li>PageUp,PageDown,arrow keys - navigate inside container         
-</li>
-<li>Return/Enter - equivalent to double click of the mouse button  
-</li>
-<li>Contrl-A - select/activate all items.                          
-</li>
-<li>Space - invert selection.                                      
-</li></ul>
-<p>TGContainer &#x7EE7;&#x627F; TGCompositeFrame , friend TGViewPort , TGCanvas , TGContainerKeyboardTimer , TGContainerScrollTimer , TGListView</p><p>TGViewPort &#x7EE7;&#x627F; TGCompositeFrame</p><p>TGCanvas &#x7EE7;&#x627F; TGFrame</p><h2 id="class">class</h2><p><strong>TGContainer</strong></p><pre><code class="lang-cpp">   TGContainer(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
+<h1 id="tgcanvas">TGCanvas</h1>
+<p>A TGCanvas is a frame containing two scrollbars (horizontal and<br>vertical) and a viewport. The viewport acts as the window through<br>which we look at the contents of the container frame. </p>
+<p>A TGContainer frame manages a content area. It can display and<br>control a hierarchy of multi-column items, and provides the ability<br>to add new items at any time. By default it doesn&apos;t map subwindows<br>which are items of the container. In this case subwindow must<br>provide DrawCopy method, see for example TGLVEntry class.<br>It is also possible to use option which allow to map subwindows.<br>This option has much slower drawing speed in case of more than 1000<br>items placed in container. To activate this option the fMapSubwindows<br>data member must be set to kTRUE (for example TTVLVContainer class)  </p>
+<p>The TGContainer class can handle the keys:     </p>
+<ul>
+<li>F7, Ctnrl-F - activate search dialog                           </li>
+<li>F3, Ctnrl-G - continue search                                  </li>
+<li>End - go to the last item in container                         </li>
+<li>Home - go to the first item in container                       </li>
+<li>PageUp,PageDown,arrow keys - navigate inside container         </li>
+<li>Return/Enter - equivalent to double click of the mouse button  </li>
+<li>Contrl-A - select/activate all items.                          </li>
+<li>Space - invert selection.                                      </li>
+</ul>
+<p>TGContainer &#x7EE7;&#x627F; TGCompositeFrame , friend TGViewPort , TGCanvas , TGContainerKeyboardTimer , TGContainerScrollTimer , TGListView</p>
+<p>TGViewPort &#x7EE7;&#x627F; TGCompositeFrame</p>
+<p>TGCanvas &#x7EE7;&#x627F; TGFrame</p>
+<h2 id="class">class</h2>
+<p><strong>TGContainer</strong></p>
+<pre><code class="lang-cpp">   TGContainer(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
                UInt_t options = kSunkenFrame,
                Pixel_t back = GetDefaultFrameBackground());
 <span class="hljs-comment">/// Create a canvas container. This is the (large) frame that contains</span>
@@ -3106,8 +3107,10 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(TGFrame *f, Int_t btn)</span></span>; <span class="hljs-comment">//*SIGNAL*  /// Emit Clicked() signal.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGFrame *f, Int_t btn)</span></span>;  <span class="hljs-comment">//*SIGNAL*  /// Emit DoubleClicked() signal.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGFrame *f, Int_t btn, Int_t x, Int_t y)</span></span>; <span class="hljs-comment">//*SIGNAL*  /// Emit DoubleClicked() signal.</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(TGFrame *f, Int_t btn, Int_t x, Int_t y)</span></span>;       <span class="hljs-comment">//*SIGNAL*  /// Emit Clicked() signal.</span></code></pre>
-<p><strong>TGViewPort</strong></p><pre><code class="lang-cpp">   TGViewPort(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(TGFrame *f, Int_t btn, Int_t x, Int_t y)</span></span>;       <span class="hljs-comment">//*SIGNAL*  /// Emit Clicked() signal.</span>
+</code></pre>
+<p><strong>TGViewPort</strong></p>
+<pre><code class="lang-cpp">   TGViewPort(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
               UInt_t options = kChildFrame,
               Pixel_t back = GetDefaultFrameBackground());<span class="hljs-comment">/// Create a viewport object.</span>
 
@@ -3127,8 +3130,10 @@
 
    <span class="hljs-function">Int_t <span class="hljs-title">GetHPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fX0; }
    <span class="hljs-function">Int_t <span class="hljs-title">GetVPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fY0; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleConfigureNotify</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle resize events.</span></code></pre>
-<p><strong>TGCanvas</strong></p><pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span> { kCanvasNoScroll         = <span class="hljs-number">0</span>,
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleConfigureNotify</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle resize events.</span>
+</code></pre>
+<p><strong>TGCanvas</strong></p>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span> { kCanvasNoScroll         = <span class="hljs-number">0</span>,
           kCanvasScrollHorizontal = BIT(<span class="hljs-number">0</span>),
           kCanvasScrollVertical   = BIT(<span class="hljs-number">1</span>),
           kCanvasScrollBoth       = (kCanvasScrollHorizontal | kCanvasScrollVertical)
@@ -3172,10 +3177,11 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;<span class="hljs-comment">/// Handle message generated by the canvas scrollbars.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a canvas widget as a C++ statement(s) on output stream out.</span></code></pre>
-<h2 id="code">code</h2><h2 id="example">example</h2><!-- TGCanvas.md ends here -->
-
-
+<span class="hljs-comment">/// Save a canvas widget as a C++ statement(s) on output stream out.</span>
+</code></pre>
+<h2 id="code">code</h2>
+<h2 id="example">example</h2>
+<!-- TGCanvas.md ends here -->
 
                                 
                                 </section>
@@ -3219,7 +3225,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGCanvas*","level":"1.3.3","depth":2,"next":{"title":"TGClient*","level":"1.3.4","depth":2,"path":"class/gui/TGClient.md","ref":"class/gui/TGClient.md","articles":[]},"previous":{"title":"TGButtonGroup*","level":"1.3.2","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGCanvas.md","mtime":"2016-11-19T06:16:12.769Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGCanvas*","level":"1.3.3","depth":2,"next":{"title":"TGClient*","level":"1.3.4","depth":2,"path":"class/gui/TGClient.md","ref":"class/gui/TGClient.md","articles":[]},"previous":{"title":"TGButtonGroup*","level":"1.3.2","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGCanvas.md","mtime":"2017-07-11T12:51:29.999Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

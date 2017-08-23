@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>常用类的使用 · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>常用类的使用 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,12 +2969,11 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 17
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="&#x7C7B;&#x7684;&#x4F7F;&#x7528;">&#x7C7B;&#x7684;&#x4F7F;&#x7528;</h1><!-- A B C D E F G H I J K L M N O P Q R S T U V W X Y Z -->
-
-
-<p>&#x672C;&#x7AE0;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x5E38;&#x7528;&#x7C7B;&#x4E2D;&#x7684;&#x51FD;&#x6570;</p><p>&#x5305;&#x62EC;&#xFF1A;&#x51FD;&#x6570;&#x7684;&#x4F7F;&#x7528;&#x3001;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x3001;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x7B49;</p><pre><code class="lang-cpp">Char_t      <span class="hljs-comment">//Signed Character 1 byte</span>
+<h1 id="&#x7C7B;&#x7684;&#x4F7F;&#x7528;">&#x7C7B;&#x7684;&#x4F7F;&#x7528;</h1>
+<!-- A B C D E F G H I J K L M N O P Q R S T U V W X Y Z -->
+<p>&#x672C;&#x7AE0;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x5E38;&#x7528;&#x7C7B;&#x4E2D;&#x7684;&#x51FD;&#x6570;</p>
+<p>&#x5305;&#x62EC;&#xFF1A;&#x51FD;&#x6570;&#x7684;&#x4F7F;&#x7528;&#x3001;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x3001;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x7B49;</p>
+<pre><code class="lang-cpp">Char_t      <span class="hljs-comment">//Signed Character 1 byte</span>
 UChar_t     <span class="hljs-comment">//Unsigned Character 1 byte</span>
 Short_t      <span class="hljs-comment">//Signed Short integer 2 bytes</span>
 UShort_t    <span class="hljs-comment">//Unsigned Short integer 2 bytes</span>
@@ -2985,7 +2984,8 @@ ULong64_t   <span class="hljs-comment">//Portable unsigned long integer 8 bytes<
 Float_t     <span class="hljs-comment">//Float 4 bytes</span>
 Double_t    <span class="hljs-comment">//Float 8 bytes</span>
 Double32_t  <span class="hljs-comment">//Double 8 bytes in memory, written as a Float 4 bytes</span>
-Bool_t      <span class="hljs-comment">//Boolean (0=false, 1=true)</span></code></pre>
+Bool_t      <span class="hljs-comment">//Boolean (0=false, 1=true)</span>
+</code></pre>
 <pre><code>The symbols used for the type are:
 C: a character string terminated by the 0 character
 B: an 8 bit signed integer
@@ -2998,8 +2998,8 @@ L: a 64 bit signed integer
 l: a 64 bit unsigned integer
 F: a 32 bit floating point
 D: a 64 bit floating point
-O: [the letter &#x2018;o&#x2019;, not a zero] a boolean (Bool_t)</code></pre>
-<pre><code>The type of information shown in the histogram statistics box can be selected with:
+O: [the letter &#x2018;o&#x2019;, not a zero] a boolean (Bool_t)
+</code></pre><pre><code>The type of information shown in the histogram statistics box can be selected with:
       gStyle-&gt;SetOptStat(mode);
 
 The &quot;mode&quot; has up to nine digits that can be set to on (1 or 2), off (0).
@@ -3017,8 +3017,8 @@ The &quot;mode&quot; has up to nine digits that can be set to on (1 or 2), off (
       m = 1;  mean value printed
       m = 2;  mean and mean error values printed
       e = 1;  number of entries printed
-      n = 1;  name of histogram is printed</code></pre>
-<pre><code class="lang-cpp">gROOT-&gt;GetListOfClasses()
+      n = 1;  name of histogram is printed
+</code></pre><pre><code class="lang-cpp">gROOT-&gt;GetListOfClasses()
 gROOT-&gt;GetListOfColors()
 gROOT-&gt;GetListOfTypes()
 gROOT-&gt;GetListOfGlobals()
@@ -3051,8 +3051,10 @@ root[] gRandom = <span class="hljs-keyword">new</span> TRandom2(<span class="hlj
 
 <span class="hljs-comment">//gFile is the pointer to the current opened file in the ROOT session.</span>
 
-<span class="hljs-comment">//gDirectory is a pointer to the current directory. The concept and role of a directory is explained in the chapter &#x201C;Input/Output&#x201D;.</span></code></pre>
-<h2 id="&#x753B;&#x56FE;&#x53C2;&#x6570;">&#x753B;&#x56FE;&#x53C2;&#x6570;</h2><pre><code>//Fitting Histograms
+<span class="hljs-comment">//gDirectory is a pointer to the current directory. The concept and role of a directory is explained in the chapter &#x201C;Input/Output&#x201D;.</span>
+</code></pre>
+<h2 id="&#x753B;&#x56FE;&#x53C2;&#x6570;">&#x753B;&#x56FE;&#x53C2;&#x6570;</h2>
+<pre><code>//Fitting Histograms
 
 &#x2022; *fname:The name of the fitted function (the model) is passed as the first parameter. This name may be one of ROOT pre-defined function names or a user-defined function. The functions below are predefined, and can be used with the TH1::Fit method:
 &#x2022; &#x201C;gaus&#x201D; Gaussian function with 3 parameters: f(x) = p0*exp(-0.5*((x-p1)/p2)&#x2C6;2)
@@ -3078,8 +3080,8 @@ root[] gRandom = <span class="hljs-keyword">new</span> TRandom2(<span class="hlj
 &#x2022; &#x201C;C&#x201D;In case of linear fitting, don&#x2019;t calculate the chisquare (saves time).
 &#x2022; &#x201C;F&#x201D;If fitting a polN, switch to Minuit fitter (by default, polN functions are fitted by the linear fitter).
 &#x2022; *goption:The third parameter is the graphics option that is the same as in the TH1::Draw (see the chapter Draw Options).
-&#x2022; xxmin, xxmax:Thee fourth and fifth parameters specify the range over which to apply the fit.</code></pre>
-<pre><code>//Graph Draw Options
+&#x2022; xxmin, xxmax:Thee fourth and fifth parameters specify the range over which to apply the fit.
+</code></pre><pre><code>//Graph Draw Options
 The various drawing options for a graph are explained in TGraph::PaintGraph. They are:
 &#x2022; &#x201C;L&#x201D; A simple poly-line between every points is drawn   //&#x6298;&#x7EBF;&#x56FE;,&#x5C06;&#x6BCF;&#x4E2A;bin&#x7528;&#x7EBF;&#x8FDE;&#x63A5;
 &#x2022; &#x201C;F&#x201D; A fill area is drawn
@@ -3098,8 +3100,8 @@ The TGraphPolar drawing options are:
 &#x201C;P&#x201D; Polymarker are paint at each point position.
 &#x201C;E&#x201D; Paint error bars.
 &#x201C;F&#x201D; Paint fill area (closed polygon).
-&#x201C;A&#x201D;Force axis redrawing even if a polagram already exists.</code></pre>
-<pre><code>//Draw Options                   //eg. h-&gt;Draw(&quot;E1SAME&quot;); &#x6216; h-&gt;SetOption(&quot;lego&quot;);h-&gt;Draw();
+&#x201C;A&#x201D;Force axis redrawing even if a polagram already exists.
+</code></pre><pre><code>//Draw Options                   //eg. h-&gt;Draw(&quot;E1SAME&quot;); &#x6216; h-&gt;SetOption(&quot;lego&quot;);h-&gt;Draw();
 The following draw options are supported on all histogram classes:
 &#x2022; &#x201C;AXIS&#x201D;: Draw only the axis.
 &#x2022; &#x201C;HIST&#x201D;: When a histogram has errors, it is visualized by default with error bars. To visualize it without errors use HIST together with the required option (e.g. &#x201C;HIST SAME C&#x201D;).
@@ -3169,11 +3171,14 @@ The following options are supported for 3-D histogram classes:
 &#x2022; &#x201C;ISO&#x201D;: Draw an iso surface
 &#x2022; &#x201C;FB&#x201D;: Suppress the Front-Box
 &#x2022; &#x201C;BB&#x201D;: Suppress the Back-Box
-&#x2022; &#x201C;A&#x201D;: Suppress the axis</code></pre>
-<h2 id="&#x672A;&#x5206;&#x7C7B;">&#x672A;&#x5206;&#x7C7B;</h2><pre><code class="lang-cpp"><span class="hljs-comment">//&#x652F;&#x6301;&#x4E2D;&#x6587;&#x663E;&#x793A;</span>
-<span class="hljs-string">&quot;\\hbox{RHIC &#x30B9;&#x30D4;&#x30F3;&#x7269;&#x7406; &#x41D;&#x44C;&#x44E;-&#x419;&#x43E;&#x440;&#x43A;}&quot;</span></code></pre>
+&#x2022; &#x201C;A&#x201D;: Suppress the axis
+</code></pre><h2 id="&#x672A;&#x5206;&#x7C7B;">&#x672A;&#x5206;&#x7C7B;</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x652F;&#x6301;&#x4E2D;&#x6587;&#x663E;&#x793A;</span>
+<span class="hljs-string">&quot;\\hbox{RHIC &#x30B9;&#x30D4;&#x30F3;&#x7269;&#x7406; &#x41D;&#x44C;&#x44E;-&#x419;&#x43E;&#x440;&#x43A;}&quot;</span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//&#x76F4;&#x65B9;&#x56FE;&#x4E0A;&#x4E0D;&#x8981;TPave</span>
-gStyle-&gt;SetOptStat(<span class="hljs-number">0</span>);</code></pre>
+gStyle-&gt;SetOptStat(<span class="hljs-number">0</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-keyword">char</span> name[<span class="hljs-number">10</span>], title[<span class="hljs-number">20</span>];
 <span class="hljs-function">TObjArray <span class="hljs-title">Hlist</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;
 TH1F* h;
@@ -3185,7 +3190,8 @@ Hlist.Add(h);
 h-&gt;FillRandom(<span class="hljs-string">&quot;gaus&quot;</span>,<span class="hljs-number">1000</span>);}
 <span class="hljs-function">TFile <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-string">&quot;demo.root&quot;</span>,<span class="hljs-string">&quot;recreate&quot;</span>)</span></span>;
 Hlist-&gt;Write();
-f.Close();</code></pre>
+f.Close();
+</code></pre>
 <pre><code class="lang-cpp">TH3D *h3 = <span class="hljs-keyword">new</span> TH3D(<span class="hljs-string">&quot;h3&quot;</span>, <span class="hljs-string">&quot;h3&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-number">-2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">20</span>, <span class="hljs-number">-2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">20</span>, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>);
 Double_t x,y,z;
 <span class="hljs-keyword">for</span> (Int_t i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">10000</span>; i++) {
@@ -3196,7 +3202,8 @@ h3-&gt;Fill(x,y,z);
 h3-&gt;Draw(<span class="hljs-string">&quot;iso&quot;</span>);
 
 TF3 *fun3 = <span class="hljs-keyword">new</span> TF3(<span class="hljs-string">&quot;fun3&quot;</span>,<span class="hljs-string">&quot;sin(x*x+y*y+z*z-36)&quot;</span>,<span class="hljs-number">-2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">-2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">-2</span>,<span class="hljs-number">2</span>);
-fun3-&gt;Draw();</code></pre>
+fun3-&gt;Draw();
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//&#x8FDB;&#x5EA6;&#x6ED1;&#x52A8;&#x6761;</span>
 TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;The HSUM example&quot;</span>,<span class="hljs-number">200</span>,<span class="hljs-number">10</span>,<span class="hljs-number">600</span>,<span class="hljs-number">400</span>);
 c1-&gt;SetGrid();
@@ -3247,7 +3254,8 @@ Float_t xs1, xs2, xmain;
 slider-&gt;SetRange(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>);
 total-&gt;Draw(<span class="hljs-string">&quot;sameaxis&quot;</span>); <span class="hljs-comment">// to redraw axis hidden by the fill area</span>
 c1-&gt;Modified();
-gBenchmark-&gt;Show(<span class="hljs-string">&quot;hsum&quot;</span>);</code></pre>
+gBenchmark-&gt;Show(<span class="hljs-string">&quot;hsum&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp">TPaveLabel pl;
 
 <span class="hljs-comment">//basic 2-d options</span>
@@ -3320,10 +3328,9 @@ surf.cd(<span class="hljs-number">3</span>);
 h2.Draw(<span class="hljs-string">&quot;surf3&quot;</span>);   pl.DrawPaveLabel(xMin,yMin,xMax,yMax,<span class="hljs-string">&quot;SURF3&quot;</span>,<span class="hljs-string">&quot;brNDC&quot;</span>);
 surf.cd(<span class="hljs-number">4</span>);
 h2.Draw(<span class="hljs-string">&quot;surf4&quot;</span>);   pl.DrawPaveLabel(xMin,yMin,xMax,yMax,<span class="hljs-string">&quot;SURF4&quot;</span>,<span class="hljs-string">&quot;brNDC&quot;</span>);
-surf.Update();</code></pre>
+surf.Update();
+</code></pre>
 <!-- README.md ends here -->
-
-
 
                                 
                                 </section>
@@ -3367,7 +3374,7 @@ surf.Update();</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"常用类的使用","level":"1.2","depth":1,"next":{"title":"FitResult","level":"1.2.1","depth":2,"path":"class/FitResult.md","ref":"class/FitResult.md","articles":[]},"previous":{"title":"简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/README.md","mtime":"2016-11-02T05:51:12.220Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"常用类的使用","level":"1.2","depth":1,"next":{"title":"FitResult","level":"1.2.1","depth":2,"path":"class/FitResult.md","ref":"class/FitResult.md","articles":[]},"previous":{"title":"简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/README.md","mtime":"2017-07-11T12:51:30.023Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

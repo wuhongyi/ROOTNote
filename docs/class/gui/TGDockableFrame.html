@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGDockableFrame* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TGDockableFrame* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="../TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,21 +2969,30 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tgdockableframe">TGDockableFrame</h1><p>A TGDockableFrame is a frame with handles that allow it to be</p><p>undocked (i.e. put in a transient frame of its own) and to be docked</p><p>again or hidden and shown again. It uses the TGDockButton, which is</p><p>a button with two vertical bars (||) and TGDockHideButton, which is</p><p>a button with a small triangle. The TGUndockedFrame is a transient</p><p>frame that on closure will put the frame back in the dock.</p><p>TGDockButton : public TGButton</p><p>TGDockHideButton : public TGDockButton</p><p>TGUndockedFrame : public TGTransientFrame</p><p>TGDockableFrame : public TGCompositeFrame, public TGWidget  friend class TGUndockedFrame</p><h2 id="class">class</h2><p><strong>TGDockButton</strong></p><pre><code class="lang-cpp">   TGDockButton(<span class="hljs-keyword">const</span> TGCompositeFrame *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">1</span>);<span class="hljs-comment">/// Create a dock button (i.e. button with two vertical bars).</span>
+<h1 id="tgdockableframe">TGDockableFrame</h1>
+<p>A TGDockableFrame is a frame with handles that allow it to be<br>undocked (i.e. put in a transient frame of its own) and to be docked<br>again or hidden and shown again. It uses the TGDockButton, which is<br>a button with two vertical bars (||) and TGDockHideButton, which is<br>a button with a small triangle. The TGUndockedFrame is a transient<br>frame that on closure will put the frame back in the dock.</p>
+<p>TGDockButton : public TGButton<br>TGDockHideButton : public TGDockButton<br>TGUndockedFrame : public TGTransientFrame<br>TGDockableFrame : public TGCompositeFrame, public TGWidget  friend class TGUndockedFrame</p>
+<h2 id="class">class</h2>
+<p><strong>TGDockButton</strong></p>
+<pre><code class="lang-cpp">   TGDockButton(<span class="hljs-keyword">const</span> TGCompositeFrame *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">1</span>);<span class="hljs-comment">/// Create a dock button (i.e. button with two vertical bars).</span>
    <span class="hljs-keyword">virtual</span> ~TGDockButton();<span class="hljs-comment">/// Delete dock button.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle dock button crossing events.</span></code></pre>
-<p><strong>TGDockHideButton</strong></p><pre><code class="lang-cpp">   TGDockHideButton(<span class="hljs-keyword">const</span> TGCompositeFrame *p = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a dock hide button (i.e. button with small triangle).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle dock button crossing events.</span>
+</code></pre>
+<p><strong>TGDockHideButton</strong></p>
+<pre><code class="lang-cpp">   TGDockHideButton(<span class="hljs-keyword">const</span> TGCompositeFrame *p = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a dock hide button (i.e. button with small triangle).</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetAspectRatio</span><span class="hljs-params">(Int_t a)</span> </span>{ fAspectRatio = a; DoRedraw(); }</code></pre>
-<p><strong>TGUndockedFrame</strong></p><pre><code class="lang-cpp">   TGUndockedFrame(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, TGDockableFrame *dockable = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create the undocked (transient) frame.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetAspectRatio</span><span class="hljs-params">(Int_t a)</span> </span>{ fAspectRatio = a; DoRedraw(); }
+</code></pre>
+<p><strong>TGUndockedFrame</strong></p>
+<pre><code class="lang-cpp">   TGUndockedFrame(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, TGDockableFrame *dockable = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create the undocked (transient) frame.</span>
    <span class="hljs-keyword">virtual</span> ~TGUndockedFrame();<span class="hljs-comment">/// Delete undocked frame. Puts back dockable frame in its original container.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">FixSize</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Fix the size of the undocked frame so it cannot be changed via the WM.</span>
-   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CloseWindow</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Close undocked frame (called via WM close button).</span></code></pre>
-<p><strong>TGDockableFrame</strong></p><pre><code class="lang-cpp">   TGDockableFrame(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CloseWindow</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Close undocked frame (called via WM close button).</span>
+</code></pre>
+<p><strong>TGDockableFrame</strong></p>
+<pre><code class="lang-cpp">   TGDockableFrame(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
                    UInt_t options = kHorizontalFrame);<span class="hljs-comment">/// Create a dockable frame widget.</span>
    <span class="hljs-keyword">virtual</span> ~TGDockableFrame();<span class="hljs-comment">/// Cleanup dockable frame.</span>
 
@@ -3016,10 +3025,10 @@
    <span class="hljs-function">TGUndockedFrame  *<span class="hljs-title">GetUndocked</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFrame; }
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a dockable frame widget as a C++ statement(s) on output stream out.</span></code></pre>
-<h2 id="code">code</h2><!-- TGDockableFrame.md ends here -->
-
-
+<span class="hljs-comment">/// Save a dockable frame widget as a C++ statement(s) on output stream out.</span>
+</code></pre>
+<h2 id="code">code</h2>
+<!-- TGDockableFrame.md ends here -->
 
                                 
                                 </section>
@@ -3063,7 +3072,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGDockableFrame*","level":"1.3.11","depth":2,"next":{"title":"TGDoubleSlider*","level":"1.3.12","depth":2,"path":"class/gui/TGDoubleSlider.md","ref":"class/gui/TGDoubleSlider.md","articles":[]},"previous":{"title":"TGDNDManager*","level":"1.3.10","depth":2,"path":"class/gui/TGDNDManager.md","ref":"class/gui/TGDNDManager.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGDockableFrame.md","mtime":"2017-01-27T14:42:35.972Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGDockableFrame*","level":"1.3.11","depth":2,"next":{"title":"TGDoubleSlider*","level":"1.3.12","depth":2,"path":"class/gui/TGDoubleSlider.md","ref":"class/gui/TGDoubleSlider.md","articles":[]},"previous":{"title":"TGDNDManager*","level":"1.3.10","depth":2,"path":"class/gui/TGDNDManager.md","ref":"class/gui/TGDNDManager.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGDockableFrame.md","mtime":"2017-07-11T12:51:29.990Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

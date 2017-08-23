@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TTree* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TTree* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2965,19 +2965,42 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 3月 14 08:35:28 2015 (+0800)
-;; Last-Updated: 日 11月 27 20:33:35 2016 (+0800)
+;; Last-Updated: 三 8月 23 12:52:04 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 6
+;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="ttree">TTree</h1><p>&#x7EE7;&#x627F; TNamed, TAttLine, TAttFill, TAttMarker</p><p>A TTree object is a list of TBranch.
-To Create a TTree object one must:</p><ul><li>Create the TTree header via the TTree constructor
-</li>
-<li>Call the TBranch constructor for every branch.
-</li></ul>
+<h1 id="ttree">TTree</h1>
+<p>&#x7EE7;&#x627F; TNamed, TAttLine, TAttFill, TAttMarker</p>
+<p>A TTree object is a list of TBranch.
+To Create a TTree object one must:</p>
+<ul>
+<li>Create the TTree header via the TTree constructor</li>
+<li>Call the TBranch constructor for every branch.</li>
+</ul>
 <p>To Fill this object, use member function Fill with no parameters. 
-The Fill function loops on all defined TBranch.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// Used as the max value for any TTree range operation.</span>
+The Fill function loops on all defined TBranch.   </p>
+<h2 id="function-scan">function Scan()</h2>
+<p>The options string can contains the following parameters:</p>
+<ul>
+<li>lenmax=dd<ul>
+<li>Where &apos;dd&apos; is the maximum number of elements per array that should be printed.  If &apos;dd&apos; is 0, all elements are printed (this is the default)</li>
+</ul>
+</li>
+<li>colsize=ss<ul>
+<li>Where &apos;ss&apos; will be used as the default size for all the column. If this options is not specified, the default column size is 9</li>
+</ul>
+</li>
+<li>precision=pp<ul>
+<li>Where &apos;pp&apos; will be used as the default &apos;precision&apos; for the printing format.</li>
+</ul>
+</li>
+<li>col=xxx<ul>
+<li>Where &apos;xxx&apos; is colon (:) delimited list of printing format for each column. The format string should follow the printf format specification.  The value given will be prefixed by % and, if no conversion specifier is given, will be suffixed by the letter g. before being passed to fprintf.  If no format is specified for a column, the default is used  (aka ${colsize}.${precision}g )</li>
+</ul>
+</li>
+</ul>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp">   <span class="hljs-comment">// Used as the max value for any TTree range operation.</span>
    <span class="hljs-keyword">static</span> <span class="hljs-keyword">constexpr</span> Long64_t kMaxEntries = TVirtualTreePlayer::kMaxEntries;
 
    <span class="hljs-comment">// SetBranchAddress return values</span>
@@ -5106,8 +5129,10 @@ The Fill function loops on all defined TBranch.</p><h2 id="class">class</h2><pre
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t           <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name=<span class="hljs-number">0</span>, Int_t option=<span class="hljs-number">0</span>, Int_t bufsize=<span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
 <span class="hljs-comment">/// Write this object to the current directory. For more see TObject::Write</span>
-<span class="hljs-comment">/// Write calls TTree::FlushBaskets before writing the tree.</span></code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">/// You can specify boundary limits for some or all parameters via</span>
+<span class="hljs-comment">/// Write calls TTree::FlushBaskets before writing the tree.</span>
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">/// You can specify boundary limits for some or all parameters via</span>
 
 func-&gt;SetParLimits(p_number, parmin, parmax);
 
@@ -5130,14 +5155,16 @@ func-&gt;SetParLimits(<span class="hljs-number">5</span>, <span class="hljs-numb
 TF1* f1 = <span class="hljs-keyword">new</span> TF1(<span class="hljs-string">&quot;f1&quot;</span>, <span class="hljs-string">&quot;gaus(0)/sqrt(2*3.14159)/[2]&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">5</span>);
 f1-&gt;SetParameters(<span class="hljs-number">1</span>, <span class="hljs-number">3.1</span>, <span class="hljs-number">0.01</span>);
 f1-&gt;SetParLimits(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// fix the normalization parameter to 1</span>
-data-&gt;UnbinnedFit(<span class="hljs-string">&quot;f1&quot;</span>, <span class="hljs-string">&quot;jpsimass&quot;</span>, <span class="hljs-string">&quot;jpsipt&gt;3.0&quot;</span>);</code></pre>
+data-&gt;UnbinnedFit(<span class="hljs-string">&quot;f1&quot;</span>, <span class="hljs-string">&quot;jpsimass&quot;</span>, <span class="hljs-string">&quot;jpsipt&gt;3.0&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// This gives the possibility to play with more than one index, e.g.,</span>
 
 TVirtualIndex* oldIndex = tree.GetTreeIndex();
 tree.SetTreeIndex(newIndex);
 tree.Draw();
 tree.SetTreeIndex(oldIndex);
-tree.Draw(); etc</code></pre>
+tree.Draw(); etc
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// Assume a tree T with sub-branches a,b,c,d,e,f,g,etc..</span>
 <span class="hljs-comment">/// when doing T.GetEntry(i) all branches are read for entry i.</span>
 <span class="hljs-comment">/// to read only the branches c and e, one can do</span>
@@ -5172,7 +5199,8 @@ T.SetBranchStatus(<span class="hljs-string">&quot;parent*&quot;</span>,<span cla
 TBranch *brc = T.GetBranch(<span class="hljs-string">&quot;c&quot;</span>);
 TBranch *bre = T.GetBranch(<span class="hljs-string">&quot;e&quot;</span>);
 brc-&gt;GetEntry(i);
-bre-&gt;GetEntry(i);</code></pre>
+bre-&gt;GetEntry(i);
+</code></pre>
 <pre><code class="lang-cpp">tree-&gt;SetAlias(<span class="hljs-string">&quot;x1&quot;</span>,<span class="hljs-string">&quot;(tdc1[1]-tdc1[0])/49&quot;</span>);
 tree-&gt;SetAlias(<span class="hljs-string">&quot;y1&quot;</span>,<span class="hljs-string">&quot;(tdc1[3]-tdc1[2])/47&quot;</span>);
 tree-&gt;SetAlias(<span class="hljs-string">&quot;x2&quot;</span>,<span class="hljs-string">&quot;(tdc2[1]-tdc2[0])/49&quot;</span>);
@@ -5180,12 +5208,14 @@ tree-&gt;SetAlias(<span class="hljs-string">&quot;y2&quot;</span>,<span class="h
 tree-&gt;Draw(<span class="hljs-string">&quot;y2-y1:x2-x1&quot;</span>);
 
 tree-&gt;SetAlias(<span class="hljs-string">&quot;theGoodTrack&quot;</span>,<span class="hljs-string">&quot;event.fTracks[3]&quot;</span>);
-tree-&gt;Draw(<span class="hljs-string">&quot;theGoodTrack.fPx&quot;</span>); <span class="hljs-comment">// same as &quot;event.fTracks[3].fPx&quot;</span></code></pre>
+tree-&gt;Draw(<span class="hljs-string">&quot;theGoodTrack.fPx&quot;</span>); <span class="hljs-comment">// same as &quot;event.fTracks[3].fPx&quot;</span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// To fill a TTree with multiple input text files, proceed as indicated above</span>
 <span class="hljs-comment">/// for the first input file and omit the second argument for subsequent calls</span>
 
 T.ReadFile(<span class="hljs-string">&quot;file1.dat&quot;</span>,<span class="hljs-string">&quot;branch descriptor&quot;</span>);
-T.ReadFile(<span class="hljs-string">&quot;file2.dat&quot;</span>);</code></pre>
+T.ReadFile(<span class="hljs-string">&quot;file2.dat&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// ## NOTE1</span>
 <span class="hljs-comment">/// It may be more interesting to invoke directly the other Process function</span>
 <span class="hljs-comment">/// accepting a TSelector* as argument.eg</span>
@@ -5222,7 +5252,8 @@ mytree.Process(selector,..);
 </code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// you can retrieve a pointer to the created object via:</span>
 
-TPrincipal *principal = (TPrincipal*)gROOT-&gt;GetListOfSpecials()-&gt;FindObject(<span class="hljs-string">&quot;principal&quot;</span>);</code></pre>
+TPrincipal *principal = (TPrincipal*)gROOT-&gt;GetListOfSpecials()-&gt;FindObject(<span class="hljs-string">&quot;principal&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// For example with Event.root, if</span>
 
 Double_t somePx = fTracks.fPx[<span class="hljs-number">2</span>];
@@ -5274,7 +5305,8 @@ Int_t n = fEventNumber; <span class="hljs-comment">// Read fEventNumber</span>
 <span class="hljs-comment">/// as follow:</span>
 
 <span class="hljs-keyword">new</span> TFile(<span class="hljs-string">&quot;hsimple.root&quot;</span>)
-ntuple-&gt;Draw(<span class="hljs-string">&quot;hsimple.cxx&quot;</span>);</code></pre>
+ntuple-&gt;Draw(<span class="hljs-string">&quot;hsimple.cxx&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// To use this function:</span>
 <span class="hljs-comment">/// - Open your tree file (eg: TFile f(&quot;myfile.root&quot;);)</span>
 <span class="hljs-comment">/// - T-&gt;MakeClass(&quot;MyClass&quot;);</span>
@@ -5382,18 +5414,21 @@ branch-&gt;SetAutoDelete(kTRUE);
 <span class="hljs-comment">/// not available.</span>
 
 <span class="hljs-comment">/// Note: See the comments in TBranchElement::SetAddress() for the</span>
-<span class="hljs-comment">/// object ownership policy of the underlying (user) data.</span></code></pre>
+<span class="hljs-comment">/// object ownership policy of the underlying (user) data.</span>
+</code></pre>
 <pre><code class="lang-cpp">TTree::TClusterIterator clusterIter = tree-&gt;GetClusterIterator(entry);
 Long64_t clusterStart;
 <span class="hljs-keyword">while</span>( (clusterStart = clusterIter()) &lt; tree-&gt;GetEntries() ) {
    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The cluster starts at %lld and ends at %lld (inclusive)\n&quot;</span>,clusterStart,clusterIter.GetNextEntry()<span class="hljs-number">-1</span>);
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp">tree.Fit(pol4,<span class="hljs-built_in">sqrt</span>(x)&gt;&gt;hsqrt,y&gt;<span class="hljs-number">0</span>)
 
 <span class="hljs-comment">/// will fit sqrt(x) and save the histogram as &quot;hsqrt&quot; in the current</span>
 <span class="hljs-comment">/// directory.</span>
 
-<span class="hljs-comment">/// See also TTree::UnbinnedFit</span></code></pre>
+<span class="hljs-comment">/// See also TTree::UnbinnedFit</span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// virtual Int_t           Branch(TCollection* list, Int_t bufsize = 32000, Int_t splitlevel = 99, const char* name = &quot;&quot;);</span>
 
 {
@@ -5425,7 +5460,8 @@ Long64_t clusterStart;
 
       T.Branch(<span class="hljs-built_in">list</span>,<span class="hljs-number">16000</span>,<span class="hljs-number">2</span>);
       T.Print();
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// virtual Long64_t        AutoSave(Option_t* option = &quot;&quot;);</span>
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">treew</span><span class="hljs-params">()</span> </span>{
@@ -5454,7 +5490,8 @@ Long64_t clusterStart;
       gSystem-&gt;Sleep(<span class="hljs-number">1000</span>); <span class="hljs-comment">//sleep 1 second</span>
       ntuple-&gt;Refresh();
    }
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// You may want to add a branch to an existing tree. For example,</span>
 <span class="hljs-comment">// if one variable in the tree was computed with a certain algorithm,</span>
 <span class="hljs-comment">// you may want to try another algorithm and compare the results.</span>
@@ -5490,8 +5527,10 @@ t3-&gt;Write(<span class="hljs-string">&quot;&quot;</span>, TObject::kOverwrite)
 <span class="hljs-comment">// original data is erased.</span>
 <span class="hljs-comment">// In addition, adding a branch to a tree enlarges the tree and increases</span>
 <span class="hljs-comment">// the amount of memory needed to read an entry, and therefore decreases</span>
-<span class="hljs-comment">// the performance.</span></code></pre>
-<h2 id="example">example</h2><pre><code class="lang-cpp">    <span class="hljs-comment">// A simple example with histograms and a tree</span>
+<span class="hljs-comment">// the performance.</span>
+</code></pre>
+<h2 id="example">example</h2>
+<pre><code class="lang-cpp">    <span class="hljs-comment">// A simple example with histograms and a tree</span>
     <span class="hljs-comment">//</span>
     <span class="hljs-comment">// This program creates :</span>
     <span class="hljs-comment">//    - a one dimensional histogram</span>
@@ -5582,10 +5621,9 @@ t3-&gt;Write(<span class="hljs-string">&quot;&quot;</span>, TObject::kOverwrite)
     hfile.Close();
 
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-}</code></pre>
+}
+</code></pre>
 <!-- TTree.md ends here -->
-
-
 
                                 
                                 </section>
@@ -5629,7 +5667,7 @@ t3-&gt;Write(<span class="hljs-string">&quot;&quot;</span>, TObject::kOverwrite)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TTree*","level":"1.2.101","depth":2,"next":{"title":"TTreePlayer*","level":"1.2.102","depth":2,"path":"class/TTreePlayer.md","ref":"class/TTreePlayer.md","articles":[]},"previous":{"title":"TTimeStamp","level":"1.2.100","depth":2,"path":"class/TTimeStamp.md","ref":"class/TTimeStamp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTree.md","mtime":"2016-11-27T12:33:35.666Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TTree*","level":"1.2.101","depth":2,"next":{"title":"TTreePlayer*","level":"1.2.102","depth":2,"path":"class/TTreePlayer.md","ref":"class/TTreePlayer.md","articles":[]},"previous":{"title":"TTimeStamp","level":"1.2.100","depth":2,"path":"class/TTimeStamp.md","ref":"class/TTimeStamp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTree.md","mtime":"2017-08-23T04:52:05.049Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

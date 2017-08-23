@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TQObject* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TQObject* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="../TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,9 +2969,14 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tqobject">TQObject</h1><p>This is the ROOT implementation of the Qt object communication</p><p>mechanism (see also http:www.troll.no/qt/metaobjects.html)</p><p>Signals and slots are used for communication between objects.</p><p>When an object has changed in some way that might be interesting</p><p>for the outside world, it emits a signal to tell whoever is</p><p>listening. All slots that are connected to this signal will be</p><p>activated (called).  It is even possible to connect a signal</p><p>directly to  another signal (this will emit the second signal</p><p>immediately whenever the first is emitted.) There is no limitation</p><p>on the number of slots that can be connected to a signal.</p><p>The slots will be activated in the order they were connected</p><p>to the signal. This mechanism allows objects to be easily reused,</p><p>because the object that emits a signal does not need to know</p><p>to what the signals are connected to.</p><p>Together, signals and slots make up a powerfull component</p><p>programming mechanism.</p><p>TQObject friend  TQConnection</p><p>TQObjSender &#x7EE7;&#x627F; TQObject</p><h2 id="class">class</h2><p><strong>TQObject</strong></p><pre><code class="lang-cpp">   TQObject();
+<h1 id="tqobject">TQObject</h1>
+<p>This is the ROOT implementation of the Qt object communication<br>mechanism (see also http:www.troll.no/qt/metaobjects.html)         </p>
+<p>Signals and slots are used for communication between objects.<br>When an object has changed in some way that might be interesting<br>for the outside world, it emits a signal to tell whoever is<br>listening. All slots that are connected to this signal will be<br>activated (called).  It is even possible to connect a signal<br>directly to  another signal (this will emit the second signal<br>immediately whenever the first is emitted.) There is no limitation<br>on the number of slots that can be connected to a signal.<br>The slots will be activated in the order they were connected<br>to the signal. This mechanism allows objects to be easily reused,<br>because the object that emits a signal does not need to know<br>to what the signals are connected to.<br>Together, signals and slots make up a powerfull component<br>programming mechanism.                                               </p>
+<p>TQObject friend  TQConnection</p>
+<p>TQObjSender &#x7EE7;&#x627F; TQObject</p>
+<h2 id="class">class</h2>
+<p><strong>TQObject</strong></p>
+<pre><code class="lang-cpp">   TQObject();
 <span class="hljs-comment">/// TQObject Constructor.</span>
 <span class="hljs-comment">/// Comment:</span>
 <span class="hljs-comment">///  - In order to minimize memory allocation fListOfSignals and</span>
@@ -3167,27 +3172,36 @@
 
    <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">AreAllSignalsBlocked</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Returns true if all signals are blocked.</span>
    <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">BlockAllSignals</span><span class="hljs-params">(Bool_t b)</span></span>;
-<span class="hljs-comment">/// Block or unblock all signals. Returns the previous block status.   </span></code></pre>
-<p><strong>TQObjSender</strong></p><pre><code class="lang-cpp">   TQObjSender() : TQObject(), fSender(<span class="hljs-number">0</span>), fSenderClass() { }
+<span class="hljs-comment">/// Block or unblock all signals. Returns the previous block status.</span>
+</code></pre>
+<p><strong>TQObjSender</strong></p>
+<pre><code class="lang-cpp">   TQObjSender() : TQObject(), fSender(<span class="hljs-number">0</span>), fSenderClass() { }
    <span class="hljs-keyword">virtual</span> ~TQObjSender() { Disconnect(); }
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetSender</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *sender)</span> </span>{ fSender = sender; }
-   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetSenderClassName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *sclass = <span class="hljs-string">&quot;&quot;</span>)</span> </span>{ fSenderClass = sclass; }</code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name)</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetSenderClassName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *sclass = <span class="hljs-string">&quot;&quot;</span>)</span> </span>{ fSenderClass = sclass; }
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name)</span>
 
-theButton-&gt;Emit(<span class="hljs-string">&quot;Clicked()&quot;</span>);</code></pre>
+theButton-&gt;Emit(<span class="hljs-string">&quot;Clicked()&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, Long_t param)</span>
 
-theButton-&gt;Emit(<span class="hljs-string">&quot;Clicked(int)&quot;</span>,id)</code></pre>
+theButton-&gt;Emit(<span class="hljs-string">&quot;Clicked(int)&quot;</span>,id)
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, Long64_t param)</span>
 
-theButton-&gt;Emit(<span class="hljs-string">&quot;Progress(Long64_t)&quot;</span>,processed)</code></pre>
+theButton-&gt;Emit(<span class="hljs-string">&quot;Progress(Long64_t)&quot;</span>,processed)
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, Double_t param)</span>
 
-theButton-&gt;Emit(<span class="hljs-string">&quot;Scale(float)&quot;</span>,factor)</code></pre>
+theButton-&gt;Emit(<span class="hljs-string">&quot;Scale(float)&quot;</span>,factor)
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, const char *params)</span>
 
-myObject-&gt;Emit(<span class="hljs-string">&quot;Error(char*)&quot;</span>,<span class="hljs-string">&quot;Fatal error&quot;</span>);</code></pre>
+myObject-&gt;Emit(<span class="hljs-string">&quot;Error(char*)&quot;</span>,<span class="hljs-string">&quot;Fatal error&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, Long_t *paramArr)</span>
 
 TQObject *processor; <span class="hljs-comment">// data processor</span>
@@ -3200,7 +3214,8 @@ Long_t args[<span class="hljs-number">2</span>];
 args[<span class="hljs-number">0</span>] = (Long_t)processor-&gt;GetValue(<span class="hljs-number">1</span>);
 args[<span class="hljs-number">1</span>] = (Long_t)processor-&gt;GetValue(<span class="hljs-number">2</span>);
 
-processor-&gt;Emit(<span class="hljs-string">&quot;Evaluated(Float_t,Float_t)&quot;</span>,args);</code></pre>
+processor-&gt;Emit(<span class="hljs-string">&quot;Evaluated(Float_t,Float_t)&quot;</span>,args);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// Bool_t TQObject::Connect(TQObject *sender,</span>
 <span class="hljs-comment">//                          const char *signal,</span>
 <span class="hljs-comment">//                          const char *cl,</span>
@@ -3220,7 +3235,8 @@ TQObject::Connect(myButton,<span class="hljs-string">&quot;Clicked()&quot;</span
 TGButton *myButton;
 TH2F     *myHist;
 TQObject::Connect(myButton,<span class="hljs-string">&quot;Clicked()&quot;</span>,
-                  <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,<span class="hljs-string">&quot;hsimple()&quot;</span>);</code></pre>
+                  <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,<span class="hljs-string">&quot;hsimple()&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// Bool_t TQObject::Connect(const char *class_name,</span>
 <span class="hljs-comment">//                          const char *signal,</span>
 <span class="hljs-comment">//                          const char *cl,</span>
@@ -3243,10 +3259,10 @@ TQObject::Connect(<span class="hljs-string">&quot;TGButton&quot;</span>, <span c
 TGButton *myButton;
 TH2F     *myHist;
 TQObject::Connect(<span class="hljs-string">&quot;TGButton&quot;</span>, <span class="hljs-string">&quot;Clicked()&quot;</span>,
-                   <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&quot;hsimple()&quot;</span>);</code></pre>
-<h2 id="example">example</h2><!-- TQObject.md ends here -->
-
-
+                   <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&quot;hsimple()&quot;</span>);
+</code></pre>
+<h2 id="example">example</h2>
+<!-- TQObject.md ends here -->
 
                                 
                                 </section>
@@ -3290,7 +3306,7 @@ TQObject::Connect(<span class="hljs-string">&quot;TGButton&quot;</span>, <span c
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TQObject*","level":"1.3.79","depth":2,"next":{"title":"TRootEmbeddedCanvas*","level":"1.3.80","depth":2,"path":"class/gui/TRootEmbeddedCanvas.md","ref":"class/gui/TRootEmbeddedCanvas.md","articles":[]},"previous":{"title":"TGXYLayout","level":"1.3.78","depth":2,"path":"class/gui/TGXYLayout.md","ref":"class/gui/TGXYLayout.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TQObject.md","mtime":"2016-11-09T06:52:13.819Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TQObject*","level":"1.3.79","depth":2,"next":{"title":"TRootEmbeddedCanvas*","level":"1.3.80","depth":2,"path":"class/gui/TRootEmbeddedCanvas.md","ref":"class/gui/TRootEmbeddedCanvas.md","articles":[]},"previous":{"title":"TGXYLayout","level":"1.3.78","depth":2,"path":"class/gui/TGXYLayout.md","ref":"class/gui/TGXYLayout.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TQObject.md","mtime":"2017-07-11T12:51:30.005Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

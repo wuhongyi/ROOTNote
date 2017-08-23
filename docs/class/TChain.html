@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TChain* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TChain* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2968,9 +2968,16 @@
 ;; Last-Updated: 二 11月  1 21:45:06 2016 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 4
-;; URL: http://wuhongyi.cn --></p><h1 id="tchain">TChain</h1><h2 id="class">class</h2><p>&#x7EE7;&#x627F; TTree</p><p>A chain is a collection of files containg TTree objects.
-When the chain is created, the first parameter is the default name for the Tree to be processed later on.</p><p>Enter a new element in the chain via the TChain::Add function.
-Once a chain is defined, one can use the normal TTree functions to Draw,Scan,etc.</p><p>Use TChain::SetBranchStatus to activate one or more branches for all the trees in the chain.</p><pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+;; URL: http://wuhongyi.cn --></p>
+<h1 id="tchain">TChain</h1>
+<h2 id="class">class</h2>
+<p>&#x7EE7;&#x627F; TTree</p>
+<p>A chain is a collection of files containg TTree objects.
+When the chain is created, the first parameter is the default name for the Tree to be processed later on.</p>
+<p>Enter a new element in the chain via the TChain::Add function.
+Once a chain is defined, one can use the normal TTree functions to Draw,Scan,etc.</p>
+<p>Use TChain::SetBranchStatus to activate one or more branches for all the trees in the chain.</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
    <span class="hljs-comment">// TChain constants</span>
    <span class="hljs-keyword">enum</span> {
       kGlobalWeight   = BIT(<span class="hljs-number">15</span>),
@@ -3448,13 +3455,16 @@ Once a chain is defined, one can use the normal TTree functions to Draw,Scan,etc
 <span class="hljs-comment">/// weights to be ignored by specifying the option &quot;global&quot;.</span>
 <span class="hljs-comment">/// In this case, the TChain global weight will be used for all Trees.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">UseCache</span><span class="hljs-params">(Int_t maxCacheSize = <span class="hljs-number">10</span>, Int_t pageSize = <span class="hljs-number">0</span>)</span></span>;</code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">///  Suppose we have 3 files f1.root, f2.root and f3.root. Each file contains a TTree object named &quot;T&quot;.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">UseCache</span><span class="hljs-params">(Int_t maxCacheSize = <span class="hljs-number">10</span>, Int_t pageSize = <span class="hljs-number">0</span>)</span></span>;
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">///  Suppose we have 3 files f1.root, f2.root and f3.root. Each file contains a TTree object named &quot;T&quot;.</span>
 <span class="hljs-function">TChain <span class="hljs-title">ch</span><span class="hljs-params">(<span class="hljs-string">&quot;T&quot;</span>)</span></span>;  creates a chain to process a Tree called <span class="hljs-string">&quot;T&quot;</span>
 ch.Add(<span class="hljs-string">&quot;f1.root&quot;</span>);
 ch.Add(<span class="hljs-string">&quot;f2.root&quot;</span>);
 ch.Add(<span class="hljs-string">&quot;f3.root&quot;</span>);
-ch.Draw(<span class="hljs-string">&quot;x&quot;</span>);</code></pre>
+ch.Draw(<span class="hljs-string">&quot;x&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp">/// Each TChainElement has a name equal to the tree name of this TChain and a title equal to the file name. So, to loop over the TFiles that have been added to this chain:
 
 TObjArray *fileElements=chain-&gt;GetListOfFiles();
@@ -3463,7 +3473,8 @@ TChainElement *chEl=0;
 while (( chEl=(TChainElement*)next() )) {
    TFile f(chEl-&gt;GetTitle());
 //   ... do something with f ...
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// Example using the file generated in $ROOTSYS/test/Event</span>
 <span class="hljs-comment">/// merge two copies of Event.root</span>
 
@@ -3471,7 +3482,8 @@ gSystem.Load(<span class="hljs-string">&quot;libEvent&quot;</span>);
 <span class="hljs-function">TChain <span class="hljs-title">ch</span><span class="hljs-params">(<span class="hljs-string">&quot;T&quot;</span>)</span></span>;
 ch.Add(<span class="hljs-string">&quot;Event1.root&quot;</span>);
 ch.Add(<span class="hljs-string">&quot;Event2.root&quot;</span>);
-ch.Merge(<span class="hljs-string">&quot;all.root&quot;</span>);</code></pre>
+ch.Merge(<span class="hljs-string">&quot;all.root&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// If the chain is expecting the input tree inside a directory,</span>
 <span class="hljs-comment">/// this directory is NOT created by this routine.</span>
 <span class="hljs-comment">///</span>
@@ -3492,7 +3504,8 @@ ch.Merge(file);
 
 <span class="hljs-keyword">if</span> (newchain-&gt;GetEntries()!=oldchain-&gt;GetEntries()) {
    ... not all the file have been copied ...
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// This example has four chains each has 20 ROOT trees from 20 ROOT files.</span>
 
 <span class="hljs-function">TChain <span class="hljs-title">ch</span><span class="hljs-params">(<span class="hljs-string">&quot;t&quot;</span>)</span></span>; <span class="hljs-comment">// a chain with 20 trees from 20 files</span>
@@ -3509,10 +3522,10 @@ ch.AddFriend(<span class="hljs-string">&quot;t3&quot;</span>)
 <span class="hljs-comment">/// For example, this generates a 3-d scatter plot of variable &quot;var&quot; in the</span>
 <span class="hljs-comment">/// TChain ch versus variable v1 in TChain t1 versus variable v2 in TChain t2.</span>
 
-ch.Draw(<span class="hljs-string">&quot;var:t1.v1:t2.v2&quot;</span>);</code></pre>
-<h2 id="example">example</h2><!-- TChain.md ends here -->
-
-
+ch.Draw(<span class="hljs-string">&quot;var:t1.v1:t2.v2&quot;</span>);
+</code></pre>
+<h2 id="example">example</h2>
+<!-- TChain.md ends here -->
 
                                 
                                 </section>
@@ -3556,7 +3569,7 @@ ch.Draw(<span class="hljs-string">&quot;var:t1.v1:t2.v2&quot;</span>);</code></p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TChain*","level":"1.2.10","depth":2,"next":{"title":"TCut*","level":"1.2.11","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"previous":{"title":"TCanvas*","level":"1.2.9","depth":2,"path":"class/TCanvas.md","ref":"class/TCanvas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TChain.md","mtime":"2016-11-02T05:51:14.404Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TChain*","level":"1.2.10","depth":2,"next":{"title":"TCut*","level":"1.2.11","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"previous":{"title":"TCanvas*","level":"1.2.9","depth":2,"path":"class/TCanvas.md","ref":"class/TCanvas.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TChain.md","mtime":"2017-07-11T12:51:30.007Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

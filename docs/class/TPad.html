@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TPad* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TPad* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,24 +2969,36 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 30
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tpad">TPad</h1><p>&#x7EE7;&#x627F; TVirtualPad, TAttBBox2D</p><p>The most important graphics class in the ROOT system.</p><p>A Pad is contained in a Canvas.</p><p>A Pad may contain other pads (unlimited pad hierarchy).</p><p>A pad is a linked list of primitives of any type (graphics objects,
-histograms, detectors, tracks, etc.).</p><p>Adding a new element into a pad is in general performed by the Draw
-member function of the object classes.</p><p>It is important to realize that the pad is a linked list of references
+<h1 id="tpad">TPad</h1>
+<p>&#x7EE7;&#x627F; TVirtualPad, TAttBBox2D</p>
+<p>The most important graphics class in the ROOT system.</p>
+<p>A Pad is contained in a Canvas.</p>
+<p>A Pad may contain other pads (unlimited pad hierarchy).</p>
+<p>A pad is a linked list of primitives of any type (graphics objects,
+histograms, detectors, tracks, etc.).</p>
+<p>Adding a new element into a pad is in general performed by the Draw
+member function of the object classes.</p>
+<p>It is important to realize that the pad is a linked list of references
 to the original object.
 For example, in case of a histogram, the histogram.Draw() operation
 only stores a reference to the histogram object and not a graphical
 representation of this histogram.
 When the mouse is used to change (say the bin content), the bin content
-of the original histogram is changed.</p><p>The convention used in ROOT is that a Draw operation only adds
+of the original histogram is changed.</p>
+<p>The convention used in ROOT is that a Draw operation only adds
 a reference to the object. The effective drawing is performed
-when the canvas receives a signal to be painted.</p><p>In ExecuteEvent, move, changes can be performed on the object.</p><p>For examples of DistancetoPrimitive and ExecuteEvent functions,
-see classes</p><pre><code class="lang-{.cpp}">      TLine::DistancetoPrimitive, TLine::ExecuteEvent
+when the canvas receives a signal to be painted.</p>
+<p>In ExecuteEvent, move, changes can be performed on the object.</p>
+<p>For examples of DistancetoPrimitive and ExecuteEvent functions,
+see classes</p>
+<pre><code class="lang-{.cpp}">      TLine::DistancetoPrimitive, TLine::ExecuteEvent
       TBox::DistancetoPrimitive,  TBox::ExecuteEvent
-      TH1::DistancetoPrimitive,   TH1::ExecuteEvent</code></pre>
+      TH1::DistancetoPrimitive,   TH1::ExecuteEvent
+</code></pre>
 <p>A Pad supports linear and log scales coordinate systems.
-The transformation coefficients are explained in TPad::ResizePad.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// TPad status bits</span>
+The transformation coefficients are explained in TPad::ResizePad.</p>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp">   <span class="hljs-comment">// TPad status bits</span>
    <span class="hljs-keyword">enum</span> {
       kFraming      = BIT(<span class="hljs-number">6</span>),
       kHori         = BIT(<span class="hljs-number">9</span>),
@@ -3654,8 +3666,10 @@ The transformation coefficients are explained in TPad::ResizePad.</p><h2 id="cla
 <span class="hljs-comment">/// Emit RecordLatex() signal.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">EventPave</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;EventPave()&quot;</span>); }         <span class="hljs-comment">// *SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">StartEditing</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;StartEditing()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span></code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">//&#x56FE;&#x7247;&#x4FEE;&#x9970;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">StartEditing</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;StartEditing()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x56FE;&#x7247;&#x4FEE;&#x9970;</span>
 gPad-&gt;SetTickx(<span class="hljs-number">1</span>);<span class="hljs-comment">//&#x4E0A;&#x8FB9;&#x6846;&#x6709;&#x523B;&#x5EA6;</span>
 gPad-&gt;SetTicky(<span class="hljs-number">1</span>);<span class="hljs-comment">//&#x53F3;&#x8FB9;&#x6846;&#x6709;&#x523B;&#x5EA6;</span>
 gPad-&gt;SetTickx(<span class="hljs-number">2</span>);<span class="hljs-comment">//&#x4E0A;&#x8FB9;&#x6846;&#x6709;&#x523B;&#x5EA6;&#x548C;&#x6570;&#x503C;</span>
@@ -3669,7 +3683,8 @@ pad1-&gt;cd();
 pad1-&gt;SetLogy();<span class="hljs-comment">//y&#x8F74; &#x5BF9;&#x6570;&#x5750;&#x6807;</span>
 pad1-&gt;SetGridy();<span class="hljs-comment">//y&#x8F74; &#x7F51;&#x683C;</span>
 pad2-&gt;SetLogx();
-pad2-&gt;SetGridx();</code></pre>
+pad2-&gt;SetGridx();
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// The following macro waits for 10 primitives of any type to be created.</span>
 
    <span class="hljs-function">TCanvas <span class="hljs-title">c1</span><span class="hljs-params">(<span class="hljs-string">&quot;c1&quot;</span>)</span></span>;
@@ -3679,7 +3694,8 @@ pad2-&gt;SetGridx();</code></pre>
       <span class="hljs-keyword">if</span> (!obj) <span class="hljs-keyword">break</span>;
       <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Loop i=%d, found objIsA=%s, name=%s\n&quot;</span>,
          i,obj-&gt;ClassName(),obj-&gt;GetName());
-   }</code></pre>
+   }
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// Function called to draw a crosshair in the canvas</span>
 <span class="hljs-comment">/// When moving the mouse in the canvas, a crosshair is drawn</span>
 <span class="hljs-comment">///  - if the canvas fCrosshair = 1 , the crosshair spans the full canvas</span>
@@ -3687,7 +3703,8 @@ pad2-&gt;SetGridx();</code></pre>
 
 <span class="hljs-function">TFile <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-string">&quot;hsimple.root&quot;</span>)</span></span>;
 hpxpy.Draw();
-c1.SetCrosshair();</code></pre>
+c1.SetCrosshair();
+</code></pre>
 <pre><code class="lang-cpp">///  The following examples of TExec commands are provided in the tutorials:
 
 Root &gt; TFile f(&quot;hsimple.root&quot;)
@@ -3700,7 +3717,8 @@ Root &gt; c1.AddExec(&quot;ex1&quot;,&quot;.x exec1.C&quot;)
 
 Root &gt; TFile f(&quot;hsimple.root&quot;)
 Root &gt; hpxpy.Draw()
-Root &gt; c1.AddExec(&quot;ex2&quot;,&quot;.x exec2.C&quot;)</code></pre>
+Root &gt; c1.AddExec(&quot;ex2&quot;,&quot;.x exec2.C&quot;)
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// The physical size of the Postscript page is the one selected in the</span>
 <span class="hljs-comment">/// current style. This size can be modified via TStyle::SetPaperSize.</span>
 
@@ -3785,10 +3803,10 @@ c1.Print(<span class="hljs-string">&quot;file.ps]&quot;</span>);   <span class="
 <span class="hljs-comment">/// The delay between each frame must be specified in each Print() statement.</span>
 <span class="hljs-comment">/// If the file &quot;myfile.gif&quot; already exists, the new frame are appended at</span>
 <span class="hljs-comment">/// the end of the file. To avoid this, delete it first with gSystem-&gt;Unlink(myfile.gif);</span>
-<span class="hljs-comment">/// If you want the gif file to repeat or loop forever, check TASImage::WriteImage documentation</span></code></pre>
-<h2 id="example">example</h2><!-- TPad.md ends here -->
-
-
+<span class="hljs-comment">/// If you want the gif file to repeat or loop forever, check TASImage::WriteImage documentation</span>
+</code></pre>
+<h2 id="example">example</h2>
+<!-- TPad.md ends here -->
 
                                 
                                 </section>
@@ -3832,7 +3850,7 @@ c1.Print(<span class="hljs-string">&quot;file.ps]&quot;</span>);   <span class="
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TPad*","level":"1.2.58","depth":2,"next":{"title":"TPaveStats*","level":"1.2.59","depth":2,"path":"class/TPaveStats.md","ref":"class/TPaveStats.md","articles":[]},"previous":{"title":"TNtupleD*","level":"1.2.57","depth":2,"path":"class/TNtupleD.md","ref":"class/TNtupleD.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TPad.md","mtime":"2016-11-02T05:51:12.479Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TPad*","level":"1.2.58","depth":2,"next":{"title":"TPaveStats*","level":"1.2.59","depth":2,"path":"class/TPaveStats.md","ref":"class/TPaveStats.md","articles":[]},"previous":{"title":"TNtupleD*","level":"1.2.57","depth":2,"path":"class/TNtupleD.md","ref":"class/TNtupleD.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TPad.md","mtime":"2017-07-11T12:51:30.030Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

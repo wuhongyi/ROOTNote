@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGraph* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TGraph* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,9 +2969,10 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 15
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tgraph">TGraph</h1><p>&#x7EE7;&#x627F; TNamed, TAttLine, TAttFill, TAttMarker</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// TGraph status bits</span>
+<h1 id="tgraph">TGraph</h1>
+<p>&#x7EE7;&#x627F; TNamed, TAttLine, TAttFill, TAttMarker </p>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp">   <span class="hljs-comment">// TGraph status bits</span>
    <span class="hljs-keyword">enum</span> {
       kClipFrame     = BIT(<span class="hljs-number">10</span>),  <span class="hljs-comment">// clip to the frame boundary</span>
       kNotEditable   = BIT(<span class="hljs-number">18</span>)   <span class="hljs-comment">// bit set if graph is non editable</span>
@@ -3501,8 +3502,10 @@
 <span class="hljs-comment">/// Find zero of a continuous function.</span>
 <span class="hljs-comment">/// This function finds a real zero of the continuous real</span>
 <span class="hljs-comment">/// function Y(X) in a given interval (A,B). See accompanying</span>
-<span class="hljs-comment">/// notes for details of the argument list and calling sequence</span></code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// sort points along x axis</span>
+<span class="hljs-comment">/// notes for details of the argument list and calling sequence</span>
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">// sort points along x axis</span>
 graph-&gt;Sort();
 <span class="hljs-comment">// sort points along their distance to origin</span>
 graph-&gt;Sort(&amp;TGraph::CompareRadius);
@@ -3511,8 +3514,10 @@ graph-&gt;Sort(&amp;TGraph::CompareRadius);
   <span class="hljs-keyword">const</span> TGraphErrors* ge=(<span class="hljs-keyword">const</span> TGraphErrors*)gr;
   <span class="hljs-keyword">return</span> (ge-&gt;GetEY()[i]&gt;ge-&gt;GetEY()[j]); }
 <span class="hljs-comment">// sort using the above comparison function, largest errors first</span>
-graph-&gt;Sort(&amp;CompareErrors, kFALSE);</code></pre>
-<h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-keyword">const</span> Int_t n = <span class="hljs-number">20</span>;
+graph-&gt;Sort(&amp;CompareErrors, kFALSE);
+</code></pre>
+<h2 id="example">example</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">const</span> Int_t n = <span class="hljs-number">20</span>;
 Double_t x[n], y[n];
 <span class="hljs-keyword">for</span> (Int_t i=<span class="hljs-number">0</span>;i&lt;n;i++) {
 x[i] = i*<span class="hljs-number">0.1</span>;
@@ -3521,7 +3526,8 @@ y[i] = <span class="hljs-number">10</span>*<span class="hljs-built_in">sin</span
 TGraph *gr = <span class="hljs-keyword">new</span> TGraph(n,x,y);
 TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;Graph Draw Options&quot;</span>,<span class="hljs-number">200</span>,<span class="hljs-number">10</span>,<span class="hljs-number">600</span>,<span class="hljs-number">400</span>);
 <span class="hljs-comment">// draw the graph with axis, continuous line, and put a * at each point</span>
-gr-&gt;Draw(<span class="hljs-string">&quot;AC*&quot;</span>);</code></pre>
+gr-&gt;Draw(<span class="hljs-string">&quot;AC*&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//Draw a graph with text attached to each point.</span>
 
 <span class="hljs-keyword">const</span> Int_t n = <span class="hljs-number">10</span>;
@@ -3549,7 +3555,8 @@ gr-&gt;GetListOfFunctions()-&gt;Add(ex);
       l-&gt;SetTextAlign(<span class="hljs-number">21</span>);
       l-&gt;Paint();
    }
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//Draw a simple graph&#x3002;</span>
 
 TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;A Simple Graph Example&quot;</span>,<span class="hljs-number">200</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">500</span>);
@@ -3571,7 +3578,8 @@ gr-&gt;SetMarkerStyle(<span class="hljs-number">21</span>);
 gr-&gt;SetTitle(<span class="hljs-string">&quot;a simple graph&quot;</span>);<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x6807;&#x9898;</span>
 gr-&gt;GetXaxis()-&gt;SetTitle(<span class="hljs-string">&quot;X title&quot;</span>);<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x6A2A;&#x5750;&#x6807;</span>
 gr-&gt;GetYaxis()-&gt;SetTitle(<span class="hljs-string">&quot;Y title&quot;</span>);<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x7EB5;&#x5750;&#x6807;</span>
-gr-&gt;Draw(<span class="hljs-string">&quot;ACP&quot;</span>);</code></pre>
+gr-&gt;Draw(<span class="hljs-string">&quot;ACP&quot;</span>);
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//Draw several graphs with an exclusion zones.&#x4E00;&#x4E2A;&#x753B;&#x677F;&#x4E0A;&#x753B;&#x51FA;&#x591A;&#x4E2A;Graph&#xFF0C;&#x56FE;&#x7247;&#x4E0A;&#x52A0;&#x6CE8;&#x91CA;&#x3002;</span>
 
 TCanvas *c = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-string">&quot;Charged Higgs L300 Contour&quot;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">700</span>,<span class="hljs-number">700</span>);
@@ -3716,10 +3724,9 @@ gr5-&gt;SetPoint(<span class="hljs-number">6</span>,<span class="hljs-number">36
 gr5-&gt;SetPoint(<span class="hljs-number">7</span>,<span class="hljs-number">396.589</span>,<span class="hljs-number">24.4859</span>);
 gr5-&gt;SetPoint(<span class="hljs-number">8</span>,<span class="hljs-number">433.752</span>,<span class="hljs-number">25.7669</span>);
 gr5-&gt;SetPoint(<span class="hljs-number">9</span>,<span class="hljs-number">499.192</span>,<span class="hljs-number">27.3132</span>);
-gr5-&gt;Draw(<span class="hljs-string">&quot;C&quot;</span>);</code></pre>
+gr5-&gt;Draw(<span class="hljs-string">&quot;C&quot;</span>);
+</code></pre>
 <!-- TGraph.md ends here -->
-
-
 
                                 
                                 </section>
@@ -3763,7 +3770,7 @@ gr5-&gt;Draw(<span class="hljs-string">&quot;C&quot;</span>);</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGraph*","level":"1.2.26","depth":2,"next":{"title":"TGraph2D","level":"1.2.27","depth":2,"path":"class/TGraph2D.md","ref":"class/TGraph2D.md","articles":[]},"previous":{"title":"TGaxis*","level":"1.2.25","depth":2,"path":"class/TGaxis.md","ref":"class/TGaxis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TGraph.md","mtime":"2016-11-07T13:50:42.824Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGraph*","level":"1.2.26","depth":2,"next":{"title":"TGraph2D","level":"1.2.27","depth":2,"path":"class/TGraph2D.md","ref":"class/TGraph2D.md","articles":[]},"previous":{"title":"TGaxis*","level":"1.2.25","depth":2,"path":"class/TGaxis.md","ref":"class/TGaxis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TGraph.md","mtime":"2017-07-11T12:51:29.987Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

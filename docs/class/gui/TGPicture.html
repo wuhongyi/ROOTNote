@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGPicture+ · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TGPicture+ · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="../TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,9 +2969,13 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tgpicture">TGPicture</h1><p>TGPicture &#x7EE7;&#x627F; TObject, TRefCnt , friend TGPicturePool</p><p>TGSelectedPicture &#x7EE7;&#x627F; TGPicture</p><p>TGPicturePool &#x7EE7;&#x627F; TObject</p><h2 id="class">class</h2><p><strong>TGPicture</strong></p><pre><code class="lang-cpp">   <span class="hljs-keyword">virtual</span> ~TGPicture();
+<h1 id="tgpicture">TGPicture</h1>
+<p>TGPicture &#x7EE7;&#x627F; TObject, TRefCnt , friend TGPicturePool</p>
+<p>TGSelectedPicture &#x7EE7;&#x627F; TGPicture</p>
+<p>TGPicturePool &#x7EE7;&#x627F; TObject</p>
+<h2 id="class">class</h2>
+<p><strong>TGPicture</strong></p>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">virtual</span> ~TGPicture();
 
    <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fName; }
    <span class="hljs-function">UInt_t      <span class="hljs-title">GetWidth</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAttributes.fWidth; }
@@ -2983,10 +2987,14 @@
    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">HashName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Int_t width, Int_t height)</span></span>;
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Draw</span><span class="hljs-params">(Handle_t id, GContext_t gc, Int_t x, Int_t y)</span> <span class="hljs-keyword">const</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;</code></pre>
-<p><strong>TGSelectedPicture</strong></p><pre><code class="lang-cpp">   TGSelectedPicture(<span class="hljs-keyword">const</span> TGClient *client, <span class="hljs-keyword">const</span> TGPicture *p);
-   <span class="hljs-keyword">virtual</span> ~TGSelectedPicture();</code></pre>
-<p><strong>TGPicturePool</strong></p><pre><code class="lang-cpp">   TGPicturePool(<span class="hljs-keyword">const</span> TGClient *client, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *path):
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+</code></pre>
+<p><strong>TGSelectedPicture</strong></p>
+<pre><code class="lang-cpp">   TGSelectedPicture(<span class="hljs-keyword">const</span> TGClient *client, <span class="hljs-keyword">const</span> TGPicture *p);
+   <span class="hljs-keyword">virtual</span> ~TGSelectedPicture();
+</code></pre>
+<p><strong>TGPicturePool</strong></p>
+<pre><code class="lang-cpp">   TGPicturePool(<span class="hljs-keyword">const</span> TGClient *client, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *path):
       fClient(client), fPath(path), fPicList(<span class="hljs-number">0</span>) { }
    <span class="hljs-keyword">virtual</span> ~TGPicturePool();
 
@@ -2997,8 +3005,10 @@
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetPicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Pixmap_t pxmap, Pixmap_t mask =  <span class="hljs-number">0</span>)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">FreePicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *pic)</span></span>;
 
-   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;</code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGIcon.h&quot;</span></span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGIcon.h&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGResourcePool.h&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGPicture.h&quot;</span></span>
 
@@ -3038,10 +3048,10 @@ gClient-&gt;GetColorByName(<span class="hljs-string">&quot;yellow&quot;</span>, 
 TGPicturePool *picpool = gClient-&gt;GetResourcePool()-&gt;GetPicturePool();
 <span class="hljs-keyword">const</span> TGPicture *iconpic = picpool-&gt;GetPicture(name.Data(),(<span class="hljs-keyword">char</span> **)icon1);
 TGIcon *icon = <span class="hljs-keyword">new</span> TGIcon(frame, iconpic, <span class="hljs-number">40</span>, <span class="hljs-number">40</span>, kChildFrame, yellow);
-frame-&gt;AddFrame(icon, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsLeft, <span class="hljs-number">1</span>,<span class="hljs-number">15</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>));</code></pre>
-<h2 id="example">example</h2><!-- TGPicture.md ends here -->
-
-
+frame-&gt;AddFrame(icon, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsLeft, <span class="hljs-number">1</span>,<span class="hljs-number">15</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>));
+</code></pre>
+<h2 id="example">example</h2>
+<!-- TGPicture.md ends here -->
 
                                 
                                 </section>
@@ -3085,7 +3095,7 @@ frame-&gt;AddFrame(icon, <span class="hljs-keyword">new</span> TGLayoutHints(kLH
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGPicture+","level":"1.3.42","depth":2,"next":{"title":"TGProgressBar*","level":"1.3.43","depth":2,"path":"class/gui/TGProgressBar.md","ref":"class/gui/TGProgressBar.md","articles":[]},"previous":{"title":"TGPasswdDialog","level":"1.3.41","depth":2,"path":"class/gui/TGPasswdDialog.md","ref":"class/gui/TGPasswdDialog.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGPicture.md","mtime":"2016-11-08T12:57:52.305Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGPicture+","level":"1.3.42","depth":2,"next":{"title":"TGProgressBar*","level":"1.3.43","depth":2,"path":"class/gui/TGProgressBar.md","ref":"class/gui/TGProgressBar.md","articles":[]},"previous":{"title":"TGPasswdDialog","level":"1.3.41","depth":2,"path":"class/gui/TGPasswdDialog.md","ref":"class/gui/TGPasswdDialog.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGPicture.md","mtime":"2017-07-11T12:51:29.999Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

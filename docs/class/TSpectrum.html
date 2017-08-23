@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TSpectrum · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TSpectrum · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,9 +2969,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tspectrum">TSpectrum</h1><h2 id="class">class</h2><pre><code class="lang-cpp">TSpectrum();
+<h1 id="tspectrum">TSpectrum</h1>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp">TSpectrum();
 TSpectrum(Int_t maxpositions, Double_t resolution=<span class="hljs-number">1</span>);
 <span class="hljs-keyword">virtual</span> ~TSpectrum();
 <span class="hljs-function"><span class="hljs-keyword">virtual</span> TH1        *<span class="hljs-title">Background</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TH1 *hist,Int_t niter=<span class="hljs-number">20</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
@@ -2995,7 +2995,8 @@ TSpectrum(Int_t maxpositions, Double_t resolution=<span class="hljs-number">1</s
 <span class="hljs-function">Int_t               <span class="hljs-title">Search1HighRes</span><span class="hljs-params">(Double_t *source,Double_t *destVector, Int_t ssize,Double_t sigma, Double_t threshold,<span class="hljs-keyword">bool</span> backgroundRemove,Int_t deconIterations,<span class="hljs-keyword">bool</span> markov, Int_t averWindow)</span></span>;
 
 <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t        <span class="hljs-title">StaticSearch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TH1 *hist, Double_t sigma=<span class="hljs-number">2</span>, Option_t *option=<span class="hljs-string">&quot;goff&quot;</span>, Double_t threshold=<span class="hljs-number">0.05</span>)</span></span>;
-<span class="hljs-function"><span class="hljs-keyword">static</span> TH1         *<span class="hljs-title">StaticBackground</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TH1 *hist,Int_t niter=<span class="hljs-number">20</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+<span class="hljs-function"><span class="hljs-keyword">static</span> TH1         *<span class="hljs-title">StaticBackground</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TH1 *hist,Int_t niter=<span class="hljs-number">20</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span> TH1        *<span class="hljs-title">Background</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TH1 *hist,Int_t niter=<span class="hljs-number">20</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
 
 <span class="hljs-keyword">enum</span> {
@@ -3047,7 +3048,8 @@ TSpectrum(Int_t maxpositions, Double_t resolution=<span class="hljs-number">1</s
 <span class="hljs-comment">// ie, if h has a bin range (set via h-&gt;GetXaxis()-&gt;SetRange(binmin,binmax),</span>
 <span class="hljs-comment">// the returned histogram will be created with the same number of bins</span>
 <span class="hljs-comment">// as the input histogram h, but only bins from binmin to binmax will be filled</span>
-<span class="hljs-comment">// with the estimated background.</span></code></pre>
+<span class="hljs-comment">// with the estimated background.</span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">Search</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TH1 *hist, Double_t sigma=<span class="hljs-number">2</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>, Double_t threshold=<span class="hljs-number">0.05</span>)</span></span>;
 
 <span class="hljs-comment">// One-dimensional peak search function</span>
@@ -3080,7 +3082,8 @@ TSpectrum(Int_t maxpositions, Double_t resolution=<span class="hljs-number">1</s
 <span class="hljs-comment">// Specify the option &quot;goff&quot; to disable the storage and drawing of the</span>
 <span class="hljs-comment">// polymarker.</span>
 <span class="hljs-comment">// To disable the final drawing of the histogram with the search results (in case</span>
-<span class="hljs-comment">// you want to draw it yourself) specify &quot;nodraw&quot; in the options parameter.</span></code></pre>
+<span class="hljs-comment">// you want to draw it yourself) specify &quot;nodraw&quot; in the options parameter.</span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>         *<span class="hljs-title">Background</span><span class="hljs-params">(Double_t *spectrum, Int_t ssize,Int_t numberIterations,Int_t direction, Int_t filterOrder,<span class="hljs-keyword">bool</span> smoothing,Int_t smoothWindow,<span class="hljs-keyword">bool</span> compton)</span></span>;
 <span class="hljs-comment">// This function calculates background spectrum from source spectrum.</span>
 <span class="hljs-comment">// The result is placed in the vector pointed by spe1945ctrum pointer.</span>
@@ -3107,8 +3110,10 @@ TSpectrum(Int_t maxpositions, Double_t resolution=<span class="hljs-number">1</s
 <span class="hljs-comment">// filterOrder: order of clipping filter.Possible values: kBackOrder2, kBackOrder4, kBackOrder6, kBackOrder8</span>
 <span class="hljs-comment">// smoothing: logical variable whether the smoothing operation in the estimation of background will be included.Possible values: kFALSE, kTRUE</span>
 <span class="hljs-comment">// smoothWindow: width of smoothing window.Possible values: kBackSmoothing3, kBackSmoothing5, kBackSmoothing7,kBackSmoothing9, kBackSmoothing11, kBackSmoothing13, kBackSmoothing15.</span>
-<span class="hljs-comment">// compton: logical variable whether the estimation of Compton edge will be included. Possible values: kFALSE, kTRUE.</span></code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp">Int_t npeaks=<span class="hljs-number">10</span>;
+<span class="hljs-comment">// compton: logical variable whether the estimation of Compton edge will be included. Possible values: kFALSE, kTRUE.</span>
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp">Int_t npeaks=<span class="hljs-number">10</span>;
 TH1F *h = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-number">500</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1000</span>);
 TSpectrum *s = <span class="hljs-keyword">new</span> TSpectrum(<span class="hljs-number">2</span>*npeaks);
 Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-number">0.1</span>);
@@ -3117,8 +3122,11 @@ Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hl
   {
     <span class="hljs-built_in">cout</span>&lt;&lt;number[i]&lt;&lt;<span class="hljs-built_in">endl</span>;
   }
-<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;!!!:&quot;</span>&lt;&lt;s-&gt;GetNPeaks()&lt;&lt;<span class="hljs-built_in">endl</span>;</code></pre>
-<h2 id="example">example</h2><p><strong>&#x4EE5;&#x4E0B;&#x4F8B;&#x5B50;&#x5E74;&#x4EE3;&#x4E45;&#x8FDC;&#xFF0C;&#x4EC5;&#x4F9B;&#x53C2;&#x8003;&#xFF0C;&#x4E0D;&#x80FD;&#x8FD0;&#x884C;&#xFF1A;</strong></p><pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;TSpectrum&gt;</span></span>
+<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;!!!:&quot;</span>&lt;&lt;s-&gt;GetNPeaks()&lt;&lt;<span class="hljs-built_in">endl</span>;
+</code></pre>
+<h2 id="example">example</h2>
+<p><strong>&#x4EE5;&#x4E0B;&#x4F8B;&#x5B50;&#x5E74;&#x4EE3;&#x4E45;&#x8FDC;&#xFF0C;&#x4EC5;&#x4F9B;&#x53C2;&#x8003;&#xFF0C;&#x4E0D;&#x80FD;&#x8FD0;&#x884C;&#xFF1A;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;TSpectrum&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Background_incr</span><span class="hljs-params">()</span> </span>{
    Int_t i;
    Double_t nbins = <span class="hljs-number">256</span>;
@@ -3142,7 +3150,8 @@ Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hl
    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; nbins; i++) d-&gt;SetBinContent(i + <span class="hljs-number">1</span>,source[i]);
    d-&gt;SetLineColor(kRed);
    d-&gt;Draw(<span class="hljs-string">&quot;SAME L&quot;</span>);
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;TSpectrum&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Background_decr</span><span class="hljs-params">()</span> </span>{
    Int_t i;
@@ -3166,7 +3175,8 @@ Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hl
    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; nbins; i++) d-&gt;SetBinContent(i + <span class="hljs-number">1</span>,source[i]);
    d-&gt;SetLineColor(kRed);
    d-&gt;Draw(<span class="hljs-string">&quot;SAME L&quot;</span>);
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;TSpectrum&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Background_width</span><span class="hljs-params">()</span> </span>{
    Int_t i;
@@ -3204,7 +3214,8 @@ Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hl
    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; nbins; i++) d3-&gt;SetBinContent(i + <span class="hljs-number">1</span>,source[i]);
    d3-&gt;SetLineColor(kGreen);
    d3-&gt;Draw(<span class="hljs-string">&quot;SAME L&quot;</span>);
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;TSpectrum&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Background_width2</span><span class="hljs-params">()</span> </span>{
    Int_t i;
@@ -3251,7 +3262,8 @@ Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hl
    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; nbins; i++) d4-&gt;SetBinContent(i + <span class="hljs-number">1</span>,source[i]);
    d4-&gt;SetLineColor(kMagenta);
    d4-&gt;Draw(<span class="hljs-string">&quot;SAME L&quot;</span>);
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;TSpectrum&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Background_order</span><span class="hljs-params">()</span> </span>{
    Int_t i;
@@ -3298,7 +3310,8 @@ Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hl
    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; nbins; i++) d4-&gt;SetBinContent(i + <span class="hljs-number">1</span>,source[i]);
    d4-&gt;SetLineColor(kMagenta);
    d4-&gt;Draw(<span class="hljs-string">&quot;SAME L&quot;</span>);
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;TSpectrum&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Background_smooth</span><span class="hljs-params">()</span> </span>{
    Int_t i;
@@ -3329,7 +3342,8 @@ Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hl
    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; nbins; i++) d2-&gt;SetBinContent(i + <span class="hljs-number">1</span>,source[i]);
    d2-&gt;SetLineColor(kBlue);
    d2-&gt;Draw(<span class="hljs-string">&quot;SAME L&quot;</span>);
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;TSpectrum&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Background_compton</span><span class="hljs-params">()</span> </span>{
    Int_t i;
@@ -3352,10 +3366,9 @@ Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hl
    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; nbins; i++) d1-&gt;SetBinContent(i + <span class="hljs-number">1</span>,source[i]);
    d1-&gt;SetLineColor(kRed);
    d1-&gt;Draw(<span class="hljs-string">&quot;SAME L&quot;</span>);
-}</code></pre>
+}
+</code></pre>
 <!-- TSpectrum.md ends here -->
-
-
 
                                 
                                 </section>
@@ -3399,7 +3412,7 @@ Int_t nfound = s-&gt;Search(h,<span class="hljs-number">2</span>,<span class="hl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TSpectrum","level":"1.2.81","depth":2,"next":{"title":"TSpectrum2","level":"1.2.82","depth":2,"path":"class/TSpectrum2.md","ref":"class/TSpectrum2.md","articles":[]},"previous":{"title":"TSocket","level":"1.2.80","depth":2,"path":"class/TSocket.md","ref":"class/TSocket.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TSpectrum.md","mtime":"2016-11-02T05:51:12.514Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TSpectrum","level":"1.2.81","depth":2,"next":{"title":"TSpectrum2","level":"1.2.82","depth":2,"path":"class/TSpectrum2.md","ref":"class/TSpectrum2.md","articles":[]},"previous":{"title":"TSocket","level":"1.2.80","depth":2,"path":"class/TSocket.md","ref":"class/TSocket.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TSpectrum.md","mtime":"2017-07-11T12:51:30.023Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

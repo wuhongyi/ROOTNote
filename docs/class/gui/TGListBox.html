@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGListBox+ · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TGListBox+ · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="../TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,11 +2969,14 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tglistbox">TGListBox</h1><p>TGListBox &#x7EE7;&#x627F; TGCompositeFrame, TGWidget</p><p>A TGListBox widget.</p><p>A listbox is a box, possibly with scrollbar, containing entries.</p><p>Currently entries are simple text strings (TGTextLBEntry).</p><p>A TGListBox looks a lot like a TGCanvas. It has a TGViewPort</p><p>containing a TGLBContainer which contains the entries and it also</p><p>has a vertical scrollbar which becomes visible if there are more</p><p>items than fit in the visible part of the container.</p><pre><code>Selecting an item in the listbox will generate the event:
-kC_COMMAND, kCM_LISTBOX, listbox id, item id.   </code></pre>
-<h2 id="class">class</h2><pre><code class="lang-cpp">   TGListBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+<h1 id="tglistbox">TGListBox</h1>
+<p>TGListBox &#x7EE7;&#x627F; TGCompositeFrame, TGWidget</p>
+<p>A TGListBox widget.</p>
+<p>A listbox is a box, possibly with scrollbar, containing entries.<br>Currently entries are simple text strings (TGTextLBEntry).<br>A TGListBox looks a lot like a TGCanvas. It has a TGViewPort<br>containing a TGLBContainer which contains the entries and it also<br>has a vertical scrollbar which becomes visible if there are more<br>items than fit in the visible part of the container.  </p>
+<pre><code>Selecting an item in the listbox will generate the event:
+kC_COMMAND, kCM_LISTBOX, listbox id, item id.
+</code></pre><h2 id="class">class</h2>
+<pre><code class="lang-cpp">   TGListBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
              UInt_t options = kSunkenFrame | kDoubleBorder,
              Pixel_t back = GetWhitePixel());
    <span class="hljs-keyword">virtual</span> ~TGListBox();
@@ -3036,7 +3039,9 @@ kC_COMMAND, kCM_LISTBOX, listbox id, item id.   </code></pre>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *txt)</span> </span>{ Emit(<span class="hljs-string">&quot;DoubleClicked(char*)&quot;</span>, txt); } <span class="hljs-comment">//*SIGNAL</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SelectionChanged</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;SelectionChanged()&quot;</span>); } <span class="hljs-comment">//*SIGNAL*</span>
 </code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGListBox.h&quot;</span></span></code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGListBox.h&quot;</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// TGListBox</span>
 <span class="hljs-comment">// &#x53EF;&#x9009;&#x62E9;&#x5217;&#x8868;&#xFF0C;&#x53EF;&#x5355;&#x9009;&#x3001;&#x591A;&#x9009;</span>
 TGListBox           *fListBox;
@@ -3062,10 +3067,10 @@ fSelected-&gt;Clear();<span class="hljs-comment">// Writes selected entries in T
 <span class="hljs-keyword">if</span> (fSelected) {<span class="hljs-comment">//&#x4E0D;&#x7528;&#x4E4B;&#x540E;</span>
   fSelected-&gt;Delete();
   <span class="hljs-keyword">delete</span> fSelected;
- }</code></pre>
-<h2 id="example">example</h2><!-- TGListBox.md ends here -->
-
-
+ }
+</code></pre>
+<h2 id="example">example</h2>
+<!-- TGListBox.md ends here -->
 
                                 
                                 </section>
@@ -3109,7 +3114,7 @@ fSelected-&gt;Clear();<span class="hljs-comment">// Writes selected entries in T
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGListBox+","level":"1.3.28","depth":2,"next":{"title":"TGListTree*","level":"1.3.29","depth":2,"path":"class/gui/TGListTree.md","ref":"class/gui/TGListTree.md","articles":[]},"previous":{"title":"TGLayout+","level":"1.3.27","depth":2,"path":"class/gui/TGLayout.md","ref":"class/gui/TGLayout.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGListBox.md","mtime":"2016-11-08T12:43:46.091Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGListBox+","level":"1.3.28","depth":2,"next":{"title":"TGListTree*","level":"1.3.29","depth":2,"path":"class/gui/TGListTree.md","ref":"class/gui/TGListTree.md","articles":[]},"previous":{"title":"TGLayout+","level":"1.3.27","depth":2,"path":"class/gui/TGLayout.md","ref":"class/gui/TGLayout.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGListBox.md","mtime":"2017-07-11T12:51:30.003Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

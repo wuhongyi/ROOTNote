@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TLegend* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TLegend* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,27 +2969,32 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 12
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tlegend">TLegend</h1><p>&#x7EE7;&#x627F; TPave , TAttText</p><p>This class displays a legend box (TPaveText) containing several legend entries.</p><p>Each legend entry is made of a reference to a ROOT object, a text label and an
+<h1 id="tlegend">TLegend</h1>
+<p>&#x7EE7;&#x627F; TPave , TAttText</p>
+<p>This class displays a legend box (TPaveText) containing several legend entries.</p>
+<p>Each legend entry is made of a reference to a ROOT object, a text label and an
 option specifying which graphical attributes (marker/line/fill) should be
-displayed.</p><p>The legend contains a histogram, a function and a graph. The histogram is put in
+displayed.</p>
+<p>The legend contains a histogram, a function and a graph. The histogram is put in
 the legend using its reference pointer whereas the graph and the function are added
 using their names. Note that, because TGraph constructors do not have the
 TGraph name as parameter, the graph name should be specified using the
-SetName method.</p><p>TLegend inherits from TAttText therefore changing any text attributes (text alignment,
-font, color...) on a legend will changed the text attributes on each line.</p><p>Note that the TPad class has a method to build automatically a legend
-for all objects in the pad. It is called TPad::BuildLegend().</p><p>Each item in the legend is added using the AddEntry method. This
+SetName method.</p>
+<p>TLegend inherits from TAttText therefore changing any text attributes (text alignment,
+font, color...) on a legend will changed the text attributes on each line.</p>
+<p>Note that the TPad class has a method to build automatically a legend
+for all objects in the pad. It is called TPad::BuildLegend().</p>
+<p>Each item in the legend is added using the AddEntry method. This
 method defines the object to be added (by reference or name), the label
-associated to this object and an option which a combination of:</p><ul><li>L: draw line associated with TAttLine if obj inherits from TAttLine
-</li>
-<li>P: draw polymarker associated with TAttMarker if obj inherits from TAttMarker
-</li>
-<li>F: draw a box with fill associated wit TAttFill if obj inherits TAttFill
-</li>
-<li>E: draw vertical error bar
-</li></ul>
-<h2 id="class">class</h2><pre><code class="lang-cpp">   TLegend();
+associated to this object and an option which a combination of:  </p>
+<ul>
+<li>L: draw line associated with TAttLine if obj inherits from TAttLine</li>
+<li>P: draw polymarker associated with TAttMarker if obj inherits from TAttMarker</li>
+<li>F: draw a box with fill associated wit TAttFill if obj inherits TAttFill</li>
+<li>E: draw vertical error bar</li>
+</ul>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp">   TLegend();
    TLegend( Double_t x1, Double_t y1, Double_t x2, Double_t y2,
             <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* header = <span class="hljs-string">&quot;&quot;</span>, Option_t* option=<span class="hljs-string">&quot;brNDC&quot;</span> );
 <span class="hljs-comment">/// Normal constructor.</span>
@@ -3083,15 +3088,18 @@ associated to this object and an option which a combination of:</p><ul><li>L: dr
 <span class="hljs-comment">/// its own row. After that, every nColumns entries are inserted into the</span>
 <span class="hljs-comment">/// same row. For example, if one calls legend.SetNColumns(2), and there</span>
 <span class="hljs-comment">/// is no header, then the first two TObjects added to the legend will be</span>
-<span class="hljs-comment">/// in the first row, the next two will appear in the second row, and so on.</span></code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// In particular it can be interesting to change the text alignement that way. In</span>
+<span class="hljs-comment">/// in the first row, the next two will appear in the second row, and so on.</span>
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">// In particular it can be interesting to change the text alignement that way. In</span>
 <span class="hljs-comment">// order to have a base-line vertical alignment instead of a centered one simply do:</span>
 
    leg-&gt;SetTextAlign(<span class="hljs-number">13</span>);
 
 <span class="hljs-comment">// or</span>
 
-   leg-&gt;SetTextAlign(<span class="hljs-number">11</span>);</code></pre>
+   leg-&gt;SetTextAlign(<span class="hljs-number">11</span>);
+</code></pre>
 <pre><code class="lang-cpp">The <span class="hljs-keyword">default</span> value of some TLegend attributes can be changed <span class="hljs-keyword">using</span>
 gStyle. The <span class="hljs-keyword">default</span> settings are:
 
@@ -3105,7 +3113,8 @@ gStyle. The <span class="hljs-keyword">default</span> settings are:
 <span class="hljs-comment">// Text attributes can be also changed individually on each legend entry:</span>
 
    TLegendEntry *le = leg-&gt;AddEntry(h1,<span class="hljs-string">&quot;Histogram filled with random numbers&quot;</span>,<span class="hljs-string">&quot;f&quot;</span>);
-   le-&gt;SetTextColor(kBlue);;</code></pre>
+   le-&gt;SetTextColor(kBlue);;
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// When an object is added by name, a scan is performed on the list of objects</span>
 <span class="hljs-comment">// contained in the current pad (gPad) and also in the possible TMultiGraph and</span>
 <span class="hljs-comment">// THStack present in the pad. If a matching name is found, the corresponding</span>
@@ -3150,7 +3159,8 @@ gStyle. The <span class="hljs-keyword">default</span> settings are:
    leg-&gt;AddEntry(<span class="hljs-string">&quot;gr&quot;</span>,<span class="hljs-string">&quot;Graph with error bars&quot;</span>,<span class="hljs-string">&quot;lep&quot;</span>);
    leg-&gt;Draw();
 
-   <span class="hljs-keyword">return</span> c1;</code></pre>
+   <span class="hljs-keyword">return</span> c1;
+</code></pre>
 <pre><code class="lang-cpp">It is possible to draw the legend entries over several columns using
 the method SetNColumns() like in the following example.
 
@@ -3167,17 +3177,18 @@ the method SetNColumns() like in the following example.
    leg-&gt;AddEntry(h, &quot;Column 2 line 2&quot;, &quot;l&quot;);
 
    leg-&gt;Draw();
-   return c3;</code></pre>
+   return c3;
+</code></pre>
 <pre><code class="lang-cpp">TLegend *legend = <span class="hljs-keyword">new</span> TLegend(<span class="hljs-number">0.55</span>,<span class="hljs-number">0.65</span>,<span class="hljs-number">0.76</span>,<span class="hljs-number">0.82</span>);
 legend-&gt;SetHeader(<span class="hljs-string">&quot;The Legend Title&quot;</span>);
 legend-&gt;SetTextSize(<span class="hljs-number">0.05</span>);
 legend-&gt;SetBorderSize(<span class="hljs-number">0</span>);
 legend-&gt;AddEntry(h1,<span class="hljs-string">&quot;All nations&quot;</span>,<span class="hljs-string">&quot;&quot;</span>);
 legend-&gt;AddEntry(h2,<span class="hljs-string">&quot;French only&quot;</span>,<span class="hljs-string">&quot;&quot;</span>);
-legend-&gt;Draw();</code></pre>
-<h2 id="example">example</h2><!-- TLegend.md ends here -->
-
-
+legend-&gt;Draw();
+</code></pre>
+<h2 id="example">example</h2>
+<!-- TLegend.md ends here -->
 
                                 
                                 </section>
@@ -3221,7 +3232,7 @@ legend-&gt;Draw();</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TLegend*","level":"1.2.36","depth":2,"next":{"title":"TLegendEntry*","level":"1.2.37","depth":2,"path":"class/TLegendEntry.md","ref":"class/TLegendEntry.md","articles":[]},"previous":{"title":"TLatex*","level":"1.2.35","depth":2,"path":"class/TLatex.md","ref":"class/TLatex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TLegend.md","mtime":"2016-11-02T05:51:13.013Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TLegend*","level":"1.2.36","depth":2,"next":{"title":"TLegendEntry*","level":"1.2.37","depth":2,"path":"class/TLegendEntry.md","ref":"class/TLegendEntry.md","articles":[]},"previous":{"title":"TLatex*","level":"1.2.35","depth":2,"path":"class/TLatex.md","ref":"class/TLatex.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TLegend.md","mtime":"2017-07-11T12:51:30.024Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

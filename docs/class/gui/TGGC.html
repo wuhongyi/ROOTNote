@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGGC* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TGGC* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="../TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,9 +2969,13 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tggc">TGGC</h1><p>Encapsulate a graphics context used in the low level graphics.</p><p>TGGCPool provides a pool of graphics contexts.</p><p>TGGC &#x7EE7;&#x627F; TObject, TRefCnt, friend TGGCPool</p><p>TGGCPool &#x7EE7;&#x627F; TGObject , friend TGGC</p><h2 id="class">class</h2><p><strong>TGGC</strong></p><pre><code class="lang-cpp">   TGGC(GCValues_t *values = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a graphics context, registers GC in GCPool.</span>
+<h1 id="tggc">TGGC</h1>
+<p>Encapsulate a graphics context used in the low level graphics.<br>TGGCPool provides a pool of graphics contexts.</p>
+<p>TGGC &#x7EE7;&#x627F; TObject, TRefCnt, friend TGGCPool</p>
+<p>TGGCPool &#x7EE7;&#x627F; TGObject , friend TGGC</p>
+<h2 id="class">class</h2>
+<p><strong>TGGC</strong></p>
+<pre><code class="lang-cpp">   TGGC(GCValues_t *values = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a graphics context, registers GC in GCPool.</span>
    TGGC(<span class="hljs-keyword">const</span> TGGC &amp;g);<span class="hljs-comment">/// Copy a graphics context.</span>
    <span class="hljs-keyword">virtual</span> ~TGGC();
    TGGC &amp;<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TGGC &amp;rhs);
@@ -3033,8 +3037,10 @@
 
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Print graphics contexts info.</span>
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save graphics context info as a C++ statement(s) on output stream out   </span></code></pre>
-<p><strong>TGGCPool</strong></p><pre><code class="lang-cpp">   TGGCPool(TGClient *client);
+<span class="hljs-comment">/// Save graphics context info as a C++ statement(s) on output stream out</span>
+</code></pre>
+<p><strong>TGGCPool</strong></p>
+<pre><code class="lang-cpp">   TGGCPool(TGClient *client);
    <span class="hljs-keyword">virtual</span> ~TGGCPool();
 
    <span class="hljs-function">TGGC *<span class="hljs-title">GetGC</span><span class="hljs-params">(GCValues_t *values, Bool_t rw = kFALSE)</span></span>;
@@ -3054,10 +3060,11 @@
 <span class="hljs-comment">/// Find graphics context based on its GContext_t handle. Returns 0</span>
 <span class="hljs-comment">/// in case gc is not found.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List all graphics contexts in the pool.</span></code></pre>
-<h2 id="code">code</h2><h2 id="example">example</h2><!-- TGGC.md ends here -->
-
-
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List all graphics contexts in the pool.</span>
+</code></pre>
+<h2 id="code">code</h2>
+<h2 id="example">example</h2>
+<!-- TGGC.md ends here -->
 
                                 
                                 </section>
@@ -3101,7 +3108,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGGC*","level":"1.3.21","depth":2,"next":{"title":"TGIcon*","level":"1.3.22","depth":2,"path":"class/gui/TGIcon.md","ref":"class/gui/TGIcon.md","articles":[]},"previous":{"title":"TGFSContainer","level":"1.3.20","depth":2,"path":"class/gui/TGFSContainer.md","ref":"class/gui/TGFSContainer.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGGC.md","mtime":"2016-12-07T12:56:38.057Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGGC*","level":"1.3.21","depth":2,"next":{"title":"TGIcon*","level":"1.3.22","depth":2,"path":"class/gui/TGIcon.md","ref":"class/gui/TGIcon.md","articles":[]},"previous":{"title":"TGFSContainer","level":"1.3.20","depth":2,"path":"class/gui/TGFSContainer.md","ref":"class/gui/TGFSContainer.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGGC.md","mtime":"2017-07-11T12:51:29.997Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

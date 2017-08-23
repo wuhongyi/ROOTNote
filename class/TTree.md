@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 3月 14 08:35:28 2015 (+0800)
-;; Last-Updated: 日 11月 27 20:33:35 2016 (+0800)
+;; Last-Updated: 三 8月 23 12:52:04 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 6
+;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -21,6 +21,20 @@ To Create a TTree object one must:
 
 To Fill this object, use member function Fill with no parameters. 
 The Fill function loops on all defined TBranch.   
+
+## function Scan()
+
+The options string can contains the following parameters:
+-  lenmax=dd
+      - Where 'dd' is the maximum number of elements per array that should be printed.  If 'dd' is 0, all elements are printed (this is the default)
+-  colsize=ss
+      - Where 'ss' will be used as the default size for all the column. If this options is not specified, the default column size is 9
+-  precision=pp
+      - Where 'pp' will be used as the default 'precision' for the printing format.
+-  col=xxx
+      - Where 'xxx' is colon (:) delimited list of printing format for each column. The format string should follow the printf format specification.  The value given will be prefixed by % and, if no conversion specifier is given, will be suffixed by the letter g. before being passed to fprintf.  If no format is specified for a column, the default is used  (aka ${colsize}.${precision}g )
+
+
 
 ## class
 

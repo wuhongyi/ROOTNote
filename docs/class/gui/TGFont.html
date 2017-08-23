@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGFont* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TGFont* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="../TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,10 +2969,15 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tgfont">TGFont</h1><p>TGFont and TGFontPool</p><p>Encapsulate fonts used in the GUI system.</p><p>TGFontPool provides a pool of fonts.
-TGTextLayout is used to keep track of string  measurement</p><p>information when  using the text layout facilities.</p><p>It can be displayed with respect to any origin.</p><p>TGTextLayout &#x7EE7;&#x627F; TObject , friend TGFont</p><p>TGFont &#x7EE7;&#x627F; TNamed, TRefCnt ,friend TGFontPool, TGTextLayout;</p><p>TGFontPool &#x7EE7;&#x627F; TGObject</p><h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-comment">// Flags passed to TGFont::MeasureChars and TGFont::ComputeTextLayout</span>
+<h1 id="tgfont">TGFont</h1>
+<p>TGFont and TGFontPool                                                </p>
+<p>Encapsulate fonts used in the GUI system.<br>TGFontPool provides a pool of fonts.
+TGTextLayout is used to keep track of string  measurement<br>information when  using the text layout facilities.<br>It can be displayed with respect to any origin.</p>
+<p>TGTextLayout &#x7EE7;&#x627F; TObject , friend TGFont</p>
+<p>TGFont &#x7EE7;&#x627F; TNamed, TRefCnt ,friend TGFontPool, TGTextLayout;</p>
+<p>TGFontPool &#x7EE7;&#x627F; TGObject</p>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Flags passed to TGFont::MeasureChars and TGFont::ComputeTextLayout</span>
 
 <span class="hljs-keyword">enum</span> ETextLayoutFlags {
    kTextWholeWords = BIT(<span class="hljs-number">0</span>),
@@ -3047,8 +3052,10 @@ TGTextLayout is used to keep track of string  measurement</p><p>information when
       <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
    }
 
-};</code></pre>
-<p><strong>TGTextLayout</strong></p><pre><code class="lang-cpp">   TGTextLayout(): fFont(<span class="hljs-literal">NULL</span>), fString(<span class="hljs-string">&quot;&quot;</span>), fWidth(<span class="hljs-number">0</span>), fNumChunks(<span class="hljs-number">0</span>), fChunks(<span class="hljs-literal">NULL</span>) {}
+};
+</code></pre>
+<p><strong>TGTextLayout</strong></p>
+<pre><code class="lang-cpp">   TGTextLayout(): fFont(<span class="hljs-literal">NULL</span>), fString(<span class="hljs-string">&quot;&quot;</span>), fWidth(<span class="hljs-number">0</span>), fNumChunks(<span class="hljs-number">0</span>), fChunks(<span class="hljs-literal">NULL</span>) {}
    <span class="hljs-keyword">virtual</span> ~TGTextLayout();<span class="hljs-comment">/// destructor</span>
 
    <span class="hljs-function"><span class="hljs-keyword">void</span>   <span class="hljs-title">DrawText</span><span class="hljs-params">(Drawable_t dst, GContext_t gc, Int_t x, Int_t y,
@@ -3168,8 +3175,10 @@ TGTextLayout is used to keep track of string  measurement</p><p>information when
 <span class="hljs-comment">/// other similarly justified strings. In all circumstances, y is the</span>
 <span class="hljs-comment">/// location of the baseline for the string.</span>
 <span class="hljs-comment">/// result is modified to hold the Postscript code that will render the text</span>
-<span class="hljs-comment">/// layout.</span></code></pre>
-<p><strong>TGFont</strong></p><pre><code class="lang-cpp">   <span class="hljs-keyword">virtual</span> ~TGFont();<span class="hljs-comment">/// Delete font.</span>
+<span class="hljs-comment">/// layout.</span>
+</code></pre>
+<p><strong>TGFont</strong></p>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">virtual</span> ~TGFont();<span class="hljs-comment">/// Delete font.</span>
 
    <span class="hljs-function">FontH_t      <span class="hljs-title">GetFontHandle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFontH; }
    <span class="hljs-function">FontStruct_t <span class="hljs-title">GetFontStruct</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFontStruct; }
@@ -3292,8 +3301,10 @@ TGTextLayout is used to keep track of string  measurement</p><p>information when
 
    <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Print font info.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save the used font as a C++ statement(s) on output stream out.</span></code></pre>
-<p><strong>TGFontPool</strong></p><pre><code class="lang-cpp">   TGFontPool(TGClient *client);<span class="hljs-comment">/// Create a font pool.</span>
+<span class="hljs-comment">/// Save the used font as a C++ statement(s) on output stream out.</span>
+</code></pre>
+<p><strong>TGFontPool</strong></p>
+<pre><code class="lang-cpp">   TGFontPool(TGClient *client);<span class="hljs-comment">/// Create a font pool.</span>
    <span class="hljs-keyword">virtual</span> ~TGFontPool();<span class="hljs-comment">/// Cleanup font pool.</span>
 
    <span class="hljs-function">TGFont  *<span class="hljs-title">GetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *font, Bool_t fixedDefault = kTRUE)</span></span>;
@@ -3349,12 +3360,14 @@ TGTextLayout is used to keep track of string  measurement</p><p>information when
 
    <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">NameOfFont</span><span class="hljs-params">(TGFont *font)</span></span>;<span class="hljs-comment">/// Given a font, return a textual string identifying it.</span>
 
-   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List all fonts in the pool.</span></code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp">TGFont *font = fpool-&gt;GetFont(<span class="hljs-string">&quot;helvetica&quot;</span>, <span class="hljs-number">-9</span>, kFontWeightNormal, kFontSlantRoman);
-font-&gt;Print();</code></pre>
-<h2 id="example">example</h2><!-- TGFont.md ends here -->
-
-
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List all fonts in the pool.</span>
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp">TGFont *font = fpool-&gt;GetFont(<span class="hljs-string">&quot;helvetica&quot;</span>, <span class="hljs-number">-9</span>, kFontWeightNormal, kFontSlantRoman);
+font-&gt;Print();
+</code></pre>
+<h2 id="example">example</h2>
+<!-- TGFont.md ends here -->
 
                                 
                                 </section>
@@ -3398,7 +3411,7 @@ font-&gt;Print();</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGFont*","level":"1.3.16","depth":2,"next":{"title":"TGFontDialog*","level":"1.3.17","depth":2,"path":"class/gui/TGFontDialog.md","ref":"class/gui/TGFontDialog.md","articles":[]},"previous":{"title":"TGFileDialog","level":"1.3.15","depth":2,"path":"class/gui/TGFileDialog.md","ref":"class/gui/TGFileDialog.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGFont.md","mtime":"2016-11-19T08:10:43.298Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGFont*","level":"1.3.16","depth":2,"next":{"title":"TGFontDialog*","level":"1.3.17","depth":2,"path":"class/gui/TGFontDialog.md","ref":"class/gui/TGFontDialog.md","articles":[]},"previous":{"title":"TGFileDialog","level":"1.3.15","depth":2,"path":"class/gui/TGFileDialog.md","ref":"class/gui/TGFileDialog.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGFont.md","mtime":"2017-07-11T12:51:29.994Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TGListView+ · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TGListView+ · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="../TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,19 +2969,26 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tglistview">TGListView</h1><p>A list view is a widget that can contain a number of items</p><p>arranged in a grid or list. The items can be represented either</p><p>by a string or by an icon.</p><p>The TGListView is user callable. The other classes are service</p><p>classes of the list view.</p><pre><code>A list view can generate the following events:                       
+<h1 id="tglistview">TGListView</h1>
+<p>A list view is a widget that can contain a number of items<br>arranged in a grid or list. The items can be represented either<br>by a string or by an icon.                                           </p>
+<p>The TGListView is user callable. The other classes are service<br>classes of the list view.                                            </p>
+<pre><code>A list view can generate the following events:                       
 kC_CONTAINER, kCT_SELCHANGED, total items, selected items.           
 kC_CONTAINER, kCT_ITEMCLICK, which button, location (y&lt;&lt;16|x).       
-kC_CONTAINER, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).</code></pre>
-<p>TGLVEntry &#x7EE7;&#x627F; TGFrame</p><p>Item that goes into a TGListView container</p><p>TGListView &#x7EE7;&#x627F; TGCanvas</p><p>List view widget (iconbox, small icons or tabular view)</p><p>TGLVContainer &#x7EE7;&#x627F; TGContainer</p><h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-keyword">enum</span> EListViewMode {
+kC_CONTAINER, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).
+</code></pre><p>TGLVEntry &#x7EE7;&#x627F; TGFrame<br>Item that goes into a TGListView container</p>
+<p>TGListView &#x7EE7;&#x627F; TGCanvas<br>List view widget (iconbox, small icons or tabular view)</p>
+<p>TGLVContainer &#x7EE7;&#x627F; TGContainer</p>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">enum</span> EListViewMode {
    kLVLargeIcons,
    kLVSmallIcons,
    kLVList,
    kLVDetails
-};</code></pre>
-<p><strong>TGLVEntry</strong></p><pre><code class="lang-cpp">   TGLVEntry(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>,
+};
+</code></pre>
+<p><strong>TGLVEntry</strong></p>
+<pre><code class="lang-cpp">   TGLVEntry(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>,
              <span class="hljs-keyword">const</span> TGPicture *bigpic = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> TGPicture *smallpic = <span class="hljs-number">0</span>,
              TGString *name = <span class="hljs-number">0</span>, TGString **subnames = <span class="hljs-number">0</span>,
              EListViewMode ViewMode = kLVDetails,
@@ -3019,8 +3026,10 @@ kC_CONTAINER, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).</code></
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">GetSubnameWidth</span><span class="hljs-params">(Int_t idx)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fCtw[idx]; }
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DrawCopy</span><span class="hljs-params">(Handle_t id, Int_t x, Int_t y)</span></span>;</code></pre>
-<p><strong>TGListView</strong></p><pre><code class="lang-cpp">   TGListView(<span class="hljs-keyword">const</span> TGWindow *p, UInt_t w, UInt_t h,
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DrawCopy</span><span class="hljs-params">(Handle_t id, Int_t x, Int_t y)</span></span>;
+</code></pre>
+<p><strong>TGListView</strong></p>
+<pre><code class="lang-cpp">   TGListView(<span class="hljs-keyword">const</span> TGWindow *p, UInt_t w, UInt_t h,
               UInt_t options = kSunkenFrame | kDoubleBorder,
               Pixel_t back = GetDefaultFrameBackground());
    <span class="hljs-keyword">virtual</span> ~TGListView();
@@ -3049,8 +3058,10 @@ kC_CONTAINER, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).</code></
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(TGLVEntry *entry, Int_t btn)</span></span>;  <span class="hljs-comment">//*SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">(TGLVEntry *entry, Int_t btn, Int_t x, Int_t y)</span></span>;  <span class="hljs-comment">//*SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGLVEntry *entry, Int_t btn)</span></span>;  <span class="hljs-comment">//*SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGLVEntry *entry, Int_t btn, Int_t x, Int_t y)</span></span>;  <span class="hljs-comment">//*SIGNAL*</span></code></pre>
-<p><strong>TGLVContainer</strong></p><pre><code class="lang-cpp">   TGLVContainer(<span class="hljs-keyword">const</span> TGWindow *p, UInt_t w, UInt_t h,
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGLVEntry *entry, Int_t btn, Int_t x, Int_t y)</span></span>;  <span class="hljs-comment">//*SIGNAL*</span>
+</code></pre>
+<p><strong>TGLVContainer</strong></p>
+<pre><code class="lang-cpp">   TGLVContainer(<span class="hljs-keyword">const</span> TGWindow *p, UInt_t w, UInt_t h,
                  UInt_t options = kSunkenFrame,
                  Pixel_t back = GetDefaultFrameBackground());
    TGLVContainer(TGCanvas *p, UInt_t options = kSunkenFrame,
@@ -3093,10 +3104,11 @@ kC_CONTAINER, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).</code></
                               </span>{ fListView-&gt;SetHeader(s,hmode,cmode,idx); }
    <span class="hljs-function"><span class="hljs-keyword">void</span>   <span class="hljs-title">SetDefaultHeaders</span><span class="hljs-params">()</span> </span>{ fListView-&gt;SetDefaultHeaders(); }
    <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetHeader</span><span class="hljs-params">(Int_t idx)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fListView-&gt;GetHeader(idx); }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
-<h2 id="code">code</h2><h2 id="example">example</h2><!-- TGListView.md ends here -->
-
-
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+</code></pre>
+<h2 id="code">code</h2>
+<h2 id="example">example</h2>
+<!-- TGListView.md ends here -->
 
                                 
                                 </section>
@@ -3140,7 +3152,7 @@ kC_CONTAINER, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).</code></
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGListView+","level":"1.3.30","depth":2,"next":{"title":"TGMdiDecorFrame","level":"1.3.31","depth":2,"path":"class/gui/TGMdiDecorFrame.md","ref":"class/gui/TGMdiDecorFrame.md","articles":[]},"previous":{"title":"TGListTree*","level":"1.3.29","depth":2,"path":"class/gui/TGListTree.md","ref":"class/gui/TGListTree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGListView.md","mtime":"2016-11-08T10:23:00.248Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGListView+","level":"1.3.30","depth":2,"next":{"title":"TGMdiDecorFrame","level":"1.3.31","depth":2,"path":"class/gui/TGMdiDecorFrame.md","ref":"class/gui/TGMdiDecorFrame.md","articles":[]},"previous":{"title":"TGListTree*","level":"1.3.29","depth":2,"path":"class/gui/TGListTree.md","ref":"class/gui/TGListTree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGListView.md","mtime":"2017-07-11T12:51:30.003Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

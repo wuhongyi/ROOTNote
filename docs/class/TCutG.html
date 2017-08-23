@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>TCutG* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TCutG* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -511,7 +511,7 @@
                 <a href="TH1.html">
             
                     
-                    TH1+
+                    TH1*
             
                 </a>
             
@@ -2969,17 +2969,23 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="tcutg">TCutG</h1><p>&#x7EE7;&#x627F; TGraph</p><p>A Graphical cut.</p><p>A TCutG object is a closed polygon defining a closed region in a x,y plot.
+<h1 id="tcutg">TCutG</h1>
+<p>&#x7EE7;&#x627F; TGraph</p>
+<p>A Graphical cut.</p>
+<p>A TCutG object is a closed polygon defining a closed region in a x,y plot.
 It can be created via the graphics editor option &quot;CutG&quot; or directly by
-invoking its constructor. The first and last points should be the same.</p><p>To create a TCutG via the graphics editor, use the left button to select the
+invoking its constructor. The first and last points should be the same.</p>
+<p>To create a TCutG via the graphics editor, use the left button to select the
 points building the contour of the cut. Click on the right button to close the
 TCutG. When it is created via the graphics editor, the TCutG object is named
 &quot;CUTG&quot;. It is recommended to immediately change the name by using the context
 menu item &quot;SetName&quot;. When the graphics editor is used, the names of the
-variables X,Y are automatically taken from the current pad title.</p><p>A Graphical cut may be drawn via TGraph::Draw. It can be edited like a normal
-TGraph.</p><p>A Graphical cut may be saved to a file via TCutG::Write.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TCutG();<span class="hljs-comment">/// TCutG default constructor.</span>
+variables X,Y are automatically taken from the current pad title.</p>
+<p>A Graphical cut may be drawn via TGraph::Draw. It can be edited like a normal
+TGraph.</p>
+<p>A Graphical cut may be saved to a file via TCutG::Write.</p>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp">   TCutG();<span class="hljs-comment">/// TCutG default constructor.</span>
    TCutG(<span class="hljs-keyword">const</span> TCutG &amp;cutg);<span class="hljs-comment">/// TCutG copy constructor</span>
    TCutG(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Int_t n);<span class="hljs-comment">/// TCutG normal constructor.</span>
    TCutG(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Int_t n, <span class="hljs-keyword">const</span> Float_t *x, <span class="hljs-keyword">const</span> Float_t *y);<span class="hljs-comment">/// TCutG normal constructor.</span>
@@ -3012,8 +3018,10 @@ TGraph.</p><p>A Graphical cut may be saved to a file via TCutG::Write.</p><h2 id
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetObjectX</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Set the X object (and delete the previous one if any).</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetObjectY</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Set the Y object (and delete the previous one if any).</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetVarX</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *varx)</span></span>; <span class="hljs-comment">// *MENU* /// Set X variable.</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetVarY</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *vary)</span></span>; <span class="hljs-comment">// *MENU* /// Set Y variable.</span></code></pre>
-<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// Assume a TTree object T and:</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetVarY</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *vary)</span></span>; <span class="hljs-comment">// *MENU* /// Set Y variable.</span>
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Assume a TTree object T and:</span>
 
 Root &gt; T.Draw(<span class="hljs-string">&quot;abs(fMomemtum)%fEtot&quot;</span>)
 
@@ -3031,7 +3039,8 @@ Root &gt; T.Draw(<span class="hljs-string">&quot;fEtot&quot;</span>,<span class=
 <span class="hljs-comment">// Note that, as shown in the example above, a graphical cut may be used in a</span>
 <span class="hljs-comment">// selection expression when drawing TTrees expressions of 1-d, 2-d or</span>
 <span class="hljs-comment">// 3-dimensions. The expressions used in TTree::Draw can reference the variables in</span>
-<span class="hljs-comment">// the fVarX, fVarY of the graphical cut plus other variables.</span></code></pre>
+<span class="hljs-comment">// the fVarX, fVarY of the graphical cut plus other variables.</span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// When the TCutG object is created by TTree::Draw, it is added to the list of special objects in</span>
 <span class="hljs-comment">// the main TROOT object pointed by gROOT. To retrieve a pointer to this object</span>
 <span class="hljs-comment">// from the code or command line, do:</span>
@@ -3055,8 +3064,10 @@ Root &gt; T.Draw(<span class="hljs-string">&quot;fEtot&quot;</span>,<span class=
 
 <span class="hljs-comment">// Example of use of a TCutG in TTree::Draw:</span>
 
-    tree.Draw(<span class="hljs-string">&quot;x:y&quot;</span>,<span class="hljs-string">&quot;mycutg &amp;&amp; z&gt;0 %% sqrt(x)&gt;1&quot;</span>)</code></pre>
-<h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-comment">//&#x56FE;&#x50CF;&#x4E0A;&#x6570;&#x636E;&#x7B5B;&#x9009;  &#x66F2;&#x7EBF;&#x62DF;&#x5408;</span>
+    tree.Draw(<span class="hljs-string">&quot;x:y&quot;</span>,<span class="hljs-string">&quot;mycutg &amp;&amp; z&gt;0 %% sqrt(x)&gt;1&quot;</span>)
+</code></pre>
+<h2 id="example">example</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x56FE;&#x50CF;&#x4E0A;&#x6570;&#x636E;&#x7B5B;&#x9009;  &#x66F2;&#x7EBF;&#x62DF;&#x5408;</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TF2.h&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TH2.h&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TCutG.h&quot;</span></span>
@@ -3116,7 +3127,8 @@ Root &gt; T.Draw(<span class="hljs-string">&quot;fEtot&quot;</span>,<span class=
    f2-&gt;SetNpy(<span class="hljs-number">80</span>);
    f2-&gt;Draw(<span class="hljs-string">&quot;surf1 same bb [cutg]&quot;</span>);
    <span class="hljs-keyword">return</span> c;
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// &#x56FE;&#x50CF;&#x4E0A;&#x6570;&#x636E;&#x7B5B;&#x9009;</span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fit2d</span><span class="hljs-params">()</span>
 </span>{
@@ -3142,7 +3154,8 @@ Root &gt; T.Draw(<span class="hljs-string">&quot;fEtot&quot;</span>,<span class=
    <span class="hljs-comment">//use a TProfile to convert the 2-d to 1-d problem</span>
    TProfile *prof = h2-&gt;ProfileX();
    prof-&gt;Fit(<span class="hljs-string">&quot;pol1&quot;</span>);
-}</code></pre>
+}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// make a contour plot and get the first contour in a TPolyMarker</span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">FirstContour</span><span class="hljs-params">()</span>
 </span>{
@@ -3196,10 +3209,9 @@ Root &gt; T.Draw(<span class="hljs-string">&quot;fEtot&quot;</span>,<span class=
       }
    }
    pm-&gt;Draw();
-}</code></pre>
+}
+</code></pre>
 <!-- TCutG.md ends here -->
-
-
 
                                 
                                 </section>
@@ -3243,7 +3255,7 @@ Root &gt; T.Draw(<span class="hljs-string">&quot;fEtot&quot;</span>,<span class=
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCutG*","level":"1.2.12","depth":2,"next":{"title":"TEllipse","level":"1.2.13","depth":2,"path":"class/TEllipse.md","ref":"class/TEllipse.md","articles":[]},"previous":{"title":"TCut*","level":"1.2.11","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TCutG.md","mtime":"2016-11-02T05:51:14.033Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-10T13:38:15.484Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCutG*","level":"1.2.12","depth":2,"next":{"title":"TEllipse","level":"1.2.13","depth":2,"path":"class/TEllipse.md","ref":"class/TEllipse.md","articles":[]},"previous":{"title":"TCut*","level":"1.2.11","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TCutG.md","mtime":"2017-07-11T12:51:30.006Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-23T04:52:18.298Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
