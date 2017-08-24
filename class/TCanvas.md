@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 日 11月 27 19:26:22 2016 (+0800)
+;; Last-Updated: 四 8月 24 20:22:15 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 16
+;;     Update #: 17
 ;; URL: http://wuhongyi.cn -->
 
 # TCanvas
@@ -320,6 +320,13 @@ public:
 
 
 ## code
+
+```cpp
+//判断画板是否已经存在
+  TCanvas *c = ((TCanvas *)(gROOT->GetListOfCanvases()->FindObject("c")));
+  if (c) { c->Clear(); } else { c = new TCanvas("c", "c"); }
+```
+
 
 ```cpp
 TCanvas *MyC = new TCanvas("MyC","Test canvas",1)     //新建画板

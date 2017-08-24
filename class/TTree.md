@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 3月 14 08:35:28 2015 (+0800)
-;; Last-Updated: 三 8月 23 12:52:04 2017 (+0800)
+;; Last-Updated: 四 8月 24 20:22:50 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
+;;     Update #: 8
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -22,7 +22,7 @@ To Create a TTree object one must:
 To Fill this object, use member function Fill with no parameters. 
 The Fill function loops on all defined TBranch.   
 
-## function Scan()
+### function Scan()
 
 The options string can contains the following parameters:
 -  lenmax=dd
