@@ -2965,9 +2965,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 6月 25 16:11:28 2016 (+0800)
-;; Last-Updated: 六 11月 19 15:29:28 2016 (+0800)
+;; Last-Updated: 一 9月  4 15:32:54 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 54
+;;     Update #: 55
 ;; URL: http://wuhongyi.cn -->
 <h1 id="readme">README</h1>
 <pre><code class="lang-cpp"><span class="hljs-comment">// System predefined widget message types. Message types are constants  </span>
@@ -3053,6 +3053,33 @@
       kMDI_MENU           = <span class="hljs-number">512</span>,
    kC_USER             = <span class="hljs-number">1001</span>,
    kC_MSGMAX           = <span class="hljs-number">10000</span>
+};
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">//Buttons.h</span>
+<span class="hljs-keyword">enum</span> EEventType {
+   kNoEvent       =  <span class="hljs-number">0</span>,
+   kButton1Down   =  <span class="hljs-number">1</span>, kButton2Down   =  <span class="hljs-number">2</span>, kButton3Down   =  <span class="hljs-number">3</span>, kKeyDown  =  <span class="hljs-number">4</span>,
+   kWheelUp       =  <span class="hljs-number">5</span>, kWheelDown     =  <span class="hljs-number">6</span>, kButton1Shift  =  <span class="hljs-number">7</span>, kButton1ShiftMotion  =  <span class="hljs-number">8</span>,
+   kButton1Up     = <span class="hljs-number">11</span>, kButton2Up     = <span class="hljs-number">12</span>, kButton3Up     = <span class="hljs-number">13</span>, kKeyUp    = <span class="hljs-number">14</span>,
+   kButton1Motion = <span class="hljs-number">21</span>, kButton2Motion = <span class="hljs-number">22</span>, kButton3Motion = <span class="hljs-number">23</span>, kKeyPress = <span class="hljs-number">24</span>,
+   kArrowKeyPress = <span class="hljs-number">25</span>, kArrowKeyRelease = <span class="hljs-number">26</span>,
+   kButton1Locate = <span class="hljs-number">41</span>, kButton2Locate = <span class="hljs-number">42</span>, kButton3Locate = <span class="hljs-number">43</span>, kESC      = <span class="hljs-number">27</span>,
+   kMouseMotion   = <span class="hljs-number">51</span>, kMouseEnter    = <span class="hljs-number">52</span>, kMouseLeave    = <span class="hljs-number">53</span>,
+   kButton1Double = <span class="hljs-number">61</span>, kButton2Double = <span class="hljs-number">62</span>, kButton3Double = <span class="hljs-number">63</span>
+};
+
+<span class="hljs-keyword">enum</span> EEditMode {
+   kPolyLine  = <span class="hljs-number">1</span>,  kSPolyLine = <span class="hljs-number">2</span>,  kPolyGone  = <span class="hljs-number">3</span>,
+   kSPolyGone = <span class="hljs-number">4</span>,  kBox       = <span class="hljs-number">5</span>,  kDelete    = <span class="hljs-number">6</span>,
+   kPad       = <span class="hljs-number">7</span>,  kText      = <span class="hljs-number">8</span>,  kEditor    = <span class="hljs-number">9</span>,
+   kExit      = <span class="hljs-number">10</span>, kPave      = <span class="hljs-number">11</span>, kPaveLabel = <span class="hljs-number">12</span>,
+   kPaveText  = <span class="hljs-number">13</span>, kPavesText = <span class="hljs-number">14</span>, kEllipse   = <span class="hljs-number">15</span>,
+   kArc       = <span class="hljs-number">16</span>, kLine      = <span class="hljs-number">17</span>, kArrow     = <span class="hljs-number">18</span>,
+   kGraph     = <span class="hljs-number">19</span>, kMarker    = <span class="hljs-number">20</span>, kPolyMarker= <span class="hljs-number">21</span>,
+   kPolyLine3D= <span class="hljs-number">22</span>, kWbox      = <span class="hljs-number">23</span>, kGaxis     = <span class="hljs-number">24</span>,
+   kF1        = <span class="hljs-number">25</span>, kF2        = <span class="hljs-number">26</span>, kF3        = <span class="hljs-number">27</span>,
+   kDiamond   = <span class="hljs-number">28</span>, kPolyMarker3D = <span class="hljs-number">29</span>, kButton = <span class="hljs-number">101</span>,
+   kCutG      =<span class="hljs-number">100</span>, kCurlyLine =<span class="hljs-number">200</span>, kCurlyArc  = <span class="hljs-number">201</span>
 };
 </code></pre>
 <ul>
@@ -3489,7 +3516,7 @@ frame-&gt;AddFrame(fStatus, <span class="hljs-keyword">new</span> TGLayoutHints(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图形界面的使用","level":"1.3","depth":1,"next":{"title":"TGButton*","level":"1.3.1","depth":2,"path":"class/gui/TGButton.md","ref":"class/gui/TGButton.md","articles":[]},"previous":{"title":"TVirtualFitter*","level":"1.2.106","depth":2,"path":"class/TVirtualFitter.md","ref":"class/TVirtualFitter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/README.md","mtime":"2017-07-11T12:51:29.999Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-24T15:01:17.442Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图形界面的使用","level":"1.3","depth":1,"next":{"title":"TGButton*","level":"1.3.1","depth":2,"path":"class/gui/TGButton.md","ref":"class/gui/TGButton.md","articles":[]},"previous":{"title":"TVirtualFitter*","level":"1.2.106","depth":2,"path":"class/TVirtualFitter.md","ref":"class/TVirtualFitter.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/README.md","mtime":"2017-09-04T07:32:54.146Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-04T07:33:05.608Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
