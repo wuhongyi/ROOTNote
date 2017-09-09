@@ -28,6 +28,7 @@ End_Macro
 #include "TDirectoryFile.h"
 #include "TFile.h"
 #include "TBufferFile.h"
+#include "TBufferJSON.h"
 #include "TMapFile.h"
 #include "TClassTable.h"
 #include "TInterpreter.h"
@@ -608,7 +609,8 @@ void TDirectoryFile::Delete(const char *namecycle)
    TDirectory::TContext ctxt(this);
    Short_t  cycle;
    char     name[kMaxLen];
-   DecodeNameCycle(namecycle, name, cycle, kMaxLen);
+   const char *nmcy = (namecycle) ? namecycle : "";
+   DecodeNameCycle(nmcy, name, cycle, kMaxLen);
 
    Int_t deleteall    = 0;
    Int_t deletetree   = 0;
@@ -705,7 +707,16 @@ void TDirectoryFile::Delete(const char *namecycle)
 void TDirectoryFile::FillBuffer(char *&buffer)
 {
    Version_t version = TDirectoryFile::Class_Version();
-   if (fSeekKeys > TFile::kStartBigFile) version += 1000;
+   if (fSeekDir > TFile::kStartBigFile ||
+       fSeekParent > TFile::kStartBigFile ||
+       fSeekKeys > TFile::kStartBigFile )
+   {
+      // One of the address is larger than 2GB we need to use longer onfile
+      // integer, thus we increase the verison number.
+      // Note that fSeekDir and fSeekKey are not necessarily correlated, if
+      // some object are 'removed' from the file and the holes are reused.
+      version += 1000;
+   }
    tobuf(buffer, version);
    fDatimeC.FillBuffer(buffer);
    fDatimeM.FillBuffer(buffer);
@@ -1144,12 +1155,13 @@ TFile *TDirectoryFile::OpenFile(const char *name, Option_t *option,const char *f
 
 
 ////////////////////////////////////////////////////////////////////////////////
-/// Create a sub-directory and return a pointer to the created directory.
+/// Create a sub-directory "a" or a hierarchy of sub-directories "a/b/c/...".
 ///
-/// Returns 0 in case of error.
-/// Returns 0 if a directory with the same name already exists.
-/// Note that the directory name may be of the form "a/b/c" to create a hierarchy of directories.
-/// In this case, the function returns the pointer to the "a" directory if the operation is successful.
+/// Returns 0 in case of error or if a sub-directory (hierarchy) with the requested
+/// name already exists.
+/// Returns a pointer to the created sub-directory or to the top sub-directory of
+/// the hierarchy (in the above example, the returned TDirectory * always points
+/// to "a").
 
 TDirectory *TDirectoryFile::mkdir(const char *name, const char *title)
 {
@@ -1472,6 +1484,10 @@ void TDirectoryFile::Save()
 /// If the operation is successful, it returns the number of bytes written to the file
 /// otherwise it returns 0.
 /// By default a message is printed. Use option "q" to not print the message.
+/// If filename contains ".json" extension, JSON representation of the object
+/// will be created and saved in the text file. Such file can be used in
+/// JavaScript ROOT (https://root.cern.ch/js/) to display object in web browser
+/// When creating JSON file, option string may contain compression level from 0 to 3 (default 0)
 
 Int_t TDirectoryFile::SaveObjectAs(const TObject *obj, const char *filename, Option_t *option) const
 {
@@ -1481,11 +1497,16 @@ Int_t TDirectoryFile::SaveObjectAs(const TObject *obj, const char *filename, Opt
    if (!filename || !filename[0]) {
       fname.Form("%s.root",obj->GetName());
    }
-   TFile *local = TFile::Open(fname.Data(),"recreate");
-   if (!local) return 0;
-   Int_t nbytes = obj->Write();
-   delete local;
-   if (dirsav) dirsav->cd();
+   Int_t nbytes = 0;
+   if (fname.Index(".json") > 0) {
+      nbytes = TBufferJSON::ExportToFile(fname, obj, option);
+   } else {
+      TFile *local = TFile::Open(fname.Data(),"recreate");
+      if (!local) return 0;
+      nbytes = obj->Write();
+      delete local;
+      if (dirsav) dirsav->cd();
+   }
    TString opt = option;
    opt.ToLower();
    if (!opt.Contains("q")) {
@@ -1898,7 +1919,7 @@ Int_t TDirectoryFile::WriteTObject(const TObject *obj, const char *name, Option_
 /// TopClass *top = ....;
 /// directory->WriteObject(top,"name of object")
 /// ~~~
-/// See laso remarks in TDirectoryFile::WriteTObject
+/// See also remarks in TDirectoryFile::WriteTObject
 
 Int_t TDirectoryFile::WriteObjectAny(const void *obj, const char *classname, const char *name, Option_t *option, Int_t bufsize)
 {

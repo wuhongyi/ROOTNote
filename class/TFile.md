@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:38:01 2014 (+0800)
-;; Last-Updated: 六 10月 29 20:55:44 2016 (+0800)
+;; Last-Updated: 六 9月  9 16:24:43 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 20
+;;     Update #: 22
 ;; URL: http://wuhongyi.cn -->
 
 # TFile
@@ -104,8 +104,29 @@ Byte Range      | Record Name | Description
 
 ## class
 
+```cpp
+//全局
+#ifndef __CINT__
+#define gFile (TFile::CurrentFile())
+
+#elif defined(__MAKECINT__)
+// To properly handle the use of gFile in header files (in static declarations)
+R__EXTERN TFile   *gFile;
+#endif
+```
 
 ```cpp
+   /// Asynchronous open request status
+   enum EAsyncOpenStatus { kAOSNotAsync = -1,  kAOSFailure = 0,
+                           kAOSInProgress = 1, kAOSSuccess = 2 };
+   /// Open timeout constants
+   enum EOpenTimeOut { kInstantTimeout = 0, kEternalTimeout = 999999999 };
+
+   /// TTreeCache flushing semantics
+   enum ECacheAction { kDisconnect = 0, kDoNotDisconnect = 1 };
+
+
+
    /// TFile status bits. BIT(13) is taken up by TObject
    enum EStatusBits {
       kRecovered     = BIT(10),
@@ -121,29 +142,94 @@ Byte Range      | Record Name | Description
    enum EFileType { kDefault = 0, kLocal = 1, kNet = 2, kWeb = 3, kFile = 4, kMerge = 5};
 
    TFile();
-
-   /// \param[in] fname1 The name of the file
-   /// \param[in] option Specifies the mode in which the file is opened
-   /// \param[in] ftitle The title of the file
-   /// \param[in] compress Specifies the compression algorithm and level
-   ///
-   /// will be used by object browsers to automatically identify the file as
-   /// a ROOT file. If the constructor fails in any way IsZombie() will
-   /// return true. Use IsOpen() to check if the file is (still) open.
-   /// To open non-local files use the static TFile::Open() method, that
-   /// will take care of opening the files using the correct remote file
-   /// access plugin.
-   ///
-   /// Option | Description
-   /// -------|------------
-   /// NEW or CREATE | Create a new file and open it for writing, if the file already exists the file is not opened.
-   /// RECREATE      | Create a new file, if the file already exists it will be overwritten.
-   /// UPDATE        | Open an existing file for writing. If no file exists, it is created.
-   /// READ          | Open an existing file for reading (default).
-   /// NET           | Used by derived remote file access classes, not a user callable option.
-   /// WEB           | Used by derived remote http access class, not a user callable option.
    TFile(const char *fname, Option_t *option="", const char *ftitle="", Int_t compress=1);
-
+/// Opens or creates a local ROOT file.
+/// \param[in] fname1 The name of the file
+/// \param[in] option Specifies the mode in which the file is opened
+/// \param[in] ftitle The title of the file
+/// \param[in] compress Specifies the compression algorithm and level
+/// It is recommended to specify fname1 as "<file>.root". The suffix ".root"
+/// will be used by object browsers to automatically identify the file as
+/// a ROOT file. If the constructor fails in any way IsZombie() will
+/// return true. Use IsOpen() to check if the file is (still) open.
+/// To open non-local files use the static TFile::Open() method, that
+/// will take care of opening the files using the correct remote file
+/// access plugin.
+/// Option | Description
+/// -------|------------
+/// NEW or CREATE | Create a new file and open it for writing, if the file already exists the file is not opened.
+/// RECREATE      | Create a new file, if the file already exists it will be overwritten.
+/// UPDATE        | Open an existing file for writing. If no file exists, it is created.
+/// READ          | Open an existing file for reading (default).
+/// NET           | Used by derived remote file access classes, not a user callable option.
+/// WEB           | Used by derived remote http access class, not a user callable option.
+/// If option = "" (default), READ is assumed.
+/// The file can be specified as a URL of the form:
+///     file:///user/rdm/bla.root or file:/user/rdm/bla.root
+/// The file can also be a member of an archive, in which case it is
+/// specified as:
+///     multi.zip#file.root or multi.zip#0
+/// which will open file.root which is a member of the file multi.zip
+/// archive or member 1 from the archive. For more on archive file
+/// support see the TArchiveFile class.
+/// TFile and its remote access plugins can also be used to open any
+/// file, i.e. also non ROOT files, using:
+///     file.tar?filetype=raw
+/// This is convenient because the many remote file access plugins allow
+/// easy access to/from the many different mass storage systems.
+/// The title of the file (ftitle) will be shown by the ROOT browsers.
+/// A ROOT file (like a Unix file system) may contain objects and
+/// directories. There are no restrictions for the number of levels
+/// of directories.
+/// A ROOT file is designed such that one can write in the file in pure
+/// sequential mode (case of BATCH jobs). In this case, the file may be
+/// read sequentially again without using the file index written
+/// at the end of the file. In case of a job crash, all the information
+/// on the file is therefore protected.
+/// A ROOT file can be used interactively. In this case, one has the
+/// possibility to delete existing objects and add new ones.
+/// When an object is deleted from the file, the freed space is added
+/// into the FREE linked list (fFree). The FREE list consists of a chain
+/// of consecutive free segments on the file. At the same time, the first
+/// 4 bytes of the freed record on the file are overwritten by GAPSIZE
+/// where GAPSIZE = -(Number of bytes occupied by the record).
+/// Option compress is used to specify the compression level and algorithm:
+///     compress = 100 * algorithm + level
+/// Level | Explanation
+/// ------|-------------
+/// 0   | objects written to this file will not be compressed.
+/// 1   | minimal compression level but fast.
+/// ... | ....
+/// 9   | maximal compression level but slower and might use more memory.
+/// (For the currently supported algorithms, the maximum level is 9)
+/// If compress is negative it indicates the compression level is not set yet.
+/// The enumeration ROOT::ECompressionAlgorithm associates each
+/// algorithm with a number. There is a utility function to help
+/// to set the value of compress. For example,
+///     ROOT::CompressionSettings(ROOT::kLZMA, 1)
+/// will build an integer which will set the compression to use
+/// the LZMA algorithm and compression level 1.  These are defined
+/// in the header file <em>Compression.h</em>.
+/// Note that the compression settings may be changed at any time.
+/// The new compression settings will only apply to branches created
+/// or attached after the setting is changed and other objects written
+/// after the setting is changed.
+/// In case the file does not exist or is not a valid ROOT file,
+/// it is made a Zombie. One can detect this situation with a code like:
+/// ~~~{.cpp}
+/// TFile f("file.root");
+/// if (f.IsZombie()) {
+///    std::cout << "Error opening file" << std::endl;
+///    exit(-1);
+/// }
+/// ~~~
+///  When opening the file, the system checks the validity of this directory.
+///  If something wrong is detected, an automatic Recovery is performed. In
+///  this case, the file is scanned sequentially reading all logical blocks
+///  and attempting to rebuild a correct directory (see TFile::Recover).
+///  One can disable the automatic recovery procedure when reading one
+///  or more files by setting the environment variable "TFile.Recover: 0"
+///  in the system.rootrc file.
 
    virtual ~TFile();
    virtual void        Close(Option_t *option=""); // *MENU*
@@ -183,7 +269,6 @@ Byte Range      | Record Name | Description
 ///   - <em>cycle = *</em> means all cycles (memory and keys)
 ///   - <em>cycle = ""</em> or cycle = 9999 ==> apply to a memory object
 /// When name=* use T* to delete subdirectories also
-///
 /// Examples:
 /// name/cycle | Action
 /// -----------|-------
@@ -283,7 +368,7 @@ Byte Range      | Record Name | Description
    virtual Bool_t      IsArchive() const { return fIsArchive; }
            Bool_t      IsBinary() const { return TestBit(kBinaryFile); }
            Bool_t      IsRaw() const { return !fIsRootFile; }
-   virtual Bool_t      IsOpen() const;
+   virtual Bool_t      IsOpen() const;/// Returns kTRUE in case file is open and kFALSE if file is not open.
    virtual void        ls(Option_t *option="") const;
 /// List file contents.
 /// Indentation is used to identify the file tree.
@@ -307,7 +392,6 @@ Byte Range      | Record Name | Description
 /// only supported value), the function generates an include file
 /// for each class in the StreamerInfo list for which a TClass
 /// object does not exist.
-///
 /// The code generated includes:
 ///   - dirnameProjectHeaders.h, which contains one #include statement per generated header file
 ///   - dirnameProjectSource.cxx,which contains all the constructors and destructors implementation.
@@ -315,7 +399,6 @@ Byte Range      | Record Name | Description
 /// The header file name is the fully qualified name of the class after all the special characters
 /// "<>,:" are replaced by underscored.  For example for std::pair<edm::Vertex,int> the file name is
 /// pair_edm__Vertex_int_.h
-///
 /// In the generated classes, map, multimap when the first template parameter is a class
 /// are replaced by a vector of pair. set and multiset when the tempalte parameter
 /// is a class are replaced by a vector. This is required since we do not have the
@@ -328,7 +411,6 @@ Byte Range      | Record Name | Description
 /// update        | New classes are added to the existing directory. Existing classes with the same name are replaced by the new definition. If the directory dirname doest not exist, same effect as "new".
 /// genreflex     | Use genreflex rather than rootcint to generate the dictionary.
 /// par           | Create a PAR file with the minimal set of code needed to read the content of the ROOT file. The name of the PAR file is basename(dirname), with extension '.par' enforced; the PAR file will be created at dirname(dirname).
-///
 /// If, in addition to one of the 3 above options, the option "+" is specified,
 /// the function will generate:
 ///   - a script called MAKEP to build the shared lib
@@ -357,11 +439,39 @@ Byte Range      | Record Name | Description
 ///      gSystem->load("demo/demo.so");
 /// The following feature is not yet enabled:
 /// One can restrict the list of classes to be generated by using expressions like:
-///
 ///     classes = "Ali*" generate code only for classes starting with Ali
 ///     classes = "myClass" generate code for class MyClass only.
 
    virtual void        Map(); // *MENU*
+/// List the contents of a file sequentially.
+/// For each logical record found, it prints:
+///     Date/Time  Record_Adress Logical_Record_Length  ClassName  CompressionFactor
+/// Example of output
+///     20010404/150437  At:64        N=150       TFile
+///     20010404/150440  At:214       N=28326     TBasket        CX =  1.13
+///     20010404/150440  At:28540     N=29616     TBasket        CX =  1.08
+///     20010404/150440  At:58156     N=29640     TBasket        CX =  1.08
+///     20010404/150440  At:87796     N=29076     TBasket        CX =  1.10
+///     20010404/150440  At:116872    N=10151     TBasket        CX =  3.15
+///     20010404/150441  At:127023    N=28341     TBasket        CX =  1.13
+///     20010404/150441  At:155364    N=29594     TBasket        CX =  1.08
+///     20010404/150441  At:184958    N=29616     TBasket        CX =  1.08
+///     20010404/150441  At:214574    N=29075     TBasket        CX =  1.10
+///     20010404/150441  At:243649    N=9583      TBasket        CX =  3.34
+///     20010404/150442  At:253232    N=28324     TBasket        CX =  1.13
+///     20010404/150442  At:281556    N=29641     TBasket        CX =  1.08
+///     20010404/150442  At:311197    N=29633     TBasket        CX =  1.08
+///     20010404/150442  At:340830    N=29091     TBasket        CX =  1.10
+///     20010404/150442  At:369921    N=10341     TBasket        CX =  3.09
+///     20010404/150442  At:380262    N=509       TH1F           CX =  1.93
+///     20010404/150442  At:380771    N=1769      TH2F           CX =  4.32
+///     20010404/150442  At:382540    N=1849      TProfile       CX =  1.65
+///     20010404/150442  At:384389    N=18434     TNtuple        CX =  4.51
+///     20010404/150442  At:402823    N=307       KeysList
+///     20010404/150443  At:403130    N=4548      StreamerInfo   CX =  3.65
+///     20010404/150443  At:407678    N=86        FreeSegments
+///     20010404/150443  At:407764    N=1         END
+
    virtual Bool_t      Matches(const char *name);
 /// Return kTRUE if 'url' matches the coordinates of this file.
 /// The check is implementation dependent and may need to be overload
@@ -512,6 +622,8 @@ Byte Range      | Record Name | Description
 /// The file header is written (bytes 1->fBEGIN).
 
    virtual Int_t       Write(const char *name=0, Int_t opt=0, Int_t bufsiz=0) const;
+/// One can not save a const TDirectory object.
+
    virtual void        WriteFree();
 /// Write FREE linked list on the file.
 /// The linked list of FREE segments (fFree) is written as a single data

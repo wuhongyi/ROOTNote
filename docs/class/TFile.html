@@ -2577,7 +2577,7 @@
                 <a href="TDirectory.html">
             
                     
-                    TDirectory+
+                    TDirectory*
             
                 </a>
             
@@ -2590,7 +2590,7 @@
                 <a href="TDirectoryFile.html">
             
                     
-                    TDirectoryFile+
+                    TDirectoryFile*
             
                 </a>
             
@@ -2603,7 +2603,7 @@
                 <a href="TObject.html">
             
                     
-                    TObject+
+                    TObject*
             
                 </a>
             
@@ -2965,9 +2965,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:38:01 2014 (+0800)
-;; Last-Updated: 六 10月 29 20:55:44 2016 (+0800)
+;; Last-Updated: 六 9月  9 16:24:43 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 20
+;;     Update #: 22
 ;; URL: http://wuhongyi.cn -->
 <h1 id="tfile">TFile</h1>
 <p>&#x7EE7;&#x627F;TDirectoryFile</p>
@@ -3047,7 +3047,27 @@ fUnits will be set to 8:</p>
 /// or attached after the setting is changed and other objects written
 /// after the setting is changed.
 </code></pre><h2 id="class">class</h2>
-<pre><code class="lang-cpp">   <span class="hljs-comment">/// TFile status bits. BIT(13) is taken up by TObject</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5168;&#x5C40;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> __CINT__</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> gFile (TFile::CurrentFile())</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">elif</span> defined(__MAKECINT__)</span>
+<span class="hljs-comment">// To properly handle the use of gFile in header files (in static declarations)</span>
+R__EXTERN TFile   *gFile;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<pre><code class="lang-cpp">   <span class="hljs-comment">/// Asynchronous open request status</span>
+   <span class="hljs-keyword">enum</span> EAsyncOpenStatus { kAOSNotAsync = <span class="hljs-number">-1</span>,  kAOSFailure = <span class="hljs-number">0</span>,
+                           kAOSInProgress = <span class="hljs-number">1</span>, kAOSSuccess = <span class="hljs-number">2</span> };
+   <span class="hljs-comment">/// Open timeout constants</span>
+   <span class="hljs-keyword">enum</span> EOpenTimeOut { kInstantTimeout = <span class="hljs-number">0</span>, kEternalTimeout = <span class="hljs-number">999999999</span> };
+
+   <span class="hljs-comment">/// TTreeCache flushing semantics</span>
+   <span class="hljs-keyword">enum</span> ECacheAction { kDisconnect = <span class="hljs-number">0</span>, kDoNotDisconnect = <span class="hljs-number">1</span> };
+
+
+
+   <span class="hljs-comment">/// TFile status bits. BIT(13) is taken up by TObject</span>
    <span class="hljs-keyword">enum</span> EStatusBits {
       kRecovered     = BIT(<span class="hljs-number">10</span>),
       kHasReferences = BIT(<span class="hljs-number">11</span>),
@@ -3062,29 +3082,94 @@ fUnits will be set to 8:</p>
    <span class="hljs-keyword">enum</span> EFileType { kDefault = <span class="hljs-number">0</span>, kLocal = <span class="hljs-number">1</span>, kNet = <span class="hljs-number">2</span>, kWeb = <span class="hljs-number">3</span>, kFile = <span class="hljs-number">4</span>, kMerge = <span class="hljs-number">5</span>};
 
    TFile();
-
-   <span class="hljs-comment">/// \param[in] fname1 The name of the file</span>
-   <span class="hljs-comment">/// \param[in] option Specifies the mode in which the file is opened</span>
-   <span class="hljs-comment">/// \param[in] ftitle The title of the file</span>
-   <span class="hljs-comment">/// \param[in] compress Specifies the compression algorithm and level</span>
-   <span class="hljs-comment">///</span>
-   <span class="hljs-comment">/// will be used by object browsers to automatically identify the file as</span>
-   <span class="hljs-comment">/// a ROOT file. If the constructor fails in any way IsZombie() will</span>
-   <span class="hljs-comment">/// return true. Use IsOpen() to check if the file is (still) open.</span>
-   <span class="hljs-comment">/// To open non-local files use the static TFile::Open() method, that</span>
-   <span class="hljs-comment">/// will take care of opening the files using the correct remote file</span>
-   <span class="hljs-comment">/// access plugin.</span>
-   <span class="hljs-comment">///</span>
-   <span class="hljs-comment">/// Option | Description</span>
-   <span class="hljs-comment">/// -------|------------</span>
-   <span class="hljs-comment">/// NEW or CREATE | Create a new file and open it for writing, if the file already exists the file is not opened.</span>
-   <span class="hljs-comment">/// RECREATE      | Create a new file, if the file already exists it will be overwritten.</span>
-   <span class="hljs-comment">/// UPDATE        | Open an existing file for writing. If no file exists, it is created.</span>
-   <span class="hljs-comment">/// READ          | Open an existing file for reading (default).</span>
-   <span class="hljs-comment">/// NET           | Used by derived remote file access classes, not a user callable option.</span>
-   <span class="hljs-comment">/// WEB           | Used by derived remote http access class, not a user callable option.</span>
    TFile(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fname, Option_t *option=<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *ftitle=<span class="hljs-string">&quot;&quot;</span>, Int_t compress=<span class="hljs-number">1</span>);
-
+<span class="hljs-comment">/// Opens or creates a local ROOT file.</span>
+<span class="hljs-comment">/// \param[in] fname1 The name of the file</span>
+<span class="hljs-comment">/// \param[in] option Specifies the mode in which the file is opened</span>
+<span class="hljs-comment">/// \param[in] ftitle The title of the file</span>
+<span class="hljs-comment">/// \param[in] compress Specifies the compression algorithm and level</span>
+<span class="hljs-comment">/// It is recommended to specify fname1 as &quot;&lt;file&gt;.root&quot;. The suffix &quot;.root&quot;</span>
+<span class="hljs-comment">/// will be used by object browsers to automatically identify the file as</span>
+<span class="hljs-comment">/// a ROOT file. If the constructor fails in any way IsZombie() will</span>
+<span class="hljs-comment">/// return true. Use IsOpen() to check if the file is (still) open.</span>
+<span class="hljs-comment">/// To open non-local files use the static TFile::Open() method, that</span>
+<span class="hljs-comment">/// will take care of opening the files using the correct remote file</span>
+<span class="hljs-comment">/// access plugin.</span>
+<span class="hljs-comment">/// Option | Description</span>
+<span class="hljs-comment">/// -------|------------</span>
+<span class="hljs-comment">/// NEW or CREATE | Create a new file and open it for writing, if the file already exists the file is not opened.</span>
+<span class="hljs-comment">/// RECREATE      | Create a new file, if the file already exists it will be overwritten.</span>
+<span class="hljs-comment">/// UPDATE        | Open an existing file for writing. If no file exists, it is created.</span>
+<span class="hljs-comment">/// READ          | Open an existing file for reading (default).</span>
+<span class="hljs-comment">/// NET           | Used by derived remote file access classes, not a user callable option.</span>
+<span class="hljs-comment">/// WEB           | Used by derived remote http access class, not a user callable option.</span>
+<span class="hljs-comment">/// If option = &quot;&quot; (default), READ is assumed.</span>
+<span class="hljs-comment">/// The file can be specified as a URL of the form:</span>
+<span class="hljs-comment">///     file:///user/rdm/bla.root or file:/user/rdm/bla.root</span>
+<span class="hljs-comment">/// The file can also be a member of an archive, in which case it is</span>
+<span class="hljs-comment">/// specified as:</span>
+<span class="hljs-comment">///     multi.zip#file.root or multi.zip#0</span>
+<span class="hljs-comment">/// which will open file.root which is a member of the file multi.zip</span>
+<span class="hljs-comment">/// archive or member 1 from the archive. For more on archive file</span>
+<span class="hljs-comment">/// support see the TArchiveFile class.</span>
+<span class="hljs-comment">/// TFile and its remote access plugins can also be used to open any</span>
+<span class="hljs-comment">/// file, i.e. also non ROOT files, using:</span>
+<span class="hljs-comment">///     file.tar?filetype=raw</span>
+<span class="hljs-comment">/// This is convenient because the many remote file access plugins allow</span>
+<span class="hljs-comment">/// easy access to/from the many different mass storage systems.</span>
+<span class="hljs-comment">/// The title of the file (ftitle) will be shown by the ROOT browsers.</span>
+<span class="hljs-comment">/// A ROOT file (like a Unix file system) may contain objects and</span>
+<span class="hljs-comment">/// directories. There are no restrictions for the number of levels</span>
+<span class="hljs-comment">/// of directories.</span>
+<span class="hljs-comment">/// A ROOT file is designed such that one can write in the file in pure</span>
+<span class="hljs-comment">/// sequential mode (case of BATCH jobs). In this case, the file may be</span>
+<span class="hljs-comment">/// read sequentially again without using the file index written</span>
+<span class="hljs-comment">/// at the end of the file. In case of a job crash, all the information</span>
+<span class="hljs-comment">/// on the file is therefore protected.</span>
+<span class="hljs-comment">/// A ROOT file can be used interactively. In this case, one has the</span>
+<span class="hljs-comment">/// possibility to delete existing objects and add new ones.</span>
+<span class="hljs-comment">/// When an object is deleted from the file, the freed space is added</span>
+<span class="hljs-comment">/// into the FREE linked list (fFree). The FREE list consists of a chain</span>
+<span class="hljs-comment">/// of consecutive free segments on the file. At the same time, the first</span>
+<span class="hljs-comment">/// 4 bytes of the freed record on the file are overwritten by GAPSIZE</span>
+<span class="hljs-comment">/// where GAPSIZE = -(Number of bytes occupied by the record).</span>
+<span class="hljs-comment">/// Option compress is used to specify the compression level and algorithm:</span>
+<span class="hljs-comment">///     compress = 100 * algorithm + level</span>
+<span class="hljs-comment">/// Level | Explanation</span>
+<span class="hljs-comment">/// ------|-------------</span>
+<span class="hljs-comment">/// 0   | objects written to this file will not be compressed.</span>
+<span class="hljs-comment">/// 1   | minimal compression level but fast.</span>
+<span class="hljs-comment">/// ... | ....</span>
+<span class="hljs-comment">/// 9   | maximal compression level but slower and might use more memory.</span>
+<span class="hljs-comment">/// (For the currently supported algorithms, the maximum level is 9)</span>
+<span class="hljs-comment">/// If compress is negative it indicates the compression level is not set yet.</span>
+<span class="hljs-comment">/// The enumeration ROOT::ECompressionAlgorithm associates each</span>
+<span class="hljs-comment">/// algorithm with a number. There is a utility function to help</span>
+<span class="hljs-comment">/// to set the value of compress. For example,</span>
+<span class="hljs-comment">///     ROOT::CompressionSettings(ROOT::kLZMA, 1)</span>
+<span class="hljs-comment">/// will build an integer which will set the compression to use</span>
+<span class="hljs-comment">/// the LZMA algorithm and compression level 1.  These are defined</span>
+<span class="hljs-comment">/// in the header file &lt;em&gt;Compression.h&lt;/em&gt;.</span>
+<span class="hljs-comment">/// Note that the compression settings may be changed at any time.</span>
+<span class="hljs-comment">/// The new compression settings will only apply to branches created</span>
+<span class="hljs-comment">/// or attached after the setting is changed and other objects written</span>
+<span class="hljs-comment">/// after the setting is changed.</span>
+<span class="hljs-comment">/// In case the file does not exist or is not a valid ROOT file,</span>
+<span class="hljs-comment">/// it is made a Zombie. One can detect this situation with a code like:</span>
+<span class="hljs-comment">/// ~~~{.cpp}</span>
+<span class="hljs-comment">/// TFile f(&quot;file.root&quot;);</span>
+<span class="hljs-comment">/// if (f.IsZombie()) {</span>
+<span class="hljs-comment">///    std::cout &lt;&lt; &quot;Error opening file&quot; &lt;&lt; std::endl;</span>
+<span class="hljs-comment">///    exit(-1);</span>
+<span class="hljs-comment">/// }</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///  When opening the file, the system checks the validity of this directory.</span>
+<span class="hljs-comment">///  If something wrong is detected, an automatic Recovery is performed. In</span>
+<span class="hljs-comment">///  this case, the file is scanned sequentially reading all logical blocks</span>
+<span class="hljs-comment">///  and attempting to rebuild a correct directory (see TFile::Recover).</span>
+<span class="hljs-comment">///  One can disable the automatic recovery procedure when reading one</span>
+<span class="hljs-comment">///  or more files by setting the environment variable &quot;TFile.Recover: 0&quot;</span>
+<span class="hljs-comment">///  in the system.rootrc file.</span>
 
    <span class="hljs-keyword">virtual</span> ~TFile();
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Close</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
@@ -3124,7 +3209,6 @@ fUnits will be set to 8:</p>
 <span class="hljs-comment">///   - &lt;em&gt;cycle = *&lt;/em&gt; means all cycles (memory and keys)</span>
 <span class="hljs-comment">///   - &lt;em&gt;cycle = &quot;&quot;&lt;/em&gt; or cycle = 9999 ==&gt; apply to a memory object</span>
 <span class="hljs-comment">/// When name=* use T* to delete subdirectories also</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">/// Examples:</span>
 <span class="hljs-comment">/// name/cycle | Action</span>
 <span class="hljs-comment">/// -----------|-------</span>
@@ -3224,7 +3308,7 @@ fUnits will be set to 8:</p>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">IsArchive</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fIsArchive; }
            <span class="hljs-function">Bool_t      <span class="hljs-title">IsBinary</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kBinaryFile); }
            <span class="hljs-function">Bool_t      <span class="hljs-title">IsRaw</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> !fIsRootFile; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">IsOpen</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">IsOpen</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns kTRUE in case file is open and kFALSE if file is not open.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
 <span class="hljs-comment">/// List file contents.</span>
 <span class="hljs-comment">/// Indentation is used to identify the file tree.</span>
@@ -3248,7 +3332,6 @@ fUnits will be set to 8:</p>
 <span class="hljs-comment">/// only supported value), the function generates an include file</span>
 <span class="hljs-comment">/// for each class in the StreamerInfo list for which a TClass</span>
 <span class="hljs-comment">/// object does not exist.</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">/// The code generated includes:</span>
 <span class="hljs-comment">///   - dirnameProjectHeaders.h, which contains one #include statement per generated header file</span>
 <span class="hljs-comment">///   - dirnameProjectSource.cxx,which contains all the constructors and destructors implementation.</span>
@@ -3256,7 +3339,6 @@ fUnits will be set to 8:</p>
 <span class="hljs-comment">/// The header file name is the fully qualified name of the class after all the special characters</span>
 <span class="hljs-comment">/// &quot;&lt;&gt;,:&quot; are replaced by underscored.  For example for std::pair&lt;edm::Vertex,int&gt; the file name is</span>
 <span class="hljs-comment">/// pair_edm__Vertex_int_.h</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">/// In the generated classes, map, multimap when the first template parameter is a class</span>
 <span class="hljs-comment">/// are replaced by a vector of pair. set and multiset when the tempalte parameter</span>
 <span class="hljs-comment">/// is a class are replaced by a vector. This is required since we do not have the</span>
@@ -3269,7 +3351,6 @@ fUnits will be set to 8:</p>
 <span class="hljs-comment">/// update        | New classes are added to the existing directory. Existing classes with the same name are replaced by the new definition. If the directory dirname doest not exist, same effect as &quot;new&quot;.</span>
 <span class="hljs-comment">/// genreflex     | Use genreflex rather than rootcint to generate the dictionary.</span>
 <span class="hljs-comment">/// par           | Create a PAR file with the minimal set of code needed to read the content of the ROOT file. The name of the PAR file is basename(dirname), with extension &apos;.par&apos; enforced; the PAR file will be created at dirname(dirname).</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">/// If, in addition to one of the 3 above options, the option &quot;+&quot; is specified,</span>
 <span class="hljs-comment">/// the function will generate:</span>
 <span class="hljs-comment">///   - a script called MAKEP to build the shared lib</span>
@@ -3298,11 +3379,39 @@ fUnits will be set to 8:</p>
 <span class="hljs-comment">///      gSystem-&gt;load(&quot;demo/demo.so&quot;);</span>
 <span class="hljs-comment">/// The following feature is not yet enabled:</span>
 <span class="hljs-comment">/// One can restrict the list of classes to be generated by using expressions like:</span>
-<span class="hljs-comment">///</span>
 <span class="hljs-comment">///     classes = &quot;Ali*&quot; generate code only for classes starting with Ali</span>
 <span class="hljs-comment">///     classes = &quot;myClass&quot; generate code for class MyClass only.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Map</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// List the contents of a file sequentially.</span>
+<span class="hljs-comment">/// For each logical record found, it prints:</span>
+<span class="hljs-comment">///     Date/Time  Record_Adress Logical_Record_Length  ClassName  CompressionFactor</span>
+<span class="hljs-comment">/// Example of output</span>
+<span class="hljs-comment">///     20010404/150437  At:64        N=150       TFile</span>
+<span class="hljs-comment">///     20010404/150440  At:214       N=28326     TBasket        CX =  1.13</span>
+<span class="hljs-comment">///     20010404/150440  At:28540     N=29616     TBasket        CX =  1.08</span>
+<span class="hljs-comment">///     20010404/150440  At:58156     N=29640     TBasket        CX =  1.08</span>
+<span class="hljs-comment">///     20010404/150440  At:87796     N=29076     TBasket        CX =  1.10</span>
+<span class="hljs-comment">///     20010404/150440  At:116872    N=10151     TBasket        CX =  3.15</span>
+<span class="hljs-comment">///     20010404/150441  At:127023    N=28341     TBasket        CX =  1.13</span>
+<span class="hljs-comment">///     20010404/150441  At:155364    N=29594     TBasket        CX =  1.08</span>
+<span class="hljs-comment">///     20010404/150441  At:184958    N=29616     TBasket        CX =  1.08</span>
+<span class="hljs-comment">///     20010404/150441  At:214574    N=29075     TBasket        CX =  1.10</span>
+<span class="hljs-comment">///     20010404/150441  At:243649    N=9583      TBasket        CX =  3.34</span>
+<span class="hljs-comment">///     20010404/150442  At:253232    N=28324     TBasket        CX =  1.13</span>
+<span class="hljs-comment">///     20010404/150442  At:281556    N=29641     TBasket        CX =  1.08</span>
+<span class="hljs-comment">///     20010404/150442  At:311197    N=29633     TBasket        CX =  1.08</span>
+<span class="hljs-comment">///     20010404/150442  At:340830    N=29091     TBasket        CX =  1.10</span>
+<span class="hljs-comment">///     20010404/150442  At:369921    N=10341     TBasket        CX =  3.09</span>
+<span class="hljs-comment">///     20010404/150442  At:380262    N=509       TH1F           CX =  1.93</span>
+<span class="hljs-comment">///     20010404/150442  At:380771    N=1769      TH2F           CX =  4.32</span>
+<span class="hljs-comment">///     20010404/150442  At:382540    N=1849      TProfile       CX =  1.65</span>
+<span class="hljs-comment">///     20010404/150442  At:384389    N=18434     TNtuple        CX =  4.51</span>
+<span class="hljs-comment">///     20010404/150442  At:402823    N=307       KeysList</span>
+<span class="hljs-comment">///     20010404/150443  At:403130    N=4548      StreamerInfo   CX =  3.65</span>
+<span class="hljs-comment">///     20010404/150443  At:407678    N=86        FreeSegments</span>
+<span class="hljs-comment">///     20010404/150443  At:407764    N=1         END</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">Matches</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;
 <span class="hljs-comment">/// Return kTRUE if &apos;url&apos; matches the coordinates of this file.</span>
 <span class="hljs-comment">/// The check is implementation dependent and may need to be overload</span>
@@ -3453,6 +3562,8 @@ fUnits will be set to 8:</p>
 <span class="hljs-comment">/// The file header is written (bytes 1-&gt;fBEGIN).</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name=<span class="hljs-number">0</span>, Int_t opt=<span class="hljs-number">0</span>, Int_t bufsiz=<span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// One can not save a const TDirectory object.</span>
+
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">WriteFree</span><span class="hljs-params">()</span></span>;
 <span class="hljs-comment">/// Write FREE linked list on the file.</span>
 <span class="hljs-comment">/// The linked list of FREE segments (fFree) is written as a single data</span>
@@ -3789,7 +3900,7 @@ Long64_t nentries = fChain-&gt;GetEntriesFast();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TFile*","level":"1.2.18","depth":2,"next":{"title":"TFileCacheWrite","level":"1.2.19","depth":2,"path":"class/TFileCacheWrite.md","ref":"class/TFileCacheWrite.md","articles":[]},"previous":{"title":"TF3","level":"1.2.17","depth":2,"path":"class/TF3.md","ref":"class/TF3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TFile.md","mtime":"2017-07-11T12:51:30.027Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-04T07:33:05.608Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TFile*","level":"1.2.18","depth":2,"next":{"title":"TFileCacheWrite","level":"1.2.19","depth":2,"path":"class/TFileCacheWrite.md","ref":"class/TFileCacheWrite.md","articles":[]},"previous":{"title":"TF3","level":"1.2.17","depth":2,"path":"class/TF3.md","ref":"class/TF3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TFile.md","mtime":"2017-09-09T08:24:43.636Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-09T08:39:16.537Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
