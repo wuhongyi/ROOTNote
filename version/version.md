@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 3月 18 14:13:10 2016 (+0800)
-;; Last-Updated: 六 8月 13 20:47:16 2016 (+0800)
+;; Last-Updated: 六 1月 13 16:29:25 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 29
+;;     Update #: 30
 ;; URL: http://wuhongyi.cn -->
 
 # 文件更新版本
@@ -26,6 +26,7 @@
 - TRandom 6.06.02
 - TSelector 6.06.02
 - system 6.06.02
+- graf3d 6.10.04
 
 - RVersion.h 6.06.02
 - TDirectory.cxx 6.06.02
