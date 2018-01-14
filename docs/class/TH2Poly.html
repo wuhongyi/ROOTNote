@@ -3407,7 +3407,319 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="th2poly">TH2Poly</h1>
+                                <!-- TH2Poly.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 日 1月 14 13:53:25 2018 (+0800)
+;; Last-Updated: 日 1月 14 14:13:56 2018 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 2
+;; URL: http://wuhongyi.cn -->
+<h1 id="th2poly">TH2Poly</h1>
+<p>&#x7EE7;&#x627F; public TH2</p>
+<p>2D Histogram with Polygonal Bins</p>
+<pre><code class="lang-cpp">`TH2Poly` is a 2D Histogram class (TH2) allowing to define polygonal
+bins of arbitrary shape.
+
+Each bin in the `TH2Poly` histogram is a `TH2PolyBin` object.
+`TH2PolyBin` is a very simple class containing the vertices (stored
+as `TGraph`s or `TMultiGraph`s ) and contents of the polygonal
+bin as well as several related functions.
+
+Essentially, a `TH2Poly` is a TList of `TH2PolyBin` objects
+with methods to manipulate them.
+
+Bins are defined using one of the `AddBin()` methods. The bin definition
+should be done before filling.
+
+The histogram can be filled with `Fill(Double_t x, Double_t y, Double_t w)
+`. `w` is the weight.
+If no weight is specified, it is assumed to be 1.
+
+Not all histogram&apos;s area need to be binned. Filling an area without bins,
+will falls into the overflows. Adding a bin is not retroactive; it doesn&apos;t
+affect previous fillings. A `Fill()` call, that
+was previously ignored due to the lack of a bin at the specified location, is
+not reconsidered when that location is binned later.
+
+If there are two overlapping bins, the first one in the list will be incremented
+by `Fill()`.
+
+The histogram may automatically extends its limits if a bin outside the
+histogram limits is added. This is done when the default constructor (with no
+arguments) is used. It generates a histogram with no limits along the X and Y
+axis. Adding bins to it will extend it up to a proper size.
+
+`TH2Poly` implements a partitioning algorithm to speed up bins&apos; filling.
+The partitioning algorithm divides the histogram into regions called cells.
+The bins that each cell intersects are recorded in an array of `TList`s.
+When a coordinate in the histogram is to be filled; the method (quickly) finds
+which cell the coordinate belongs.  It then only loops over the bins
+intersecting that cell to find the bin the input coordinate corresponds to.
+The partitioning of the histogram is updated continuously as each bin is added.
+The default number of cells on each axis is 25. This number could be set to
+another value in the constructor or adjusted later by calling the
+`ChangePartition(Int_t, Int_t)` method. The partitioning algorithm is
+considerably faster than the brute force algorithm (i.e. checking if each bin
+contains the input coordinates), especially if the histogram is to be filled
+many times.
+
+
+## Partitioning Algorithm
+The partitioning algorithm forms an essential part of the `TH2Poly`
+class. It is implemented to speed up the filling of bins.
+
+With the brute force approach, the filling is done in the following way:  An
+iterator loops over all bins in the `TH2Poly` and invokes the
+method `IsInside()` for each of them.
+This method checks if the input location is in that bin. If the filling
+coordinate is inside, the bin is filled. Looping over all the bin is
+very slow.
+
+The alternative is to divide the histogram into virtual rectangular regions
+called &quot;cells&quot;. Each cell stores the pointers of the bins intersecting it.
+When a coordinate is to be filled, the method finds which cell the coordinate
+falls into. Since the cells are rectangular, this can be done very quickly.
+It then only loops over the bins associated with that cell.
+
+The addition of bins to the appropriate cells is done when the bin is added
+to the histogram. To do this, `AddBin()` calls the
+`AddBinToPartition()` method.
+This method adds the input bin to the partitioning matrix.
+
+The number of partition cells per axis can be specified in the constructor.
+If it is not specified, the default value of 25 along each axis will be
+assigned. This value was chosen because it is small enough to avoid slowing
+down AddBin(), while being large enough to enhance Fill() by a considerable
+amount. Regardless of how it is initialized at construction time, it can be
+changed later with the `ChangePartition()` method.
+`ChangePartition()` deletes the
+old partition matrix and generates a new one with the specified number of cells
+on each axis.
+
+The optimum number of partition cells per axis changes with the number of
+times `Fill()` will be called.  Although partitioning greatly speeds up
+filling, it also adds a constant time delay into the code. When `Fill()`
+is to be called many times, it is more efficient to divide the histogram into
+a large number cells. However, if the histogram is to be filled only a few
+times, it is better to divide into a small number of cells.
+</code></pre>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">// class TH2Poly : public TH2</span>
+
+<span class="hljs-keyword">public</span>:
+   TH2Poly();
+   TH2Poly(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Double_t xlow, Double_t xup, Double_t ylow, Double_t yup);
+   TH2Poly(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t nX, Double_t xlow, Double_t xup,  Int_t nY, Double_t ylow, Double_t yup);
+   <span class="hljs-keyword">virtual</span> ~TH2Poly();
+
+<span class="hljs-comment">/// Adds a new bin to the histogram. It can be any object having the method</span>
+<span class="hljs-comment">/// IsInside(). It returns the bin number in the histogram. It returns 0 if</span>
+<span class="hljs-comment">/// it failed to add. To allow the histogram limits to expand when a bin</span>
+<span class="hljs-comment">/// outside the limits is added, call SetFloat() before adding the bin.</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">AddBin</span><span class="hljs-params">(TObject *poly)</span></span>;
+
+<span class="hljs-comment">/// Adds a new bin to the histogram. The number of vertices and their (x,y)</span>
+<span class="hljs-comment">/// coordinates are required as input. It returns the bin number in the</span>
+<span class="hljs-comment">/// histogram.</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">AddBin</span><span class="hljs-params">(Int_t n, <span class="hljs-keyword">const</span> Double_t *x, <span class="hljs-keyword">const</span> Double_t *y)</span></span>;
+
+<span class="hljs-comment">/// Add a new bin to the histogram. The bin shape is a rectangle.</span>
+<span class="hljs-comment">/// It returns the bin number of the bin in the histogram.</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">AddBin</span><span class="hljs-params">(Double_t x1, Double_t y1, Double_t x2, Double_t  y2)</span></span>;
+
+<span class="hljs-comment">/// Performs the operation: this = this + c1*h1.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TH1 *h1, Double_t c1)</span></span>;
+
+<span class="hljs-comment">/// Replace contents of this histogram by the addition of h1 and h2.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TH1 *h1, <span class="hljs-keyword">const</span> TH1 *h2, Double_t c1=<span class="hljs-number">1</span>, Double_t c2=<span class="hljs-number">1</span>)</span></span>;
+
+<span class="hljs-comment">/// Performs the operation: this = this + c1*f1.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">Add</span><span class="hljs-params">(TF1 *h1, Double_t c1=<span class="hljs-number">1</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+
+<span class="hljs-comment">/// Clears the contents of all bins in the histogram.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">ClearBinContents</span><span class="hljs-params">()</span></span>;                 <span class="hljs-comment">// Clears the content of all bins</span>
+
+<span class="hljs-comment">/// Make a complete copy of the underlying object.  If &apos;newname&apos; is set,</span>
+<span class="hljs-comment">/// the copy&apos;s name will be set to that name.</span>
+   <span class="hljs-function">TObject     *<span class="hljs-title">Clone</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* newname = <span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+
+<span class="hljs-comment">/// Changes the number of partition cells in the histogram.</span>
+<span class="hljs-comment">/// Deletes the old partition and constructs a new one.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">ChangePartition</span><span class="hljs-params">(Int_t n, Int_t m)</span></span>;  <span class="hljs-comment">// Sets the number of partition cells to another value</span>
+
+<span class="hljs-comment">/// Increment the bin containing (x,y) by 1.</span>
+<span class="hljs-comment">/// Uses the partitioning algorithm.</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">Fill</span><span class="hljs-params">(Double_t x,Double_t y)</span></span>;
+
+<span class="hljs-comment">/// Increment the bin containing (x,y) by w.</span>
+<span class="hljs-comment">/// Uses the partitioning algorithm.</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">Fill</span><span class="hljs-params">(Double_t x,Double_t y, Double_t w)</span></span>;
+
+<span class="hljs-comment">/// Increment the bin named &quot;name&quot; by w.</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">Fill</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, Double_t w)</span></span>;
+
+<span class="hljs-comment">/// Fills a 2-D histogram with an array of values and weights.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// \param [in] ntimes:  number of entries in arrays x and w</span>
+<span class="hljs-comment">///                      (array size must be ntimes*stride)</span>
+<span class="hljs-comment">/// \param [in] x:       array of x values to be histogrammed</span>
+<span class="hljs-comment">/// \param [in] y:       array of y values to be histogrammed</span>
+<span class="hljs-comment">/// \param [in] w:       array of weights</span>
+<span class="hljs-comment">/// \param [in] stride:  step size through arrays x, y and w</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">FillN</span><span class="hljs-params">(Int_t ntimes, <span class="hljs-keyword">const</span> Double_t* x, <span class="hljs-keyword">const</span> Double_t* y, <span class="hljs-keyword">const</span> Double_t* w, Int_t stride = <span class="hljs-number">1</span>)</span></span>;
+   <span class="hljs-function">Int_t        <span class="hljs-title">Fill</span><span class="hljs-params">(Double_t)</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;}                              <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">Fill</span><span class="hljs-params">(Double_t , <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *, Double_t)</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;}     <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">Fill</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *, Double_t , Double_t )</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;}    <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">Fill</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *, Double_t )</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;} <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">FillN</span><span class="hljs-params">(Int_t, <span class="hljs-keyword">const</span> Double_t*, <span class="hljs-keyword">const</span> Double_t*, Int_t)</span></span>{<span class="hljs-keyword">return</span>;}  <span class="hljs-comment">//MayNotUse</span>
+
+<span class="hljs-comment">/// Returns the bin number of the bin at the given coordinate. -1 to -9 are</span>
+<span class="hljs-comment">/// the overflow and underflow bins.  overflow bin -5 is the unbinned areas in</span>
+<span class="hljs-comment">/// the histogram (also called &quot;the sea&quot;). The third parameter can be left</span>
+<span class="hljs-comment">/// blank.</span>
+<span class="hljs-comment">/// The overflow/underflow bins are:</span>
+<span class="hljs-comment">///~~~ {.cpp}</span>
+<span class="hljs-comment">/// -1 | -2 | -3</span>
+<span class="hljs-comment">/// -------------</span>
+<span class="hljs-comment">/// -4 | -5 | -6</span>
+<span class="hljs-comment">/// -------------</span>
+<span class="hljs-comment">/// -7 | -8 | -9</span>
+<span class="hljs-comment">///~~~</span>
+<span class="hljs-comment">/// where -5 means is the &quot;sea&quot; bin (i.e. unbinned areas)</span>
+   <span class="hljs-function">Int_t        <span class="hljs-title">FindBin</span><span class="hljs-params">(Double_t x, Double_t y, Double_t z = <span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function">TList       *<span class="hljs-title">GetBins</span><span class="hljs-params">()</span></span>{<span class="hljs-keyword">return</span> fBins;}                                <span class="hljs-comment">// Returns the TList of all bins in the histogram</span>
+
+<span class="hljs-comment">/// Returns the content of the input bin</span>
+<span class="hljs-comment">/// For the overflow/underflow/sea bins:</span>
+<span class="hljs-comment">///~~~ {.cpp}</span>
+<span class="hljs-comment">/// -1 | -2 | -3</span>
+<span class="hljs-comment">/// ---+----+----</span>
+<span class="hljs-comment">/// -4 | -5 | -6</span>
+<span class="hljs-comment">/// ---+----+----</span>
+<span class="hljs-comment">/// -7 | -8 | -9</span>
+<span class="hljs-comment">///~~~</span>
+<span class="hljs-comment">/// where -5 is the &quot;sea&quot; bin (i.e. unbinned areas)</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetBinContent</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetBinContent</span><span class="hljs-params">(Int_t, Int_t)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}           <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetBinContent</span><span class="hljs-params">(Int_t, Int_t, Int_t)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}    <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function">Bool_t       <span class="hljs-title">GetBinContentChanged</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>{<span class="hljs-keyword">return</span> fBinContentChanged;}
+
+<span class="hljs-comment">/// Returns the value of error associated to bin number bin.</span>
+<span class="hljs-comment">/// If the sum of squares of weights has been defined (via Sumw2),</span>
+<span class="hljs-comment">/// this function returns the sqrt(sum of w2).</span>
+<span class="hljs-comment">/// otherwise it returns the sqrt(contents) for this bin.</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetBinError</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetBinError</span><span class="hljs-params">(Int_t , Int_t)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}            <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetBinError</span><span class="hljs-params">(Int_t , Int_t , Int_t)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}    <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">GetBinName</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns the bin name.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">GetBinTitle</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns the bin title.</span>
+   <span class="hljs-function">Bool_t       <span class="hljs-title">GetFloat</span><span class="hljs-params">()</span></span>{<span class="hljs-keyword">return</span> fFloat;}
+
+<span class="hljs-comment">/// Returns the maximum value of the histogram.</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetMaximum</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+<span class="hljs-comment">/// Returns the maximum value of the histogram that is less than maxval.</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetMaximum</span><span class="hljs-params">(Double_t maxval)</span> <span class="hljs-keyword">const</span></span>;
+
+<span class="hljs-comment">/// Returns the minimum value of the histogram.</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetMinimum</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+<span class="hljs-comment">/// Returns the minimum value of the histogram that is greater than minval.</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">GetMinimum</span><span class="hljs-params">(Double_t minval)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Bool_t       <span class="hljs-title">GetNewBinAdded</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>{<span class="hljs-keyword">return</span> fNewBinAdded;}
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetNumberOfBins</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>{<span class="hljs-keyword">return</span> fNcells;}
+
+<span class="hljs-comment">/// Bins the histogram using a honeycomb structure</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Honeycomb</span><span class="hljs-params">(Double_t xstart, Double_t ystart, Double_t a, Int_t k, Int_t s)</span></span>;   <span class="hljs-comment">// Bins the histogram using a honeycomb structure</span>
+
+<span class="hljs-comment">/// Returns the integral of bin contents.</span>
+<span class="hljs-comment">/// By default the integral is computed as the sum of bin contents.</span>
+<span class="hljs-comment">/// If option &quot;width&quot; or &quot;area&quot; is specified, the integral is the sum of</span>
+<span class="hljs-comment">/// the bin contents multiplied by the area of the bin.</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">Integral</span><span class="hljs-params">(Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t     <span class="hljs-title">Integral</span><span class="hljs-params">(Int_t, Int_t, <span class="hljs-keyword">const</span> Option_t*)</span> <span class="hljs-keyword">const</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}                             <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">Integral</span><span class="hljs-params">(Int_t, Int_t, Int_t, Int_t, <span class="hljs-keyword">const</span> Option_t*)</span> <span class="hljs-keyword">const</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}               <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">Integral</span><span class="hljs-params">(Int_t, Int_t, Int_t, Int_t, Int_t, Int_t, <span class="hljs-keyword">const</span> Option_t*)</span> <span class="hljs-keyword">const</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;} <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function">Long64_t     <span class="hljs-title">Merge</span><span class="hljs-params">(TCollection *)</span></span>;<span class="hljs-comment">/// TH2Poly cannot be merged.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Reset</span><span class="hljs-params">(Option_t *option)</span></span>;<span class="hljs-comment">/// Reset this histogram: contents, errors, etc.</span>
+
+<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream&amp; out, Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+
+<span class="hljs-comment">/// Multiply this histogram by a constant c1.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Scale</span><span class="hljs-params">(Double_t c1 = <span class="hljs-number">1</span>, Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+
+<span class="hljs-comment">/// Sets the contents of the input bin to the input content</span>
+<span class="hljs-comment">/// Negative values between -1 and -9 are for the overflows and the sea</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetBinContent</span><span class="hljs-params">(Int_t bin, Double_t content)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetBinContent</span><span class="hljs-params">(Int_t, Int_t, Double_t)</span></span>{<span class="hljs-keyword">return</span>;}           <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetBinContent</span><span class="hljs-params">(Int_t, Int_t, Int_t, Double_t)</span></span>{<span class="hljs-keyword">return</span>;}    <span class="hljs-comment">//MayNotUse</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetBinContentChanged</span><span class="hljs-params">(Bool_t flag)</span></span>{fBinContentChanged = flag;}
+
+<span class="hljs-comment">/// When set to kTRUE, allows the histogram to expand if a bin outside the</span>
+<span class="hljs-comment">/// limits is added.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetFloat</span><span class="hljs-params">(Bool_t flag = <span class="hljs-literal">true</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetNewBinAdded</span><span class="hljs-params">(Bool_t flag)</span></span>{fNewBinAdded = flag;}
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">// class TH2PolyBin: public TObject</span>
+
+<span class="hljs-keyword">public</span>:
+   TH2PolyBin();
+   TH2PolyBin(TObject *poly, Int_t bin_number);
+   <span class="hljs-keyword">virtual</span> ~TH2PolyBin();
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">ClearContent</span><span class="hljs-params">()</span></span>{fContent = <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">Fill</span><span class="hljs-params">(Double_t w)</span> </span>{fContent = fContent+w; SetChanged(<span class="hljs-literal">true</span>);}
+   <span class="hljs-function">Double_t  <span class="hljs-title">GetArea</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Returns the area of the bin.</span>
+   <span class="hljs-function">Double_t  <span class="hljs-title">GetContent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>{<span class="hljs-keyword">return</span> fContent;}
+   <span class="hljs-function">Bool_t    <span class="hljs-title">GetChanged</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>{<span class="hljs-keyword">return</span> fChanged;}
+   <span class="hljs-function">Int_t     <span class="hljs-title">GetBinNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNumber;}
+   <span class="hljs-function">TObject  *<span class="hljs-title">GetPolygon</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fPoly;}
+
+<span class="hljs-comment">/// Returns the maximum value for the x coordinates of the bin.</span>
+   <span class="hljs-function">Double_t  <span class="hljs-title">GetXMax</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-comment">/// Returns the minimum value for the x coordinates of the bin.</span>
+   <span class="hljs-function">Double_t  <span class="hljs-title">GetXMin</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-comment">/// Returns the maximum value for the y coordinates of the bin.</span>
+   <span class="hljs-function">Double_t  <span class="hljs-title">GetYMax</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-comment">/// Returns the minimum value for the y coordinates of the bin.</span>
+   <span class="hljs-function">Double_t  <span class="hljs-title">GetYMin</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-comment">/// Return &quot;true&quot; if the point (x,y) is inside the bin.</span>
+   <span class="hljs-function">Bool_t    <span class="hljs-title">IsInside</span><span class="hljs-params">(Double_t x, Double_t y)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">SetChanged</span><span class="hljs-params">(Bool_t flag)</span></span>{fChanged = flag;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">SetContent</span><span class="hljs-params">(Double_t content)</span></span>{fContent = content; SetChanged(<span class="hljs-literal">true</span>);}
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp">{
+<span class="hljs-comment">// The following very simple macro shows how to build and fill a `TH2Poly`:</span>
+    TH2Poly *h2p = <span class="hljs-keyword">new</span> TH2Poly();
+
+    Double_t x1[] = {<span class="hljs-number">0</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>};
+    Double_t y1[] = {<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">5</span>};
+    Double_t x2[] = {<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>};
+    Double_t y2[] = {<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">3</span>};
+    Double_t x3[] = {<span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2.4</span>};
+    Double_t y3[] = {<span class="hljs-number">4</span>, <span class="hljs-number">3.7</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3.7</span>, <span class="hljs-number">2.5</span>};
+
+    h2p-&gt;AddBin(<span class="hljs-number">3</span>, x1, y1);
+    h2p-&gt;AddBin(<span class="hljs-number">4</span>, x2, y2);
+    h2p-&gt;AddBin(<span class="hljs-number">5</span>, x3, y3);
+
+    h2p-&gt;Fill(<span class="hljs-number">0.1</span>, <span class="hljs-number">0.01</span>, <span class="hljs-number">3</span>);
+    h2p-&gt;Fill(<span class="hljs-number">-0.5</span>, <span class="hljs-number">-0.5</span>, <span class="hljs-number">7</span>);
+    h2p-&gt;Fill(<span class="hljs-number">-0.7</span>, <span class="hljs-number">-0.5</span>, <span class="hljs-number">1</span>);
+    h2p-&gt;Fill(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1.5</span>);
+}
+</code></pre>
+<h2 id="example">example</h2>
+<!-- TH2Poly.md ends here -->
 
                                 
                                 </section>
@@ -3451,7 +3763,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TH2Poly","level":"1.2.33","depth":2,"next":{"title":"TH3","level":"1.2.34","depth":2,"path":"class/TH3.md","ref":"class/TH3.md","articles":[]},"previous":{"title":"TH2+","level":"1.2.32","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH2Poly.md","mtime":"2017-07-11T12:51:30.026Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-01-13T08:29:58.326Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TH2Poly","level":"1.2.33","depth":2,"next":{"title":"TH3","level":"1.2.34","depth":2,"path":"class/TH3.md","ref":"class/TH3.md","articles":[]},"previous":{"title":"TH2+","level":"1.2.32","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH2Poly.md","mtime":"2018-01-14T06:13:56.937Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-01-14T06:15:48.465Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
