@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>TH2Poly · GitBook</title>
+        <title>TH2Poly* · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -537,7 +537,7 @@
                 <a href="TH2Poly.html">
             
                     
-                    TH2Poly
+                    TH2Poly*
             
                 </a>
             
@@ -3392,7 +3392,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TH2Poly</a>
+        <a href=".." >TH2Poly*</a>
     </h1>
 </div>
 
@@ -3413,9 +3413,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 日 1月 14 13:53:25 2018 (+0800)
-;; Last-Updated: 日 1月 14 14:13:56 2018 (+0800)
+;; Last-Updated: 一 1月 15 13:30:09 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 <h1 id="th2poly">TH2Poly</h1>
 <p>&#x7EE7;&#x627F; public TH2</p>
@@ -3719,6 +3719,238 @@ times, it is better to divide into a small number of cells.
 }
 </code></pre>
 <h2 id="example">example</h2>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">view</span><span class="hljs-params">()</span>
+</span>{
+  TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-number">600</span>,<span class="hljs-number">400</span>);
+  gStyle-&gt;SetOptStat(<span class="hljs-number">0</span>);<span class="hljs-comment">//&#x4E0D;&#x663E;&#x793A;&#x7EDF;&#x8BA1;&#x6846;</span>
+  <span class="hljs-comment">// c1-&gt;ToggleEventStatus();//&#x5E95;&#x7AEF;&#x4FE1;&#x606F;&#x680F;</span>
+  <span class="hljs-comment">// c1-&gt;ToggleEditor();</span>
+  <span class="hljs-comment">// c1-&gt;ToggleToolBar();</span>
+  <span class="hljs-comment">// c1-&gt;Clear(&quot;&quot;);</span>
+  <span class="hljs-comment">// c1-&gt;Divide(/*col*/,/*raw*/);</span>
+  <span class="hljs-comment">// c1-&gt;SetGridx();//SetGridy();</span>
+  <span class="hljs-comment">// c1-&gt;SetLogx();//SetLogy(); SetLogz();</span>
+  <span class="hljs-comment">// c1-&gt;SetName(&quot;&quot;);</span>
+
+
+
+  <span class="hljs-keyword">int</span> initdssd1sx = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">int</span> initdssd1sy = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">int</span> initdssd1lx = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">int</span> initdssd1ly = <span class="hljs-number">-17</span>;
+  <span class="hljs-keyword">int</span> initdssd2sx = <span class="hljs-number">18</span>;
+  <span class="hljs-keyword">int</span> initdssd2sy = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">int</span> initdssd2lx = <span class="hljs-number">18</span>;
+  <span class="hljs-keyword">int</span> initdssd2ly = <span class="hljs-number">-17</span>;
+  <span class="hljs-keyword">int</span> initdssd3sx = <span class="hljs-number">35</span>;
+  <span class="hljs-keyword">int</span> initdssd3sy = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">int</span> initdssd3lx = <span class="hljs-number">35</span>;
+  <span class="hljs-keyword">int</span> initdssd3ly = <span class="hljs-number">-17</span>;
+
+  <span class="hljs-keyword">int</span> inittofx = <span class="hljs-number">-15</span>;
+  <span class="hljs-keyword">int</span> inittofy = <span class="hljs-number">7</span>;
+
+  <span class="hljs-keyword">int</span> initdex[<span class="hljs-number">2</span>];
+  <span class="hljs-keyword">int</span> initdey[<span class="hljs-number">2</span>];
+  initdex[<span class="hljs-number">0</span>] = <span class="hljs-number">-10</span>;
+  initdex[<span class="hljs-number">1</span>] = <span class="hljs-number">-5</span>;
+  initdey[<span class="hljs-number">0</span>] = <span class="hljs-number">7</span>;
+  initdey[<span class="hljs-number">1</span>] = <span class="hljs-number">7</span>;
+
+  <span class="hljs-keyword">int</span> initvex[<span class="hljs-number">3</span>];
+  <span class="hljs-keyword">int</span> initvey[<span class="hljs-number">3</span>];
+  initvex[<span class="hljs-number">0</span>] = <span class="hljs-number">52</span>;
+  initvex[<span class="hljs-number">1</span>] = <span class="hljs-number">57</span>;
+  initvex[<span class="hljs-number">2</span>] = <span class="hljs-number">62</span>;
+  initvey[<span class="hljs-number">0</span>] = <span class="hljs-number">7</span>;
+  initvey[<span class="hljs-number">1</span>] = <span class="hljs-number">7</span>;
+  initvey[<span class="hljs-number">2</span>] = <span class="hljs-number">7</span>;
+
+  TGraph *dssd1s[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  TGraph *dssd1l[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  TGraph *dssd2s[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  TGraph *dssd2l[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  TGraph *dssd3s[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  TGraph *dssd3l[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+
+  TGraph *tof;
+  TGraph *de[<span class="hljs-number">2</span>][<span class="hljs-number">4</span>];
+  TGraph *ve[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>];
+
+  <span class="hljs-keyword">int</span> dssd1sbin[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  <span class="hljs-keyword">int</span> dssd1lbin[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  <span class="hljs-keyword">int</span> dssd2sbin[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  <span class="hljs-keyword">int</span> dssd2lbin[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  <span class="hljs-keyword">int</span> dssd3sbin[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+  <span class="hljs-keyword">int</span> dssd3lbin[<span class="hljs-number">16</span>][<span class="hljs-number">16</span>];
+
+  <span class="hljs-keyword">int</span> tofbin;
+  <span class="hljs-keyword">int</span> debin[<span class="hljs-number">2</span>][<span class="hljs-number">4</span>];
+  <span class="hljs-keyword">int</span> vebin[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>];
+
+  tof = <span class="hljs-keyword">new</span> TGraph;
+  tof-&gt;SetPoint(<span class="hljs-number">0</span>,inittofx,inittofy);
+  tof-&gt;SetPoint(<span class="hljs-number">1</span>,inittofx+<span class="hljs-number">4</span>,inittofy);
+  tof-&gt;SetPoint(<span class="hljs-number">2</span>,inittofx+<span class="hljs-number">4</span>,inittofy+<span class="hljs-number">4</span>);
+  tof-&gt;SetPoint(<span class="hljs-number">3</span>,inittofx,inittofy+<span class="hljs-number">4</span>);
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; ++i)
+      {
+    de[i][<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> TGraph;
+    de[i][<span class="hljs-number">0</span>]-&gt;SetPoint(<span class="hljs-number">0</span>,initdex[i],initdey[i]);
+    de[i][<span class="hljs-number">0</span>]-&gt;SetPoint(<span class="hljs-number">1</span>,initdex[i]+<span class="hljs-number">2</span>,initdey[i]);
+    de[i][<span class="hljs-number">0</span>]-&gt;SetPoint(<span class="hljs-number">2</span>,initdex[i]+<span class="hljs-number">2</span>,initdey[i]+<span class="hljs-number">2</span>);
+    de[i][<span class="hljs-number">0</span>]-&gt;SetPoint(<span class="hljs-number">3</span>,initdex[i],initdey[i]+<span class="hljs-number">2</span>);
+
+    de[i][<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> TGraph;
+    de[i][<span class="hljs-number">1</span>]-&gt;SetPoint(<span class="hljs-number">0</span>,initdex[i]+<span class="hljs-number">2</span>,initdey[i]);
+    de[i][<span class="hljs-number">1</span>]-&gt;SetPoint(<span class="hljs-number">1</span>,initdex[i]+<span class="hljs-number">4</span>,initdey[i]);
+    de[i][<span class="hljs-number">1</span>]-&gt;SetPoint(<span class="hljs-number">2</span>,initdex[i]+<span class="hljs-number">4</span>,initdey[i]+<span class="hljs-number">2</span>);
+    de[i][<span class="hljs-number">1</span>]-&gt;SetPoint(<span class="hljs-number">3</span>,initdex[i]+<span class="hljs-number">2</span>,initdey[i]+<span class="hljs-number">2</span>);
+
+    de[i][<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> TGraph;
+    de[i][<span class="hljs-number">2</span>]-&gt;SetPoint(<span class="hljs-number">0</span>,initdex[i]+<span class="hljs-number">2</span>,initdey[i]+<span class="hljs-number">2</span>);
+    de[i][<span class="hljs-number">2</span>]-&gt;SetPoint(<span class="hljs-number">1</span>,initdex[i]+<span class="hljs-number">4</span>,initdey[i]+<span class="hljs-number">2</span>);
+    de[i][<span class="hljs-number">2</span>]-&gt;SetPoint(<span class="hljs-number">2</span>,initdex[i]+<span class="hljs-number">4</span>,initdey[i]+<span class="hljs-number">4</span>);
+    de[i][<span class="hljs-number">2</span>]-&gt;SetPoint(<span class="hljs-number">3</span>,initdex[i]+<span class="hljs-number">2</span>,initdey[i]+<span class="hljs-number">4</span>);
+
+    de[i][<span class="hljs-number">3</span>] = <span class="hljs-keyword">new</span> TGraph;
+    de[i][<span class="hljs-number">3</span>]-&gt;SetPoint(<span class="hljs-number">0</span>,initdex[i],initdey[i]+<span class="hljs-number">2</span>);
+    de[i][<span class="hljs-number">3</span>]-&gt;SetPoint(<span class="hljs-number">1</span>,initdex[i]+<span class="hljs-number">2</span>,initdey[i]+<span class="hljs-number">2</span>);
+    de[i][<span class="hljs-number">3</span>]-&gt;SetPoint(<span class="hljs-number">2</span>,initdex[i]+<span class="hljs-number">2</span>,initdey[i]+<span class="hljs-number">4</span>);
+    de[i][<span class="hljs-number">3</span>]-&gt;SetPoint(<span class="hljs-number">3</span>,initdex[i],initdey[i]+<span class="hljs-number">4</span>);    
+      }
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; ++i)
+    {
+    ve[i][<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> TGraph;
+    ve[i][<span class="hljs-number">0</span>]-&gt;SetPoint(<span class="hljs-number">0</span>,initvex[i],initvey[i]);
+    ve[i][<span class="hljs-number">0</span>]-&gt;SetPoint(<span class="hljs-number">1</span>,initvex[i]+<span class="hljs-number">2</span>,initvey[i]);
+    ve[i][<span class="hljs-number">0</span>]-&gt;SetPoint(<span class="hljs-number">2</span>,initvex[i]+<span class="hljs-number">2</span>,initvey[i]+<span class="hljs-number">2</span>);
+    ve[i][<span class="hljs-number">0</span>]-&gt;SetPoint(<span class="hljs-number">3</span>,initvex[i],initvey[i]+<span class="hljs-number">2</span>);
+
+    ve[i][<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> TGraph;
+    ve[i][<span class="hljs-number">1</span>]-&gt;SetPoint(<span class="hljs-number">0</span>,initvex[i]+<span class="hljs-number">2</span>,initvey[i]);
+    ve[i][<span class="hljs-number">1</span>]-&gt;SetPoint(<span class="hljs-number">1</span>,initvex[i]+<span class="hljs-number">4</span>,initvey[i]);
+    ve[i][<span class="hljs-number">1</span>]-&gt;SetPoint(<span class="hljs-number">2</span>,initvex[i]+<span class="hljs-number">4</span>,initvey[i]+<span class="hljs-number">2</span>);
+    ve[i][<span class="hljs-number">1</span>]-&gt;SetPoint(<span class="hljs-number">3</span>,initvex[i]+<span class="hljs-number">2</span>,initvey[i]+<span class="hljs-number">2</span>);
+
+    ve[i][<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> TGraph;
+    ve[i][<span class="hljs-number">2</span>]-&gt;SetPoint(<span class="hljs-number">0</span>,initvex[i]+<span class="hljs-number">2</span>,initvey[i]+<span class="hljs-number">2</span>);
+    ve[i][<span class="hljs-number">2</span>]-&gt;SetPoint(<span class="hljs-number">1</span>,initvex[i]+<span class="hljs-number">4</span>,initvey[i]+<span class="hljs-number">2</span>);
+    ve[i][<span class="hljs-number">2</span>]-&gt;SetPoint(<span class="hljs-number">2</span>,initvex[i]+<span class="hljs-number">4</span>,initvey[i]+<span class="hljs-number">4</span>);
+    ve[i][<span class="hljs-number">2</span>]-&gt;SetPoint(<span class="hljs-number">3</span>,initvex[i]+<span class="hljs-number">2</span>,initvey[i]+<span class="hljs-number">4</span>);
+
+    ve[i][<span class="hljs-number">3</span>] = <span class="hljs-keyword">new</span> TGraph;
+    ve[i][<span class="hljs-number">3</span>]-&gt;SetPoint(<span class="hljs-number">0</span>,initvex[i],initvey[i]+<span class="hljs-number">2</span>);
+    ve[i][<span class="hljs-number">3</span>]-&gt;SetPoint(<span class="hljs-number">1</span>,initvex[i]+<span class="hljs-number">2</span>,initvey[i]+<span class="hljs-number">2</span>);
+    ve[i][<span class="hljs-number">3</span>]-&gt;SetPoint(<span class="hljs-number">2</span>,initvex[i]+<span class="hljs-number">2</span>,initvey[i]+<span class="hljs-number">4</span>);
+    ve[i][<span class="hljs-number">3</span>]-&gt;SetPoint(<span class="hljs-number">3</span>,initvex[i],initvey[i]+<span class="hljs-number">4</span>);    
+    }
+
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">16</span>; ++i)
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">16</span>; ++j)
+      {
+    dssd1s[i][j] = <span class="hljs-keyword">new</span> TGraph;
+    dssd1s[i][j]-&gt;SetPoint(<span class="hljs-number">0</span>,initdssd1sx+i,initdssd1sy+j);
+    dssd1s[i][j]-&gt;SetPoint(<span class="hljs-number">1</span>,initdssd1sx+i+<span class="hljs-number">1</span>,initdssd1sy+j);
+    dssd1s[i][j]-&gt;SetPoint(<span class="hljs-number">2</span>,initdssd1sx+i+<span class="hljs-number">1</span>,initdssd1sy+j+<span class="hljs-number">1</span>);
+    dssd1s[i][j]-&gt;SetPoint(<span class="hljs-number">3</span>,initdssd1sx+i,initdssd1sy+j+<span class="hljs-number">1</span>);
+    dssd1l[i][j] = <span class="hljs-keyword">new</span> TGraph;
+    dssd1l[i][j]-&gt;SetPoint(<span class="hljs-number">0</span>,initdssd1lx+i,initdssd1ly+j);
+    dssd1l[i][j]-&gt;SetPoint(<span class="hljs-number">1</span>,initdssd1lx+i+<span class="hljs-number">1</span>,initdssd1ly+j);
+    dssd1l[i][j]-&gt;SetPoint(<span class="hljs-number">2</span>,initdssd1lx+i+<span class="hljs-number">1</span>,initdssd1ly+j+<span class="hljs-number">1</span>);
+    dssd1l[i][j]-&gt;SetPoint(<span class="hljs-number">3</span>,initdssd1lx+i,initdssd1ly+j+<span class="hljs-number">1</span>);
+
+
+    dssd2s[i][j] = <span class="hljs-keyword">new</span> TGraph;
+    dssd2s[i][j]-&gt;SetPoint(<span class="hljs-number">0</span>,initdssd2sx+i,initdssd2sy+j);
+    dssd2s[i][j]-&gt;SetPoint(<span class="hljs-number">1</span>,initdssd2sx+i+<span class="hljs-number">1</span>,initdssd2sy+j);
+    dssd2s[i][j]-&gt;SetPoint(<span class="hljs-number">2</span>,initdssd2sx+i+<span class="hljs-number">1</span>,initdssd2sy+j+<span class="hljs-number">1</span>);
+    dssd2s[i][j]-&gt;SetPoint(<span class="hljs-number">3</span>,initdssd2sx+i,initdssd2sy+j+<span class="hljs-number">1</span>);
+    dssd2l[i][j] = <span class="hljs-keyword">new</span> TGraph;
+    dssd2l[i][j]-&gt;SetPoint(<span class="hljs-number">0</span>,initdssd2lx+i,initdssd2ly+j);
+    dssd2l[i][j]-&gt;SetPoint(<span class="hljs-number">1</span>,initdssd2lx+i+<span class="hljs-number">1</span>,initdssd2ly+j);
+    dssd2l[i][j]-&gt;SetPoint(<span class="hljs-number">2</span>,initdssd2lx+i+<span class="hljs-number">1</span>,initdssd2ly+j+<span class="hljs-number">1</span>);
+    dssd2l[i][j]-&gt;SetPoint(<span class="hljs-number">3</span>,initdssd2lx+i,initdssd2ly+j+<span class="hljs-number">1</span>);    
+
+
+    dssd3s[i][j] = <span class="hljs-keyword">new</span> TGraph;
+    dssd3s[i][j]-&gt;SetPoint(<span class="hljs-number">0</span>,initdssd3sx+i,initdssd3sy+j);
+    dssd3s[i][j]-&gt;SetPoint(<span class="hljs-number">1</span>,initdssd3sx+i+<span class="hljs-number">1</span>,initdssd3sy+j);
+    dssd3s[i][j]-&gt;SetPoint(<span class="hljs-number">2</span>,initdssd3sx+i+<span class="hljs-number">1</span>,initdssd3sy+j+<span class="hljs-number">1</span>);
+    dssd3s[i][j]-&gt;SetPoint(<span class="hljs-number">3</span>,initdssd3sx+i,initdssd3sy+j+<span class="hljs-number">1</span>);
+    dssd3l[i][j] = <span class="hljs-keyword">new</span> TGraph;
+    dssd3l[i][j]-&gt;SetPoint(<span class="hljs-number">0</span>,initdssd3lx+i,initdssd3ly+j);
+    dssd3l[i][j]-&gt;SetPoint(<span class="hljs-number">1</span>,initdssd3lx+i+<span class="hljs-number">1</span>,initdssd3ly+j);
+    dssd3l[i][j]-&gt;SetPoint(<span class="hljs-number">2</span>,initdssd3lx+i+<span class="hljs-number">1</span>,initdssd3ly+j+<span class="hljs-number">1</span>);
+    dssd3l[i][j]-&gt;SetPoint(<span class="hljs-number">3</span>,initdssd3lx+i,initdssd3ly+j+<span class="hljs-number">1</span>);
+
+      }
+
+  TH2Poly *det = <span class="hljs-keyword">new</span> TH2Poly(<span class="hljs-string">&quot;det&quot;</span>,<span class="hljs-string">&quot;RIBLL 2017 Det&quot;</span>,<span class="hljs-number">-20</span>,<span class="hljs-number">70</span>,<span class="hljs-number">-25</span>,<span class="hljs-number">25</span>);
+
+
+  tofbin = det-&gt;AddBin(tof) +<span class="hljs-number">1</span>;
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">16</span>; ++i)
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">16</span>; ++j)
+      {
+    dssd1sbin[i][j] = det-&gt;AddBin(dssd1s[i][j]) +<span class="hljs-number">1</span>;
+    dssd1lbin[i][j] = det-&gt;AddBin(dssd1l[i][j]) +<span class="hljs-number">1</span>;
+
+    dssd2sbin[i][j] = det-&gt;AddBin(dssd2s[i][j]) +<span class="hljs-number">1</span>;
+    dssd2lbin[i][j] = det-&gt;AddBin(dssd2l[i][j]) +<span class="hljs-number">1</span>;
+
+    dssd3sbin[i][j] = det-&gt;AddBin(dssd3s[i][j]) +<span class="hljs-number">1</span>;
+    dssd3lbin[i][j] = det-&gt;AddBin(dssd3l[i][j]) +<span class="hljs-number">1</span>;
+      }
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; ++i)
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; ++j)
+      {
+    debin[i][j] = det-&gt;AddBin(de[i][j]) +<span class="hljs-number">1</span>;
+      }
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; ++i)
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; ++j)
+      {
+    vebin[i][j] = det-&gt;AddBin(ve[i][j]) +<span class="hljs-number">1</span>;
+      }
+
+  <span class="hljs-comment">//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......</span>
+
+  det-&gt;SetMarkerColor(kWhite);
+  det-&gt;SetMarkerSize(<span class="hljs-number">0.5</span>);
+
+
+  <span class="hljs-comment">// &#x7528;&#x6237;&#x53EA;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x586B;&#x5145;&#x5373;&#x53EF;&#xFF0C;&#x51FD;&#x6570;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x4E3A;&#x63A2;&#x6D4B;&#x5668;&#x6807;&#x8BB0;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x4E3A;channel</span>
+  det-&gt;SetBinContent(tofbin,<span class="hljs-number">300</span>);
+
+  det-&gt;SetBinContent(debin[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>],<span class="hljs-number">1200</span>);
+  det-&gt;SetBinContent(debin[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>],<span class="hljs-number">1500</span>);
+
+  det-&gt;SetBinContent(dssd1sbin[<span class="hljs-number">2</span>][<span class="hljs-number">4</span>],<span class="hljs-number">2200</span>);
+  det-&gt;SetBinContent(dssd1sbin[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>],<span class="hljs-number">2000</span>);
+  det-&gt;SetBinContent(dssd1lbin[<span class="hljs-number">2</span>][<span class="hljs-number">4</span>],<span class="hljs-number">500</span>);
+
+  det-&gt;SetBinContent(dssd2sbin[<span class="hljs-number">0</span>][<span class="hljs-number">6</span>],<span class="hljs-number">200</span>);
+  det-&gt;SetBinContent(dssd2lbin[<span class="hljs-number">7</span>][<span class="hljs-number">12</span>],<span class="hljs-number">800</span>);
+
+  det-&gt;SetBinContent(dssd3sbin[<span class="hljs-number">1</span>][<span class="hljs-number">10</span>],<span class="hljs-number">1800</span>);
+  det-&gt;SetBinContent(dssd3lbin[<span class="hljs-number">3</span>][<span class="hljs-number">9</span>],<span class="hljs-number">660</span>);
+
+  det-&gt;SetBinContent(vebin[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>],<span class="hljs-number">456</span>);
+  det-&gt;SetBinContent(vebin[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>],<span class="hljs-number">950</span>);
+  det-&gt;SetBinContent(vebin[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>],<span class="hljs-number">1380</span>);
+
+  det-&gt;Draw(<span class="hljs-string">&quot;colz text&quot;</span>);
+
+  c1-&gt;Update();
+
+}
+</code></pre>
 <!-- TH2Poly.md ends here -->
 
                                 
@@ -3763,7 +3995,7 @@ times, it is better to divide into a small number of cells.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TH2Poly","level":"1.2.33","depth":2,"next":{"title":"TH3","level":"1.2.34","depth":2,"path":"class/TH3.md","ref":"class/TH3.md","articles":[]},"previous":{"title":"TH2+","level":"1.2.32","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH2Poly.md","mtime":"2018-01-14T06:13:56.937Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-01-14T06:15:48.465Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TH2Poly*","level":"1.2.33","depth":2,"next":{"title":"TH3","level":"1.2.34","depth":2,"path":"class/TH3.md","ref":"class/TH3.md","articles":[]},"previous":{"title":"TH2+","level":"1.2.32","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH2Poly.md","mtime":"2018-01-15T05:30:09.694Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-01-15T05:31:59.435Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

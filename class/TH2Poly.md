@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 日 1月 14 13:53:25 2018 (+0800)
-;; Last-Updated: 日 1月 14 14:13:56 2018 (+0800)
+;; Last-Updated: 一 1月 15 13:30:09 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 # TH2Poly
@@ -328,6 +328,238 @@ public:
 
 ## example
 
+```cpp
+void view()
+{
+  TCanvas *c1 = new TCanvas("c1","",600,400);
+  gStyle->SetOptStat(0);//不显示统计框
+  // c1->ToggleEventStatus();//底端信息栏
+  // c1->ToggleEditor();
+  // c1->ToggleToolBar();
+  // c1->Clear("");
+  // c1->Divide(/*col*/,/*raw*/);
+  // c1->SetGridx();//SetGridy();
+  // c1->SetLogx();//SetLogy(); SetLogz();
+  // c1->SetName("");
 
+
+  
+  int initdssd1sx = 1;
+  int initdssd1sy = 1;
+  int initdssd1lx = 1;
+  int initdssd1ly = -17;
+  int initdssd2sx = 18;
+  int initdssd2sy = 1;
+  int initdssd2lx = 18;
+  int initdssd2ly = -17;
+  int initdssd3sx = 35;
+  int initdssd3sy = 1;
+  int initdssd3lx = 35;
+  int initdssd3ly = -17;
+
+  int inittofx = -15;
+  int inittofy = 7;
+  
+  int initdex[2];
+  int initdey[2];
+  initdex[0] = -10;
+  initdex[1] = -5;
+  initdey[0] = 7;
+  initdey[1] = 7;
+
+  int initvex[3];
+  int initvey[3];
+  initvex[0] = 52;
+  initvex[1] = 57;
+  initvex[2] = 62;
+  initvey[0] = 7;
+  initvey[1] = 7;
+  initvey[2] = 7;
+  
+  TGraph *dssd1s[16][16];
+  TGraph *dssd1l[16][16];
+  TGraph *dssd2s[16][16];
+  TGraph *dssd2l[16][16];
+  TGraph *dssd3s[16][16];
+  TGraph *dssd3l[16][16];
+
+  TGraph *tof;
+  TGraph *de[2][4];
+  TGraph *ve[3][4];
+  
+  int dssd1sbin[16][16];
+  int dssd1lbin[16][16];
+  int dssd2sbin[16][16];
+  int dssd2lbin[16][16];
+  int dssd3sbin[16][16];
+  int dssd3lbin[16][16];
+
+  int tofbin;
+  int debin[2][4];
+  int vebin[3][4];
+
+  tof = new TGraph;
+  tof->SetPoint(0,inittofx,inittofy);
+  tof->SetPoint(1,inittofx+4,inittofy);
+  tof->SetPoint(2,inittofx+4,inittofy+4);
+  tof->SetPoint(3,inittofx,inittofy+4);
+  
+  for (int i = 0; i < 2; ++i)
+      {
+	de[i][0] = new TGraph;
+	de[i][0]->SetPoint(0,initdex[i],initdey[i]);
+	de[i][0]->SetPoint(1,initdex[i]+2,initdey[i]);
+	de[i][0]->SetPoint(2,initdex[i]+2,initdey[i]+2);
+	de[i][0]->SetPoint(3,initdex[i],initdey[i]+2);
+
+	de[i][1] = new TGraph;
+	de[i][1]->SetPoint(0,initdex[i]+2,initdey[i]);
+	de[i][1]->SetPoint(1,initdex[i]+4,initdey[i]);
+	de[i][1]->SetPoint(2,initdex[i]+4,initdey[i]+2);
+	de[i][1]->SetPoint(3,initdex[i]+2,initdey[i]+2);
+
+	de[i][2] = new TGraph;
+	de[i][2]->SetPoint(0,initdex[i]+2,initdey[i]+2);
+	de[i][2]->SetPoint(1,initdex[i]+4,initdey[i]+2);
+	de[i][2]->SetPoint(2,initdex[i]+4,initdey[i]+4);
+	de[i][2]->SetPoint(3,initdex[i]+2,initdey[i]+4);
+
+	de[i][3] = new TGraph;
+	de[i][3]->SetPoint(0,initdex[i],initdey[i]+2);
+	de[i][3]->SetPoint(1,initdex[i]+2,initdey[i]+2);
+	de[i][3]->SetPoint(2,initdex[i]+2,initdey[i]+4);
+	de[i][3]->SetPoint(3,initdex[i],initdey[i]+4);	
+      }
+
+  for (int i = 0; i < 3; ++i)
+    {
+	ve[i][0] = new TGraph;
+	ve[i][0]->SetPoint(0,initvex[i],initvey[i]);
+	ve[i][0]->SetPoint(1,initvex[i]+2,initvey[i]);
+	ve[i][0]->SetPoint(2,initvex[i]+2,initvey[i]+2);
+	ve[i][0]->SetPoint(3,initvex[i],initvey[i]+2);
+
+	ve[i][1] = new TGraph;
+	ve[i][1]->SetPoint(0,initvex[i]+2,initvey[i]);
+	ve[i][1]->SetPoint(1,initvex[i]+4,initvey[i]);
+	ve[i][1]->SetPoint(2,initvex[i]+4,initvey[i]+2);
+	ve[i][1]->SetPoint(3,initvex[i]+2,initvey[i]+2);
+
+	ve[i][2] = new TGraph;
+	ve[i][2]->SetPoint(0,initvex[i]+2,initvey[i]+2);
+	ve[i][2]->SetPoint(1,initvex[i]+4,initvey[i]+2);
+	ve[i][2]->SetPoint(2,initvex[i]+4,initvey[i]+4);
+	ve[i][2]->SetPoint(3,initvex[i]+2,initvey[i]+4);
+
+	ve[i][3] = new TGraph;
+	ve[i][3]->SetPoint(0,initvex[i],initvey[i]+2);
+	ve[i][3]->SetPoint(1,initvex[i]+2,initvey[i]+2);
+	ve[i][3]->SetPoint(2,initvex[i]+2,initvey[i]+4);
+	ve[i][3]->SetPoint(3,initvex[i],initvey[i]+4);	
+    }
+  
+
+  for (int i = 0; i < 16; ++i)
+    for (int j = 0; j < 16; ++j)
+      {
+	dssd1s[i][j] = new TGraph;
+	dssd1s[i][j]->SetPoint(0,initdssd1sx+i,initdssd1sy+j);
+	dssd1s[i][j]->SetPoint(1,initdssd1sx+i+1,initdssd1sy+j);
+	dssd1s[i][j]->SetPoint(2,initdssd1sx+i+1,initdssd1sy+j+1);
+	dssd1s[i][j]->SetPoint(3,initdssd1sx+i,initdssd1sy+j+1);
+	dssd1l[i][j] = new TGraph;
+	dssd1l[i][j]->SetPoint(0,initdssd1lx+i,initdssd1ly+j);
+	dssd1l[i][j]->SetPoint(1,initdssd1lx+i+1,initdssd1ly+j);
+	dssd1l[i][j]->SetPoint(2,initdssd1lx+i+1,initdssd1ly+j+1);
+	dssd1l[i][j]->SetPoint(3,initdssd1lx+i,initdssd1ly+j+1);
+
+
+	dssd2s[i][j] = new TGraph;
+	dssd2s[i][j]->SetPoint(0,initdssd2sx+i,initdssd2sy+j);
+	dssd2s[i][j]->SetPoint(1,initdssd2sx+i+1,initdssd2sy+j);
+	dssd2s[i][j]->SetPoint(2,initdssd2sx+i+1,initdssd2sy+j+1);
+	dssd2s[i][j]->SetPoint(3,initdssd2sx+i,initdssd2sy+j+1);
+	dssd2l[i][j] = new TGraph;
+	dssd2l[i][j]->SetPoint(0,initdssd2lx+i,initdssd2ly+j);
+	dssd2l[i][j]->SetPoint(1,initdssd2lx+i+1,initdssd2ly+j);
+	dssd2l[i][j]->SetPoint(2,initdssd2lx+i+1,initdssd2ly+j+1);
+	dssd2l[i][j]->SetPoint(3,initdssd2lx+i,initdssd2ly+j+1);	
+
+
+	dssd3s[i][j] = new TGraph;
+	dssd3s[i][j]->SetPoint(0,initdssd3sx+i,initdssd3sy+j);
+	dssd3s[i][j]->SetPoint(1,initdssd3sx+i+1,initdssd3sy+j);
+	dssd3s[i][j]->SetPoint(2,initdssd3sx+i+1,initdssd3sy+j+1);
+	dssd3s[i][j]->SetPoint(3,initdssd3sx+i,initdssd3sy+j+1);
+	dssd3l[i][j] = new TGraph;
+	dssd3l[i][j]->SetPoint(0,initdssd3lx+i,initdssd3ly+j);
+	dssd3l[i][j]->SetPoint(1,initdssd3lx+i+1,initdssd3ly+j);
+	dssd3l[i][j]->SetPoint(2,initdssd3lx+i+1,initdssd3ly+j+1);
+	dssd3l[i][j]->SetPoint(3,initdssd3lx+i,initdssd3ly+j+1);
+	
+      }
+
+  TH2Poly *det = new TH2Poly("det","RIBLL 2017 Det",-20,70,-25,25);
+
+
+  tofbin = det->AddBin(tof) +1;
+  
+  for (int i = 0; i < 16; ++i)
+    for (int j = 0; j < 16; ++j)
+      {
+	dssd1sbin[i][j] = det->AddBin(dssd1s[i][j]) +1;
+	dssd1lbin[i][j] = det->AddBin(dssd1l[i][j]) +1;
+
+	dssd2sbin[i][j] = det->AddBin(dssd2s[i][j]) +1;
+	dssd2lbin[i][j] = det->AddBin(dssd2l[i][j]) +1;
+
+	dssd3sbin[i][j] = det->AddBin(dssd3s[i][j]) +1;
+	dssd3lbin[i][j] = det->AddBin(dssd3l[i][j]) +1;
+      }
+
+  for (int i = 0; i < 2; ++i)
+    for (int j = 0; j < 4; ++j)
+      {
+	debin[i][j] = det->AddBin(de[i][j]) +1;
+      }
+
+  for (int i = 0; i < 3; ++i)
+    for (int j = 0; j < 4; ++j)
+      {
+	vebin[i][j] = det->AddBin(ve[i][j]) +1;
+      }
+  
+  //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+  det->SetMarkerColor(kWhite);
+  det->SetMarkerSize(0.5);
+  
+
+  // 用户只需要修改以下代码进行数据填充即可，函数中第一个变量为探测器标记，第二个为channel
+  det->SetBinContent(tofbin,300);
+  
+  det->SetBinContent(debin[0][0],1200);
+  det->SetBinContent(debin[1][0],1500);
+  
+  det->SetBinContent(dssd1sbin[2][4],2200);
+  det->SetBinContent(dssd1sbin[3][4],2000);
+  det->SetBinContent(dssd1lbin[2][4],500);
+
+  det->SetBinContent(dssd2sbin[0][6],200);
+  det->SetBinContent(dssd2lbin[7][12],800);
+
+  det->SetBinContent(dssd3sbin[1][10],1800);
+  det->SetBinContent(dssd3lbin[3][9],660);
+
+  det->SetBinContent(vebin[0][0],456);
+  det->SetBinContent(vebin[1][1],950);
+  det->SetBinContent(vebin[2][2],1380);
+  
+  det->Draw("colz text");
+  
+  c1->Update();
+
+}
+```
 
 <!-- TH2Poly.md ends here -->

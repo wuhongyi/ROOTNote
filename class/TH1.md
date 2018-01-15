@@ -4,12 +4,16 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 三 5月 10 21:31:35 2017 (+0800)
+;; Last-Updated: 一 1月 15 13:31:31 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 22
+;;     Update #: 23
 ;; URL: http://wuhongyi.cn -->
 
 # TH1
+
+继承 public TNamed, public TAttLine, public TAttFill, public TAttMarker
+
+
 
 - TH1C : histograms with one byte per channel.   Maximum bin content = 127
 - TH1S : histograms with one short per channel.  Maximum bin content = 32767

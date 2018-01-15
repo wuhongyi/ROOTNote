@@ -34,7 +34,7 @@
     * [TGraphPolar](class/TGraphPolar.md)
     * [TH1*](class/TH1.md)
     * [TH2+](class/TH2.md)
-    * [TH2Poly](class/TH2Poly.md)
+    * [TH2Poly*](class/TH2Poly.md)
     * [TH3](class/TH3.md)
     * [TLatex*](class/TLatex.md)
     * [TLegend*](class/TLegend.md)
