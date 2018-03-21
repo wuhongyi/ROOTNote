@@ -107,7 +107,7 @@
     * [TTree*](class/TTree.md)
     * [TTreePlayer*](class/TTreePlayer.md)
     * [TVector2](class/TVector2.md)
-    * [TVector3](class/TVector3.md)
+    * [TVector3*](class/TVector3.md)
     * [TVectorT](class/TVectorT.md)
     * [TVirtualFitter*](class/TVirtualFitter.md)
 * [图形界面的使用](class/gui/README.md)

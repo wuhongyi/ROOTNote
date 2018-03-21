@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>TVector3 · GitBook</title>
+        <title>TVector3* · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -1486,7 +1486,7 @@
                 <a href="TVector3.html">
             
                     
-                    TVector3
+                    TVector3*
             
                 </a>
             
@@ -3418,7 +3418,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TVector3</a>
+        <a href=".." >TVector3*</a>
     </h1>
 </div>
 
@@ -3433,7 +3433,297 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tvector3">TVector3</h1>
+                                <!-- TVector3.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 三 3月 21 21:17:15 2018 (+0800)
+;; Last-Updated: 三 3月 21 21:39:11 2018 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 3
+;; URL: http://wuhongyi.cn -->
+<h1 id="tvector3">TVector3</h1>
+<p>&#x7EE7;&#x627F; public TObject</p>
+<p>TVector3 is a general three vector class, which can be used for the description of different vectors in 3D.</p>
+<h2 id="class">class</h2>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">typedef</span> Double_t Scalar;   <span class="hljs-comment">// to be able to use it with the ROOT::Math::VectorUtil functions</span>
+
+   TVector3();
+
+   TVector3(Double_t x, Double_t y, Double_t z);
+   <span class="hljs-comment">// The constructor.</span>
+
+   TVector3(<span class="hljs-keyword">const</span> Double_t *);
+   TVector3(<span class="hljs-keyword">const</span> Float_t *);
+   <span class="hljs-comment">// Constructors from an array</span>
+
+   TVector3(<span class="hljs-keyword">const</span> TVector3 &amp;);
+   <span class="hljs-comment">// The copy constructor.</span>
+
+   <span class="hljs-keyword">virtual</span> ~TVector3();
+   <span class="hljs-comment">// Destructor</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">operator</span> <span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-keyword">inline</span> Double_t <span class="hljs-keyword">operator</span> [] (<span class="hljs-keyword">int</span>) <span class="hljs-keyword">const</span>;
+   <span class="hljs-comment">// Get components by index (Geant4).</span>
+
+   <span class="hljs-function">Double_t &amp; <span class="hljs-title">operator</span> <span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;
+   <span class="hljs-keyword">inline</span> Double_t &amp; <span class="hljs-keyword">operator</span> [] (<span class="hljs-keyword">int</span>);
+   <span class="hljs-comment">// Set components by index.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">x</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">y</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">z</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">X</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Y</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Z</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Px</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Py</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Pz</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The components in cartesian coordinate system.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetX</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetY</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetZ</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetXYZ</span><span class="hljs-params">(Double_t x, Double_t y, Double_t z)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">SetPtEtaPhi</span><span class="hljs-params">(Double_t pt, Double_t eta, Double_t phi)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">SetPtThetaPhi</span><span class="hljs-params">(Double_t pt, Double_t theta, Double_t phi)</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetXYZ</span><span class="hljs-params">(Double_t *carray)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetXYZ</span><span class="hljs-params">(Float_t *carray)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Get the components into an array</span>
+   <span class="hljs-comment">// not checked!</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Phi</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The azimuth angle. returns phi from -pi to pi</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Theta</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The polar angle.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">CosTheta</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Cosine of the polar angle.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Mag2</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The magnitude squared (rho^2 in spherical coordinate system).</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Mag</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The magnitude (rho in spherical coordinate system).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetPhi</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Set phi keeping mag and theta constant (BaBar).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetTheta</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Set theta keeping mag and phi constant (BaBar).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetMag</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Set magnitude keeping theta and phi constant (BaBar).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Perp2</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The transverse component squared (R^2 in cylindrical coordinate system).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Pt</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">Perp</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The transverse component (R in cylindrical coordinate system).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPerp</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Set the transverse component keeping phi and z constant.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Perp2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The transverse component w.r.t. given axis squared.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Pt</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">Perp</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The transverse component w.r.t. given axis.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">DeltaPhi</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">DeltaR</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">///return deltaR with respect to v</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">DrEtaPhi</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> TVector2 <span class="hljs-title">EtaPhiVector</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetMagThetaPhi</span><span class="hljs-params">(Double_t mag, Double_t theta, Double_t phi)</span></span>;<span class="hljs-comment">///setter with mag, theta, phi</span>
+
+   <span class="hljs-keyword">inline</span> TVector3 &amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> TVector3 &amp;);
+   <span class="hljs-comment">// Assignment.</span>
+
+   <span class="hljs-keyword">inline</span> Bool_t <span class="hljs-keyword">operator</span> == (<span class="hljs-keyword">const</span> TVector3 &amp;) <span class="hljs-keyword">const</span>;
+   <span class="hljs-keyword">inline</span> Bool_t <span class="hljs-keyword">operator</span> != (<span class="hljs-keyword">const</span> TVector3 &amp;) <span class="hljs-keyword">const</span>;
+   <span class="hljs-comment">// Comparisons (Geant4).</span>
+
+   <span class="hljs-keyword">inline</span> TVector3 &amp; <span class="hljs-keyword">operator</span> += (<span class="hljs-keyword">const</span> TVector3 &amp;);
+   <span class="hljs-comment">// Addition.</span>
+
+   <span class="hljs-keyword">inline</span> TVector3 &amp; <span class="hljs-keyword">operator</span> -= (<span class="hljs-keyword">const</span> TVector3 &amp;);
+   <span class="hljs-comment">// Subtraction.</span>
+
+   <span class="hljs-keyword">inline</span> TVector3 <span class="hljs-keyword">operator</span> - () <span class="hljs-keyword">const</span>;
+   <span class="hljs-comment">// Unary minus.</span>
+
+   <span class="hljs-keyword">inline</span> TVector3 &amp; <span class="hljs-keyword">operator</span> *= (Double_t);
+   <span class="hljs-comment">// Scaling with real numbers.</span>
+
+   <span class="hljs-function">TVector3 <span class="hljs-title">Unit</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Unit vector parallel to this.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> TVector3 <span class="hljs-title">Orthogonal</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Vector orthogonal to this (Geant4).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Dot</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Scalar product.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> TVector3 <span class="hljs-title">Cross</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Cross product.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">Angle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The angle w.r.t. another 3-vector.</span>
+
+   <span class="hljs-function">Double_t <span class="hljs-title">PseudoRapidity</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Returns the pseudo-rapidity, i.e. -ln(tan(theta/2))</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Eta</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RotateX</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Rotates the Hep3Vector around the x-axis.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RotateY</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Rotates the Hep3Vector around the y-axis.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RotateZ</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Rotates the Hep3Vector around the z-axis.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RotateUz</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3&amp;)</span></span>;
+   <span class="hljs-comment">// Rotates reference frame from Uz to newUz (unit vector) (Geant4).</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Rotate</span><span class="hljs-params">(Double_t, <span class="hljs-keyword">const</span> TVector3 &amp;)</span></span>;
+   <span class="hljs-comment">// Rotates around the axis specified by another Hep3Vector.</span>
+
+   TVector3 &amp; <span class="hljs-keyword">operator</span> *= (<span class="hljs-keyword">const</span> TRotation &amp;);
+   <span class="hljs-function">TVector3 &amp; <span class="hljs-title">Transform</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TRotation &amp;)</span></span>;
+   <span class="hljs-comment">// Transformation with a Rotation matrix.</span>
+
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> TVector2 <span class="hljs-title">XYvector</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Print</span><span class="hljs-params">(Option_t* option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">//print vector parameters</span>
+</code></pre>
+<h2 id="code">code</h2>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TVector3 has been implemented as a vector of three Double_t</span>
+<span class="hljs-comment">// variables, representing the cartesian coordinates. By default all components</span>
+<span class="hljs-comment">// are initialized to zero:</span>
+
+TVector3 v1;
+v1 = (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
+<span class="hljs-function">TVector3 <span class="hljs-title">v3</span><span class="hljs-params">(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)</span></span>; <span class="hljs-comment">// v3 = (1,2,3)</span>
+<span class="hljs-function">TVector3 <span class="hljs-title">v4</span><span class="hljs-params">(v2)</span></span>;<span class="hljs-comment">// v4 = v2</span>
+
+<span class="hljs-comment">// It is also possible (but not recommended) to initialize a TVector3</span>
+<span class="hljs-comment">// with a Double_t or Float_t C array.</span>
+
+<span class="hljs-comment">// You can get the basic components either by name or by index using operator():</span>
+
+xx = v1.X(); xx =v1(<span class="hljs-number">0</span>);
+yy = v1.Y();
+yy = v1(<span class="hljs-number">1</span>);
+zz = v1.Z();
+zz = v1(<span class="hljs-number">2</span>);
+
+<span class="hljs-comment">// The memberfunctions SetX(), SetY(), SetZ()</span>
+<span class="hljs-comment">// and SetXYZ() allow to set the components:</span>
+
+ v1.SetX(<span class="hljs-number">1.</span>); v1.SetY(<span class="hljs-number">2.</span>); v1.SetZ(<span class="hljs-number">3.</span>);
+ v1.SetXYZ(<span class="hljs-number">1.</span>,<span class="hljs-number">2.</span>,<span class="hljs-number">3.</span>);
+
+
+<span class="hljs-comment">// Noncartesian coordinates</span>
+<span class="hljs-comment">// To get information on the TVector3 in spherical (rho,phi,theta)</span>
+<span class="hljs-comment">// or cylindrical (z,r,theta) coordinates, the</span>
+<span class="hljs-comment">// the member functions Mag() (=magnitude=rho in spherical coordinates),</span>
+<span class="hljs-comment">// Mag2(), Theta(), CosTheta(), Phi(),</span>
+<span class="hljs-comment">// Perp() (the transverse component=r in cylindrical coordinates),Perp2() can be used:</span>
+
+ Double_t m = v.Mag(); <span class="hljs-comment">// get magnitudeb (=rho=Sqrt(x*x+y*y+z*z)))</span>
+ Double_t m2 = v.Mag2(); <span class="hljs-comment">// get magnitude squared</span>
+ Double_t t = v.Theta(); <span class="hljs-comment">// get polar angle</span>
+ Double_t ct = v.CosTheta();<span class="hljs-comment">// get cos of theta</span>
+ Double_t p = v.Phi(); <span class="hljs-comment">// get azimuth angle</span>
+ Double_t pp = v.Perp(); <span class="hljs-comment">// get transverse component</span>
+ Double_t pp2= v.Perp2(); <span class="hljs-comment">// get transvers component squared</span>
+
+<span class="hljs-comment">// It is also possible to get the transverse component with respect to another vector:</span>
+
+ Double_t ppv1 = v.Perp(v1);
+ Double_t pp2v1 = v.Perp2(v1);
+
+<span class="hljs-comment">// The pseudo-rapidity ( eta=-ln (tan (theta/2)) ) can be obtained by Eta() or PseudoRapidity():</span>
+
+ Double_t eta = v.PseudoRapidity();
+
+<span class="hljs-comment">// There are set functions to change one of the noncartesian coordinates:</span>
+
+ v.SetTheta(<span class="hljs-number">.5</span>); <span class="hljs-comment">// keeping rho and phi</span>
+ v.SetPhi(<span class="hljs-number">.8</span>); <span class="hljs-comment">// keeping rho and theta</span>
+ v.SetMag(<span class="hljs-number">10.</span>); <span class="hljs-comment">// keeping theta and phi</span>
+ v.SetPerp(<span class="hljs-number">3.</span>); <span class="hljs-comment">// keeping z and phi</span>
+
+
+<span class="hljs-comment">// Arithmetic / Comparison</span>
+<span class="hljs-comment">// The TVector3 class provides the operators to add, subtract, scale and compare vectors:</span>
+
+ v3 = -v1;
+ v1 = v2+v3;
+ v1 += v3;
+ v1 = v1 - v3
+ v1 -= v3;
+ v1 *= <span class="hljs-number">10</span>;
+ v1 = <span class="hljs-number">5</span>*v2;
+
+ <span class="hljs-keyword">if</span>(v1==v2) {...}
+ <span class="hljs-keyword">if</span>(v1!=v2) {...}
+
+
+<span class="hljs-comment">// Related Vectors</span>
+ v2 = v1.Unit(); <span class="hljs-comment">// get unit</span>
+<span class="hljs-comment">// vector parallel to v1</span>
+ v2 = v1.Orthogonal(); <span class="hljs-comment">// get vector orthogonal to v1</span>
+
+<span class="hljs-comment">// Scalar and vector products</span>
+ s = v1.Dot(v2); <span class="hljs-comment">// scalar product</span>
+ s = v1 * v2; <span class="hljs-comment">// scalar product</span>
+ v = v1.Cross(v2); <span class="hljs-comment">// vector product</span>
+
+<span class="hljs-comment">// Angle between two vectors</span>
+ Double_t a = v1.Angle(v2);
+
+<span class="hljs-comment">// Rotations</span>
+
+
+<span class="hljs-comment">// Rotation around axes</span>
+ v.RotateX(<span class="hljs-number">.5</span>);
+ v.RotateY(TMath::Pi());
+ v.RotateZ(angle);
+
+<span class="hljs-comment">// Rotation around a vector</span>
+ v1.Rotate(TMath::Pi()/<span class="hljs-number">4</span>, v2); <span class="hljs-comment">// rotation around v2</span>
+
+<span class="hljs-comment">// Rotation by TRotation</span>
+<span class="hljs-comment">// TVector3 objects can be rotated by objects of the TRotation</span>
+<span class="hljs-comment">// class using the Transform() member functions,</span>
+<span class="hljs-comment">// the operator *= or the operator * of the TRotation class:</span>
+
+ TRotation m;
+ <span class="hljs-comment">// ...</span>
+ v1.transform(m);
+ v1 = m*v1;
+ v1 *= m; <span class="hljs-comment">// Attention v1 = m*v1</span>
+
+<span class="hljs-comment">// Transformation from rotated frame</span>
+ TVector3 direction = v.Unit();
+ v1.RotateUz(direction); <span class="hljs-comment">// direction must be TVector3 of unit length</span>
+
+<span class="hljs-comment">// transforms v1 from the rotated frame (z&apos; parallel to direction, x&apos; in</span>
+<span class="hljs-comment">// the theta plane and y&apos; in the xy plane as well as perpendicular to the</span>
+<span class="hljs-comment">// theta plane) to the (x,y,z) frame.</span>
+</code></pre>
+<h2 id="example">example</h2>
+<!-- TVector3.md ends here -->
 
                                 
                                 </section>
@@ -3477,7 +3767,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TVector3","level":"1.2.106","depth":2,"next":{"title":"TVectorT","level":"1.2.107","depth":2,"path":"class/TVectorT.md","ref":"class/TVectorT.md","articles":[]},"previous":{"title":"TVector2","level":"1.2.105","depth":2,"path":"class/TVector2.md","ref":"class/TVector2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TVector3.md","mtime":"2017-07-11T12:51:29.983Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-01-18T15:55:46.894Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TVector3*","level":"1.2.106","depth":2,"next":{"title":"TVectorT","level":"1.2.107","depth":2,"path":"class/TVectorT.md","ref":"class/TVectorT.md","articles":[]},"previous":{"title":"TVector2","level":"1.2.105","depth":2,"path":"class/TVector2.md","ref":"class/TVector2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TVector3.md","mtime":"2018-03-21T13:39:11.662Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-03-21T13:40:03.644Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
