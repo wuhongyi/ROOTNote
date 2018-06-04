@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TFile* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,13 +3469,11 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 22
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tfile">TFile</h1>
-<p>&#x7EE7;&#x627F;TDirectoryFile</p>
-<p>A ROOT file is a suite of consecutive data records (TKey instances) with
-a well defined format.</p>
-<p>If the key is located past the 32 bit file limit (&gt; 2 GB) then some fields will
-be 8 instead of 4 bytes:</p>
-<pre><code>Byte Range      | Member Name | Description
+
+
+<h1 id="tfile">TFile</h1><p>&#x7EE7;&#x627F;TDirectoryFile</p><p>A ROOT file is a suite of consecutive data records (TKey instances) with
+a well defined format.</p><p>If the key is located past the 32 bit file limit (&gt; 2 GB) then some fields will
+be 8 instead of 4 bytes:</p><pre><code>Byte Range      | Member Name | Description
 ----------------|-----------|--------------
 1-&gt;4            | Nbytes    | Length of compressed object (in bytes)
 5-&gt;6            | Version   | TKey version identifier
@@ -3491,12 +3489,11 @@ be 8 instead of 4 bytes:</p>
 ..-&gt;..          | Name      | lName bytes with the name of the object
 ..-&gt;..          | lTitle    | Number of bytes in the object title
 ..-&gt;..          | Title     | Title of the object
------&gt;          | DATA      | Data bytes associated to the object
-</code></pre><p>The first data record starts at byte fBEGIN (currently set to kBEGIN).
+-----&gt;          | DATA      | Data bytes associated to the object</code></pre>
+<p>The first data record starts at byte fBEGIN (currently set to kBEGIN).
 Bytes 1-&gt;kBEGIN contain the file description, when fVersion &gt;= 1000000
 it is a large file (&gt; 2 GB) and the offsets will be 8 bytes long and
-fUnits will be set to 8:</p>
-<pre><code>Byte Range      | Record Name | Description
+fUnits will be set to 8:</p><pre><code>Byte Range      | Record Name | Description
 ----------------|-------------|------------
 1-&gt;4            | &quot;root&quot;      | Root file identifier
 5-&gt;8            | fVersion    | File format version
@@ -3510,8 +3507,8 @@ fUnits will be set to 8:</p>
 34-&gt;37 [42-&gt;45] | fCompress   | Compression level and algorithm
 38-&gt;41 [46-&gt;53] | fSeekInfo   | Pointer to TStreamerInfo record
 42-&gt;45 [54-&gt;57] | fNbytesInfo | Number of bytes in TStreamerInfo record
-46-&gt;63 [58-&gt;75] | fUUID       | Universal Unique ID
-</code></pre><pre><code>/// A ROOT file is designed such that one can write in the file in pure
+46-&gt;63 [58-&gt;75] | fUUID       | Universal Unique ID</code></pre>
+<pre><code>/// A ROOT file is designed such that one can write in the file in pure
 /// sequential mode (case of BATCH jobs). In this case, the file may be
 /// read sequentially again without using the file index written
 /// at the end of the file. In case of a job crash, all the information
@@ -3545,17 +3542,15 @@ fUnits will be set to 8:</p>
 /// Note that the compression settings may be changed at any time.
 /// The new compression settings will only apply to branches created
 /// or attached after the setting is changed and other objects written
-/// after the setting is changed.
-</code></pre><h2 id="class">class</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5168;&#x5C40;</span>
+/// after the setting is changed.</code></pre>
+<h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-comment">//&#x5168;&#x5C40;</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> __CINT__</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> gFile (TFile::CurrentFile())</span>
 
 <span class="hljs-meta">#<span class="hljs-meta-keyword">elif</span> defined(__MAKECINT__)</span>
 <span class="hljs-comment">// To properly handle the use of gFile in header files (in static declarations)</span>
 R__EXTERN TFile   *gFile;
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
-</code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
 <pre><code class="lang-cpp">   <span class="hljs-comment">/// Asynchronous open request status</span>
    <span class="hljs-keyword">enum</span> EAsyncOpenStatus { kAOSNotAsync = <span class="hljs-number">-1</span>,  kAOSFailure = <span class="hljs-number">0</span>,
                            kAOSInProgress = <span class="hljs-number">1</span>, kAOSSuccess = <span class="hljs-number">2</span> };
@@ -4217,18 +4212,15 @@ R__EXTERN TFile   *gFile;
 <span class="hljs-comment">/// Returns open timeout (in ms).</span>
 
    <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t       <span class="hljs-title">SetOnlyStaged</span><span class="hljs-params">(Bool_t onlystaged)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t       <span class="hljs-title">GetOnlyStaged</span><span class="hljs-params">()</span></span>;
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">//&#x6253;&#x5F00;&#x6587;&#x4EF6;</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t       <span class="hljs-title">GetOnlyStaged</span><span class="hljs-params">()</span></span>;</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">//&#x6253;&#x5F00;&#x6587;&#x4EF6;</span>
 <span class="hljs-function">TFile <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-string">&quot;demo.root&quot;</span>)</span></span>;
 <span class="hljs-keyword">if</span> (f.IsZombie()) {
 <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Error opening file&quot;</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
 <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);} 
 <span class="hljs-keyword">else</span> {
  .....
- }
-</code></pre>
+ }</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//&#x591A;&#x4E2A;cycle&#x65F6;&#x5019;&#x8BFB;&#x53D6;&#x67D0;&#x4E00;&#x90E8;&#x5206;&#x6570;&#x636E;</span>
 TTree *tt;
 gFile-&gt;GetObject(<span class="hljs-string">&quot;NameOfTree;1&quot;</span>,tt)
@@ -4248,8 +4240,7 @@ For a more detailed explanation, see &#x201C;Input/Output&#x201D;.
 
 
 TTree *fChain = (TTree*)gFile-&gt;Get(<span class="hljs-string">&quot;t&quot;</span>);
-Long64_t nentries = fChain-&gt;GetEntriesFast();
-</code></pre>
+Long64_t nentries = fChain-&gt;GetEntriesFast(); </code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/// If the file is not usable (a zombie), you can test for this case</span>
 <span class="hljs-comment">/// with code like:</span>
 <span class="hljs-function">TFile <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-string">&quot;myfile.root&quot;</span>)</span></span>;
@@ -4257,8 +4248,7 @@ Long64_t nentries = fChain-&gt;GetEntriesFast();
 
 <span class="hljs-comment">/// If the file has been recovered, the bit kRecovered is set in the TFile object in memory.</span>
 <span class="hljs-comment">/// You can test if the file has been recovered with</span>
-<span class="hljs-keyword">if</span> (f.TestBit(TFile::kRecovered)) {<span class="hljs-comment">/*... the file has been recovered*/</span>}
-</code></pre>
+<span class="hljs-keyword">if</span> (f.TestBit(TFile::kRecovered)) {<span class="hljs-comment">/*... the file has been recovered*/</span>}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// function  File::Map()</span>
 
 <span class="hljs-comment">/// List the contents of a file sequentially.</span>
@@ -4291,8 +4281,7 @@ Long64_t nentries = fChain-&gt;GetEntriesFast();
 <span class="hljs-comment">///     20010404/150442  At:402823    N=307       KeysList</span>
 <span class="hljs-comment">///     20010404/150443  At:403130    N=4548      StreamerInfo   CX =  3.65</span>
 <span class="hljs-comment">///     20010404/150443  At:407678    N=86        FreeSegments</span>
-<span class="hljs-comment">///     20010404/150443  At:407764    N=1         END</span>
-</code></pre>
+<span class="hljs-comment">///     20010404/150443  At:407764    N=1         END</span></code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// function TFile::GetStreamerInfoList()</span>
 
 <span class="hljs-comment">/// Read the list of TStreamerInfo objects written to this file.</span>
@@ -4304,10 +4293,8 @@ Long64_t nentries = fChain-&gt;GetEntriesFast();
 <span class="hljs-keyword">auto</span> <span class="hljs-built_in">list</span> = f.GetStreamerInfoList();
 <span class="hljs-keyword">auto</span> info = (TStreamerInfo*)<span class="hljs-built_in">list</span>-&gt;FindObject(<span class="hljs-string">&quot;MyClass&quot;</span>);
 <span class="hljs-keyword">auto</span> classversionid = info-&gt;GetClassVersion();
-<span class="hljs-keyword">delete</span> <span class="hljs-built_in">list</span>;
-</code></pre>
-<h2 id="example">example</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">//&#x6587;&#x672C;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5B58;ROOT&#x6587;&#x4EF6;&#xFF1A;</span>
+<span class="hljs-keyword">delete</span> <span class="hljs-built_in">list</span>;</code></pre>
+<h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-comment">//&#x6587;&#x672C;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5B58;ROOT&#x6587;&#x4EF6;&#xFF1A;</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Riostream.h&quot;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">basic</span><span class="hljs-params">()</span> </span>{
 <span class="hljs-comment">//  Read data from an ascii file and create a root file with an histogram and an ntuple.</span>
@@ -4354,9 +4341,10 @@ Long64_t nentries = fChain-&gt;GetEntriesFast();
    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; found %lld points\n&quot;</span>,nlines);
    T-&gt;Draw(<span class="hljs-string">&quot;x&quot;</span>,<span class="hljs-string">&quot;z&gt;2&quot;</span>);
    T-&gt;Write();
-}
-</code></pre>
+}</code></pre>
 <!-- TFile.md ends here -->
+
+
 
                                 
                                 </section>
@@ -4400,7 +4388,7 @@ Long64_t nentries = fChain-&gt;GetEntriesFast();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TFile*","level":"1.2.20","depth":2,"next":{"title":"TFileCacheWrite","level":"1.2.21","depth":2,"path":"class/TFileCacheWrite.md","ref":"class/TFileCacheWrite.md","articles":[]},"previous":{"title":"TF3","level":"1.2.19","depth":2,"path":"class/TF3.md","ref":"class/TF3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TFile.md","mtime":"2017-09-09T08:24:43.636Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TFile*","level":"1.2.20","depth":2,"next":{"title":"TFileCacheWrite","level":"1.2.21","depth":2,"path":"class/TFileCacheWrite.md","ref":"class/TFileCacheWrite.md","articles":[]},"previous":{"title":"TF3","level":"1.2.19","depth":2,"path":"class/TF3.md","ref":"class/TF3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TFile.md","mtime":"2018-05-14T09:18:22.768Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

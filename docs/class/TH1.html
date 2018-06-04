@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TH1* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,35 +3469,30 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 23
 ;; URL: http://wuhongyi.cn -->
-<h1 id="th1">TH1</h1>
-<p>&#x7EE7;&#x627F; public TNamed, public TAttLine, public TAttFill, public TAttMarker</p>
-<ul>
-<li>TH1C : histograms with one byte per channel.   Maximum bin content = 127</li>
-<li>TH1S : histograms with one short per channel.  Maximum bin content = 32767</li>
-<li>TH1I : histograms with one int per channel.    Maximum bin content = 2147483647</li>
-<li>TH1F : histograms with one float per channel.  Maximum precision 7 digits</li>
-<li>TH1D : histograms with one double per channel. Maximum precision 14 digits</li>
-</ul>
+
+
+<h1 id="th1">TH1</h1><p>&#x7EE7;&#x627F; public TNamed, public TAttLine, public TAttFill, public TAttMarker</p><ul><li>TH1C : histograms with one byte per channel.   Maximum bin content = 127
+</li>
+<li>TH1S : histograms with one short per channel.  Maximum bin content = 32767
+</li>
+<li>TH1I : histograms with one int per channel.    Maximum bin content = 2147483647
+</li>
+<li>TH1F : histograms with one float per channel.  Maximum precision 7 digits
+</li>
+<li>TH1D : histograms with one double per channel. Maximum precision 14 digits
+</li></ul>
 <pre><code>The TH*C classes also inherit from the array class TArrayC.
 The TH*S classes also inherit from the array class TArrayS.
 The TH*I classes also inherit from the array class TArrayI.
 The TH*F classes also inherit from the array class TArrayF.
-The TH*D classes also inherit from the array class TArrayD.
-</code></pre><p>When an histogram is created, a reference to it is automatically added to the list of in-memory objects for the current file or directory. This default behaviour can be changed by:</p>
-<pre><code class="lang-cpp">h-&gt;SetDirectory(<span class="hljs-number">0</span>);          <span class="hljs-comment">// for the current histogram h</span>
-TH1::AddDirectory(kFALSE);   <span class="hljs-comment">// sets a global switch disabling the reference</span>
-</code></pre>
-<p>When the histogram is deleted, the reference to it is removed from the list of objects in memory. When a file is closed, all histograms in memory associated with this file are automatically deleted.</p>
-<hr>
-<p>All histogram types support either fix or variable bin sizes. 2-D histograms may have fix size bins along X and variable size bins along Y or vice-versa. The functions to fill, manipulate, draw or access histograms are identical in both cases.</p>
-<p>Convention for numbering bins</p>
-<p>For all histogram types: nbins, xlow, xup</p>
-<pre><code>bin = 0;       underflow bin
+The TH*D classes also inherit from the array class TArrayD.</code></pre>
+<p>When an histogram is created, a reference to it is automatically added to the list of in-memory objects for the current file or directory. This default behaviour can be changed by:</p><pre><code class="lang-cpp">h-&gt;SetDirectory(<span class="hljs-number">0</span>);          <span class="hljs-comment">// for the current histogram h</span>
+TH1::AddDirectory(kFALSE);   <span class="hljs-comment">// sets a global switch disabling the reference</span></code></pre>
+<p>When the histogram is deleted, the reference to it is removed from the list of objects in memory. When a file is closed, all histograms in memory associated with this file are automatically deleted.</p><hr><p>All histogram types support either fix or variable bin sizes. 2-D histograms may have fix size bins along X and variable size bins along Y or vice-versa. The functions to fill, manipulate, draw or access histograms are identical in both cases.</p><p>Convention for numbering bins</p><p>For all histogram types: nbins, xlow, xup</p><pre><code>bin = 0;       underflow bin
 bin = 1;       first bin with low-edge xlow INCLUDED
 bin = nbins;   last bin with upper-edge xup EXCLUDED
-bin = nbins+1; overflow bin
-</code></pre><h2 id="class">class</h2>
-<pre><code class="lang-cpp">   <span class="hljs-comment">// TH1 status bits</span>
+bin = nbins+1; overflow bin</code></pre>
+<h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-comment">// TH1 status bits</span>
    <span class="hljs-keyword">enum</span> {
       kNoStats     = BIT(<span class="hljs-number">9</span>),  <span class="hljs-comment">// don&apos;t draw stats box</span>
       kUserContour = BIT(<span class="hljs-number">10</span>), <span class="hljs-comment">// user specified contour levels</span>
@@ -5031,24 +5026,20 @@ Note that it is an approximated value which is valid only in the <span class="hl
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetCellContent</span><span class="hljs-params">(Int_t binx, Int_t biny, Double_t content)</span>
                         </span>{ Obsolete(<span class="hljs-string">&quot;SetCellContent&quot;</span>, <span class="hljs-string">&quot;v6-00&quot;</span>, <span class="hljs-string">&quot;v6-04&quot;</span>); SetBinContent(GetBin(binx, biny), content); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetCellError</span><span class="hljs-params">(Int_t binx, Int_t biny, Double_t content)</span>
-                        </span>{ Obsolete(<span class="hljs-string">&quot;SetCellError&quot;</span>, <span class="hljs-string">&quot;v6-00&quot;</span>, <span class="hljs-string">&quot;v6-04&quot;</span>); SetBinError(binx, biny, content); }
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp">TH1F *h1=<span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;stats name&quot;</span>,<span class="hljs-string">&quot;title name&quot;</span>,number of bins,min,max);
+                        </span>{ Obsolete(<span class="hljs-string">&quot;SetCellError&quot;</span>, <span class="hljs-string">&quot;v6-00&quot;</span>, <span class="hljs-string">&quot;v6-04&quot;</span>); SetBinError(binx, biny, content); }</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp">TH1F *h1=<span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;stats name&quot;</span>,<span class="hljs-string">&quot;title name&quot;</span>,number of bins,min,max);
 TH1F *h1=<span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;stats name&quot;</span>,<span class="hljs-string">&quot;title name;X axis;Y axis&quot;</span>,number of bins,min,max);
  <span class="hljs-keyword">float</span> x=gRandom-&gt;Uniform(<span class="hljs-number">-5.</span>,<span class="hljs-number">5.</span>);
  h1-&gt;Fill(x);                       <span class="hljs-comment">//&#x5747;&#x5300;&#x5206;&#x5E03;</span>
 h1-&gt;FillRandom(<span class="hljs-string">&quot;gaus&quot;</span>,<span class="hljs-number">50000</span>);       <span class="hljs-comment">//</span>
-h1-&gt;Draw();
-</code></pre>
+h1-&gt;Draw();</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//&#x5FAA;&#x73AF;&#x521B;&#x5EFA;&#x56FE;&#x7247;</span>
 TH1D  h[<span class="hljs-number">16</span>];
 <span class="hljs-keyword">char</span> Stringtemp[<span class="hljs-number">256</span>];
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">16</span>;i++){ 
   <span class="hljs-built_in">sprintf</span>(Stringtemp,<span class="hljs-string">&quot;h[%d]&quot;</span>,i);<span class="hljs-comment">//&#x8FD9;&#x6837;&#x521B;&#x5EFA;&#x6570;&#x7EC4;&#x540D;&#x4E0D;&#x597D;&#xFF0C;&#x76F4;&#x63A5; &quot;h%d&quot;&#x8FD9;&#x6837;&#x597D;</span>
   h[i]=<span class="hljs-keyword">new</span> TH1D(Stringtemp,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-number">4096</span>,<span class="hljs-number">0</span>,<span class="hljs-number">4096</span>);
-}
-</code></pre>
+} </code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Draw &#x5C06;&#x4F1A;&#x6E05;&#x7A7A;&#x5F53; &#x524D;Pad &#x518D;&#x753B;&#x5F53;&#x524D;&#x76F4;&#x65B9;&#x56FE;&#xFF0C;&#x5982;&#x60F3;&#x8981;&#x4E00;&#x4E2A;&#x56FE;&#x4E0A;&#x591A;&#x4E2A;&#x76F4;&#x65B9;&#x56FE;&#xFF0C;&#x5C06;&#x7B2C;&#x4E8C;&#x4E2A;&#x53CA;&#x4E4B;&#x540E;&#x7684;&#x76F4;&#x65B9;&#x56FE; Option_t &#x8BBE;&#x4E3A; &quot;same&quot;&#x3002;</span>
   TH1D *h=<span class="hljs-keyword">new</span> TH1D(<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-string">&quot;the title&quot;</span>,<span class="hljs-number">60</span>,<span class="hljs-number">-3.0</span>,<span class="hljs-number">3.0</span>);
   TH1D *h1=<span class="hljs-keyword">new</span> TH1D(<span class="hljs-string">&quot;h1&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-number">60</span>,<span class="hljs-number">-3.0</span>,<span class="hljs-number">3.0</span>);
@@ -5060,8 +5051,7 @@ TH1D  h[<span class="hljs-number">16</span>];
   }
   h-&gt;Draw();
   <span class="hljs-comment">// h1-&gt;Draw();</span>
-  h1-&gt;Draw(<span class="hljs-string">&quot;same&quot;</span>);
-</code></pre>
+  h1-&gt;Draw(<span class="hljs-string">&quot;same&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//Double_t   *GetIntegral();</span>
 <span class="hljs-comment">//Return a pointer to the array of bins integral.</span>
 <span class="hljs-comment">//&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x6570;&#x7EC4;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x5F53;&#x524D;&#x503C;&#x4E3A; bin &#x4ECE; 0&#x5230;&#x5F53;&#x524D; bin &#x9762;&#x79EF;&#x6240;&#x5360;&#x7684;&#x6BD4;&#x4F8B;&#x3002;</span>
@@ -5078,8 +5068,7 @@ TH1D  h[<span class="hljs-number">16</span>];
     {
       <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot;  &quot;</span>&lt;&lt;Integral[i]&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
     }
-  h-&gt;Draw();
-</code></pre>
+  h-&gt;Draw();</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//&#x514B;&#x9686;&#x76F4;&#x65B9;&#x56FE;&#xFF0C;&#x8FD9;&#x91CC;&#x7684; Close &#x662F;&#x65B0;&#x5F00;&#x8F9F;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x5B58;&#x50A8;&#x65B0;&#x76F4;&#x65B9;&#x56FE;&#x7684;&#xFF0C;&#x514B;&#x9686;&#x4E4B;&#x540E;&#xFF0C;&#x539F;&#x59CB;&#x76F4;&#x65B9;&#x56FE;&#x7684;&#x4FEE;&#x6539;&#x6216;&#x5220;&#x9664;&#x5BF9;&#x514B;&#x9686;&#x7684;&#x76F4;&#x65B9;&#x56FE;&#x6CA1;&#x6709;&#x5F71;&#x54CD;&#x3002;&#x800C;TH1D *hnew =h;&#x8FD9;&#x4E2A;&#x53EA;&#x662F;&#x5C06;&#x65B0;&#x5EFA;&#x7684;&#x5BF9;&#x8C61;&#x6307;&#x5411; h &#x7684;&#x5730;&#x5740;&#x3002;</span>
 TH1D *h=<span class="hljs-keyword">new</span> TH1D(<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-string">&quot;the title&quot;</span>,<span class="hljs-number">60</span>,<span class="hljs-number">-3.0</span>,<span class="hljs-number">3.0</span>);
 TRandom *r =<span class="hljs-keyword">new</span> TRandom();
@@ -5090,8 +5079,7 @@ TRandom *r =<span class="hljs-keyword">new</span> TRandom();
 TH1D *hnew = (TH1D*)h-&gt;Clone(<span class="hljs-string">&quot;hnew&quot;</span>);
 <span class="hljs-comment">// TH1D *hnew =h;</span>
 h-&gt;Reset();
-hnew-&gt;Draw();
-</code></pre>
+hnew-&gt;Draw();</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// virtual TH1     *Rebin(Int_t ngroup=2, const char*newname=&quot;&quot;, const Double_t *xbins=0);</span>
 
 <span class="hljs-comment">/// examples: if h1 is an existing TH1F histogram with 100 bins</span>
@@ -5101,8 +5089,7 @@ TH1F *hnew = h1-&gt;Rebin(<span class="hljs-number">5</span>,<span class="hljs-s
 
 <span class="hljs-comment">/// examples: if h1 is an existing TH1F histogram with 100 bins</span>
 Double_t xbins[<span class="hljs-number">25</span>] = {...} <span class="hljs-comment">//array of low-edges (xbins[25] is the upper edge of last bin</span>
-h1-&gt;Rebin(<span class="hljs-number">24</span>,<span class="hljs-string">&quot;hnew&quot;</span>,xbins);  <span class="hljs-comment">//creates a new variable bin size histogram hnew</span>
-</code></pre>
+h1-&gt;Rebin(<span class="hljs-number">24</span>,<span class="hljs-string">&quot;hnew&quot;</span>,xbins);  <span class="hljs-comment">//creates a new variable bin size histogram hnew</span></code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// virtual Long64_t Merge(TCollection *list);</span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">atest</span><span class="hljs-params">()</span> </span>{
 TH1F *h1 = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;h1&quot;</span>,<span class="hljs-string">&quot;h1&quot;</span>,<span class="hljs-number">110</span>,<span class="hljs-number">-110</span>,<span class="hljs-number">0</span>);
@@ -5123,8 +5110,7 @@ TH1F *h = (TH1F*)h1-&gt;Clone(<span class="hljs-string">&quot;h&quot;</span>);
 h-&gt;Reset();
 h-&gt;Merge(<span class="hljs-built_in">list</span>);
 h-&gt;Draw();
-}
-</code></pre>
+}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// virtual Int_t    GetQuantiles(Int_t nprobSum, Double_t *q, const Double_t *probSum=0);</span>
 Getting quantiles q from two histograms and storing results in a TGraph, a so-called QQ-plot
 TGraph *gr = <span class="hljs-keyword">new</span> TGraph(nprob);
@@ -5155,8 +5141,7 @@ gr-&gt;Draw(<span class="hljs-string">&quot;alp&quot;</span>);
    TGraph *gr = <span class="hljs-keyword">new</span> TGraph(nq,xq,yq);
    gr-&gt;SetMarkerStyle(<span class="hljs-number">21</span>);
    gr-&gt;Draw(<span class="hljs-string">&quot;alp&quot;</span>);
-}
-</code></pre>
+}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// virtual TFitResultPtr    Fit(TF1 *f1 ,Option_t *option=&quot;&quot; ,Option_t *goption=&quot;&quot;, Double_t xmin=0, Double_t xmax=0);</span>
 
 <span class="hljs-comment">/// In order to use the Range option, one must first create a function</span>
@@ -5244,11 +5229,19 @@ h.Draw(); function is not drawn
 <span class="hljs-keyword">const</span> Int_t kNotDraw = <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">9</span>;
 h.GetFunction(<span class="hljs-string">&quot;myFunction&quot;</span>)-&gt;ResetBit(kNotDraw);
 h.Draw();  <span class="hljs-comment">// function is visible again</span>
+
+
+
 </code></pre>
-<h2 id="example">example</h2>
-<!-- ```cpp -->
+<h2 id="example">example</h2><!-- ```cpp -->
+
+
 <!-- ``` -->
+
+
 <!-- TH1.md ends here -->
+
+
 
                                 
                                 </section>
@@ -5292,7 +5285,7 @@ h.Draw();  <span class="hljs-comment">// function is visible again</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TH1*","level":"1.2.33","depth":2,"next":{"title":"TH2+","level":"1.2.34","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"previous":{"title":"TGraphPolar","level":"1.2.32","depth":2,"path":"class/TGraphPolar.md","ref":"class/TGraphPolar.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH1.md","mtime":"2018-01-15T05:31:31.347Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TH1*","level":"1.2.33","depth":2,"next":{"title":"TH2+","level":"1.2.34","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"previous":{"title":"TGraphPolar","level":"1.2.32","depth":2,"path":"class/TGraphPolar.md","ref":"class/TGraphPolar.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH1.md","mtime":"2018-05-14T09:18:22.538Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 28 09:10:00 2016 (+0800)
-;; Last-Updated: 一 11月 28 09:41:09 2016 (+0800)
+;; Last-Updated: 一 6月  4 03:03:27 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # TTreePlayer
@@ -635,6 +635,22 @@ T2->Write();
 
 
 ## example
+
+**txt文本输出**
+
+```
+root [] .> ttree.txt
+tree->Scan("*");
+.>
+root []
+```
+
+```cpp
+TTreePlayer *player = ((TTreePlayer*)(tree->GetPlayer()));
+player->SetScanRedirect(true); 
+player->SetScanFileName("ttree.txt"); 
+palyer->Scan("","","",100,0);
+```
 
 
 

@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TRandom* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,9 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 9
 ;; URL: http://wuhongyi.cn -->
-<h1 id="trandom">TRandom</h1>
-<p><strong>&#x7EE7;&#x627F; TNamed</strong></p>
-<pre><code>This is the base class for the ROOT Random number generators. 
+
+
+<h1 id="trandom">TRandom</h1><p><strong>&#x7EE7;&#x627F; TNamed</strong></p><pre><code>This is the base class for the ROOT Random number generators. 
 This class defines the ROOT Random number interface and it should not be instantiated directly but used via its derived classes (e.g. TRandom1, TRandom2 or TRandom3). 
 Note that this class implements also a very simple generator (linear congruential) with periodicity = 10**9
 which is known to have defects (the lower random bits are correlated) and therefore should NOT be used in any statistical study.
@@ -3499,11 +3499,8 @@ to the function you would like to generate.
 
   TUnuran u;
   u.Init(TUnuranDistrCont(f1));
-  double r = u.Sample();
-</code></pre><h2 id="class">class</h2>
-<p>&#x9ED8;&#x8BA4;&#x968F;&#x673A;&#x79CD;&#x5B50; 65539</p>
-<p>Simple Random number generator (periodicity = 10**9)</p>
-<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span>  Int_t    <span class="hljs-title">Binomial</span><span class="hljs-params">(Int_t ntot, Double_t prob)</span></span>;<span class="hljs-comment">//&#x4E8C;&#x9879;&#x5206;&#x5E03;</span>
+  double r = u.Sample();</code></pre>
+<h2 id="class">class</h2><p>&#x9ED8;&#x8BA4;&#x968F;&#x673A;&#x79CD;&#x5B50; 65539</p><p>Simple Random number generator (periodicity = 10**9)</p><pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span>  Int_t    <span class="hljs-title">Binomial</span><span class="hljs-params">(Int_t ntot, Double_t prob)</span></span>;<span class="hljs-comment">//&#x4E8C;&#x9879;&#x5206;&#x5E03;</span>
 <span class="hljs-comment">/// Generates a random integer N according to the binomial law.</span>
 <span class="hljs-comment">/// Coded from Los Alamos report LA-5061-MS.</span>
 <span class="hljs-comment">/// N is binomially distributed between 0 and ntot inclusive</span>
@@ -3608,23 +3605,17 @@ to the function you would like to generate.
 
 <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Uniform</span><span class="hljs-params">(Double_t x1=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">/// Returns a uniform deviate on the interval  (0, x1).</span>
 <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Uniform</span><span class="hljs-params">(Double_t x1, Double_t x2)</span></span>;<span class="hljs-comment">//&#xFF08;x1&#xFF0C;x2]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteRandom</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename)</span></span>;<span class="hljs-comment">//&#x5C06;&#x8BE5;&#x968F;&#x673A;&#x6570;&#x4EA7;&#x751F;&#x5668;&#x5B58;&#x4E3A;root&#x6587;&#x4EF6; Writes random generator status to filename.</span>
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TRandom.h&quot;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteRandom</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename)</span></span>;<span class="hljs-comment">//&#x5C06;&#x8BE5;&#x968F;&#x673A;&#x6570;&#x4EA7;&#x751F;&#x5668;&#x5B58;&#x4E3A;root&#x6587;&#x4EF6; Writes random generator status to filename.</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TRandom.h&quot;</span></span>
 TRandom r;
 r.Rndm();
 r.Gaus();
-r.Gaus(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>);
-</code></pre>
+r.Gaus(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// A TRandom object may be written to a Root file : as part of another object or with its own key </span>
-gRandom-&gt;Write(<span class="hljs-string">&quot;Random&quot;</span>);
-</code></pre>
-<h2 id="example">example</h2>
-<pre><code class="lang-cpp">
+gRandom-&gt;Write(<span class="hljs-string">&quot;Random&quot;</span>);</code></pre>
+<h2 id="example">example</h2><p>```cpp</p><p>```</p><!-- TRandom.md ends here -->
 
-</code></pre>
-<!-- TRandom.md ends here -->
+
 
                                 
                                 </section>
@@ -3668,7 +3659,7 @@ gRandom-&gt;Write(<span class="hljs-string">&quot;Random&quot;</span>);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TRandom*","level":"1.2.70","depth":2,"next":{"title":"TRandom1*","level":"1.2.71","depth":2,"path":"class/TRandom1.md","ref":"class/TRandom1.md","articles":[]},"previous":{"title":"TPSocket","level":"1.2.69","depth":2,"path":"class/TPSocket.md","ref":"class/TPSocket.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TRandom.md","mtime":"2017-07-11T12:51:30.027Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TRandom*","level":"1.2.70","depth":2,"next":{"title":"TRandom1*","level":"1.2.71","depth":2,"path":"class/TRandom1.md","ref":"class/TRandom1.md","articles":[]},"previous":{"title":"TPSocket","level":"1.2.69","depth":2,"path":"class/TPSocket.md","ref":"class/TPSocket.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TRandom.md","mtime":"2018-05-14T09:18:22.719Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

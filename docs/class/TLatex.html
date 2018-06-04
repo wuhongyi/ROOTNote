@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TLatex* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,21 +3469,17 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tlatex">TLatex</h1>
-<p>&#x7EE7;&#x627F; TText, TAttLine</p>
-<p>To draw Mathematical Formula.</p>
-<p>TLatex&apos;s purpose is to write mathematical equations. The syntax is very similar
-to the Latex&apos;s one. </p>
-<p>When the font precision (see TAttText) is low (0 or 1), TLatex is
-painted as a normal TText, the control characters are not interpreted.</p>
-<p>Subscripts and superscripts are made with the <code>_</code> and <code>^</code>
+
+
+<h1 id="tlatex">TLatex</h1><p>&#x7EE7;&#x627F; TText, TAttLine</p><p>To draw Mathematical Formula.</p><p>TLatex&apos;s purpose is to write mathematical equations. The syntax is very similar
+to the Latex&apos;s one.</p><p>When the font precision (see TAttText) is low (0 or 1), TLatex is
+painted as a normal TText, the control characters are not interpreted.</p><p>Subscripts and superscripts are made with the <code>_</code> and <code>^</code>
 commands. These commands can be combined to make complicated subscript and
 superscript expressions. You may adjust the display of subscripts and
 superscripts by using the two functions SetIndiceSize(Double_t),
 which set relative size of subscripts and superscripts, and
 SetLimitIndiceSize(Int_t), which set limits for text resizing of
-subscripts and superscripts.</p>
-<pre><code>TLatex can display dozens of special mathematical symbols. A few of them, such
+subscripts and superscripts.</p><pre><code>TLatex can display dozens of special mathematical symbols. A few of them, such
 as + and &gt; , are produced by typing the corresponding
 keyboard character.
 
@@ -3508,14 +3504,12 @@ Several kind of accents are available:
    #grave  = Begin_Latex #grave{a} End_Latex
    #dot    = Begin_Latex #dot{a} End_Latex
    #ddot   = Begin_Latex #ddot{a} End_Latex
-   #tilde  = Begin_Latex #tilde{a} End_Latex
-</code></pre><p>The class TMathText is a TeX math formulae interpreter. It uses plain
+   #tilde  = Begin_Latex #tilde{a} End_Latex</code></pre>
+<p>The class TMathText is a TeX math formulae interpreter. It uses plain
 TeX syntax and uses &quot;\&quot; as control instead of &quot;#&quot;. If a piece of text containing
 &quot;\&quot; is given to TLatex then TMathText is automatically invoked.
 Therefore, as histograms&apos; titles, axis titles, labels etc ... are drawn using
-TLatex, the TMathText syntax can be used for them also.</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp">      TLatex();
+TLatex, the TMathText syntax can be used for them also.</p><h2 id="class">class</h2><pre><code class="lang-cpp">      TLatex();
       TLatex(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text);
       TLatex(<span class="hljs-keyword">const</span> TLatex &amp;text);
       <span class="hljs-keyword">virtual</span> ~TLatex();
@@ -3539,10 +3533,8 @@ TLatex, the TMathText syntax can be used for them also.</p>
 
       <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out</span>
       <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetIndiceSize</span><span class="hljs-params">(Double_t factorSize)</span></span>;<span class="hljs-comment">/// Set relative size of subscripts and superscripts</span>
-      <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetLimitIndiceSize</span><span class="hljs-params">(Int_t limitFactorSize)</span></span>;<span class="hljs-comment">/// Set limit for text resizing of subscripts and superscripts</span>
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp">   TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">500</span>);
+      <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetLimitIndiceSize</span><span class="hljs-params">(Int_t limitFactorSize)</span></span>;<span class="hljs-comment">/// Set limit for text resizing of subscripts and superscripts</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp">   TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">500</span>);
    TLatex Tl; Tl.SetTextFont(<span class="hljs-number">43</span>); Tl.SetTextSize(<span class="hljs-number">20</span>);
    Double_t dy = <span class="hljs-number">1.</span>/<span class="hljs-number">7.</span>;
    Tl.DrawText(<span class="hljs-number">.1</span>, dy,   <span class="hljs-string">&quot;x^{2y} :&quot;</span>);    Tl.DrawLatex(<span class="hljs-number">.5</span>, dy,   <span class="hljs-string">&quot;x^{2y}&quot;</span>);
@@ -3550,52 +3542,43 @@ TLatex, the TMathText syntax can be used for them also.</p>
    Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;x^{y^{2}} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;x^{y^{2}}&quot;</span>);
    Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">4</span>*dy, <span class="hljs-string">&quot;x^{y_{1}} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">4</span>*dy, <span class="hljs-string">&quot;x^{y_{1}}&quot;</span>);
    Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">5</span>*dy, <span class="hljs-string">&quot;x^{y}_{1} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">5</span>*dy, <span class="hljs-string">&quot;x^{y}_{1}&quot;</span>);
-   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">6</span>*dy, <span class="hljs-string">&quot;x_{1}^{y} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">6</span>*dy, <span class="hljs-string">&quot;x_{1}^{y}&quot;</span>);
-</code></pre>
-<p>&#x4E0A;&#x4E0B;&#x89D2;&#x6807;</p>
-<pre><code class="lang-cpp"><span class="hljs-comment">// The best way to put the subscripts and superscripts before the character and not</span>
+   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">6</span>*dy, <span class="hljs-string">&quot;x_{1}^{y} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">6</span>*dy, <span class="hljs-string">&quot;x_{1}^{y}&quot;</span>);</code></pre>
+<p>&#x4E0A;&#x4E0B;&#x89D2;&#x6807;</p><pre><code class="lang-cpp"><span class="hljs-comment">// The best way to put the subscripts and superscripts before the character and not</span>
 <span class="hljs-comment">// after, is to use an empty character:</span>
    TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">100</span>);
    TLatex Tl; Tl.SetTextFont(<span class="hljs-number">43</span>); Tl.SetTextSize(<span class="hljs-number">20</span>);
-   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;{}^{40}_{20}Ca :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;{}^{40}_{20}Ca&quot;</span>);
-</code></pre>
+   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;{}^{40}_{20}Ca :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;{}^{40}_{20}Ca&quot;</span>);</code></pre>
 <pre><code class="lang-cpp">   TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">100</span>);
    TLatex Tl; Tl.SetTextFont(<span class="hljs-number">43</span>); Tl.SetTextSize(<span class="hljs-number">20</span>);
-   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;x = #frac{y+z/2}{y^{2}+1} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;x = #frac{y+z/2}{y^{2}+1}&quot;</span>);
-</code></pre>
+   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;x = #frac{y+z/2}{y^{2}+1} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;x = #frac{y+z/2}{y^{2}+1}&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The #sqrt command produces the square root of its argument; it has</span>
 <span class="hljs-comment">// an optional first argument for other roots.</span>
 
    TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">100</span>);
    TLatex Tl; Tl.SetTextFont(<span class="hljs-number">43</span>); Tl.SetTextSize(<span class="hljs-number">20</span>);
-   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;#sqrt{10} #sqrt[3]{10} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;#sqrt{10} #sqrt[3]{10}&quot;</span>);
-</code></pre>
+   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;#sqrt{10} #sqrt[3]{10} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;#sqrt{10} #sqrt[3]{10}&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// One can change the font, the text color, or the text size at any time using :  #font[font-number]{...}, #color[color-number]{...} and #scale[scale-factor]{...}</span>
    TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">900</span>,<span class="hljs-number">300</span>);
    TLatex Tl; Tl.SetTextFont(<span class="hljs-number">43</span>); Tl.SetTextSize(<span class="hljs-number">20</span>);
    Double_t dy = <span class="hljs-number">1.</span>/<span class="hljs-number">4.</span>;
    Tl.DrawText(<span class="hljs-number">.01</span>, dy,   <span class="hljs-string">&quot;#font[12]{Times Italic} and #font[22]{Times bold} :&quot;</span>);    Tl.DrawLatex(<span class="hljs-number">.7</span>, dy,   <span class="hljs-string">&quot;#font[12]{Times Italic} and #font[22]{Times bold}&quot;</span>);
    Tl.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">2</span>*dy, <span class="hljs-string">&quot;#color[2]{Red} and #color[4]{Blue} :&quot;</span>);    Tl.DrawLatex(<span class="hljs-number">.7</span>, <span class="hljs-number">2</span>*dy, <span class="hljs-string">&quot;#color[2]{Red} and #color[4]{Blue}&quot;</span>);
-   Tl.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;#scale[1.2]{Bigger} and #scale[0.8]{Smaller} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.7</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;#scale[1.2]{Bigger} and #scale[0.8]{Smaller}&quot;</span>);
-</code></pre>
+   Tl.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;#scale[1.2]{Bigger} and #scale[0.8]{Smaller} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.7</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;#scale[1.2]{Bigger} and #scale[0.8]{Smaller}&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// Text can be split in two lines via the command #splitline.</span>
 
    TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">100</span>);
    TLatex Tl; Tl.SetTextFont(<span class="hljs-number">43</span>); Tl.SetTextSize(<span class="hljs-number">20</span>);
-   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;#splitline{21 April 2003}{14:02:30} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.6</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;#splitline{21 April 2003}{14:02:30}&quot;</span>);
-</code></pre>
+   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;#splitline{21 April 2003}{14:02:30} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.6</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;#splitline{21 April 2003}{14:02:30}&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The special sign: #slash draws a slash on top of the text between brackets:</span>
 
    TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">100</span>);
    TLatex Tl; Tl.SetTextFont(<span class="hljs-number">43</span>); Tl.SetTextSize(<span class="hljs-number">20</span>);
-   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;#slash{E}_{T} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;#slash{E}_{T}&quot;</span>);
-</code></pre>
+   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;#slash{E}_{T} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;#slash{E}_{T}&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// Bar and vectors sign are done the following way:</span>
 
    TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">100</span>);
    TLatex Tl; Tl.SetTextFont(<span class="hljs-number">43</span>); Tl.SetTextSize(<span class="hljs-number">20</span>);
-   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;#bar{a} and #vec{a} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;#bar{a} and #vec{a}&quot;</span>);
-</code></pre>
+   Tl.DrawText(<span class="hljs-number">.1</span>, <span class="hljs-number">.5</span>,   <span class="hljs-string">&quot;#bar{a} and #vec{a} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">.5</span>, <span class="hljs-string">&quot;#bar{a} and #vec{a}&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// One can change the font, the text color, or the text size at any time using :</span>
 <span class="hljs-comment">// #font[font-number]{...}, #color[color-number]{...}</span>
 <span class="hljs-comment">// and #scale[scale-factor]{...}</span>
@@ -3605,8 +3588,7 @@ TLatex, the TMathText syntax can be used for them also.</p>
    Double_t dy = <span class="hljs-number">1.</span>/<span class="hljs-number">4.</span>;
    Tl.DrawText(<span class="hljs-number">.01</span>, dy,   <span class="hljs-string">&quot;#font[12]{Times Italic} and #font[22]{Times bold} :&quot;</span>);    Tl.DrawLatex(<span class="hljs-number">.7</span>, dy,   <span class="hljs-string">&quot;#font[12]{Times Italic} and #font[22]{Times bold}&quot;</span>);
    Tl.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">2</span>*dy, <span class="hljs-string">&quot;#color[2]{Red} and #color[4]{Blue} :&quot;</span>);    Tl.DrawLatex(<span class="hljs-number">.7</span>, <span class="hljs-number">2</span>*dy, <span class="hljs-string">&quot;#color[2]{Red} and #color[4]{Blue}&quot;</span>);
-   Tl.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;#scale[1.2]{Bigger} and #scale[0.8]{Smaller} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.7</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;#scale[1.2]{Bigger} and #scale[0.8]{Smaller}&quot;</span>);
-</code></pre>
+   Tl.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;#scale[1.2]{Bigger} and #scale[0.8]{Smaller} :&quot;</span>); Tl.DrawLatex(<span class="hljs-number">.7</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;#scale[1.2]{Bigger} and #scale[0.8]{Smaller}&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The two commands #kern and #lower enable a better control</span>
 <span class="hljs-comment">// over character placement. The command #kern[(Float_t)dx]{text} moves</span>
 <span class="hljs-comment">// the output string horizontally by the fraction dx of its length.</span>
@@ -3622,18 +3604,15 @@ TLatex, the TMathText syntax can be used for them also.</p>
    Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">3</span>*dy, <span class="hljs-string">&quot;Negative k#kern[-0.3]{e}#kern[-0.3]{r}#kern[-0.3]{n}#kern[-0.3]{i}#kern[-0.3]{n}#kern[-0.3]{g}&quot;</span>);
    Tt.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">4</span>*dy, <span class="hljs-string">&quot;Negative k#kern[-0.3]{e}#kern[-0.3]{r}#kern[-0.3]{n}#kern[-0.3]{i}#kern[-0.3]{n}#kern[-0.3]{g} :&quot;</span>);
    Tl.DrawLatex(<span class="hljs-number">.5</span>, <span class="hljs-number">5</span>*dy, <span class="hljs-string">&quot;Vertical a#lower[0.2]{d}#lower[0.4]{j}#lower[0.1]{u}#lower[-0.1]{s}#lower[-0.3]{t}#lower[-0.4]{m}#lower[-0.2]{e}#lower[0.1]{n}t&quot;</span>);
-   Tt.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">6</span>*dy, <span class="hljs-string">&quot;Vertical a#lower[0.2]{d}#lower[0.4]{j}#lower[0.1]{u}#lower[-0.1]{s}#lower[-0.3]{t}#lower[-0.4]{m}#lower[-0.2]{e}#lower[0.1]{n}t :&quot;</span>);
-</code></pre>
+   Tt.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">6</span>*dy, <span class="hljs-string">&quot;Vertical a#lower[0.2]{d}#lower[0.4]{j}#lower[0.1]{u}#lower[-0.1]{s}#lower[-0.3]{t}#lower[-0.4]{m}#lower[-0.2]{e}#lower[0.1]{n}t :&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// Text can be turned italic or boldface using the commands #it and #bf.</span>
 
    TCanvas *cl = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-string">&quot;cl&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">900</span>,<span class="hljs-number">300</span>);
    TLatex Tl; Tl.SetTextFont(<span class="hljs-number">43</span>); Tl.SetTextSize(<span class="hljs-number">20</span>);
    Double_t dy = <span class="hljs-number">1.</span>/<span class="hljs-number">3.</span>;
    Tl.DrawText(<span class="hljs-number">.01</span>, dy,   <span class="hljs-string">&quot;abc#alpha#beta#gamma, #it{abc#alpha#beta#gamma} :&quot;</span>);    Tl.DrawLatex(<span class="hljs-number">.7</span>, dy,   <span class="hljs-string">&quot;abc#alpha#beta#gamma, #it{abc#alpha#beta#gamma}&quot;</span>);
-   Tl.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">2</span>*dy, <span class="hljs-string">&quot;#bf{bold}, #it{italic}, #bf{#it{bold italic}}, #bf{#bf{unbold}}} :&quot;</span>);    Tl.DrawLatex(<span class="hljs-number">.7</span>, <span class="hljs-number">2</span>*dy, <span class="hljs-string">&quot;#bf{bold}, #it{italic}, #bf{#it{bold italic}}, #bf{#bf{unbold}}}&quot;</span>);
-</code></pre>
-<h2 id="example">example</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">// The TText alignment rules apply to the TLatex objects with one exception</span>
+   Tl.DrawText(<span class="hljs-number">.01</span>, <span class="hljs-number">2</span>*dy, <span class="hljs-string">&quot;#bf{bold}, #it{italic}, #bf{#it{bold italic}}, #bf{#bf{unbold}}} :&quot;</span>);    Tl.DrawLatex(<span class="hljs-number">.7</span>, <span class="hljs-number">2</span>*dy, <span class="hljs-string">&quot;#bf{bold}, #it{italic}, #bf{#it{bold italic}}, #bf{#bf{unbold}}}&quot;</span>);</code></pre>
+<h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-comment">// The TText alignment rules apply to the TLatex objects with one exception</span>
 <span class="hljs-comment">// concerning the vertical alignment:</span>
 
 <span class="hljs-comment">// - if the vertical alignment = 1 , subscripts are not taken into account</span>
@@ -3674,8 +3653,7 @@ TLatex, the TMathText syntax can be used for them also.</p>
    latex.DrawLatex(<span class="hljs-number">.1</span>,<span class="hljs-number">.55</span>,<span class="hljs-string">&quot;12&quot;</span>);
    latex.DrawLatex(<span class="hljs-number">.1</span>,<span class="hljs-number">.35</span>,<span class="hljs-string">&quot;11&quot;</span>);
    latex.DrawLatex(<span class="hljs-number">.1</span>,<span class="hljs-number">.18</span>,<span class="hljs-string">&quot;10&quot;</span>);
-   <span class="hljs-keyword">return</span> Tlva;
-</code></pre>
+   <span class="hljs-keyword">return</span> Tlva;</code></pre>
 <pre><code class="lang-cpp">   <span class="hljs-function">TCanvas <span class="hljs-title">ex1</span><span class="hljs-params">(<span class="hljs-string">&quot;ex1&quot;</span>,<span class="hljs-string">&quot;Latex&quot;</span>,<span class="hljs-number">500</span>,<span class="hljs-number">600</span>)</span></span>;
    TLatex Tl;
    Tl.SetTextAlign(<span class="hljs-number">12</span>);
@@ -3684,8 +3662,7 @@ TLatex, the TMathText syntax can be used for them also.</p>
    Tl.DrawLatex(<span class="hljs-number">0.1</span>,<span class="hljs-number">0.6</span>,<span class="hljs-string">&quot;2)   C(x) = d #sqrt{#frac{2}{#lambdaD}}  #int^{x}cos(#frac{#pi}{2}t^{2})dt&quot;</span>);
    Tl.DrawLatex(<span class="hljs-number">0.1</span>,<span class="hljs-number">0.4</span>,<span class="hljs-string">&quot;3)   R = |A|^{2} = #frac{1}{2}(#[]{#frac{1}{2}+C(V)}^{2}+#[]{#frac{1}{2}+S(V)}^{2})&quot;</span>);
    Tl.DrawLatex(<span class="hljs-number">0.1</span>,<span class="hljs-number">0.2</span>,<span class="hljs-string">&quot;4)   F(t) = #sum_{i=-#infty}^{#infty}A(i)cos#[]{#frac{i}{t+i}}&quot;</span>);
-   <span class="hljs-keyword">return</span> ex1;
-</code></pre>
+   <span class="hljs-keyword">return</span> ex1;</code></pre>
 <pre><code class="lang-cpp">   <span class="hljs-function">TCanvas <span class="hljs-title">ex2</span><span class="hljs-params">(<span class="hljs-string">&quot;ex2&quot;</span>,<span class="hljs-string">&quot;Latex&quot;</span>,<span class="hljs-number">500</span>,<span class="hljs-number">300</span>)</span></span>;
    TLatex Tl;
    Tl.SetTextAlign(<span class="hljs-number">23</span>);
@@ -3694,8 +3671,7 @@ TLatex, the TMathText syntax can be used for them also.</p>
    Tl.DrawLatex(<span class="hljs-number">0.5</span>,<span class="hljs-number">0.75</span>,<span class="hljs-string">&quot;|#vec{a}#bullet#vec{b}|=#Sigmaa^{i}_{jk}+b^{bj}_{i}&quot;</span>);
    Tl.DrawLatex(<span class="hljs-number">0.5</span>,<span class="hljs-number">0.5</span>,<span class="hljs-string">&quot;i(#partial_{#mu}#bar{#psi}#gamma^{#mu}+m#bar{#psi}=0#Leftrightarrow(#Box+m^{2})#psi=0&quot;</span>);
    Tl.DrawLatex(<span class="hljs-number">0.5</span>,<span class="hljs-number">0.3</span>,<span class="hljs-string">&quot;L_{em}=eJ^{#mu}_{em}A_{#mu} , J^{#mu}_{em}=#bar{I}#gamma_{#mu}I , M^{j}_{i}=#SigmaA_{#alpha}#tau^{#alphaj}_{i}&quot;</span>);
-   <span class="hljs-keyword">return</span> ex2;
-</code></pre>
+   <span class="hljs-keyword">return</span> ex2;</code></pre>
 <pre><code class="lang-cpp">   <span class="hljs-function">TCanvas <span class="hljs-title">ex3</span><span class="hljs-params">(<span class="hljs-string">&quot;ex3&quot;</span>,<span class="hljs-string">&quot;Latex&quot;</span>,<span class="hljs-number">500</span>,<span class="hljs-number">300</span>)</span></span>;
    <span class="hljs-function">TPaveText <span class="hljs-title">pt</span><span class="hljs-params">(<span class="hljs-number">.1</span>,<span class="hljs-number">.1</span>,<span class="hljs-number">.9</span>,<span class="hljs-number">.9</span>)</span></span>;
    pt.AddText(<span class="hljs-string">&quot;#frac{2s}{#pi#alpha^{2}}  #frac{d#sigma}{dcos#theta} (e^{+}e^{-} #rightarrow f#bar{f} ) = &quot;</span>);
@@ -3703,9 +3679,10 @@ TLatex, the TMathText syntax can be used for them also.</p>
    pt.AddText(<span class="hljs-string">&quot;+ 4 Re #left{ #frac{2}{1 - #Delta#alpha} #chi(s) #[]{#hat{g}_{#nu}^{e}#hat{g}_{#nu}^{f} (1 + cos^{2}#theta) + 2 #hat{g}_{a}^{e}#hat{g}_{a}^{f} cos#theta) } #right}&quot;</span>);
    pt.SetLabel(<span class="hljs-string">&quot;Born equation&quot;</span>);
    pt.Draw();
-   <span class="hljs-keyword">return</span> ex3;
-</code></pre>
+   <span class="hljs-keyword">return</span> ex3;</code></pre>
 <!-- TLatex.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3749,7 +3726,7 @@ TLatex, the TMathText syntax can be used for them also.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TLatex*","level":"1.2.37","depth":2,"next":{"title":"TLegend*","level":"1.2.38","depth":2,"path":"class/TLegend.md","ref":"class/TLegend.md","articles":[]},"previous":{"title":"TH3","level":"1.2.36","depth":2,"path":"class/TH3.md","ref":"class/TH3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TLatex.md","mtime":"2017-07-11T12:51:30.032Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TLatex*","level":"1.2.37","depth":2,"next":{"title":"TLegend*","level":"1.2.38","depth":2,"path":"class/TLegend.md","ref":"class/TLegend.md","articles":[]},"previous":{"title":"TH3","level":"1.2.36","depth":2,"path":"class/TH3.md","ref":"class/TH3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TLatex.md","mtime":"2018-05-14T09:18:23.087Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

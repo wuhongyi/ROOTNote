@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TGComboBox* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,17 +3469,11 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tgcombobox">TGComboBox</h1>
-<p>TGComboBox &#x7EE7;&#x627F; TGCompositeFrame, TGWidget</p>
-<p>A combobox (also known as a drop down listbox) allows the selection<br>of one item out of a list of items. The selected item is visible in<br>a little window. To view the list of possible items one has to click<br>on a button on the right of the little window. This will drop down<br>a listbox. After selecting an item from the listbox the box will<br>disappear and the newly selected item will be shown in the little<br>window.</p>
-<pre><code>Selecting an item in the combobox will generate the event:
-kC_COMMAND, kCM_COMBOBOX, combobox id, item id.
-</code></pre><p>TGLineStyleComboBox &#x7EE7;&#x627F; TGComboBox<br>The TGLineStyleComboBox user callable and it creates a combobox for selecting the line style.</p>
-<p>TGLineWidthComboBox &#x7EE7;&#x627F; TGComboBox<br>The TGLineWidthComboBox user callable and it creates a combobox for selecting the line width.</p>
-<p>TGFontTypeComboBox &#x7EE7;&#x627F; TGComboBox<br>The TGFontTypeComboBox is user callable and it creates a combobox for selecting the font.</p>
-<h2 id="class">class</h2>
-<p><strong>TGComboBox</strong></p>
-<pre><code class="lang-cpp">   TGComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+
+
+<h1 id="tgcombobox">TGComboBox</h1><p>TGComboBox &#x7EE7;&#x627F; TGCompositeFrame, TGWidget</p><p>A combobox (also known as a drop down listbox) allows the selection</p><p>of one item out of a list of items. The selected item is visible in</p><p>a little window. To view the list of possible items one has to click</p><p>on a button on the right of the little window. This will drop down</p><p>a listbox. After selecting an item from the listbox the box will</p><p>disappear and the newly selected item will be shown in the little</p><p>window.</p><pre><code>Selecting an item in the combobox will generate the event:
+kC_COMMAND, kCM_COMBOBOX, combobox id, item id.</code></pre>
+<p>TGLineStyleComboBox &#x7EE7;&#x627F; TGComboBox</p><p>The TGLineStyleComboBox user callable and it creates a combobox for selecting the line style.</p><p>TGLineWidthComboBox &#x7EE7;&#x627F; TGComboBox</p><p>The TGLineWidthComboBox user callable and it creates a combobox for selecting the line width.</p><p>TGFontTypeComboBox &#x7EE7;&#x627F; TGComboBox</p><p>The TGFontTypeComboBox is user callable and it creates a combobox for selecting the font.</p><h2 id="class">class</h2><p><strong>TGComboBox</strong></p><pre><code class="lang-cpp">   TGComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
               UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
               Pixel_t back = GetWhitePixel());<span class="hljs-comment">/// Create a combo box widget.</span>
    TGComboBox(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, Int_t id = <span class="hljs-number">-1</span>,
@@ -3560,34 +3554,26 @@ kC_COMMAND, kCM_COMBOBOX, combobox id, item id.
 <span class="hljs-comment">/// ReturnPressed signal is emitted.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a combo box widget as a C++ statement(s) on output stream out.</span>
-</code></pre>
-<p><strong>TGLineStyleComboBox</strong></p>
-<pre><code class="lang-cpp">   TGLineStyleComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+<span class="hljs-comment">/// Save a combo box widget as a C++ statement(s) on output stream out.</span></code></pre>
+<p><strong>TGLineStyleComboBox</strong></p><pre><code class="lang-cpp">   TGLineStyleComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
               UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
               Pixel_t back = GetWhitePixel());<span class="hljs-comment">/// Create a line style combo box.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a line style combo box widget as a C++ statement(s).</span>
-</code></pre>
-<p><strong>TGLineWidthComboBox</strong></p>
-<pre><code class="lang-cpp">   TGLineWidthComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+<span class="hljs-comment">/// Save a line style combo box widget as a C++ statement(s).</span></code></pre>
+<p><strong>TGLineWidthComboBox</strong></p><pre><code class="lang-cpp">   TGLineWidthComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
               UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
               Pixel_t back = GetWhitePixel(), Bool_t none=kFALSE);
 <span class="hljs-comment">/// Create a line width combo box.</span>
 <span class="hljs-comment">/// If &quot;none&quot; is equal to kTRUE the first entry is &quot;None&quot;.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a line width combo box widget as a C++ statement(s).</span>
-</code></pre>
-<p><strong>TGFontTypeComboBox</strong></p>
-<pre><code class="lang-cpp">   TGFontTypeComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+<span class="hljs-comment">/// Save a line width combo box widget as a C++ statement(s).</span></code></pre>
+<p><strong>TGFontTypeComboBox</strong></p><pre><code class="lang-cpp">   TGFontTypeComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
             UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
             Pixel_t bask = GetWhitePixel());<span class="hljs-comment">/// Create a text font combo box.</span>
-   <span class="hljs-keyword">virtual</span> ~TGFontTypeComboBox();<span class="hljs-comment">/// Text font combo box dtor.</span>
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGComboBox.h&quot;</span></span>
+   <span class="hljs-keyword">virtual</span> ~TGFontTypeComboBox();<span class="hljs-comment">/// Text font combo box dtor.</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGComboBox.h&quot;</span></span>
 
 <span class="hljs-comment">// TGComboBox</span>
 <span class="hljs-comment">// &#x4E0B;&#x62C9;&#x9009;&#x9879;</span>
@@ -3598,10 +3584,10 @@ fMonthBox-&gt;AddEntry(<span class="hljs-string">&quot;AAA&quot;</span>, <span c
 fMonthBox-&gt;AddEntry(<span class="hljs-string">&quot;BBB&quot;</span>, <span class="hljs-number">2</span>);
 fMonthBox-&gt;AddEntry(<span class="hljs-string">&quot;CCC&quot;</span>, <span class="hljs-number">3</span>);
 fMonthBox-&gt;Select(<span class="hljs-number">1</span>);
-<span class="hljs-comment">// fMonthBox-&gt;Resize(100, /*fYearEntry*/-&gt;GetHeight());</span>
-</code></pre>
-<h2 id="example">example</h2>
-<!-- TGComboBox.md ends here -->
+<span class="hljs-comment">// fMonthBox-&gt;Resize(100, /*fYearEntry*/-&gt;GetHeight());</span></code></pre>
+<h2 id="example">example</h2><!-- TGComboBox.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3645,7 +3631,7 @@ fMonthBox-&gt;Select(<span class="hljs-number">1</span>);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGComboBox*","level":"1.3.8","depth":2,"next":{"title":"TGCommandPlugin*","level":"1.3.9","depth":2,"path":"class/gui/TGCommandPlugin.md","ref":"class/gui/TGCommandPlugin.md","articles":[]},"previous":{"title":"TGColorSelect*","level":"1.3.7","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGComboBox.md","mtime":"2017-07-11T12:51:30.001Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGComboBox*","level":"1.3.8","depth":2,"next":{"title":"TGCommandPlugin*","level":"1.3.9","depth":2,"path":"class/gui/TGCommandPlugin.md","ref":"class/gui/TGCommandPlugin.md","articles":[]},"previous":{"title":"TGColorSelect*","level":"1.3.7","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGComboBox.md","mtime":"2018-05-14T09:18:21.634Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

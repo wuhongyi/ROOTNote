@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TGMenu+ · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,16 +3469,11 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tgmenu">TGMenu</h1>
-<p>TGMenuEntry &#x7EE7;&#x627F; TObject , friend TGPopupMenu , TGMenuBar<br>This class contains all information about a menu entry.<br>It is a fully protected class used internally by TGPopupMenu.</p>
-<p>TGPopupMenu &#x7EE7;&#x627F; TGFrame  ,friend TGMenuTitle , TGMenuBar , TGSplitButton
-This class creates a popup menu object. Popup menu&apos;s are attached to TGMenuBar objects.</p>
-<p>TGMenuTitle &#x7EE7;&#x627F; TGFrame<br>This class creates a menu title. A menu title is a frame to which a popup menu can be attached. Menu titles are automatically created when adding a popup menu to a menubar.</p>
-<p>TGMenuBar &#x7EE7;&#x627F; TGHorizontalFrame , friend TGPopupMenu
-This class creates a menu bar.</p>
-<h2 id="class">class</h2>
-<p><strong>TGMenuEntry</strong></p>
-<pre><code class="lang-cpp">   TGMenuEntry(): fEntryId(<span class="hljs-number">0</span>), fUserData(<span class="hljs-number">0</span>), fType(), fStatus(<span class="hljs-number">0</span>),
+
+
+<h1 id="tgmenu">TGMenu</h1><p>TGMenuEntry &#x7EE7;&#x627F; TObject , friend TGPopupMenu , TGMenuBar</p><p>This class contains all information about a menu entry.</p><p>It is a fully protected class used internally by TGPopupMenu.</p><p>TGPopupMenu &#x7EE7;&#x627F; TGFrame  ,friend TGMenuTitle , TGMenuBar , TGSplitButton
+This class creates a popup menu object. Popup menu&apos;s are attached to TGMenuBar objects.</p><p>TGMenuTitle &#x7EE7;&#x627F; TGFrame</p><p>This class creates a menu title. A menu title is a frame to which a popup menu can be attached. Menu titles are automatically created when adding a popup menu to a menubar.</p><p>TGMenuBar &#x7EE7;&#x627F; TGHorizontalFrame , friend TGPopupMenu
+This class creates a menu bar.</p><h2 id="class">class</h2><p><strong>TGMenuEntry</strong></p><pre><code class="lang-cpp">   TGMenuEntry(): fEntryId(<span class="hljs-number">0</span>), fUserData(<span class="hljs-number">0</span>), fType(), fStatus(<span class="hljs-number">0</span>),
       fEx(<span class="hljs-number">0</span>), fEy(<span class="hljs-number">0</span>), fEw(<span class="hljs-number">0</span>), fEh(<span class="hljs-number">0</span>), fLabel(<span class="hljs-number">0</span>), fShortcut(<span class="hljs-number">0</span>), fPic(<span class="hljs-number">0</span>), fPopup(<span class="hljs-number">0</span>) { }
    <span class="hljs-keyword">virtual</span> ~TGMenuEntry() { <span class="hljs-keyword">if</span> (fLabel) <span class="hljs-keyword">delete</span> fLabel; <span class="hljs-keyword">if</span> (fShortcut) <span class="hljs-keyword">delete</span> fShortcut; }
 
@@ -3495,10 +3490,8 @@ This class creates a menu bar.</p>
    <span class="hljs-function">UInt_t         <span class="hljs-title">GetEw</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEw; }
    <span class="hljs-function">UInt_t         <span class="hljs-title">GetEh</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEh; }
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetPic</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPic; }
-   <span class="hljs-function"><span class="hljs-keyword">void</span>          *<span class="hljs-title">GetUserData</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fUserData; }
-</code></pre>
-<p><strong>TGPopupMenu</strong></p>
-<pre><code class="lang-cpp">   TGPopupMenu(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">10</span>, UInt_t h = <span class="hljs-number">10</span>,
+   <span class="hljs-function"><span class="hljs-keyword">void</span>          *<span class="hljs-title">GetUserData</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fUserData; }</code></pre>
+<p><strong>TGPopupMenu</strong></p><pre><code class="lang-cpp">   TGPopupMenu(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">10</span>, UInt_t h = <span class="hljs-number">10</span>,
                UInt_t options = <span class="hljs-number">0</span>);
    <span class="hljs-keyword">virtual</span> ~TGPopupMenu();
 
@@ -3556,10 +3549,8 @@ This class creates a menu bar.</p>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PoppedUp</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;PoppedUp()&quot;</span>); }                        <span class="hljs-comment">// *SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PoppedDown</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;PoppedDown()&quot;</span>); }                    <span class="hljs-comment">// *SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Highlighted</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;Highlighted(Int_t)&quot;</span>, id); } <span class="hljs-comment">// *SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Activated</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;Activated(Int_t)&quot;</span>, id); }     <span class="hljs-comment">// *SIGNAL*</span>
-</code></pre>
-<p><strong>TGMenuTitle</strong></p>
-<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Activated</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;Activated(Int_t)&quot;</span>, id); }     <span class="hljs-comment">// *SIGNAL*</span></code></pre>
+<p><strong>TGMenuTitle</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultSelectedGC</span><span class="hljs-params">()</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;
 
@@ -3577,10 +3568,8 @@ This class creates a menu bar.</p>
    <span class="hljs-function">TGPopupMenu *<span class="hljs-title">GetMenu</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMenu; }
    <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">GetName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLabel ? fLabel-&gt;GetString() : <span class="hljs-number">0</span>; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoSendMessage</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-</code></pre>
-<p><strong>TGMenuBar</strong></p>
-<pre><code class="lang-cpp">   TGMenuBar(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">60</span>, UInt_t h = <span class="hljs-number">20</span>,
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+<p><strong>TGMenuBar</strong></p><pre><code class="lang-cpp">   TGMenuBar(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">60</span>, UInt_t h = <span class="hljs-number">20</span>,
              UInt_t options = kHorizontalFrame | kRaisedFrame);
    <span class="hljs-keyword">virtual</span> ~TGMenuBar();
 
@@ -3603,19 +3592,15 @@ This class creates a menu bar.</p>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
            <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PopupConnection</span><span class="hljs-params">()</span></span>;
-   <span class="hljs-function">TGFrameElement* <span class="hljs-title">GetLastOnLeft</span><span class="hljs-params">()</span></span>;
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGMenu.h&quot;</span></span>
-</code></pre>
+   <span class="hljs-function">TGFrameElement* <span class="hljs-title">GetLastOnLeft</span><span class="hljs-params">()</span></span>;</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGMenu.h&quot;</span></span></code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// TGMenuBar</span>
 <span class="hljs-comment">// &#x6700;&#x4E0A;&#x9762;&#x90A3;&#x884C;&#x5F39;&#x51FA;&#x83DC;&#x5355;&#x7684;&#x6807;&#x7B7E;</span>
 TGMenuBar *fMenuBar;<span class="hljs-comment">// main menu bar</span>
 fMenuBar = <span class="hljs-keyword">new</span> TGMenuBar(<span class="hljs-keyword">this</span>, <span class="hljs-number">35</span>, <span class="hljs-number">50</span>, kHorizontalFrame);
 fMenuBar-&gt;AddPopup(<span class="hljs-string">&quot;&amp;File&quot;</span>, fMenuFile<span class="hljs-comment">/*&#x5B50;&#x83DC;&#x5355;TGPopupMenu*/</span>, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsTop|kLHintsLeft, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>));
 fMenuBar-&gt;AddPopup(<span class="hljs-string">&quot;&amp;Help&quot;</span>, fMenuHelp, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsTop|kLHintsRight));
-AddFrame(fMenuBar, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsTop | kLHintsExpandX, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>));
-</code></pre>
+AddFrame(fMenuBar, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsTop | kLHintsExpandX, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>));</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// TGPopupMenu</span>
 <span class="hljs-comment">// &#x6700;&#x4E0A;&#x9762;&#x90A3;&#x884C;&#x5F39;&#x51FA;&#x83DC;&#x5355;&#x7684;&#x5B50;&#x83DC;&#x5355;</span>
 TGPopupMenu *fMenuFile;    <span class="hljs-comment">// &quot;File&quot; popup menu entry</span>
@@ -3642,10 +3627,10 @@ fMenuView-&gt;AddEntry(<span class="hljs-string">&quot;Enable U&amp;ndock&quot;<
 fMenuView-&gt;AddEntry(<span class="hljs-string">&quot;Enable &amp;Hide&quot;</span>, M_VIEW_ENBL_HIDE);
 fMenuView-&gt;CheckEntry(M_VIEW_ENBL_DOCK);
 fMenuView-&gt;CheckEntry(M_VIEW_ENBL_HIDE);
-fMenuDock-&gt;Connect(<span class="hljs-string">&quot;Undocked()&quot;</span>, <span class="hljs-string">&quot;TestMainFrame&quot;</span>, <span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;HandleMenu(=M_VIEW_UNDOCK)&quot;</span>);
-</code></pre>
-<h2 id="example">example</h2>
-<!-- TGMenu.md ends here -->
+fMenuDock-&gt;Connect(<span class="hljs-string">&quot;Undocked()&quot;</span>, <span class="hljs-string">&quot;TestMainFrame&quot;</span>, <span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;HandleMenu(=M_VIEW_UNDOCK)&quot;</span>);</code></pre>
+<h2 id="example">example</h2><!-- TGMenu.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3689,7 +3674,7 @@ fMenuDock-&gt;Connect(<span class="hljs-string">&quot;Undocked()&quot;</span>, <
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGMenu+","level":"1.3.36","depth":2,"next":{"title":"TGMimeTypes","level":"1.3.37","depth":2,"path":"class/gui/TGMimeTypes.md","ref":"class/gui/TGMimeTypes.md","articles":[]},"previous":{"title":"TGMdiMenu","level":"1.3.35","depth":2,"path":"class/gui/TGMdiMenu.md","ref":"class/gui/TGMdiMenu.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGMenu.md","mtime":"2017-07-11T12:51:29.996Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGMenu+","level":"1.3.36","depth":2,"next":{"title":"TGMimeTypes","level":"1.3.37","depth":2,"path":"class/gui/TGMimeTypes.md","ref":"class/gui/TGMimeTypes.md","articles":[]},"previous":{"title":"TGMdiMenu","level":"1.3.35","depth":2,"path":"class/gui/TGMdiMenu.md","ref":"class/gui/TGMdiMenu.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGMenu.md","mtime":"2018-05-14T09:18:21.386Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

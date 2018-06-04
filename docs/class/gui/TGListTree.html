@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TGListTree* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,16 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tglisttree">TGListTree</h1>
-<p>A list tree is a widget that can contain a number of items<br>arranged in a tree structure. The items are represented by small<br>folder icons that can be either open or closed.                      </p>
-<p>The TGListTree is user callable. The TGListTreeItem is a service<br>class of the list tree.                                              </p>
-<p>A list tree can generate the following events:<br>kC_LISTTREE, kCT_ITEMCLICK, which button, location (y&lt;&lt;16|x).<br>kC_LISTTREE, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).</p>
-<p>TGListTreeItem friend TGListTree<br>Abstract base-class for items that go into a TGListTree container.</p>
-<p>TGListTreeItemStd &#x7EE7;&#x627F; TGListTreeItem<br>Item that goes into a TGListTree container</p>
-<p>TGListTree &#x7EE7;&#x627F; TGContainer<br>Show items in a tree structured list</p>
-<h2 id="class">class</h2>
-<p><strong>TGListTreeItem</strong></p>
-<pre><code class="lang-cpp">   TGListTreeItem(TGClient *client=gClient);
+
+
+<h1 id="tglisttree">TGListTree</h1><p>A list tree is a widget that can contain a number of items</p><p>arranged in a tree structure. The items are represented by small</p><p>folder icons that can be either open or closed.</p><p>The TGListTree is user callable. The TGListTreeItem is a service</p><p>class of the list tree.</p><p>A list tree can generate the following events:</p><p>kC_LISTTREE, kCT_ITEMCLICK, which button, location (y&lt;&lt;16|x).</p><p>kC_LISTTREE, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).</p><p>TGListTreeItem friend TGListTree</p><p>Abstract base-class for items that go into a TGListTree container.</p><p>TGListTreeItemStd &#x7EE7;&#x627F; TGListTreeItem</p><p>Item that goes into a TGListTree container</p><p>TGListTree &#x7EE7;&#x627F; TGContainer</p><p>Show items in a tree structured list</p><h2 id="class">class</h2><p><strong>TGListTreeItem</strong></p><pre><code class="lang-cpp">   TGListTreeItem(TGClient *client=gClient);
    <span class="hljs-keyword">virtual</span> ~TGListTreeItem() {}
 
    <span class="hljs-function">TGListTreeItem *<span class="hljs-title">GetParent</span><span class="hljs-params">()</span>      <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fParent; }
@@ -3543,10 +3536,8 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">HandleDrag</span><span class="hljs-params">()</span> </span>{}
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">HandleDrop</span><span class="hljs-params">()</span> </span>{}
 
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream&amp;, Option_t*, Int_t)</span> </span>{}
-</code></pre>
-<p><strong>TGListTreeItemStd</strong></p>
-<pre><code class="lang-cpp">   TGListTreeItemStd(TGClient *fClient = gClient, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>,
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream&amp;, Option_t*, Int_t)</span> </span>{}</code></pre>
+<p><strong>TGListTreeItemStd</strong></p><pre><code class="lang-cpp">   TGListTreeItemStd(TGClient *fClient = gClient, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>,
                      <span class="hljs-keyword">const</span> TGPicture *opened = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> TGPicture *closed = <span class="hljs-number">0</span>,
                      Bool_t checkbox = kFALSE);<span class="hljs-comment">/// Create list tree item.</span>
    <span class="hljs-keyword">virtual</span> ~TGListTreeItemStd();<span class="hljs-comment">/// Delete list tree item.</span>
@@ -3594,10 +3585,8 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">ClearColor</span><span class="hljs-params">()</span> </span>{ fHasColor = <span class="hljs-literal">false</span>; }
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>            <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option, Int_t n)</span></span>;
-<span class="hljs-comment">/// Save a list tree item attributes as a C++ statements on output stream.</span>
-</code></pre>
-<p><strong>TGListTree</strong></p>
-<pre><code class="lang-cpp">   <span class="hljs-comment">//---- color markup mode of tree items</span>
+<span class="hljs-comment">/// Save a list tree item attributes as a C++ statements on output stream.</span></code></pre>
+<p><strong>TGListTree</strong></p><pre><code class="lang-cpp">   <span class="hljs-comment">//---- color markup mode of tree items</span>
    <span class="hljs-keyword">enum</span> EColorMarkupMode {
       kDefault        = <span class="hljs-number">0</span>,
       kColorUnderline = BIT(<span class="hljs-number">0</span>),
@@ -3792,11 +3781,10 @@
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetCheckMode</span><span class="hljs-params">(ECheckMode mode)</span> </span>{ fCheckMode = mode; }
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a list tree widget as a C++ statements on output stream out.</span>
-</code></pre>
-<h2 id="code">code</h2>
-<h2 id="example">example</h2>
-<!-- TGListTree.md ends here -->
+<span class="hljs-comment">/// Save a list tree widget as a C++ statements on output stream out.</span></code></pre>
+<h2 id="code">code</h2><h2 id="example">example</h2><!-- TGListTree.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3840,7 +3828,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGListTree*","level":"1.3.30","depth":2,"next":{"title":"TGListView+","level":"1.3.31","depth":2,"path":"class/gui/TGListView.md","ref":"class/gui/TGListView.md","articles":[]},"previous":{"title":"TGListBox+","level":"1.3.29","depth":2,"path":"class/gui/TGListBox.md","ref":"class/gui/TGListBox.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGListTree.md","mtime":"2017-07-11T12:51:30.005Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGListTree*","level":"1.3.30","depth":2,"next":{"title":"TGListView+","level":"1.3.31","depth":2,"path":"class/gui/TGListView.md","ref":"class/gui/TGListView.md","articles":[]},"previous":{"title":"TGListBox+","level":"1.3.29","depth":2,"path":"class/gui/TGListBox.md","ref":"class/gui/TGListBox.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGListTree.md","mtime":"2018-05-14T09:18:21.899Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

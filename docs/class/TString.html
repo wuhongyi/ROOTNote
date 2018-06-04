@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TString+ · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,11 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tstring">TString</h1>
-<p>Cannot be stored in a TCollection... use TObjString instead.</p>
-<p>The underlying string is stored as a char* that can be accessed via TString::Data().<br>TString provides Short String Optimization (SSO) so that short strings (&lt;15 on 64-bit and &lt;11 on 32-bit) are contained in the TString internal data structure without the need for mallocing the required space.</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp">   enum EStripType   { kLeading = 0x1, kTrailing = 0x2, kBoth = 0x3 };
+
+
+<h1 id="tstring">TString</h1><p>Cannot be stored in a TCollection... use TObjString instead.</p><p>The underlying string is stored as a char* that can be accessed via TString::Data().</p><p>TString provides Short String Optimization (SSO) so that short strings (&lt;15 on 64-bit and &lt;11 on 32-bit) are contained in the TString internal data structure without the need for mallocing the required space.</p><h2 id="class">class</h2><pre><code class="lang-cpp">   enum EStripType   { kLeading = 0x1, kTrailing = 0x2, kBoth = 0x3 };
    enum ECaseCompare { kExact, kIgnoreCase };
    static const Ssiz_t kNPOS = ::kNPOS;
 
@@ -3659,20 +3657,18 @@
 #if defined(__GNUC__) &amp;&amp; !defined(__CINT__)
    __attribute__((format(printf, 1, 2)))
 #endif
-   ;
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp">// Substring operations are provided by the TSubString class, which
+   ;</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp">// Substring operations are provided by the TSubString class, which
 // holds a reference to the original string and its data, along with
 // the offset and length of the substring. To retrieve the substring
 // as a TString, construct a TString from it, eg:
 root [0] TString s(&quot;hello world&quot;)
 root [1] TString s2( s(0,5) )
 root [2] s2
-(class TString)&quot;hello&quot;
-</code></pre>
-<h2 id="example">example</h2>
-<!-- TString.md ends here -->
+(class TString)&quot;hello&quot;</code></pre>
+<h2 id="example">example</h2><!-- TString.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3716,7 +3712,7 @@ root [2] s2
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TString+","level":"1.2.94","depth":2,"next":{"title":"TStyle+","level":"1.2.95","depth":2,"path":"class/TStyle.md","ref":"class/TStyle.md","articles":[]},"previous":{"title":"TStopwatch","level":"1.2.93","depth":2,"path":"class/TStopwatch.md","ref":"class/TStopwatch.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TString.md","mtime":"2017-07-11T12:51:29.964Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TString+","level":"1.2.94","depth":2,"next":{"title":"TStyle+","level":"1.2.95","depth":2,"path":"class/TStyle.md","ref":"class/TStyle.md","articles":[]},"previous":{"title":"TStopwatch","level":"1.2.93","depth":2,"path":"class/TStopwatch.md","ref":"class/TStopwatch.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TString.md","mtime":"2018-05-14T09:18:20.907Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

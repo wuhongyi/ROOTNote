@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TGScrollBar+ · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,29 +3469,22 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tgscrollbar">TGScrollBar</h1>
-<p>The classes in this file implement scrollbars. Scrollbars can be<br>either placed horizontal or vertical. A scrollbar contains three<br>TGScrollBarElements: The &quot;head&quot;, &quot;tail&quot; and &quot;slider&quot;. The head and<br>tail are fixed at either end and have the typical arrows in them.    </p>
-<pre><code>The TGHScrollBar will generate the following event messages:         
+
+
+<h1 id="tgscrollbar">TGScrollBar</h1><p>The classes in this file implement scrollbars. Scrollbars can be</p><p>either placed horizontal or vertical. A scrollbar contains three</p><p>TGScrollBarElements: The &quot;head&quot;, &quot;tail&quot; and &quot;slider&quot;. The head and</p><p>tail are fixed at either end and have the typical arrows in them.</p><pre><code>The TGHScrollBar will generate the following event messages:         
 kC_HSCROLL, kSB_SLIDERPOS, position, 0                               
 kC_HSCROLL, kSB_SLIDERTRACK, position, 0                             
 
 The TGVScrollBar will generate the following event messages:         
 kC_VSCROLL, kSB_SLIDERPOS, position, 0                               
-kC_VSCROLL, kSB_SLIDERTRACK, position, 0
-</code></pre><p>TGScrollBarElement &#x7EE7;&#x627F; TGFrame</p>
-<p>TGScrollBar &#x7EE7;&#x627F; TGFrame, TGWidget</p>
-<p>TGHScrollBar &#x7EE7;&#x627F; TGScrollBar</p>
-<p>TGVScrollBar &#x7EE7;&#x627F; TGScrollBar</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">//--- scrollbar types</span>
+kC_VSCROLL, kSB_SLIDERTRACK, position, 0</code></pre>
+<p>TGScrollBarElement &#x7EE7;&#x627F; TGFrame</p><p>TGScrollBar &#x7EE7;&#x627F; TGFrame, TGWidget</p><p>TGHScrollBar &#x7EE7;&#x627F; TGScrollBar</p><p>TGVScrollBar &#x7EE7;&#x627F; TGScrollBar</p><h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-comment">//--- scrollbar types</span>
 
 <span class="hljs-keyword">enum</span> EScrollBarMode {
    kSBHorizontal,
    kSBVertical
-};
-</code></pre>
-<p><strong>TGScrollBarElement</strong></p>
-<pre><code class="lang-cpp">   TGScrollBarElement(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> TGPicture *pic = <span class="hljs-number">0</span>,
+};</code></pre>
+<p><strong>TGScrollBarElement</strong></p><pre><code class="lang-cpp">   TGScrollBarElement(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> TGPicture *pic = <span class="hljs-number">0</span>,
                       UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
                       UInt_t options = kRaisedFrame | kDoubleBorder,
                       Pixel_t back = GetDefaultFrameBackground());
@@ -3501,10 +3494,8 @@ kC_VSCROLL, kSB_SLIDERTRACK, position, 0
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetEnabled</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsEnabled</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> !(fState &amp; kButtonDisabled); }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;
-</code></pre>
-<p><strong>TGScrollBar</strong></p>
-<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> Pixmap_t  <span class="hljs-title">GetBckgndPixmap</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;</code></pre>
+<p><strong>TGScrollBar</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> Pixmap_t  <span class="hljs-title">GetBckgndPixmap</span><span class="hljs-params">()</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t     <span class="hljs-title">GetScrollBarWidth</span><span class="hljs-params">()</span></span>;
 
    TGScrollBar(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>,
@@ -3545,10 +3536,8 @@ kC_VSCROLL, kSB_SLIDERTRACK, position, 0
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">PageSizeChanged</span><span class="hljs-params">(Int_t range)</span> </span>{ Emit(<span class="hljs-string">&quot;PageSizeChanged(Int_t)&quot;</span>, range); } <span class="hljs-comment">//*SIGNAL*</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetSmallIncrement</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fSmallInc; }
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetSmallIncrement</span><span class="hljs-params">(Int_t increment)</span> </span>{ fSmallInc = increment; }
-</code></pre>
-<p><strong>TGHScrollBar</strong></p>
-<pre><code class="lang-cpp">   TGHScrollBar(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">4</span>, UInt_t h = <span class="hljs-number">2</span>,
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetSmallIncrement</span><span class="hljs-params">(Int_t increment)</span> </span>{ fSmallInc = increment; }</code></pre>
+<p><strong>TGHScrollBar</strong></p><pre><code class="lang-cpp">   TGHScrollBar(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">4</span>, UInt_t h = <span class="hljs-number">2</span>,
                 UInt_t options = kHorizontalFrame,
                 Pixel_t back = GetDefaultFrameBackground());
    <span class="hljs-keyword">virtual</span> ~TGHScrollBar() { }
@@ -3561,10 +3550,8 @@ kC_VSCROLL, kSB_SLIDERTRACK, position, 0
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetRange</span><span class="hljs-params">(Int_t range, Int_t page_size)</span></span>;  <span class="hljs-comment">//*MENU*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPosition</span><span class="hljs-params">(Int_t pos)</span></span>;                  <span class="hljs-comment">//*MENU* *GETTER=GetPosition</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-</code></pre>
-<p><strong>TGVScrollBar</strong></p>
-<pre><code class="lang-cpp">   TGVScrollBar(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">2</span>, UInt_t h = <span class="hljs-number">4</span>,
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+<p><strong>TGVScrollBar</strong></p><pre><code class="lang-cpp">   TGVScrollBar(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">2</span>, UInt_t h = <span class="hljs-number">4</span>,
                 UInt_t options = kVerticalFrame,
                 Pixel_t back = GetDefaultFrameBackground());
    <span class="hljs-keyword">virtual</span> ~TGVScrollBar() { }
@@ -3577,11 +3564,10 @@ kC_VSCROLL, kSB_SLIDERTRACK, position, 0
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetRange</span><span class="hljs-params">(Int_t range, Int_t page_size)</span></span>;  <span class="hljs-comment">//*MENU*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPosition</span><span class="hljs-params">(Int_t pos)</span></span>;                  <span class="hljs-comment">//*MENU*  *GETTER=GetPosition</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-</code></pre>
-<h2 id="code">code</h2>
-<h2 id="example">example</h2>
-<!-- TGScrollBar.md ends here -->
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;</code></pre>
+<h2 id="code">code</h2><h2 id="example">example</h2><!-- TGScrollBar.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3625,7 +3611,7 @@ kC_VSCROLL, kSB_SLIDERTRACK, position, 0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGScrollBar+","level":"1.3.47","depth":2,"next":{"title":"TGShapedFrame","level":"1.3.48","depth":2,"path":"class/gui/TGShapedFrame.md","ref":"class/gui/TGShapedFrame.md","articles":[]},"previous":{"title":"TGResourcePool","level":"1.3.46","depth":2,"path":"class/gui/TGResourcePool.md","ref":"class/gui/TGResourcePool.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGScrollBar.md","mtime":"2017-07-11T12:51:29.993Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGScrollBar+","level":"1.3.47","depth":2,"next":{"title":"TGShapedFrame","level":"1.3.48","depth":2,"path":"class/gui/TGShapedFrame.md","ref":"class/gui/TGShapedFrame.md","articles":[]},"previous":{"title":"TGResourcePool","level":"1.3.46","depth":2,"path":"class/gui/TGResourcePool.md","ref":"class/gui/TGResourcePool.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGScrollBar.md","mtime":"2018-05-14T09:18:21.285Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

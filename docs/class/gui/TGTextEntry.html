@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TGTextEntry* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,19 +3469,17 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tgtextentry">TGTextEntry</h1>
-<pre><code class="lang-cpp"><span class="hljs-comment">// A TGTextEntry is a one line text input widget.                       </span>
+
+
+<h1 id="tgtextentry">TGTextEntry</h1><pre><code class="lang-cpp"><span class="hljs-comment">// A TGTextEntry is a one line text input widget.                       </span>
 <span class="hljs-comment">//                                                                      </span>
 <span class="hljs-comment">// Changing text in the text entry widget will generate the event:      </span>
 <span class="hljs-comment">// kC_TEXTENTRY, kTE_TEXTCHANGED, widget id, 0.                         </span>
 <span class="hljs-comment">// Hitting the enter key will generate:                                 </span>
 <span class="hljs-comment">// kC_TEXTENTRY, kTE_ENTER, widget id, 0.                               </span>
 <span class="hljs-comment">// Hitting the tab key will generate:                                   </span>
-<span class="hljs-comment">// kC_TEXTENTRY, kTE_TAB, widget id, 0.</span>
-</code></pre>
-<p>TGTextEntry &#x7EE7;&#x627F; TGFrame, TGWidget</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span>   EEchoMode { kNormal, kNoEcho, kPassword };
+<span class="hljs-comment">// kC_TEXTENTRY, kTE_TAB, widget id, 0.                                 </span></code></pre>
+<p>TGTextEntry &#x7EE7;&#x627F; TGFrame, TGWidget</p><h2 id="class">class</h2><pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span>   EEchoMode { kNormal, kNoEcho, kPassword };
    <span class="hljs-keyword">enum</span>   EInsertMode { kInsert, kReplace };
 
    <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure in use.</span>
@@ -3797,20 +3795,18 @@
 <span class="hljs-comment">/// This signal is emitted when cursor is going out of bottom side.</span>
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">DoubleClicked</span><span class="hljs-params">()</span></span>;                        <span class="hljs-comment">//*SIGNAL*</span>
-<span class="hljs-comment">/// This signal is emitted when widget is double clicked.</span>
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">// TGTextEntry</span>
+<span class="hljs-comment">/// This signal is emitted when widget is double clicked.   </span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// TGTextEntry</span>
 <span class="hljs-comment">// &#x5355;&#x4E2A;&#x6587;&#x672C;&#x6846;</span>
 TGTextEntry *fTestText = <span class="hljs-keyword">new</span> TGTextEntry(frame, <span class="hljs-keyword">new</span> TGTextBuffer(<span class="hljs-number">100</span>));
 fTestText-&gt;SetToolTipText(<span class="hljs-string">&quot;This is a text entry widget&quot;</span>);
 fTestText-&gt;Resize(<span class="hljs-number">300</span>, fTestText-&gt;GetDefaultHeight());
 frame-&gt;AddFrame(fTestText, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsTop | kLHintsLeft, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
 <span class="hljs-comment">// fTestText-&gt;Clear();//&#x6E05;&#x9664;&#x5185;&#x5BB9;</span>
-<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> command = fTestText-&gt;GetText();
-</code></pre>
-<h2 id="example">example</h2>
-<!-- TGTextEntry.md ends here -->
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> command = fTestText-&gt;GetText();</code></pre>
+<h2 id="example">example</h2><!-- TGTextEntry.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3854,7 +3850,7 @@ frame-&gt;AddFrame(fTestText, <span class="hljs-keyword">new</span> TGLayoutHint
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGTextEntry*","level":"1.3.69","depth":2,"next":{"title":"TGTextView","level":"1.3.70","depth":2,"path":"class/gui/TGTextView.md","ref":"class/gui/TGTextView.md","articles":[]},"previous":{"title":"TGTextEditor","level":"1.3.68","depth":2,"path":"class/gui/TGTextEditor.md","ref":"class/gui/TGTextEditor.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGTextEntry.md","mtime":"2017-07-11T12:51:30.002Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGTextEntry*","level":"1.3.69","depth":2,"next":{"title":"TGTextView","level":"1.3.70","depth":2,"path":"class/gui/TGTextView.md","ref":"class/gui/TGTextView.md","articles":[]},"previous":{"title":"TGTextEditor","level":"1.3.68","depth":2,"path":"class/gui/TGTextEditor.md","ref":"class/gui/TGTextEditor.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGTextEntry.md","mtime":"2018-05-14T09:18:21.723Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

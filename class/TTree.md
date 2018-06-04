@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 3月 14 08:35:28 2015 (+0800)
-;; Last-Updated: 四 8月 24 20:22:50 2017 (+0800)
+;; Last-Updated: 一 6月  4 06:49:15 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 8
+;;     Update #: 9
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -2607,6 +2607,14 @@ t3->Write("", TObject::kOverwrite); // save only the new version of the tree
 // the performance.
 ```
 
+
+
+```cpp
+// Store data from tree to vector
+t->SetEstimate(-1);
+t->Draw("energy");
+std::vector<Double_t> Vals(t->GetV1(), t->GetV1() + t->GetSelectedRows());
+```
 
 
 

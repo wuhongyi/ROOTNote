@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TFractionFitter* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,8 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tfractionfitter">TFractionFitter</h1>
-<p>The virtue of this fit is that it takes into account both data and Monte Carlo
+
+
+<h1 id="tfractionfitter">TFractionFitter</h1><p>The virtue of this fit is that it takes into account both data and Monte Carlo
 statistical uncertainties. The way in which this is done is through a standard
 likelihood fit using Poisson statistics; however, the template (MC) predictions
 are also varied within statistics, leading to additional contributions to the
@@ -3478,10 +3479,7 @@ overall likelihood. This leads to many more fit parameters (one per bin per
 template), but the minimisation with respect to these additional parameters is
 done analytically rather than introducing them as formal fit parameters. Some
 special care needs to be taken in the case of bins with zero content. For more
-details please see the original publication cited above.</p>
-<p>TFractionFitter &#x7EE7;&#x627F; TObject</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp">   TFractionFitter();
+details please see the original publication cited above.</p><p>TFractionFitter &#x7EE7;&#x627F; TObject</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TFractionFitter();
    TFractionFitter(TH1* data, TObjArray *MCs, Option_t *option=<span class="hljs-string">&quot;&quot;</span>);
 <span class="hljs-comment">/// TFractionFitter constructor. Does a complete initialisation (including</span>
 <span class="hljs-comment">/// consistency checks, default fit range as the whole histogram but without</span>
@@ -3624,10 +3622,8 @@ details please see the original publication cited above.</p>
       Double_t f = <span class="hljs-number">0</span>;
       ComputeFCN(f, par, <span class="hljs-number">0</span>);
       <span class="hljs-keyword">return</span> f;
-   }
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp">{
+   }</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp">{
   TH1F *data;                              <span class="hljs-comment">//data histogram</span>
   TH1F *mc0;                               <span class="hljs-comment">// first MC histogram</span>
   TH1F *mc1;                               <span class="hljs-comment">// second MC histogram</span>
@@ -3647,8 +3643,7 @@ details please see the original publication cited above.</p>
      data-&gt;Draw(<span class="hljs-string">&quot;Ep&quot;</span>);
      result-&gt;Draw(<span class="hljs-string">&quot;same&quot;</span>);
    }
-}
-</code></pre>
+}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">/*
 ## Assumptions
 A few assumptions need to be made for the fit procedure to be carried out:
@@ -3744,10 +3739,10 @@ however, it should be done with care as any settings are taken over from
 the previous fit. In addition, neither the dimensionality nor the numbers of
 bins of the histograms should change (in that case it is better to instantiate
 a new TFractionFitter object).
-*/</span>
-</code></pre>
-<h2 id="example">example</h2>
-<!-- TFractionFitter.md ends here -->
+*/</span></code></pre>
+<h2 id="example">example</h2><!-- TFractionFitter.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3791,7 +3786,7 @@ a new TFractionFitter object).
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TFractionFitter*","level":"1.2.26","depth":2,"next":{"title":"TGaxis*","level":"1.2.27","depth":2,"path":"class/TGaxis.md","ref":"class/TGaxis.md","articles":[]},"previous":{"title":"TFitResultPtr","level":"1.2.25","depth":2,"path":"class/TFitResultPtr.md","ref":"class/TFitResultPtr.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TFractionFitter.md","mtime":"2017-07-11T12:51:29.975Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TFractionFitter*","level":"1.2.26","depth":2,"next":{"title":"TGaxis*","level":"1.2.27","depth":2,"path":"class/TGaxis.md","ref":"class/TGaxis.md","articles":[]},"previous":{"title":"TFitResultPtr","level":"1.2.25","depth":2,"path":"class/TFitResultPtr.md","ref":"class/TFitResultPtr.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TFractionFitter.md","mtime":"2018-05-14T09:18:21.043Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

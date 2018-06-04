@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TMultiGraph+ · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,10 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tmultigraph">TMultiGraph</h1>
-<p>&#x7EE7;&#x627F; TNamed</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp">   TMultiGraph();
+
+
+<h1 id="tmultigraph">TMultiGraph</h1><p>&#x7EE7;&#x627F; TNamed</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TMultiGraph();
    TMultiGraph(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title);
    <span class="hljs-keyword">virtual</span> ~TMultiGraph();
 
@@ -3716,10 +3715,8 @@
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetMaximum</span><span class="hljs-params">(Double_t maximum=<span class="hljs-number">-1111</span>)</span></span>; <span class="hljs-comment">/// Set multigraph maximum.</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetMinimum</span><span class="hljs-params">(Double_t minimum=<span class="hljs-number">-1111</span>)</span></span>; <span class="hljs-comment">/// Set multigraph minimum.</span>
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">// A TMultiGraph is a collection of TGraph (or derived) objects. It allows to</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetMinimum</span><span class="hljs-params">(Double_t minimum=<span class="hljs-number">-1111</span>)</span></span>; <span class="hljs-comment">/// Set multigraph minimum.</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// A TMultiGraph is a collection of TGraph (or derived) objects. It allows to</span>
 <span class="hljs-comment">// manipulate a set of graphs as a single entity. In particular, when drawn,</span>
 <span class="hljs-comment">// the X and Y axis ranges are automatically computed such as all the graphs</span>
 <span class="hljs-comment">// will be visible.</span>
@@ -3729,22 +3726,18 @@ TGraphErrors *gr2 = <span class="hljs-keyword">new</span> TGraphErrors(...
 TMultiGraph *mg = <span class="hljs-keyword">new</span> TMultiGraph();
 mg-&gt;Add(gr1,<span class="hljs-string">&quot;lp&quot;</span>);
 mg-&gt;Add(gr2,<span class="hljs-string">&quot;cp&quot;</span>);
-mg-&gt;Draw(<span class="hljs-string">&quot;a&quot;</span>);
-</code></pre>
+mg-&gt;Draw(<span class="hljs-string">&quot;a&quot;</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The number of graphs in a multigraph can be retrieve with:</span>
 
-mg-&gt;GetListOfGraphs()-&gt;GetSize();
-</code></pre>
+mg-&gt;GetListOfGraphs()-&gt;GetSize();</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The axis titles can be modified the following way:</span>
 
 TMultiGraph *mg = <span class="hljs-keyword">new</span> TMultiGraph;
 mg-&gt;SetTitle(<span class="hljs-string">&quot;title;xaxis title; yaxis title&quot;</span>);
 mg-&gt;Add(g1);
 mg-&gt;Add(g2);
-mg-&gt;Draw(<span class="hljs-string">&quot;apl&quot;</span>);
-</code></pre>
-<h2 id="example">example</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">//Draw three graphs with an exclusion zone.&#x4E00;&#x4E2A;&#x753B;&#x677F;&#x4E0A;&#x753B;&#x51FA;&#x591A;&#x4E2A;Graph&#x3002;</span>
+mg-&gt;Draw(<span class="hljs-string">&quot;apl&quot;</span>);</code></pre>
+<h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-comment">//Draw three graphs with an exclusion zone.&#x4E00;&#x4E2A;&#x753B;&#x677F;&#x4E0A;&#x753B;&#x51FA;&#x591A;&#x4E2A;Graph&#x3002;</span>
 
 TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;Exclusion graphs examples&quot;</span>,<span class="hljs-number">200</span>,<span class="hljs-number">10</span>,<span class="hljs-number">600</span>,<span class="hljs-number">400</span>);
 c1-&gt;SetGrid();
@@ -3783,8 +3776,7 @@ gr3-&gt;SetFillColor(<span class="hljs-number">2</span>);
 mg-&gt;Add(gr1);
 mg-&gt;Add(gr2);
 mg-&gt;Add(gr3);
-mg-&gt;Draw(<span class="hljs-string">&quot;AC&quot;</span>);
-</code></pre>
+mg-&gt;Draw(<span class="hljs-string">&quot;AC&quot;</span>);</code></pre>
 <pre><code class="lang-cpp">   c0 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;multigraph L3&quot;</span>,<span class="hljs-number">200</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">500</span>);
    c0-&gt;SetFrameFillColor(<span class="hljs-number">30</span>);
 
@@ -3812,8 +3804,7 @@ mg-&gt;Draw(<span class="hljs-string">&quot;AC&quot;</span>);
    mg-&gt;Add(gr1); gr1-&gt;SetTitle(<span class="hljs-string">&quot;2*Sin(x)&quot;</span>)  ; gr1-&gt;SetLineWidth(<span class="hljs-number">3</span>);
 
    mg-&gt;Draw(<span class="hljs-string">&quot;a fb l3d&quot;</span>);
-   <span class="hljs-keyword">return</span> c0;
-</code></pre>
+   <span class="hljs-keyword">return</span> c0;</code></pre>
 <pre><code class="lang-cpp">   TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-number">600</span>,<span class="hljs-number">400</span>);
 
    Double_t px1[<span class="hljs-number">2</span>] = {<span class="hljs-number">2.</span>,<span class="hljs-number">4.</span>};
@@ -3843,8 +3834,7 @@ mg-&gt;Draw(<span class="hljs-string">&quot;AC&quot;</span>);
    g-&gt;Draw(<span class="hljs-string">&quot;AP&quot;</span>);
 
    g-&gt;Fit(<span class="hljs-string">&quot;pol1&quot;</span>,<span class="hljs-string">&quot;FQ&quot;</span>);
-   <span class="hljs-keyword">return</span> c1;
-</code></pre>
+   <span class="hljs-keyword">return</span> c1;</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The axis limits can be changed the like for TGraph. The same methods apply on the multigraph.</span>
 <span class="hljs-comment">// Note the two differents ways to change limits on X and Y axis.</span>
 
@@ -3869,8 +3859,7 @@ mg-&gt;Draw(<span class="hljs-string">&quot;AC&quot;</span>);
    gPad-&gt;Modified();
    mg-&gt;GetXaxis()-&gt;SetLimits(<span class="hljs-number">1.5</span>,<span class="hljs-number">7.5</span>);
    mg-&gt;SetMinimum(<span class="hljs-number">0.</span>);
-   mg-&gt;SetMaximum(<span class="hljs-number">10.</span>);
-</code></pre>
+   mg-&gt;SetMaximum(<span class="hljs-number">10.</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The method TPad::BuildLegend is able to extract the graphs inside a</span>
 <span class="hljs-comment">// multigraph. The following example demonstrate this.</span>
 
@@ -3924,9 +3913,10 @@ mg-&gt;Draw(<span class="hljs-string">&quot;AC&quot;</span>);
 
    gr3-&gt;Draw(<span class="hljs-string">&quot;ALP&quot;</span>);
    mg-&gt;Draw(<span class="hljs-string">&quot;LP&quot;</span>);
-   c3-&gt;BuildLegend();
-</code></pre>
+   c3-&gt;BuildLegend();</code></pre>
 <!-- TMultiGraph.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3970,7 +3960,7 @@ mg-&gt;Draw(<span class="hljs-string">&quot;AC&quot;</span>);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TMultiGraph+","level":"1.2.54","depth":2,"next":{"title":"TMultiLayerPerceptron","level":"1.2.55","depth":2,"path":"class/TMultiLayerPerceptron.md","ref":"class/TMultiLayerPerceptron.md","articles":[]},"previous":{"title":"TMonitor","level":"1.2.53","depth":2,"path":"class/TMonitor.md","ref":"class/TMonitor.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TMultiGraph.md","mtime":"2017-07-11T12:51:30.025Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TMultiGraph+","level":"1.2.54","depth":2,"next":{"title":"TMultiLayerPerceptron","level":"1.2.55","depth":2,"path":"class/TMultiLayerPerceptron.md","ref":"class/TMultiLayerPerceptron.md","articles":[]},"previous":{"title":"TMonitor","level":"1.2.53","depth":2,"path":"class/TMonitor.md","ref":"class/TMonitor.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TMultiGraph.md","mtime":"2018-05-14T09:18:22.560Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TGTripleSlider* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,10 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tgtripleslider">TGTripleSlider</h1>
-<p>TripleSlider inherit from DoubleSlider widgets and allow easy<br>selection of a min, max and pointer value out of a range.<br>The pointer position can be constrained to edges of slider and / or<br>can be relative to the slider position.                              </p>
-<p>To change the min value press the mouse near to the left / bottom<br>edge of the slider.<br>To change the max value press the mouse near to the right / top<br>edge of the slider.<br>To change both values simultaneously press the mouse near to the<br>center of the slider.<br>To change pointer value press the mouse on the pointer and drag it<br>to the desired position                                              </p>
-<pre><code>Dragging the slider will generate the event:                         
+
+
+<h1 id="tgtripleslider">TGTripleSlider</h1><p>TripleSlider inherit from DoubleSlider widgets and allow easy</p><p>selection of a min, max and pointer value out of a range.</p><p>The pointer position can be constrained to edges of slider and / or</p><p>can be relative to the slider position.</p><p>To change the min value press the mouse near to the left / bottom</p><p>edge of the slider.</p><p>To change the max value press the mouse near to the right / top</p><p>edge of the slider.</p><p>To change both values simultaneously press the mouse near to the</p><p>center of the slider.</p><p>To change pointer value press the mouse on the pointer and drag it</p><p>to the desired position</p><pre><code>Dragging the slider will generate the event:                         
 kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             
 kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           
 
@@ -3486,13 +3485,8 @@ kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)
 
 Moving the pointer will generate the event:                          
 kC_VSLIDER, kSL_POINTER, slider id, 0  (for vertical slider)         
-kC_HSLIDER, kSL_POINTER, slider id, 0  (for horizontal slider)
-</code></pre><p>Use the functions GetMinPosition(), GetMaxPosition() and<br>GetPosition() to retrieve the position of the slider.<br>Use the function GetPointerPosition() to retrieve the position of<br>the pointer</p>
-<p>TGTripleVSlider &#x7EE7;&#x627F; TGDoubleVSlider</p>
-<p>TGTripleHSlider &#x7EE7;&#x627F; TGDoubleHSlider</p>
-<h2 id="class">class</h2>
-<p><strong>TGTripleVSlider</strong></p>
-<pre><code class="lang-cpp">   TGTripleVSlider(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t h = <span class="hljs-number">1</span>, UInt_t type = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
+kC_HSLIDER, kSL_POINTER, slider id, 0  (for horizontal slider)       </code></pre>
+<p>Use the functions GetMinPosition(), GetMaxPosition() and</p><p>GetPosition() to retrieve the position of the slider.</p><p>Use the function GetPointerPosition() to retrieve the position of</p><p>the pointer</p><p>TGTripleVSlider &#x7EE7;&#x627F; TGDoubleVSlider</p><p>TGTripleHSlider &#x7EE7;&#x627F; TGDoubleHSlider</p><h2 id="class">class</h2><p><strong>TGTripleVSlider</strong></p><pre><code class="lang-cpp">   TGTripleVSlider(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t h = <span class="hljs-number">1</span>, UInt_t type = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
                    UInt_t options = kVerticalFrame,
                    Pixel_t back = GetDefaultFrameBackground(),
                    Bool_t reversed = kFALSE,
@@ -3515,10 +3509,8 @@ kC_HSLIDER, kSL_POINTER, slider id, 0  (for horizontal slider)
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetPointerPosition</span><span class="hljs-params">(Float_t pos)</span></span>;<span class="hljs-comment">/// Set pointer position in scaled (real) value</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetRelative</span><span class="hljs-params">(Bool_t rel = kTRUE)</span> </span>{ fRelative = rel; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
-</code></pre>
-<p><strong>TGTripleHSlider</strong></p>
-<pre><code class="lang-cpp">   TGTripleHSlider(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t type = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
+<span class="hljs-comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.   </span></code></pre>
+<p><strong>TGTripleHSlider</strong></p><pre><code class="lang-cpp">   TGTripleHSlider(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t type = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
                    UInt_t options = kHorizontalFrame,
                    Pixel_t back = GetDefaultFrameBackground(),
                    Bool_t reversed = kFALSE,
@@ -3541,10 +3533,8 @@ kC_HSLIDER, kSL_POINTER, slider id, 0  (for horizontal slider)
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetPointerPosition</span><span class="hljs-params">(Float_t pos)</span></span>;<span class="hljs-comment">/// Set pointer position in scaled (real) value</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetRelative</span><span class="hljs-params">(Bool_t rel = kTRUE)</span> </span>{ fRelative = rel; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGTripleSlider.h&quot;</span></span>
+<span class="hljs-comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.   </span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGTripleSlider.h&quot;</span></span>
 
 <span class="hljs-comment">// TGTripleSlider</span>
 <span class="hljs-comment">// &#x53EF;&#x8C03;&#x8282;&#x8303;&#x56F4;&#xFF0C;&#x5DE6;&#x53F3;&#x8FB9;&#x754C;&#x5916;&#x52A0;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x503C;</span>
@@ -3564,10 +3554,10 @@ fHslider1-&gt;SetPointerPosition(atof(<span class="hljs-string">&quot;1.23&quot;
 fHslider1-&gt;SetPosition(atof(<span class="hljs-string">&quot;5.0&quot;</span>), fHslider1-&gt;GetMaxPosition());
 fHslider1-&gt;SetPosition(fHslider1-&gt;GetMinPosition(), atof(<span class="hljs-string">&quot;0.1&quot;</span>);
 fHslider1-&gt;SetConstrained(kTRUE);
-fHslider1-&gt;SetRelative(kTRUE);
-</code></pre>
-<h2 id="example">example</h2>
-<!-- TGTripleSlider.md ends here -->
+fHslider1-&gt;SetRelative(kTRUE);    </code></pre>
+<h2 id="example">example</h2><!-- TGTripleSlider.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3611,7 +3601,7 @@ fHslider1-&gt;SetRelative(kTRUE);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGTripleSlider*","level":"1.3.74","depth":2,"next":{"title":"TGuiBuilder","level":"1.3.75","depth":2,"path":"class/gui/TGuiBuilder.md","ref":"class/gui/TGuiBuilder.md","articles":[]},"previous":{"title":"TGToolTip","level":"1.3.73","depth":2,"path":"class/gui/TGToolTip.md","ref":"class/gui/TGToolTip.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGTripleSlider.md","mtime":"2017-07-11T12:51:29.999Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGTripleSlider*","level":"1.3.74","depth":2,"next":{"title":"TGuiBuilder","level":"1.3.75","depth":2,"path":"class/gui/TGuiBuilder.md","ref":"class/gui/TGuiBuilder.md","articles":[]},"previous":{"title":"TGToolTip","level":"1.3.73","depth":2,"path":"class/gui/TGToolTip.md","ref":"class/gui/TGToolTip.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGTripleSlider.md","mtime":"2018-05-14T09:18:21.528Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

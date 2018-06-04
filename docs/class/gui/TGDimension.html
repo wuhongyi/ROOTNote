@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TGDimension* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,12 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tgdimension">TGDimension</h1>
-<p>TGDimension, TGPosition, TGLongPosition, TGInsets and TGRectangle    </p>
-<p>Several small geometry classes that implement dimensions<br>(width and height), positions (x and y), insets and rectangles.<br>They are trivial and their members are public.  </p>
-<h2 id="class">class</h2>
-<p><strong>TGDimension</strong></p>
-<pre><code class="lang-cpp">   UInt_t  fWidth;       <span class="hljs-comment">// width</span>
+
+
+<h1 id="tgdimension">TGDimension</h1><p>TGDimension, TGPosition, TGLongPosition, TGInsets and TGRectangle</p><p>Several small geometry classes that implement dimensions</p><p>(width and height), positions (x and y), insets and rectangles.</p><p>They are trivial and their members are public.</p><h2 id="class">class</h2><p><strong>TGDimension</strong></p><pre><code class="lang-cpp">   UInt_t  fWidth;       <span class="hljs-comment">// width</span>
    UInt_t  fHeight;      <span class="hljs-comment">// height</span>
 
    TGDimension(): fWidth(<span class="hljs-number">0</span>), fHeight(<span class="hljs-number">0</span>) { }
@@ -3487,10 +3484,8 @@
    TGDimension <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> TGDimension &amp;b) <span class="hljs-keyword">const</span>
       { <span class="hljs-keyword">return</span> TGDimension(fWidth - b.fWidth, fHeight - b.fHeight); }
    TGDimension <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> TGDimension &amp;b) <span class="hljs-keyword">const</span>
-      { <span class="hljs-keyword">return</span> TGDimension(fWidth + b.fWidth, fHeight + b.fHeight); }
-</code></pre>
-<p><strong>TGPosition</strong></p>
-<pre><code class="lang-cpp">   Int_t  fX;         <span class="hljs-comment">// x position</span>
+      { <span class="hljs-keyword">return</span> TGDimension(fWidth + b.fWidth, fHeight + b.fHeight); }</code></pre>
+<p><strong>TGPosition</strong></p><pre><code class="lang-cpp">   Int_t  fX;         <span class="hljs-comment">// x position</span>
    Int_t  fY;         <span class="hljs-comment">// y position</span>
 
    TGPosition(): fX(<span class="hljs-number">0</span>), fY(<span class="hljs-number">0</span>) { }
@@ -3503,10 +3498,8 @@
    TGPosition <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> TGPosition &amp;b) <span class="hljs-keyword">const</span>
       { <span class="hljs-keyword">return</span> TGPosition(fX - b.fX, fY - b.fY); }
    TGPosition <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> TGPosition &amp;b) <span class="hljs-keyword">const</span>
-      { <span class="hljs-keyword">return</span> TGPosition(fX + b.fX, fY + b.fY); }
-</code></pre>
-<p><strong>TGLongPosition</strong></p>
-<pre><code class="lang-cpp">   Long_t  fX;         <span class="hljs-comment">// x position</span>
+      { <span class="hljs-keyword">return</span> TGPosition(fX + b.fX, fY + b.fY); }</code></pre>
+<p><strong>TGLongPosition</strong></p><pre><code class="lang-cpp">   Long_t  fX;         <span class="hljs-comment">// x position</span>
    Long_t  fY;         <span class="hljs-comment">// y position</span>
 
    TGLongPosition(): fX(<span class="hljs-number">0</span>), fY(<span class="hljs-number">0</span>) { }
@@ -3519,10 +3512,8 @@
    TGLongPosition <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> TGLongPosition &amp;b) <span class="hljs-keyword">const</span>
       { <span class="hljs-keyword">return</span> TGLongPosition(fX - b.fX, fY - b.fY); }
    TGLongPosition <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> TGLongPosition &amp;b) <span class="hljs-keyword">const</span>
-      { <span class="hljs-keyword">return</span> TGLongPosition(fX + b.fX, fY + b.fY); }
-</code></pre>
-<p><strong>TGInsets</strong></p>
-<pre><code class="lang-cpp">   Int_t  fL;    <span class="hljs-comment">// left</span>
+      { <span class="hljs-keyword">return</span> TGLongPosition(fX + b.fX, fY + b.fY); }</code></pre>
+<p><strong>TGInsets</strong></p><pre><code class="lang-cpp">   Int_t  fL;    <span class="hljs-comment">// left</span>
    Int_t  fR;    <span class="hljs-comment">// right</span>
    Int_t  fT;    <span class="hljs-comment">// top</span>
    Int_t  fB;    <span class="hljs-comment">// bottom</span>
@@ -3535,10 +3526,8 @@
    <span class="hljs-keyword">virtual</span> ~TGInsets() { }
 
    Bool_t <span class="hljs-keyword">operator</span>==(<span class="hljs-keyword">const</span> TGInsets &amp;in) <span class="hljs-keyword">const</span>
-      { <span class="hljs-keyword">return</span> ((fL == in.fL) &amp;&amp; (fR == in.fR) &amp;&amp; (fT == in.fT) &amp;&amp; (fB == in.fB)); }
-</code></pre>
-<p><strong>TGRectangle</strong></p>
-<pre><code class="lang-cpp">   Int_t         fX;    <span class="hljs-comment">// x position</span>
+      { <span class="hljs-keyword">return</span> ((fL == in.fL) &amp;&amp; (fR == in.fR) &amp;&amp; (fT == in.fT) &amp;&amp; (fB == in.fB)); }</code></pre>
+<p><strong>TGRectangle</strong></p><pre><code class="lang-cpp">   Int_t         fX;    <span class="hljs-comment">// x position</span>
    Int_t         fY;    <span class="hljs-comment">// y position</span>
    UInt_t        fW;    <span class="hljs-comment">// width</span>
    UInt_t        fH;    <span class="hljs-comment">// height</span>
@@ -3573,10 +3562,10 @@
                 </span>{ <span class="hljs-keyword">return</span> TGPosition(fX + (Int_t) fW - <span class="hljs-number">1</span>, fY + (Int_t) fH - <span class="hljs-number">1</span>); }
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Merge</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGRectangle &amp;r)</span></span>;<span class="hljs-comment">// Merge parameters</span>
    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Empty</span><span class="hljs-params">()</span> </span>{ fX = fY = <span class="hljs-number">0</span>; fW = fH = <span class="hljs-number">0</span>; }
-   <span class="hljs-function">Bool_t <span class="hljs-title">IsEmpty</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> ((fW == <span class="hljs-number">0</span>) &amp;&amp; (fH == <span class="hljs-number">0</span>)); }
-</code></pre>
-<h2 id="code">code</h2>
-<!-- TGDimension.md ends here -->
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsEmpty</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> ((fW == <span class="hljs-number">0</span>) &amp;&amp; (fH == <span class="hljs-number">0</span>)); }</code></pre>
+<h2 id="code">code</h2><!-- TGDimension.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3620,7 +3609,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGDimension*","level":"1.3.10","depth":2,"next":{"title":"TGDNDManager*","level":"1.3.11","depth":2,"path":"class/gui/TGDNDManager.md","ref":"class/gui/TGDNDManager.md","articles":[]},"previous":{"title":"TGCommandPlugin*","level":"1.3.9","depth":2,"path":"class/gui/TGCommandPlugin.md","ref":"class/gui/TGCommandPlugin.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGDimension.md","mtime":"2017-07-11T12:51:29.994Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGDimension*","level":"1.3.10","depth":2,"next":{"title":"TGDNDManager*","level":"1.3.11","depth":2,"path":"class/gui/TGDNDManager.md","ref":"class/gui/TGDNDManager.md","articles":[]},"previous":{"title":"TGCommandPlugin*","level":"1.3.9","depth":2,"path":"class/gui/TGCommandPlugin.md","ref":"class/gui/TGCommandPlugin.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGDimension.md","mtime":"2018-05-14T09:18:21.334Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

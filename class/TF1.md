@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 五 12月 16 22:35:54 2016 (+0800)
+;; Last-Updated: 一 6月  4 03:10:21 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 15
+;;     Update #: 16
 ;; URL: http://wuhongyi.cn -->
 
 # TF1
@@ -1217,6 +1217,16 @@ TF1 fsum("f1","[&](double *x, double *p){ return p[0]*f1(x) + p[1]*f2(x); }",0,1
 ```
 
 
+
+```cpp
+TH1D *histo = new TH1D("histo", "", 100, -4, 4);
+histo->FillRandom("gaus");
+histo->Fit("gaus");
+
+TF1 *g = (TF1*)histo->GetListOfFunctions()->FindObject("gaus");
+double c = g->GetParameter(0);
+cout << c << endl;
+```
 
 
 <!-- TF1.md ends here -->

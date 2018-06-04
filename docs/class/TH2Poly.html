@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TH2Poly* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,10 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
-<h1 id="th2poly">TH2Poly</h1>
-<p>&#x7EE7;&#x627F; public TH2</p>
-<p>2D Histogram with Polygonal Bins</p>
-<pre><code class="lang-cpp">`TH2Poly` is a 2D Histogram class (TH2) allowing to define polygonal
+
+
+<h1 id="th2poly">TH2Poly</h1><p>&#x7EE7;&#x627F; public TH2</p><p>2D Histogram with Polygonal Bins</p><pre><code class="lang-cpp">`TH2Poly` is a 2D Histogram class (TH2) allowing to define polygonal
 bins of arbitrary shape.
 
 Each bin in the `TH2Poly` histogram is a `TH2PolyBin` object.
@@ -3556,10 +3555,8 @@ times `Fill()` will be called.  Although partitioning greatly speeds up
 filling, it also adds a constant time delay into the code. When `Fill()`
 is to be called many times, it is more efficient to divide the histogram into
 a large number cells. However, if the histogram is to be filled only a few
-times, it is better to divide into a small number of cells.
-</code></pre>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">// class TH2Poly : public TH2</span>
+times, it is better to divide into a small number of cells.</code></pre>
+<h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-comment">// class TH2Poly : public TH2</span>
 
 <span class="hljs-keyword">public</span>:
    TH2Poly();
@@ -3714,8 +3711,7 @@ times, it is better to divide into a small number of cells.
 <span class="hljs-comment">/// When set to kTRUE, allows the histogram to expand if a bin outside the</span>
 <span class="hljs-comment">/// limits is added.</span>
    <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetFloat</span><span class="hljs-params">(Bool_t flag = <span class="hljs-literal">true</span>)</span></span>;
-   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetNewBinAdded</span><span class="hljs-params">(Bool_t flag)</span></span>{fNewBinAdded = flag;}
-</code></pre>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetNewBinAdded</span><span class="hljs-params">(Bool_t flag)</span></span>{fNewBinAdded = flag;}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// class TH2PolyBin: public TObject</span>
 
 <span class="hljs-keyword">public</span>:
@@ -3746,10 +3742,8 @@ times, it is better to divide into a small number of cells.
 <span class="hljs-comment">/// Return &quot;true&quot; if the point (x,y) is inside the bin.</span>
    <span class="hljs-function">Bool_t    <span class="hljs-title">IsInside</span><span class="hljs-params">(Double_t x, Double_t y)</span> <span class="hljs-keyword">const</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">SetChanged</span><span class="hljs-params">(Bool_t flag)</span></span>{fChanged = flag;}
-   <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">SetContent</span><span class="hljs-params">(Double_t content)</span></span>{fContent = content; SetChanged(<span class="hljs-literal">true</span>);}
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp">{
+   <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">SetContent</span><span class="hljs-params">(Double_t content)</span></span>{fContent = content; SetChanged(<span class="hljs-literal">true</span>);}</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp">{
 <span class="hljs-comment">// The following very simple macro shows how to build and fill a `TH2Poly`:</span>
     TH2Poly *h2p = <span class="hljs-keyword">new</span> TH2Poly();
 
@@ -3768,10 +3762,8 @@ times, it is better to divide into a small number of cells.
     h2p-&gt;Fill(<span class="hljs-number">-0.5</span>, <span class="hljs-number">-0.5</span>, <span class="hljs-number">7</span>);
     h2p-&gt;Fill(<span class="hljs-number">-0.7</span>, <span class="hljs-number">-0.5</span>, <span class="hljs-number">1</span>);
     h2p-&gt;Fill(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1.5</span>);
-}
-</code></pre>
-<h2 id="example">example</h2>
-<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">view</span><span class="hljs-params">()</span>
+}</code></pre>
+<h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">view</span><span class="hljs-params">()</span>
 </span>{
   TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-number">600</span>,<span class="hljs-number">400</span>);
   gStyle-&gt;SetOptStat(<span class="hljs-number">0</span>);<span class="hljs-comment">//&#x4E0D;&#x663E;&#x793A;&#x7EDF;&#x8BA1;&#x6846;</span>
@@ -4001,9 +3993,10 @@ times, it is better to divide into a small number of cells.
 
   c1-&gt;Update();
 
-}
-</code></pre>
+}</code></pre>
 <!-- TH2Poly.md ends here -->
+
+
 
                                 
                                 </section>
@@ -4047,7 +4040,7 @@ times, it is better to divide into a small number of cells.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TH2Poly*","level":"1.2.35","depth":2,"next":{"title":"TH3","level":"1.2.36","depth":2,"path":"class/TH3.md","ref":"class/TH3.md","articles":[]},"previous":{"title":"TH2+","level":"1.2.34","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH2Poly.md","mtime":"2018-01-15T05:30:09.694Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TH2Poly*","level":"1.2.35","depth":2,"next":{"title":"TH3","level":"1.2.36","depth":2,"path":"class/TH3.md","ref":"class/TH3.md","articles":[]},"previous":{"title":"TH2+","level":"1.2.34","depth":2,"path":"class/TH2.md","ref":"class/TH2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TH2Poly.md","mtime":"2018-05-14T09:18:22.613Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TTreePlayer* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3465,23 +3465,17 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 28 09:10:00 2016 (+0800)
-;; Last-Updated: 一 11月 28 09:41:09 2016 (+0800)
+;; Last-Updated: 一 6月  4 03:03:27 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-<h1 id="ttreeplayer">TTreePlayer</h1>
-<p>A TTree object is a list of TBranch.<br>  To Create a TTree object one must:                                 </p>
-<ul>
-<li>Create the TTree header via the TTree constructor               </li>
-<li><p>Call the TBranch constructor for every branch.                  </p>
-<p>To Fill this object, use member function Fill with no parameters.<br>The Fill function loops on all defined TBranch.</p>
+
+
+<h1 id="ttreeplayer">TTreePlayer</h1><p>A TTree object is a list of TBranch.</p><p>To Create a TTree object one must:</p><ul><li>Create the TTree header via the TTree constructor               
 </li>
-</ul>
+<li><p>Call the TBranch constructor for every branch.</p><p>To Fill this object, use member function Fill with no parameters.</p><p>The Fill function loops on all defined TBranch.</p></li></ul>
 <p>Implement some of the functionality of the class TTree requiring access to
-extra libraries (Histogram, display, etc).</p>
-<p>TTreePlayer &#x7EE7;&#x627F; TVirtualTreePlayer</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp">   TTreePlayer();<span class="hljs-comment">/// Default Tree constructor.</span>
+extra libraries (Histogram, display, etc).</p><p>TTreePlayer &#x7EE7;&#x627F; TVirtualTreePlayer</p><h2 id="class">class</h2><pre><code class="lang-cpp">   TTreePlayer();<span class="hljs-comment">/// Default Tree constructor.</span>
    <span class="hljs-keyword">virtual</span> ~TTreePlayer();<span class="hljs-comment">/// Tree destructor.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> TVirtualIndex *<span class="hljs-title">BuildIndex</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TTree *T, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *majorname, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *minorname)</span></span>;
 <span class="hljs-comment">/// Build the index for the tree (see TTree::BuildIndex)</span>
@@ -4011,10 +4005,8 @@ extra libraries (Histogram, display, etc).</p>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">UpdateFormulaLeaves</span><span class="hljs-params">()</span></span>;
 <span class="hljs-comment">/// this function is called by TChain::LoadTree when a new Tree is loaded.</span>
 <span class="hljs-comment">/// Because Trees in a TChain may have a different list of leaves, one</span>
-<span class="hljs-comment">/// must update the leaves numbers in the TTreeFormula used by the TreePlayer.</span>
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">// Long64_t TTreePlayer::Scan(const char *varexp, const char *selection,</span>
+<span class="hljs-comment">/// must update the leaves numbers in the TTreeFormula used by the TreePlayer.</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// Long64_t TTreePlayer::Scan(const char *varexp, const char *selection,</span>
 <span class="hljs-comment">//                            Option_t * option,</span>
 <span class="hljs-comment">//                            Long64_t nentries, Long64_t firstentry)</span>
 
@@ -4023,8 +4015,7 @@ tree-&gt;Scan(<span class="hljs-string">&quot;a:b:c&quot;</span>,<span class="hl
 <span class="hljs-comment">/// Will print 3 columns, the first 2 columns will be 30 characters long,</span>
 <span class="hljs-comment">/// the third columns will be 20 characters long.  The printing format used</span>
 <span class="hljs-comment">/// for the columns (assuming they are numbers) will be respectively:</span>
-<span class="hljs-comment">/// `%30.3g %30.3g %20.10g %#x %5ld`</span>
-</code></pre>
+<span class="hljs-comment">/// `%30.3g %30.3g %20.10g %#x %5ld`</span></code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// Long64_t TTreePlayer::Process(const char *filename,Option_t *option, Long64_t nentries, Long64_t firstentry)</span>
 
 <span class="hljs-comment">///  It may be more interesting to invoke directly the other Process function</span>
@@ -4055,13 +4046,11 @@ mytree.Process(selector,..);
    TFile *f2 = <span class="hljs-keyword">new</span> TFile(<span class="hljs-string">&quot;stubs_nood_le1_coarse.root&quot;</span>);
    TTree *h2 = (TTree*)f2-&gt;Get(<span class="hljs-string">&quot;h1&quot;</span>);
    h2-&gt;Process(<span class="hljs-string">&quot;h1test.C+&quot;</span>);
-}
-</code></pre>
+}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// Int_t TTreePlayer::Fit(const char *formula ,const char *varexp, const char *selection,Option_t *option ,Option_t *goption,Long64_t nentries, Long64_t firstentry)</span>
 
 tree.Fit(<span class="hljs-string">&quot;pol4&quot;</span>,<span class="hljs-string">&quot;sqrt(x)&gt;&gt;hsqrt&quot;</span>,<span class="hljs-string">&quot;y&gt;0&quot;</span>)
-<span class="hljs-comment">/// will fit sqrt(x) and save the histogram as &quot;hsqrt&quot; in the current directory.</span>
-</code></pre>
+<span class="hljs-comment">/// will fit sqrt(x) and save the histogram as &quot;hsqrt&quot; in the current directory.</span></code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// TTree *TTreePlayer::CopyTree(const char *selection, Option_t *, Long64_t nentries, Long64_t firstentry)</span>
 
 <span class="hljs-comment">/// The following example illustrates how to copy some events from the Tree</span>
@@ -4073,10 +4062,18 @@ Event *event = <span class="hljs-keyword">new</span> Event();
 T-&gt;SetBranchAddress(<span class="hljs-string">&quot;event&quot;</span>,&amp;event);
 <span class="hljs-function">TFile <span class="hljs-title">f2</span><span class="hljs-params">(<span class="hljs-string">&quot;Event2.root&quot;</span>,<span class="hljs-string">&quot;recreate&quot;</span>)</span></span>;
 TTree *T2 = T-&gt;CopyTree(<span class="hljs-string">&quot;fNtrack&lt;595&quot;</span>);
-T2-&gt;Write();
-</code></pre>
-<h2 id="example">example</h2>
+T2-&gt;Write();</code></pre>
+<h2 id="example">example</h2><p><strong>txt&#x6587;&#x672C;&#x8F93;&#x51FA;</strong></p><pre><code>root [] .&gt; ttree.txt
+tree-&gt;Scan(&quot;*&quot;);
+.&gt;
+root []</code></pre>
+<pre><code class="lang-cpp">TTreePlayer *player = ((TTreePlayer*)(tree-&gt;GetPlayer()));
+player-&gt;SetScanRedirect(<span class="hljs-literal">true</span>); 
+player-&gt;SetScanFileName(<span class="hljs-string">&quot;ttree.txt&quot;</span>); 
+palyer-&gt;Scan(<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>);</code></pre>
 <!-- TTreePlayer.md ends here -->
+
+
 
                                 
                                 </section>
@@ -4120,7 +4117,7 @@ T2-&gt;Write();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TTreePlayer*","level":"1.2.105","depth":2,"next":{"title":"TVector2","level":"1.2.106","depth":2,"path":"class/TVector2.md","ref":"class/TVector2.md","articles":[]},"previous":{"title":"TTree*","level":"1.2.104","depth":2,"path":"class/TTree.md","ref":"class/TTree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTreePlayer.md","mtime":"2017-07-11T12:51:30.030Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TTreePlayer*","level":"1.2.105","depth":2,"next":{"title":"TVector2","level":"1.2.106","depth":2,"path":"class/TVector2.md","ref":"class/TVector2.md","articles":[]},"previous":{"title":"TTree*","level":"1.2.104","depth":2,"path":"class/TTree.md","ref":"class/TTree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TTreePlayer.md","mtime":"2018-06-03T19:03:27.292Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

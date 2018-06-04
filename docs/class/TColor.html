@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TColor · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,10 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tcolor">TColor</h1>
-<p>TColor : public TNamed</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp"><span class="hljs-keyword">namespace</span> {
+
+
+<h1 id="tcolor">TColor</h1><p>TColor : public TNamed</p><h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-keyword">namespace</span> {
    <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t&amp; <span class="hljs-title">TColor__GrayScaleMode</span><span class="hljs-params">()</span> </span>{
       <span class="hljs-keyword">static</span> Bool_t grayScaleMode;
       <span class="hljs-keyword">return</span> grayScaleMode;
@@ -3493,8 +3492,7 @@
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> fgPalette TColor__Palette()</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> fgPalettesList TColor__PalettesList()</span>
 
-<span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">floor</span>;
-</code></pre>
+<span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">floor</span>;</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">//class TColor : public TNamed</span>
 
    TColor();<span class="hljs-comment">/// Default constructor.</span>
@@ -3879,10 +3877,8 @@
                        kStarryNight=<span class="hljs-number">102</span>,     kSunset=<span class="hljs-number">103</span>,      kTemperatureMap=<span class="hljs-number">104</span>,
                        kThermometer=<span class="hljs-number">105</span>,     kValentine=<span class="hljs-number">106</span>,   kVisibleSpectrum=<span class="hljs-number">107</span>,
                        kWaterMelon=<span class="hljs-number">108</span>,      kCool=<span class="hljs-number">109</span>,        kCopper=<span class="hljs-number">110</span>,
-                       kGistEarth=<span class="hljs-number">111</span>,       kViridis=<span class="hljs-number">112</span>};
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">// Colors are defined by their red, green and blue components, simply called the</span>
+                       kGistEarth=<span class="hljs-number">111</span>,       kViridis=<span class="hljs-number">112</span>};</code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// Colors are defined by their red, green and blue components, simply called the</span>
 <span class="hljs-comment">// RGB components. The colors are also known by the hue, light and saturation</span>
 <span class="hljs-comment">// components also known as the HLS components. When a new color is created the</span>
 <span class="hljs-comment">// components of both color systems are computed.</span>
@@ -3890,8 +3886,7 @@
 <span class="hljs-comment">// At initialization time, a table of colors is generated. An existing color can</span>
 <span class="hljs-comment">// be retrieved by its index:</span>
 
-TColor *color = gROOT-&gt;GetColor(<span class="hljs-number">10</span>);
-</code></pre>
+TColor *color = gROOT-&gt;GetColor(<span class="hljs-number">10</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// Then it can be manipulated. For example its RGB components can be modified:</span>
 
 color-&gt;SetRGB(<span class="hljs-number">0.1</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.3</span>);
@@ -3899,16 +3894,14 @@ color-&gt;SetRGB(<span class="hljs-number">0.1</span>, <span class="hljs-number"
 <span class="hljs-comment">// A new color can be created the following way:</span>
 
 Int_t ci = <span class="hljs-number">1756</span>; <span class="hljs-comment">// color index</span>
-TColor *color = <span class="hljs-keyword">new</span> TColor(ci, <span class="hljs-number">0.1</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.3</span>);
-</code></pre>
+TColor *color = <span class="hljs-keyword">new</span> TColor(ci, <span class="hljs-number">0.1</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.3</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The following image displays the 50 basic colors.</span>
 
 {
    TCanvas *c = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-string">&quot;Fill Area colors&quot;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">500</span>,<span class="hljs-number">200</span>);
    c-&gt;DrawColorTable();
    <span class="hljs-keyword">return</span> c;
-}
-</code></pre>
+}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The wheel contains the recommended 216 colors to be used in web applications.</span>
 
 <span class="hljs-comment">// The colors in the color wheel are created by `TColor::CreateColorWheel`.</span>
@@ -3937,8 +3930,7 @@ myLine.SetLineColor(kMagenta+<span class="hljs-number">2</span>);
    TColorWheel *w = <span class="hljs-keyword">new</span> TColorWheel();
    w-&gt;Draw();
    <span class="hljs-keyword">return</span> w-&gt;GetCanvas();
-}
-</code></pre>
+}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// The dark and bright color are used to give 3-D effects when drawing various</span>
 <span class="hljs-comment">// boxes (see TWbox, TPave, TPaveText, TPaveLabel, etc).</span>
 
@@ -3949,8 +3941,7 @@ myLine.SetLineColor(kMagenta+<span class="hljs-number">2</span>);
 <span class="hljs-comment">//     exist, they are created:</span>
 
 Int_t dark   = TColor::GetColorDark(color_index);
-Int_t bright = TColor::GetColorBright(color_index);
-</code></pre>
+Int_t bright = TColor::GetColorBright(color_index);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// One can toggle between a grayscale preview and the regular colored mode using</span>
 <span class="hljs-comment">// `TCanvas::SetGrayscale()`. Note that in grayscale mode, access via RGB</span>
 <span class="hljs-comment">// will return grayscale values according to ITU standards (and close to b&amp;w</span>
@@ -3964,8 +3955,7 @@ Int_t bright = TColor::GetColorBright(color_index);
    w-&gt;GetCanvas()-&gt;Modified();
    w-&gt;GetCanvas()-&gt;Update();
    <span class="hljs-keyword">return</span> w-&gt;GetCanvas();
-}
-</code></pre>
+}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// It is often very useful to represent a variable with a color map. The concept</span>
 <span class="hljs-comment">// of &quot;color palette&quot; allows to do that. One color palette is active at any time.</span>
 <span class="hljs-comment">// This &quot;current palette&quot; is set using:</span>
@@ -4038,8 +4028,7 @@ gStyle-&gt;SetPalette(<span class="hljs-number">100</span>, MyPalette);
 
 <span class="hljs-comment">// As only one palette is active, one need to use `TExec` to be able to</span>
 <span class="hljs-comment">// display plots using different palettes on the same pad.</span>
-<span class="hljs-comment">// The following macro illustrate this feature.</span>
-</code></pre>
+<span class="hljs-comment">// The following macro illustrate this feature.</span></code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// \since **6.04:**</span>
 <span class="hljs-comment">// 62 high quality palettes are predefined with 255 colors each.</span>
 <span class="hljs-comment">// Despite the [disadvantages of the Rainbow color map](https://root.cern.ch/rainbow-color-map),</span>
@@ -4081,8 +4070,7 @@ kGistEarth=<span class="hljs-number">111</span>,       kViridis=<span class="hlj
    f2-&gt;Draw(<span class="hljs-string">&quot;surf2Z&quot;</span>); f2-&gt;SetTitle(<span class="hljs-string">&quot;kGreyScale&quot;</span>);
 
 <span class="hljs-comment">// ...</span>
-}
-</code></pre>
+}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// To make a graphics object transparent it is enough to set its color to a</span>
 <span class="hljs-comment">// transparent one. The color transparency is defined via its alpha component. The</span>
 <span class="hljs-comment">// alpha value varies from `0.` (fully transparent) to `1.` (fully</span>
@@ -4123,10 +4111,10 @@ histo-&gt;SetFillColorAlpha(kBlue, <span class="hljs-number">0.35</span>);
 
 <span class="hljs-comment">// The transparency is available on all platforms when the flag `OpenGL.CanvasPreferGL` is set to `1`</span>
 <span class="hljs-comment">// in `$ROOTSYS/etc/system.rootrc`, or on Mac with the Cocoa backend. On the file output</span>
-<span class="hljs-comment">// it is visible with PDF, PNG, Gif, JPEG, SVG ... but not PostScript.</span>
-</code></pre>
-<h2 id="example">example</h2>
-<!-- TColor.md ends here -->
+<span class="hljs-comment">// it is visible with PDF, PNG, Gif, JPEG, SVG ... but not PostScript.</span></code></pre>
+<h2 id="example">example</h2><!-- TColor.md ends here -->
+
+
 
                                 
                                 </section>
@@ -4170,7 +4158,7 @@ histo-&gt;SetFillColorAlpha(kBlue, <span class="hljs-number">0.35</span>);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TColor","level":"1.2.12","depth":2,"next":{"title":"TCut*","level":"1.2.13","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"previous":{"title":"TCollection*-","level":"1.2.11","depth":2,"path":"class/TCollection.md","ref":"class/TCollection.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TColor.md","mtime":"2018-05-01T07:44:58.650Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TColor","level":"1.2.12","depth":2,"next":{"title":"TCut*","level":"1.2.13","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"previous":{"title":"TCollection*-","level":"1.2.11","depth":2,"path":"class/TCollection.md","ref":"class/TCollection.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TColor.md","mtime":"2018-05-14T09:18:22.061Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

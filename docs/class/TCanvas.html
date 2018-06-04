@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TCanvas* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,14 +3469,11 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 17
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tcanvas">TCanvas</h1>
-<p>&#x7EE7;&#x627F; TPad</p>
-<p>A Canvas is an area mapped to a window directly under the control of the display
-manager. A ROOT session may have several canvases open at any given time.</p>
-<p>A Canvas may be subdivided into independent graphical areas: the <strong>Pads</strong>.
-A canvas has a default pad which has the name of the canvas itself.</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+
+
+<h1 id="tcanvas">TCanvas</h1><p>&#x7EE7;&#x627F; TPad</p><p>A Canvas is an area mapped to a window directly under the control of the display
+manager. A ROOT session may have several canvases open at any given time.</p><p>A Canvas may be subdivided into independent graphical areas: the <strong>Pads</strong>.
+A canvas has a default pad which has the name of the canvas itself.</p><h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
    <span class="hljs-comment">// TCanvas status bits</span>
    <span class="hljs-keyword">enum</span> {
       kShowEventStatus  = BIT(<span class="hljs-number">15</span>),
@@ -3766,13 +3763,10 @@ A canvas has a default pad which has the name of the canvas itself.</p>
    <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">DeleteCanvasPainter</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">///assert on IsBatch() == false?</span>
 
    <span class="hljs-function"><span class="hljs-keyword">static</span> TCanvas   *<span class="hljs-title">MakeDefCanvas</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static function to build a default canvas.</span>
-   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t     <span class="hljs-title">SupportAlpha</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static function returning &quot;true&quot; if transparency is supported.</span>
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5224;&#x65AD;&#x753B;&#x677F;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t     <span class="hljs-title">SupportAlpha</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static function returning &quot;true&quot; if transparency is supported.</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">//&#x5224;&#x65AD;&#x753B;&#x677F;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;</span>
   TCanvas *c = ((TCanvas *)(gROOT-&gt;GetListOfCanvases()-&gt;FindObject(<span class="hljs-string">&quot;c&quot;</span>)));
-  <span class="hljs-keyword">if</span> (c) { c-&gt;Clear(); } <span class="hljs-keyword">else</span> { c = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>); }
-</code></pre>
+  <span class="hljs-keyword">if</span> (c) { c-&gt;Clear(); } <span class="hljs-keyword">else</span> { c = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>); }</code></pre>
 <pre><code class="lang-cpp">TCanvas *MyC = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;MyC&quot;</span>,<span class="hljs-string">&quot;Test canvas&quot;</span>,<span class="hljs-number">1</span>)     <span class="hljs-comment">//&#x65B0;&#x5EFA;&#x753B;&#x677F;</span>
 MyC-&gt;SetFillColor(<span class="hljs-number">42</span>);                                <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x753B;&#x677F;&#x80CC;&#x666F;&#x989C;&#x8272;</span>
 MyC-&gt;Divide(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>);                                     <span class="hljs-comment">//&#x5C06;&#x753B;&#x677F;&#x5206;&#x6210;2*2&#x56DB;&#x4E2A;&#x533A;&#x57DF;</span>
@@ -3796,8 +3790,7 @@ canv-&gt;ToggleEventStatus();
 canv-&gt;SetRightMargin(<span class="hljs-number">0.2</span>);
 canv-&gt;SetLeftMargin(<span class="hljs-number">0.01</span>);
 canv-&gt;SetTopMargin(<span class="hljs-number">0.01</span>);
-canv-&gt;SetBottomMargin(<span class="hljs-number">0.01</span>);
-</code></pre>
+canv-&gt;SetBottomMargin(<span class="hljs-number">0.01</span>);</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// At creation time, no matter if in interactive or batch mode, the canvas size</span>
 <span class="hljs-comment">// defines the size of the canvas window (including the size of the window</span>
 <span class="hljs-comment">// manager&apos;s decoration). To define precisely the graphics area size of a canvas in</span>
@@ -3810,10 +3803,8 @@ canv-&gt;SetBottomMargin(<span class="hljs-number">0.01</span>);
 
 <span class="hljs-comment">// and in the batch mode simply do:</span>
 
-      c-&gt;SetCanvasSize(w,h);
-</code></pre>
-<h2 id="example">example</h2>
-<pre><code class="lang-cpp"><span class="hljs-function">Canvas *<span class="hljs-title">statsEditing</span><span class="hljs-params">()</span> </span>{
+      c-&gt;SetCanvasSize(w,h);</code></pre>
+<h2 id="example">example</h2><pre><code class="lang-cpp"><span class="hljs-function">Canvas *<span class="hljs-title">statsEditing</span><span class="hljs-params">()</span> </span>{
 <span class="hljs-comment">//    - how to remove a stat element from the stat box </span>
 <span class="hljs-comment">//    - how to add a new one</span>
 <span class="hljs-comment">//&#x5982;&#x4F55;&#x9664;&#x53BB;&#x56FE;&#x4E0A;&#x53F3;&#x4E0A;&#x89D2;box&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#x5DF2;&#x7ECF;&#x6DFB;&#x52A0;&#x4FE1;&#x606F;</span>
@@ -3851,6 +3842,8 @@ canv-&gt;SetBottomMargin(<span class="hljs-number">0.01</span>);
 }
 </code></pre>
 <!-- TCanvas.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3894,7 +3887,7 @@ canv-&gt;SetBottomMargin(<span class="hljs-number">0.01</span>);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCanvas*","level":"1.2.9","depth":2,"next":{"title":"TChain*","level":"1.2.10","depth":2,"path":"class/TChain.md","ref":"class/TChain.md","articles":[]},"previous":{"title":"TBufferFile","level":"1.2.8","depth":2,"path":"class/TBufferFile.md","ref":"class/TBufferFile.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TCanvas.md","mtime":"2017-08-24T12:22:15.419Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCanvas*","level":"1.2.9","depth":2,"next":{"title":"TChain*","level":"1.2.10","depth":2,"path":"class/TChain.md","ref":"class/TChain.md","articles":[]},"previous":{"title":"TBufferFile","level":"1.2.8","depth":2,"path":"class/TBufferFile.md","ref":"class/TBufferFile.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/TCanvas.md","mtime":"2018-05-14T09:18:22.633Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

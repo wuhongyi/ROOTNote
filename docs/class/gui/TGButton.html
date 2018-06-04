@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>TGButton* · GitBook</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -3469,8 +3469,9 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
-<h1 id="tgbutton">TGButton</h1>
-<pre><code class="lang-cpp"><span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+
+
+<h1 id="tgbutton">TGButton</h1><pre><code class="lang-cpp"><span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 <span class="hljs-comment">//                                                                      //</span>
 <span class="hljs-comment">// TGButton, TGTextButton, TGPictureButton, TGCheckButton,              //</span>
 <span class="hljs-comment">// TGRadioButton and TGSplitButton                                      //</span>
@@ -3536,26 +3537,16 @@
 <span class="hljs-comment">//                                                                      //</span>
 <span class="hljs-comment">// The mode of operation of a SplitButton can be changed on the fly     //</span>
 <span class="hljs-comment">// by calling the SetSplit(Bool_t) method.                              //</span>
-<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
-</code></pre>
-<p>TGButton &#x7EE7;&#x627F; TGFrame, TGWidget &#xFF0C; friend TGButtonGroup  </p>
-<p>TGTextButton &#x7EE7;&#x627F; TGButton</p>
-<p>TGPictureButton &#x7EE7;&#x627F; TGButton</p>
-<p>TGCheckButton &#x7EE7;&#x627F; TGButton</p>
-<p>TGRadioButton &#x7EE7;&#x627F; TGButton</p>
-<p>TGSplitButton &#x7EE7;&#x627F; TGTextButton</p>
-<h2 id="class">class</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">//--- Button states</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span></code></pre>
+<p>TGButton &#x7EE7;&#x627F; TGFrame, TGWidget &#xFF0C; friend TGButtonGroup</p><p>TGTextButton &#x7EE7;&#x627F; TGButton</p><p>TGPictureButton &#x7EE7;&#x627F; TGButton</p><p>TGCheckButton &#x7EE7;&#x627F; TGButton</p><p>TGRadioButton &#x7EE7;&#x627F; TGButton</p><p>TGSplitButton &#x7EE7;&#x627F; TGTextButton</p><h2 id="class">class</h2><pre><code class="lang-cpp"><span class="hljs-comment">//--- Button states</span>
 
 <span class="hljs-keyword">enum</span> EButtonState {
    kButtonUp,
    kButtonDown,
    kButtonEngaged,
    kButtonDisabled
-};
-</code></pre>
-<p><strong>TGButton</strong></p>
-<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
+};</code></pre>
+<p><strong>TGButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetHibckgndGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return graphics context for highlighted frame background.</span>
 
    TGButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
@@ -3600,10 +3591,8 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Pressed</span><span class="hljs-params">()</span>  </span>{ Emit(<span class="hljs-string">&quot;Pressed()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Released</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;Released()&quot;</span>); }  <span class="hljs-comment">// *SIGNAL*</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">()</span>  </span>{ Emit(<span class="hljs-string">&quot;Clicked()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
-   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Toggled</span><span class="hljs-params">(Bool_t on)</span> </span>{ Emit(<span class="hljs-string">&quot;Toggled(Bool_t)&quot;</span>, on); }  <span class="hljs-comment">// *SIGNAL*</span>
-</code></pre>
-<p><strong>TGTextButton</strong></p>
-<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Toggled</span><span class="hljs-params">(Bool_t on)</span> </span>{ Emit(<span class="hljs-string">&quot;Toggled(Bool_t)&quot;</span>, on); }  <span class="hljs-comment">// *SIGNAL*</span></code></pre>
+<p><strong>TGTextButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
 
    TGTextButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *s, Int_t id = <span class="hljs-number">-1</span>,
                 GContext_t norm = GetDefaultGC()(),
@@ -3681,10 +3670,8 @@
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// layout text button</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a text button widget as a C++ statement(s) on output stream out.</span>
-</code></pre>
-<p><strong>TGPictureButton</strong></p>
-<pre><code class="lang-cpp">   TGPictureButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> TGPicture *pic, Int_t id = <span class="hljs-number">-1</span>,
+<span class="hljs-comment">/// Save a text button widget as a C++ statement(s) on output stream out.   </span></code></pre>
+<p><strong>TGPictureButton</strong></p><pre><code class="lang-cpp">   TGPictureButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> TGPicture *pic, Int_t id = <span class="hljs-number">-1</span>,
                    GContext_t norm = GetDefaultGC()(),
                    UInt_t option = kRaisedFrame | kDoubleBorder);
 <span class="hljs-comment">/// Create a picture button widget. The picture is not adopted and must</span>
@@ -3715,10 +3702,8 @@
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetPicture</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPic; };
    <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetDisabledPicture</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPicD; };
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a picture button widget as a C++ statement(s) on output stream out.</span>
-</code></pre>
-<p><strong>TGCheckButton</strong></p>
-<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
+<span class="hljs-comment">/// Save a picture button widget as a C++ statement(s) on output stream out.</span></code></pre>
+<p><strong>TGCheckButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
 
    TGCheckButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *s, Int_t id = <span class="hljs-number">-1</span>,
@@ -3754,10 +3739,8 @@
 
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;<span class="hljs-comment">/// Set check button state.</span>
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a check button widget as a C++ statement(s) on output stream out.</span>
-</code></pre>
-<p><strong>TGRadioButton</strong></p>
-<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
+<span class="hljs-comment">/// Save a check button widget as a C++ statement(s) on output stream out.</span></code></pre>
+<p><strong>TGRadioButton</strong></p><pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
 
    TGRadioButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *s, Int_t id = <span class="hljs-number">-1</span>,
@@ -3794,10 +3777,8 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStateOn; }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDisabledAndSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> ((fState == kButtonDisabled) &amp;&amp; fStateOn); }
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
-<span class="hljs-comment">/// Save a radio button widget as a C++ statement(s) on output stream out.</span>
-</code></pre>
-<p><strong>TGSplitButton</strong></p>
-<pre><code class="lang-cpp">   TGSplitButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *menulabel,
+<span class="hljs-comment">/// Save a radio button widget as a C++ statement(s) on output stream out.</span></code></pre>
+<p><strong>TGSplitButton</strong></p><pre><code class="lang-cpp">   TGSplitButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *menulabel,
                 TGPopupMenu *popmenu, Bool_t split = kTRUE,
                 Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
                 FontStruct_t fontstruct = GetDefaultFontStruct(),
@@ -3838,13 +3819,10 @@
    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ItemClicked</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;ItemClicked(Int_t)&quot;</span>, id); } <span class="hljs-comment">// *SIGNAL*</span>
 
    <span class="hljs-comment">// Slots</span>
-   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">HandleMenu</span><span class="hljs-params">(Int_t id)</span> </span>;<span class="hljs-comment">/// Handle a menu item activation.</span>
-</code></pre>
-<h2 id="code">code</h2>
-<pre><code class="lang-cpp"><span class="hljs-comment">// Button</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">HandleMenu</span><span class="hljs-params">(Int_t id)</span> </span>;<span class="hljs-comment">/// Handle a menu item activation.</span></code></pre>
+<h2 id="code">code</h2><pre><code class="lang-cpp"><span class="hljs-comment">// Button</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGClient.h&quot;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGButton.h&quot;</span></span>
-</code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;TGButton.h&quot;</span></span></code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// TGTextButton</span>
 <span class="hljs-comment">// &#x6309;&#x94AE;&#xFF0C;&#x6309;&#x94AE;&#x4E0A;&#x6709;&#x5B57;&#xFF0C;&#x5B57;&#x53EF;&#x6539;&#x53D8;</span>
 TGTextButton     *fStart;
@@ -3869,8 +3847,7 @@ fStart-&gt;SetToolTipText(<span class="hljs-string">&quot;Click to toggle the bu
      start = kFALSE;
   }
   fStart-&gt;SetState(kButtonUp);
-}
-</code></pre>
+}</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// TGCheckButton</span>
 <span class="hljs-comment">// &#x591A;&#x9009;&#x6309;&#x94AE;</span>
 TGVButtonGroup *fButtonGroup;  <span class="hljs-comment">// Button group</span>
@@ -3890,8 +3867,7 @@ fCheckb[<span class="hljs-number">0</span>]-&gt;SetOn();<span class="hljs-commen
 fCheckb[<span class="hljs-number">0</span>]-&gt;GetState();<span class="hljs-comment">//&#x83B7;&#x5F97;&#x5F53;&#x524D;&#x72B6;&#x6001;&#xFF0C;0&#x3001;1</span>
 <span class="hljs-comment">// fCheckb[0]-&gt;Connect(&quot;Toggled(Bool_t)&quot;, &quot;MyButtonTest&quot;, this, &quot;SetGroupEnabled(Bool_t)&quot;);</span>
 fButtonGroup-&gt;Show();
-fButtonGroup-&gt;SetState(kTRUE);<span class="hljs-comment">//&#x662F;&#x5426;&#x5F00;&#x542F;&#xFF0C;&#x5F00;&#x542F;&#x624D;&#x53EF;&#x4EE5;&#x9009;&#xFF0C;&#x4E0D;&#x5F00;&#x542F;&#x662F;&#x7070;&#x8272;&#x7684;</span>
-</code></pre>
+fButtonGroup-&gt;SetState(kTRUE);<span class="hljs-comment">//&#x662F;&#x5426;&#x5F00;&#x542F;&#xFF0C;&#x5F00;&#x542F;&#x624D;&#x53EF;&#x4EE5;&#x9009;&#xFF0C;&#x4E0D;&#x5F00;&#x542F;&#x662F;&#x7070;&#x8272;&#x7684;</span></code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// TGRadioButton</span>
 <span class="hljs-comment">// &#x5355;&#x9009;&#x6309;&#x94AE;</span>
 TGVButtonGroup      *fButtonGroup;  <span class="hljs-comment">// Button group</span>
@@ -3904,16 +3880,18 @@ fRadiob[<span class="hljs-number">1</span>]-&gt;SetOn();<span class="hljs-commen
 fButtonGroup-&gt;Show();
 fButtonGroup-&gt;SetState(kTRUE);<span class="hljs-comment">//&#x662F;&#x5426;&#x5F00;&#x542F;&#xFF0C;&#x5F00;&#x542F;&#x624D;&#x53EF;&#x4EE5;&#x9009;&#xFF0C;&#x4E0D;&#x5F00;&#x542F;&#x662F;&#x7070;&#x8272;&#x7684;</span>
 fButtonGroup-&gt;SetRadioButtonExclusive(kTRUE);<span class="hljs-comment">//???</span>
-frame-&gt;AddFrame(fButtonGroup, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsCenterX|kLHintsCenterY,<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
-</code></pre>
+frame-&gt;AddFrame(fButtonGroup, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsCenterX|kLHintsCenterY,<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// TGPictureButton</span>
 <span class="hljs-comment">// &#x6309;&#x94AE;&#x662F;&#x56FE;&#x7247;</span>
+
 </code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// TGSplitButton</span>
 <span class="hljs-comment">//</span>
+
 </code></pre>
-<h2 id="example">example</h2>
-<!-- TGButton.md ends here -->
+<h2 id="example">example</h2><!-- TGButton.md ends here -->
+
+
 
                                 
                                 </section>
@@ -3957,7 +3935,7 @@ frame-&gt;AddFrame(fButtonGroup, <span class="hljs-keyword">new</span> TGLayoutH
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGButton*","level":"1.3.2","depth":2,"next":{"title":"TGButtonGroup*","level":"1.3.3","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"previous":{"title":"GuiTypes*","level":"1.3.1","depth":2,"path":"class/gui/GuiTypes.md","ref":"class/gui/GuiTypes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGButton.md","mtime":"2017-07-11T12:51:30.004Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T07:45:22.914Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGButton*","level":"1.3.2","depth":2,"next":{"title":"TGButtonGroup*","level":"1.3.3","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"previous":{"title":"GuiTypes*","level":"1.3.1","depth":2,"path":"class/gui/GuiTypes.md","ref":"class/gui/GuiTypes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"class/gui/TGButton.md","mtime":"2018-05-14T09:18:21.844Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-06-04T01:37:25.272Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
