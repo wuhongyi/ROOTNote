@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3682,393 +3694,393 @@
 <p>The TObject class provides default behaviour and protocol for<br>all objects in the ROOT system. It provides protocol for object I/O,<br>error handling, sorting, inspection, printing, drawing, etc.<br>Every object which inherits from TObject can be stored in the<br>ROOT collection classes.</p>
 <p>TObject&apos;s bits can be used as flags, bits 0 - 13 and 24-31 are<br>reserved as  global bits while bits 14 - 23 can be used in different<br>class hierarchies (watch out for overlaps).</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token comment">//----- Global bits (can be set for any object and should not be reused).</span>
-   <span class="token comment">//----- Bits 0 - 13 are reserved as global bits. Bits 14 - 23 can be used</span>
-   <span class="token comment">//----- in different class hierarchies (make sure there is no overlap in</span>
-   <span class="token comment">//----- any given hierarchy).</span>
-   <span class="token keyword">enum</span> EStatusBits <span class="token punctuation">{</span>
-      kCanDelete        <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment">///&lt; if object in a list can be deleted</span>
-      kMustCleanup      <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment">///&lt; if object destructor must call RecursiveRemove()</span>
-      kObjInCanvas      <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment">///&lt; for backward compatibility only, use kMustCleanup</span>
-      kIsReferenced     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment">///&lt; if object is referenced by a TRef or TRefArray</span>
-      kHasUUID          <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment">///&lt; if object has a TUUID (its fUniqueID=UUIDNumber)</span>
-      kCannotPick       <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment">///&lt; if object in a pad cannot be picked</span>
-      kNoContextMenu    <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment">///&lt; if object does not want context menu</span>
-      kInvalidObject    <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span>   <span class="token comment">///&lt; if object ctor succeeded but object should not be used</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   //----- Global bits (can be set for any object and should not be reused).
+   //----- Bits 0 - 13 are reserved as global bits. Bits 14 - 23 can be used
+   //----- in different class hierarchies (make sure there is no overlap in
+   //----- any given hierarchy).
+   enum EStatusBits {
+      kCanDelete        = BIT(0),   ///&lt; if object in a list can be deleted
+      kMustCleanup      = BIT(3),   ///&lt; if object destructor must call RecursiveRemove()
+      kObjInCanvas      = BIT(3),   ///&lt; for backward compatibility only, use kMustCleanup
+      kIsReferenced     = BIT(4),   ///&lt; if object is referenced by a TRef or TRefArray
+      kHasUUID          = BIT(5),   ///&lt; if object has a TUUID (its fUniqueID=UUIDNumber)
+      kCannotPick       = BIT(6),   ///&lt; if object in a pad cannot be picked
+      kNoContextMenu    = BIT(8),   ///&lt; if object does not want context menu
+      kInvalidObject    = BIT(13)   ///&lt; if object ctor succeeded but object should not be used
+   };
 
-   <span class="token comment">//----- Private bits, clients can only test but not change them</span>
-   <span class="token keyword">enum</span> <span class="token punctuation">{</span>
-      kIsOnHeap      <span class="token operator">=</span> <span class="token number">0x01000000</span><span class="token punctuation">,</span>    <span class="token comment">///&lt; object is on heap</span>
-      kNotDeleted    <span class="token operator">=</span> <span class="token number">0x02000000</span><span class="token punctuation">,</span>    <span class="token comment">///&lt; object has not been deleted</span>
-      kZombie        <span class="token operator">=</span> <span class="token number">0x04000000</span><span class="token punctuation">,</span>    <span class="token comment">///&lt; object ctor failed</span>
-      kBitMask       <span class="token operator">=</span> <span class="token number">0x00ffffff</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   //----- Private bits, clients can only test but not change them
+   enum {
+      kIsOnHeap      = 0x01000000,    ///&lt; object is on heap
+      kNotDeleted    = 0x02000000,    ///&lt; object has not been deleted
+      kZombie        = 0x04000000,    ///&lt; object ctor failed
+      kBitMask       = 0x00ffffff
+   };
 
-   <span class="token comment">//----- Write() options</span>
-   <span class="token keyword">enum</span> <span class="token punctuation">{</span>
-      kSingleKey     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>        <span class="token comment">///&lt; write collection with single key</span>
-      kOverwrite     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>        <span class="token comment">///&lt; overwrite existing object with same name</span>
-      kWriteDelete   <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>         <span class="token comment">///&lt; write object, then delete previous key with same name</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   //----- Write() options
+   enum {
+      kSingleKey     = BIT(0),        ///&lt; write collection with single key
+      kOverwrite     = BIT(1),        ///&lt; overwrite existing object with same name
+      kWriteDelete   = BIT(2)         ///&lt; write object, then delete previous key with same name
+   };
 
-   <span class="token function">TObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">&amp;</span>object<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TObject <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// TObject destructor. Removes object from all canvases and object browsers</span>
-<span class="token comment">/// if observer bit is on and remove from the global object table.</span>
+   TObject();
+   TObject(const TObject &amp;object);
+   TObject &amp;operator=(const TObject &amp;rhs);
+   virtual ~TObject();
+/// TObject destructor. Removes object from all canvases and object browsers
+/// if observer bit is on and remove from the global object table.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">AppendPad</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Append graphics object to current pad. In case no current pad is set</span>
-<span class="token comment">/// yet, create a default canvas with the name &quot;c1&quot;.</span>
+   virtual void        AppendPad(Option_t *option=&quot;&quot;);
+/// Append graphics object to current pad. In case no current pad is set
+/// yet, create a default canvas with the name &quot;c1&quot;.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Browse</span><span class="token punctuation">(</span>TBrowser <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Browse object. May be overridden for another default action</span>
+   virtual void        Browse(TBrowser *b);
+/// Browse object. May be overridden for another default action
 
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">ClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns name of class to which the object belongs.</span>
+   virtual const char *ClassName() const;
+/// Returns name of class to which the object belongs.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span> <span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">Clone</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>newname<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Make a clone of an object using the Streamer facility.</span>
-<span class="token comment">/// If the object derives from TNamed, this function is called</span>
-<span class="token comment">/// by TNamed::Clone. TNamed::Clone uses the optional argument to set</span>
-<span class="token comment">/// a new name to the newly created object.</span>
-<span class="token comment">/// If the object class has a DirectoryAutoAdd function, it will be</span>
-<span class="token comment">/// called at the end of the function with the parameter gDirectory.</span>
-<span class="token comment">/// This usually means that the object will be appended to the current</span>
-<span class="token comment">/// ROOT directory.</span>
+   virtual void        Clear(Option_t * /*option*/ =&quot;&quot;) { }
+   virtual TObject    *Clone(const char *newname=&quot;&quot;) const;
+/// Make a clone of an object using the Streamer facility.
+/// If the object derives from TNamed, this function is called
+/// by TNamed::Clone. TNamed::Clone uses the optional argument to set
+/// a new name to the newly created object.
+/// If the object class has a DirectoryAutoAdd function, it will be
+/// called at the end of the function with the parameter gDirectory.
+/// This usually means that the object will be appended to the current
+/// ROOT directory.
 
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">Compare</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Compare abstract method. Must be overridden if a class wants to be able</span>
-<span class="token comment">/// to compare itself with other objects. Must return -1 if this is smaller</span>
-<span class="token comment">/// than obj, 0 if objects are equal and 1 if this is larger than obj.</span>
+   virtual Int_t       Compare(const TObject *obj) const;
+/// Compare abstract method. Must be overridden if a class wants to be able
+/// to compare itself with other objects. Must return -1 if this is smaller
+/// than obj, 0 if objects are equal and 1 if this is larger than obj.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Copy</span><span class="token punctuation">(</span>TObject <span class="token operator">&amp;</span>object<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Delete</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Delete this object. Typically called as a command via the interpreter.</span>
-<span class="token comment">/// Normally use &quot;delete&quot; operator when object has been allocated on the heap.</span>
+   virtual void        Copy(TObject &amp;object) const;
+   virtual void        Delete(Option_t *option=&quot;&quot;); // *MENU*
+/// Delete this object. Typically called as a command via the interpreter.
+/// Normally use &quot;delete&quot; operator when object has been allocated on the heap.
 
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">DistancetoPrimitive</span><span class="token punctuation">(</span>Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Computes distance from point (px,py) to the object.</span>
-<span class="token comment">/// This member function must be implemented for each graphics primitive.</span>
-<span class="token comment">/// This default function returns a big number (999999).</span>
+   virtual Int_t       DistancetoPrimitive(Int_t px, Int_t py);
+/// Computes distance from point (px,py) to the object.
+/// This member function must be implemented for each graphics primitive.
+/// This default function returns a big number (999999).
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Draw</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Default Draw method for all objects</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">DrawClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Draw class inheritance tree of the class to which this object belongs.</span>
-<span class="token comment">/// If a class B inherits from a class A, description of B is drawn</span>
-<span class="token comment">/// on the right side of description of A.</span>
-<span class="token comment">/// Member functions overridden by B are shown in class A with a blue line</span>
-<span class="token comment">/// crossing-out the corresponding member function.</span>
-<span class="token comment">/// The following picture is the class inheritance tree of class TPaveLabel:</span>
-<span class="token comment">/// \image html base_object.png</span>
+   virtual void        Draw(Option_t *option=&quot;&quot;);/// Default Draw method for all objects
+   virtual void        DrawClass() const; // *MENU*
+/// Draw class inheritance tree of the class to which this object belongs.
+/// If a class B inherits from a class A, description of B is drawn
+/// on the right side of description of A.
+/// Member functions overridden by B are shown in class A with a blue line
+/// crossing-out the corresponding member function.
+/// The following picture is the class inheritance tree of class TPaveLabel:
+/// \image html base_object.png
 
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">DrawClone</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Draw a clone of this object in the current selected pad for instance with:</span>
-<span class="token comment">/// `gROOT-&gt;SetSelectedPad(gPad)`.</span>
+   virtual TObject    *DrawClone(Option_t *option=&quot;&quot;) const; // *MENU*
+/// Draw a clone of this object in the current selected pad for instance with:
+/// `gROOT-&gt;SetSelectedPad(gPad)`.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Dump</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*   // Get the actual address of the object.</span>
-<span class="token comment">/// Dump contents of object on stdout.</span>
-<span class="token comment">/// Using the information in the object dictionary (class TClass)</span>
-<span class="token comment">/// each data member is interpreted.</span>
-<span class="token comment">/// If a data member is a pointer, the pointer value is printed</span>
-<span class="token comment">/// The following output is the Dump of a TArrow object:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///   fAngle                   0           Arrow opening angle (degrees)</span>
-<span class="token comment">///   fArrowSize               0.2         Arrow Size</span>
-<span class="token comment">///   fOption.*fData</span>
-<span class="token comment">///   fX1                      0.1         X of 1st point</span>
-<span class="token comment">///   fY1                      0.15        Y of 1st point</span>
-<span class="token comment">///   fX2                      0.67        X of 2nd point</span>
-<span class="token comment">///   fY2                      0.83        Y of 2nd point</span>
-<span class="token comment">///   fUniqueID                0           object unique identifier</span>
-<span class="token comment">///   fBits                    50331648    bit field status word</span>
-<span class="token comment">///   fLineColor               1           line color</span>
-<span class="token comment">///   fLineStyle               1           line style</span>
-<span class="token comment">///   fLineWidth               1           line width</span>
-<span class="token comment">///   fFillColor               19          fill area color</span>
-<span class="token comment">///   fFillStyle               1001        fill area style</span>
-<span class="token comment">/// ~~~</span>
+   virtual void        Dump() const; // *MENU*   // Get the actual address of the object.
+/// Dump contents of object on stdout.
+/// Using the information in the object dictionary (class TClass)
+/// each data member is interpreted.
+/// If a data member is a pointer, the pointer value is printed
+/// The following output is the Dump of a TArrow object:
+/// ~~~ {.cpp}
+///   fAngle                   0           Arrow opening angle (degrees)
+///   fArrowSize               0.2         Arrow Size
+///   fOption.*fData
+///   fX1                      0.1         X of 1st point
+///   fY1                      0.15        Y of 1st point
+///   fX2                      0.67        X of 2nd point
+///   fY2                      0.83        Y of 2nd point
+///   fUniqueID                0           object unique identifier
+///   fBits                    50331648    bit field status word
+///   fLineColor               1           line color
+///   fLineStyle               1           line style
+///   fLineWidth               1           line width
+///   fFillColor               19          fill area color
+///   fFillStyle               1001        fill area style
+/// ~~~
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Execute</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">,</span>  <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>params<span class="token punctuation">,</span> Int_t <span class="token operator">*</span>error<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute method on this object with the given parameter string, e.g.</span>
-<span class="token comment">/// &quot;3.14,1,\&quot;text\&quot;&quot;.</span>
+   virtual void        Execute(const char *method,  const char *params, Int_t *error=0);
+/// Execute method on this object with the given parameter string, e.g.
+/// &quot;3.14,1,\&quot;text\&quot;&quot;.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Execute</span><span class="token punctuation">(</span>TMethod <span class="token operator">*</span>method<span class="token punctuation">,</span> TObjArray <span class="token operator">*</span>params<span class="token punctuation">,</span> Int_t <span class="token operator">*</span>error<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute method on this object with parameters stored in the TObjArray.</span>
-<span class="token comment">/// The TObjArray should contain an argv vector like:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///  argv[0] ... argv[n] = the list of TObjString parameters</span>
-<span class="token comment">/// ~~~</span>
+   virtual void        Execute(TMethod *method, TObjArray *params, Int_t *error=0);
+/// Execute method on this object with parameters stored in the TObjArray.
+/// The TObjArray should contain an argv vector like:
+/// ~~~ {.cpp}
+///  argv[0] ... argv[n] = the list of TObjString parameters
+/// ~~~
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">ExecuteEvent</span><span class="token punctuation">(</span>Int_t event<span class="token punctuation">,</span> Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute action corresponding to an event at (px,py). This method</span>
-<span class="token comment">/// must be overridden if an object can react to graphics events.</span>
+   virtual void        ExecuteEvent(Int_t event, Int_t px, Int_t py);
+/// Execute action corresponding to an event at (px,py). This method
+/// must be overridden if an object can react to graphics events.
 
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Must be redefined in derived classes.</span>
-<span class="token comment">/// This function is typically used with TCollections, but can also be used</span>
-<span class="token comment">/// to find an object by name inside this object.</span>
+   virtual TObject    *FindObject(const char *name) const;
+/// Must be redefined in derived classes.
+/// This function is typically used with TCollections, but can also be used
+/// to find an object by name inside this object.
 
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Must be redefined in derived classes.</span>
-<span class="token comment">/// This function is typically used with TCollections, but can also be used</span>
-<span class="token comment">/// to find an object inside this object.</span>
+   virtual TObject    *FindObject(const TObject *obj) const;
+/// Must be redefined in derived classes.
+/// This function is typically used with TCollections, but can also be used
+/// to find an object inside this object.
 
-   <span class="token keyword">virtual</span> Option_t   <span class="token operator">*</span><span class="token function">GetDrawOption</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get option used by the graphics system to draw this object.</span>
-<span class="token comment">/// Note that before calling object.GetDrawOption(), you must</span>
-<span class="token comment">/// have called object.Draw(..) before in the current pad.</span>
+   virtual Option_t   *GetDrawOption() const;
+/// Get option used by the graphics system to draw this object.
+/// Note that before calling object.GetDrawOption(), you must
+/// have called object.Draw(..) before in the current pad.
 
-   <span class="token keyword">virtual</span> UInt_t      <span class="token function">GetUniqueID</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return the unique object id.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns name of object. This default method returns the class name.</span>
-<span class="token comment">/// Classes that give objects a name should override this method.</span>
+   virtual UInt_t      GetUniqueID() const;/// Return the unique object id.
+   virtual const char *GetName() const;
+/// Returns name of object. This default method returns the class name.
+/// Classes that give objects a name should override this method.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetIconName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns mime type name of object. Used by the TBrowser (via TGMimeTypes</span>
-<span class="token comment">/// class). Override for class of which you would like to have different</span>
-<span class="token comment">/// icons for objects of the same class.</span>
+   virtual const char *GetIconName() const;
+/// Returns mime type name of object. Used by the TBrowser (via TGMimeTypes
+/// class). Override for class of which you would like to have different
+/// icons for objects of the same class.
 
-   <span class="token keyword">virtual</span> Option_t   <span class="token operator">*</span><span class="token function">GetOption</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetObjectInfo</span><span class="token punctuation">(</span>Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns string containing info about the object at position (px,py).</span>
-<span class="token comment">/// This method is typically overridden by classes of which the objects</span>
-<span class="token comment">/// can report peculiarities for different positions.</span>
-<span class="token comment">/// Returned string will be re-used (lock in MT environment).</span>
+   virtual Option_t   *GetOption() const { return &quot;&quot;; }
+   virtual char       *GetObjectInfo(Int_t px, Int_t py) const;
+/// Returns string containing info about the object at position (px,py).
+/// This method is typically overridden by classes of which the objects
+/// can report peculiarities for different positions.
+/// Returned string will be re-used (lock in MT environment).
 
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns title of object. This default method returns the class title</span>
-<span class="token comment">/// (i.e. description). Classes that give objects a title should override</span>
-<span class="token comment">/// this method.</span>
+   virtual const char *GetTitle() const;
+/// Returns title of object. This default method returns the class title
+/// (i.e. description). Classes that give objects a title should override
+/// this method.
 
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">HandleTimer</span><span class="token punctuation">(</span>TTimer <span class="token operator">*</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> ULong_t     <span class="token function">Hash</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return hash value for this object.</span>
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">InheritsFrom</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>classname<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns kTRUE if object inherits from class &quot;classname&quot;.</span>
+   virtual Bool_t      HandleTimer(TTimer *timer);
+   virtual ULong_t     Hash() const;/// Return hash value for this object.
+   virtual Bool_t      InheritsFrom(const char *classname) const;
+/// Returns kTRUE if object inherits from class &quot;classname&quot;.
 
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">InheritsFrom</span><span class="token punctuation">(</span><span class="token keyword">const</span> TClass <span class="token operator">*</span>cl<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns kTRUE if object inherits from TClass cl.</span>
+   virtual Bool_t      InheritsFrom(const TClass *cl) const;
+/// Returns kTRUE if object inherits from TClass cl.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Inspect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Dump contents of this object in a graphics canvas.</span>
-<span class="token comment">/// Same action as Dump but in a graphical form.</span>
-<span class="token comment">/// In addition pointers to other objects can be followed.</span>
-<span class="token comment">/// The following picture is the Inspect of a histogram object:</span>
-<span class="token comment">/// \image html base_inspect.png</span>
+   virtual void        Inspect() const; // *MENU*
+/// Dump contents of this object in a graphics canvas.
+/// Same action as Dump but in a graphical form.
+/// In addition pointers to other objects can be followed.
+/// The following picture is the Inspect of a histogram object:
+/// \image html base_inspect.png
 
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">IsFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns kTRUE in case object contains browsable objects (like containers</span>
-<span class="token comment">/// or lists of other objects).</span>
+   virtual Bool_t      IsFolder() const;
+/// Returns kTRUE in case object contains browsable objects (like containers
+/// or lists of other objects).
 
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">IsEqual</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Default equal comparison (objects are equal if they have the same</span>
-<span class="token comment">/// address in memory). More complicated classes might want to override</span>
-<span class="token comment">/// this function.</span>
+   virtual Bool_t      IsEqual(const TObject *obj) const;
+/// Default equal comparison (objects are equal if they have the same
+/// address in memory). More complicated classes might want to override
+/// this function.
 
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">IsSortable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           Bool_t      <span class="token function">IsOnHeap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kIsOnHeap<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           Bool_t      <span class="token function">IsZombie</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kZombie<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">Notify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// This method must be overridden to handle object notification.</span>
+   virtual Bool_t      IsSortable() const { return kFALSE; }
+           Bool_t      IsOnHeap() const { return TestBit(kIsOnHeap); }
+           Bool_t      IsZombie() const { return TestBit(kZombie); }
+   virtual Bool_t      Notify();
+/// This method must be overridden to handle object notification.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// The ls function lists the contents of a class on stdout. Ls output</span>
-<span class="token comment">/// is typically much less verbose then Dump().</span>
+   virtual void        ls(Option_t *option=&quot;&quot;) const;
+/// The ls function lists the contents of a class on stdout. Ls output
+/// is typically much less verbose then Dump().
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Paint</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// This method must be overridden if a class wants to paint itself.</span>
-<span class="token comment">/// The difference between Paint() and Draw() is that when a object</span>
-<span class="token comment">/// draws itself it is added to the display list of the pad in</span>
-<span class="token comment">/// which it is drawn (and automatically redrawn whenever the pad is</span>
-<span class="token comment">/// redrawn). While paint just draws the object without adding it to</span>
-<span class="token comment">/// the pad display list.</span>
+   virtual void        Paint(Option_t *option=&quot;&quot;);
+/// This method must be overridden if a class wants to paint itself.
+/// The difference between Paint() and Draw() is that when a object
+/// draws itself it is added to the display list of the pad in
+/// which it is drawn (and automatically redrawn whenever the pad is
+/// redrawn). While paint just draws the object without adding it to
+/// the pad display list.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Pop on object drawn in a pad to the top of the display list. I.e. it</span>
-<span class="token comment">/// will be drawn last and on top of all other primitives.</span>
+   virtual void        Pop();
+/// Pop on object drawn in a pad to the top of the display list. I.e. it
+/// will be drawn last and on top of all other primitives.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Print</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// This method must be overridden when a class wants to print itself.</span>
+   virtual void        Print(Option_t *option=&quot;&quot;) const;
+/// This method must be overridden when a class wants to print itself.
 
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">Read</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Read contents of object with specified name from the current directory.</span>
-<span class="token comment">/// First the key with the given name is searched in the current directory,</span>
-<span class="token comment">/// next the key buffer is deserialized into the object.</span>
-<span class="token comment">/// The object must have been created before via the default constructor.</span>
-<span class="token comment">/// See TObject::Write().</span>
+   virtual Int_t       Read(const char *name);
+/// Read contents of object with specified name from the current directory.
+/// First the key with the given name is searched in the current directory,
+/// next the key buffer is deserialized into the object.
+/// The object must have been created before via the default constructor.
+/// See TObject::Write().
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">RecursiveRemove</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Recursively remove this object from a list. Typically implemented</span>
-<span class="token comment">/// by classes that can contain multiple references to a same object.</span>
+   virtual void        RecursiveRemove(TObject *obj);
+/// Recursively remove this object from a list. Typically implemented
+/// by classes that can contain multiple references to a same object.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SaveAs</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Save this object in the file specified by filename.</span>
-<span class="token comment">/// - if &quot;filename&quot; contains &quot;.root&quot; the object is saved in filename as root</span>
-<span class="token comment">///   binary file.</span>
-<span class="token comment">/// - if &quot;filename&quot; contains &quot;.xml&quot;  the object is saved in filename as a xml</span>
-<span class="token comment">///   ascii file.</span>
-<span class="token comment">/// - if &quot;filename&quot; contains &quot;.cc&quot; the object is saved in filename as C code</span>
-<span class="token comment">///   independant from ROOT. The code is generated via SavePrimitive().</span>
-<span class="token comment">///   Specific code should be implemented in each object to handle this</span>
-<span class="token comment">///   option. Like in TF1::SavePrimitive().</span>
-<span class="token comment">/// - otherwise the object is written to filename as a CINT/C++ script. The</span>
-<span class="token comment">///   C++ code to rebuild this object is generated via SavePrimitive(). The</span>
-<span class="token comment">///   &quot;option&quot; parameter is passed to SavePrimitive. By default it is an empty</span>
-<span class="token comment">///   string. It can be used to specify the Draw option in the code generated</span>
-<span class="token comment">///   by SavePrimitive.</span>
-<span class="token comment">///  The function is available via the object context menu.</span>
+   virtual void        SaveAs(const char *filename=&quot;&quot;,Option_t *option=&quot;&quot;) const; // *MENU*
+/// Save this object in the file specified by filename.
+/// - if &quot;filename&quot; contains &quot;.root&quot; the object is saved in filename as root
+///   binary file.
+/// - if &quot;filename&quot; contains &quot;.xml&quot;  the object is saved in filename as a xml
+///   ascii file.
+/// - if &quot;filename&quot; contains &quot;.cc&quot; the object is saved in filename as C code
+///   independant from ROOT. The code is generated via SavePrimitive().
+///   Specific code should be implemented in each object to handle this
+///   option. Like in TF1::SavePrimitive().
+/// - otherwise the object is written to filename as a CINT/C++ script. The
+///   C++ code to rebuild this object is generated via SavePrimitive(). The
+///   &quot;option&quot; parameter is passed to SavePrimitive. By default it is an empty
+///   string. It can be used to specify the Draw option in the code generated
+///   by SavePrimitive.
+///  The function is available via the object context menu.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a primitive as a C++ statement(s) on output stream &quot;out&quot;.</span>
+   virtual void        SavePrimitive(std::ostream &amp;out, Option_t *option = &quot;&quot;);
+/// Save a primitive as a C++ statement(s) on output stream &quot;out&quot;.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetDrawOption</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Set drawing option for object. This option only affects</span>
-<span class="token comment">/// the drawing style and is stored in the option field of the</span>
-<span class="token comment">/// TObjOptLink supporting a TPad&apos;s primitive list (TList).</span>
-<span class="token comment">/// Note that it does not make sense to call object.SetDrawOption(option)</span>
-<span class="token comment">/// before having called object.Draw().</span>
+   virtual void        SetDrawOption(Option_t *option=&quot;&quot;);  // *MENU*
+/// Set drawing option for object. This option only affects
+/// the drawing style and is stored in the option field of the
+/// TObjOptLink supporting a TPad&apos;s primitive list (TList).
+/// Note that it does not make sense to call object.SetDrawOption(option)
+/// before having called object.Draw().
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetUniqueID</span><span class="token punctuation">(</span>UInt_t uid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the unique object id.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">UseCurrentStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">Write</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t option<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t bufsize<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Write this object to the current directory. For more see the</span>
-<span class="token comment">/// const version of this method.</span>
+   virtual void        SetUniqueID(UInt_t uid);/// Set the unique object id.
+   virtual void        UseCurrentStyle();
+   virtual Int_t       Write(const char *name=0, Int_t option=0, Int_t bufsize=0);
+/// Write this object to the current directory. For more see the
+/// const version of this method.
 
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">Write</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t option<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t bufsize<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Write this object to the current directory.</span>
-<span class="token comment">/// The data structure corresponding to this object is serialized.</span>
-<span class="token comment">/// The corresponding buffer is written to the current directory</span>
-<span class="token comment">/// with an associated key with name &quot;name&quot;.</span>
-<span class="token comment">/// Writing an object to a file involves the following steps:</span>
-<span class="token comment">///  - Creation of a support TKey object in the current directory.</span>
-<span class="token comment">///    The TKey object creates a TBuffer object.</span>
-<span class="token comment">///  - The TBuffer object is filled via the class::Streamer function.</span>
-<span class="token comment">///  - If the file is compressed (default) a second buffer is created to</span>
-<span class="token comment">///    hold the compressed buffer.</span>
-<span class="token comment">///  - Reservation of the corresponding space in the file by looking</span>
-<span class="token comment">///    in the TFree list of free blocks of the file.</span>
-<span class="token comment">///  - The buffer is written to the file.</span>
-<span class="token comment">///  Bufsize can be given to force a given buffer size to write this object.</span>
-<span class="token comment">///  By default, the buffersize will be taken from the average buffer size</span>
-<span class="token comment">///  of all objects written to the current file so far.</span>
-<span class="token comment">///  If a name is specified, it will be the name of the key.</span>
-<span class="token comment">///  If name is not given, the name of the key will be the name as returned</span>
-<span class="token comment">///  by GetName().</span>
-<span class="token comment">///  The option can be a combination of: kSingleKey, kOverwrite or kWriteDelete</span>
-<span class="token comment">///  Using the kOverwrite option a previous key with the same name is</span>
-<span class="token comment">///  overwritten. The previous key is deleted before writing the new object.</span>
-<span class="token comment">///  Using the kWriteDelete option a previous key with the same name is</span>
-<span class="token comment">///  deleted only after the new object has been written. This option</span>
-<span class="token comment">///  is safer than kOverwrite but it is slower.</span>
-<span class="token comment">///  The kSingleKey option is only used by TCollection::Write() to write</span>
-<span class="token comment">///  a container with a single key instead of each object in the container</span>
-<span class="token comment">///  with its own key.</span>
-<span class="token comment">///  An object is read from the file into memory via TKey::Read() or</span>
-<span class="token comment">///  via TObject::Read().</span>
-<span class="token comment">///  The function returns the total number of bytes written to the file.</span>
-<span class="token comment">///  It returns 0 if the object cannot be written.   </span>
+   virtual Int_t       Write(const char *name=0, Int_t option=0, Int_t bufsize=0) const;
+/// Write this object to the current directory.
+/// The data structure corresponding to this object is serialized.
+/// The corresponding buffer is written to the current directory
+/// with an associated key with name &quot;name&quot;.
+/// Writing an object to a file involves the following steps:
+///  - Creation of a support TKey object in the current directory.
+///    The TKey object creates a TBuffer object.
+///  - The TBuffer object is filled via the class::Streamer function.
+///  - If the file is compressed (default) a second buffer is created to
+///    hold the compressed buffer.
+///  - Reservation of the corresponding space in the file by looking
+///    in the TFree list of free blocks of the file.
+///  - The buffer is written to the file.
+///  Bufsize can be given to force a given buffer size to write this object.
+///  By default, the buffersize will be taken from the average buffer size
+///  of all objects written to the current file so far.
+///  If a name is specified, it will be the name of the key.
+///  If name is not given, the name of the key will be the name as returned
+///  by GetName().
+///  The option can be a combination of: kSingleKey, kOverwrite or kWriteDelete
+///  Using the kOverwrite option a previous key with the same name is
+///  overwritten. The previous key is deleted before writing the new object.
+///  Using the kWriteDelete option a previous key with the same name is
+///  deleted only after the new object has been written. This option
+///  is safer than kOverwrite but it is slower.
+///  The kSingleKey option is only used by TCollection::Write() to write
+///  a container with a single key instead of each object in the container
+///  with its own key.
+///  An object is read from the file into memory via TKey::Read() or
+///  via TObject::Read().
+///  The function returns the total number of bytes written to the file.
+///  It returns 0 if the object cannot be written.   
 
-   <span class="token comment">//----- operators</span>
-   <span class="token keyword">void</span>    <span class="token operator">*</span><span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t sz<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> TStorage<span class="token operator">::</span><span class="token function">ObjectAlloc</span><span class="token punctuation">(</span>sz<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>    <span class="token operator">*</span><span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t sz<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> TStorage<span class="token operator">::</span><span class="token function">ObjectAllocArray</span><span class="token punctuation">(</span>sz<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>    <span class="token operator">*</span><span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t sz<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>vp<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> TStorage<span class="token operator">::</span><span class="token function">ObjectAlloc</span><span class="token punctuation">(</span>sz<span class="token punctuation">,</span> vp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>    <span class="token operator">*</span><span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t sz<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>vp<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> TStorage<span class="token operator">::</span><span class="token function">ObjectAlloc</span><span class="token punctuation">(</span>sz<span class="token punctuation">,</span> vp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>     <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Operator delete</span>
-   <span class="token keyword">void</span>     <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Operator delete []</span>
-<span class="token macro property">#<span class="token directive keyword">ifdef</span> R__SIZEDDELETE</span>
-   <span class="token comment">// Sized deallocation.</span>
-   <span class="token keyword">void</span>     <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">,</span> size_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Operator delete for sized deallocation.   </span>
-   <span class="token keyword">void</span>     <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">,</span> size_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Operator delete [] for sized deallocation.   </span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-<span class="token macro property">#<span class="token directive keyword">ifdef</span> R__PLACEMENTDELETE</span>
-   <span class="token keyword">void</span>     <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>vp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Only called by placement new when throwing an exception.</span>
+   //----- operators
+   void    *operator new(size_t sz) { return TStorage::ObjectAlloc(sz); }
+   void    *operator new[](size_t sz) { return TStorage::ObjectAllocArray(sz); }
+   void    *operator new(size_t sz, void *vp) { return TStorage::ObjectAlloc(sz, vp); }
+   void    *operator new[](size_t sz, void *vp) { return TStorage::ObjectAlloc(sz, vp); }
+   void     operator delete(void *ptr);/// Operator delete
+   void     operator delete[](void *ptr);/// Operator delete []
+#ifdef R__SIZEDDELETE
+   // Sized deallocation.
+   void     operator delete(void*, size_t);
+/// Operator delete for sized deallocation.   
+   void     operator delete[](void*, size_t);
+/// Operator delete [] for sized deallocation.   
+#endif
+#ifdef R__PLACEMENTDELETE
+   void     operator delete(void *ptr, void *vp);
+/// Only called by placement new when throwing an exception.
 
-   <span class="token keyword">void</span>     <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>vp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Only called by placement new[] when throwing an exception.</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+   void     operator delete[](void *ptr, void *vp);
+/// Only called by placement new[] when throwing an exception.
+#endif
 
-   <span class="token comment">//----- bit manipulation</span>
-   <span class="token keyword">void</span>     <span class="token function">SetBit</span><span class="token punctuation">(</span>UInt_t f<span class="token punctuation">,</span> Bool_t set<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set or unset the user status bits as specified in f.</span>
-   <span class="token keyword">void</span>     <span class="token function">SetBit</span><span class="token punctuation">(</span>UInt_t f<span class="token punctuation">)</span> <span class="token punctuation">{</span> fBits <span class="token operator">|</span><span class="token operator">=</span> f <span class="token operator">&amp;</span> kBitMask<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>     <span class="token function">ResetBit</span><span class="token punctuation">(</span>UInt_t f<span class="token punctuation">)</span> <span class="token punctuation">{</span> fBits <span class="token operator">&amp;</span><span class="token operator">=</span> <span class="token operator">~</span><span class="token punctuation">(</span>f <span class="token operator">&amp;</span> kBitMask<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t   <span class="token function">TestBit</span><span class="token punctuation">(</span>UInt_t f<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>Bool_t<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fBits <span class="token operator">&amp;</span> f<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t    <span class="token function">TestBits</span><span class="token punctuation">(</span>UInt_t f<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>Int_t<span class="token punctuation">)</span> <span class="token punctuation">(</span>fBits <span class="token operator">&amp;</span> f<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>     <span class="token function">InvertBit</span><span class="token punctuation">(</span>UInt_t f<span class="token punctuation">)</span> <span class="token punctuation">{</span> fBits <span class="token operator">^</span><span class="token operator">=</span> f <span class="token operator">&amp;</span> kBitMask<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   //----- bit manipulation
+   void     SetBit(UInt_t f, Bool_t set);/// Set or unset the user status bits as specified in f.
+   void     SetBit(UInt_t f) { fBits |= f &amp; kBitMask; }
+   void     ResetBit(UInt_t f) { fBits &amp;= ~(f &amp; kBitMask); }
+   Bool_t   TestBit(UInt_t f) const { return (Bool_t) ((fBits &amp; f) != 0); }
+   Int_t    TestBits(UInt_t f) const { return (Int_t) (fBits &amp; f); }
+   void     InvertBit(UInt_t f) { fBits ^= f &amp; kBitMask; }
 
-   <span class="token comment">//---- error handling</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Info</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>msgfmt<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-<span class="token macro property">#<span class="token directive keyword">if</span> defined(__GNUC__) &amp;&amp; !defined(__CINT__)</span>
-   <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">format</span><span class="token punctuation">(</span>printf<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">/* 1 is the this pointer */</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-   <span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Warning</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>msgfmt<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-<span class="token macro property">#<span class="token directive keyword">if</span> defined(__GNUC__) &amp;&amp; !defined(__CINT__)</span>
-   <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">format</span><span class="token punctuation">(</span>printf<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">/* 1 is the this pointer */</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-   <span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Error</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>msgfmt<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-<span class="token macro property">#<span class="token directive keyword">if</span> defined(__GNUC__) &amp;&amp; !defined(__CINT__)</span>
-   <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">format</span><span class="token punctuation">(</span>printf<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">/* 1 is the this pointer */</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-   <span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SysError</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>msgfmt<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-<span class="token macro property">#<span class="token directive keyword">if</span> defined(__GNUC__) &amp;&amp; !defined(__CINT__)</span>
-   <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">format</span><span class="token punctuation">(</span>printf<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">/* 1 is the this pointer */</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-   <span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Fatal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>msgfmt<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-<span class="token macro property">#<span class="token directive keyword">if</span> defined(__GNUC__) &amp;&amp; !defined(__CINT__)</span>
-   <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">format</span><span class="token punctuation">(</span>printf<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">/* 1 is the this pointer */</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-   <span class="token punctuation">;</span>
+   //---- error handling
+   virtual void     Info(const char *method, const char *msgfmt, ...) const
+#if defined(__GNUC__) &amp;&amp; !defined(__CINT__)
+   __attribute__((format(printf, 3, 4)))   /* 1 is the this pointer */
+#endif
+   ;
+   virtual void     Warning(const char *method, const char *msgfmt, ...) const
+#if defined(__GNUC__) &amp;&amp; !defined(__CINT__)
+   __attribute__((format(printf, 3, 4)))   /* 1 is the this pointer */
+#endif
+   ;
+   virtual void     Error(const char *method, const char *msgfmt, ...) const
+#if defined(__GNUC__) &amp;&amp; !defined(__CINT__)
+   __attribute__((format(printf, 3, 4)))   /* 1 is the this pointer */
+#endif
+   ;
+   virtual void     SysError(const char *method, const char *msgfmt, ...) const
+#if defined(__GNUC__) &amp;&amp; !defined(__CINT__)
+   __attribute__((format(printf, 3, 4)))   /* 1 is the this pointer */
+#endif
+   ;
+   virtual void     Fatal(const char *method, const char *msgfmt, ...) const
+#if defined(__GNUC__) &amp;&amp; !defined(__CINT__)
+   __attribute__((format(printf, 3, 4)))   /* 1 is the this pointer */
+#endif
+   ;
 
-   <span class="token keyword">void</span>     <span class="token function">AbstractMethod</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Use this method to implement an &quot;abstract&quot; method that you don&apos;t</span>
-<span class="token comment">/// want to leave purely abstract.</span>
+   void     AbstractMethod(const char *method) const;
+/// Use this method to implement an &quot;abstract&quot; method that you don&apos;t
+/// want to leave purely abstract.
 
-   <span class="token keyword">void</span>     <span class="token function">MayNotUse</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Use this method to signal that a method (defined in a base class)</span>
-<span class="token comment">/// may not be called in a derived class (in principle against good</span>
-<span class="token comment">/// design since a child class should not provide less functionality</span>
-<span class="token comment">/// than its parent, however, sometimes it is necessary).</span>
+   void     MayNotUse(const char *method) const;
+/// Use this method to signal that a method (defined in a base class)
+/// may not be called in a derived class (in principle against good
+/// design since a child class should not provide less functionality
+/// than its parent, however, sometimes it is necessary).
 
-   <span class="token keyword">void</span>     <span class="token function">Obsolete</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>asOfVers<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>removedFromVers<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Use this method to declare a method obsolete. Specify as of which version</span>
-<span class="token comment">/// the method is obsolete and as from which version it will be removed.</span>
+   void     Obsolete(const char *method, const char *asOfVers, const char *removedFromVers) const;
+/// Use this method to declare a method obsolete. Specify as of which version
+/// the method is obsolete and as from which version it will be removed.
 
-   <span class="token comment">//---- static functions</span>
-   <span class="token keyword">static</span> Long_t    <span class="token function">GetDtorOnly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return destructor only flag</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>      <span class="token function">SetDtorOnly</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set destructor only flag</span>
-   <span class="token keyword">static</span> Bool_t    <span class="token function">GetObjectStat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Get status of object stat flag.</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>      <span class="token function">SetObjectStat</span><span class="token punctuation">(</span>Bool_t stat<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Turn on/off tracking of objects in the TObjectTable.</span>
+   //---- static functions
+   static Long_t    GetDtorOnly();/// Return destructor only flag
+   static void      SetDtorOnly(void *obj);/// Set destructor only flag
+   static Bool_t    GetObjectStat();/// Get status of object stat flag.
+   static void      SetObjectStat(Bool_t stat);/// Turn on/off tracking of objects in the TObjectTable.
 
-   <span class="token keyword">friend</span> <span class="token keyword">class</span> <span class="token class-name">TClonesArray</span><span class="token punctuation">;</span> <span class="token comment">// needs to reset kNotDeleted in fBits</span>
+   friend class TClonesArray; // needs to reset kNotDeleted in fBits
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//&#x5168;&#x5C40;</span>
-<span class="token comment">// Global bits (can be set for any object and should not be reused).</span>
-<span class="token comment">// Only here for backward compatibility reasons.</span>
-<span class="token comment">// For detailed description see TObject::EStatusBits above.</span>
-<span class="token keyword">enum</span> EObjBits <span class="token punctuation">{</span>
-   kCanDelete        <span class="token operator">=</span> TObject<span class="token operator">::</span>kCanDelete<span class="token punctuation">,</span>
-   kMustCleanup      <span class="token operator">=</span> TObject<span class="token operator">::</span>kMustCleanup<span class="token punctuation">,</span>
-   kObjInCanvas      <span class="token operator">=</span> TObject<span class="token operator">::</span>kObjInCanvas<span class="token punctuation">,</span>
-   kIsReferenced     <span class="token operator">=</span> TObject<span class="token operator">::</span>kIsReferenced<span class="token punctuation">,</span>
-   kHasUUID          <span class="token operator">=</span> TObject<span class="token operator">::</span>kHasUUID<span class="token punctuation">,</span>
-   kCannotPick       <span class="token operator">=</span> TObject<span class="token operator">::</span>kCannotPick<span class="token punctuation">,</span>
-   kNoContextMenu    <span class="token operator">=</span> TObject<span class="token operator">::</span>kNoContextMenu<span class="token punctuation">,</span>
-   kInvalidObject    <span class="token operator">=</span> TObject<span class="token operator">::</span>kInvalidObject
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5168;&#x5C40;</span>
+<span class="hljs-comment">// Global bits (can be set for any object and should not be reused).</span>
+<span class="hljs-comment">// Only here for backward compatibility reasons.</span>
+<span class="hljs-comment">// For detailed description see TObject::EStatusBits above.</span>
+<span class="hljs-keyword">enum</span> EObjBits {
+   kCanDelete        = TObject::kCanDelete,
+   kMustCleanup      = TObject::kMustCleanup,
+   kObjInCanvas      = TObject::kObjInCanvas,
+   kIsReferenced     = TObject::kIsReferenced,
+   kHasUUID          = TObject::kHasUUID,
+   kCannotPick       = TObject::kCannotPick,
+   kNoContextMenu    = TObject::kNoContextMenu,
+   kInvalidObject    = TObject::kInvalidObject
+};
 </code></pre>
 <!-- TObject.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -4111,7 +4123,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TObject*","level":"1.6.3","depth":2,"next":{"title":"TSystemDirectory+","level":"1.6.4","depth":2,"path":"class/TSystemDirectory.md","ref":"class/TSystemDirectory.md","articles":[]},"previous":{"title":"TDirectoryFile*","level":"1.6.2","depth":2,"path":"class/TDirectoryFile.md","ref":"class/TDirectoryFile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TObject.md","mtime":"2018-05-14T09:18:22.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TObject*","level":"1.6.3","depth":2,"next":{"title":"TSystemDirectory+","level":"1.6.4","depth":2,"path":"class/TSystemDirectory.md","ref":"class/TSystemDirectory.md","articles":[]},"previous":{"title":"TDirectoryFile*","level":"1.6.2","depth":2,"path":"class/TDirectoryFile.md","ref":"class/TDirectoryFile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TObject.md","mtime":"2018-05-14T09:18:22.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4143,6 +4155,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

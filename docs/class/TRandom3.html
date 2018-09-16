@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,34 +3692,34 @@
 <p><strong>&#x7EE7;&#x627F; TRandom</strong></p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p>&#x9ED8;&#x8BA4;&#x968F;&#x673A;&#x79CD;&#x5B50; 4357</p>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// get the current seed (only first element of the seed table)</span>
-<span class="token keyword">virtual</span>  UInt_t    <span class="token function">GetSeed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMt<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-<span class="token keyword">virtual</span>  Double_t  <span class="token function">Rndm</span><span class="token punctuation">(</span>Int_t i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#xFF08;0&#xFF0C;1]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
-<span class="token comment">///  Machine independent random number generator.</span>
-<span class="token comment">///  Produces uniformly-distributed floating points in (0,1)</span>
-<span class="token comment">///  Method: Mersenne Twister</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// get the current seed (only first element of the seed table)</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  UInt_t    <span class="hljs-title">GetSeed</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMt[<span class="hljs-number">0</span>];}
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t  <span class="hljs-title">Rndm</span><span class="hljs-params">(Int_t i=<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">//&#xFF08;0&#xFF0C;1]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
+<span class="hljs-comment">///  Machine independent random number generator.</span>
+<span class="hljs-comment">///  Produces uniformly-distributed floating points in (0,1)</span>
+<span class="hljs-comment">///  Method: Mersenne Twister</span>
 
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>      <span class="token function">RndmArray</span><span class="token punctuation">(</span>Int_t n<span class="token punctuation">,</span> Float_t <span class="token operator">*</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return an array of n random numbers uniformly distributed in ]0,1]</span>
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>      <span class="token function">RndmArray</span><span class="token punctuation">(</span>Int_t n<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return an array of n random numbers uniformly distributed in ]0,1]</span>
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>      <span class="token function">SetSeed</span><span class="token punctuation">(</span>UInt_t seed<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///  Set the random generator sequence</span>
-<span class="token comment">/// if seed is 0 (default value) a TUUID is generated and used to fill</span>
-<span class="token comment">/// the first 8 integers of the seed array.</span>
-<span class="token comment">/// In this case the seed is guaranteed to be unique in space and time.</span>
-<span class="token comment">/// Use upgraded seeding procedure to fix a known problem when seeding with values</span>
-<span class="token comment">/// with many zero in the bit pattern (like 2**28).</span>
-<span class="token comment">/// see http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/emt19937ar.html</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>      <span class="hljs-title">RndmArray</span><span class="hljs-params">(Int_t n, Float_t *<span class="hljs-built_in">array</span>)</span></span>;<span class="hljs-comment">/// Return an array of n random numbers uniformly distributed in ]0,1]</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>      <span class="hljs-title">RndmArray</span><span class="hljs-params">(Int_t n, Double_t *<span class="hljs-built_in">array</span>)</span></span>;<span class="hljs-comment">/// Return an array of n random numbers uniformly distributed in ]0,1]</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>      <span class="hljs-title">SetSeed</span><span class="hljs-params">(UInt_t seed=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">///  Set the random generator sequence</span>
+<span class="hljs-comment">/// if seed is 0 (default value) a TUUID is generated and used to fill</span>
+<span class="hljs-comment">/// the first 8 integers of the seed array.</span>
+<span class="hljs-comment">/// In this case the seed is guaranteed to be unique in space and time.</span>
+<span class="hljs-comment">/// Use upgraded seeding procedure to fix a known problem when seeding with values</span>
+<span class="hljs-comment">/// with many zero in the bit pattern (like 2**28).</span>
+<span class="hljs-comment">/// see http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/emt19937ar.html</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TRandom1.h&quot;</span>          TRandom3 r(111);</span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TRandom2.h&quot;</span>          TRandom3 r(0);</span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TRandom3.h&quot;</span>          TRandom3 r(0);</span>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TRandom1.h&quot;</span>          TRandom3 r(111);</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TRandom2.h&quot;</span>          TRandom3 r(0);</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TRandom3.h&quot;</span>          TRandom3 r(0);</span>
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TRandom3.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3750,7 +3762,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TRandom3*","level":"1.2.73","depth":2,"next":{"title":"TROOT*","level":"1.2.74","depth":2,"path":"class/TROOT.md","ref":"class/TROOT.md","articles":[]},"previous":{"title":"TRandom2*","level":"1.2.72","depth":2,"path":"class/TRandom2.md","ref":"class/TRandom2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TRandom3.md","mtime":"2018-05-14T09:18:22.316Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TRandom3*","level":"1.2.73","depth":2,"next":{"title":"TROOT*","level":"1.2.74","depth":2,"path":"class/TROOT.md","ref":"class/TROOT.md","articles":[]},"previous":{"title":"TRandom2*","level":"1.2.72","depth":2,"path":"class/TRandom2.md","ref":"class/TRandom2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TRandom3.md","mtime":"2018-05-14T09:18:22.316Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3782,6 +3794,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

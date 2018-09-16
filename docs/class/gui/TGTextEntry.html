@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3677,350 +3689,350 @@
 ;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 <h1 id="tgtextentry"><a name="tgtextentry" class="plugin-anchor" href="#tgtextentry"><i class="fa fa-link" aria-hidden="true"></i></a>TGTextEntry</h1>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// A TGTextEntry is a one line text input widget.                       </span>
-<span class="token comment">//                                                                      </span>
-<span class="token comment">// Changing text in the text entry widget will generate the event:      </span>
-<span class="token comment">// kC_TEXTENTRY, kTE_TEXTCHANGED, widget id, 0.                         </span>
-<span class="token comment">// Hitting the enter key will generate:                                 </span>
-<span class="token comment">// kC_TEXTENTRY, kTE_ENTER, widget id, 0.                               </span>
-<span class="token comment">// Hitting the tab key will generate:                                   </span>
-<span class="token comment">// kC_TEXTENTRY, kTE_TAB, widget id, 0.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// A TGTextEntry is a one line text input widget.                       </span>
+<span class="hljs-comment">//                                                                      </span>
+<span class="hljs-comment">// Changing text in the text entry widget will generate the event:      </span>
+<span class="hljs-comment">// kC_TEXTENTRY, kTE_TEXTCHANGED, widget id, 0.                         </span>
+<span class="hljs-comment">// Hitting the enter key will generate:                                 </span>
+<span class="hljs-comment">// kC_TEXTENTRY, kTE_ENTER, widget id, 0.                               </span>
+<span class="hljs-comment">// Hitting the tab key will generate:                                   </span>
+<span class="hljs-comment">// kC_TEXTENTRY, kTE_TAB, widget id, 0.</span>
 </code></pre>
 <p>TGTextEntry &#x7EE7;&#x627F; TGFrame, TGWidget</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">enum</span>   EEchoMode <span class="token punctuation">{</span> kNormal<span class="token punctuation">,</span> kNoEcho<span class="token punctuation">,</span> kPassword <span class="token punctuation">}</span><span class="token punctuation">;</span>
-   <span class="token keyword">enum</span>   EInsertMode <span class="token punctuation">{</span> kInsert<span class="token punctuation">,</span> kReplace <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span>   EEchoMode { kNormal, kNoEcho, kPassword };
+   <span class="hljs-keyword">enum</span>   EInsertMode { kInsert, kReplace };
 
-   <span class="token keyword">static</span> FontStruct_t  <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return default font structure in use.</span>
-   <span class="token keyword">static</span> <span class="token keyword">const</span> TGGC   <span class="token operator">&amp;</span><span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return default graphics context.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure in use.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
 
-   <span class="token function">TGTextEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> TGTextBuffer <span class="token operator">*</span>text<span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-               GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-               FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-               UInt_t option <span class="token operator">=</span> kSunkenFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">,</span>
-               Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a text entry widget. It will adopt the TGTextBuffer object</span>
-<span class="token comment">/// (i.e. the text buffer will be deleted by the text entry widget).</span>
+   TGTextEntry(<span class="hljs-keyword">const</span> TGWindow *p, TGTextBuffer *text, Int_t id = <span class="hljs-number">-1</span>,
+               GContext_t norm = GetDefaultGC()(),
+               FontStruct_t font = GetDefaultFontStruct(),
+               UInt_t option = kSunkenFrame | kDoubleBorder,
+               Pixel_t back = GetWhitePixel());
+<span class="hljs-comment">/// Create a text entry widget. It will adopt the TGTextBuffer object</span>
+<span class="hljs-comment">/// (i.e. the text buffer will be deleted by the text entry widget).</span>
 
-   <span class="token function">TGTextEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Simple text entry constructor.</span>
-   <span class="token function">TGTextEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>contents<span class="token punctuation">,</span> <span class="token keyword">const</span> TGWindow <span class="token operator">*</span>parent<span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Simple test entry constructor. Notice TString argument comes before the</span>
-<span class="token comment">/// parent argument (to make this ctor different from the first one taking a</span>
-<span class="token comment">/// const char*).</span>
+   TGTextEntry(<span class="hljs-keyword">const</span> TGWindow *parent = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>);<span class="hljs-comment">/// Simple text entry constructor.</span>
+   TGTextEntry(<span class="hljs-keyword">const</span> TString &amp;contents, <span class="hljs-keyword">const</span> TGWindow *parent, Int_t id = <span class="hljs-number">-1</span>);
+<span class="hljs-comment">/// Simple test entry constructor. Notice TString argument comes before the</span>
+<span class="hljs-comment">/// parent argument (to make this ctor different from the first one taking a</span>
+<span class="hljs-comment">/// const char*).</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGTextEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">virtual</span> ~TGTextEntry();
 
-   <span class="token keyword">virtual</span>  TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return the default / minimal size of the widget.</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetDefaultSize</span><span class="token punctuation">(</span>UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the default / minimal size of the widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the default / minimal size of the widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetDefaultSize</span><span class="hljs-params">(UInt_t w, UInt_t h)</span></span>;
+<span class="hljs-comment">/// Set the default / minimal size of the widget.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">AppendText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Appends text to the end of text entry, clears the selection</span>
-<span class="token comment">/// and moves the cursor to the end of the line.</span>
-<span class="token comment">/// If necessary the text is truncated to fit MaxLength().</span>
-<span class="token comment">/// See also GetText(), InsertText(), SetText(), RemoveText().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">AppendText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span></span>;
+<span class="hljs-comment">/// Appends text to the end of text entry, clears the selection</span>
+<span class="hljs-comment">/// and moves the cursor to the end of the line.</span>
+<span class="hljs-comment">/// If necessary the text is truncated to fit MaxLength().</span>
+<span class="hljs-comment">/// See also GetText(), InsertText(), SetText(), RemoveText().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">Backspace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Deletes the character on the left side of the text cursor and moves the</span>
-<span class="token comment">/// cursor one position to the left. If a text has been marked by the user</span>
-<span class="token comment">/// (e.g. by clicking and dragging) the cursor will be put at the beginning</span>
-<span class="token comment">/// of the marked text and the marked text will be removed.</span>
-<span class="token comment">/// See also  Del().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">Backspace</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Deletes the character on the left side of the text cursor and moves the</span>
+<span class="hljs-comment">/// cursor one position to the left. If a text has been marked by the user</span>
+<span class="hljs-comment">/// (e.g. by clicking and dragging) the cursor will be put at the beginning</span>
+<span class="hljs-comment">/// of the marked text and the marked text will be removed.</span>
+<span class="hljs-comment">/// See also  Del().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Clears up the text entry.</span>
-            <span class="token keyword">void</span>        <span class="token function">CursorLeft</span><span class="token punctuation">(</span>Bool_t mark <span class="token operator">=</span> kFALSE <span class="token punctuation">,</span> Int_t steps <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Moves the cursor leftwards one or more characters.</span>
-<span class="token comment">/// See also CursorRight().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Clears up the text entry.</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">CursorLeft</span><span class="hljs-params">(Bool_t mark = kFALSE , Int_t steps = <span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Moves the cursor leftwards one or more characters.</span>
+<span class="hljs-comment">/// See also CursorRight().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">CursorRight</span><span class="token punctuation">(</span>Bool_t mark <span class="token operator">=</span> kFALSE <span class="token punctuation">,</span> Int_t steps <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Moves the cursor rightwards one or more characters.</span>
-<span class="token comment">/// See also CursorLeft().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">CursorRight</span><span class="hljs-params">(Bool_t mark = kFALSE , Int_t steps = <span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Moves the cursor rightwards one or more characters.</span>
+<span class="hljs-comment">/// See also CursorLeft().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">CursorWordForward</span><span class="token punctuation">(</span>Bool_t mark <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Moves the cursor one word to the right.  If mark is kTRUE, the text</span>
-<span class="token comment">/// is marked. See also CursorWordBackward().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">CursorWordForward</span><span class="hljs-params">(Bool_t mark = kFALSE)</span></span>;
+<span class="hljs-comment">/// Moves the cursor one word to the right.  If mark is kTRUE, the text</span>
+<span class="hljs-comment">/// is marked. See also CursorWordBackward().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">CursorWordBackward</span><span class="token punctuation">(</span>Bool_t mark <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Moves the cursor one word to the left.  If mark is kTRUE, the text</span>
-<span class="token comment">/// is marked. See also CursorWordForward().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">CursorWordBackward</span><span class="hljs-params">(Bool_t mark = kFALSE)</span></span>;
+<span class="hljs-comment">/// Moves the cursor one word to the left.  If mark is kTRUE, the text</span>
+<span class="hljs-comment">/// is marked. See also CursorWordForward().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">Cut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Copies the marked text to the clipboard and deletes it, if there is any.</span>
-<span class="token comment">/// See also CopyText() Paste().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">Cut</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Copies the marked text to the clipboard and deletes it, if there is any.</span>
+<span class="hljs-comment">/// See also CopyText() Paste().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">Del</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Deletes the character on the right side of the text cursor. If a text</span>
-<span class="token comment">/// has been marked by the user (e.g. by clicking and dragging) the cursor</span>
-<span class="token comment">/// will be put at the beginning of the marked text and the marked text will</span>
-<span class="token comment">/// be removed.</span>
-<span class="token comment">/// See also Backspace().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">Del</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Deletes the character on the right side of the text cursor. If a text</span>
+<span class="hljs-comment">/// has been marked by the user (e.g. by clicking and dragging) the cursor</span>
+<span class="hljs-comment">/// will be put at the beginning of the marked text and the marked text will</span>
+<span class="hljs-comment">/// be removed.</span>
+<span class="hljs-comment">/// See also Backspace().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">Deselect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Deselects all text (i.e. removes marking) and leaves the cursor at the current position.</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">DrawBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw the border of the text entry widget.</span>
-            <span class="token keyword">void</span>        <span class="token function">End</span><span class="token punctuation">(</span>Bool_t mark <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Moves the text cursor to the right end of the line. If mark is kTRUE text</span>
-<span class="token comment">/// will be marked towards the last position, if not any marked text will</span>
-<span class="token comment">/// be unmarked if the cursor is moved.</span>
-<span class="token comment">/// See also Home().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">Deselect</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Deselects all text (i.e. removes marking) and leaves the cursor at the current position.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw the border of the text entry widget.</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">End</span><span class="hljs-params">(Bool_t mark = kFALSE)</span></span>;
+<span class="hljs-comment">/// Moves the text cursor to the right end of the line. If mark is kTRUE text</span>
+<span class="hljs-comment">/// will be marked towards the last position, if not any marked text will</span>
+<span class="hljs-comment">/// be unmarked if the cursor is moved.</span>
+<span class="hljs-comment">/// See also Home().</span>
 
-   ETextJustification   <span class="token function">GetAlignment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>       <span class="token punctuation">{</span> <span class="token keyword">return</span> fAlignment<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token comment">//&#x83B7;&#x5F97;&#x6587;&#x672C;&#x7684;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;</span>
-   TGTextBuffer        <span class="token operator">*</span><span class="token function">GetBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fText<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            Int_t       <span class="token function">GetCursorPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>  <span class="token punctuation">{</span> <span class="token keyword">return</span> fCursorIX<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            TString     <span class="token function">GetDisplayText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns the text that&apos;s currently displayed.  This is normally</span>
-<span class="token comment">/// the same as GetText(), but can be e.g.</span>
-<span class="token comment">/// &quot;*****&quot; if EEchoMode is kPassword or</span>
-<span class="token comment">/// &quot;&quot;      if it is kNoEcho.</span>
+   <span class="hljs-function">ETextJustification   <span class="hljs-title">GetAlignment</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>       </span>{ <span class="hljs-keyword">return</span> fAlignment; }<span class="hljs-comment">//&#x83B7;&#x5F97;&#x6587;&#x672C;&#x7684;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;</span>
+   <span class="hljs-function">TGTextBuffer        *<span class="hljs-title">GetBuffer</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fText; }
+            <span class="hljs-function">Int_t       <span class="hljs-title">GetCursorPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{ <span class="hljs-keyword">return</span> fCursorIX; }
+            <span class="hljs-function">TString     <span class="hljs-title">GetDisplayText</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the text that&apos;s currently displayed.  This is normally</span>
+<span class="hljs-comment">/// the same as GetText(), but can be e.g.</span>
+<span class="hljs-comment">/// &quot;*****&quot; if EEchoMode is kPassword or</span>
+<span class="hljs-comment">/// &quot;&quot;      if it is kNoEcho.</span>
 
-   EEchoMode            <span class="token function">GetEchoMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>        <span class="token punctuation">{</span> <span class="token keyword">return</span> fEchoMode<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   EInsertMode          <span class="token function">GetInsertMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>      <span class="token punctuation">{</span> <span class="token keyword">return</span> fInsertMode<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            TString     <span class="token function">GetMarkedText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns the text marked by the user (e.g. by clicking and</span>
-<span class="token comment">/// dragging), or zero if no text is marked. See also HasMarkedText().</span>
+   <span class="hljs-function">EEchoMode            <span class="hljs-title">GetEchoMode</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>        </span>{ <span class="hljs-keyword">return</span> fEchoMode; }
+   <span class="hljs-function">EInsertMode          <span class="hljs-title">GetInsertMode</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>      </span>{ <span class="hljs-keyword">return</span> fInsertMode; }
+            <span class="hljs-function">TString     <span class="hljs-title">GetMarkedText</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the text marked by the user (e.g. by clicking and</span>
+<span class="hljs-comment">/// dragging), or zero if no text is marked. See also HasMarkedText().</span>
 
-            Int_t       <span class="token function">GetMaxLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>    <span class="token punctuation">{</span> <span class="token keyword">return</span> fMaxLen<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span>    <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fText<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGToolTip   <span class="token operator">*</span><span class="token function">GetToolTip</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTip<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span>  <span class="token operator">*</span><span class="token function">GetTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">GetText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            Bool_t      <span class="token function">HasMarkedText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>  <span class="token punctuation">{</span> <span class="token keyword">return</span> fSelectionOn <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>fStartIX <span class="token operator">!=</span> fEndIX<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            Pixel_t     <span class="token function">GetTextColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fNormGC<span class="token punctuation">.</span><span class="token function">GetForeground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           FontStruct_t <span class="token function">GetFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fFontStruct<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            <span class="token keyword">void</span>        <span class="token function">Home</span><span class="token punctuation">(</span>Bool_t mark <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Moves the text cursor to the left end of the line. If mark is kTRUE text</span>
-<span class="token comment">/// will be marked towards the first position, if not any marked text will</span>
-<span class="token comment">/// be unmarked if the cursor is moved.</span>
-<span class="token comment">/// See also End().</span>
+            <span class="hljs-function">Int_t       <span class="hljs-title">GetMaxLength</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>    </span>{ <span class="hljs-keyword">return</span> fMaxLen; }
+   <span class="hljs-function"><span class="hljs-keyword">const</span>    <span class="hljs-keyword">char</span>       *<span class="hljs-title">GetText</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fText-&gt;GetString(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGToolTip   *<span class="hljs-title">GetToolTip</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTip; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">GetTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> GetText(); }
+            <span class="hljs-function">Bool_t      <span class="hljs-title">HasMarkedText</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{ <span class="hljs-keyword">return</span> fSelectionOn &amp;&amp; (fStartIX != fEndIX); }
+            <span class="hljs-function">Pixel_t     <span class="hljs-title">GetTextColor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNormGC.GetForeground(); }
+           <span class="hljs-function">FontStruct_t <span class="hljs-title">GetFontStruct</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFontStruct; }
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">Home</span><span class="hljs-params">(Bool_t mark = kFALSE)</span></span>;
+<span class="hljs-comment">/// Moves the text cursor to the left end of the line. If mark is kTRUE text</span>
+<span class="hljs-comment">/// will be marked towards the first position, if not any marked text will</span>
+<span class="hljs-comment">/// be unmarked if the cursor is moved.</span>
+<span class="hljs-comment">/// See also End().</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">Insert</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Removes any currently selected text, inserts newText,</span>
-<span class="token comment">/// sets it as the new contents of the text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">Insert</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *)</span></span>;
+<span class="hljs-comment">/// Removes any currently selected text, inserts newText,</span>
+<span class="hljs-comment">/// sets it as the new contents of the text entry.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">InsertText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">,</span> Int_t pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Inserts text at position pos, clears the selection and moves</span>
-<span class="token comment">/// the cursor to the end of the line.</span>
-<span class="token comment">/// If necessary the text is truncated to fit MaxLength().</span>
-<span class="token comment">/// See also GetText(), SetText(), AppendText(), RemoveText().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">InsertText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, Int_t pos)</span></span>;
+<span class="hljs-comment">/// Inserts text at position pos, clears the selection and moves</span>
+<span class="hljs-comment">/// the cursor to the end of the line.</span>
+<span class="hljs-comment">/// If necessary the text is truncated to fit MaxLength().</span>
+<span class="hljs-comment">/// See also GetText(), SetText(), AppendText(), RemoveText().</span>
 
-            Bool_t      <span class="token function">IsFrameDrawn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>       <span class="token punctuation">{</span> <span class="token keyword">return</span> fFrameDrawn<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            Bool_t      <span class="token function">IsEdited</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>           <span class="token punctuation">{</span> <span class="token keyword">return</span> fEdited<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">UpdateOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            <span class="token keyword">void</span>        <span class="token function">MarkWord</span><span class="token punctuation">(</span>Int_t pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Marks the word nearest to cursor position. See also HandleDoubleClick().</span>
+            <span class="hljs-function">Bool_t      <span class="hljs-title">IsFrameDrawn</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>       </span>{ <span class="hljs-keyword">return</span> fFrameDrawn; }
+            <span class="hljs-function">Bool_t      <span class="hljs-title">IsEdited</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>           </span>{ <span class="hljs-keyword">return</span> fEdited; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">Layout</span><span class="hljs-params">()</span> </span>{ UpdateOffset(); }
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">MarkWord</span><span class="hljs-params">(Int_t pos)</span></span>;
+<span class="hljs-comment">/// Marks the word nearest to cursor position. See also HandleDoubleClick().</span>
 
-            Int_t       <span class="token function">MaxMark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fStartIX <span class="token operator">&gt;</span> fEndIX <span class="token operator">?</span> fStartIX <span class="token operator">:</span> fEndIX<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            Int_t       <span class="token function">MinMark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fStartIX <span class="token operator">&lt;</span> fEndIX <span class="token operator">?</span> fStartIX <span class="token operator">:</span> fEndIX<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-            <span class="token keyword">void</span>        <span class="token function">NewMark</span><span class="token punctuation">(</span>Int_t pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// New character mark at position pos. See also SetCursorPosition().</span>
+            <span class="hljs-function">Int_t       <span class="hljs-title">MaxMark</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStartIX &gt; fEndIX ? fStartIX : fEndIX; }
+            <span class="hljs-function">Int_t       <span class="hljs-title">MinMark</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStartIX &lt; fEndIX ? fStartIX : fEndIX; }
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">NewMark</span><span class="hljs-params">(Int_t pos)</span></span>;
+<span class="hljs-comment">/// New character mark at position pos. See also SetCursorPosition().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">Remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Deletes all characters on the right side of the cursor.</span>
-<span class="token comment">/// See also Del() Backspace().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">Remove</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Deletes all characters on the right side of the cursor.</span>
+<span class="hljs-comment">/// See also Del() Backspace().</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">RemoveText</span><span class="token punctuation">(</span>Int_t start<span class="token punctuation">,</span> Int_t end<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Removes text at the range, clears the selection and moves</span>
-<span class="token comment">/// the cursor to the end of the line.</span>
-<span class="token comment">/// See also GetText(), InsertText(), SetText(), AppendText().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">RemoveText</span><span class="hljs-params">(Int_t start, Int_t end)</span></span>;
+<span class="hljs-comment">/// Removes text at the range, clears the selection and moves</span>
+<span class="hljs-comment">/// the cursor to the end of the line.</span>
+<span class="hljs-comment">/// See also GetText(), InsertText(), SetText(), AppendText().</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetFont</span><span class="token punctuation">(</span>TGFont <span class="token operator">*</span>font<span class="token punctuation">,</span> Bool_t local <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text font specified by pointer to TGFont object. If local is kTRUE font is changed locally.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetFont</span><span class="hljs-params">(TGFont *font, Bool_t local = kTRUE)</span></span>;
+<span class="hljs-comment">/// Changes text font specified by pointer to TGFont object. If local is kTRUE font is changed locally.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetFont</span><span class="token punctuation">(</span>FontStruct_t font<span class="token punctuation">,</span> Bool_t local <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text font. If local is kTRUE font is changed locally.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetFont</span><span class="hljs-params">(FontStruct_t font, Bool_t local = kTRUE)</span></span>;
+<span class="hljs-comment">/// Changes text font. If local is kTRUE font is changed locally.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetFont</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>fontName<span class="token punctuation">,</span> Bool_t local <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text font specified by name. If local is kTRUE font is changed locally.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fontName, Bool_t local = kTRUE)</span></span>;
+<span class="hljs-comment">/// Changes text font specified by name. If local is kTRUE font is changed locally.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetTextColor</span><span class="token punctuation">(</span>Pixel_t color<span class="token punctuation">,</span> Bool_t local <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text color. If local is true color is changed locally.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetTextColor</span><span class="hljs-params">(Pixel_t color, Bool_t local = kTRUE)</span></span>;
+<span class="hljs-comment">/// Changes text color. If local is true color is changed locally.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetTextColor</span><span class="token punctuation">(</span>TColor <span class="token operator">*</span>color<span class="token punctuation">,</span> Bool_t local <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text color. If local is true color is changed locally.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetTextColor</span><span class="hljs-params">(TColor *color, Bool_t local = kTRUE)</span></span>;
+<span class="hljs-comment">/// Changes text color. If local is true color is changed locally.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">//*MENU*</span>
-<span class="token comment">/// Sets text entry to text, clears the selection and moves</span>
-<span class="token comment">/// the cursor to the end of the line.</span>
-<span class="token comment">/// If necessary the text is truncated to fit MaxLength().</span>
-<span class="token comment">/// See also  GetText().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, Bool_t emit = kTRUE)</span></span>;          <span class="hljs-comment">//*MENU*</span>
+<span class="hljs-comment">/// Sets text entry to text, clears the selection and moves</span>
+<span class="hljs-comment">/// the cursor to the end of the line.</span>
+<span class="hljs-comment">/// If necessary the text is truncated to fit MaxLength().</span>
+<span class="hljs-comment">/// See also  GetText().</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetToolTipText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">,</span> Long_t delayms <span class="token operator">=</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//*MENU* &#x8BBE;&#x7F6E;&#x9F20;&#x6807;&#x653E;&#x4E0A;&#x53BB;&#x5C06;&#x4F1A;&#x51FA;&#x73B0;&#x7684;&#x63D0;&#x9192;&#x6587;&#x5B57;</span>
-<span class="token comment">/// Set tool tip text associated with this text entry. The delay is in</span>
-<span class="token comment">/// milliseconds (minimum 250). To remove tool tip call method with text = 0.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetToolTipText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, Long_t delayms = <span class="hljs-number">500</span>)</span></span>;  <span class="hljs-comment">//*MENU* &#x8BBE;&#x7F6E;&#x9F20;&#x6807;&#x653E;&#x4E0A;&#x53BB;&#x5C06;&#x4F1A;&#x51FA;&#x73B0;&#x7684;&#x63D0;&#x9192;&#x6587;&#x5B57;</span>
+<span class="hljs-comment">/// Set tool tip text associated with this text entry. The delay is in</span>
+<span class="hljs-comment">/// milliseconds (minimum 250). To remove tool tip call method with text = 0.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetMaxLength</span><span class="token punctuation">(</span>Int_t maxlen<span class="token punctuation">)</span><span class="token punctuation">;</span>                              <span class="token comment">//*MENU*</span>
-<span class="token comment">/// Set the maximum length of the text in the editor.  If the text is</span>
-<span class="token comment">/// currently too long, it is chopped off at the limit. Any marked text will</span>
-<span class="token comment">/// be unmarked.  The cursor position is set to 0 and the first part of the</span>
-<span class="token comment">/// string is shown.</span>
-<span class="token comment">/// See  also GetMaxLength().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetMaxLength</span><span class="hljs-params">(Int_t maxlen)</span></span>;                              <span class="hljs-comment">//*MENU*</span>
+<span class="hljs-comment">/// Set the maximum length of the text in the editor.  If the text is</span>
+<span class="hljs-comment">/// currently too long, it is chopped off at the limit. Any marked text will</span>
+<span class="hljs-comment">/// be unmarked.  The cursor position is set to 0 and the first part of the</span>
+<span class="hljs-comment">/// string is shown.</span>
+<span class="hljs-comment">/// See  also GetMaxLength().</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SelectAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Selects all text (i.e. marks it) and moves the cursor to the</span>
-<span class="token comment">/// end. Useful when a default value has been inserted. If the user</span>
-<span class="token comment">/// types before clicking on the widget the selected text will be</span>
-<span class="token comment">/// erased.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SelectAll</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Selects all text (i.e. marks it) and moves the cursor to the</span>
+<span class="hljs-comment">/// end. Useful when a default value has been inserted. If the user</span>
+<span class="hljs-comment">/// types before clicking on the widget the selected text will be</span>
+<span class="hljs-comment">/// erased.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetAlignment</span><span class="token punctuation">(</span>ETextJustification mode <span class="token operator">=</span> kTextLeft<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//*SUBMENU*</span>
-<span class="token comment">// &#x8BBE;&#x7F6E;&#x6587;&#x672C;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;</span>
-<span class="token comment">/// Sets the alignment of the text entry.</span>
-<span class="token comment">/// Possible values are kTextLeft(default), kTextRight, kTextCenterX.</span>
-<span class="token comment">/// See also GetAlignment().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetAlignment</span><span class="hljs-params">(ETextJustification mode = kTextLeft)</span></span>;       <span class="hljs-comment">//*SUBMENU*</span>
+<span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6587;&#x672C;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;</span>
+<span class="hljs-comment">/// Sets the alignment of the text entry.</span>
+<span class="hljs-comment">/// Possible values are kTextLeft(default), kTextRight, kTextCenterX.</span>
+<span class="hljs-comment">/// See also GetAlignment().</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetInsertMode</span><span class="token punctuation">(</span>EInsertMode mode <span class="token operator">=</span> kInsert<span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">//*SUBMENU*</span>
-<span class="token comment">/// Sets the mode how characters are entered to the text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetInsertMode</span><span class="hljs-params">(EInsertMode mode = kInsert)</span></span>;               <span class="hljs-comment">//*SUBMENU*</span>
+<span class="hljs-comment">/// Sets the mode how characters are entered to the text entry.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetEchoMode</span><span class="token punctuation">(</span>EEchoMode mode <span class="token operator">=</span> kNormal<span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">//*SUBMENU*</span>
-<span class="token comment">/// The echo modes available are:</span>
-<span class="token comment">///  kNormal   - display characters as they are entered.  This is the default.</span>
-<span class="token comment">///  kNoEcho   - do not display anything.</span>
-<span class="token comment">///  kPassword - display asterisks instead of the characters actually entered.</span>
-<span class="token comment">/// It is always possible to cut and paste any marked text;  only the widget&apos;s own</span>
-<span class="token comment">/// display is affected.</span>
-<span class="token comment">/// See also GetEchoMode(), GetDisplayText().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetEchoMode</span><span class="hljs-params">(EEchoMode mode = kNormal)</span></span>;                   <span class="hljs-comment">//*SUBMENU*</span>
+<span class="hljs-comment">/// The echo modes available are:</span>
+<span class="hljs-comment">///  kNormal   - display characters as they are entered.  This is the default.</span>
+<span class="hljs-comment">///  kNoEcho   - do not display anything.</span>
+<span class="hljs-comment">///  kPassword - display asterisks instead of the characters actually entered.</span>
+<span class="hljs-comment">/// It is always possible to cut and paste any marked text;  only the widget&apos;s own</span>
+<span class="hljs-comment">/// display is affected.</span>
+<span class="hljs-comment">/// See also GetEchoMode(), GetDisplayText().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">SetEnabled</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetState</span><span class="token punctuation">(</span> flag <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>    <span class="token comment">//*TOGGLE* *GETTER=IsEnabled</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetCursorPosition</span><span class="token punctuation">(</span>Int_t pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the cursor position to newPos. See also NewMark().</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">SetEnabled</span><span class="hljs-params">(Bool_t flag = kTRUE)</span> </span>{ SetState( flag ); }    <span class="hljs-comment">//*TOGGLE* *GETTER=IsEnabled</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetCursorPosition</span><span class="hljs-params">(Int_t pos)</span></span>;
+<span class="hljs-comment">/// Set the cursor position to newPos. See also NewMark().</span>
 
-            <span class="token keyword">void</span>        <span class="token function">SetEdited</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fEdited <span class="token operator">=</span> flag<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetFocus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set focus to this text entry.</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetFrameDrawn</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Sets the text entry to draw itself inside a two-pixel frame if</span>
-<span class="token comment">/// enable is kTRUE, and to draw itself without any frame if enable is</span>
-<span class="token comment">/// kFALSE. The default is kTRUE.</span>
+            <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">SetEdited</span><span class="hljs-params">(Bool_t flag = kTRUE)</span> </span>{ fEdited = flag; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetFocus</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Set focus to this text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetFrameDrawn</span><span class="hljs-params">(Bool_t flag = kTRUE)</span></span>;
+<span class="hljs-comment">/// Sets the text entry to draw itself inside a two-pixel frame if</span>
+<span class="hljs-comment">/// enable is kTRUE, and to draw itself without any frame if enable is</span>
+<span class="hljs-comment">/// kFALSE. The default is kTRUE.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetState</span><span class="token punctuation">(</span>Bool_t state<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set state of widget. If kTRUE=enabled, kFALSE=disabled.</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>label<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetText</span><span class="token punctuation">(</span>label<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SetForegroundColor</span><span class="token punctuation">(</span>Pixel_t fore<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetTextColor</span><span class="token punctuation">(</span>fore<span class="token punctuation">,</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Pixel_t              <span class="token function">GetForeground</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fNormGC<span class="token punctuation">.</span><span class="token function">GetForeground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t               <span class="token function">HasOwnFont</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fHasOwnFont<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetState</span><span class="hljs-params">(Bool_t state)</span></span>;<span class="hljs-comment">/// Set state of widget. If kTRUE=enabled, kFALSE=disabled.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span> </span>{ SetText(label); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SetForegroundColor</span><span class="hljs-params">(Pixel_t fore)</span> </span>{ SetTextColor(fore, kFALSE); }
+   <span class="hljs-function">Pixel_t              <span class="hljs-title">GetForeground</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNormGC.GetForeground(); }
+   <span class="hljs-function">Bool_t               <span class="hljs-title">HasOwnFont</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fHasOwnFont; }
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a text entry widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a text entry widget as a C++ statement(s) on output stream out.</span>
 
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event in text entry widget.</span>
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleDoubleClick</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse double click event in the text entry widget.</span>
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleCrossing</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse crossing event.</span>
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in the text entry widget.</span>
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleKey</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// The key press event handler converts a key press to some line editor</span>
-<span class="token comment">/// action. Here are the default key bindings:</span>
-<span class="token comment">///   Left Arrow</span>
-<span class="token comment">///          Move the cursor one character leftwards.</span>
-<span class="token comment">///          Scroll the text when  cursor is out of frame.</span>
-<span class="token comment">///   Right Arrow</span>
-<span class="token comment">///          Move the cursor one character rightwards</span>
-<span class="token comment">///          Scroll the text when  cursor is out of frame.</span>
-<span class="token comment">///   Backspace</span>
-<span class="token comment">///          Deletes the character on the left side of the text cursor and moves the</span>
-<span class="token comment">///          cursor one position to the left. If a text has been marked by the user</span>
-<span class="token comment">///          (e.g. by clicking and dragging) the cursor will be put at the beginning</span>
-<span class="token comment">///          of the marked text and the marked text will be removed.</span>
-<span class="token comment">///   Home</span>
-<span class="token comment">///          Moves the text cursor to the left end of the line. If mark is TRUE text</span>
-<span class="token comment">///          will be marked towards the first position, if not any marked text will</span>
-<span class="token comment">///          be unmarked if the cursor is moved.</span>
-<span class="token comment">///   End</span>
-<span class="token comment">///          Moves the text cursor to the right end of the line. If mark is TRUE text</span>
-<span class="token comment">///          will be marked towards the last position, if not any marked text will</span>
-<span class="token comment">///          be unmarked if the cursor is moved.</span>
-<span class="token comment">///   Delete</span>
-<span class="token comment">///          Deletes the character on the right side of the text cursor. If a text</span>
-<span class="token comment">///          has been marked by the user (e.g. by clicking and dragging) the cursor</span>
-<span class="token comment">///          will be put at the beginning of the marked text and the marked text will</span>
-<span class="token comment">///          be removed.</span>
-<span class="token comment">///   Insert</span>
-<span class="token comment">///          Switches character insert mode.</span>
-<span class="token comment">///   Shift - Left Arrow</span>
-<span class="token comment">///          Mark text one character leftwards</span>
-<span class="token comment">///   Shift - Right Arrow</span>
-<span class="token comment">///          Mark text one character rightwards</span>
-<span class="token comment">///   Control - Left Arrow</span>
-<span class="token comment">///          Move the cursor one word leftwards</span>
-<span class="token comment">///   Control - Right Arrow</span>
-<span class="token comment">///          Move the cursor one word rightwards.</span>
-<span class="token comment">///   Control - Shift - Left Arrow</span>
-<span class="token comment">///          Mark text one word leftwards</span>
-<span class="token comment">///   Control - Shift - Right Arrow</span>
-<span class="token comment">///          Mark text one word rightwards</span>
-<span class="token comment">///   Control-A</span>
-<span class="token comment">///          Move the cursor to the beginning of the line</span>
-<span class="token comment">///   Control-B</span>
-<span class="token comment">///          Move the cursor one character leftwards</span>
-<span class="token comment">///   Control-C</span>
-<span class="token comment">///          Copy the marked text to the clipboard.</span>
-<span class="token comment">///   Control-D</span>
-<span class="token comment">///          Delete the character to the right of the cursor</span>
-<span class="token comment">///   Control-E</span>
-<span class="token comment">///          Move the cursor to the end of the line</span>
-<span class="token comment">///   Control-F</span>
-<span class="token comment">///          Move the cursor one character rightwards</span>
-<span class="token comment">///   Control-H</span>
-<span class="token comment">///          Delete the character to the left of the cursor</span>
-<span class="token comment">///   Control-K</span>
-<span class="token comment">///          Delete marked text if any or delete all</span>
-<span class="token comment">///          characters to the right of the cursor</span>
-<span class="token comment">///   Control-U</span>
-<span class="token comment">///          Delete all characters on the line</span>
-<span class="token comment">///   Control-V</span>
-<span class="token comment">///          Paste the clipboard text into line edit.</span>
-<span class="token comment">///   Control-X</span>
-<span class="token comment">///          Cut the marked text, copy to clipboard.</span>
-<span class="token comment">///   Control-Y</span>
-<span class="token comment">///          Paste the clipboard text into line edit.</span>
-<span class="token comment">///  All other keys with valid ASCII codes insert themselves into the line.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event in text entry widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleDoubleClick</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse double click event in the text entry widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse crossing event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in the text entry widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;
+<span class="hljs-comment">/// The key press event handler converts a key press to some line editor</span>
+<span class="hljs-comment">/// action. Here are the default key bindings:</span>
+<span class="hljs-comment">///   Left Arrow</span>
+<span class="hljs-comment">///          Move the cursor one character leftwards.</span>
+<span class="hljs-comment">///          Scroll the text when  cursor is out of frame.</span>
+<span class="hljs-comment">///   Right Arrow</span>
+<span class="hljs-comment">///          Move the cursor one character rightwards</span>
+<span class="hljs-comment">///          Scroll the text when  cursor is out of frame.</span>
+<span class="hljs-comment">///   Backspace</span>
+<span class="hljs-comment">///          Deletes the character on the left side of the text cursor and moves the</span>
+<span class="hljs-comment">///          cursor one position to the left. If a text has been marked by the user</span>
+<span class="hljs-comment">///          (e.g. by clicking and dragging) the cursor will be put at the beginning</span>
+<span class="hljs-comment">///          of the marked text and the marked text will be removed.</span>
+<span class="hljs-comment">///   Home</span>
+<span class="hljs-comment">///          Moves the text cursor to the left end of the line. If mark is TRUE text</span>
+<span class="hljs-comment">///          will be marked towards the first position, if not any marked text will</span>
+<span class="hljs-comment">///          be unmarked if the cursor is moved.</span>
+<span class="hljs-comment">///   End</span>
+<span class="hljs-comment">///          Moves the text cursor to the right end of the line. If mark is TRUE text</span>
+<span class="hljs-comment">///          will be marked towards the last position, if not any marked text will</span>
+<span class="hljs-comment">///          be unmarked if the cursor is moved.</span>
+<span class="hljs-comment">///   Delete</span>
+<span class="hljs-comment">///          Deletes the character on the right side of the text cursor. If a text</span>
+<span class="hljs-comment">///          has been marked by the user (e.g. by clicking and dragging) the cursor</span>
+<span class="hljs-comment">///          will be put at the beginning of the marked text and the marked text will</span>
+<span class="hljs-comment">///          be removed.</span>
+<span class="hljs-comment">///   Insert</span>
+<span class="hljs-comment">///          Switches character insert mode.</span>
+<span class="hljs-comment">///   Shift - Left Arrow</span>
+<span class="hljs-comment">///          Mark text one character leftwards</span>
+<span class="hljs-comment">///   Shift - Right Arrow</span>
+<span class="hljs-comment">///          Mark text one character rightwards</span>
+<span class="hljs-comment">///   Control - Left Arrow</span>
+<span class="hljs-comment">///          Move the cursor one word leftwards</span>
+<span class="hljs-comment">///   Control - Right Arrow</span>
+<span class="hljs-comment">///          Move the cursor one word rightwards.</span>
+<span class="hljs-comment">///   Control - Shift - Left Arrow</span>
+<span class="hljs-comment">///          Mark text one word leftwards</span>
+<span class="hljs-comment">///   Control - Shift - Right Arrow</span>
+<span class="hljs-comment">///          Mark text one word rightwards</span>
+<span class="hljs-comment">///   Control-A</span>
+<span class="hljs-comment">///          Move the cursor to the beginning of the line</span>
+<span class="hljs-comment">///   Control-B</span>
+<span class="hljs-comment">///          Move the cursor one character leftwards</span>
+<span class="hljs-comment">///   Control-C</span>
+<span class="hljs-comment">///          Copy the marked text to the clipboard.</span>
+<span class="hljs-comment">///   Control-D</span>
+<span class="hljs-comment">///          Delete the character to the right of the cursor</span>
+<span class="hljs-comment">///   Control-E</span>
+<span class="hljs-comment">///          Move the cursor to the end of the line</span>
+<span class="hljs-comment">///   Control-F</span>
+<span class="hljs-comment">///          Move the cursor one character rightwards</span>
+<span class="hljs-comment">///   Control-H</span>
+<span class="hljs-comment">///          Delete the character to the left of the cursor</span>
+<span class="hljs-comment">///   Control-K</span>
+<span class="hljs-comment">///          Delete marked text if any or delete all</span>
+<span class="hljs-comment">///          characters to the right of the cursor</span>
+<span class="hljs-comment">///   Control-U</span>
+<span class="hljs-comment">///          Delete all characters on the line</span>
+<span class="hljs-comment">///   Control-V</span>
+<span class="hljs-comment">///          Paste the clipboard text into line edit.</span>
+<span class="hljs-comment">///   Control-X</span>
+<span class="hljs-comment">///          Cut the marked text, copy to clipboard.</span>
+<span class="hljs-comment">///   Control-Y</span>
+<span class="hljs-comment">///          Paste the clipboard text into line edit.</span>
+<span class="hljs-comment">///  All other keys with valid ASCII codes insert themselves into the line.</span>
 
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleFocusChange</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle focus change event in text entry widget.</span>
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleSelection</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle text selection event.</span>
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleSelectionClear</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle selection clear event.</span>
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleSelectionRequest</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Handle request to send current clipboard contents to requestor window.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleFocusChange</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle focus change event in text entry widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleSelection</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle text selection event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleSelectionClear</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle selection clear event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleSelectionRequest</span><span class="hljs-params">(Event_t *event)</span></span>;
+<span class="hljs-comment">/// Handle request to send current clipboard contents to requestor window.</span>
 
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleTimer</span><span class="token punctuation">(</span>TTimer <span class="token operator">*</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle cursor blink timer.</span>
-   <span class="token keyword">virtual</span>  Bool_t      <span class="token function">HandleConfigureNotify</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handles resize events for this widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleTimer</span><span class="hljs-params">(TTimer *t)</span></span>;<span class="hljs-comment">/// Handle cursor blink timer.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Bool_t      <span class="hljs-title">HandleConfigureNotify</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handles resize events for this widget.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">TextChanged</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// This signal is emitted every time the text has changed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">TextChanged</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text = <span class="hljs-number">0</span>)</span></span>;      <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// This signal is emitted every time the text has changed.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">ReturnPressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// This signal is emitted when the return or enter key is pressed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">ReturnPressed</span><span class="hljs-params">()</span></span>;                        <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// This signal is emitted when the return or enter key is pressed.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">TabPressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                           <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// This signal is emitted when the &lt;TAB&gt; key is pressed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">TabPressed</span><span class="hljs-params">()</span></span>;                           <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// This signal is emitted when the &lt;TAB&gt; key is pressed.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">ShiftTabPressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// This signal is emitted when &lt;SHIFT&gt; and &lt;TAB&gt; keys are pressed.   </span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">ShiftTabPressed</span><span class="hljs-params">()</span></span>;                      <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// This signal is emitted when &lt;SHIFT&gt; and &lt;TAB&gt; keys are pressed.   </span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">CursorOutLeft</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// This signal is emitted when cursor is going out of left side.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">CursorOutLeft</span><span class="hljs-params">()</span></span>;                        <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// This signal is emitted when cursor is going out of left side.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">CursorOutRight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// This signal is emitted when cursor is going out of right side.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">CursorOutRight</span><span class="hljs-params">()</span></span>;                       <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// This signal is emitted when cursor is going out of right side.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">CursorOutUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                          <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// This signal is emitted when cursor is going out of upper side.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">CursorOutUp</span><span class="hljs-params">()</span></span>;                          <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// This signal is emitted when cursor is going out of upper side.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">CursorOutDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// This signal is emitted when cursor is going out of bottom side.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">CursorOutDown</span><span class="hljs-params">()</span></span>;                        <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// This signal is emitted when cursor is going out of bottom side.</span>
 
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>        <span class="token function">DoubleClicked</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// This signal is emitted when widget is double clicked.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">DoubleClicked</span><span class="hljs-params">()</span></span>;                        <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// This signal is emitted when widget is double clicked.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// TGTextEntry</span>
-<span class="token comment">// &#x5355;&#x4E2A;&#x6587;&#x672C;&#x6846;</span>
-TGTextEntry <span class="token operator">*</span>fTestText <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGTextEntry</span><span class="token punctuation">(</span>frame<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGTextBuffer</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fTestText<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetToolTipText</span><span class="token punctuation">(</span><span class="token string">&quot;This is a text entry widget&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fTestText<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Resize</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> fTestText<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetDefaultHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fTestText<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsTop <span class="token operator">|</span> kLHintsLeft<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// fTestText-&gt;Clear();//&#x6E05;&#x9664;&#x5185;&#x5BB9;</span>
-std<span class="token operator">::</span>string command <span class="token operator">=</span> fTestText<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TGTextEntry</span>
+<span class="hljs-comment">// &#x5355;&#x4E2A;&#x6587;&#x672C;&#x6846;</span>
+TGTextEntry *fTestText = <span class="hljs-keyword">new</span> TGTextEntry(frame, <span class="hljs-keyword">new</span> TGTextBuffer(<span class="hljs-number">100</span>));
+fTestText-&gt;SetToolTipText(<span class="hljs-string">&quot;This is a text entry widget&quot;</span>);
+fTestText-&gt;Resize(<span class="hljs-number">300</span>, fTestText-&gt;GetDefaultHeight());
+frame-&gt;AddFrame(fTestText, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsTop | kLHintsLeft, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+<span class="hljs-comment">// fTestText-&gt;Clear();//&#x6E05;&#x9664;&#x5185;&#x5BB9;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> command = fTestText-&gt;GetText();
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGTextEntry.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -4063,7 +4075,7 @@ std<span class="token operator">::</span>string command <span class="token opera
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGTextEntry*","level":"1.3.69","depth":2,"next":{"title":"TGTextView","level":"1.3.70","depth":2,"path":"class/gui/TGTextView.md","ref":"class/gui/TGTextView.md","articles":[]},"previous":{"title":"TGTextEditor","level":"1.3.68","depth":2,"path":"class/gui/TGTextEditor.md","ref":"class/gui/TGTextEditor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGTextEntry.md","mtime":"2018-05-14T09:18:21.723Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGTextEntry*","level":"1.3.69","depth":2,"next":{"title":"TGTextView","level":"1.3.70","depth":2,"path":"class/gui/TGTextView.md","ref":"class/gui/TGTextView.md","articles":[]},"previous":{"title":"TGTextEditor","level":"1.3.68","depth":2,"path":"class/gui/TGTextEditor.md","ref":"class/gui/TGTextEditor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGTextEntry.md","mtime":"2018-05-14T09:18:21.723Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4095,6 +4107,18 @@ std<span class="token operator">::</span>string command <span class="token opera
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

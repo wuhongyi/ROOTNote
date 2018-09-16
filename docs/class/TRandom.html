@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3678,7 +3690,7 @@
 ;; URL: http://wuhongyi.cn -->
 <h1 id="trandom"><a name="trandom" class="plugin-anchor" href="#trandom"><i class="fa fa-link" aria-hidden="true"></i></a>TRandom</h1>
 <p><strong>&#x7EE7;&#x627F; TNamed</strong></p>
-<pre class="language-"><code>This is the base class for the ROOT Random number generators. 
+<pre><code>This is the base class for the ROOT Random number generators. 
 This class defines the ROOT Random number interface and it should not be instantiated directly but used via its derived classes (e.g. TRandom1, TRandom2 or TRandom3). 
 Note that this class implements also a very simple generator (linear congruential) with periodicity = 10**9
 which is known to have defects (the lower random bits are correlated) and therefore should NOT be used in any statistical study.
@@ -3710,131 +3722,131 @@ to the function you would like to generate.
 </code></pre><h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p>&#x9ED8;&#x8BA4;&#x968F;&#x673A;&#x79CD;&#x5B50; 65539</p>
 <p>Simple Random number generator (periodicity = 10**9)</p>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">virtual</span>  Int_t    <span class="token function">Binomial</span><span class="token punctuation">(</span>Int_t ntot<span class="token punctuation">,</span> Double_t prob<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x4E8C;&#x9879;&#x5206;&#x5E03;</span>
-<span class="token comment">/// Generates a random integer N according to the binomial law.</span>
-<span class="token comment">/// Coded from Los Alamos report LA-5061-MS.</span>
-<span class="token comment">/// N is binomially distributed between 0 and ntot inclusive</span>
-<span class="token comment">/// with mean prob*ntot and prob is between 0 and 1.</span>
-<span class="token comment">/// Note: This function should not be used when ntot is large (say &gt;100).</span>
-<span class="token comment">/// The normal approximation is then recommended instead</span>
-<span class="token comment">/// (with mean =*ntot+0.5 and standard deviation sqrt(ntot*prob*(1-prob)).</span>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span>  Int_t    <span class="hljs-title">Binomial</span><span class="hljs-params">(Int_t ntot, Double_t prob)</span></span>;<span class="hljs-comment">//&#x4E8C;&#x9879;&#x5206;&#x5E03;</span>
+<span class="hljs-comment">/// Generates a random integer N according to the binomial law.</span>
+<span class="hljs-comment">/// Coded from Los Alamos report LA-5061-MS.</span>
+<span class="hljs-comment">/// N is binomially distributed between 0 and ntot inclusive</span>
+<span class="hljs-comment">/// with mean prob*ntot and prob is between 0 and 1.</span>
+<span class="hljs-comment">/// Note: This function should not be used when ntot is large (say &gt;100).</span>
+<span class="hljs-comment">/// The normal approximation is then recommended instead</span>
+<span class="hljs-comment">/// (with mean =*ntot+0.5 and standard deviation sqrt(ntot*prob*(1-prob)).</span>
 
-<span class="token keyword">virtual</span>  Double_t <span class="token function">BreitWigner</span><span class="token punctuation">(</span>Double_t mean<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t gamma<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Brei-Wigner&#x5206;&#x5E03;</span>
-<span class="token comment">/// Return a number distributed following a BreitWigner function with mean and gamma.</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">BreitWigner</span><span class="hljs-params">(Double_t mean=<span class="hljs-number">0</span>, Double_t gamma=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//Brei-Wigner&#x5206;&#x5E03;</span>
+<span class="hljs-comment">/// Return a number distributed following a BreitWigner function with mean and gamma.</span>
 
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">Circle</span><span class="token punctuation">(</span>Double_t <span class="token operator">&amp;</span>x<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>y<span class="token punctuation">,</span> Double_t r<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Generates random vectors, uniformly distributed over a circle of given radius.</span>
-<span class="token comment">///   Input : r = circle radius</span>
-<span class="token comment">///   Output: x,y a random 2-d vector of length r</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">Circle</span><span class="hljs-params">(Double_t &amp;x, Double_t &amp;y, Double_t r)</span></span>;
+<span class="hljs-comment">/// Generates random vectors, uniformly distributed over a circle of given radius.</span>
+<span class="hljs-comment">///   Input : r = circle radius</span>
+<span class="hljs-comment">///   Output: x,y a random 2-d vector of length r</span>
 
-<span class="token keyword">virtual</span>  Double_t <span class="token function">Exp</span><span class="token punctuation">(</span>Double_t tau<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x6307;&#x6570;&#x5206;&#x5E03;</span>
-<span class="token comment">/// Returns an exponential deviate.</span>
-<span class="token comment">///          exp( -t/tau )</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Exp</span><span class="hljs-params">(Double_t tau)</span></span>;<span class="hljs-comment">//&#x6307;&#x6570;&#x5206;&#x5E03;</span>
+<span class="hljs-comment">/// Returns an exponential deviate.</span>
+<span class="hljs-comment">///          exp( -t/tau )</span>
 
-<span class="token keyword">virtual</span>  Double_t <span class="token function">Gaus</span><span class="token punctuation">(</span>Double_t mean<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t sigma<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x9AD8;&#x65AF;&#x5206;&#x5E03;</span>
-<span class="token comment">/// Samples a random number from the standard Normal (Gaussian) Distribution</span>
-<span class="token comment">/// with the given mean and sigma.</span>
-<span class="token comment">/// Uses the Acceptance-complement ratio from W. Hoermann and G. Derflinger</span>
-<span class="token comment">/// This is one of the fastest existing method for generating normal random variables.</span>
-<span class="token comment">/// It is a factor 2/3 faster than the polar (Box-Muller) method used in the previous</span>
-<span class="token comment">/// version of TRandom::Gaus. The speed is comparable to the Ziggurat method (from Marsaglia)</span>
-<span class="token comment">/// implemented for example in GSL and available in the MathMore library.</span>
-<span class="token comment">/// REFERENCE:  - W. Hoermann and G. Derflinger (1990):</span>
-<span class="token comment">///              The ACR Method for generating normal random variables,</span>
-<span class="token comment">///              OR Spektrum 12 (1990), 181-185.</span>
-<span class="token comment">/// Implementation taken from</span>
-<span class="token comment">/// UNURAN (c) 2000  W. Hoermann &amp; J. Leydold, Institut f. Statistik, WU Wien</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Gaus</span><span class="hljs-params">(Double_t mean=<span class="hljs-number">0</span>, Double_t sigma=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//&#x9AD8;&#x65AF;&#x5206;&#x5E03;</span>
+<span class="hljs-comment">/// Samples a random number from the standard Normal (Gaussian) Distribution</span>
+<span class="hljs-comment">/// with the given mean and sigma.</span>
+<span class="hljs-comment">/// Uses the Acceptance-complement ratio from W. Hoermann and G. Derflinger</span>
+<span class="hljs-comment">/// This is one of the fastest existing method for generating normal random variables.</span>
+<span class="hljs-comment">/// It is a factor 2/3 faster than the polar (Box-Muller) method used in the previous</span>
+<span class="hljs-comment">/// version of TRandom::Gaus. The speed is comparable to the Ziggurat method (from Marsaglia)</span>
+<span class="hljs-comment">/// implemented for example in GSL and available in the MathMore library.</span>
+<span class="hljs-comment">/// REFERENCE:  - W. Hoermann and G. Derflinger (1990):</span>
+<span class="hljs-comment">///              The ACR Method for generating normal random variables,</span>
+<span class="hljs-comment">///              OR Spektrum 12 (1990), 181-185.</span>
+<span class="hljs-comment">/// Implementation taken from</span>
+<span class="hljs-comment">/// UNURAN (c) 2000  W. Hoermann &amp; J. Leydold, Institut f. Statistik, WU Wien</span>
 
-<span class="token keyword">virtual</span>  UInt_t   <span class="token function">GetSeed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fSeed<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">//&#x83B7;&#x5F97;&#x968F;&#x673A;&#x79CD;&#x5B50;</span>
-<span class="token keyword">virtual</span>  UInt_t   <span class="token function">Integer</span><span class="token punctuation">(</span>UInt_t imax<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#xFF08;0&#xFF0C;imax-1&#xFF09;&#x968F;&#x673A;&#x6574;&#x6570;</span>
-<span class="token keyword">virtual</span>  Double_t <span class="token function">Landau</span><span class="token punctuation">(</span>Double_t mean<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t sigma<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Landau&#x5206;&#x5E03;</span>
-<span class="token comment">/// Generate a random number following a Landau distribution</span>
-<span class="token comment">/// with location parameter mu and scale parameter sigma:</span>
-<span class="token comment">///      Landau( (x-mu)/sigma )</span>
-<span class="token comment">/// Note that mu is not the mpv(most probable value) of the Landa distribution</span>
-<span class="token comment">/// and sigma is not the standard deviation of the distribution which is not defined.</span>
-<span class="token comment">/// For mu  =0 and sigma=1, the mpv = -0.22278</span>
-<span class="token comment">/// The Landau random number generation is implemented using the</span>
-<span class="token comment">/// function landau_quantile(x,sigma), which provides</span>
-<span class="token comment">/// the inverse of the landau cumulative distribution.</span>
-<span class="token comment">/// landau_quantile has been converted from CERNLIB ranlan(G110).</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  UInt_t   <span class="hljs-title">GetSeed</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSeed;}<span class="hljs-comment">//&#x83B7;&#x5F97;&#x968F;&#x673A;&#x79CD;&#x5B50;</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  UInt_t   <span class="hljs-title">Integer</span><span class="hljs-params">(UInt_t imax)</span></span>;<span class="hljs-comment">//&#xFF08;0&#xFF0C;imax-1&#xFF09;&#x968F;&#x673A;&#x6574;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Landau</span><span class="hljs-params">(Double_t mean=<span class="hljs-number">0</span>, Double_t sigma=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//Landau&#x5206;&#x5E03;</span>
+<span class="hljs-comment">/// Generate a random number following a Landau distribution</span>
+<span class="hljs-comment">/// with location parameter mu and scale parameter sigma:</span>
+<span class="hljs-comment">///      Landau( (x-mu)/sigma )</span>
+<span class="hljs-comment">/// Note that mu is not the mpv(most probable value) of the Landa distribution</span>
+<span class="hljs-comment">/// and sigma is not the standard deviation of the distribution which is not defined.</span>
+<span class="hljs-comment">/// For mu  =0 and sigma=1, the mpv = -0.22278</span>
+<span class="hljs-comment">/// The Landau random number generation is implemented using the</span>
+<span class="hljs-comment">/// function landau_quantile(x,sigma), which provides</span>
+<span class="hljs-comment">/// the inverse of the landau cumulative distribution.</span>
+<span class="hljs-comment">/// landau_quantile has been converted from CERNLIB ranlan(G110).</span>
 
-<span class="token keyword">virtual</span>  Int_t    <span class="token function">Poisson</span><span class="token punctuation">(</span>Double_t mean<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x6CCA;&#x677E;&#x5206;&#x5E03;&#xFF08;&#x8FD4;&#x56DE;int&#xFF09;</span>
-<span class="token comment">/// Generates a random integer N according to a Poisson law.</span>
-<span class="token comment">/// Prob(N) = exp(-mean)*mean^N/Factorial(N)</span>
-<span class="token comment">/// Use a different procedure according to the mean value.</span>
-<span class="token comment">/// The algorithm is the same used by CLHEP.</span>
-<span class="token comment">/// For lower value (mean &lt; 25) use the rejection method based on</span>
-<span class="token comment">/// the exponential.</span>
-<span class="token comment">/// For higher values use a rejection method comparing with a Lorentzian</span>
-<span class="token comment">/// distribution, as suggested by several authors.</span>
-<span class="token comment">/// This routine since is returning 32 bits integer will not work for values</span>
-<span class="token comment">/// larger than 2*10**9.</span>
-<span class="token comment">/// One should then use the Trandom::PoissonD for such large values.</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Int_t    <span class="hljs-title">Poisson</span><span class="hljs-params">(Double_t mean)</span></span>;<span class="hljs-comment">//&#x6CCA;&#x677E;&#x5206;&#x5E03;&#xFF08;&#x8FD4;&#x56DE;int&#xFF09;</span>
+<span class="hljs-comment">/// Generates a random integer N according to a Poisson law.</span>
+<span class="hljs-comment">/// Prob(N) = exp(-mean)*mean^N/Factorial(N)</span>
+<span class="hljs-comment">/// Use a different procedure according to the mean value.</span>
+<span class="hljs-comment">/// The algorithm is the same used by CLHEP.</span>
+<span class="hljs-comment">/// For lower value (mean &lt; 25) use the rejection method based on</span>
+<span class="hljs-comment">/// the exponential.</span>
+<span class="hljs-comment">/// For higher values use a rejection method comparing with a Lorentzian</span>
+<span class="hljs-comment">/// distribution, as suggested by several authors.</span>
+<span class="hljs-comment">/// This routine since is returning 32 bits integer will not work for values</span>
+<span class="hljs-comment">/// larger than 2*10**9.</span>
+<span class="hljs-comment">/// One should then use the Trandom::PoissonD for such large values.</span>
 
-<span class="token keyword">virtual</span>  Double_t <span class="token function">PoissonD</span><span class="token punctuation">(</span>Double_t mean<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x6CCA;&#x677E;&#x5206;&#x5E03;&#xFF08;&#x8FD4;&#x56DE;double&#xFF09;</span>
-<span class="token comment">/// Generates a random number according to a Poisson law.</span>
-<span class="token comment">/// Prob(N) = exp(-mean)*mean^N/Factorial(N)</span>
-<span class="token comment">/// This function is a variant of TRandom::Poisson returning a double</span>
-<span class="token comment">/// instead of an integer.</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">PoissonD</span><span class="hljs-params">(Double_t mean)</span></span>;<span class="hljs-comment">//&#x6CCA;&#x677E;&#x5206;&#x5E03;&#xFF08;&#x8FD4;&#x56DE;double&#xFF09;</span>
+<span class="hljs-comment">/// Generates a random number according to a Poisson law.</span>
+<span class="hljs-comment">/// Prob(N) = exp(-mean)*mean^N/Factorial(N)</span>
+<span class="hljs-comment">/// This function is a variant of TRandom::Poisson returning a double</span>
+<span class="hljs-comment">/// instead of an integer.</span>
 
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">Rannor</span><span class="token punctuation">(</span>Float_t <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Return 2 numbers distributed following a gaussian with mean=0 and sigma=1.</span>
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">Rannor</span><span class="token punctuation">(</span>Double_t <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Return 2 numbers distributed following a gaussian with mean=0 and sigma=1.</span>
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">ReadRandom</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x4ECE;root&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x968F;&#x673A;&#x6570;&#x4EA7;&#x751F;&#x5668;</span>
-<span class="token comment">/// Reads saved random generator status from filename.</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">Rannor</span><span class="hljs-params">(Float_t &amp;a, Float_t &amp;b)</span></span>;<span class="hljs-comment">//Return 2 numbers distributed following a gaussian with mean=0 and sigma=1.</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">Rannor</span><span class="hljs-params">(Double_t &amp;a, Double_t &amp;b)</span></span>;<span class="hljs-comment">//Return 2 numbers distributed following a gaussian with mean=0 and sigma=1.</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadRandom</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename)</span></span>;<span class="hljs-comment">//&#x4ECE;root&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x968F;&#x673A;&#x6570;&#x4EA7;&#x751F;&#x5668;</span>
+<span class="hljs-comment">/// Reads saved random generator status from filename.</span>
 
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">SetSeed</span><span class="token punctuation">(</span>UInt_t seed<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x8BBE;&#x7F6E;&#x968F;&#x673A;&#x79CD;&#x5B50;</span>
-<span class="token comment">/// Set the random generator seed. Note that default value is zero, which is</span>
-<span class="token comment">/// different than the default value used when constructing the class.</span>
-<span class="token comment">/// If the seed is zero the seed is set to a random value</span>
-<span class="token comment">/// which in case of TRandom depends on the lowest 4 bytes of TUUID</span>
-<span class="token comment">/// The UUID will be identical if SetSeed(0) is called with time smaller than 100 ns</span>
-<span class="token comment">/// Instead if a different generator implementation is used (TRandom1, 2 or 3)</span>
-<span class="token comment">/// the seed is generated using a 128 bit UUID. This results in different seeds</span>
-<span class="token comment">/// and then random sequence for every SetSeed(0) call.</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetSeed</span><span class="hljs-params">(UInt_t seed=<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x968F;&#x673A;&#x79CD;&#x5B50;</span>
+<span class="hljs-comment">/// Set the random generator seed. Note that default value is zero, which is</span>
+<span class="hljs-comment">/// different than the default value used when constructing the class.</span>
+<span class="hljs-comment">/// If the seed is zero the seed is set to a random value</span>
+<span class="hljs-comment">/// which in case of TRandom depends on the lowest 4 bytes of TUUID</span>
+<span class="hljs-comment">/// The UUID will be identical if SetSeed(0) is called with time smaller than 100 ns</span>
+<span class="hljs-comment">/// Instead if a different generator implementation is used (TRandom1, 2 or 3)</span>
+<span class="hljs-comment">/// the seed is generated using a 128 bit UUID. This results in different seeds</span>
+<span class="hljs-comment">/// and then random sequence for every SetSeed(0) call.</span>
 
-<span class="token keyword">virtual</span>  Double_t <span class="token function">Rndm</span><span class="token punctuation">(</span>Int_t i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#xFF08;0&#xFF0C;1]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
-<span class="token comment">///  Machine independent random number generator.</span>
-<span class="token comment">///  Based on the BSD Unix (Rand) Linear congrential generator.</span>
-<span class="token comment">///  Produces uniformly-distributed floating points between 0 and 1.</span>
-<span class="token comment">///  Identical sequence on all machines of &gt;= 32 bits.</span>
-<span class="token comment">///  Periodicity = 2**31, generates a number in (0,1).</span>
-<span class="token comment">///  Note that this is a generator which is known to have defects</span>
-<span class="token comment">///  (the lower random bits are correlated) and therefore should NOT be</span>
-<span class="token comment">///  used in any statistical study).</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Rndm</span><span class="hljs-params">(Int_t i=<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">//&#xFF08;0&#xFF0C;1]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
+<span class="hljs-comment">///  Machine independent random number generator.</span>
+<span class="hljs-comment">///  Based on the BSD Unix (Rand) Linear congrential generator.</span>
+<span class="hljs-comment">///  Produces uniformly-distributed floating points between 0 and 1.</span>
+<span class="hljs-comment">///  Identical sequence on all machines of &gt;= 32 bits.</span>
+<span class="hljs-comment">///  Periodicity = 2**31, generates a number in (0,1).</span>
+<span class="hljs-comment">///  Note that this is a generator which is known to have defects</span>
+<span class="hljs-comment">///  (the lower random bits are correlated) and therefore should NOT be</span>
+<span class="hljs-comment">///  used in any statistical study).</span>
 
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">RndmArray</span><span class="token punctuation">(</span>Int_t n<span class="token punctuation">,</span> Float_t <span class="token operator">*</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return an array of n random numbers uniformly distributed in ]0,1].</span>
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">RndmArray</span><span class="token punctuation">(</span>Int_t n<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return an array of n random numbers uniformly distributed in ]0,1].</span>
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">Sphere</span><span class="token punctuation">(</span>Double_t <span class="token operator">&amp;</span>x<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>y<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>z<span class="token punctuation">,</span> Double_t r<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x83B7;&#x5F97;&#x5404;&#x5411;&#x540C;&#x6027;&#x7684;&#x62BD;&#x6837;</span>
-<span class="token comment">/// Generates random vectors, uniformly distributed over the surface</span>
-<span class="token comment">/// of a sphere of given radius.</span>
-<span class="token comment">///   Input : r = sphere radius</span>
-<span class="token comment">///   Output: x,y,z a random 3-d vector of length r</span>
-<span class="token comment">/// Method: (based on algorithm suggested by Knuth and attributed to Robert E Knop)</span>
-<span class="token comment">///         which uses less random numbers than the CERNLIB RN23DIM algorithm</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">RndmArray</span><span class="hljs-params">(Int_t n, Float_t *<span class="hljs-built_in">array</span>)</span></span>;<span class="hljs-comment">/// Return an array of n random numbers uniformly distributed in ]0,1].</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">RndmArray</span><span class="hljs-params">(Int_t n, Double_t *<span class="hljs-built_in">array</span>)</span></span>;<span class="hljs-comment">/// Return an array of n random numbers uniformly distributed in ]0,1].</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">Sphere</span><span class="hljs-params">(Double_t &amp;x, Double_t &amp;y, Double_t &amp;z, Double_t r)</span></span>;<span class="hljs-comment">//&#x83B7;&#x5F97;&#x5404;&#x5411;&#x540C;&#x6027;&#x7684;&#x62BD;&#x6837;</span>
+<span class="hljs-comment">/// Generates random vectors, uniformly distributed over the surface</span>
+<span class="hljs-comment">/// of a sphere of given radius.</span>
+<span class="hljs-comment">///   Input : r = sphere radius</span>
+<span class="hljs-comment">///   Output: x,y,z a random 3-d vector of length r</span>
+<span class="hljs-comment">/// Method: (based on algorithm suggested by Knuth and attributed to Robert E Knop)</span>
+<span class="hljs-comment">///         which uses less random numbers than the CERNLIB RN23DIM algorithm</span>
 
-<span class="token keyword">virtual</span>  Double_t <span class="token function">Uniform</span><span class="token punctuation">(</span>Double_t x1<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Returns a uniform deviate on the interval  (0, x1).</span>
-<span class="token keyword">virtual</span>  Double_t <span class="token function">Uniform</span><span class="token punctuation">(</span>Double_t x1<span class="token punctuation">,</span> Double_t x2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#xFF08;x1&#xFF0C;x2]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
-<span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">WriteRandom</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x5C06;&#x8BE5;&#x968F;&#x673A;&#x6570;&#x4EA7;&#x751F;&#x5668;&#x5B58;&#x4E3A;root&#x6587;&#x4EF6; Writes random generator status to filename.</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Uniform</span><span class="hljs-params">(Double_t x1=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">/// Returns a uniform deviate on the interval  (0, x1).</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Uniform</span><span class="hljs-params">(Double_t x1, Double_t x2)</span></span>;<span class="hljs-comment">//&#xFF08;x1&#xFF0C;x2]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
+<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteRandom</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename)</span></span>;<span class="hljs-comment">//&#x5C06;&#x8BE5;&#x968F;&#x673A;&#x6570;&#x4EA7;&#x751F;&#x5668;&#x5B58;&#x4E3A;root&#x6587;&#x4EF6; Writes random generator status to filename.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TRandom.h&quot;</span></span>
-TRandom r<span class="token punctuation">;</span>
-r<span class="token punctuation">.</span><span class="token function">Rndm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-r<span class="token punctuation">.</span><span class="token function">Gaus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-r<span class="token punctuation">.</span><span class="token function">Gaus</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TRandom.h&quot;</span></span>
+TRandom r;
+r.Rndm();
+r.Gaus();
+r.Gaus(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// A TRandom object may be written to a Root file : as part of another object or with its own key </span>
-gRandom<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token string">&quot;Random&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// A TRandom object may be written to a Root file : as part of another object or with its own key </span>
+gRandom-&gt;Write(<span class="hljs-string">&quot;Random&quot;</span>);
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
-<pre class="language-"><code class="lang-cpp">
+<pre><code class="lang-cpp">
 
 </code></pre>
 <!-- TRandom.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3877,7 +3889,7 @@ gRandom<span class="token operator">-</span><span class="token operator">&gt;</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TRandom*","level":"1.2.70","depth":2,"next":{"title":"TRandom1*","level":"1.2.71","depth":2,"path":"class/TRandom1.md","ref":"class/TRandom1.md","articles":[]},"previous":{"title":"TPSocket","level":"1.2.69","depth":2,"path":"class/TPSocket.md","ref":"class/TPSocket.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TRandom.md","mtime":"2018-05-14T09:18:22.719Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TRandom*","level":"1.2.70","depth":2,"next":{"title":"TRandom1*","level":"1.2.71","depth":2,"path":"class/TRandom1.md","ref":"class/TRandom1.md","articles":[]},"previous":{"title":"TPSocket","level":"1.2.69","depth":2,"path":"class/TPSocket.md","ref":"class/TPSocket.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TRandom.md","mtime":"2018-05-14T09:18:22.719Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3909,6 +3921,18 @@ gRandom<span class="token operator">-</span><span class="token operator">&gt;</s
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

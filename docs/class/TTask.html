@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3701,73 +3713,73 @@ of a task.</p>
 <p>A Task may be active or inactive (controlled by TTask::SetActive).
 When a task is not active, its sub tasks are not executed.</p>
 <p>A TTask tree may be made persistent, saving the status of all the tasks.</p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token keyword">const</span> TTask <span class="token operator">&amp;</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TTask<span class="token operator">&amp;</span> tt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TTask();
+   TTask(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title);
+   <span class="hljs-keyword">virtual</span> ~TTask();
+   TTask(<span class="hljs-keyword">const</span> TTask &amp;task);
+   TTask&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TTask&amp; tt);
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Add</span><span class="token punctuation">(</span>TTask <span class="token operator">*</span>task<span class="token punctuation">)</span> <span class="token punctuation">{</span>fTasks<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Browse</span><span class="token punctuation">(</span>TBrowser <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">CleanTasks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Continue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Exec</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">ExecuteTask</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;0&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">ExecuteTasks</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   Int_t         <span class="token function">GetBreakin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fBreakin<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t         <span class="token function">GetBreakout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fBreakout<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-         Bool_t  <span class="token function">IsActive</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fActive<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-         Bool_t  <span class="token function">IsFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;*&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU*</span>
-           <span class="token keyword">void</span>  <span class="token function">SetActive</span><span class="token punctuation">(</span>Bool_t active<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fActive <span class="token operator">=</span> active<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *TOGGLE*</span>
-           <span class="token keyword">void</span>  <span class="token function">SetBreakin</span><span class="token punctuation">(</span>Int_t breakin<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fBreakin <span class="token operator">=</span> breakin<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *TOGGLE*</span>
-           <span class="token keyword">void</span>  <span class="token function">SetBreakout</span><span class="token punctuation">(</span>Int_t breakout<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fBreakout <span class="token operator">=</span> breakout<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *TOGGLE*</span>
-   TList        <span class="token operator">*</span><span class="token function">GetListOfTasks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTasks<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Abort</span><span class="hljs-params">()</span></span>;  <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Add</span><span class="hljs-params">(TTask *task)</span> </span>{fTasks-&gt;Add(task);}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">CleanTasks</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Continue</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Exec</span><span class="hljs-params">(Option_t *option)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">ExecuteTask</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;0&quot;</span>)</span></span>;  <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">ExecuteTasks</span><span class="hljs-params">(Option_t *option)</span></span>;
+   <span class="hljs-function">Int_t         <span class="hljs-title">GetBreakin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fBreakin; }
+   <span class="hljs-function">Int_t         <span class="hljs-title">GetBreakout</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fBreakout; }
+         <span class="hljs-function">Bool_t  <span class="hljs-title">IsActive</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fActive; }
+         <span class="hljs-function">Bool_t  <span class="hljs-title">IsFolder</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;*&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;  <span class="hljs-comment">// *MENU*</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">SetActive</span><span class="hljs-params">(Bool_t active=kTRUE)</span> </span>{ fActive = active; } <span class="hljs-comment">// *TOGGLE*</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">SetBreakin</span><span class="hljs-params">(Int_t breakin=<span class="hljs-number">1</span>)</span> </span>{ fBreakin = breakin; } <span class="hljs-comment">// *TOGGLE*</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">SetBreakout</span><span class="hljs-params">(Int_t breakout=<span class="hljs-number">1</span>)</span> </span>{ fBreakout = breakout; } <span class="hljs-comment">// *TOGGLE*</span>
+   <span class="hljs-function">TList        *<span class="hljs-title">GetListOfTasks</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTasks; }
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//The Root browser&apos;s picture below has been generated by executing the following script:</span>
-<span class="token punctuation">{</span>
-   TTask <span class="token operator">*</span>aliroot  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;aliroot&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;ALICE reconstruction main task&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>geominit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;geomInit&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Initialize ALICE geometry&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>matinit  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;matInit&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Initialize ALICE materials&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>physinit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;physInit&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Initialize Physics processes&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>tracker  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;tracker&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Track reconstruction manager&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>tpcrec   <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;tpcrec&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;TPC reconstruction&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>itsrec   <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;itsrec&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;ITS reconstruction&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>muonrec  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;muonRec&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Muon Reconstruction&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>phosrec  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;phosRec&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Phos Reconstruction&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>richrec  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;richRec&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Rich Reconstruction&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>trdrec   <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;trdRec&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;TRD Reconstruction&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>globrec  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;globRec&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Global Track Reconstruction&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>pstats   <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;printStats&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Print Run Statistics&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>run      <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;run&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Process one run&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TTask <span class="token operator">*</span>event    <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TTask</span><span class="token punctuation">(</span><span class="token string">&quot;event&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Process one event&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   aliroot<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>geominit<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   aliroot<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>matinit<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   aliroot<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>physinit<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   aliroot<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>run<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   run<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   event<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>tracker<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   event<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>muonrec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   event<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>phosrec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   event<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>richrec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   event<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>trdrec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   event<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>globrec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   tracker<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>tpcrec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   tracker<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>itsrec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   run<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>pstats<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//The Root browser&apos;s picture below has been generated by executing the following script:</span>
+{
+   TTask *aliroot  = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;aliroot&quot;</span>,<span class="hljs-string">&quot;ALICE reconstruction main task&quot;</span>);
+   TTask *geominit = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;geomInit&quot;</span>,<span class="hljs-string">&quot;Initialize ALICE geometry&quot;</span>);
+   TTask *matinit  = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;matInit&quot;</span>,<span class="hljs-string">&quot;Initialize ALICE materials&quot;</span>);
+   TTask *physinit = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;physInit&quot;</span>,<span class="hljs-string">&quot;Initialize Physics processes&quot;</span>);
+   TTask *tracker  = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;tracker&quot;</span>,<span class="hljs-string">&quot;Track reconstruction manager&quot;</span>);
+   TTask *tpcrec   = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;tpcrec&quot;</span>,<span class="hljs-string">&quot;TPC reconstruction&quot;</span>);
+   TTask *itsrec   = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;itsrec&quot;</span>,<span class="hljs-string">&quot;ITS reconstruction&quot;</span>);
+   TTask *muonrec  = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;muonRec&quot;</span>,<span class="hljs-string">&quot;Muon Reconstruction&quot;</span>);
+   TTask *phosrec  = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;phosRec&quot;</span>,<span class="hljs-string">&quot;Phos Reconstruction&quot;</span>);
+   TTask *richrec  = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;richRec&quot;</span>,<span class="hljs-string">&quot;Rich Reconstruction&quot;</span>);
+   TTask *trdrec   = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;trdRec&quot;</span>,<span class="hljs-string">&quot;TRD Reconstruction&quot;</span>);
+   TTask *globrec  = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;globRec&quot;</span>,<span class="hljs-string">&quot;Global Track Reconstruction&quot;</span>);
+   TTask *pstats   = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;printStats&quot;</span>,<span class="hljs-string">&quot;Print Run Statistics&quot;</span>);
+   TTask *run      = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;run&quot;</span>,<span class="hljs-string">&quot;Process one run&quot;</span>);
+   TTask *event    = <span class="hljs-keyword">new</span> TTask(<span class="hljs-string">&quot;event&quot;</span>,<span class="hljs-string">&quot;Process one event&quot;</span>);
+   aliroot-&gt;Add(geominit);
+   aliroot-&gt;Add(matinit);
+   aliroot-&gt;Add(physinit);
+   aliroot-&gt;Add(run);
+   run-&gt;Add(event);
+   event-&gt;Add(tracker);
+   event-&gt;Add(muonrec);
+   event-&gt;Add(phosrec);
+   event-&gt;Add(richrec);
+   event-&gt;Add(trdrec);
+   event-&gt;Add(globrec);
+   tracker-&gt;Add(tpcrec);
+   tracker-&gt;Add(itsrec);
+   run-&gt;Add(pstats);
 
-   gROOT<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetListOfBrowsables</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>aliroot<span class="token punctuation">,</span><span class="token string">&quot;aliroot&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">new</span> TBrowser<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+   gROOT-&gt;GetListOfBrowsables()-&gt;Add(aliroot,<span class="hljs-string">&quot;aliroot&quot;</span>);
+   <span class="hljs-keyword">new</span> TBrowser;
+}
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TTask.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3810,7 +3822,7 @@ When a task is not active, its sub tasks are not executed.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TTask+","level":"1.6.6","depth":2,"next":{"title":"数据结构","level":"1.7","depth":1,"path":"structure/README.md","ref":"structure/README.md","articles":[{"title":"datarecord","level":"1.7.1","depth":2,"path":"structure/datarecord.md","ref":"structure/datarecord.md","articles":[]},{"title":"dobject","level":"1.7.2","depth":2,"path":"structure/dobject.md","ref":"structure/dobject.md","articles":[]},{"title":"freesegments","level":"1.7.3","depth":2,"path":"structure/freesegments.md","ref":"structure/freesegments.md","articles":[]},{"title":"gap","level":"1.7.4","depth":2,"path":"structure/gap.md","ref":"structure/gap.md","articles":[]},{"title":"header","level":"1.7.5","depth":2,"path":"structure/header.md","ref":"structure/header.md","articles":[]},{"title":"keyslist","level":"1.7.6","depth":2,"path":"structure/keyslist.md","ref":"structure/keyslist.md","articles":[]},{"title":"StreamerInfo","level":"1.7.7","depth":2,"path":"structure/StreamerInfo.md","ref":"structure/StreamerInfo.md","articles":[]},{"title":"TClonesArray","level":"1.7.8","depth":2,"path":"structure/TClonesArray.md","ref":"structure/TClonesArray.md","articles":[]},{"title":"TDirectory","level":"1.7.9","depth":2,"path":"structure/TDirectory.md","ref":"structure/TDirectory.md","articles":[]},{"title":"TFile","level":"1.7.10","depth":2,"path":"structure/TFile.md","ref":"structure/TFile.md","articles":[]},{"title":"TObject","level":"1.7.11","depth":2,"path":"structure/TObject.md","ref":"structure/TObject.md","articles":[]},{"title":"TProcessID","level":"1.7.12","depth":2,"path":"structure/TProcessID.md","ref":"structure/TProcessID.md","articles":[]},{"title":"TRefArray","level":"1.7.13","depth":2,"path":"structure/TRefArray.md","ref":"structure/TRefArray.md","articles":[]},{"title":"TRef","level":"1.7.14","depth":2,"path":"structure/TRef.md","ref":"structure/TRef.md","articles":[]},{"title":"TTree","level":"1.7.15","depth":2,"path":"structure/TTree.md","ref":"structure/TTree.md","articles":[]}]},"previous":{"title":"TSystemFile+","level":"1.6.5","depth":2,"path":"class/TSystemFile.md","ref":"class/TSystemFile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TTask.md","mtime":"2018-05-14T09:18:22.151Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TTask+","level":"1.6.6","depth":2,"next":{"title":"数据结构","level":"1.7","depth":1,"path":"structure/README.md","ref":"structure/README.md","articles":[{"title":"datarecord","level":"1.7.1","depth":2,"path":"structure/datarecord.md","ref":"structure/datarecord.md","articles":[]},{"title":"dobject","level":"1.7.2","depth":2,"path":"structure/dobject.md","ref":"structure/dobject.md","articles":[]},{"title":"freesegments","level":"1.7.3","depth":2,"path":"structure/freesegments.md","ref":"structure/freesegments.md","articles":[]},{"title":"gap","level":"1.7.4","depth":2,"path":"structure/gap.md","ref":"structure/gap.md","articles":[]},{"title":"header","level":"1.7.5","depth":2,"path":"structure/header.md","ref":"structure/header.md","articles":[]},{"title":"keyslist","level":"1.7.6","depth":2,"path":"structure/keyslist.md","ref":"structure/keyslist.md","articles":[]},{"title":"StreamerInfo","level":"1.7.7","depth":2,"path":"structure/StreamerInfo.md","ref":"structure/StreamerInfo.md","articles":[]},{"title":"TClonesArray","level":"1.7.8","depth":2,"path":"structure/TClonesArray.md","ref":"structure/TClonesArray.md","articles":[]},{"title":"TDirectory","level":"1.7.9","depth":2,"path":"structure/TDirectory.md","ref":"structure/TDirectory.md","articles":[]},{"title":"TFile","level":"1.7.10","depth":2,"path":"structure/TFile.md","ref":"structure/TFile.md","articles":[]},{"title":"TObject","level":"1.7.11","depth":2,"path":"structure/TObject.md","ref":"structure/TObject.md","articles":[]},{"title":"TProcessID","level":"1.7.12","depth":2,"path":"structure/TProcessID.md","ref":"structure/TProcessID.md","articles":[]},{"title":"TRefArray","level":"1.7.13","depth":2,"path":"structure/TRefArray.md","ref":"structure/TRefArray.md","articles":[]},{"title":"TRef","level":"1.7.14","depth":2,"path":"structure/TRef.md","ref":"structure/TRef.md","articles":[]},{"title":"TTree","level":"1.7.15","depth":2,"path":"structure/TTree.md","ref":"structure/TTree.md","articles":[]}]},"previous":{"title":"TSystemFile+","level":"1.6.5","depth":2,"path":"class/TSystemFile.md","ref":"class/TSystemFile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TTask.md","mtime":"2018-05-14T09:18:22.151Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3842,6 +3854,18 @@ When a task is not active, its sub tasks are not executed.</p>
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

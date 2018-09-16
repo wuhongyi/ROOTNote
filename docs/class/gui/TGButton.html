@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3677,73 +3689,73 @@
 ;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
 <h1 id="tgbutton"><a name="tgbutton" class="plugin-anchor" href="#tgbutton"><i class="fa fa-link" aria-hidden="true"></i></a>TGButton</h1>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGButton, TGTextButton, TGPictureButton, TGCheckButton,              //</span>
-<span class="token comment">// TGRadioButton and TGSplitButton                                      //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// This header defines all GUI button widgets.                          //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGButton is a button abstract base class. It defines general button  //</span>
-<span class="token comment">// behaviour.                                                           //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGTextButton and TGPictureButton yield an action as soon as they are //</span>
-<span class="token comment">// clicked. These buttons usually provide fast access to frequently     //</span>
-<span class="token comment">// used or critical commands. They may appear alone or placed in a      //</span>
-<span class="token comment">// group.                                                               //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The action they perform can be inscribed with a meaningful tooltip   //</span>
-<span class="token comment">// set by SetToolTipText(const char* text, Long_t delayms=400).         //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The text button has a label indicating the action to be taken when   //</span>
-<span class="token comment">// the button is pressed. The text can be a hot string (&quot;&amp;Exit&quot;) that   //</span>
-<span class="token comment">// defines the label &quot;Exit&quot; and keyboard mnemonics Alt+E for button     //</span>
-<span class="token comment">// selection. A button label can be changed by SetText(new_label).      //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting a text or picture button will generate the event:          //</span>
-<span class="token comment">// kC_COMMAND, kCM_BUTTON, button id, user data.                        //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The purpose of TGCheckButton and TGRadioButton is for selecting      //</span>
-<span class="token comment">// different options. Like text buttons, they have text or hot string   //</span>
-<span class="token comment">// as a label.                                                          //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Radio buttons are grouped usually in logical sets of two or more     //</span>
-<span class="token comment">// buttons to present mutually exclusive choices.                       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting a check button will generate the event:                    //</span>
-<span class="token comment">// kC_COMMAND, kCM_CHECKBUTTON, button id, user data.                   //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting a radio button will generate the event:                    //</span>
-<span class="token comment">// kC_COMMAND, kCM_RADIOBUTTON, button id, user data.                   //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// If a command string has been specified (via SetCommand()) then this  //</span>
-<span class="token comment">// command string will be executed via the interpreter whenever a       //</span>
-<span class="token comment">// button is selected. A command string can contain the macros:         //</span>
-<span class="token comment">// $MSG   -- kC_COMMAND, kCM[CHECK|RADIO]BUTTON packed message          //</span>
-<span class="token comment">//           (use GET_MSG() and GET_SUBMSG() to unpack)                 //</span>
-<span class="token comment">// $PARM1 -- button id                                                  //</span>
-<span class="token comment">// $PARM2 -- user data pointer                                          //</span>
-<span class="token comment">// Before executing these macros are expanded into the respective       //</span>
-<span class="token comment">// Long_t&apos;s                                                             //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGSplitButton implements a button with added menu functionality.     //</span>
-<span class="token comment">// There are 2 modes of operation available.                            //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// If the button is split, a menu will popup when the menu area of the  //</span>
-<span class="token comment">// button is clicked. Activating a menu item changes the functionality  //</span>
-<span class="token comment">// of the button by having it emit a additional signal when it is       //</span>
-<span class="token comment">// clicked. The signal emitted when the button is clicked, is the       //</span>
-<span class="token comment">// ItemClicked(Int_t) signal with a different fixed value for the       //</span>
-<span class="token comment">// Int_t that corresponds to the id of the activated menu entry.        //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// If the button is not split, clicking it will popup the menu and the  //</span>
-<span class="token comment">// ItemClicked(Int_t) signal will be emitted when a menu entry is       //</span>
-<span class="token comment">// acitvated. The value of the Int_t is again equal to the value of     //</span>
-<span class="token comment">// the id of the activated menu entry.                                  //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The mode of operation of a SplitButton can be changed on the fly     //</span>
-<span class="token comment">// by calling the SetSplit(Bool_t) method.                              //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGButton, TGTextButton, TGPictureButton, TGCheckButton,              //</span>
+<span class="hljs-comment">// TGRadioButton and TGSplitButton                                      //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// This header defines all GUI button widgets.                          //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGButton is a button abstract base class. It defines general button  //</span>
+<span class="hljs-comment">// behaviour.                                                           //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGTextButton and TGPictureButton yield an action as soon as they are //</span>
+<span class="hljs-comment">// clicked. These buttons usually provide fast access to frequently     //</span>
+<span class="hljs-comment">// used or critical commands. They may appear alone or placed in a      //</span>
+<span class="hljs-comment">// group.                                                               //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The action they perform can be inscribed with a meaningful tooltip   //</span>
+<span class="hljs-comment">// set by SetToolTipText(const char* text, Long_t delayms=400).         //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The text button has a label indicating the action to be taken when   //</span>
+<span class="hljs-comment">// the button is pressed. The text can be a hot string (&quot;&amp;Exit&quot;) that   //</span>
+<span class="hljs-comment">// defines the label &quot;Exit&quot; and keyboard mnemonics Alt+E for button     //</span>
+<span class="hljs-comment">// selection. A button label can be changed by SetText(new_label).      //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting a text or picture button will generate the event:          //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_BUTTON, button id, user data.                        //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The purpose of TGCheckButton and TGRadioButton is for selecting      //</span>
+<span class="hljs-comment">// different options. Like text buttons, they have text or hot string   //</span>
+<span class="hljs-comment">// as a label.                                                          //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Radio buttons are grouped usually in logical sets of two or more     //</span>
+<span class="hljs-comment">// buttons to present mutually exclusive choices.                       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting a check button will generate the event:                    //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_CHECKBUTTON, button id, user data.                   //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting a radio button will generate the event:                    //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_RADIOBUTTON, button id, user data.                   //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// If a command string has been specified (via SetCommand()) then this  //</span>
+<span class="hljs-comment">// command string will be executed via the interpreter whenever a       //</span>
+<span class="hljs-comment">// button is selected. A command string can contain the macros:         //</span>
+<span class="hljs-comment">// $MSG   -- kC_COMMAND, kCM[CHECK|RADIO]BUTTON packed message          //</span>
+<span class="hljs-comment">//           (use GET_MSG() and GET_SUBMSG() to unpack)                 //</span>
+<span class="hljs-comment">// $PARM1 -- button id                                                  //</span>
+<span class="hljs-comment">// $PARM2 -- user data pointer                                          //</span>
+<span class="hljs-comment">// Before executing these macros are expanded into the respective       //</span>
+<span class="hljs-comment">// Long_t&apos;s                                                             //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGSplitButton implements a button with added menu functionality.     //</span>
+<span class="hljs-comment">// There are 2 modes of operation available.                            //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// If the button is split, a menu will popup when the menu area of the  //</span>
+<span class="hljs-comment">// button is clicked. Activating a menu item changes the functionality  //</span>
+<span class="hljs-comment">// of the button by having it emit a additional signal when it is       //</span>
+<span class="hljs-comment">// clicked. The signal emitted when the button is clicked, is the       //</span>
+<span class="hljs-comment">// ItemClicked(Int_t) signal with a different fixed value for the       //</span>
+<span class="hljs-comment">// Int_t that corresponds to the id of the activated menu entry.        //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// If the button is not split, clicking it will popup the menu and the  //</span>
+<span class="hljs-comment">// ItemClicked(Int_t) signal will be emitted when a menu entry is       //</span>
+<span class="hljs-comment">// acitvated. The value of the Int_t is again equal to the value of     //</span>
+<span class="hljs-comment">// the id of the activated menu entry.                                  //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The mode of operation of a SplitButton can be changed on the fly     //</span>
+<span class="hljs-comment">// by calling the SetSplit(Bool_t) method.                              //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 </code></pre>
 <p>TGButton &#x7EE7;&#x627F; TGFrame, TGWidget &#xFF0C; friend TGButtonGroup  </p>
 <p>TGTextButton &#x7EE7;&#x627F; TGButton</p>
@@ -3752,378 +3764,378 @@
 <p>TGRadioButton &#x7EE7;&#x627F; TGButton</p>
 <p>TGSplitButton &#x7EE7;&#x627F; TGTextButton</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//--- Button states</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//--- Button states</span>
 
-<span class="token keyword">enum</span> EButtonState <span class="token punctuation">{</span>
-   kButtonUp<span class="token punctuation">,</span>
-   kButtonDown<span class="token punctuation">,</span>
-   kButtonEngaged<span class="token punctuation">,</span>
+<span class="hljs-keyword">enum</span> EButtonState {
+   kButtonUp,
+   kButtonDown,
+   kButtonEngaged,
    kButtonDisabled
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+};
 </code></pre>
 <p><strong>TGButton</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">static</span> <span class="token keyword">const</span> TGGC   <span class="token operator">&amp;</span><span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return default graphics context.</span>
-   <span class="token keyword">static</span> <span class="token keyword">const</span> TGGC   <span class="token operator">&amp;</span><span class="token function">GetHibckgndGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return graphics context for highlighted frame background.</span>
+<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetHibckgndGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return graphics context for highlighted frame background.</span>
 
-   <span class="token function">TGButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            UInt_t option <span class="token operator">=</span> kRaisedFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TGButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
+            UInt_t option = kRaisedFrame | kDoubleBorder);
+   <span class="hljs-keyword">virtual</span> ~TGButton();
 
-   <span class="token keyword">virtual</span> Bool_t       <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event.</span>
-   <span class="token keyword">virtual</span> Bool_t       <span class="token function">HandleCrossing</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse crossing event.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetUserData</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>userData<span class="token punctuation">)</span> <span class="token punctuation">{</span> fUserData <span class="token operator">=</span> userData<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token operator">*</span><span class="token function">GetUserData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fUserData<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetToolTipText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">,</span> Long_t delayms <span class="token operator">=</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//*MENU*</span>
-<span class="token comment">/// Set tool tip text associated with this button. The delay is in</span>
-<span class="token comment">/// milliseconds (minimum 250). To remove tool tip call method with</span>
-<span class="token comment">/// text = 0.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse crossing event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetUserData</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *userData)</span> </span>{ fUserData = userData; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        *<span class="hljs-title">GetUserData</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fUserData; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetToolTipText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, Long_t delayms = <span class="hljs-number">400</span>)</span></span>;  <span class="hljs-comment">//*MENU*</span>
+<span class="hljs-comment">/// Set tool tip text associated with this button. The delay is in</span>
+<span class="hljs-comment">/// milliseconds (minimum 250). To remove tool tip call method with</span>
+<span class="hljs-comment">/// text = 0.</span>
 
-   <span class="token keyword">virtual</span> TGToolTip   <span class="token operator">*</span><span class="token function">GetToolTip</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTip<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetState</span><span class="token punctuation">(</span>EButtonState state<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set button state.</span>
-   <span class="token keyword">virtual</span> EButtonState <span class="token function">GetState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fState<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">AllowStayDown</span><span class="token punctuation">(</span>Bool_t a<span class="token punctuation">)</span> <span class="token punctuation">{</span> fStayDown <span class="token operator">=</span> a<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetGroup</span><span class="token punctuation">(</span>TGButtonGroup <span class="token operator">*</span>gr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Sets new button-group for this button.</span>
-   TGButtonGroup       <span class="token operator">*</span><span class="token function">GetGroup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fGroup<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGToolTip   *<span class="hljs-title">GetToolTip</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTip; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;<span class="hljs-comment">/// Set button state.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> EButtonState <span class="hljs-title">GetState</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fState; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">AllowStayDown</span><span class="hljs-params">(Bool_t a)</span> </span>{ fStayDown = a; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetGroup</span><span class="hljs-params">(TGButtonGroup *gr)</span></span>;<span class="hljs-comment">/// Sets new button-group for this button.</span>
+   <span class="hljs-function">TGButtonGroup       *<span class="hljs-title">GetGroup</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fGroup; }
 
-   <span class="token keyword">virtual</span> Bool_t       <span class="token function">IsDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">// { return !(fOptions &amp; kRaisedFrame); }</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetDown</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t       <span class="token function">IsOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetOn</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span>  Bool_t emit <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetDown</span><span class="token punctuation">(</span>on<span class="token punctuation">,</span> emit<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t       <span class="token function">IsToggleButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t       <span class="token function">IsExclusiveToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">Toggle</span><span class="token punctuation">(</span>Bool_t emit <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetDown</span><span class="token punctuation">(</span><span class="token function">IsDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> kFALSE <span class="token operator">:</span> kTRUE<span class="token punctuation">,</span> emit<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetEnabled</span><span class="token punctuation">(</span>Bool_t e <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//*TOGGLE* *GETTER=IsEnabled</span>
-<span class="token comment">/// Set enabled or disabled state of button</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">IsDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// { return !(fOptions &amp; kRaisedFrame); }</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetDown</span><span class="hljs-params">(Bool_t on = kTRUE, Bool_t emit = kFALSE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">IsOn</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsDown(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetOn</span><span class="hljs-params">(Bool_t on = kTRUE,  Bool_t emit = kFALSE)</span> </span>{ SetDown(on, emit); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">IsToggleButton</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">IsExclusiveToggle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">Toggle</span><span class="hljs-params">(Bool_t emit = kFALSE)</span> </span>{ SetDown(IsDown() ? kFALSE : kTRUE, emit); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetEnabled</span><span class="hljs-params">(Bool_t e = kTRUE)</span></span>; <span class="hljs-comment">//*TOGGLE* *GETTER=IsEnabled</span>
+<span class="hljs-comment">/// Set enabled or disabled state of button</span>
 
-   <span class="token keyword">virtual</span> UInt_t       <span class="token function">GetStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fStyle<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetStyle</span><span class="token punctuation">(</span>UInt_t newstyle<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the button style (modern or classic).</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetStyle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>style<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the button style (modern or classic).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> UInt_t       <span class="hljs-title">GetStyle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStyle; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetStyle</span><span class="hljs-params">(UInt_t newstyle)</span></span>;<span class="hljs-comment">/// Set the button style (modern or classic).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetStyle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *style)</span></span>;<span class="hljs-comment">/// Set the button style (modern or classic).</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a button widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a button widget as a C++ statement(s) on output stream out.</span>
 
-   GContext_t <span class="token function">GetNormGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fNormGC<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">GContext_t <span class="hljs-title">GetNormGC</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNormGC; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Pressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Pressed()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Released</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Released()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Clicked</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Clicked()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Toggled</span><span class="token punctuation">(</span>Bool_t on<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Toggled(Bool_t)&quot;</span><span class="token punctuation">,</span> on<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Pressed</span><span class="hljs-params">()</span>  </span>{ Emit(<span class="hljs-string">&quot;Pressed()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Released</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;Released()&quot;</span>); }  <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Clicked</span><span class="hljs-params">()</span>  </span>{ Emit(<span class="hljs-string">&quot;Clicked()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Toggled</span><span class="hljs-params">(Bool_t on)</span> </span>{ Emit(<span class="hljs-string">&quot;Toggled(Bool_t)&quot;</span>, on); }  <span class="hljs-comment">// *SIGNAL*</span>
 </code></pre>
 <p><strong>TGTextButton</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">static</span> FontStruct_t <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return default font structure.</span>
+<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
 
-   <span class="token function">TGTextButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> TGHotString <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                UInt_t option <span class="token operator">=</span> kRaisedFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a text button widget. The hotstring will be adopted and deleted</span>
-<span class="token comment">/// by the text button.</span>
+   TGTextButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *s, Int_t id = <span class="hljs-number">-1</span>,
+                GContext_t norm = GetDefaultGC()(),
+                FontStruct_t font = GetDefaultFontStruct(),
+                UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a text button widget. The hotstring will be adopted and deleted</span>
+<span class="hljs-comment">/// by the text button.</span>
 
-   <span class="token function">TGTextButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                UInt_t option <span class="token operator">=</span> kRaisedFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a text button widget.</span>
+   TGTextButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+                GContext_t norm = GetDefaultGC()(),
+                FontStruct_t font = GetDefaultFontStruct(),
+                UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a text button widget.</span>
 
-   <span class="token function">TGTextButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cmd<span class="token punctuation">,</span>
-                Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                UInt_t option <span class="token operator">=</span> kRaisedFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a text button widget and set cmd string at same time.</span>
+   TGTextButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cmd,
+                Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
+                FontStruct_t font = GetDefaultFontStruct(),
+                UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a text button widget and set cmd string at same time.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGTextButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete a text button widget.</span>
+   <span class="hljs-keyword">virtual</span> ~TGTextButton();<span class="hljs-comment">/// Delete a text button widget.</span>
 
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// returns default size</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// returns default size</span>
 
-   <span class="token keyword">virtual</span> Bool_t     <span class="token function">HandleKey</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t     <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;
+<span class="hljs-comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
 
-   <span class="token keyword">const</span> TGHotString <span class="token operator">*</span><span class="token function">GetText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLabel<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLabel<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TString            <span class="token function">GetString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TString</span><span class="token punctuation">(</span>fLabel<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetTextJustify</span><span class="token punctuation">(</span>Int_t tmode<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set text justification. Mode is an OR of the bits:</span>
-<span class="token comment">/// kTextTop, kTextBottom, kTextLeft, kTextRight, kTextCenterX and</span>
-<span class="token comment">/// kTextCenterY.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGHotString *<span class="hljs-title">GetText</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLabel; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLabel-&gt;Data(); }
+   <span class="hljs-function">TString            <span class="hljs-title">GetString</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TString(fLabel-&gt;GetString()); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTextJustify</span><span class="hljs-params">(Int_t tmode)</span></span>;
+<span class="hljs-comment">/// Set text justification. Mode is an OR of the bits:</span>
+<span class="hljs-comment">/// kTextTop, kTextBottom, kTextLeft, kTextRight, kTextCenterX and</span>
+<span class="hljs-comment">/// kTextCenterY.</span>
 
-   Int_t <span class="token function">GetTextJustify</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTMode<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetText</span><span class="token punctuation">(</span>TGHotString <span class="token operator">*</span>new_label<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set new button text.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetText</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>new_label<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set new button text.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>label<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetText</span><span class="token punctuation">(</span>label<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetFont</span><span class="token punctuation">(</span>FontStruct_t font<span class="token punctuation">,</span> Bool_t global <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text font.</span>
-<span class="token comment">/// If global is kTRUE font is changed globally, otherwise - locally.</span>
+   <span class="hljs-function">Int_t <span class="hljs-title">GetTextJustify</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTMode; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetText</span><span class="hljs-params">(TGHotString *new_label)</span></span>;<span class="hljs-comment">/// Set new button text.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TString &amp;new_label)</span></span>;<span class="hljs-comment">/// Set new button text.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span> </span>{ SetText(label); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetFont</span><span class="hljs-params">(FontStruct_t font, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font.</span>
+<span class="hljs-comment">/// If global is kTRUE font is changed globally, otherwise - locally.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetFont</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>fontName<span class="token punctuation">,</span> Bool_t global <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text font specified by name.</span>
-<span class="token comment">/// If global is true color is changed globally, otherwise - locally.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fontName, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font specified by name.</span>
+<span class="hljs-comment">/// If global is true color is changed globally, otherwise - locally.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetTextColor</span><span class="token punctuation">(</span>Pixel_t color<span class="token punctuation">,</span> Bool_t global <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text color.</span>
-<span class="token comment">/// If global is true color is changed globally, otherwise - locally.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTextColor</span><span class="hljs-params">(Pixel_t color, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text color.</span>
+<span class="hljs-comment">/// If global is true color is changed globally, otherwise - locally.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetForegroundColor</span><span class="token punctuation">(</span>Pixel_t fore<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetTextColor</span><span class="token punctuation">(</span>fore<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t             <span class="token function">HasOwnFont</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns kTRUE if text attributes are unique,</span>
-<span class="token comment">/// returns kFALSE if text attributes are shared (global).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetForegroundColor</span><span class="hljs-params">(Pixel_t fore)</span> </span>{ SetTextColor(fore); }
+   <span class="hljs-function">Bool_t             <span class="hljs-title">HasOwnFont</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns kTRUE if text attributes are unique,</span>
+<span class="hljs-comment">/// returns kFALSE if text attributes are shared (global).</span>
 
-   <span class="token keyword">void</span>               <span class="token function">SetWrapLength</span><span class="token punctuation">(</span>Int_t wl<span class="token punctuation">)</span> <span class="token punctuation">{</span> fWrapLength <span class="token operator">=</span> wl<span class="token punctuation">;</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t              <span class="token function">GetWrapLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fWrapLength<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>               <span class="token function">SetMargins</span><span class="token punctuation">(</span>Int_t left<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t right<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t top<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t bottom<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span> fMLeft <span class="token operator">=</span> left<span class="token punctuation">;</span> fMRight <span class="token operator">=</span> right<span class="token punctuation">;</span> fMTop <span class="token operator">=</span> top<span class="token punctuation">;</span> fMBottom <span class="token operator">=</span> bottom<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>               <span class="hljs-title">SetWrapLength</span><span class="hljs-params">(Int_t wl)</span> </span>{ fWrapLength = wl; Layout(); }
+   <span class="hljs-function">Int_t              <span class="hljs-title">GetWrapLength</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWrapLength; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>               <span class="hljs-title">SetMargins</span><span class="hljs-params">(Int_t left=<span class="hljs-number">0</span>, Int_t right=<span class="hljs-number">0</span>, Int_t top=<span class="hljs-number">0</span>, Int_t bottom=<span class="hljs-number">0</span>)</span>
+                        </span>{ fMLeft = left; fMRight = right; fMTop = top; fMBottom = bottom; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetLeftMargin</span><span class="token punctuation">(</span>Int_t val<span class="token punctuation">)</span>   <span class="token punctuation">{</span> fMLeft <span class="token operator">=</span> val<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetRightMargin</span><span class="token punctuation">(</span>Int_t val<span class="token punctuation">)</span>  <span class="token punctuation">{</span> fMRight <span class="token operator">=</span> val<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetTopMargin</span><span class="token punctuation">(</span>Int_t val<span class="token punctuation">)</span>    <span class="token punctuation">{</span> fMTop <span class="token operator">=</span> val<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetBottomMargin</span><span class="token punctuation">(</span>Int_t val<span class="token punctuation">)</span> <span class="token punctuation">{</span> fMBottom <span class="token operator">=</span> val<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetLeftMargin</span><span class="hljs-params">(Int_t val)</span>   </span>{ fMLeft = val; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetRightMargin</span><span class="hljs-params">(Int_t val)</span>  </span>{ fMRight = val; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTopMargin</span><span class="hljs-params">(Int_t val)</span>    </span>{ fMTop = val; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetBottomMargin</span><span class="hljs-params">(Int_t val)</span> </span>{ fMBottom = val; }
 
-   Int_t              <span class="token function">GetLeftMargin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMLeft<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t              <span class="token function">GetRightMargin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMRight<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t              <span class="token function">GetTopMargin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMTop<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t              <span class="token function">GetBottomMargin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMBottom<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Int_t              <span class="hljs-title">GetLeftMargin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMLeft; }
+   <span class="hljs-function">Int_t              <span class="hljs-title">GetRightMargin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMRight; }
+   <span class="hljs-function">Int_t              <span class="hljs-title">GetTopMargin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMTop; }
+   <span class="hljs-function">Int_t              <span class="hljs-title">GetBottomMargin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMBottom; }
 
-   <span class="token keyword">void</span>               <span class="token function">ChangeText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token function">SetTitle</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//*MENU*icon=bld_rename.png*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>               <span class="hljs-title">ChangeText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title)</span>  </span>{ SetTitle(title); } <span class="hljs-comment">//*MENU*icon=bld_rename.png*</span>
 
-   FontStruct_t <span class="token function">GetFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fFontStruct<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">FontStruct_t <span class="hljs-title">GetFontStruct</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFontStruct; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// layout text button</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a text button widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// layout text button</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a text button widget as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <p><strong>TGPictureButton</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGPictureButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">const</span> TGPicture <span class="token operator">*</span>pic<span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                   GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                   UInt_t option <span class="token operator">=</span> kRaisedFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a picture button widget. The picture is not adopted and must</span>
-<span class="token comment">/// later be freed by the user once the picture button is deleted (a single</span>
-<span class="token comment">/// picture reference might be used by other buttons).</span>
+<pre><code class="lang-cpp">   TGPictureButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> TGPicture *pic, Int_t id = <span class="hljs-number">-1</span>,
+                   GContext_t norm = GetDefaultGC()(),
+                   UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a picture button widget. The picture is not adopted and must</span>
+<span class="hljs-comment">/// later be freed by the user once the picture button is deleted (a single</span>
+<span class="hljs-comment">/// picture reference might be used by other buttons).</span>
 
-   <span class="token function">TGPictureButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">const</span> TGPicture <span class="token operator">*</span>pic<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cmd<span class="token punctuation">,</span>
-                   Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                   UInt_t option <span class="token operator">=</span> kRaisedFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a picture button widget and set action command. The picture is</span>
-<span class="token comment">/// not adopted and must later be freed by the user once the picture button</span>
-<span class="token comment">/// is deleted (a single picture reference might be used by other</span>
-<span class="token comment">/// buttons).</span>
+   TGPictureButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> TGPicture *pic, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cmd,
+                   Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
+                   UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a picture button widget and set action command. The picture is</span>
+<span class="hljs-comment">/// not adopted and must later be freed by the user once the picture button</span>
+<span class="hljs-comment">/// is deleted (a single picture reference might be used by other</span>
+<span class="hljs-comment">/// buttons).</span>
 
-   <span class="token function">TGPictureButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> pic <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                   GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                   UInt_t option <span class="token operator">=</span> kRaisedFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a picture button. Where pic is the file name of the picture.</span>
+   TGPictureButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* pic = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+                   GContext_t norm = GetDefaultGC()(),
+                   UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a picture button. Where pic is the file name of the picture.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGPictureButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Destructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TGPictureButton();<span class="hljs-comment">/// Destructor.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetPicture</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGPicture <span class="token operator">*</span>new_pic<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Change a picture in a picture button. The picture is not adopted and</span>
-<span class="token comment">/// must later be freed by the user once the picture button is deleted</span>
-<span class="token comment">/// (a single picture reference might be used by other buttons).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetPicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *new_pic)</span></span>;
+<span class="hljs-comment">/// Change a picture in a picture button. The picture is not adopted and</span>
+<span class="hljs-comment">/// must later be freed by the user once the picture button is deleted</span>
+<span class="hljs-comment">/// (a single picture reference might be used by other buttons).</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetDisabledPicture</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGPicture <span class="token operator">*</span>pic<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Changes disabled picture.</span>
-   <span class="token keyword">const</span> TGPicture <span class="token operator">*</span><span class="token function">GetPicture</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPic<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-   <span class="token keyword">const</span> TGPicture <span class="token operator">*</span><span class="token function">GetDisabledPicture</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPicD<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a picture button widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetDisabledPicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *pic)</span></span>;<span class="hljs-comment">/// Changes disabled picture.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetPicture</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPic; };
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetDisabledPicture</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPicD; };
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a picture button widget as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <p><strong>TGCheckButton</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">static</span> FontStruct_t  <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return default font structure.</span>
-   <span class="token keyword">static</span> <span class="token keyword">const</span> TGGC   <span class="token operator">&amp;</span><span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return default graphics context.</span>
+<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
 
-   <span class="token function">TGCheckButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> TGHotString <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                 GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 UInt_t option <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a check button widget. The hotstring will be adopted and deleted</span>
-<span class="token comment">/// by the check button.</span>
+   TGCheckButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *s, Int_t id = <span class="hljs-number">-1</span>,
+                 GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 UInt_t option = <span class="hljs-number">0</span>);
+<span class="hljs-comment">/// Create a check button widget. The hotstring will be adopted and deleted</span>
+<span class="hljs-comment">/// by the check button.</span>
 
-   <span class="token function">TGCheckButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                 GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 UInt_t option <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a check button widget.</span>
+   TGCheckButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+                 GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 UInt_t option = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a check button widget.</span>
 
-   <span class="token function">TGCheckButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cmd<span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                 GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 UInt_t option <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a check button widget.</span>
+   TGCheckButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cmd, Int_t id = <span class="hljs-number">-1</span>,
+                 GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 UInt_t option = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a check button widget.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGCheckButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete a check button.</span>
+   <span class="hljs-keyword">virtual</span> ~TGCheckButton();<span class="hljs-comment">/// Delete a check button.</span>
 
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// default size</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// default size</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleKey</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleCrossing</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse crossing event.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsToggleButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fState <span class="token operator">==</span> kButtonDown<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fState <span class="token operator">==</span> kButtonDown<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsDisabledAndSelected</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fState <span class="token operator">==</span> kButtonDisabled<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> fStateOn<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetDisabledAndSelected</span><span class="token punctuation">(</span>Bool_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the state of a check button to disabled and either on or off.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse crossing event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsToggleButton</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsOn</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fState == kButtonDown; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fState == kButtonDown; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDisabledAndSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> ((fState == kButtonDisabled) &amp;&amp; fStateOn); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetDisabledAndSelected</span><span class="hljs-params">(Bool_t)</span></span>;
+<span class="hljs-comment">/// Set the state of a check button to disabled and either on or off.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetState</span><span class="token punctuation">(</span>EButtonState state<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set check button state.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a check button widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;<span class="hljs-comment">/// Set check button state.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a check button widget as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <p><strong>TGRadioButton</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">static</span> FontStruct_t  <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return default font structure.</span>
-   <span class="token keyword">static</span> <span class="token keyword">const</span> TGGC   <span class="token operator">&amp;</span><span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return default graphics context.</span>
+<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">static</span> FontStruct_t  <span class="hljs-title">GetDefaultFontStruct</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default font structure.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> TGGC   &amp;<span class="hljs-title">GetDefaultGC</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return default graphics context.</span>
 
-   <span class="token function">TGRadioButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> TGHotString <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                 GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 UInt_t option <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a radio button widget. The hotstring will be adopted and deleted</span>
-<span class="token comment">/// by the radio button.</span>
+   TGRadioButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *s, Int_t id = <span class="hljs-number">-1</span>,
+                 GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 UInt_t option = <span class="hljs-number">0</span>);
+<span class="hljs-comment">/// Create a radio button widget. The hotstring will be adopted and deleted</span>
+<span class="hljs-comment">/// by the radio button.</span>
 
-   <span class="token function">TGRadioButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                 GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 UInt_t option <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a radio button widget.</span>
-   <span class="token function">TGRadioButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cmd<span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                 GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 UInt_t option <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a radio button widget.</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGRadioButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete a radio button.</span>
+   TGRadioButton(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+                 GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 UInt_t option = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a radio button widget.</span>
+   TGRadioButton(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cmd, Int_t id = <span class="hljs-number">-1</span>,
+                 GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 UInt_t option = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a radio button widget.</span>
+   <span class="hljs-keyword">virtual</span> ~TGRadioButton();<span class="hljs-comment">/// Delete a radio button.</span>
 
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// default size</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// default size</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleKey</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;
+   <span class="hljs-comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleCrossing</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse crossing event.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetState</span><span class="token punctuation">(</span>EButtonState state<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set radio button state.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetDisabledAndSelected</span><span class="token punctuation">(</span>Bool_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the state of a radio button to disabled and either on or off.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse crossing event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetState</span><span class="hljs-params">(EButtonState state, Bool_t emit = kFALSE)</span></span>;<span class="hljs-comment">/// Set radio button state.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetDisabledAndSelected</span><span class="hljs-params">(Bool_t)</span></span>;
+<span class="hljs-comment">/// Set the state of a radio button to disabled and either on or off.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsToggleButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsExclusiveToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fStateOn<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fStateOn<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsDisabledAndSelected</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fState <span class="token operator">==</span> kButtonDisabled<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> fStateOn<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a radio button widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsToggleButton</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsExclusiveToggle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsOn</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStateOn; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStateOn; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsDisabledAndSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> ((fState == kButtonDisabled) &amp;&amp; fStateOn); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a radio button widget as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <p><strong>TGSplitButton</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGSplitButton</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> TGHotString <span class="token operator">*</span>menulabel<span class="token punctuation">,</span>
-                TGPopupMenu <span class="token operator">*</span>popmenu<span class="token punctuation">,</span> Bool_t split <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span>
-                Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                FontStruct_t fontstruct <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                UInt_t option <span class="token operator">=</span> kRaisedFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a menu button widget. The hotstring will be adopted and</span>
-<span class="token comment">/// deleted by the menu button. This constructior creates a</span>
-<span class="token comment">/// menubutton with a popup menu attached that appears when the</span>
-<span class="token comment">/// button for it is clicked. The popup menu is adopted.</span>
+<pre><code class="lang-cpp">   TGSplitButton(<span class="hljs-keyword">const</span> TGWindow *p, TGHotString *menulabel,
+                TGPopupMenu *popmenu, Bool_t split = kTRUE,
+                Int_t id = <span class="hljs-number">-1</span>, GContext_t norm = GetDefaultGC()(),
+                FontStruct_t fontstruct = GetDefaultFontStruct(),
+                UInt_t option = kRaisedFrame | kDoubleBorder);
+<span class="hljs-comment">/// Create a menu button widget. The hotstring will be adopted and</span>
+<span class="hljs-comment">/// deleted by the menu button. This constructior creates a</span>
+<span class="hljs-comment">/// menubutton with a popup menu attached that appears when the</span>
+<span class="hljs-comment">/// button for it is clicked. The popup menu is adopted.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGSplitButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete a split button widget.</span>
+   <span class="hljs-keyword">virtual</span> ~TGSplitButton();<span class="hljs-comment">/// Delete a split button widget.</span>
 
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">;</span><span class="token comment">/// returns default size</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>;<span class="hljs-comment">/// returns default size</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetText</span><span class="token punctuation">(</span>TGHotString <span class="token operator">*</span>new_label<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set new button text.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetText</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>new_label<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set new button text.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetFont</span><span class="token punctuation">(</span>FontStruct_t font<span class="token punctuation">,</span> Bool_t global <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text font.</span>
-<span class="token comment">/// If global is kTRUE font is changed globally, otherwise - locally.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetText</span><span class="hljs-params">(TGHotString *new_label)</span></span>;<span class="hljs-comment">/// Set new button text.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TString &amp;new_label)</span></span>;<span class="hljs-comment">/// Set new button text.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetFont</span><span class="hljs-params">(FontStruct_t font, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font.</span>
+<span class="hljs-comment">/// If global is kTRUE font is changed globally, otherwise - locally.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetFont</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>fontName<span class="token punctuation">,</span> Bool_t global <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Changes text font specified by name.</span>
-<span class="token comment">/// If global is true color is changed globally, otherwise - locally.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fontName, Bool_t global = kFALSE)</span></span>;
+<span class="hljs-comment">/// Changes text font specified by name.</span>
+<span class="hljs-comment">/// If global is true color is changed globally, otherwise - locally.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetMBState</span><span class="token punctuation">(</span>EButtonState state<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the state of the Menu Button part</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetSplit</span><span class="token punctuation">(</span>Bool_t split<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the split status of a button.</span>
-   Bool_t         <span class="token function">IsSplit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fSplit<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle button events.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleCrossing</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse crossing event.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleKey</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetMBState</span><span class="hljs-params">(EButtonState state)</span></span>;<span class="hljs-comment">/// Set the state of the Menu Button part</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetSplit</span><span class="hljs-params">(Bool_t split)</span></span>;<span class="hljs-comment">/// Set the split status of a button.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">IsSplit</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fSplit; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle button events.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse crossing event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span></span>;
+<span class="hljs-comment">/// Handle key event. This function will be called when the hotkey is hit.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle a motion event in a TGSplitButton.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// layout text button</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle a motion event in a TGSplitButton.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// layout text button</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MBPressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;MBPressed()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MBReleased</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;MBReleased()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MBClicked</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;MBClicked()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">ItemClicked</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;ItemClicked(Int_t)&quot;</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MBPressed</span><span class="hljs-params">()</span>  </span>{ Emit(<span class="hljs-string">&quot;MBPressed()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MBReleased</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;MBReleased()&quot;</span>); }  <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MBClicked</span><span class="hljs-params">()</span>  </span>{ Emit(<span class="hljs-string">&quot;MBClicked()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ItemClicked</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;ItemClicked(Int_t)&quot;</span>, id); } <span class="hljs-comment">// *SIGNAL*</span>
 
-   <span class="token comment">// Slots</span>
-   <span class="token keyword">void</span> <span class="token function">HandleMenu</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">)</span> <span class="token punctuation">;</span><span class="token comment">/// Handle a menu item activation.</span>
+   <span class="hljs-comment">// Slots</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">HandleMenu</span><span class="hljs-params">(Int_t id)</span> </span>;<span class="hljs-comment">/// Handle a menu item activation.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// Button</span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TGClient.h&quot;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TGButton.h&quot;</span></span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Button</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TGClient.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TGButton.h&quot;</span></span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// TGTextButton</span>
-<span class="token comment">// &#x6309;&#x94AE;&#xFF0C;&#x6309;&#x94AE;&#x4E0A;&#x6709;&#x5B57;&#xFF0C;&#x5B57;&#x53EF;&#x6539;&#x53D8;</span>
-TGTextButton     <span class="token operator">*</span>fStart<span class="token punctuation">;</span>
-fStart <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGTextButton</span><span class="token punctuation">(</span>frame<span class="token punctuation">,</span> <span class="token string">&quot;&amp;Start&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// fStart = new TGTextButton(frame, &quot;&amp;Start the \n software&quot;&quot;and go it&quot;);</span>
-<span class="token comment">// fStart-&gt;Resize(300, 200);//&#x8BBE;&#x7F6E;&#x5927;&#x5C0F;</span>
-<span class="token comment">// fStart-&gt;ChangeOptions(fStart-&gt;GetOptions() | kFixedSize);</span>
-ULong_t yellow<span class="token punctuation">;</span>
-gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetColorByName</span><span class="token punctuation">(</span><span class="token string">&quot;yellow&quot;</span><span class="token punctuation">,</span> yellow<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fStart<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">ChangeBackground</span><span class="token punctuation">(</span>yellow<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//button background will be set to yellow</span>
-fStart<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token string">&quot;Clicked()&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;MyMainFrame&quot;</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">&quot;ChangeStartLabel()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fStart<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsTop <span class="token operator">|</span> kLHintsExpandX<span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fStart<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetToolTipText</span><span class="token punctuation">(</span><span class="token string">&quot;Click to toggle the button label (Start/Stop)&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x9F20;&#x6807;&#x653E;&#x4E0A;&#x53BB;&#x663E;&#x793A;&#x7684;&#x4FE1;&#x606F;</span>
-<span class="token keyword">void</span> <span class="token function">ChangeStartLabel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-  fStart<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetState</span><span class="token punctuation">(</span>kButtonDown<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>start<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     fStart<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetText</span><span class="token punctuation">(</span><span class="token string">&quot;&amp;Stop&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     start <span class="token operator">=</span> kTRUE<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-     fStart<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetText</span><span class="token punctuation">(</span><span class="token string">&quot;&amp;Start&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     start <span class="token operator">=</span> kFALSE<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  fStart<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetState</span><span class="token punctuation">(</span>kButtonUp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TGTextButton</span>
+<span class="hljs-comment">// &#x6309;&#x94AE;&#xFF0C;&#x6309;&#x94AE;&#x4E0A;&#x6709;&#x5B57;&#xFF0C;&#x5B57;&#x53EF;&#x6539;&#x53D8;</span>
+TGTextButton     *fStart;
+fStart = <span class="hljs-keyword">new</span> TGTextButton(frame, <span class="hljs-string">&quot;&amp;Start&quot;</span>);
+<span class="hljs-comment">// fStart = new TGTextButton(frame, &quot;&amp;Start the \n software&quot;&quot;and go it&quot;);</span>
+<span class="hljs-comment">// fStart-&gt;Resize(300, 200);//&#x8BBE;&#x7F6E;&#x5927;&#x5C0F;</span>
+<span class="hljs-comment">// fStart-&gt;ChangeOptions(fStart-&gt;GetOptions() | kFixedSize);</span>
+ULong_t yellow;
+gClient-&gt;GetColorByName(<span class="hljs-string">&quot;yellow&quot;</span>, yellow);
+fStart-&gt;ChangeBackground(yellow);<span class="hljs-comment">//button background will be set to yellow</span>
+fStart-&gt;Connect(<span class="hljs-string">&quot;Clicked()&quot;</span>, <span class="hljs-string">&quot;MyMainFrame&quot;</span>, <span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;ChangeStartLabel()&quot;</span>);
+frame-&gt;AddFrame(fStart, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsTop | kLHintsExpandX,<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+fStart-&gt;SetToolTipText(<span class="hljs-string">&quot;Click to toggle the button label (Start/Stop)&quot;</span>);<span class="hljs-comment">//&#x9F20;&#x6807;&#x653E;&#x4E0A;&#x53BB;&#x663E;&#x793A;&#x7684;&#x4FE1;&#x606F;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ChangeStartLabel</span><span class="hljs-params">()</span>
+</span>{
+  fStart-&gt;SetState(kButtonDown);
+  <span class="hljs-keyword">if</span> (!start) {
+     fStart-&gt;SetText(<span class="hljs-string">&quot;&amp;Stop&quot;</span>);
+     start = kTRUE;
+  } <span class="hljs-keyword">else</span> {
+     fStart-&gt;SetText(<span class="hljs-string">&quot;&amp;Start&quot;</span>);
+     start = kFALSE;
+  }
+  fStart-&gt;SetState(kButtonUp);
+}
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// TGCheckButton</span>
-<span class="token comment">// &#x591A;&#x9009;&#x6309;&#x94AE;</span>
-TGVButtonGroup <span class="token operator">*</span>fButtonGroup<span class="token punctuation">;</span>  <span class="token comment">// Button group</span>
-fButtonGroup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGVButtonGroup</span><span class="token punctuation">(</span>frame<span class="token punctuation">,</span> <span class="token string">&quot;My Button Group&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fButtonGroup<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitlePos</span><span class="token punctuation">(</span>TGGroupFrame<span class="token operator">::</span>kCenter<span class="token punctuation">)</span><span class="token punctuation">;</span>
-frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fButtonGroup<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsCenterX<span class="token operator">|</span>kLHintsCenterY<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// TGGroupFrame *fButtonGroup = new TGGroupFrame(frame, &quot;Enable/Disable&quot;);</span>
-<span class="token comment">// fButtonGroup-&gt;SetTitlePos(TGGroupFrame::kCenter);</span>
-<span class="token comment">// frame-&gt;AddFrame(fButtonGroup, new TGLayoutHints(kLHintsExpandX ));</span>
-TGCheckButton <span class="token operator">*</span>fCheckb<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-fCheckb<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGCheckButton</span><span class="token punctuation">(</span>fButtonGroup<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGHotString</span><span class="token punctuation">(</span><span class="token string">&quot;CB 1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>IDs<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Widget IDs &#xFF0C;&#x6BCF;&#x4E2A;&#x7684;&#x552F;&#x4E00;&#x7F16;&#x53F7;&#xFF0C;0&#xFF0C;1&#xFF0C;2&#xFF0C;3&#x2026;&#x2026;</span>
-fCheckb<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGCheckButton</span><span class="token punctuation">(</span>fButtonGroup<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGHotString</span><span class="token punctuation">(</span><span class="token string">&quot;CB 2&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>IDs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fCheckb<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGCheckButton</span><span class="token punctuation">(</span>fButtonGroup<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGHotString</span><span class="token punctuation">(</span><span class="token string">&quot;CB 3&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>IDs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fCheckb<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGCheckButton</span><span class="token punctuation">(</span>fButtonGroup<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGHotString</span><span class="token punctuation">(</span><span class="token string">&quot;CB 4&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>IDs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fCheckb<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Default state</span>
-<span class="token comment">// fCheckb[0]-&gt;-&gt;SetState(kButtonDown);//&#x8BBE;&#x7F6E;&#x72B6;&#x6001;&#x4E3A;&#x9009;&#x4E0A;</span>
-fCheckb<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x83B7;&#x5F97;&#x5F53;&#x524D;&#x72B6;&#x6001;&#xFF0C;0&#x3001;1</span>
-<span class="token comment">// fCheckb[0]-&gt;Connect(&quot;Toggled(Bool_t)&quot;, &quot;MyButtonTest&quot;, this, &quot;SetGroupEnabled(Bool_t)&quot;);</span>
-fButtonGroup<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fButtonGroup<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetState</span><span class="token punctuation">(</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x662F;&#x5426;&#x5F00;&#x542F;&#xFF0C;&#x5F00;&#x542F;&#x624D;&#x53EF;&#x4EE5;&#x9009;&#xFF0C;&#x4E0D;&#x5F00;&#x542F;&#x662F;&#x7070;&#x8272;&#x7684;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TGCheckButton</span>
+<span class="hljs-comment">// &#x591A;&#x9009;&#x6309;&#x94AE;</span>
+TGVButtonGroup *fButtonGroup;  <span class="hljs-comment">// Button group</span>
+fButtonGroup = <span class="hljs-keyword">new</span> TGVButtonGroup(frame, <span class="hljs-string">&quot;My Button Group&quot;</span>);
+fButtonGroup-&gt;SetTitlePos(TGGroupFrame::kCenter);
+frame-&gt;AddFrame(fButtonGroup, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsCenterX|kLHintsCenterY,<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+<span class="hljs-comment">// TGGroupFrame *fButtonGroup = new TGGroupFrame(frame, &quot;Enable/Disable&quot;);</span>
+<span class="hljs-comment">// fButtonGroup-&gt;SetTitlePos(TGGroupFrame::kCenter);</span>
+<span class="hljs-comment">// frame-&gt;AddFrame(fButtonGroup, new TGLayoutHints(kLHintsExpandX ));</span>
+TGCheckButton *fCheckb[<span class="hljs-number">4</span>];
+fCheckb[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> TGCheckButton(fButtonGroup, <span class="hljs-keyword">new</span> TGHotString(<span class="hljs-string">&quot;CB 1&quot;</span>),IDs);<span class="hljs-comment">//Widget IDs &#xFF0C;&#x6BCF;&#x4E2A;&#x7684;&#x552F;&#x4E00;&#x7F16;&#x53F7;&#xFF0C;0&#xFF0C;1&#xFF0C;2&#xFF0C;3&#x2026;&#x2026;</span>
+fCheckb[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> TGCheckButton(fButtonGroup, <span class="hljs-keyword">new</span> TGHotString(<span class="hljs-string">&quot;CB 2&quot;</span>),IDs);
+fCheckb[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> TGCheckButton(fButtonGroup, <span class="hljs-keyword">new</span> TGHotString(<span class="hljs-string">&quot;CB 3&quot;</span>),IDs);
+fCheckb[<span class="hljs-number">3</span>] = <span class="hljs-keyword">new</span> TGCheckButton(fButtonGroup, <span class="hljs-keyword">new</span> TGHotString(<span class="hljs-string">&quot;CB 4&quot;</span>),IDs);
+fCheckb[<span class="hljs-number">0</span>]-&gt;SetOn();<span class="hljs-comment">//Default state</span>
+<span class="hljs-comment">// fCheckb[0]-&gt;-&gt;SetState(kButtonDown);//&#x8BBE;&#x7F6E;&#x72B6;&#x6001;&#x4E3A;&#x9009;&#x4E0A;</span>
+fCheckb[<span class="hljs-number">0</span>]-&gt;GetState();<span class="hljs-comment">//&#x83B7;&#x5F97;&#x5F53;&#x524D;&#x72B6;&#x6001;&#xFF0C;0&#x3001;1</span>
+<span class="hljs-comment">// fCheckb[0]-&gt;Connect(&quot;Toggled(Bool_t)&quot;, &quot;MyButtonTest&quot;, this, &quot;SetGroupEnabled(Bool_t)&quot;);</span>
+fButtonGroup-&gt;Show();
+fButtonGroup-&gt;SetState(kTRUE);<span class="hljs-comment">//&#x662F;&#x5426;&#x5F00;&#x542F;&#xFF0C;&#x5F00;&#x542F;&#x624D;&#x53EF;&#x4EE5;&#x9009;&#xFF0C;&#x4E0D;&#x5F00;&#x542F;&#x662F;&#x7070;&#x8272;&#x7684;</span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// TGRadioButton</span>
-<span class="token comment">// &#x5355;&#x9009;&#x6309;&#x94AE;</span>
-TGVButtonGroup      <span class="token operator">*</span>fButtonGroup<span class="token punctuation">;</span>  <span class="token comment">// Button group</span>
-TGRadioButton <span class="token operator">*</span>fRadiob<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-fButtonGroup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGVButtonGroup</span><span class="token punctuation">(</span>frame<span class="token punctuation">,</span> <span class="token string">&quot;My Button Group&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fButtonGroup<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitlePos</span><span class="token punctuation">(</span>TGGroupFrame<span class="token operator">::</span>kCenter<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fRadiob<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGRadioButton</span><span class="token punctuation">(</span>fButtonGroup<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGHotString</span><span class="token punctuation">(</span><span class="token string">&quot;RB 1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>IDs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fRadiob<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGRadioButton</span><span class="token punctuation">(</span>fButtonGroup<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGHotString</span><span class="token punctuation">(</span><span class="token string">&quot;RB 2&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>IDs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fRadiob<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetOn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Default state</span>
-fButtonGroup<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fButtonGroup<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetState</span><span class="token punctuation">(</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x662F;&#x5426;&#x5F00;&#x542F;&#xFF0C;&#x5F00;&#x542F;&#x624D;&#x53EF;&#x4EE5;&#x9009;&#xFF0C;&#x4E0D;&#x5F00;&#x542F;&#x662F;&#x7070;&#x8272;&#x7684;</span>
-fButtonGroup<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetRadioButtonExclusive</span><span class="token punctuation">(</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//???</span>
-frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fButtonGroup<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsCenterX<span class="token operator">|</span>kLHintsCenterY<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TGRadioButton</span>
+<span class="hljs-comment">// &#x5355;&#x9009;&#x6309;&#x94AE;</span>
+TGVButtonGroup      *fButtonGroup;  <span class="hljs-comment">// Button group</span>
+TGRadioButton *fRadiob[<span class="hljs-number">2</span>];
+fButtonGroup = <span class="hljs-keyword">new</span> TGVButtonGroup(frame, <span class="hljs-string">&quot;My Button Group&quot;</span>);
+fButtonGroup-&gt;SetTitlePos(TGGroupFrame::kCenter);
+fRadiob[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> TGRadioButton(fButtonGroup, <span class="hljs-keyword">new</span> TGHotString(<span class="hljs-string">&quot;RB 1&quot;</span>),IDs);
+fRadiob[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> TGRadioButton(fButtonGroup, <span class="hljs-keyword">new</span> TGHotString(<span class="hljs-string">&quot;RB 2&quot;</span>),IDs);
+fRadiob[<span class="hljs-number">1</span>]-&gt;SetOn();<span class="hljs-comment">//Default state</span>
+fButtonGroup-&gt;Show();
+fButtonGroup-&gt;SetState(kTRUE);<span class="hljs-comment">//&#x662F;&#x5426;&#x5F00;&#x542F;&#xFF0C;&#x5F00;&#x542F;&#x624D;&#x53EF;&#x4EE5;&#x9009;&#xFF0C;&#x4E0D;&#x5F00;&#x542F;&#x662F;&#x7070;&#x8272;&#x7684;</span>
+fButtonGroup-&gt;SetRadioButtonExclusive(kTRUE);<span class="hljs-comment">//???</span>
+frame-&gt;AddFrame(fButtonGroup, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsCenterX|kLHintsCenterY,<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// TGPictureButton</span>
-<span class="token comment">// &#x6309;&#x94AE;&#x662F;&#x56FE;&#x7247;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TGPictureButton</span>
+<span class="hljs-comment">// &#x6309;&#x94AE;&#x662F;&#x56FE;&#x7247;</span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// TGSplitButton</span>
-<span class="token comment">//</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TGSplitButton</span>
+<span class="hljs-comment">//</span>
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGButton.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -4166,7 +4178,7 @@ frame<span class="token operator">-</span><span class="token operator">&gt;</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGButton*","level":"1.3.2","depth":2,"next":{"title":"TGButtonGroup*","level":"1.3.3","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"previous":{"title":"GuiTypes*","level":"1.3.1","depth":2,"path":"class/gui/GuiTypes.md","ref":"class/gui/GuiTypes.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGButton.md","mtime":"2018-05-14T09:18:21.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGButton*","level":"1.3.2","depth":2,"next":{"title":"TGButtonGroup*","level":"1.3.3","depth":2,"path":"class/gui/TGButtonGroup.md","ref":"class/gui/TGButtonGroup.md","articles":[]},"previous":{"title":"GuiTypes*","level":"1.3.1","depth":2,"path":"class/gui/GuiTypes.md","ref":"class/gui/GuiTypes.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGButton.md","mtime":"2018-05-14T09:18:21.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4198,6 +4210,18 @@ frame<span class="token operator">-</span><span class="token operator">&gt;</spa
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

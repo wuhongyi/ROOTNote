@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3684,74 +3696,74 @@ way in std::.</p>
 a stable file and used in place of TMath.h in the ROOT miniCore.</p>
 <p><strong>namespace TMath</strong></p>
 <h2 id="namespace"><a name="namespace" class="plugin-anchor" href="#namespace"><i class="fa fa-link" aria-hidden="true"></i></a>namespace</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token comment">// Abs</span>
-   <span class="token keyword">inline</span> Short_t  <span class="token function">Abs</span><span class="token punctuation">(</span>Short_t d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Int_t    <span class="token function">Abs</span><span class="token punctuation">(</span>Int_t d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Long_t   <span class="token function">Abs</span><span class="token punctuation">(</span>Long_t d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Long64_t <span class="token function">Abs</span><span class="token punctuation">(</span>Long64_t d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Float_t  <span class="token function">Abs</span><span class="token punctuation">(</span>Float_t d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">Abs</span><span class="token punctuation">(</span>Double_t d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> LongDouble_t <span class="token function">Abs</span><span class="token punctuation">(</span>LongDouble_t d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-comment">// Abs</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Short_t  <span class="hljs-title">Abs</span><span class="hljs-params">(Short_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t    <span class="hljs-title">Abs</span><span class="hljs-params">(Int_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long_t   <span class="hljs-title">Abs</span><span class="hljs-params">(Long_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long64_t <span class="hljs-title">Abs</span><span class="hljs-params">(Long64_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Float_t  <span class="hljs-title">Abs</span><span class="hljs-params">(Float_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Abs</span><span class="hljs-params">(Double_t d)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> LongDouble_t <span class="hljs-title">Abs</span><span class="hljs-params">(LongDouble_t d)</span></span>;
 
-   <span class="token comment">// Even/Odd</span>
-   <span class="token keyword">inline</span> Bool_t   <span class="token function">Even</span><span class="token punctuation">(</span>Long_t a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Bool_t   <span class="token function">Odd</span><span class="token punctuation">(</span>Long_t a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Even/Odd</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t   <span class="hljs-title">Even</span><span class="hljs-params">(Long_t a)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t   <span class="hljs-title">Odd</span><span class="hljs-params">(Long_t a)</span></span>;
 
-   <span class="token comment">// SignBit</span>
-   <span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">typename</span> Integer<span class="token operator">&gt;</span>
-   <span class="token keyword">inline</span> Bool_t <span class="token function">SignBit</span><span class="token punctuation">(</span>Integer a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Bool_t <span class="token function">SignBit</span><span class="token punctuation">(</span>Float_t a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Bool_t <span class="token function">SignBit</span><span class="token punctuation">(</span>Double_t a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Bool_t <span class="token function">SignBit</span><span class="token punctuation">(</span>LongDouble_t a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// SignBit</span>
+   <span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> Integer&gt;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">SignBit</span><span class="hljs-params">(Integer a)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">SignBit</span><span class="hljs-params">(Float_t a)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">SignBit</span><span class="hljs-params">(Double_t a)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Bool_t <span class="hljs-title">SignBit</span><span class="hljs-params">(LongDouble_t a)</span></span>;
 
-   <span class="token comment">// Sign</span>
-   <span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">typename</span> T1<span class="token punctuation">,</span> <span class="token keyword">typename</span> T2<span class="token operator">&gt;</span>
-   <span class="token keyword">inline</span> T1 <span class="token function">Sign</span><span class="token punctuation">(</span> T1 a<span class="token punctuation">,</span> T2 b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Float_t  <span class="token function">Sign</span><span class="token punctuation">(</span>Float_t a<span class="token punctuation">,</span> Float_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">Sign</span><span class="token punctuation">(</span>Double_t a<span class="token punctuation">,</span> Double_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> LongDouble_t <span class="token function">Sign</span><span class="token punctuation">(</span>LongDouble_t a<span class="token punctuation">,</span> LongDouble_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Sign</span>
+   <span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T1, <span class="hljs-keyword">typename</span> T2&gt;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> T1 <span class="hljs-title">Sign</span><span class="hljs-params">( T1 a, T2 b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Float_t  <span class="hljs-title">Sign</span><span class="hljs-params">(Float_t a, Float_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Sign</span><span class="hljs-params">(Double_t a, Double_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> LongDouble_t <span class="hljs-title">Sign</span><span class="hljs-params">(LongDouble_t a, LongDouble_t b)</span></span>;
 
-   <span class="token comment">// Min, Max of two scalars</span>
-   <span class="token keyword">inline</span> Short_t   <span class="token function">Min</span><span class="token punctuation">(</span>Short_t a<span class="token punctuation">,</span> Short_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> UShort_t  <span class="token function">Min</span><span class="token punctuation">(</span>UShort_t a<span class="token punctuation">,</span> UShort_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Int_t     <span class="token function">Min</span><span class="token punctuation">(</span>Int_t a<span class="token punctuation">,</span> Int_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> UInt_t    <span class="token function">Min</span><span class="token punctuation">(</span>UInt_t a<span class="token punctuation">,</span> UInt_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Long_t    <span class="token function">Min</span><span class="token punctuation">(</span>Long_t a<span class="token punctuation">,</span> Long_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> ULong_t   <span class="token function">Min</span><span class="token punctuation">(</span>ULong_t a<span class="token punctuation">,</span> ULong_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Long64_t  <span class="token function">Min</span><span class="token punctuation">(</span>Long64_t a<span class="token punctuation">,</span> Long64_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> ULong64_t <span class="token function">Min</span><span class="token punctuation">(</span>ULong64_t a<span class="token punctuation">,</span> ULong64_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Float_t   <span class="token function">Min</span><span class="token punctuation">(</span>Float_t a<span class="token punctuation">,</span> Float_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t  <span class="token function">Min</span><span class="token punctuation">(</span>Double_t a<span class="token punctuation">,</span> Double_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Min, Max of two scalars</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Short_t   <span class="hljs-title">Min</span><span class="hljs-params">(Short_t a, Short_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> UShort_t  <span class="hljs-title">Min</span><span class="hljs-params">(UShort_t a, UShort_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t     <span class="hljs-title">Min</span><span class="hljs-params">(Int_t a, Int_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> UInt_t    <span class="hljs-title">Min</span><span class="hljs-params">(UInt_t a, UInt_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long_t    <span class="hljs-title">Min</span><span class="hljs-params">(Long_t a, Long_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong_t   <span class="hljs-title">Min</span><span class="hljs-params">(ULong_t a, ULong_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long64_t  <span class="hljs-title">Min</span><span class="hljs-params">(Long64_t a, Long64_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong64_t <span class="hljs-title">Min</span><span class="hljs-params">(ULong64_t a, ULong64_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Float_t   <span class="hljs-title">Min</span><span class="hljs-params">(Float_t a, Float_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t  <span class="hljs-title">Min</span><span class="hljs-params">(Double_t a, Double_t b)</span></span>;
 
-   <span class="token keyword">inline</span> Short_t   <span class="token function">Max</span><span class="token punctuation">(</span>Short_t a<span class="token punctuation">,</span> Short_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> UShort_t  <span class="token function">Max</span><span class="token punctuation">(</span>UShort_t a<span class="token punctuation">,</span> UShort_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Int_t     <span class="token function">Max</span><span class="token punctuation">(</span>Int_t a<span class="token punctuation">,</span> Int_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> UInt_t    <span class="token function">Max</span><span class="token punctuation">(</span>UInt_t a<span class="token punctuation">,</span> UInt_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Long_t    <span class="token function">Max</span><span class="token punctuation">(</span>Long_t a<span class="token punctuation">,</span> Long_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> ULong_t   <span class="token function">Max</span><span class="token punctuation">(</span>ULong_t a<span class="token punctuation">,</span> ULong_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Long64_t  <span class="token function">Max</span><span class="token punctuation">(</span>Long64_t a<span class="token punctuation">,</span> Long64_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> ULong64_t <span class="token function">Max</span><span class="token punctuation">(</span>ULong64_t a<span class="token punctuation">,</span> ULong64_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Float_t   <span class="token function">Max</span><span class="token punctuation">(</span>Float_t a<span class="token punctuation">,</span> Float_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t  <span class="token function">Max</span><span class="token punctuation">(</span>Double_t a<span class="token punctuation">,</span> Double_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Short_t   <span class="hljs-title">Max</span><span class="hljs-params">(Short_t a, Short_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> UShort_t  <span class="hljs-title">Max</span><span class="hljs-params">(UShort_t a, UShort_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t     <span class="hljs-title">Max</span><span class="hljs-params">(Int_t a, Int_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> UInt_t    <span class="hljs-title">Max</span><span class="hljs-params">(UInt_t a, UInt_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long_t    <span class="hljs-title">Max</span><span class="hljs-params">(Long_t a, Long_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong_t   <span class="hljs-title">Max</span><span class="hljs-params">(ULong_t a, ULong_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long64_t  <span class="hljs-title">Max</span><span class="hljs-params">(Long64_t a, Long64_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong64_t <span class="hljs-title">Max</span><span class="hljs-params">(ULong64_t a, ULong64_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Float_t   <span class="hljs-title">Max</span><span class="hljs-params">(Float_t a, Float_t b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t  <span class="hljs-title">Max</span><span class="hljs-params">(Double_t a, Double_t b)</span></span>;
 
-   <span class="token comment">// Range</span>
-   <span class="token keyword">inline</span> Short_t   <span class="token function">Range</span><span class="token punctuation">(</span>Short_t lb<span class="token punctuation">,</span> Short_t ub<span class="token punctuation">,</span> Short_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Int_t     <span class="token function">Range</span><span class="token punctuation">(</span>Int_t lb<span class="token punctuation">,</span> Int_t ub<span class="token punctuation">,</span> Int_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Long_t    <span class="token function">Range</span><span class="token punctuation">(</span>Long_t lb<span class="token punctuation">,</span> Long_t ub<span class="token punctuation">,</span> Long_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> ULong_t   <span class="token function">Range</span><span class="token punctuation">(</span>ULong_t lb<span class="token punctuation">,</span> ULong_t ub<span class="token punctuation">,</span> ULong_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t  <span class="token function">Range</span><span class="token punctuation">(</span>Double_t lb<span class="token punctuation">,</span> Double_t ub<span class="token punctuation">,</span> Double_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Range</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Short_t   <span class="hljs-title">Range</span><span class="hljs-params">(Short_t lb, Short_t ub, Short_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t     <span class="hljs-title">Range</span><span class="hljs-params">(Int_t lb, Int_t ub, Int_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Long_t    <span class="hljs-title">Range</span><span class="hljs-params">(Long_t lb, Long_t ub, Long_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> ULong_t   <span class="hljs-title">Range</span><span class="hljs-params">(ULong_t lb, ULong_t ub, ULong_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t  <span class="hljs-title">Range</span><span class="hljs-params">(Double_t lb, Double_t ub, Double_t x)</span></span>;
 
-   <span class="token comment">//NextPrime is used by the Core classes.</span>
-   Long_t   <span class="token function">NextPrime</span><span class="token punctuation">(</span>Long_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Least prime number greater than x</span>
-<span class="token comment">/// Return next prime number after x, unless x is a prime in which case</span>
-<span class="token comment">/// x is returned.</span>
+   <span class="hljs-comment">//NextPrime is used by the Core classes.</span>
+   <span class="hljs-function">Long_t   <span class="hljs-title">NextPrime</span><span class="hljs-params">(Long_t x)</span></span>;   <span class="hljs-comment">// Least prime number greater than x</span>
+<span class="hljs-comment">/// Return next prime number after x, unless x is a prime in which case</span>
+<span class="hljs-comment">/// x is returned.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TMathBase.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3794,7 +3806,7 @@ a stable file and used in place of TMath.h in the ROOT miniCore.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TMathBase*","level":"1.2.44","depth":2,"next":{"title":"TMatrixT","level":"1.2.45","depth":2,"path":"class/TMatrixT.md","ref":"class/TMatrixT.md","articles":[]},"previous":{"title":"TMath*","level":"1.2.43","depth":2,"path":"class/TMath.md","ref":"class/TMath.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TMathBase.md","mtime":"2018-05-14T09:18:21.984Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TMathBase*","level":"1.2.44","depth":2,"next":{"title":"TMatrixT","level":"1.2.45","depth":2,"path":"class/TMatrixT.md","ref":"class/TMatrixT.md","articles":[]},"previous":{"title":"TMath*","level":"1.2.43","depth":2,"path":"class/TMath.md","ref":"class/TMath.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TMathBase.md","mtime":"2018-05-14T09:18:21.984Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3826,6 +3838,18 @@ a stable file and used in place of TMath.h in the ROOT miniCore.</p>
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

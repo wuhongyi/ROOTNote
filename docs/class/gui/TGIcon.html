@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,42 +3692,42 @@
 <p>TGIcon &#x7EE7;&#x627F; TGFrame</p>
 <p>This class handles GUI icons.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGIcon</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">const</span> TGPicture <span class="token operator">*</span>pic<span class="token punctuation">,</span> UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">,</span>
-      UInt_t options <span class="token operator">=</span> kChildFrame<span class="token punctuation">,</span> Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">:</span>
-         <span class="token function">TGFrame</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">,</span> options<span class="token punctuation">,</span> back<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fPic</span><span class="token punctuation">(</span>pic<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fImage</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetWindowName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGIcon(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> TGPicture *pic, UInt_t w, UInt_t h,
+      UInt_t options = kChildFrame, Pixel_t back = GetDefaultFrameBackground()) :
+         TGFrame(p, w, h, options, back), fPic(pic), fImage(<span class="hljs-number">0</span>), fPath() { SetWindowName(); }
 
-   <span class="token function">TGIcon</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>image <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create icon.</span>
+   TGIcon(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *image = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create icon.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGIcon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete icon and free picture.</span>
+   <span class="hljs-keyword">virtual</span> ~TGIcon();<span class="hljs-comment">/// Delete icon and free picture.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//*MENU*</span>
-<span class="token comment">/// Reset icon to original image. It can be used only via context menu.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Reset</span><span class="hljs-params">()</span></span>;         <span class="hljs-comment">//*MENU*</span>
+<span class="hljs-comment">/// Reset icon to original image. It can be used only via context menu.</span>
 
-   <span class="token keyword">const</span> TGPicture <span class="token operator">*</span><span class="token function">GetPicture</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPic<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TImage <span class="token operator">*</span><span class="token function">GetImage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fImage<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetPicture</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGPicture <span class="token operator">*</span>pic<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set icon picture.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetImage</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>img<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set icon image.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetImage</span><span class="token punctuation">(</span>TImage <span class="token operator">*</span>img<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Change icon image.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetImagePath</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set directory where image is located</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetPicture</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPic; }
+   <span class="hljs-function">TImage *<span class="hljs-title">GetImage</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fImage; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *pic)</span></span>;<span class="hljs-comment">/// Set icon picture.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetImage</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *img)</span></span>;<span class="hljs-comment">/// Set icon image.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetImage</span><span class="hljs-params">(TImage *img)</span></span>;<span class="hljs-comment">/// Change icon image.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetImagePath</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *path)</span></span>;
+<span class="hljs-comment">/// Set directory where image is located</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Resize</span><span class="token punctuation">(</span>UInt_t w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Resize.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Resize</span><span class="token punctuation">(</span>TGDimension size<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Resize</span><span class="token punctuation">(</span>size<span class="token punctuation">.</span>fWidth<span class="token punctuation">,</span> size<span class="token punctuation">.</span>fHeight<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MoveResize</span><span class="token punctuation">(</span>Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Move icon to (x,y) and resize it to (w,h).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Resize</span><span class="hljs-params">(UInt_t w = <span class="hljs-number">0</span>, UInt_t h = <span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">/// Resize.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Resize</span><span class="hljs-params">(TGDimension size)</span> </span>{ Resize(size.fWidth, size.fHeight); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MoveResize</span><span class="hljs-params">(Int_t x, Int_t y, UInt_t w = <span class="hljs-number">0</span>, UInt_t h = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Move icon to (x,y) and resize it to (w,h).</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">ChangeBackgroundColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ChangeBackgroundColor</span><span class="hljs-params">()</span> </span>{ }
 
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return size of icon.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save an icon widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return size of icon.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save an icon widget as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGIcon.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3758,7 +3770,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGIcon*","level":"1.3.23","depth":2,"next":{"title":"TGIdleHandler","level":"1.3.24","depth":2,"path":"class/gui/TGIdleHandler.md","ref":"class/gui/TGIdleHandler.md","articles":[]},"previous":{"title":"TGGC*","level":"1.3.22","depth":2,"path":"class/gui/TGGC.md","ref":"class/gui/TGGC.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGIcon.md","mtime":"2018-05-14T09:18:21.236Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGIcon*","level":"1.3.23","depth":2,"next":{"title":"TGIdleHandler","level":"1.3.24","depth":2,"path":"class/gui/TGIdleHandler.md","ref":"class/gui/TGIdleHandler.md","articles":[]},"previous":{"title":"TGGC*","level":"1.3.22","depth":2,"path":"class/gui/TGGC.md","ref":"class/gui/TGGC.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGIcon.md","mtime":"2018-05-14T09:18:21.236Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3790,6 +3802,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

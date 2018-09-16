@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3679,154 +3691,154 @@
 <h1 id="tnode"><a name="tnode" class="plugin-anchor" href="#tnode"><i class="fa fa-link" aria-hidden="true"></i></a>TNode</h1>
 <p>&#x7EE7;&#x627F; public TNamed , public TAttLine, public TAttFill, public TAtt3D</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">public</span><span class="token operator">:</span>
-   <span class="token function">TNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   TNode();
 
-<span class="token comment">/// Node normal constructor.</span>
-<span class="token comment">///  - name        is the name of the node</span>
-<span class="token comment">///  - title       is title</span>
-<span class="token comment">///  - shapename   is the name of the referenced shape</span>
-<span class="token comment">///  - x,y,z       are the offsets of the volume with respect to his mother</span>
-<span class="token comment">///  - matrixname  is the name of the rotation matrix</span>
-<span class="token comment">///    This new node is added into the list of sons of the current node</span>
-   <span class="token function">TNode</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>shapename<span class="token punctuation">,</span> Double_t x<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t y<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t z<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>
-         <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>matrixname<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Node normal constructor.</span>
+<span class="hljs-comment">///  - name        is the name of the node</span>
+<span class="hljs-comment">///  - title       is title</span>
+<span class="hljs-comment">///  - shapename   is the name of the referenced shape</span>
+<span class="hljs-comment">///  - x,y,z       are the offsets of the volume with respect to his mother</span>
+<span class="hljs-comment">///  - matrixname  is the name of the rotation matrix</span>
+<span class="hljs-comment">///    This new node is added into the list of sons of the current node</span>
+   TNode(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *shapename, Double_t x=<span class="hljs-number">0</span>, Double_t y=<span class="hljs-number">0</span>, Double_t z=<span class="hljs-number">0</span>,
+         <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *matrixname=<span class="hljs-string">&quot;&quot;</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>);
 
-<span class="token comment">/// Node normal constructor.</span>
-<span class="token comment">///  - name    is the name of the node</span>
-<span class="token comment">///  - title   is title</span>
-<span class="token comment">///  - shape   is the pointer to the shape definition</span>
-<span class="token comment">///  - x,y,z   are the offsets of the volume with respect to his mother</span>
-<span class="token comment">///  - matrix  is the pointer to the rotation matrix</span>
-<span class="token comment">///    This new node is added into the list of sons of the current node</span>
-   <span class="token function">TNode</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">,</span> TShape <span class="token operator">*</span>shape<span class="token punctuation">,</span> Double_t x<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t y<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t z<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>
-         TRotMatrix <span class="token operator">*</span>matrix<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Browse</span><span class="token punctuation">(</span>TBrowser <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Browse.</span>
+<span class="hljs-comment">/// Node normal constructor.</span>
+<span class="hljs-comment">///  - name    is the name of the node</span>
+<span class="hljs-comment">///  - title   is title</span>
+<span class="hljs-comment">///  - shape   is the pointer to the shape definition</span>
+<span class="hljs-comment">///  - x,y,z   are the offsets of the volume with respect to his mother</span>
+<span class="hljs-comment">///  - matrix  is the pointer to the rotation matrix</span>
+<span class="hljs-comment">///    This new node is added into the list of sons of the current node</span>
+   TNode(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, TShape *shape, Double_t x=<span class="hljs-number">0</span>, Double_t y=<span class="hljs-number">0</span>, Double_t z=<span class="hljs-number">0</span>,
+         TRotMatrix *matrix=<span class="hljs-number">0</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>);
+   <span class="hljs-keyword">virtual</span> ~TNode();
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;<span class="hljs-comment">/// Browse.</span>
 
-<span class="token comment">/// Create the list to support sons of this node.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">BuildListOfNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Create the list to support sons of this node.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">BuildListOfNodes</span><span class="hljs-params">()</span></span>;
 
-<span class="token comment">/// Change Current Reference node to this.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">cd</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
+<span class="hljs-comment">/// Change Current Reference node to this.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">cd</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *path=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
 
-<span class="token comment">/// Compute distance from point px,py to a Node.</span>
-<span class="token comment">///  Compute the closest distance of approach from point px,py to this node.</span>
-<span class="token comment">///  The distance is computed in pixels units.</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">DistancetoPrimitive</span><span class="token punctuation">(</span>Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Compute distance from point px,py to a Node.</span>
+<span class="hljs-comment">///  Compute the closest distance of approach from point px,py to this node.</span>
+<span class="hljs-comment">///  The distance is computed in pixels units.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;
 
-<span class="token comment">/// Draw Referenced node with current parameters.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Draw</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
+<span class="hljs-comment">/// Draw Referenced node with current parameters.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Draw</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
 
-<span class="token comment">/// Draw only Sons of this node.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">DrawOnly</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Draw only Sons of this node.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">DrawOnly</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
 
-<span class="token comment">/// Execute action corresponding to one event.</span>
-<span class="token comment">///  This member function must be implemented to realize the action</span>
-<span class="token comment">///  corresponding to the mouse click on the object in the window</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">ExecuteEvent</span><span class="token punctuation">(</span>Int_t event<span class="token punctuation">,</span> Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TList              <span class="token operator">*</span><span class="token function">GetListOfNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fNodes<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TRotMatrix <span class="token operator">*</span><span class="token function">GetMatrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fMatrix<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="hljs-comment">/// Execute action corresponding to one event.</span>
+<span class="hljs-comment">///  This member function must be implemented to realize the action</span>
+<span class="hljs-comment">///  corresponding to the mouse click on the object in the window</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
+   <span class="hljs-function">TList              *<span class="hljs-title">GetListOfNodes</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNodes;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TRotMatrix *<span class="hljs-title">GetMatrix</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fMatrix;}
 
-<span class="token comment">/// Return pointer to node with name in the node tree.</span>
-   <span class="token keyword">virtual</span> TNode      <span class="token operator">*</span><span class="token function">GetNode</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Return pointer to node with name in the node tree.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TNode      *<span class="hljs-title">GetNode</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;
 
-<span class="token comment">/// Get object info.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetObjectInfo</span><span class="token punctuation">(</span>Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">const</span>   Option_t   <span class="token operator">*</span><span class="token function">GetOption</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fOption<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TNode      <span class="token operator">*</span><span class="token function">GetParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fParent<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   TShape             <span class="token operator">*</span><span class="token function">GetShape</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fShape<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Int_t               <span class="token function">GetVisibility</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fVisibility<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Double_t    <span class="token function">GetX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fX<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Double_t    <span class="token function">GetY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fY<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Double_t    <span class="token function">GetZ</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fZ<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="hljs-comment">/// Get object info.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">char</span>       *<span class="hljs-title">GetObjectInfo</span><span class="hljs-params">(Int_t px, Int_t py)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">const</span>   Option_t   *<span class="hljs-title">GetOption</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fOption.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TNode      *<span class="hljs-title">GetParent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fParent;}
+   <span class="hljs-function">TShape             *<span class="hljs-title">GetShape</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fShape;}
+   <span class="hljs-function">Int_t               <span class="hljs-title">GetVisibility</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fVisibility;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t    <span class="hljs-title">GetX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fX;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t    <span class="hljs-title">GetY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fY;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t    <span class="hljs-title">GetZ</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fZ;}
 
-<span class="token comment">/// Copy shape attributes as node attributes.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">ImportShapeAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Copy shape attributes as node attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">ImportShapeAttributes</span><span class="hljs-params">()</span></span>;
 
-<span class="token comment">/// Return TRUE if node contains nodes, FALSE otherwise.</span>
-   Bool_t              <span class="token function">IsFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Return TRUE if node contains nodes, FALSE otherwise.</span>
+   <span class="hljs-function">Bool_t              <span class="hljs-title">IsFolder</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-<span class="token comment">/// Convert one point from local system to master reference system.</span>
-<span class="token comment">///  Note that before invoking this function, the global rotation matrix</span>
-<span class="token comment">///  and translation vector for this node must have been computed.</span>
-<span class="token comment">///  This is automatically done by the Paint functions.</span>
-<span class="token comment">///  Otherwise TNode::UpdateMatrix should be called before.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Local2Master</span><span class="token punctuation">(</span><span class="token keyword">const</span> Double_t <span class="token operator">*</span>local<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>master<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Convert one point from local system to master reference system.</span>
+<span class="hljs-comment">///  Note that before invoking this function, the global rotation matrix</span>
+<span class="hljs-comment">///  and translation vector for this node must have been computed.</span>
+<span class="hljs-comment">///  This is automatically done by the Paint functions.</span>
+<span class="hljs-comment">///  Otherwise TNode::UpdateMatrix should be called before.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Local2Master</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *local, Double_t *master)</span></span>;
 
-<span class="token comment">/// Convert one point from local system to master reference system.</span>
-<span class="token comment">///  Note that before invoking this function, the global rotation matrix</span>
-<span class="token comment">///  and translation vector for this node must have been computed.</span>
-<span class="token comment">///  This is automatically done by the Paint functions.</span>
-<span class="token comment">///  Otherwise TNode::UpdateMatrix should be called before.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Local2Master</span><span class="token punctuation">(</span><span class="token keyword">const</span> Float_t <span class="token operator">*</span>local<span class="token punctuation">,</span> Float_t <span class="token operator">*</span>master<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Convert one point from local system to master reference system.</span>
+<span class="hljs-comment">///  Note that before invoking this function, the global rotation matrix</span>
+<span class="hljs-comment">///  and translation vector for this node must have been computed.</span>
+<span class="hljs-comment">///  This is automatically done by the Paint functions.</span>
+<span class="hljs-comment">///  Otherwise TNode::UpdateMatrix should be called before.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Local2Master</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Float_t *local, Float_t *master)</span></span>;
 
-<span class="token comment">/// List Referenced object with current parameters.  1 2 3 4 5 x</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;2&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
+<span class="hljs-comment">/// List Referenced object with current parameters.  1 2 3 4 5 x</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;2&quot;</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">// *MENU*</span>
 
-<span class="token comment">/// Convert one point from master system to local reference system.</span>
-<span class="token comment">///  Note that before invoking this function, the global rotation matrix</span>
-<span class="token comment">///  and translation vector for this node must have been computed.</span>
-<span class="token comment">///  This is automatically done by the Paint functions.</span>
-<span class="token comment">///  Otherwise TNode::UpdateMatrix should be called before.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Master2Local</span><span class="token punctuation">(</span><span class="token keyword">const</span> Double_t <span class="token operator">*</span>master<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>local<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Convert one point from master system to local reference system.</span>
+<span class="hljs-comment">///  Note that before invoking this function, the global rotation matrix</span>
+<span class="hljs-comment">///  and translation vector for this node must have been computed.</span>
+<span class="hljs-comment">///  This is automatically done by the Paint functions.</span>
+<span class="hljs-comment">///  Otherwise TNode::UpdateMatrix should be called before.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Master2Local</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *master, Double_t *local)</span></span>;
 
-<span class="token comment">/// Convert one point from master system to local reference system.</span>
-<span class="token comment">///  Note that before invoking this function, the global rotation matrix</span>
-<span class="token comment">///  and translation vector for this node must have been computed.</span>
-<span class="token comment">///  This is automatically done by the Paint functions.</span>
-<span class="token comment">///  Otherwise TNode::UpdateMatrix should be called before.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Master2Local</span><span class="token punctuation">(</span><span class="token keyword">const</span> Float_t <span class="token operator">*</span>master<span class="token punctuation">,</span> Float_t <span class="token operator">*</span>local<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Convert one point from master system to local reference system.</span>
+<span class="hljs-comment">///  Note that before invoking this function, the global rotation matrix</span>
+<span class="hljs-comment">///  and translation vector for this node must have been computed.</span>
+<span class="hljs-comment">///  This is automatically done by the Paint functions.</span>
+<span class="hljs-comment">///  Otherwise TNode::UpdateMatrix should be called before.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Master2Local</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Float_t *master, Float_t *local)</span></span>;
 
-<span class="token comment">/// Paint Referenced node with current parameters.</span>
-<span class="token comment">///  - vis = 1  (default) shape is drawn</span>
-<span class="token comment">///  - vis = 0  shape is not drawn but its sons may be not drawn</span>
-<span class="token comment">///  - vis = -1 shape is not drawn. Its sons are not drawn</span>
-<span class="token comment">///  - vis = -2 shape is drawn. Its sons are not drawn</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Paint</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">RecursiveRemove</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Recursively remove object from the list of nodes of this node.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetMatrix</span><span class="token punctuation">(</span>TRotMatrix <span class="token operator">*</span>matrix<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>fMatrix <span class="token operator">=</span> matrix<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Change the name of this Node</span>
+<span class="hljs-comment">/// Paint Referenced node with current parameters.</span>
+<span class="hljs-comment">///  - vis = 1  (default) shape is drawn</span>
+<span class="hljs-comment">///  - vis = 0  shape is not drawn but its sons may be not drawn</span>
+<span class="hljs-comment">///  - vis = -1 shape is not drawn. Its sons are not drawn</span>
+<span class="hljs-comment">///  - vis = -2 shape is drawn. Its sons are not drawn</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">RecursiveRemove</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Recursively remove object from the list of nodes of this node.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetMatrix</span><span class="hljs-params">(TRotMatrix *matrix=<span class="hljs-number">0</span>)</span> </span>{fMatrix = matrix;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;<span class="hljs-comment">/// Change the name of this Node</span>
 
-<span class="token comment">/// Set the pointer to the parent, keep parents informed about who they have</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetParent</span><span class="token punctuation">(</span>TNode <span class="token operator">*</span>parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Set the pointer to the parent, keep parents informed about who they have</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetParent</span><span class="hljs-params">(TNode *parent)</span></span>;
 
-<span class="token comment">/// Change the name and title of this Node</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetNameTitle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetPosition</span><span class="token punctuation">(</span> Double_t x<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t y<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t z<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>fX<span class="token operator">=</span>x<span class="token punctuation">;</span> fY<span class="token operator">=</span>y<span class="token punctuation">;</span> fZ<span class="token operator">=</span>z<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="hljs-comment">/// Change the name and title of this Node</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetNameTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetPosition</span><span class="hljs-params">( Double_t x=<span class="hljs-number">0</span>, Double_t y=<span class="hljs-number">0</span>, Double_t z=<span class="hljs-number">0</span>)</span> </span>{fX=x; fY=y; fZ=z;}
 
-<span class="token comment">/// Set visibility for this node and its sons.</span>
-<span class="token comment">///  - vis = 3  node is drawn and its sons are drawn</span>
-<span class="token comment">///  - vis = 2  node is not drawn but its sons are drawn</span>
-<span class="token comment">///  - vis = 1  (default) node is drawn</span>
-<span class="token comment">///  - vis = 0  node is not drawn</span>
-<span class="token comment">///  - vis = -1 node is not drawn. Its sons are not drawn</span>
-<span class="token comment">///  - vis = -2 node is drawn. Its sons are not drawn</span>
-<span class="token comment">///  - vis = -3 Only node leaves are drawn</span>
-<span class="token comment">///  - vis = -4 Node is not drawn. Its immediate sons are drawn</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetVisibility</span><span class="token punctuation">(</span>Int_t vis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
+<span class="hljs-comment">/// Set visibility for this node and its sons.</span>
+<span class="hljs-comment">///  - vis = 3  node is drawn and its sons are drawn</span>
+<span class="hljs-comment">///  - vis = 2  node is not drawn but its sons are drawn</span>
+<span class="hljs-comment">///  - vis = 1  (default) node is drawn</span>
+<span class="hljs-comment">///  - vis = 0  node is not drawn</span>
+<span class="hljs-comment">///  - vis = -1 node is not drawn. Its sons are not drawn</span>
+<span class="hljs-comment">///  - vis = -2 node is drawn. Its sons are not drawn</span>
+<span class="hljs-comment">///  - vis = -3 Only node leaves are drawn</span>
+<span class="hljs-comment">///  - vis = -4 Node is not drawn. Its immediate sons are drawn</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetVisibility</span><span class="hljs-params">(Int_t vis=<span class="hljs-number">1</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
 
-<span class="token comment">/// Return total size of this 3-D Node with its attributes.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Sizeof3D</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Return total size of this 3-D Node with its attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Sizeof3D</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-<span class="token comment">/// Update global rotation matrix/translation vector for this node</span>
-<span class="token comment">/// this function must be called before invoking Local2Master</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">UpdateMatrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Update global rotation matrix/translation vector for this node</span>
+<span class="hljs-comment">/// this function must be called before invoking Local2Master</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">UpdateMatrix</span><span class="hljs-params">()</span></span>;
 
-<span class="token comment">/// Compute new translation vector and global matrix.</span>
-<span class="token comment">///  - dx      old translation vector</span>
-<span class="token comment">///  - rmat    old global matrix</span>
-<span class="token comment">///  - x,y,z   offset of new local system with respect to mother</span>
-<span class="token comment">///  - dxnew   new translation vector</span>
-<span class="token comment">///  - rmatnew new global rotation matrix</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">UpdateTempMatrix</span><span class="token punctuation">(</span><span class="token keyword">const</span> Double_t <span class="token operator">*</span>dx1<span class="token punctuation">,</span><span class="token keyword">const</span> Double_t <span class="token operator">*</span>rmat1<span class="token punctuation">,</span>
-                              Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> Double_t z<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>matrix<span class="token punctuation">,</span>
-                              Double_t <span class="token operator">*</span>dxnew<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>rmatnew<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Compute new translation vector and global matrix.</span>
+<span class="hljs-comment">///  - dx      old translation vector</span>
+<span class="hljs-comment">///  - rmat    old global matrix</span>
+<span class="hljs-comment">///  - x,y,z   offset of new local system with respect to mother</span>
+<span class="hljs-comment">///  - dxnew   new translation vector</span>
+<span class="hljs-comment">///  - rmatnew new global rotation matrix</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">UpdateTempMatrix</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Double_t *dx1,<span class="hljs-keyword">const</span> Double_t *rmat1,
+                              Double_t x, Double_t y, Double_t z, Double_t *matrix,
+                              Double_t *dxnew, Double_t *rmatnew)</span></span>;
 </code></pre>
 <!-- TNode.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3869,7 +3881,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TNode*","level":"1.4.15","depth":2,"next":{"title":"TPARA","level":"1.4.16","depth":2,"path":"class/graf3d/TPARA.md","ref":"class/graf3d/TPARA.md","articles":[]},"previous":{"title":"TNodeDiv","level":"1.4.14","depth":2,"path":"class/graf3d/TNodeDiv.md","ref":"class/graf3d/TNodeDiv.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/graf3d/TNode.md","mtime":"2018-05-14T09:18:22.245Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TNode*","level":"1.4.15","depth":2,"next":{"title":"TPARA","level":"1.4.16","depth":2,"path":"class/graf3d/TPARA.md","ref":"class/graf3d/TPARA.md","articles":[]},"previous":{"title":"TNodeDiv","level":"1.4.14","depth":2,"path":"class/graf3d/TNodeDiv.md","ref":"class/graf3d/TNodeDiv.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/graf3d/TNode.md","mtime":"2018-05-14T09:18:22.245Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3901,6 +3913,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

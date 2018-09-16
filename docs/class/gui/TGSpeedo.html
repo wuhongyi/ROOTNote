@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3685,59 +3697,59 @@
 </ul>
 <p>TGSpeedo &#x7EE7;&#x627F; TGFrame, TGWidget</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">enum</span> EGlowColor <span class="token punctuation">{</span> kNoglow<span class="token punctuation">,</span> kGreen<span class="token punctuation">,</span> kOrange<span class="token punctuation">,</span> kRed <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span> EGlowColor { kNoglow, kGreen, kOrange, kRed };
 
-   <span class="token function">TGSpeedo</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">int</span> id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// TGSpeedo widget constructor.</span>
-   <span class="token function">TGSpeedo</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> Float_t smin<span class="token punctuation">,</span> Float_t smax<span class="token punctuation">,</span>
-            <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>lbl1 <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>lbl2 <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
-            <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>dsp1 <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>dsp2 <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token keyword">int</span> id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// TGSpeedo widget constructor.</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGSpeedo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// TGSpeedo widget Destructor.</span>
+   TGSpeedo(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> id = <span class="hljs-number">-1</span>);<span class="hljs-comment">/// TGSpeedo widget constructor.</span>
+   TGSpeedo(<span class="hljs-keyword">const</span> TGWindow *p, Float_t smin, Float_t smax,
+            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *lbl1 = <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *lbl2 = <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *dsp1 = <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *dsp2 = <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-keyword">int</span> id = <span class="hljs-number">-1</span>);<span class="hljs-comment">/// TGSpeedo widget constructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TGSpeedo();<span class="hljs-comment">/// TGSpeedo widget Destructor.</span>
 
-   <span class="token keyword">virtual</span> TGDimension  <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return default dimension of the widget.</span>
-   <span class="token keyword">virtual</span> Bool_t       <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension  <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return default dimension of the widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t       <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event.</span>
 
-   <span class="token keyword">const</span> TGPicture     <span class="token operator">*</span><span class="token function">GetPicture</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fBase<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TImage              <span class="token operator">*</span><span class="token function">GetImage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fImage<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Float_t              <span class="token function">GetPeakVal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPeakVal<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Float_t              <span class="token function">GetScaleMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fScaleMin<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Float_t              <span class="token function">GetScaleMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fScaleMax<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t               <span class="token function">IsThresholdActive</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fThresholdActive<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture     *<span class="hljs-title">GetPicture</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fBase; }
+   <span class="hljs-function">TImage              *<span class="hljs-title">GetImage</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fImage; }
+   <span class="hljs-function">Float_t              <span class="hljs-title">GetPeakVal</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPeakVal; }
+   <span class="hljs-function">Float_t              <span class="hljs-title">GetScaleMin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fScaleMin; }
+   <span class="hljs-function">Float_t              <span class="hljs-title">GetScaleMax</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fScaleMax; }
+   <span class="hljs-function">Bool_t               <span class="hljs-title">IsThresholdActive</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fThresholdActive; }
 
-   <span class="token keyword">void</span> <span class="token function">Build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Build TGSpeedo widget.</span>
-   <span class="token keyword">void</span> <span class="token function">Glow</span><span class="token punctuation">(</span>EGlowColor col <span class="token operator">=</span> kGreen<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Make speedo glowing.</span>
-   <span class="token keyword">void</span> <span class="token function">StepScale</span><span class="token punctuation">(</span>Float_t step<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Increment/decrement scale (needle position) of &quot;step&quot; value.</span>
-   <span class="token keyword">void</span> <span class="token function">SetScaleValue</span><span class="token punctuation">(</span>Float_t val<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set actual scale (needle position) value.</span>
-   <span class="token keyword">void</span> <span class="token function">SetScaleValue</span><span class="token punctuation">(</span>Float_t val<span class="token punctuation">,</span> Int_t damping<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set actual scale (needle position) value.</span>
-   <span class="token keyword">void</span> <span class="token function">SetOdoValue</span><span class="token punctuation">(</span>Int_t val<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set actual value of odo meter.</span>
-   <span class="token keyword">void</span> <span class="token function">SetDisplayText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text2 <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set small display text (two lines).</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Build</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Build TGSpeedo widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Glow</span><span class="hljs-params">(EGlowColor col = kGreen)</span></span>;<span class="hljs-comment">/// Make speedo glowing.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">StepScale</span><span class="hljs-params">(Float_t step)</span></span>;<span class="hljs-comment">/// Increment/decrement scale (needle position) of &quot;step&quot; value.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetScaleValue</span><span class="hljs-params">(Float_t val)</span></span>;<span class="hljs-comment">/// Set actual scale (needle position) value.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetScaleValue</span><span class="hljs-params">(Float_t val, Int_t damping)</span></span>;<span class="hljs-comment">/// Set actual scale (needle position) value.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetOdoValue</span><span class="hljs-params">(Int_t val)</span></span>;<span class="hljs-comment">/// Set actual value of odo meter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetDisplayText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text1, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text2 = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Set small display text (two lines).</span>
 
-   <span class="token keyword">void</span> <span class="token function">SetLabelText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text2 <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set main label text (two lines).</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetLabelText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text1, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text2 = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Set main label text (two lines).</span>
 
-   <span class="token keyword">void</span> <span class="token function">SetMinMaxScale</span><span class="token punctuation">(</span>Float_t min<span class="token punctuation">,</span> Float_t max<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set min and max scale values.</span>
-   <span class="token keyword">void</span> <span class="token function">SetThresholds</span><span class="token punctuation">(</span>Float_t th1 <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> Float_t th2 <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> Float_t th3 <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
-             <span class="token punctuation">{</span> fThreshold<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> th1<span class="token punctuation">;</span> fThreshold<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> th2<span class="token punctuation">;</span> fThreshold<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> th3<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">SetThresholdColors</span><span class="token punctuation">(</span>EGlowColor col1<span class="token punctuation">,</span> EGlowColor col2<span class="token punctuation">,</span> EGlowColor col3<span class="token punctuation">)</span>
-             <span class="token punctuation">{</span> fThresholdColor<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> col1<span class="token punctuation">;</span> fThresholdColor<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> col2<span class="token punctuation">;</span> fThresholdColor<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> col3<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">EnableThreshold</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fThresholdActive <span class="token operator">=</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">DisableThreshold</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fThresholdActive <span class="token operator">=</span> kFALSE<span class="token punctuation">;</span> <span class="token function">Glow</span><span class="token punctuation">(</span>kNoglow<span class="token punctuation">)</span><span class="token punctuation">;</span> fClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">NeedRedraw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">EnablePeakMark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fPeakMark <span class="token operator">=</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">DisablePeakMark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fPeakMark <span class="token operator">=</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">EnableMeanMark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fMeanMark <span class="token operator">=</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">DisableMeanMark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fMeanMark <span class="token operator">=</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">ResetPeakVal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fPeakVal <span class="token operator">=</span> fValue<span class="token punctuation">;</span> fClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">NeedRedraw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">SetMeanValue</span><span class="token punctuation">(</span>Float_t mean<span class="token punctuation">)</span> <span class="token punctuation">{</span> fMeanVal <span class="token operator">=</span> mean<span class="token punctuation">;</span> fClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">NeedRedraw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetMinMaxScale</span><span class="hljs-params">(Float_t min, Float_t max)</span></span>;<span class="hljs-comment">/// Set min and max scale values.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetThresholds</span><span class="hljs-params">(Float_t th1 = <span class="hljs-number">0.0</span>, Float_t th2 = <span class="hljs-number">0.0</span>, Float_t th3 = <span class="hljs-number">0.0</span>)</span>
+             </span>{ fThreshold[<span class="hljs-number">0</span>] = th1; fThreshold[<span class="hljs-number">1</span>] = th2; fThreshold[<span class="hljs-number">2</span>] = th3; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetThresholdColors</span><span class="hljs-params">(EGlowColor col1, EGlowColor col2, EGlowColor col3)</span>
+             </span>{ fThresholdColor[<span class="hljs-number">0</span>] = col1; fThresholdColor[<span class="hljs-number">1</span>] = col2; fThresholdColor[<span class="hljs-number">2</span>] = col3; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">EnableThreshold</span><span class="hljs-params">()</span> </span>{ fThresholdActive = kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DisableThreshold</span><span class="hljs-params">()</span> </span>{ fThresholdActive = kFALSE; Glow(kNoglow); fClient-&gt;NeedRedraw(<span class="hljs-keyword">this</span>);}
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">EnablePeakMark</span><span class="hljs-params">()</span> </span>{ fPeakMark = kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DisablePeakMark</span><span class="hljs-params">()</span> </span>{ fPeakMark = kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">EnableMeanMark</span><span class="hljs-params">()</span> </span>{ fMeanMark = kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DisableMeanMark</span><span class="hljs-params">()</span> </span>{ fMeanMark = kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ResetPeakVal</span><span class="hljs-params">()</span> </span>{ fPeakVal = fValue; fClient-&gt;NeedRedraw(<span class="hljs-keyword">this</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetMeanValue</span><span class="hljs-params">(Float_t mean)</span> </span>{ fMeanVal = mean; fClient-&gt;NeedRedraw(<span class="hljs-keyword">this</span>); }
 
-   <span class="token keyword">void</span> <span class="token function">OdoClicked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;OdoClicked()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">void</span> <span class="token function">LedClicked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;LedClicked()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OdoClicked</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;OdoClicked()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">LedClicked</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;LedClicked()&quot;</span>); }   <span class="hljs-comment">// *SIGNAL*</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGSpeedo.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3780,7 +3792,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGSpeedo*","level":"1.3.53","depth":2,"next":{"title":"TGSplitFrame","level":"1.3.54","depth":2,"path":"class/gui/TGSplitFrame.md","ref":"class/gui/TGSplitFrame.md","articles":[]},"previous":{"title":"TGSlider+","level":"1.3.52","depth":2,"path":"class/gui/TGSlider.md","ref":"class/gui/TGSlider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGSpeedo.md","mtime":"2018-05-14T09:18:21.829Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGSpeedo*","level":"1.3.53","depth":2,"next":{"title":"TGSplitFrame","level":"1.3.54","depth":2,"path":"class/gui/TGSplitFrame.md","ref":"class/gui/TGSplitFrame.md","articles":[]},"previous":{"title":"TGSlider+","level":"1.3.52","depth":2,"path":"class/gui/TGSlider.md","ref":"class/gui/TGSlider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGSpeedo.md","mtime":"2018-05-14T09:18:21.829Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3812,6 +3824,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

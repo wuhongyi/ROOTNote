@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3679,91 +3691,91 @@
 <h1 id="tgdndmanager"><a name="tgdndmanager" class="plugin-anchor" href="#tgdndmanager"><i class="fa fa-link" aria-hidden="true"></i></a>TGDNDManager</h1>
 <p>TGDragWindow &#x7EE7;&#x627F; TGFrame<br>TDNDData &#x7EE7;&#x627F; TObject<br>TGDNDManager &#x7EE7;&#x627F; TObject</p>
 <p>TGDragWindow<br>Window used as drag icon during drag and drop operations.</p>
-<pre class="language-"><code class="lang-cpp">R__EXTERN TGDNDManager <span class="token operator">*</span>gDNDManager<span class="token punctuation">;</span> <span class="token comment">// global drag and drop manager</span>
+<pre><code class="lang-cpp">R__EXTERN TGDNDManager *gDNDManager; <span class="hljs-comment">// global drag and drop manager</span>
 </code></pre>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TGDragWindow</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGDragWindow</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> Pixmap_t pic<span class="token punctuation">,</span> Pixmap_t mask<span class="token punctuation">,</span>
-                UInt_t options <span class="token operator">=</span> kChildFrame<span class="token punctuation">,</span> Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGDragWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGDragWindow(<span class="hljs-keyword">const</span> TGWindow *p, Pixmap_t pic, Pixmap_t mask,
+                UInt_t options = kChildFrame, Pixel_t back = GetWhitePixel());
+   <span class="hljs-keyword">virtual</span> ~TGDragWindow();
 
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TGDimension</span><span class="token punctuation">(</span>fPw<span class="token punctuation">,</span> fPh<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TGDimension(fPw, fPh); }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MapWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Map and Raise TGDragWindow.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">UnmapWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Unmap TGDragWindow.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">RaiseWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Raise TGDragWindow.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">LowerWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Lower TGDragWindow.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MapRaised</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Map TGDragWindow.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MapWindow</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Map and Raise TGDragWindow.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UnmapWindow</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Unmap TGDragWindow.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RaiseWindow</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Raise TGDragWindow.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LowerWindow</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Lower TGDragWindow.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MapRaised</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Map TGDragWindow.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Layout TGDragWindow.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Layout TGDragWindow.</span>
 
-   Window_t <span class="token function">GetInputId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fInput<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">HasWindow</span><span class="token punctuation">(</span>Window_t w<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>w <span class="token operator">==</span> fId <span class="token operator">||</span> w <span class="token operator">==</span> fInput<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Window_t <span class="hljs-title">GetInputId</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fInput; }
+   <span class="hljs-function">Bool_t <span class="hljs-title">HasWindow</span><span class="hljs-params">(Window_t w)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (w == fId || w == fInput); }
 </code></pre>
 <p><strong>TDNDData</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TDNDData</span><span class="token punctuation">(</span>Atom_t dt <span class="token operator">=</span> kNone<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>d <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Atom_t act <span class="token operator">=</span> kNone<span class="token punctuation">)</span> <span class="token operator">:</span>
-      <span class="token function">fDataType</span><span class="token punctuation">(</span>dt<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fAction</span><span class="token punctuation">(</span>act<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fData</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fDataLength</span><span class="token punctuation">(</span>len<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token operator">~</span><span class="token function">TDNDData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TDNDData(Atom_t dt = kNone, <span class="hljs-keyword">void</span> *d = <span class="hljs-number">0</span>, Int_t len = <span class="hljs-number">0</span>, Atom_t act = kNone) :
+      fDataType(dt), fAction(act), fData(d), fDataLength(len) {}
+   ~TDNDData() {}
 
-   Atom_t    fDataType<span class="token punctuation">;</span>       <span class="token comment">// Data type description</span>
-   Atom_t    fAction<span class="token punctuation">;</span>         <span class="token comment">// Action description</span>
-   <span class="token keyword">void</span>     <span class="token operator">*</span>fData<span class="token punctuation">;</span>           <span class="token comment">// Actual data</span>
-   Int_t     fDataLength<span class="token punctuation">;</span>     <span class="token comment">// Length of data</span>
+   Atom_t    fDataType;       <span class="hljs-comment">// Data type description</span>
+   Atom_t    fAction;         <span class="hljs-comment">// Action description</span>
+   <span class="hljs-keyword">void</span>     *fData;           <span class="hljs-comment">// Actual data</span>
+   Int_t     fDataLength;     <span class="hljs-comment">// Length of data</span>
 </code></pre>
 <p><strong>TGDNDManager</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGDNDManager</span><span class="token punctuation">(</span>TGFrame <span class="token operator">*</span>toplevel<span class="token punctuation">,</span> Atom_t <span class="token operator">*</span>typelist<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGDNDManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGDNDManager(TGFrame *toplevel, Atom_t *typelist);
+   <span class="hljs-keyword">virtual</span> ~TGDNDManager();
 
-   Bool_t         <span class="token function">HandleClientMessage</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle DND related client messages.</span>
-   Bool_t         <span class="token function">HandleSelectionRequest</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle selection request event.</span>
-   Bool_t         <span class="token function">HandleSelection</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle selection event.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">HandleClientMessage</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle DND related client messages.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">HandleSelectionRequest</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle selection request event.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">HandleSelection</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle selection event.</span>
 
-   Bool_t         <span class="token function">HandleTimer</span><span class="token punctuation">(</span>TTimer <span class="token operator">*</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle Drop timeout.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">HandleTimer</span><span class="hljs-params">(TTimer *t)</span></span>;<span class="hljs-comment">/// Handle Drop timeout.</span>
 
-  <span class="token comment">//--- called by widgets</span>
+  <span class="hljs-comment">//--- called by widgets</span>
 
-   TGFrame       <span class="token operator">*</span><span class="token function">GetMainFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMain<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>           <span class="token function">SetMainFrame</span><span class="token punctuation">(</span>TGFrame <span class="token operator">*</span>main<span class="token punctuation">)</span> <span class="token punctuation">{</span> fMain <span class="token operator">=</span> main<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>           <span class="token function">SetDragPixmap</span><span class="token punctuation">(</span>Pixmap_t pic<span class="token punctuation">,</span> Pixmap_t mask<span class="token punctuation">,</span> Int_t hot_x<span class="token punctuation">,</span> Int_t hot_y<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set drag window pixmaps and hotpoint.</span>
-   Bool_t         <span class="token function">SetRootProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set root window proxy.</span>
-   Bool_t         <span class="token function">RemoveRootProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Remove root window proxy.</span>
+   <span class="hljs-function">TGFrame       *<span class="hljs-title">GetMainFrame</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMain; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">SetMainFrame</span><span class="hljs-params">(TGFrame *main)</span> </span>{ fMain = main; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>           <span class="hljs-title">SetDragPixmap</span><span class="hljs-params">(Pixmap_t pic, Pixmap_t mask, Int_t hot_x, Int_t hot_y)</span></span>;<span class="hljs-comment">/// Set drag window pixmaps and hotpoint.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">SetRootProxy</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Set root window proxy.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">RemoveRootProxy</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Remove root window proxy.</span>
 
-   Bool_t         <span class="token function">StartDrag</span><span class="token punctuation">(</span>TGFrame <span class="token operator">*</span>src<span class="token punctuation">,</span> Int_t x_root<span class="token punctuation">,</span> Int_t y_root<span class="token punctuation">,</span>
-                            Window_t grabWin <span class="token operator">=</span> kNone<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Start dragging.</span>
-   Bool_t         <span class="token function">Drag</span><span class="token punctuation">(</span>Int_t x_root<span class="token punctuation">,</span> Int_t y_root<span class="token punctuation">,</span> Atom_t action<span class="token punctuation">,</span> Time_t timestamp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Process drag event.</span>
-   Bool_t         <span class="token function">Drop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Drop.</span>
-   Bool_t         <span class="token function">EndDrag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// End dragging.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">StartDrag</span><span class="hljs-params">(TGFrame *src, Int_t x_root, Int_t y_root,
+                            Window_t grabWin = kNone)</span></span>;<span class="hljs-comment">/// Start dragging.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">Drag</span><span class="hljs-params">(Int_t x_root, Int_t y_root, Atom_t action, Time_t timestamp)</span></span>;<span class="hljs-comment">/// Process drag event.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">Drop</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Drop.</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">EndDrag</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// End dragging.</span>
 
-   Bool_t         <span class="token function">IsDragging</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fDragging<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Window_t       <span class="token function">GetSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fSource<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Window_t       <span class="token function">GetTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTarget<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Atom_t        <span class="token operator">*</span><span class="token function">GetTypeList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTypelist<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Bool_t         <span class="hljs-title">IsDragging</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fDragging; }
+   <span class="hljs-function">Window_t       <span class="hljs-title">GetSource</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fSource; }
+   <span class="hljs-function">Window_t       <span class="hljs-title">GetTarget</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTarget; }
+   <span class="hljs-function">Atom_t        *<span class="hljs-title">GetTypeList</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTypelist; }
 
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDAware</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDEnter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDLeave</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDDrop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDFinished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDActionCopy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDActionMove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDActionLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDActionAsk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDActionPrivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDTypeList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDActionList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetDNDActionDescrip</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Atom_t  <span class="token function">GetXCDNDData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDAware</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDSelection</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDProxy</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDEnter</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDLeave</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDPosition</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDStatus</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDDrop</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDFinished</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDVersion</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDActionCopy</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDActionMove</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDActionLink</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDActionAsk</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDActionPrivate</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDTypeList</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDActionList</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetDNDActionDescrip</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Atom_t  <span class="hljs-title">GetXCDNDData</span><span class="hljs-params">()</span></span>;
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <!-- TGDNDManager.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3806,7 +3818,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGDNDManager*","level":"1.3.11","depth":2,"next":{"title":"TGDockableFrame*","level":"1.3.12","depth":2,"path":"class/gui/TGDockableFrame.md","ref":"class/gui/TGDockableFrame.md","articles":[]},"previous":{"title":"TGDimension*","level":"1.3.10","depth":2,"path":"class/gui/TGDimension.md","ref":"class/gui/TGDimension.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGDNDManager.md","mtime":"2018-05-14T09:18:21.476Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGDNDManager*","level":"1.3.11","depth":2,"next":{"title":"TGDockableFrame*","level":"1.3.12","depth":2,"path":"class/gui/TGDockableFrame.md","ref":"class/gui/TGDockableFrame.md","articles":[]},"previous":{"title":"TGDimension*","level":"1.3.10","depth":2,"path":"class/gui/TGDimension.md","ref":"class/gui/TGDimension.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGDNDManager.md","mtime":"2018-05-14T09:18:21.476Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3838,6 +3850,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

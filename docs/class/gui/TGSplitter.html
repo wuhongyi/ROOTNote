@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3685,91 +3697,91 @@
 <p>TGVFileSplitter &#x7EE7;&#x627F; TGVSplitter</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TGSplitter</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGSplitter</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-              UInt_t options <span class="token operator">=</span> kChildFrame<span class="token punctuation">,</span>
-              Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a splitter.</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGSplitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGSplitter(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">2</span>, UInt_t h = <span class="hljs-number">4</span>,
+              UInt_t options = kChildFrame,
+              Pixel_t back = GetDefaultFrameBackground());<span class="hljs-comment">/// Create a splitter.</span>
+   <span class="hljs-keyword">virtual</span> ~TGSplitter() { }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetFrame</span><span class="token punctuation">(</span>TGFrame <span class="token operator">*</span>frame<span class="token punctuation">,</span> Bool_t prev<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetFrame</span><span class="hljs-params">(TGFrame *frame, Bool_t prev)</span> </span>= <span class="hljs-number">0</span>;
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleCrossing</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span> </span>= <span class="hljs-number">0</span>;
 
-   <span class="token keyword">void</span> <span class="token function">DragStarted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// *SIGNAL*  /// Emit DragStarted signal.</span>
-   <span class="token keyword">void</span> <span class="token function">Moved</span><span class="token punctuation">(</span>Int_t delta<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *SIGNAL*  /// Emit Moved signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DragStarted</span><span class="hljs-params">()</span></span>;      <span class="hljs-comment">// *SIGNAL*  /// Emit DragStarted signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Moved</span><span class="hljs-params">(Int_t delta)</span></span>; <span class="hljs-comment">// *SIGNAL*  /// Emit Moved signal.</span>
 
-   Bool_t <span class="token function">GetExternalHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fExternalHandler<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">SetExternalHandler</span><span class="token punctuation">(</span>Bool_t x<span class="token punctuation">)</span> <span class="token punctuation">{</span> fExternalHandler <span class="token operator">=</span> x<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Bool_t <span class="hljs-title">GetExternalHandler</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fExternalHandler; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetExternalHandler</span><span class="hljs-params">(Bool_t x)</span> </span>{ fExternalHandler = x; }
 </code></pre>
 <p><strong>TGVSplitter</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGVSplitter</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-               UInt_t options <span class="token operator">=</span> kChildFrame<span class="token punctuation">,</span>
-               Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a vertical splitter.</span>
-   <span class="token function">TGVSplitter</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">,</span> Bool_t external<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a vertical splitter.</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGVSplitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete vertical splitter widget.</span>
+<pre><code class="lang-cpp">   TGVSplitter(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">4</span>, UInt_t h = <span class="hljs-number">4</span>,
+               UInt_t options = kChildFrame,
+               Pixel_t back = GetDefaultFrameBackground());<span class="hljs-comment">/// Create a vertical splitter.</span>
+   TGVSplitter(<span class="hljs-keyword">const</span> TGWindow *p, UInt_t w, UInt_t h, Bool_t external);<span class="hljs-comment">/// Create a vertical splitter.</span>
+   <span class="hljs-keyword">virtual</span> ~TGVSplitter();<span class="hljs-comment">/// Delete vertical splitter widget.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">DrawBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw vertical splitter.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetFrame</span><span class="token punctuation">(</span>TGFrame <span class="token operator">*</span>frame<span class="token punctuation">,</span> Bool_t left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set frame to be resized. If frame is on the left of the splitter</span>
-<span class="token comment">/// set left to true.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw vertical splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetFrame</span><span class="hljs-params">(TGFrame *frame, Bool_t left)</span></span>;
+<span class="hljs-comment">/// Set frame to be resized. If frame is on the left of the splitter</span>
+<span class="hljs-comment">/// set left to true.</span>
 
-   <span class="token keyword">const</span> TGFrame <span class="token operator">*</span><span class="token function">GetFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fFrame<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t         <span class="token function">GetLeft</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLeft<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t         <span class="token function">IsLeft</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLeft<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a splitter widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGFrame *<span class="hljs-title">GetFrame</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFrame; }
+   <span class="hljs-function">Bool_t         <span class="hljs-title">GetLeft</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLeft; }
+   <span class="hljs-function">Bool_t         <span class="hljs-title">IsLeft</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLeft; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a splitter widget as a C++ statement(s) on output stream out.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event in vertical splitter.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in vertical splitter.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleCrossing</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in vertical splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event in vertical splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in vertical splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in vertical splitter.</span>
 </code></pre>
 <p><strong>TGHSplitter</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGHSplitter</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-               UInt_t options <span class="token operator">=</span> kChildFrame<span class="token punctuation">,</span>
-               Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a horizontal splitter.</span>
-   <span class="token function">TGHSplitter</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">,</span> Bool_t external<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a horizontal splitter.</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGHSplitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete horizontal splitter widget.</span>
+<pre><code class="lang-cpp">   TGHSplitter(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">4</span>, UInt_t h = <span class="hljs-number">4</span>,
+               UInt_t options = kChildFrame,
+               Pixel_t back = GetDefaultFrameBackground());<span class="hljs-comment">/// Create a horizontal splitter.</span>
+   TGHSplitter(<span class="hljs-keyword">const</span> TGWindow *p, UInt_t w, UInt_t h, Bool_t external);<span class="hljs-comment">/// Create a horizontal splitter.</span>
+   <span class="hljs-keyword">virtual</span> ~TGHSplitter();<span class="hljs-comment">/// Delete horizontal splitter widget.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">DrawBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw horizontal splitter.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetFrame</span><span class="token punctuation">(</span>TGFrame <span class="token operator">*</span>frame<span class="token punctuation">,</span> Bool_t above<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set frame to be resized. If frame is above the splitter</span>
-<span class="token comment">/// set above to true.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw horizontal splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetFrame</span><span class="hljs-params">(TGFrame *frame, Bool_t above)</span></span>;
+<span class="hljs-comment">/// Set frame to be resized. If frame is above the splitter</span>
+<span class="hljs-comment">/// set above to true.</span>
 
-   <span class="token keyword">const</span> TGFrame <span class="token operator">*</span><span class="token function">GetFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fFrame<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t         <span class="token function">GetAbove</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fAbove<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t         <span class="token function">IsAbove</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fAbove<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a splitter widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGFrame *<span class="hljs-title">GetFrame</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFrame; }
+   <span class="hljs-function">Bool_t         <span class="hljs-title">GetAbove</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAbove; }
+   <span class="hljs-function">Bool_t         <span class="hljs-title">IsAbove</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAbove; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a splitter widget as a C++ statement(s) on output stream out.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event in horizontal splitter.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in horizontal splitter.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleCrossing</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in horizontal splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event in horizontal splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in horizontal splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in horizontal splitter.</span>
 </code></pre>
 <p><strong>TGVFileSplitter</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGVFileSplitter</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-               UInt_t options <span class="token operator">=</span> kChildFrame<span class="token punctuation">,</span>
-               Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGVFileSplitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGVFileSplitter(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">4</span>, UInt_t h = <span class="hljs-number">4</span>,
+               UInt_t options = kChildFrame,
+               Pixel_t back = GetDefaultFrameBackground());
+   <span class="hljs-keyword">virtual</span> ~TGVFileSplitter();
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleDoubleClick</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle double click mouse event in splitter.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event in vertical splitter.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in vertical splitter.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a splitter widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleDoubleClick</span><span class="hljs-params">(Event_t *)</span></span>;<span class="hljs-comment">/// Handle double click mouse event in splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event in vertical splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in vertical splitter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a splitter widget as a C++ statement(s) on output stream out.</span>
 
-   <span class="token keyword">void</span> <span class="token function">LayoutHeader</span><span class="token punctuation">(</span>TGFrame <span class="token operator">*</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//*SIGNAL*  /// Emit LayoutFeader() signal.</span>
-   <span class="token keyword">void</span> <span class="token function">LayoutListView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//*SIGNAL*  /// Emit LayoutListView() signal.</span>
-   <span class="token keyword">void</span> <span class="token function">ButtonPressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//*SIGNAL*  /// Emit ButtonPressed() signal.</span>
-   <span class="token keyword">void</span> <span class="token function">ButtonReleased</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//*SIGNAL*  /// Emit ButtonReleased() signal.</span>
-   <span class="token keyword">void</span> <span class="token function">DoubleClicked</span><span class="token punctuation">(</span>TGVFileSplitter<span class="token operator">*</span> frame<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//*SIGNAL*  /// Emit DoubleClicked() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">LayoutHeader</span><span class="hljs-params">(TGFrame *f)</span></span>;  <span class="hljs-comment">//*SIGNAL*  /// Emit LayoutFeader() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">LayoutListView</span><span class="hljs-params">()</span></span>;  <span class="hljs-comment">//*SIGNAL*  /// Emit LayoutListView() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ButtonPressed</span><span class="hljs-params">()</span></span>;   <span class="hljs-comment">//*SIGNAL*  /// Emit ButtonPressed() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ButtonReleased</span><span class="hljs-params">()</span></span>;  <span class="hljs-comment">//*SIGNAL*  /// Emit ButtonReleased() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(TGVFileSplitter* frame)</span></span>;  <span class="hljs-comment">//*SIGNAL*  /// Emit DoubleClicked() signal.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGSplitter.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3812,7 +3824,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGSplitter*","level":"1.3.55","depth":2,"next":{"title":"TGStatusBar*","level":"1.3.56","depth":2,"path":"class/gui/TGStatusBar.md","ref":"class/gui/TGStatusBar.md","articles":[]},"previous":{"title":"TGSplitFrame","level":"1.3.54","depth":2,"path":"class/gui/TGSplitFrame.md","ref":"class/gui/TGSplitFrame.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGSplitter.md","mtime":"2018-05-14T09:18:21.463Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGSplitter*","level":"1.3.55","depth":2,"next":{"title":"TGStatusBar*","level":"1.3.56","depth":2,"path":"class/gui/TGStatusBar.md","ref":"class/gui/TGStatusBar.md","articles":[]},"previous":{"title":"TGSplitFrame","level":"1.3.54","depth":2,"path":"class/gui/TGSplitFrame.md","ref":"class/gui/TGSplitFrame.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGSplitter.md","mtime":"2018-05-14T09:18:21.463Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3844,6 +3856,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

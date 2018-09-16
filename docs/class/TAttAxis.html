@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3679,63 +3691,63 @@
 <h1 id="tattaxis"><a name="tattaxis" class="plugin-anchor" href="#tattaxis"><i class="fa fa-link" aria-hidden="true"></i></a>TAttAxis</h1>
 <p>&#x57FA;&#x7C7B;</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TAttAxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span>          <span class="token operator">~</span><span class="token function">TAttAxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>     <span class="token function">Copy</span><span class="token punctuation">(</span>TAttAxis <span class="token operator">&amp;</span>attaxis<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Copy of the object.</span>
-   <span class="token keyword">virtual</span> Int_t    <span class="token function">GetNdivisions</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fNdivisions<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Color_t  <span class="token function">GetAxisColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fAxisColor<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Color_t  <span class="token function">GetLabelColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fLabelColor<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Style_t  <span class="token function">GetLabelFont</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fLabelFont<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Float_t  <span class="token function">GetLabelOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fLabelOffset<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Float_t  <span class="token function">GetLabelSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fLabelSize<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Float_t  <span class="token function">GetTitleOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTitleOffset<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Float_t  <span class="token function">GetTitleSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTitleSize<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Float_t  <span class="token function">GetTickLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTickLength<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Color_t  <span class="token function">GetTitleColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTitleColor<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Style_t  <span class="token function">GetTitleFont</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTitleFont<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">ResetAttAxis</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Reset axis attributes</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SaveAttributes</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>subname<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Save axis attributes as C++ statement(s) on output stream out</span>
+<pre><code class="lang-cpp">   TAttAxis();
+   <span class="hljs-keyword">virtual</span>          ~TAttAxis();
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">Copy</span><span class="hljs-params">(TAttAxis &amp;attaxis)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Copy of the object.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">GetNdivisions</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNdivisions;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Color_t  <span class="hljs-title">GetAxisColor</span><span class="hljs-params">()</span>   <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fAxisColor;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Color_t  <span class="hljs-title">GetLabelColor</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fLabelColor;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Style_t  <span class="hljs-title">GetLabelFont</span><span class="hljs-params">()</span>   <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fLabelFont;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t  <span class="hljs-title">GetLabelOffset</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fLabelOffset;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t  <span class="hljs-title">GetLabelSize</span><span class="hljs-params">()</span>   <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fLabelSize;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t  <span class="hljs-title">GetTitleOffset</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTitleOffset;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t  <span class="hljs-title">GetTitleSize</span><span class="hljs-params">()</span>   <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTitleSize;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t  <span class="hljs-title">GetTickLength</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTickLength;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Color_t  <span class="hljs-title">GetTitleColor</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTitleColor;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Style_t  <span class="hljs-title">GetTitleFont</span><span class="hljs-params">()</span>   <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTitleFont;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ResetAttAxis</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Reset axis attributes</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SaveAttributes</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *subname)</span></span>;<span class="hljs-comment">/// Save axis attributes as C++ statement(s) on output stream out</span>
 
-<span class="token comment">/// Set the number of divisions for this axis.</span>
-<span class="token comment">///</span>
-<span class="token comment">///  - if optim = kTRUE (default), the number of divisions will be</span>
-<span class="token comment">///                     optimized around the specified value.</span>
-<span class="token comment">///  - if optim = kFALSE, or n &lt; 0, the axis will be forced to use</span>
-<span class="token comment">///                     exactly n divisions.</span>
-<span class="token comment">/// n = n1 + 100*n2 + 10000*n3</span>
-<span class="token comment">/// Where n1 is the number of primary divisions,</span>
-<span class="token comment">/// n2 is the number of second order divisions and</span>
-<span class="token comment">/// n3 is the number of third order divisions.</span>
-<span class="token comment">/// If the number of divisions is &quot;optimized&quot; (see above) n1, n2, n3 are maximum values.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetNdivisions</span><span class="token punctuation">(</span>Int_t n<span class="token operator">=</span><span class="token number">510</span><span class="token punctuation">,</span> Bool_t optim<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// *MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetNdivisions</span><span class="token punctuation">(</span>Int_t n1<span class="token punctuation">,</span> Int_t n2<span class="token punctuation">,</span> Int_t n3<span class="token punctuation">,</span> Bool_t optim<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetAxisColor</span><span class="token punctuation">(</span>Color_t color<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> Float_t alpha<span class="token operator">=</span><span class="token number">1.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU* /// Set color of the line axis and tick marks</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetLabelColor</span><span class="token punctuation">(</span>Color_t color<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> Float_t alpha<span class="token operator">=</span><span class="token number">1.</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU* /// Set color of labels</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetLabelFont</span><span class="token punctuation">(</span>Style_t font<span class="token operator">=</span><span class="token number">62</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// *MENU* /// Set labels&apos; font.</span>
+<span class="hljs-comment">/// Set the number of divisions for this axis.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///  - if optim = kTRUE (default), the number of divisions will be</span>
+<span class="hljs-comment">///                     optimized around the specified value.</span>
+<span class="hljs-comment">///  - if optim = kFALSE, or n &lt; 0, the axis will be forced to use</span>
+<span class="hljs-comment">///                     exactly n divisions.</span>
+<span class="hljs-comment">/// n = n1 + 100*n2 + 10000*n3</span>
+<span class="hljs-comment">/// Where n1 is the number of primary divisions,</span>
+<span class="hljs-comment">/// n2 is the number of second order divisions and</span>
+<span class="hljs-comment">/// n3 is the number of third order divisions.</span>
+<span class="hljs-comment">/// If the number of divisions is &quot;optimized&quot; (see above) n1, n2, n3 are maximum values.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetNdivisions</span><span class="hljs-params">(Int_t n=<span class="hljs-number">510</span>, Bool_t optim=kTRUE)</span></span>;   <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetNdivisions</span><span class="hljs-params">(Int_t n1, Int_t n2, Int_t n3, Bool_t optim=kTRUE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetAxisColor</span><span class="hljs-params">(Color_t color=<span class="hljs-number">1</span>, Float_t alpha=<span class="hljs-number">1.</span>)</span></span>;  <span class="hljs-comment">// *MENU* /// Set color of the line axis and tick marks</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetLabelColor</span><span class="hljs-params">(Color_t color=<span class="hljs-number">1</span>, Float_t alpha=<span class="hljs-number">1.</span>)</span></span>; <span class="hljs-comment">// *MENU* /// Set color of labels</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetLabelFont</span><span class="hljs-params">(Style_t font=<span class="hljs-number">62</span>)</span></span>;                    <span class="hljs-comment">// *MENU* /// Set labels&apos; font.</span>
 
-<span class="token comment">/// Set distance between the axis and the labels</span>
-<span class="token comment">/// The distance is expressed in per cent of the pad width</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetLabelOffset</span><span class="token punctuation">(</span>Float_t offset<span class="token operator">=</span><span class="token number">0.005</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// *MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetLabelSize</span><span class="token punctuation">(</span>Float_t size<span class="token operator">=</span><span class="token number">0.04</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// *MENU* /// Set size of axis labels. The size is expressed in per cent of the pad width</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetTickLength</span><span class="token punctuation">(</span>Float_t length<span class="token operator">=</span><span class="token number">0.03</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">// *MENU* /// Set tick mark length. The length is expressed in per cent of the pad width</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetTickSize</span><span class="token punctuation">(</span>Float_t size<span class="token operator">=</span><span class="token number">0.03</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token function">SetTickLength</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="hljs-comment">/// Set distance between the axis and the labels</span>
+<span class="hljs-comment">/// The distance is expressed in per cent of the pad width</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetLabelOffset</span><span class="hljs-params">(Float_t offset=<span class="hljs-number">0.005</span>)</span></span>;             <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetLabelSize</span><span class="hljs-params">(Float_t size=<span class="hljs-number">0.04</span>)</span></span>;                  <span class="hljs-comment">// *MENU* /// Set size of axis labels. The size is expressed in per cent of the pad width</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetTickLength</span><span class="hljs-params">(Float_t length=<span class="hljs-number">0.03</span>)</span></span>;               <span class="hljs-comment">// *MENU* /// Set tick mark length. The length is expressed in per cent of the pad width</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetTickSize</span><span class="hljs-params">(Float_t size=<span class="hljs-number">0.03</span>)</span> </span>{SetTickLength(size);}
 
-<span class="token comment">/// Set distance between the axis and the axis title</span>
-<span class="token comment">/// Offset is a correction factor with respect to the &quot;standard&quot; value.</span>
-<span class="token comment">///  - offset = 1   uses the default position that is computed in function</span>
-<span class="token comment">///                 of the label offset and size.</span>
-<span class="token comment">///  - offset = 1.2 will add 20 per cent more to the default offset.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetTitleOffset</span><span class="token punctuation">(</span>Float_t offset<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// *MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetTitleSize</span><span class="token punctuation">(</span>Float_t size<span class="token operator">=</span><span class="token number">0.04</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// *MENU* /// Set size of axis title. The size is expressed in per cent of the pad width</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetTitleColor</span><span class="token punctuation">(</span>Color_t color<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// *MENU* /// Set color of axis title</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetTitleFont</span><span class="token punctuation">(</span>Style_t font<span class="token operator">=</span><span class="token number">62</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// *MENU* /// Set the title font.</span>
+<span class="hljs-comment">/// Set distance between the axis and the axis title</span>
+<span class="hljs-comment">/// Offset is a correction factor with respect to the &quot;standard&quot; value.</span>
+<span class="hljs-comment">///  - offset = 1   uses the default position that is computed in function</span>
+<span class="hljs-comment">///                 of the label offset and size.</span>
+<span class="hljs-comment">///  - offset = 1.2 will add 20 per cent more to the default offset.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetTitleOffset</span><span class="hljs-params">(Float_t offset=<span class="hljs-number">1</span>)</span></span>;                 <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetTitleSize</span><span class="hljs-params">(Float_t size=<span class="hljs-number">0.04</span>)</span></span>;                  <span class="hljs-comment">// *MENU* /// Set size of axis title. The size is expressed in per cent of the pad width</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetTitleColor</span><span class="hljs-params">(Color_t color=<span class="hljs-number">1</span>)</span></span>;                   <span class="hljs-comment">// *MENU* /// Set color of axis title</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetTitleFont</span><span class="hljs-params">(Style_t font=<span class="hljs-number">62</span>)</span></span>;                    <span class="hljs-comment">// *MENU* /// Set the title font.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TAttAxis.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:20
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:20 </span> </footer>
                                 
                                 </section>
                             
@@ -3778,7 +3790,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TAttAxis*","level":"1.2.2","depth":2,"next":{"title":"TAxis*","level":"1.2.3","depth":2,"path":"class/TAxis.md","ref":"class/TAxis.md","articles":[]},"previous":{"title":"FitResult","level":"1.2.1","depth":2,"path":"class/FitResult.md","ref":"class/FitResult.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TAttAxis.md","mtime":"2018-05-14T09:18:20.928Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TAttAxis*","level":"1.2.2","depth":2,"next":{"title":"TAxis*","level":"1.2.3","depth":2,"path":"class/TAxis.md","ref":"class/TAxis.md","articles":[]},"previous":{"title":"FitResult","level":"1.2.1","depth":2,"path":"class/FitResult.md","ref":"class/FitResult.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TAttAxis.md","mtime":"2018-05-14T09:18:20.928Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3810,6 +3822,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

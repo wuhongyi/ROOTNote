@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3677,145 +3689,145 @@
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 <h1 id="tgdoubleslider"><a name="tgdoubleslider" class="plugin-anchor" href="#tgdoubleslider"><i class="fa fa-link" aria-hidden="true"></i></a>TGDoubleSlider</h1>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGDoubleSlider, TGDoubleVSlider and TGDoubleHSlider                  //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// DoubleSlider widgets allow easy selection of a min and a max value   //</span>
-<span class="token comment">// out of a range.                                                      //</span>
-<span class="token comment">// DoubleSliders can be either horizontal or vertical oriented and      //</span>
-<span class="token comment">// there is a choice of three different types of tick marks.            //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// To change the min value press the mouse near to the left / bottom    //</span>
-<span class="token comment">// edge of the slider.                                                  //</span>
-<span class="token comment">// To change the max value press the mouse near to the right / top      //</span>
-<span class="token comment">// edge of the slider.                                                  //</span>
-<span class="token comment">// To change both values simultaneously press the mouse near to the     //</span>
-<span class="token comment">// center of the slider.                                                //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGDoubleSlider is an abstract base class. Use the concrete           //</span>
-<span class="token comment">// TGDoubleVSlider and TGDoubleHSlider.                                 //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Dragging the slider will generate the event:                         //</span>
-<span class="token comment">// kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             //</span>
-<span class="token comment">// kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Pressing the mouse will generate the event:                          //</span>
-<span class="token comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
-<span class="token comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Releasing the mouse will generate the event:                         //</span>
-<span class="token comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
-<span class="token comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Use the functions GetMinPosition(), GetMaxPosition() and             //</span>
-<span class="token comment">// GetPosition() to retrieve the position of the slider.                //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGDoubleSlider, TGDoubleVSlider and TGDoubleHSlider                  //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// DoubleSlider widgets allow easy selection of a min and a max value   //</span>
+<span class="hljs-comment">// out of a range.                                                      //</span>
+<span class="hljs-comment">// DoubleSliders can be either horizontal or vertical oriented and      //</span>
+<span class="hljs-comment">// there is a choice of three different types of tick marks.            //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// To change the min value press the mouse near to the left / bottom    //</span>
+<span class="hljs-comment">// edge of the slider.                                                  //</span>
+<span class="hljs-comment">// To change the max value press the mouse near to the right / top      //</span>
+<span class="hljs-comment">// edge of the slider.                                                  //</span>
+<span class="hljs-comment">// To change both values simultaneously press the mouse near to the     //</span>
+<span class="hljs-comment">// center of the slider.                                                //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGDoubleSlider is an abstract base class. Use the concrete           //</span>
+<span class="hljs-comment">// TGDoubleVSlider and TGDoubleHSlider.                                 //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Dragging the slider will generate the event:                         //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Pressing the mouse will generate the event:                          //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Releasing the mouse will generate the event:                         //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Use the functions GetMinPosition(), GetMaxPosition() and             //</span>
+<span class="hljs-comment">// GetPosition() to retrieve the position of the slider.                //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 </code></pre>
 <p>TGDoubleSlider &#x7EE7;&#x627F; TGFrame, TGWidget</p>
 <p>TGDoubleVSlider &#x7EE7;&#x627F; TGDoubleSlider</p>
 <p>TGDoubleHSlider &#x7EE7;&#x627F; TGDoubleSlider</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">enum</span> EDoubleSliderSize <span class="token punctuation">{</span>
-   <span class="token comment">//--- sizes for vert. and horz. sliders</span>
-   kDoubleSliderWidth  <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">,</span>
-   kDoubleSliderHeight <span class="token operator">=</span> kDoubleSliderWidth
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-keyword">enum</span> EDoubleSliderSize {
+   <span class="hljs-comment">//--- sizes for vert. and horz. sliders</span>
+   kDoubleSliderWidth  = <span class="hljs-number">24</span>,
+   kDoubleSliderHeight = kDoubleSliderWidth
+};
 
 
-<span class="token keyword">enum</span> EDoubleSliderScale <span class="token punctuation">{</span>
-   <span class="token comment">//--- type of slider scale</span>
-   kDoubleScaleNo        <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kDoubleScaleDownRight <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kDoubleScaleBoth      <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">enum</span> EDoubleSliderScale {
+   <span class="hljs-comment">//--- type of slider scale</span>
+   kDoubleScaleNo        = BIT(<span class="hljs-number">0</span>),
+   kDoubleScaleDownRight = BIT(<span class="hljs-number">1</span>),
+   kDoubleScaleBoth      = BIT(<span class="hljs-number">2</span>)
+};
 </code></pre>
 <p><strong>TGDoubleSlider</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGDoubleSlider</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> UInt_t type <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                  UInt_t options <span class="token operator">=</span> kChildFrame<span class="token punctuation">,</span>
-                  Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                  Bool_t reversed <span class="token operator">=</span> kFALSE<span class="token punctuation">,</span>
-                  Bool_t mark_ends <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Slider constructor.</span>
+<pre><code class="lang-cpp">   TGDoubleSlider(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>, UInt_t type = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
+                  UInt_t options = kChildFrame,
+                  Pixel_t back = GetDefaultFrameBackground(),
+                  Bool_t reversed = kFALSE,
+                  Bool_t mark_ends = kFALSE);<span class="hljs-comment">/// Slider constructor.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGDoubleSlider</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+   <span class="hljs-keyword">virtual</span> ~TGDoubleSlider() { }
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span> </span>= <span class="hljs-number">0</span>;
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">SetScale</span><span class="token punctuation">(</span>Int_t scale<span class="token punctuation">)</span> <span class="token punctuation">{</span> fScale <span class="token operator">=</span> scale<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">SetRange</span><span class="token punctuation">(</span>Float_t min<span class="token punctuation">,</span> Float_t max<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      fVmin <span class="token operator">=</span> min<span class="token punctuation">;</span> fVmax <span class="token operator">=</span> max<span class="token punctuation">;</span>
-      <span class="token function">FixBounds</span><span class="token punctuation">(</span>fVmin<span class="token punctuation">,</span> fVmax<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetScale</span><span class="hljs-params">(Int_t scale)</span> </span>{ fScale = scale; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetRange</span><span class="hljs-params">(Float_t min, Float_t max)</span> </span>{
+      fVmin = min; fVmax = max;
+      FixBounds(fVmin, fVmax);
+   }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetPosition</span><span class="token punctuation">(</span>Float_t min<span class="token punctuation">,</span> Float_t max<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>fReversedScale<span class="token punctuation">)</span> <span class="token punctuation">{</span> fSmin <span class="token operator">=</span> fVmin<span class="token operator">+</span>fVmax<span class="token operator">-</span>max<span class="token punctuation">;</span> fSmax <span class="token operator">=</span> fVmin<span class="token operator">+</span>fVmax<span class="token operator">-</span>min<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-      <span class="token keyword">else</span> <span class="token punctuation">{</span> fSmin <span class="token operator">=</span> min<span class="token punctuation">;</span> fSmax <span class="token operator">=</span> max<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-      fClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">NeedRedraw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPosition</span><span class="hljs-params">(Float_t min, Float_t max)</span> </span>{
+      <span class="hljs-keyword">if</span> (fReversedScale) { fSmin = fVmin+fVmax-max; fSmax = fVmin+fVmax-min; }
+      <span class="hljs-keyword">else</span> { fSmin = min; fSmax = max; }
+      fClient-&gt;NeedRedraw(<span class="hljs-keyword">this</span>);
+   }
 
-   <span class="token keyword">virtual</span> Float_t <span class="token function">GetMinPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>fReversedScale<span class="token punctuation">)</span> <span class="token keyword">return</span> fVmin<span class="token operator">+</span>fVmax<span class="token operator">-</span>fSmax<span class="token punctuation">;</span>
-      <span class="token keyword">else</span> <span class="token keyword">return</span> fSmin<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Float_t <span class="token function">GetMaxPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>fReversedScale<span class="token punctuation">)</span> <span class="token keyword">return</span> fVmin<span class="token operator">+</span>fVmax<span class="token operator">-</span>fSmin<span class="token punctuation">;</span>
-      <span class="token keyword">else</span> <span class="token keyword">return</span> fSmax<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">GetPosition</span><span class="token punctuation">(</span>Float_t <span class="token operator">&amp;</span>min<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>max<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>fReversedScale<span class="token punctuation">)</span> <span class="token punctuation">{</span> min <span class="token operator">=</span> fVmin<span class="token operator">+</span>fVmax<span class="token operator">-</span>fSmax<span class="token punctuation">;</span> max <span class="token operator">=</span> fVmin<span class="token operator">+</span>fVmax<span class="token operator">-</span>fSmin<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-      <span class="token keyword">else</span> <span class="token punctuation">{</span> min <span class="token operator">=</span> fSmin<span class="token punctuation">;</span> max <span class="token operator">=</span> fSmax<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">GetPosition</span><span class="token punctuation">(</span>Float_t <span class="token operator">*</span>min<span class="token punctuation">,</span> Float_t <span class="token operator">*</span>max<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>fReversedScale<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">*</span>min <span class="token operator">=</span> fVmin<span class="token operator">+</span>fVmax<span class="token operator">-</span>fSmax<span class="token punctuation">;</span> <span class="token operator">*</span>max <span class="token operator">=</span> fVmin<span class="token operator">+</span>fVmax<span class="token operator">-</span>fSmin<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-      <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token operator">*</span>min <span class="token operator">=</span> fSmin<span class="token punctuation">;</span> <span class="token operator">*</span>max <span class="token operator">=</span> fSmax<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t <span class="hljs-title">GetMinPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-keyword">if</span> (fReversedScale) <span class="hljs-keyword">return</span> fVmin+fVmax-fSmax;
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> fSmin;
+   }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t <span class="hljs-title">GetMaxPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-keyword">if</span> (fReversedScale) <span class="hljs-keyword">return</span> fVmin+fVmax-fSmin;
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> fSmax;
+   }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetPosition</span><span class="hljs-params">(Float_t &amp;min, Float_t &amp;max)</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-keyword">if</span> (fReversedScale) { min = fVmin+fVmax-fSmax; max = fVmin+fVmax-fSmin; }
+      <span class="hljs-keyword">else</span> { min = fSmin; max = fSmax; }
+   }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetPosition</span><span class="hljs-params">(Float_t *min, Float_t *max)</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-keyword">if</span> (fReversedScale) { *min = fVmin+fVmax-fSmax; *max = fVmin+fVmax-fSmin; }
+      <span class="hljs-keyword">else</span> { *min = fSmin; *max = fSmax; }
+   }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">MapSubwindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> TGWindow<span class="token operator">::</span><span class="token function">MapSubwindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">MapSubwindows</span><span class="hljs-params">()</span> </span>{ TGWindow::MapSubwindows(); }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">PositionChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;PositionChanged()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Pressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Pressed()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>                 <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Released</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Released()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>               <span class="token comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">PositionChanged</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;PositionChanged()&quot;</span>); } <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Pressed</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;Pressed()&quot;</span>); }                 <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Released</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;Released()&quot;</span>); }               <span class="hljs-comment">//*SIGNAL*</span>
 </code></pre>
 <p><strong>TGDoubleVSlider</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGDoubleVSlider</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> UInt_t type <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                   UInt_t options <span class="token operator">=</span> kVerticalFrame<span class="token punctuation">,</span>
-                   Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                   Bool_t reversed <span class="token operator">=</span> kFALSE<span class="token punctuation">,</span>
-                   Bool_t mark_ends <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a vertical slider widget.</span>
+<pre><code class="lang-cpp">   TGDoubleVSlider(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t h = <span class="hljs-number">1</span>, UInt_t type = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
+                   UInt_t options = kVerticalFrame,
+                   Pixel_t back = GetDefaultFrameBackground(),
+                   Bool_t reversed = kFALSE,
+                   Bool_t mark_ends = kFALSE);<span class="hljs-comment">/// Create a vertical slider widget.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGDoubleVSlider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete vertical slider widget.</span>
+   <span class="hljs-keyword">virtual</span> ~TGDoubleVSlider();<span class="hljs-comment">/// Delete vertical slider widget.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event in vertical slider.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in vertical slider.</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-                     <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TGDimension</span><span class="token punctuation">(</span>kDoubleSliderWidth<span class="token punctuation">,</span> fHeight<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event in vertical slider.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in vertical slider.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
+                     </span>{ <span class="hljs-keyword">return</span> TGDimension(kDoubleSliderWidth, fHeight); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <p><strong>TGDoubleHSlider </strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGDoubleHSlider</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> UInt_t type <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                   UInt_t options <span class="token operator">=</span> kHorizontalFrame<span class="token punctuation">,</span>
-                   Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                   Bool_t reversed <span class="token operator">=</span> kFALSE<span class="token punctuation">,</span>
-                   Bool_t mark_ends <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create horizontal slider widget.</span>
+<pre><code class="lang-cpp">   TGDoubleHSlider(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t type = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
+                   UInt_t options = kHorizontalFrame,
+                   Pixel_t back = GetDefaultFrameBackground(),
+                   Bool_t reversed = kFALSE,
+                   Bool_t mark_ends = kFALSE);<span class="hljs-comment">/// Create horizontal slider widget.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGDoubleHSlider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete a horizontal slider widget.</span>
+   <span class="hljs-keyword">virtual</span> ~TGDoubleHSlider();<span class="hljs-comment">/// Delete a horizontal slider widget.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event in horizontal slider widget.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in horizontal slide widget.</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-                     <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TGDimension</span><span class="token punctuation">(</span>fWidth<span class="token punctuation">,</span> kDoubleSliderHeight<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event in horizontal slider widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in horizontal slide widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
+                     </span>{ <span class="hljs-keyword">return</span> TGDimension(fWidth, kDoubleSliderHeight); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGDoubleSlider.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3858,7 +3870,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGDoubleSlider*","level":"1.3.13","depth":2,"next":{"title":"TGEventHandler","level":"1.3.14","depth":2,"path":"class/gui/TGEventHandler.md","ref":"class/gui/TGEventHandler.md","articles":[]},"previous":{"title":"TGDockableFrame*","level":"1.3.12","depth":2,"path":"class/gui/TGDockableFrame.md","ref":"class/gui/TGDockableFrame.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGDoubleSlider.md","mtime":"2018-05-14T09:18:21.622Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGDoubleSlider*","level":"1.3.13","depth":2,"next":{"title":"TGEventHandler","level":"1.3.14","depth":2,"path":"class/gui/TGEventHandler.md","ref":"class/gui/TGEventHandler.md","articles":[]},"previous":{"title":"TGDockableFrame*","level":"1.3.12","depth":2,"path":"class/gui/TGDockableFrame.md","ref":"class/gui/TGDockableFrame.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGDoubleSlider.md","mtime":"2018-05-14T09:18:21.622Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3890,6 +3902,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

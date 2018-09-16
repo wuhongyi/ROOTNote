@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3677,98 +3689,98 @@
 ;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 <h1 id="tgtablelayout"><a name="tgtablelayout" class="plugin-anchor" href="#tgtablelayout"><i class="fa fa-link" aria-hidden="true"></i></a>TGTableLayout</h1>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGTableLayout                                                        //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A layout manager, which places child frames in a table arranged in   //</span>
-<span class="token comment">// rows and columns, making it easy to align many widgets next each to  //</span>
-<span class="token comment">// other horizontally and vertivally. It uses TGTableLayoutHints        //</span>
-<span class="token comment">// (not TGLayoutHints!!!) and works like TGMatrixLayout with the        //</span>
-<span class="token comment">// addition that:                                                       //</span>
-<span class="token comment">//  - Child frames can span more than one column/row.                   //</span>
-<span class="token comment">//  - Child frames can resize with the frame.                           //</span>
-<span class="token comment">//  - Column and row sizes are not fixed nor (optionally) homogeneous.  //</span>
-<span class="token comment">//  - The number of columns and rows must be fully specified in the     //</span>
-<span class="token comment">//    constructor.                                                      //</span>
-<span class="token comment">// The gaps between all rows or columns can be specified by &apos;sep&apos;       //</span>
-<span class="token comment">// parameter in the constructor. All rows and columns will have the     //</span>
-<span class="token comment">// same size (set by widest and the highest child frame) if the         //</span>
-<span class="token comment">// parameter &apos;homogeneous&apos; is set to kTRUE.                             //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGTableLayoutHints                                                   //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// This class describes layout hints used by the TGTableLayout class.   //</span>
-<span class="token comment">// It specifies the column/row division number on which to attach the   //</span>
-<span class="token comment">// child frame. This number starts from 0 and goes to #_columns/#_rows  //</span>
-<span class="token comment">// respectively (0 indicates the first row/column).                     //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Below are described all parameters of TGTableLayoutHints constructor //</span>
-<span class="token comment">//     attach_left   - the column to the left of the widget;            //</span>
-<span class="token comment">//     attach_right  - the column to the right of the widget;           //</span>
-<span class="token comment">//     attach_top    - the row above the widget;                        //</span>
-<span class="token comment">//     attach_bottom - the row below the widget;                        //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//     hints - layout hints (combination of ELayoutHints)               //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The next parameters determine the extra padding added around the     //</span>
-<span class="token comment">// child frame. By default these are 0.                                 //</span>
-<span class="token comment">//     padleft   - determines the extra padding added on the left       //</span>
-<span class="token comment">//     padright  - determines the extra padding added on the right      //</span>
-<span class="token comment">//     padtop    - determines the extra padding added on the top        //</span>
-<span class="token comment">//     padbottom - determines the extra padding added on the bottom     //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGTableLayout                                                        //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A layout manager, which places child frames in a table arranged in   //</span>
+<span class="hljs-comment">// rows and columns, making it easy to align many widgets next each to  //</span>
+<span class="hljs-comment">// other horizontally and vertivally. It uses TGTableLayoutHints        //</span>
+<span class="hljs-comment">// (not TGLayoutHints!!!) and works like TGMatrixLayout with the        //</span>
+<span class="hljs-comment">// addition that:                                                       //</span>
+<span class="hljs-comment">//  - Child frames can span more than one column/row.                   //</span>
+<span class="hljs-comment">//  - Child frames can resize with the frame.                           //</span>
+<span class="hljs-comment">//  - Column and row sizes are not fixed nor (optionally) homogeneous.  //</span>
+<span class="hljs-comment">//  - The number of columns and rows must be fully specified in the     //</span>
+<span class="hljs-comment">//    constructor.                                                      //</span>
+<span class="hljs-comment">// The gaps between all rows or columns can be specified by &apos;sep&apos;       //</span>
+<span class="hljs-comment">// parameter in the constructor. All rows and columns will have the     //</span>
+<span class="hljs-comment">// same size (set by widest and the highest child frame) if the         //</span>
+<span class="hljs-comment">// parameter &apos;homogeneous&apos; is set to kTRUE.                             //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGTableLayoutHints                                                   //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// This class describes layout hints used by the TGTableLayout class.   //</span>
+<span class="hljs-comment">// It specifies the column/row division number on which to attach the   //</span>
+<span class="hljs-comment">// child frame. This number starts from 0 and goes to #_columns/#_rows  //</span>
+<span class="hljs-comment">// respectively (0 indicates the first row/column).                     //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Below are described all parameters of TGTableLayoutHints constructor //</span>
+<span class="hljs-comment">//     attach_left   - the column to the left of the widget;            //</span>
+<span class="hljs-comment">//     attach_right  - the column to the right of the widget;           //</span>
+<span class="hljs-comment">//     attach_top    - the row above the widget;                        //</span>
+<span class="hljs-comment">//     attach_bottom - the row below the widget;                        //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//     hints - layout hints (combination of ELayoutHints)               //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The next parameters determine the extra padding added around the     //</span>
+<span class="hljs-comment">// child frame. By default these are 0.                                 //</span>
+<span class="hljs-comment">//     padleft   - determines the extra padding added on the left       //</span>
+<span class="hljs-comment">//     padright  - determines the extra padding added on the right      //</span>
+<span class="hljs-comment">//     padtop    - determines the extra padding added on the top        //</span>
+<span class="hljs-comment">//     padbottom - determines the extra padding added on the bottom     //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 </code></pre>
 <p>TGTableLayoutHints &#x7EE7;&#x627F; TGLayoutHints</p>
 <p>TGTableLayout &#x7EE7;&#x627F; TGLayoutManager</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TGTableLayoutHints</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGTableLayoutHints</span><span class="token punctuation">(</span>UInt_t attach_left<span class="token punctuation">,</span> UInt_t attach_right<span class="token punctuation">,</span>
-                      UInt_t attach_top<span class="token punctuation">,</span> UInt_t attach_bottom<span class="token punctuation">,</span>
-                      ULong_t hints <span class="token operator">=</span> kLHintsNormal<span class="token punctuation">,</span>
-                      UInt_t padleft <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t padright <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                      UInt_t padtop <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t padbottom <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-      <span class="token operator">:</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>hints<span class="token punctuation">,</span>padleft<span class="token punctuation">,</span>padright<span class="token punctuation">,</span>padtop<span class="token punctuation">,</span>padbottom<span class="token punctuation">)</span><span class="token punctuation">,</span>
-         <span class="token function">fAttachLeft</span><span class="token punctuation">(</span>attach_left<span class="token punctuation">)</span><span class="token punctuation">,</span>
-         <span class="token function">fAttachRight</span><span class="token punctuation">(</span>attach_right<span class="token punctuation">)</span><span class="token punctuation">,</span>
-         <span class="token function">fAttachTop</span><span class="token punctuation">(</span>attach_top<span class="token punctuation">)</span><span class="token punctuation">,</span>
-         <span class="token function">fAttachBottom</span><span class="token punctuation">(</span>attach_bottom<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGTableLayoutHints</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGTableLayoutHints(UInt_t attach_left, UInt_t attach_right,
+                      UInt_t attach_top, UInt_t attach_bottom,
+                      ULong_t hints = kLHintsNormal,
+                      UInt_t padleft = <span class="hljs-number">0</span>, UInt_t padright = <span class="hljs-number">0</span>,
+                      UInt_t padtop = <span class="hljs-number">0</span>, UInt_t padbottom = <span class="hljs-number">0</span>)
+      : TGLayoutHints(hints,padleft,padright,padtop,padbottom),
+         fAttachLeft(attach_left),
+         fAttachRight(attach_right),
+         fAttachTop(attach_top),
+         fAttachBottom(attach_bottom) { }
+   <span class="hljs-keyword">virtual</span> ~TGTableLayoutHints() { }
 
-   UInt_t <span class="token function">GetAttachLeft</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fAttachLeft<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   UInt_t <span class="token function">GetAttachRight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fAttachRight<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   UInt_t <span class="token function">GetAttachTop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fAttachTop<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   UInt_t <span class="token function">GetAttachBottom</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fAttachBottom<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function">UInt_t <span class="hljs-title">GetAttachLeft</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAttachLeft; }
+   <span class="hljs-function">UInt_t <span class="hljs-title">GetAttachRight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAttachRight; }
+   <span class="hljs-function">UInt_t <span class="hljs-title">GetAttachTop</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAttachTop; }
+   <span class="hljs-function">UInt_t <span class="hljs-title">GetAttachBottom</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAttachBottom; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGTableLayout</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token comment">// these are public in TGMatrixLayout ???  Perpetuate it.</span>
-   Int_t   fSep<span class="token punctuation">;</span>               <span class="token comment">// interval between frames</span>
-   Int_t   fHints<span class="token punctuation">;</span>             <span class="token comment">// layout hints (currently not used)</span>
-   UInt_t  fNrows<span class="token punctuation">;</span>             <span class="token comment">// number of rows</span>
-   UInt_t  fNcols<span class="token punctuation">;</span>             <span class="token comment">// number of columns</span>
+<pre><code class="lang-cpp">   <span class="hljs-comment">// these are public in TGMatrixLayout ???  Perpetuate it.</span>
+   Int_t   fSep;               <span class="hljs-comment">// interval between frames</span>
+   Int_t   fHints;             <span class="hljs-comment">// layout hints (currently not used)</span>
+   UInt_t  fNrows;             <span class="hljs-comment">// number of rows</span>
+   UInt_t  fNcols;             <span class="hljs-comment">// number of columns</span>
 
-   <span class="token function">TGTableLayout</span><span class="token punctuation">(</span>TGCompositeFrame <span class="token operator">*</span>main<span class="token punctuation">,</span> UInt_t nrows<span class="token punctuation">,</span> UInt_t ncols<span class="token punctuation">,</span>
-                 Bool_t homogeneous <span class="token operator">=</span> kFALSE<span class="token punctuation">,</span> Int_t sep <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t hints <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Note:</span>
-<span class="token comment">/// - Number of rows first, number of Columns second</span>
-<span class="token comment">/// - homogeneous == true means all table cells are the same size,</span>
-<span class="token comment">///   set by the widest and the highest child frame.</span>
-<span class="token comment">/// - s gives the amount of separation in pixels between cells</span>
-<span class="token comment">/// - h are the hints, see TGTableLayoutHints.</span>
+   TGTableLayout(TGCompositeFrame *main, UInt_t nrows, UInt_t ncols,
+                 Bool_t homogeneous = kFALSE, Int_t sep = <span class="hljs-number">0</span>, Int_t hints = <span class="hljs-number">0</span>);
+<span class="hljs-comment">/// Note:</span>
+<span class="hljs-comment">/// - Number of rows first, number of Columns second</span>
+<span class="hljs-comment">/// - homogeneous == true means all table cells are the same size,</span>
+<span class="hljs-comment">///   set by the widest and the highest child frame.</span>
+<span class="hljs-comment">/// - s gives the amount of separation in pixels between cells</span>
+<span class="hljs-comment">/// - h are the hints, see TGTableLayoutHints.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGTableLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">virtual</span> ~TGTableLayout();
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Make a table layout of all frames in the list.</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">// return sum of all child sizes</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Make a table layout of all frames in the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">// return sum of all child sizes</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <!-- TGTableLayout.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3811,7 +3823,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGTableLayout-","level":"1.3.63","depth":2,"next":{"title":"TGText","level":"1.3.64","depth":2,"path":"class/gui/TGText.md","ref":"class/gui/TGText.md","articles":[]},"previous":{"title":"TGTableHeader-","level":"1.3.62","depth":2,"path":"class/gui/TGTableHeader.md","ref":"class/gui/TGTableHeader.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGTableLayout.md","mtime":"2018-05-14T09:18:21.416Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGTableLayout-","level":"1.3.63","depth":2,"next":{"title":"TGText","level":"1.3.64","depth":2,"path":"class/gui/TGText.md","ref":"class/gui/TGText.md","articles":[]},"previous":{"title":"TGTableHeader-","level":"1.3.62","depth":2,"path":"class/gui/TGTableHeader.md","ref":"class/gui/TGTableHeader.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGTableLayout.md","mtime":"2018-05-14T09:18:21.416Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3843,6 +3855,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

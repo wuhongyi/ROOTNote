@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3684,558 +3696,558 @@ When the chain is created, the first parameter is the default name for the Tree 
 <p>Enter a new element in the chain via the TChain::Add function.
 Once a chain is defined, one can use the normal TTree functions to Draw,Scan,etc.</p>
 <p>Use TChain::SetBranchStatus to activate one or more branches for all the trees in the chain.</p>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">public</span><span class="token operator">:</span>
-   <span class="token comment">// TChain constants</span>
-   <span class="token keyword">enum</span> <span class="token punctuation">{</span>
-      kGlobalWeight   <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kAutoDelete     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kProofUptodate  <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kProofLite      <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">)</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   <span class="hljs-comment">// TChain constants</span>
+   <span class="hljs-keyword">enum</span> {
+      kGlobalWeight   = BIT(<span class="hljs-number">15</span>),
+      kAutoDelete     = BIT(<span class="hljs-number">16</span>),
+      kProofUptodate  = BIT(<span class="hljs-number">17</span>),
+      kProofLite      = BIT(<span class="hljs-number">18</span>)
+   };
 
-   <span class="token comment">// This used to be 1234567890, if user code hardcoded this number, the user code will need to change.</span>
-   <span class="token keyword">static</span> <span class="token keyword">constexpr</span> <span class="token keyword">auto</span> kBigNumber <span class="token operator">=</span> TTree<span class="token operator">::</span>kMaxEntries<span class="token punctuation">;</span>
+   <span class="hljs-comment">// This used to be 1234567890, if user code hardcoded this number, the user code will need to change.</span>
+   <span class="hljs-keyword">static</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">auto</span> kBigNumber = TTree::kMaxEntries;
 
-<span class="token keyword">public</span><span class="token operator">:</span>
-   <span class="token function">TChain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TChain</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> title <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TChain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">public</span>:
+   TChain();
+   TChain(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* title = <span class="hljs-string">&quot;&quot;</span>);
+   <span class="hljs-keyword">virtual</span> ~TChain();
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">Add</span><span class="token punctuation">(</span>TChain<span class="token operator">*</span> chain<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add all files referenced by the passed chain to this chain.</span>
-<span class="token comment">/// The function returns the total number of files connected.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Add</span><span class="hljs-params">(TChain* chain)</span></span>;
+<span class="hljs-comment">/// Add all files referenced by the passed chain to this chain.</span>
+<span class="hljs-comment">/// The function returns the total number of files connected.</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">,</span> Long64_t nentries <span class="token operator">=</span> TTree<span class="token operator">::</span>kMaxEntries<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add a new file to this chain.</span>
-<span class="token comment">/// If tree_name is missing the chain name will be assumed.</span>
-<span class="token comment">/// Wildcard treatment is triggered by the any of the special characters []*?</span>
-<span class="token comment">/// which may be used in the file name, eg. specifying &quot;xxx*.root&quot; adds</span>
-<span class="token comment">/// all files starting with xxx in the current file system directory.</span>
-<span class="token comment">/// where &quot;query&quot; is to be interpreted by the remote server. Wildcards may be</span>
-<span class="token comment">/// supported in urls, depending on the protocol plugin and the remote server.</span>
-<span class="token comment">/// http or https urls can contain a query identifier without tree_name, but</span>
-<span class="token comment">/// generally urls can not be written with them because of ambiguity with the</span>
-<span class="token comment">/// wildcard character. (Also see the documentaiton for TChain::AddFile,</span>
-<span class="token comment">/// which does not support wildcards but allows the url to contain query)</span>
-<span class="token comment">/// NB. To add all the files of a TChain to a chain, use Add(TChain *chain).</span>
-<span class="token comment">/// A. if nentries &lt;= 0, the file is connected and the tree header read</span>
-<span class="token comment">///    in memory to get the number of entries.</span>
-<span class="token comment">/// B. if (nentries &gt; 0, the file is not connected, nentries is assumed to be</span>
-<span class="token comment">///    the number of entries in the file. In this case, no check is made that</span>
-<span class="token comment">///    the file exists and the Tree existing in the file. This second mode</span>
-<span class="token comment">///    is interesting in case the number of entries in the file is already stored</span>
-<span class="token comment">///    in a run data base for example.</span>
-<span class="token comment">/// C. if (nentries == TTree::kMaxEntries) (default), the file is not connected.</span>
-<span class="token comment">///    the number of entries in each file will be read only when the file</span>
-<span class="token comment">///    will need to be connected to read an entry.</span>
-<span class="token comment">///    This option is the default and very efficient if one process</span>
-<span class="token comment">///    the chain sequentially. Note that in case TChain::GetEntry(entry)</span>
-<span class="token comment">///    is called and entry refers to an entry in the 3rd file, for example,</span>
-<span class="token comment">///    this forces the Tree headers in the first and second file</span>
-<span class="token comment">///    to be read to find the number of entries in these files.</span>
-<span class="token comment">///    Note that if one calls TChain::GetEntriesFast() after having created</span>
-<span class="token comment">///    a chain with this default, GetEntriesFast will return TTree::kMaxEntries!</span>
-<span class="token comment">///    TChain::GetEntries will force of the Tree headers in the chain to be</span>
-<span class="token comment">///    read to read the number of entries in each Tree.</span>
-<span class="token comment">/// D. The TChain data structure</span>
-<span class="token comment">///    Each TChainElement has a name equal to the tree name of this TChain</span>
-<span class="token comment">///    and a title equal to the file name.</span>
-<span class="token comment">/// Return value:</span>
-<span class="token comment">/// - If nentries&gt;0 (including the default of TTree::kMaxEntries) and no</span>
-<span class="token comment">///   wildcarding is used, ALWAYS returns 1 without regard to whether</span>
-<span class="token comment">///   the file exists or contains the correct tree.</span>
-<span class="token comment">/// - If wildcarding is used, regardless of the value of nentries,</span>
-<span class="token comment">///   returns the number of files matching the name without regard to</span>
-<span class="token comment">///   whether they contain the correct tree.</span>
-<span class="token comment">/// - If nentries&lt;=0 and wildcarding is not used, return 1 if the file</span>
-<span class="token comment">///  exists and contains the correct tree and 0 otherwise.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, Long64_t nentries = TTree::kMaxEntries)</span></span>;
+<span class="hljs-comment">/// Add a new file to this chain.</span>
+<span class="hljs-comment">/// If tree_name is missing the chain name will be assumed.</span>
+<span class="hljs-comment">/// Wildcard treatment is triggered by the any of the special characters []*?</span>
+<span class="hljs-comment">/// which may be used in the file name, eg. specifying &quot;xxx*.root&quot; adds</span>
+<span class="hljs-comment">/// all files starting with xxx in the current file system directory.</span>
+<span class="hljs-comment">/// where &quot;query&quot; is to be interpreted by the remote server. Wildcards may be</span>
+<span class="hljs-comment">/// supported in urls, depending on the protocol plugin and the remote server.</span>
+<span class="hljs-comment">/// http or https urls can contain a query identifier without tree_name, but</span>
+<span class="hljs-comment">/// generally urls can not be written with them because of ambiguity with the</span>
+<span class="hljs-comment">/// wildcard character. (Also see the documentaiton for TChain::AddFile,</span>
+<span class="hljs-comment">/// which does not support wildcards but allows the url to contain query)</span>
+<span class="hljs-comment">/// NB. To add all the files of a TChain to a chain, use Add(TChain *chain).</span>
+<span class="hljs-comment">/// A. if nentries &lt;= 0, the file is connected and the tree header read</span>
+<span class="hljs-comment">///    in memory to get the number of entries.</span>
+<span class="hljs-comment">/// B. if (nentries &gt; 0, the file is not connected, nentries is assumed to be</span>
+<span class="hljs-comment">///    the number of entries in the file. In this case, no check is made that</span>
+<span class="hljs-comment">///    the file exists and the Tree existing in the file. This second mode</span>
+<span class="hljs-comment">///    is interesting in case the number of entries in the file is already stored</span>
+<span class="hljs-comment">///    in a run data base for example.</span>
+<span class="hljs-comment">/// C. if (nentries == TTree::kMaxEntries) (default), the file is not connected.</span>
+<span class="hljs-comment">///    the number of entries in each file will be read only when the file</span>
+<span class="hljs-comment">///    will need to be connected to read an entry.</span>
+<span class="hljs-comment">///    This option is the default and very efficient if one process</span>
+<span class="hljs-comment">///    the chain sequentially. Note that in case TChain::GetEntry(entry)</span>
+<span class="hljs-comment">///    is called and entry refers to an entry in the 3rd file, for example,</span>
+<span class="hljs-comment">///    this forces the Tree headers in the first and second file</span>
+<span class="hljs-comment">///    to be read to find the number of entries in these files.</span>
+<span class="hljs-comment">///    Note that if one calls TChain::GetEntriesFast() after having created</span>
+<span class="hljs-comment">///    a chain with this default, GetEntriesFast will return TTree::kMaxEntries!</span>
+<span class="hljs-comment">///    TChain::GetEntries will force of the Tree headers in the chain to be</span>
+<span class="hljs-comment">///    read to read the number of entries in each Tree.</span>
+<span class="hljs-comment">/// D. The TChain data structure</span>
+<span class="hljs-comment">///    Each TChainElement has a name equal to the tree name of this TChain</span>
+<span class="hljs-comment">///    and a title equal to the file name.</span>
+<span class="hljs-comment">/// Return value:</span>
+<span class="hljs-comment">/// - If nentries&gt;0 (including the default of TTree::kMaxEntries) and no</span>
+<span class="hljs-comment">///   wildcarding is used, ALWAYS returns 1 without regard to whether</span>
+<span class="hljs-comment">///   the file exists or contains the correct tree.</span>
+<span class="hljs-comment">/// - If wildcarding is used, regardless of the value of nentries,</span>
+<span class="hljs-comment">///   returns the number of files matching the name without regard to</span>
+<span class="hljs-comment">///   whether they contain the correct tree.</span>
+<span class="hljs-comment">/// - If nentries&lt;=0 and wildcarding is not used, return 1 if the file</span>
+<span class="hljs-comment">///  exists and contains the correct tree and 0 otherwise.</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">AddFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">,</span> Long64_t nentries <span class="token operator">=</span> TTree<span class="token operator">::</span>kMaxEntries<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> tname <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add a new file to this chain.</span>
-<span class="token comment">/// Filename formats are similar to TChain::Add. Wildcards are not</span>
-<span class="token comment">/// applied. urls may also contain query and fragment identifiers</span>
-<span class="token comment">/// where the tree name can be specified in the url fragment.</span>
-<span class="token comment">/// If tree_name is given as a part of the file name it is used to</span>
-<span class="token comment">/// as the name of the tree to load from the file. Otherwise if tname</span>
-<span class="token comment">/// argument is specified the chain will load the tree named tname from</span>
-<span class="token comment">/// the file, otherwise the original treename specified in the TChain</span>
-<span class="token comment">/// constructor will be used.</span>
-<span class="token comment">/// A. If nentries &lt;= 0, the file is opened and the tree header read</span>
-<span class="token comment">///    into memory to get the number of entries.</span>
-<span class="token comment">/// B. If nentries &gt; 0, the file is not opened, and nentries is assumed</span>
-<span class="token comment">///    to be the number of entries in the file. In this case, no check</span>
-<span class="token comment">///    is made that the file exists nor that the tree exists in the file.</span>
-<span class="token comment">///    This second mode is interesting in case the number of entries in</span>
-<span class="token comment">///    the file is already stored in a run database for example.</span>
-<span class="token comment">/// C. If nentries == TTree::kMaxEntries (default), the file is not opened.</span>
-<span class="token comment">///    The number of entries in each file will be read only when the file</span>
-<span class="token comment">///    is opened to read an entry.  This option is the default and very</span>
-<span class="token comment">///    efficient if one processes the chain sequentially.  Note that in</span>
-<span class="token comment">///    case GetEntry(entry) is called and entry refers to an entry in the</span>
-<span class="token comment">///    third file, for example, this forces the tree headers in the first</span>
-<span class="token comment">///    and second file to be read to find the number of entries in those</span>
-<span class="token comment">///    files.  Note that if one calls GetEntriesFast() after having created</span>
-<span class="token comment">///    a chain with this default, GetEntriesFast() will return TTree::kMaxEntries!</span>
-<span class="token comment">///    Using the GetEntries() function instead will force all of the tree</span>
-<span class="token comment">///    headers in the chain to be read to read the number of entries in</span>
-<span class="token comment">///    each tree.</span>
-<span class="token comment">/// D. The TChain data structure</span>
-<span class="token comment">///    Each TChainElement has a name equal to the tree name of this TChain</span>
-<span class="token comment">///    and a title equal to the file name. </span>
-<span class="token comment">/// The function returns 1 if the file is successfully connected, 0 otherwise.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">AddFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, Long64_t nentries = TTree::kMaxEntries, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* tname = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Add a new file to this chain.</span>
+<span class="hljs-comment">/// Filename formats are similar to TChain::Add. Wildcards are not</span>
+<span class="hljs-comment">/// applied. urls may also contain query and fragment identifiers</span>
+<span class="hljs-comment">/// where the tree name can be specified in the url fragment.</span>
+<span class="hljs-comment">/// If tree_name is given as a part of the file name it is used to</span>
+<span class="hljs-comment">/// as the name of the tree to load from the file. Otherwise if tname</span>
+<span class="hljs-comment">/// argument is specified the chain will load the tree named tname from</span>
+<span class="hljs-comment">/// the file, otherwise the original treename specified in the TChain</span>
+<span class="hljs-comment">/// constructor will be used.</span>
+<span class="hljs-comment">/// A. If nentries &lt;= 0, the file is opened and the tree header read</span>
+<span class="hljs-comment">///    into memory to get the number of entries.</span>
+<span class="hljs-comment">/// B. If nentries &gt; 0, the file is not opened, and nentries is assumed</span>
+<span class="hljs-comment">///    to be the number of entries in the file. In this case, no check</span>
+<span class="hljs-comment">///    is made that the file exists nor that the tree exists in the file.</span>
+<span class="hljs-comment">///    This second mode is interesting in case the number of entries in</span>
+<span class="hljs-comment">///    the file is already stored in a run database for example.</span>
+<span class="hljs-comment">/// C. If nentries == TTree::kMaxEntries (default), the file is not opened.</span>
+<span class="hljs-comment">///    The number of entries in each file will be read only when the file</span>
+<span class="hljs-comment">///    is opened to read an entry.  This option is the default and very</span>
+<span class="hljs-comment">///    efficient if one processes the chain sequentially.  Note that in</span>
+<span class="hljs-comment">///    case GetEntry(entry) is called and entry refers to an entry in the</span>
+<span class="hljs-comment">///    third file, for example, this forces the tree headers in the first</span>
+<span class="hljs-comment">///    and second file to be read to find the number of entries in those</span>
+<span class="hljs-comment">///    files.  Note that if one calls GetEntriesFast() after having created</span>
+<span class="hljs-comment">///    a chain with this default, GetEntriesFast() will return TTree::kMaxEntries!</span>
+<span class="hljs-comment">///    Using the GetEntries() function instead will force all of the tree</span>
+<span class="hljs-comment">///    headers in the chain to be read to read the number of entries in</span>
+<span class="hljs-comment">///    each tree.</span>
+<span class="hljs-comment">/// D. The TChain data structure</span>
+<span class="hljs-comment">///    Each TChainElement has a name equal to the tree name of this TChain</span>
+<span class="hljs-comment">///    and a title equal to the file name. </span>
+<span class="hljs-comment">/// The function returns 1 if the file is successfully connected, 0 otherwise.</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">AddFileInfoList</span><span class="token punctuation">(</span>TCollection<span class="token operator">*</span> list<span class="token punctuation">,</span> Long64_t nfiles <span class="token operator">=</span> TTree<span class="token operator">::</span>kMaxEntries<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add all files referenced in the list to the chain. The object type in the</span>
-<span class="token comment">/// list must be either TFileInfo or TObjString or TUrl .</span>
-<span class="token comment">/// The function return 1 if successful, 0 otherwise.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">AddFileInfoList</span><span class="hljs-params">(TCollection* <span class="hljs-built_in">list</span>, Long64_t nfiles = TTree::kMaxEntries)</span></span>;
+<span class="hljs-comment">/// Add all files referenced in the list to the chain. The object type in the</span>
+<span class="hljs-comment">/// list must be either TFileInfo or TObjString or TUrl .</span>
+<span class="hljs-comment">/// The function return 1 if successful, 0 otherwise.</span>
 
-   <span class="token keyword">virtual</span> TFriendElement <span class="token operator">*</span><span class="token function">AddFriend</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> chainname<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> dummy <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add a TFriendElement to the list of friends of this chain.</span>
-<span class="token comment">/// A TChain has a list of friends similar to a tree (see TTree::AddFriend).</span>
-<span class="token comment">/// You can add a friend to a chain with the TChain::AddFriend method, and you</span>
-<span class="token comment">/// can retrieve the list of friends with TChain::GetListOfFriends.</span>
-<span class="token comment">/// The parameter is the name of friend chain (the name of a chain is always</span>
-<span class="token comment">/// the name of the tree from which it was created).</span>
-<span class="token comment">/// The original chain has access to all variable in its friends.</span>
-<span class="token comment">/// We can use the TChain::Draw method as if the values in the friends were</span>
-<span class="token comment">/// in the original chain.</span>
-<span class="token comment">/// If the variable name is enough to uniquely identify the variable, you can</span>
-<span class="token comment">/// leave out the chain and/or branch name.</span>
-<span class="token comment">/// When a TChain::Draw is executed, an automatic call to TTree::AddFriend</span>
-<span class="token comment">/// connects the trees in the chain. When a chain is deleted, its friend</span>
-<span class="token comment">/// elements are also deleted.</span>
-<span class="token comment">/// The number of entries in the friend must be equal or greater to the number</span>
-<span class="token comment">/// of entries of the original chain. If the friend has fewer entries a warning</span>
-<span class="token comment">/// is given and the resulting histogram will have missing entries.</span>
-<span class="token comment">/// For additional information see TTree::AddFriend.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFriendElement *<span class="hljs-title">AddFriend</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* chainname, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* dummy = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Add a TFriendElement to the list of friends of this chain.</span>
+<span class="hljs-comment">/// A TChain has a list of friends similar to a tree (see TTree::AddFriend).</span>
+<span class="hljs-comment">/// You can add a friend to a chain with the TChain::AddFriend method, and you</span>
+<span class="hljs-comment">/// can retrieve the list of friends with TChain::GetListOfFriends.</span>
+<span class="hljs-comment">/// The parameter is the name of friend chain (the name of a chain is always</span>
+<span class="hljs-comment">/// the name of the tree from which it was created).</span>
+<span class="hljs-comment">/// The original chain has access to all variable in its friends.</span>
+<span class="hljs-comment">/// We can use the TChain::Draw method as if the values in the friends were</span>
+<span class="hljs-comment">/// in the original chain.</span>
+<span class="hljs-comment">/// If the variable name is enough to uniquely identify the variable, you can</span>
+<span class="hljs-comment">/// leave out the chain and/or branch name.</span>
+<span class="hljs-comment">/// When a TChain::Draw is executed, an automatic call to TTree::AddFriend</span>
+<span class="hljs-comment">/// connects the trees in the chain. When a chain is deleted, its friend</span>
+<span class="hljs-comment">/// elements are also deleted.</span>
+<span class="hljs-comment">/// The number of entries in the friend must be equal or greater to the number</span>
+<span class="hljs-comment">/// of entries of the original chain. If the friend has fewer entries a warning</span>
+<span class="hljs-comment">/// is given and the resulting histogram will have missing entries.</span>
+<span class="hljs-comment">/// For additional information see TTree::AddFriend.</span>
 
-   <span class="token keyword">virtual</span> TFriendElement <span class="token operator">*</span><span class="token function">AddFriend</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> chainname<span class="token punctuation">,</span> TFile<span class="token operator">*</span> dummy<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add the whole chain or tree as a friend of this chain.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFriendElement *<span class="hljs-title">AddFriend</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* chainname, TFile* dummy)</span></span>;
+<span class="hljs-comment">/// Add the whole chain or tree as a friend of this chain.</span>
 
-   <span class="token keyword">virtual</span> TFriendElement <span class="token operator">*</span><span class="token function">AddFriend</span><span class="token punctuation">(</span>TTree<span class="token operator">*</span> chain<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> alias <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Bool_t warn <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add the whole chain or tree as a friend of this chain.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFriendElement *<span class="hljs-title">AddFriend</span><span class="hljs-params">(TTree* chain, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* alias = <span class="hljs-string">&quot;&quot;</span>, Bool_t warn = kFALSE)</span></span>;
+<span class="hljs-comment">/// Add the whole chain or tree as a friend of this chain.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Browse</span><span class="token punctuation">(</span>TBrowser<span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Browse the contents of the chain.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">CanDeleteRefs</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// When closing a file during the chain processing, the file</span>
-<span class="token comment">/// may be closed with option &quot;R&quot; if flag is set to kTRUE.</span>
-<span class="token comment">/// by default flag is kTRUE.</span>
-<span class="token comment">/// When closing a file with option &quot;R&quot;, all TProcessIDs referenced by this</span>
-<span class="token comment">/// file are deleted.</span>
-<span class="token comment">/// Calling TFile::Close(&quot;R&quot;) might be necessary in case one reads a long list</span>
-<span class="token comment">/// of files having TRef, writing some of the referenced objects or TRef</span>
-<span class="token comment">/// to a new file. If the TRef or referenced objects of the file being closed</span>
-<span class="token comment">/// will not be referenced again, it is possible to minimize the size</span>
-<span class="token comment">/// of the TProcessID data structures in memory by forcing a delete of</span>
-<span class="token comment">/// the unused TProcessID.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser*)</span></span>;<span class="hljs-comment">/// Browse the contents of the chain.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">CanDeleteRefs</span><span class="hljs-params">(Bool_t flag = kTRUE)</span></span>;
+<span class="hljs-comment">/// When closing a file during the chain processing, the file</span>
+<span class="hljs-comment">/// may be closed with option &quot;R&quot; if flag is set to kTRUE.</span>
+<span class="hljs-comment">/// by default flag is kTRUE.</span>
+<span class="hljs-comment">/// When closing a file with option &quot;R&quot;, all TProcessIDs referenced by this</span>
+<span class="hljs-comment">/// file are deleted.</span>
+<span class="hljs-comment">/// Calling TFile::Close(&quot;R&quot;) might be necessary in case one reads a long list</span>
+<span class="hljs-comment">/// of files having TRef, writing some of the referenced objects or TRef</span>
+<span class="hljs-comment">/// to a new file. If the TRef or referenced objects of the file being closed</span>
+<span class="hljs-comment">/// will not be referenced again, it is possible to minimize the size</span>
+<span class="hljs-comment">/// of the TProcessID data structures in memory by forcing a delete of</span>
+<span class="hljs-comment">/// the unused TProcessID.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">CreatePackets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Initialize the packet descriptor string.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">DirectoryAutoAdd</span><span class="token punctuation">(</span>TDirectory <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Override the TTree::DirectoryAutoAdd behavior: we never auto add.</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> varexp<span class="token punctuation">,</span> <span class="token keyword">const</span> TCut<span class="token operator">&amp;</span> selection<span class="token punctuation">,</span> Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Long64_t nentries <span class="token operator">=</span> kMaxEntries<span class="token punctuation">,</span> Long64_t firstentry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw expression varexp for selected entries.</span>
-<span class="token comment">/// Returns -1 in case of error or number of selected events in case of success.</span>
-<span class="token comment">/// This function accepts TCut objects as arguments.</span>
-<span class="token comment">/// Useful to use the string operator +, example:</span>
-<span class="token comment">///    ntuple.Draw(&quot;x&quot;,cut1+cut2+cut3);</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">CreatePackets</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Initialize the packet descriptor string.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">DirectoryAutoAdd</span><span class="hljs-params">(TDirectory *)</span></span>;<span class="hljs-comment">/// Override the TTree::DirectoryAutoAdd behavior: we never auto add.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Draw</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* varexp, <span class="hljs-keyword">const</span> TCut&amp; selection, Option_t* option = <span class="hljs-string">&quot;&quot;</span>, Long64_t nentries = kMaxEntries, Long64_t firstentry = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Draw expression varexp for selected entries.</span>
+<span class="hljs-comment">/// Returns -1 in case of error or number of selected events in case of success.</span>
+<span class="hljs-comment">/// This function accepts TCut objects as arguments.</span>
+<span class="hljs-comment">/// Useful to use the string operator +, example:</span>
+<span class="hljs-comment">///    ntuple.Draw(&quot;x&quot;,cut1+cut2+cut3);</span>
 
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> varexp<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> selection<span class="token punctuation">,</span> Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Long64_t nentries <span class="token operator">=</span> kMaxEntries<span class="token punctuation">,</span> Long64_t firstentry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Process all entries in this chain and draw histogram corresponding to</span>
-<span class="token comment">/// expression varexp.</span>
-<span class="token comment">/// Returns -1 in case of error or number of selected events in case of success.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Draw</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* varexp, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* selection, Option_t* option = <span class="hljs-string">&quot;&quot;</span>, Long64_t nentries = kMaxEntries, Long64_t firstentry = <span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Process all entries in this chain and draw histogram corresponding to</span>
+<span class="hljs-comment">/// expression varexp.</span>
+<span class="hljs-comment">/// Returns -1 in case of error or number of selected events in case of success.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Draw</span><span class="token punctuation">(</span>Option_t<span class="token operator">*</span> opt<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Draw</span><span class="token punctuation">(</span>opt<span class="token punctuation">,</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> kMaxEntries<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">Fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">MayNotUse</span><span class="token punctuation">(</span><span class="token string">&quot;Fill()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TBranch  <span class="token operator">*</span><span class="token function">FindBranch</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// See TTree::GetReadEntry().</span>
-   <span class="token keyword">virtual</span> TLeaf    <span class="token operator">*</span><span class="token function">FindLeaf</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// See TTree::GetReadEntry().</span>
-   <span class="token keyword">virtual</span> TBranch  <span class="token operator">*</span><span class="token function">GetBranch</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return pointer to the branch name in the current tree.</span>
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">GetBranchStatus</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> branchname<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// See TTree::GetReadEntry().</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">GetCacheSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTree <span class="token operator">?</span> fTree<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetCacheSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> fCacheSize<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">GetChainEntryNumber</span><span class="token punctuation">(</span>Long64_t entry<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return absolute entry number in the chain.</span>
-<span class="token comment">/// The input parameter entry is the entry number in</span>
-<span class="token comment">/// the current tree of this chain.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Draw</span><span class="hljs-params">(Option_t* opt)</span> </span>{ Draw(opt, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, kMaxEntries, <span class="hljs-number">0</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">()</span> </span>{ MayNotUse(<span class="hljs-string">&quot;Fill()&quot;</span>); <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch  *<span class="hljs-title">FindBranch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name)</span></span>;<span class="hljs-comment">/// See TTree::GetReadEntry().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">FindLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name)</span></span>;<span class="hljs-comment">/// See TTree::GetReadEntry().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch  *<span class="hljs-title">GetBranch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name)</span></span>;<span class="hljs-comment">/// Return pointer to the branch name in the current tree.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">GetBranchStatus</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* branchname)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// See TTree::GetReadEntry().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetCacheSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTree ? fTree-&gt;GetCacheSize() : fCacheSize; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetChainEntryNumber</span><span class="hljs-params">(Long64_t entry)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return absolute entry number in the chain.</span>
+<span class="hljs-comment">/// The input parameter entry is the entry number in</span>
+<span class="hljs-comment">/// the current tree of this chain.</span>
 
-   <span class="token keyword">virtual</span> TClusterIterator <span class="token function">GetClusterIterator</span><span class="token punctuation">(</span>Long64_t firstentry<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return an iterator over the cluster of baskets starting at firstentry.</span>
-<span class="token comment">/// This iterator is not yet supported for TChain object.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TClusterIterator <span class="hljs-title">GetClusterIterator</span><span class="hljs-params">(Long64_t firstentry)</span></span>;
+<span class="hljs-comment">/// Return an iterator over the cluster of baskets starting at firstentry.</span>
+<span class="hljs-comment">/// This iterator is not yet supported for TChain object.</span>
 
-           Int_t     <span class="token function">GetNtrees</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fNtrees<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">GetEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return the total number of entries in the chain.</span>
-<span class="token comment">/// In case the number of entries in each tree is not yet known,</span>
-<span class="token comment">/// the offset table is computed.</span>
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetNtrees</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNtrees; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetEntries</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return the total number of entries in the chain.</span>
+<span class="hljs-comment">/// In case the number of entries in each tree is not yet known,</span>
+<span class="hljs-comment">/// the offset table is computed.</span>
 
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">GetEntries</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>sel<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> TTree<span class="token operator">::</span><span class="token function">GetEntries</span><span class="token punctuation">(</span>sel<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetEntry</span><span class="token punctuation">(</span>Long64_t entry<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t getall<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get entry from the file to memory.</span>
-<span class="token comment">/// - getall = 0 : get only active branches</span>
-<span class="token comment">/// - getall = 1 : get all branches</span>
-<span class="token comment">/// Return the total number of bytes read,</span>
-<span class="token comment">/// 0 bytes read indicates a failure.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetEntries</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *sel)</span> </span>{ <span class="hljs-keyword">return</span> TTree::GetEntries(sel); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetEntry</span><span class="hljs-params">(Long64_t entry=<span class="hljs-number">0</span>, Int_t getall=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Get entry from the file to memory.</span>
+<span class="hljs-comment">/// - getall = 0 : get only active branches</span>
+<span class="hljs-comment">/// - getall = 1 : get all branches</span>
+<span class="hljs-comment">/// Return the total number of bytes read,</span>
+<span class="hljs-comment">/// 0 bytes read indicates a failure.</span>
 
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">GetEntryNumber</span><span class="token punctuation">(</span>Long64_t entry<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return entry number corresponding to entry.</span>
-<span class="token comment">/// if no TEntryList set returns entry</span>
-<span class="token comment">/// else returns entry #entry from this entry list and</span>
-<span class="token comment">/// also computes the global entry number (loads all tree headers)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetEntryNumber</span><span class="hljs-params">(Long64_t entry)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return entry number corresponding to entry.</span>
+<span class="hljs-comment">/// if no TEntryList set returns entry</span>
+<span class="hljs-comment">/// else returns entry #entry from this entry list and</span>
+<span class="hljs-comment">/// also computes the global entry number (loads all tree headers)</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetEntryWithIndex</span><span class="token punctuation">(</span>Int_t major<span class="token punctuation">,</span> Int_t minor<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return entry corresponding to major and minor number.</span>
-<span class="token comment">/// The function returns the total number of bytes read.</span>
-<span class="token comment">/// If the Tree has friend trees, the corresponding entry with</span>
-<span class="token comment">/// the index values (major,minor) is read. Note that the master Tree</span>
-<span class="token comment">/// and its friend may have different entry serial numbers corresponding</span>
-<span class="token comment">/// to (major,minor).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetEntryWithIndex</span><span class="hljs-params">(Int_t major, Int_t minor=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Return entry corresponding to major and minor number.</span>
+<span class="hljs-comment">/// The function returns the total number of bytes read.</span>
+<span class="hljs-comment">/// If the Tree has friend trees, the corresponding entry with</span>
+<span class="hljs-comment">/// the index values (major,minor) is read. Note that the master Tree</span>
+<span class="hljs-comment">/// and its friend may have different entry serial numbers corresponding</span>
+<span class="hljs-comment">/// to (major,minor).</span>
 
-   TFile            <span class="token operator">*</span><span class="token function">GetFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return a pointer to the current file.</span>
-<span class="token comment">/// If no file is connected, the first file is automatically loaded.</span>
+   <span class="hljs-function">TFile            *<span class="hljs-title">GetFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return a pointer to the current file.</span>
+<span class="hljs-comment">/// If no file is connected, the first file is automatically loaded.</span>
 
-   <span class="token keyword">virtual</span> TLeaf    <span class="token operator">*</span><span class="token function">GetLeaf</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> branchname<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> leafname<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return a pointer to the leaf name in the current tree.</span>
-   <span class="token keyword">virtual</span> TLeaf    <span class="token operator">*</span><span class="token function">GetLeaf</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return a pointer to the leaf name in the current tree.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">GetLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* branchname, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* leafname)</span></span>;<span class="hljs-comment">/// Return a pointer to the leaf name in the current tree.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">GetLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name)</span></span>;
+<span class="hljs-comment">/// Return a pointer to the leaf name in the current tree.</span>
 
-   <span class="token keyword">virtual</span> TObjArray <span class="token operator">*</span><span class="token function">GetListOfBranches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">//                Warning, GetListOfFiles returns the list of TChainElements (not the list of files)</span>
-<span class="token comment">/// Return a pointer to the list of branches of the current tree.</span>
-<span class="token comment">/// Warning: If there is no current TTree yet, this routine will open the</span>
-<span class="token comment">/// first in the chain.</span>
-<span class="token comment">/// Returns 0 on failure.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObjArray *<span class="hljs-title">GetListOfBranches</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-comment">//                Warning, GetListOfFiles returns the list of TChainElements (not the list of files)</span>
+<span class="hljs-comment">/// Return a pointer to the list of branches of the current tree.</span>
+<span class="hljs-comment">/// Warning: If there is no current TTree yet, this routine will open the</span>
+<span class="hljs-comment">/// first in the chain.</span>
+<span class="hljs-comment">/// Returns 0 on failure.</span>
 
-   <span class="token comment">//                see TChain::AddFile to see how to get the corresponding TFile objects</span>
-   TObjArray        <span class="token operator">*</span><span class="token function">GetListOfFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fFiles<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TObjArray <span class="token operator">*</span><span class="token function">GetListOfLeaves</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetAlias</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>aliasName<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Returns the expanded value of the alias.  Search in the friends if any.</span>
-   <span class="token keyword">virtual</span> Double_t  <span class="token function">GetMaximum</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>columname<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return maximum of column with name columname.</span>
-   <span class="token keyword">virtual</span> Double_t  <span class="token function">GetMinimum</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>columname<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return minimum of column with name columname.</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetNbranches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return the number of branches of the current tree. Warning: May set the current tree!</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">GetReadEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// See TTree::GetReadEntry().</span>
-   TList            <span class="token operator">*</span><span class="token function">GetStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fStatus<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TTree    <span class="token operator">*</span><span class="token function">GetTree</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTree<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetTreeNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTreeNumber<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           Long64_t <span class="token operator">*</span><span class="token function">GetTreeOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTreeOffset<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           Int_t     <span class="token function">GetTreeOffsetLen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTreeOffsetLen<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Double_t  <span class="token function">GetWeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return the chain weight.</span>
-<span class="token comment">/// By default the weight is the weight of the current tree.</span>
-<span class="token comment">/// However, if the weight has been set in TChain::SetWeight()</span>
-<span class="token comment">/// with the option &quot;global&quot;, then that weight will be returned.</span>
-<span class="token comment">/// Warning: May set the current tree!</span>
+   <span class="hljs-comment">//                see TChain::AddFile to see how to get the corresponding TFile objects</span>
+   <span class="hljs-function">TObjArray        *<span class="hljs-title">GetListOfFiles</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fFiles;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObjArray *<span class="hljs-title">GetListOfLeaves</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetAlias</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *aliasName)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns the expanded value of the alias.  Search in the friends if any.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t  <span class="hljs-title">GetMaximum</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *columname)</span></span>;<span class="hljs-comment">/// Return maximum of column with name columname.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t  <span class="hljs-title">GetMinimum</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *columname)</span></span>;<span class="hljs-comment">/// Return minimum of column with name columname.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetNbranches</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return the number of branches of the current tree. Warning: May set the current tree!</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetReadEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// See TTree::GetReadEntry().</span>
+   <span class="hljs-function">TList            *<span class="hljs-title">GetStatus</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStatus; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TTree    *<span class="hljs-title">GetTree</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTree; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetTreeNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTreeNumber; }
+           <span class="hljs-function">Long64_t *<span class="hljs-title">GetTreeOffset</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTreeOffset; }
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetTreeOffsetLen</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTreeOffsetLen; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t  <span class="hljs-title">GetWeight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return the chain weight.</span>
+<span class="hljs-comment">/// By default the weight is the weight of the current tree.</span>
+<span class="hljs-comment">/// However, if the weight has been set in TChain::SetWeight()</span>
+<span class="hljs-comment">/// with the option &quot;global&quot;, then that weight will be returned.</span>
+<span class="hljs-comment">/// Warning: May set the current tree!</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">LoadBaskets</span><span class="token punctuation">(</span>Long64_t maxmemory<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Dummy function.</span>
-<span class="token comment">/// It could be implemented and load all baskets of all trees in the chain.</span>
-<span class="token comment">/// For the time being use TChain::Merge and TTree::LoadBasket</span>
-<span class="token comment">/// on the resulting tree.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">LoadBaskets</span><span class="hljs-params">(Long64_t maxmemory)</span></span>;
+<span class="hljs-comment">/// Dummy function.</span>
+<span class="hljs-comment">/// It could be implemented and load all baskets of all trees in the chain.</span>
+<span class="hljs-comment">/// For the time being use TChain::Merge and TTree::LoadBasket</span>
+<span class="hljs-comment">/// on the resulting tree.</span>
 
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">LoadTree</span><span class="token punctuation">(</span>Long64_t entry<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find the tree which contains entry, and set it as the current tree.</span>
-<span class="token comment">/// Returns the entry number in that tree.</span>
-<span class="token comment">/// The input argument entry is the entry serial number in the whole chain.</span>
-<span class="token comment">/// In case of error, LoadTree returns a negative number:</span>
-<span class="token comment">///   1. The chain is empty.</span>
-<span class="token comment">///   2. The requested entry number of less than zero or too large for the chain.</span>
-<span class="token comment">///       or too large for the large TTree.</span>
-<span class="token comment">///   3. The file corresponding to the entry could not be correctly open</span>
-<span class="token comment">///   4. The TChainElement corresponding to the entry is missing or</span>
-<span class="token comment">///       the TTree is missing from the file.</span>
-<span class="token comment">/// Note: This is the only routine which sets the value of fTree to</span>
-<span class="token comment">///       a non-zero pointer.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">LoadTree</span><span class="hljs-params">(Long64_t entry)</span></span>;
+<span class="hljs-comment">/// Find the tree which contains entry, and set it as the current tree.</span>
+<span class="hljs-comment">/// Returns the entry number in that tree.</span>
+<span class="hljs-comment">/// The input argument entry is the entry serial number in the whole chain.</span>
+<span class="hljs-comment">/// In case of error, LoadTree returns a negative number:</span>
+<span class="hljs-comment">///   1. The chain is empty.</span>
+<span class="hljs-comment">///   2. The requested entry number of less than zero or too large for the chain.</span>
+<span class="hljs-comment">///       or too large for the large TTree.</span>
+<span class="hljs-comment">///   3. The file corresponding to the entry could not be correctly open</span>
+<span class="hljs-comment">///   4. The TChainElement corresponding to the entry is missing or</span>
+<span class="hljs-comment">///       the TTree is missing from the file.</span>
+<span class="hljs-comment">/// Note: This is the only routine which sets the value of fTree to</span>
+<span class="hljs-comment">///       a non-zero pointer.</span>
 
-           <span class="token keyword">void</span>      <span class="token function">Lookup</span><span class="token punctuation">(</span>Bool_t force <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Check / locate the files in the chain.</span>
-<span class="token comment">/// By default only the files not yet looked up are checked.</span>
-<span class="token comment">/// Use force = kTRUE to check / re-check every file.</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">Lookup</span><span class="hljs-params">(Bool_t force = kFALSE)</span></span>;
+<span class="hljs-comment">/// Check / locate the files in the chain.</span>
+<span class="hljs-comment">/// By default only the files not yet looked up are checked.</span>
+<span class="hljs-comment">/// Use force = kTRUE to check / re-check every file.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Loop</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Long64_t nentries<span class="token operator">=</span>kMaxEntries<span class="token punctuation">,</span> Long64_t firstentry<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU* /// Loop on nentries of this chain starting at firstentry.  (NOT IMPLEMENTED)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// List the chain.</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">Merge</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Merge all the entries in the chain into a new tree in a new file.</span>
-<span class="token comment">/// See important note in the following function Merge().</span>
-<span class="token comment">/// If the chain is expecting the input tree inside a directory,</span>
-<span class="token comment">/// this directory is NOT created by this routine.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Loop</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>, Long64_t nentries=kMaxEntries, Long64_t firstentry=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU* /// Loop on nentries of this chain starting at firstentry.  (NOT IMPLEMENTED)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List the chain.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Merge</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Merge all the entries in the chain into a new tree in a new file.</span>
+<span class="hljs-comment">/// See important note in the following function Merge().</span>
+<span class="hljs-comment">/// If the chain is expecting the input tree inside a directory,</span>
+<span class="hljs-comment">/// this directory is NOT created by this routine.</span>
 
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">Merge</span><span class="token punctuation">(</span>TCollection <span class="token operator">*</span>list<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Merge all chains in the collection.  (NOT IMPLEMENTED)</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">Merge</span><span class="token punctuation">(</span>TCollection <span class="token operator">*</span>list<span class="token punctuation">,</span> TFileMergeInfo <span class="token operator">*</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Merge all chains in the collection.  (NOT IMPLEMENTED)</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">Merge</span><span class="token punctuation">(</span>TFile <span class="token operator">*</span>file<span class="token punctuation">,</span> Int_t basketsize<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Merge all the entries in the chain into a new tree in the current file.</span>
-<span class="token comment">/// Note: The &quot;file&quot; parameter is *not* the file where the new</span>
-<span class="token comment">///       tree will be inserted.  The new tree is inserted into</span>
-<span class="token comment">///       gDirectory, which is usually the most recently opened</span>
-<span class="token comment">///       file, or the directory most recently cd()&apos;d to.</span>
-<span class="token comment">/// If option = &quot;C&quot; is given, the compression level for all branches</span>
-<span class="token comment">/// in the new Tree is set to the file compression level.  By default,</span>
-<span class="token comment">/// the compression level of all branches is the original compression</span>
-<span class="token comment">/// level in the old trees.</span>
-<span class="token comment">/// If basketsize &gt; 1000, the basket size for all branches of the</span>
-<span class="token comment">/// new tree will be set to basketsize.</span>
-<span class="token comment">/// If &apos;option&apos; contains the word &apos;fast&apos; the merge will be done without</span>
-<span class="token comment">/// unzipping or unstreaming the baskets (i.e., a direct copy of the raw</span>
-<span class="token comment">/// bytes on disk).</span>
-<span class="token comment">/// When &apos;fast&apos; is specified, &apos;option&apos; can also contains a</span>
-<span class="token comment">/// sorting order for the baskets in the output file.</span>
-<span class="token comment">/// There is currently 3 supported sorting order:</span>
-<span class="token comment">///     SortBasketsByOffset (the default)</span>
-<span class="token comment">///     SortBasketsByBranch</span>
-<span class="token comment">///     SortBasketsByEntry</span>
-<span class="token comment">/// When using SortBasketsByOffset the baskets are written in</span>
-<span class="token comment">/// the output file in the same order as in the original file</span>
-<span class="token comment">/// (i.e. the basket are sorted on their offset in the original</span>
-<span class="token comment">/// file; Usually this also means that the baskets are sorted</span>
-<span class="token comment">/// on the index/number of the _last_ entry they contain)</span>
-<span class="token comment">/// When using SortBasketsByBranch all the baskets of each</span>
-<span class="token comment">/// individual branches are stored contiguously.  This tends to</span>
-<span class="token comment">/// optimize reading speed when reading a small number (1-&gt;5) of</span>
-<span class="token comment">/// branches, since all their baskets will be clustered together</span>
-<span class="token comment">/// instead of being spread across the file.  However it might</span>
-<span class="token comment">/// decrease the performance when reading more branches (or the full</span>
-<span class="token comment">/// entry).</span>
-<span class="token comment">/// When using SortBasketsByEntry the baskets with the lowest</span>
-<span class="token comment">/// starting entry are written first.  (i.e. the baskets are</span>
-<span class="token comment">/// sorted on the index/number of the first entry they contain).</span>
-<span class="token comment">/// This means that on the file the baskets will be in the order</span>
-<span class="token comment">/// in which they will be needed when reading the whole tree</span>
-<span class="token comment">/// sequentially.</span>
-<span class="token comment">/// ## IMPORTANT Note 1: AUTOMATIC FILE OVERFLOW</span>
-<span class="token comment">/// When merging many files, it may happen that the resulting file</span>
-<span class="token comment">/// reaches a size &gt; TTree::fgMaxTreeSize (default = 1.9 GBytes).</span>
-<span class="token comment">/// In this case the current file is automatically closed and a new</span>
-<span class="token comment">/// file started.  If the name of the merged file was &quot;merged.root&quot;,</span>
-<span class="token comment">/// the subsequent files will be named &quot;merged_1.root&quot;, &quot;merged_2.root&quot;,</span>
-<span class="token comment">/// etc.  fgMaxTreeSize may be modified via the static function</span>
-<span class="token comment">/// TTree::SetMaxTreeSize.</span>
-<span class="token comment">/// When in fast mode, the check and switch is only done in between each</span>
-<span class="token comment">/// input file.</span>
-<span class="token comment">/// ## IMPORTANT Note 2: The output file is automatically closed and deleted.</span>
-<span class="token comment">/// This is required because in general the automatic file overflow described</span>
-<span class="token comment">/// above may happen during the merge.</span>
-<span class="token comment">/// If only the current file is produced (the file passed as first argument),</span>
-<span class="token comment">/// one can instruct Merge to not close and delete the file by specifying</span>
-<span class="token comment">/// the option &quot;keep&quot;.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Merge</span><span class="hljs-params">(TCollection *<span class="hljs-built_in">list</span>, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Merge all chains in the collection.  (NOT IMPLEMENTED)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Merge</span><span class="hljs-params">(TCollection *<span class="hljs-built_in">list</span>, TFileMergeInfo *info)</span></span>;<span class="hljs-comment">/// Merge all chains in the collection.  (NOT IMPLEMENTED)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Merge</span><span class="hljs-params">(TFile *file, Int_t basketsize, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Merge all the entries in the chain into a new tree in the current file.</span>
+<span class="hljs-comment">/// Note: The &quot;file&quot; parameter is *not* the file where the new</span>
+<span class="hljs-comment">///       tree will be inserted.  The new tree is inserted into</span>
+<span class="hljs-comment">///       gDirectory, which is usually the most recently opened</span>
+<span class="hljs-comment">///       file, or the directory most recently cd()&apos;d to.</span>
+<span class="hljs-comment">/// If option = &quot;C&quot; is given, the compression level for all branches</span>
+<span class="hljs-comment">/// in the new Tree is set to the file compression level.  By default,</span>
+<span class="hljs-comment">/// the compression level of all branches is the original compression</span>
+<span class="hljs-comment">/// level in the old trees.</span>
+<span class="hljs-comment">/// If basketsize &gt; 1000, the basket size for all branches of the</span>
+<span class="hljs-comment">/// new tree will be set to basketsize.</span>
+<span class="hljs-comment">/// If &apos;option&apos; contains the word &apos;fast&apos; the merge will be done without</span>
+<span class="hljs-comment">/// unzipping or unstreaming the baskets (i.e., a direct copy of the raw</span>
+<span class="hljs-comment">/// bytes on disk).</span>
+<span class="hljs-comment">/// When &apos;fast&apos; is specified, &apos;option&apos; can also contains a</span>
+<span class="hljs-comment">/// sorting order for the baskets in the output file.</span>
+<span class="hljs-comment">/// There is currently 3 supported sorting order:</span>
+<span class="hljs-comment">///     SortBasketsByOffset (the default)</span>
+<span class="hljs-comment">///     SortBasketsByBranch</span>
+<span class="hljs-comment">///     SortBasketsByEntry</span>
+<span class="hljs-comment">/// When using SortBasketsByOffset the baskets are written in</span>
+<span class="hljs-comment">/// the output file in the same order as in the original file</span>
+<span class="hljs-comment">/// (i.e. the basket are sorted on their offset in the original</span>
+<span class="hljs-comment">/// file; Usually this also means that the baskets are sorted</span>
+<span class="hljs-comment">/// on the index/number of the _last_ entry they contain)</span>
+<span class="hljs-comment">/// When using SortBasketsByBranch all the baskets of each</span>
+<span class="hljs-comment">/// individual branches are stored contiguously.  This tends to</span>
+<span class="hljs-comment">/// optimize reading speed when reading a small number (1-&gt;5) of</span>
+<span class="hljs-comment">/// branches, since all their baskets will be clustered together</span>
+<span class="hljs-comment">/// instead of being spread across the file.  However it might</span>
+<span class="hljs-comment">/// decrease the performance when reading more branches (or the full</span>
+<span class="hljs-comment">/// entry).</span>
+<span class="hljs-comment">/// When using SortBasketsByEntry the baskets with the lowest</span>
+<span class="hljs-comment">/// starting entry are written first.  (i.e. the baskets are</span>
+<span class="hljs-comment">/// sorted on the index/number of the first entry they contain).</span>
+<span class="hljs-comment">/// This means that on the file the baskets will be in the order</span>
+<span class="hljs-comment">/// in which they will be needed when reading the whole tree</span>
+<span class="hljs-comment">/// sequentially.</span>
+<span class="hljs-comment">/// ## IMPORTANT Note 1: AUTOMATIC FILE OVERFLOW</span>
+<span class="hljs-comment">/// When merging many files, it may happen that the resulting file</span>
+<span class="hljs-comment">/// reaches a size &gt; TTree::fgMaxTreeSize (default = 1.9 GBytes).</span>
+<span class="hljs-comment">/// In this case the current file is automatically closed and a new</span>
+<span class="hljs-comment">/// file started.  If the name of the merged file was &quot;merged.root&quot;,</span>
+<span class="hljs-comment">/// the subsequent files will be named &quot;merged_1.root&quot;, &quot;merged_2.root&quot;,</span>
+<span class="hljs-comment">/// etc.  fgMaxTreeSize may be modified via the static function</span>
+<span class="hljs-comment">/// TTree::SetMaxTreeSize.</span>
+<span class="hljs-comment">/// When in fast mode, the check and switch is only done in between each</span>
+<span class="hljs-comment">/// input file.</span>
+<span class="hljs-comment">/// ## IMPORTANT Note 2: The output file is automatically closed and deleted.</span>
+<span class="hljs-comment">/// This is required because in general the automatic file overflow described</span>
+<span class="hljs-comment">/// above may happen during the merge.</span>
+<span class="hljs-comment">/// If only the current file is produced (the file passed as first argument),</span>
+<span class="hljs-comment">/// one can instruct Merge to not close and delete the file by specifying</span>
+<span class="hljs-comment">/// the option &quot;keep&quot;.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Print</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Print the header information of each tree in the chain.</span>
-<span class="token comment">/// See TTree::Print for a list of options.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Print the header information of each tree in the chain.</span>
+<span class="hljs-comment">/// See TTree::Print for a list of options.</span>
 
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">Process</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Long64_t nentries<span class="token operator">=</span>kMaxEntries<span class="token punctuation">,</span> Long64_t firstentry<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Process all entries in this chain, calling functions in filename.</span>
-<span class="token comment">/// The return value is -1 in case of error and TSelector::GetStatus() in</span>
-<span class="token comment">/// in case of success.</span>
-<span class="token comment">/// See TTree::Process.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Process</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename, Option_t *option=<span class="hljs-string">&quot;&quot;</span>, Long64_t nentries=kMaxEntries, Long64_t firstentry=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Process all entries in this chain, calling functions in filename.</span>
+<span class="hljs-comment">/// The return value is -1 in case of error and TSelector::GetStatus() in</span>
+<span class="hljs-comment">/// in case of success.</span>
+<span class="hljs-comment">/// See TTree::Process.</span>
 
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">Process</span><span class="token punctuation">(</span>TSelector<span class="token operator">*</span> selector<span class="token punctuation">,</span> Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Long64_t nentries <span class="token operator">=</span> kMaxEntries<span class="token punctuation">,</span> Long64_t firstentry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Process this chain executing the code in selector.</span>
-<span class="token comment">/// The return value is -1 in case of error and TSelector::GetStatus() in</span>
-<span class="token comment">/// in case of success.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Process</span><span class="hljs-params">(TSelector* selector, Option_t* option = <span class="hljs-string">&quot;&quot;</span>, Long64_t nentries = kMaxEntries, Long64_t firstentry = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Process this chain executing the code in selector.</span>
+<span class="hljs-comment">/// The return value is -1 in case of error and TSelector::GetStatus() in</span>
+<span class="hljs-comment">/// in case of success.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">RecursiveRemove</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Make sure that obj (which is being deleted or will soon be) is no longer referenced by this TTree.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">RemoveFriend</span><span class="token punctuation">(</span>TTree<span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Remove a friend from the list of friends.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Reset</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Resets the state of this chain.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ResetAfterMerge</span><span class="token punctuation">(</span>TFileMergeInfo <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Resets the state of this chain after a merge (keep the customization but forget the data).</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ResetBranchAddress</span><span class="token punctuation">(</span>TBranch <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Reset the addresses of the branch.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ResetBranchAddresses</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Reset the addresses of the branches.</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">Scan</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>varexp<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>selection<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Long64_t nentries<span class="token operator">=</span>kMaxEntries<span class="token punctuation">,</span> Long64_t firstentry<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Loop on tree and print entries passing selection.</span>
-<span class="token comment">/// - If varexp is 0 (or &quot;&quot;) then print only first 8 columns.</span>
-<span class="token comment">/// - If varexp = &quot;*&quot; print all columns.</span>
-<span class="token comment">/// - Otherwise a columns selection can be made using &quot;var1:var2:var3&quot;.</span>
-<span class="token comment">/// See TTreePlayer::Scan for more information.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">RecursiveRemove</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Make sure that obj (which is being deleted or will soon be) is no longer referenced by this TTree.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">RemoveFriend</span><span class="hljs-params">(TTree*)</span></span>;<span class="hljs-comment">/// Remove a friend from the list of friends.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Reset</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Resets the state of this chain.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetAfterMerge</span><span class="hljs-params">(TFileMergeInfo *)</span></span>;<span class="hljs-comment">/// Resets the state of this chain after a merge (keep the customization but forget the data).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetBranchAddress</span><span class="hljs-params">(TBranch *)</span></span>;<span class="hljs-comment">/// Reset the addresses of the branch.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetBranchAddresses</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Reset the addresses of the branches.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">Scan</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *varexp=<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *selection=<span class="hljs-string">&quot;&quot;</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>, Long64_t nentries=kMaxEntries, Long64_t firstentry=<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Loop on tree and print entries passing selection.</span>
+<span class="hljs-comment">/// - If varexp is 0 (or &quot;&quot;) then print only first 8 columns.</span>
+<span class="hljs-comment">/// - If varexp = &quot;*&quot; print all columns.</span>
+<span class="hljs-comment">/// - Otherwise a columns selection can be made using &quot;var1:var2:var3&quot;.</span>
+<span class="hljs-comment">/// See TTreePlayer::Scan for more information.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetAutoDelete</span><span class="token punctuation">(</span>Bool_t autodel<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the global branch kAutoDelete bit.</span>
-<span class="token comment">/// When LoadTree loads a new Tree, the branches for which</span>
-<span class="token comment">/// the address is set will have the option AutoDelete set</span>
-<span class="token comment">/// For more details on AutoDelete, see TBranch::SetAutoDelete.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetAutoDelete</span><span class="hljs-params">(Bool_t autodel=kTRUE)</span></span>;
+<span class="hljs-comment">/// Set the global branch kAutoDelete bit.</span>
+<span class="hljs-comment">/// When LoadTree loads a new Tree, the branches for which</span>
+<span class="hljs-comment">/// the address is set will have the option AutoDelete set</span>
+<span class="hljs-comment">/// For more details on AutoDelete, see TBranch::SetAutoDelete.</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">SetBranchAddress</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>bname<span class="token punctuation">,</span><span class="token keyword">void</span> <span class="token operator">*</span>add<span class="token punctuation">,</span> TBranch <span class="token operator">*</span><span class="token operator">*</span>ptr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set branch address.</span>
-<span class="token comment">/// \param[in] bname    is the name of a branch.</span>
-<span class="token comment">/// \param[in] add      is the address of the branch.</span>
-<span class="token comment">/// Note: See the comments in TBranchElement::SetAddress() for a more</span>
-<span class="token comment">/// detailed discussion of the meaning of the add parameter.</span>
-<span class="token comment">/// IMPORTANT REMARK:</span>
-<span class="token comment">/// In case TChain::SetBranchStatus is called, it must be called</span>
-<span class="token comment">/// BEFORE calling this function.</span>
-<span class="token comment">/// See TTree::CheckBranchAddressType for the semantic of the return value.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname,<span class="hljs-keyword">void</span> *add, TBranch **ptr = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Set branch address.</span>
+<span class="hljs-comment">/// \param[in] bname    is the name of a branch.</span>
+<span class="hljs-comment">/// \param[in] add      is the address of the branch.</span>
+<span class="hljs-comment">/// Note: See the comments in TBranchElement::SetAddress() for a more</span>
+<span class="hljs-comment">/// detailed discussion of the meaning of the add parameter.</span>
+<span class="hljs-comment">/// IMPORTANT REMARK:</span>
+<span class="hljs-comment">/// In case TChain::SetBranchStatus is called, it must be called</span>
+<span class="hljs-comment">/// BEFORE calling this function.</span>
+<span class="hljs-comment">/// See TTree::CheckBranchAddressType for the semantic of the return value.</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">SetBranchAddress</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>bname<span class="token punctuation">,</span><span class="token keyword">void</span> <span class="token operator">*</span>add<span class="token punctuation">,</span> TBranch <span class="token operator">*</span><span class="token operator">*</span>ptr<span class="token punctuation">,</span> TClass <span class="token operator">*</span>realClass<span class="token punctuation">,</span> EDataType datatype<span class="token punctuation">,</span> Bool_t isptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Check if bname is already in the status list, and if not, create a TChainElement object and set its address.</span>
-<span class="token comment">/// See TTree::CheckBranchAddressType for the semantic of the return value.</span>
-<span class="token comment">/// Note: See the comments in TBranchElement::SetAddress() for a more</span>
-<span class="token comment">/// detailed discussion of the meaning of the add parameter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname,<span class="hljs-keyword">void</span> *add, TBranch **ptr, TClass *realClass, EDataType datatype, Bool_t isptr)</span></span>;
+<span class="hljs-comment">/// Check if bname is already in the status list, and if not, create a TChainElement object and set its address.</span>
+<span class="hljs-comment">/// See TTree::CheckBranchAddressType for the semantic of the return value.</span>
+<span class="hljs-comment">/// Note: See the comments in TBranchElement::SetAddress() for a more</span>
+<span class="hljs-comment">/// detailed discussion of the meaning of the add parameter.</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">SetBranchAddress</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>bname<span class="token punctuation">,</span><span class="token keyword">void</span> <span class="token operator">*</span>add<span class="token punctuation">,</span> TClass <span class="token operator">*</span>realClass<span class="token punctuation">,</span> EDataType datatype<span class="token punctuation">,</span> Bool_t isptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Check if bname is already in the status list, and if not, create a TChainElement object and set its address.</span>
-<span class="token comment">/// See TTree::CheckBranchAddressType for the semantic of the return value.</span>
-<span class="token comment">/// Note: See the comments in TBranchElement::SetAddress() for a more</span>
-<span class="token comment">/// detailed discussion of the meaning of the add parameter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname,<span class="hljs-keyword">void</span> *add, TClass *realClass, EDataType datatype, Bool_t isptr)</span></span>;
+<span class="hljs-comment">/// Check if bname is already in the status list, and if not, create a TChainElement object and set its address.</span>
+<span class="hljs-comment">/// See TTree::CheckBranchAddressType for the semantic of the return value.</span>
+<span class="hljs-comment">/// Note: See the comments in TBranchElement::SetAddress() for a more</span>
+<span class="hljs-comment">/// detailed discussion of the meaning of the add parameter.</span>
 
-   <span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">&gt;</span> Int_t <span class="token function">SetBranchAddress</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>bname<span class="token punctuation">,</span> T <span class="token operator">*</span><span class="token operator">*</span>add<span class="token punctuation">,</span> TBranch <span class="token operator">*</span><span class="token operator">*</span>ptr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     <span class="token keyword">return</span> TTree<span class="token operator">::</span>SetBranchAddress<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span>bname<span class="token punctuation">,</span> add<span class="token punctuation">,</span> ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-<span class="token macro property">#<span class="token directive keyword">ifndef</span> R__NO_CLASS_TEMPLATE_SPECIALIZATION</span>
-   <span class="token comment">// This can only be used when the template overload resolution can distringuish between</span>
-   <span class="token comment">// T* and T**</span>
-   <span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">&gt;</span> Int_t <span class="token function">SetBranchAddress</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>bname<span class="token punctuation">,</span> T <span class="token operator">*</span>add<span class="token punctuation">,</span> TBranch <span class="token operator">*</span><span class="token operator">*</span>ptr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     <span class="token keyword">return</span> TTree<span class="token operator">::</span>SetBranchAddress<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span>bname<span class="token punctuation">,</span> add<span class="token punctuation">,</span> ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> T&gt; <span class="hljs-function">Int_t <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname, T **add, TBranch **ptr = <span class="hljs-number">0</span>)</span> </span>{
+     <span class="hljs-keyword">return</span> TTree::SetBranchAddress&lt;T&gt;(bname, add, ptr);
+   }
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> R__NO_CLASS_TEMPLATE_SPECIALIZATION</span>
+   <span class="hljs-comment">// This can only be used when the template overload resolution can distringuish between</span>
+   <span class="hljs-comment">// T* and T**</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> T&gt; <span class="hljs-function">Int_t <span class="hljs-title">SetBranchAddress</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname, T *add, TBranch **ptr = <span class="hljs-number">0</span>)</span> </span>{
+     <span class="hljs-keyword">return</span> TTree::SetBranchAddress&lt;T&gt;(bname, add, ptr);
+   }
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetBranchStatus</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>bname<span class="token punctuation">,</span> Bool_t status<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> UInt_t <span class="token operator">*</span>found<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set branch status to Process or DoNotProcess</span>
-<span class="token comment">/// \param[in] bname     is the name of a branch. if bname=&quot;*&quot;, apply to all branches.</span>
-<span class="token comment">/// \param[in] status    = 1  branch will be processed,</span>
-<span class="token comment">///                      = 0  branch will not be processed</span>
-<span class="token comment">///  See IMPORTANT REMARKS in TTree::SetBranchStatus and TChain::SetBranchAddress</span>
-<span class="token comment">///  If found is not 0, the number of branch(es) found matching the regular</span>
-<span class="token comment">///  expression is returned in *found AND the error message &apos;unknown branch&apos;</span>
-<span class="token comment">///  is suppressed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetBranchStatus</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *bname, Bool_t status=<span class="hljs-number">1</span>, UInt_t *found=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Set branch status to Process or DoNotProcess</span>
+<span class="hljs-comment">/// \param[in] bname     is the name of a branch. if bname=&quot;*&quot;, apply to all branches.</span>
+<span class="hljs-comment">/// \param[in] status    = 1  branch will be processed,</span>
+<span class="hljs-comment">///                      = 0  branch will not be processed</span>
+<span class="hljs-comment">///  See IMPORTANT REMARKS in TTree::SetBranchStatus and TChain::SetBranchAddress</span>
+<span class="hljs-comment">///  If found is not 0, the number of branch(es) found matching the regular</span>
+<span class="hljs-comment">///  expression is returned in *found AND the error message &apos;unknown branch&apos;</span>
+<span class="hljs-comment">///  is suppressed.</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">SetCacheSize</span><span class="token punctuation">(</span>Long64_t cacheSize <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetDirectory</span><span class="token punctuation">(</span>TDirectory <span class="token operator">*</span>dir<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Remove reference to this chain from current directory and add</span>
-<span class="token comment">/// reference to new directory dir. dir can be 0 in which case the chain</span>
-<span class="token comment">/// does not belong to any directory.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">SetCacheSize</span><span class="hljs-params">(Long64_t cacheSize = <span class="hljs-number">-1</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetDirectory</span><span class="hljs-params">(TDirectory *dir)</span></span>;
+<span class="hljs-comment">/// Remove reference to this chain from current directory and add</span>
+<span class="hljs-comment">/// reference to new directory dir. dir can be 0 in which case the chain</span>
+<span class="hljs-comment">/// does not belong to any directory.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetEntryList</span><span class="token punctuation">(</span>TEntryList <span class="token operator">*</span>elist<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>opt<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the input entry list (processing the entries of the chain will then be</span>
-<span class="token comment">/// limited to the entries in the list)</span>
-<span class="token comment">/// This function finds correspondance between the sub-lists of the TEntryList</span>
-<span class="token comment">/// and the trees of the TChain</span>
-<span class="token comment">/// By default (opt=&quot;&quot;), both the file names of the chain elements and</span>
-<span class="token comment">/// the file names of the TEntryList sublists are expanded to full path name.</span>
-<span class="token comment">/// If opt = &quot;ne&quot;, the file names are taken as they are and not expanded</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEntryList</span><span class="hljs-params">(TEntryList *elist, Option_t *opt=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Set the input entry list (processing the entries of the chain will then be</span>
+<span class="hljs-comment">/// limited to the entries in the list)</span>
+<span class="hljs-comment">/// This function finds correspondance between the sub-lists of the TEntryList</span>
+<span class="hljs-comment">/// and the trees of the TChain</span>
+<span class="hljs-comment">/// By default (opt=&quot;&quot;), both the file names of the chain elements and</span>
+<span class="hljs-comment">/// the file names of the TEntryList sublists are expanded to full path name.</span>
+<span class="hljs-comment">/// If opt = &quot;ne&quot;, the file names are taken as they are and not expanded</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetEntryListFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span>opt<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the input entry list (processing the entries of the chain will then be</span>
-<span class="token comment">/// limited to the entries in the list). This function creates a special kind</span>
-<span class="token comment">/// of entry list (TEntryListFromFile object) that loads lists, corresponding</span>
-<span class="token comment">/// to the chain elements, one by one, so that only one list is in memory at a time.</span>
-<span class="token comment">/// If there is an error opening one of the files, this file is skipped and the next file is loaded</span>
-<span class="token comment">/// File naming convention:</span>
-<span class="token comment">/// - by default, filename_elist.root is used, where filename is the</span>
-<span class="token comment">///   name of the chain element</span>
-<span class="token comment">/// - xxx$xxx.root - $ sign is replaced by the name of the chain element</span>
-<span class="token comment">/// If the list name is not specified (by passing filename_elist.root/listname to</span>
-<span class="token comment">/// the TChain::SetEntryList() function, the first object of class TEntryList</span>
-<span class="token comment">/// in the file is taken.</span>
-<span class="token comment">/// It is assumed, that there are as many list files, as there are elements in</span>
-<span class="token comment">/// the chain and they are in the same order</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEntryListFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename=<span class="hljs-string">&quot;&quot;</span>, Option_t *opt=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Set the input entry list (processing the entries of the chain will then be</span>
+<span class="hljs-comment">/// limited to the entries in the list). This function creates a special kind</span>
+<span class="hljs-comment">/// of entry list (TEntryListFromFile object) that loads lists, corresponding</span>
+<span class="hljs-comment">/// to the chain elements, one by one, so that only one list is in memory at a time.</span>
+<span class="hljs-comment">/// If there is an error opening one of the files, this file is skipped and the next file is loaded</span>
+<span class="hljs-comment">/// File naming convention:</span>
+<span class="hljs-comment">/// - by default, filename_elist.root is used, where filename is the</span>
+<span class="hljs-comment">///   name of the chain element</span>
+<span class="hljs-comment">/// - xxx$xxx.root - $ sign is replaced by the name of the chain element</span>
+<span class="hljs-comment">/// If the list name is not specified (by passing filename_elist.root/listname to</span>
+<span class="hljs-comment">/// the TChain::SetEntryList() function, the first object of class TEntryList</span>
+<span class="hljs-comment">/// in the file is taken.</span>
+<span class="hljs-comment">/// It is assumed, that there are as many list files, as there are elements in</span>
+<span class="hljs-comment">/// the chain and they are in the same order</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetEventList</span><span class="token punctuation">(</span>TEventList <span class="token operator">*</span>evlist<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// This function transfroms the given TEventList into a TEntryList</span>
-<span class="token comment">/// NOTE, that this function loads all tree headers, because the entry numbers</span>
-<span class="token comment">/// in the TEventList are global and have to be recomputed, taking into account</span>
-<span class="token comment">/// the number of entries in each tree.</span>
-<span class="token comment">/// The new TEntryList is owned by the TChain and gets deleted when the chain</span>
-<span class="token comment">/// is deleted. This TEntryList is returned by GetEntryList() function, and after</span>
-<span class="token comment">/// GetEntryList() function is called, the TEntryList is not owned by the chain</span>
-<span class="token comment">/// any more and will not be deleted with it.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEventList</span><span class="hljs-params">(TEventList *evlist)</span></span>;
+<span class="hljs-comment">/// This function transfroms the given TEventList into a TEntryList</span>
+<span class="hljs-comment">/// NOTE, that this function loads all tree headers, because the entry numbers</span>
+<span class="hljs-comment">/// in the TEventList are global and have to be recomputed, taking into account</span>
+<span class="hljs-comment">/// the number of entries in each tree.</span>
+<span class="hljs-comment">/// The new TEntryList is owned by the TChain and gets deleted when the chain</span>
+<span class="hljs-comment">/// is deleted. This TEntryList is returned by GetEntryList() function, and after</span>
+<span class="hljs-comment">/// GetEntryList() function is called, the TEntryList is not owned by the chain</span>
+<span class="hljs-comment">/// any more and will not be deleted with it.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetMakeClass</span><span class="token punctuation">(</span>Int_t make<span class="token punctuation">)</span> <span class="token punctuation">{</span> TTree<span class="token operator">::</span><span class="token function">SetMakeClass</span><span class="token punctuation">(</span>make<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>fTree<span class="token punctuation">)</span> fTree<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetMakeClass</span><span class="token punctuation">(</span>make<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetPacketSize</span><span class="token punctuation">(</span>Int_t size <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set number of entries per packet for parallel root.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetProof</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Bool_t refresh <span class="token operator">=</span> kFALSE<span class="token punctuation">,</span> Bool_t gettreeheader <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Enable/Disable PROOF processing on the current default Proof (gProof).</span>
-<span class="token comment">/// &quot;Draw&quot; and &quot;Processed&quot; commands will be handled by PROOF.</span>
-<span class="token comment">/// The refresh and gettreeheader are meaningfull only if on == kTRUE.</span>
-<span class="token comment">/// If refresh is kTRUE the underlying fProofChain (chain proxy) is always</span>
-<span class="token comment">/// rebuilt (even if already existing).</span>
-<span class="token comment">/// If gettreeheader is kTRUE the header of the tree will be read from the</span>
-<span class="token comment">/// PROOF cluster: this is only needed for browsing and should be used with</span>
-<span class="token comment">/// care because it may take a long time to execute.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetMakeClass</span><span class="hljs-params">(Int_t make)</span> </span>{ TTree::SetMakeClass(make); <span class="hljs-keyword">if</span> (fTree) fTree-&gt;SetMakeClass(make);}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetPacketSize</span><span class="hljs-params">(Int_t size = <span class="hljs-number">100</span>)</span></span>;<span class="hljs-comment">/// Set number of entries per packet for parallel root.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetProof</span><span class="hljs-params">(Bool_t on = kTRUE, Bool_t refresh = kFALSE, Bool_t gettreeheader = kFALSE)</span></span>;
+<span class="hljs-comment">/// Enable/Disable PROOF processing on the current default Proof (gProof).</span>
+<span class="hljs-comment">/// &quot;Draw&quot; and &quot;Processed&quot; commands will be handled by PROOF.</span>
+<span class="hljs-comment">/// The refresh and gettreeheader are meaningfull only if on == kTRUE.</span>
+<span class="hljs-comment">/// If refresh is kTRUE the underlying fProofChain (chain proxy) is always</span>
+<span class="hljs-comment">/// rebuilt (even if already existing).</span>
+<span class="hljs-comment">/// If gettreeheader is kTRUE the header of the tree will be read from the</span>
+<span class="hljs-comment">/// PROOF cluster: this is only needed for browsing and should be used with</span>
+<span class="hljs-comment">/// care because it may take a long time to execute.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetWeight</span><span class="token punctuation">(</span>Double_t w<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set chain weight.</span>
-<span class="token comment">/// The weight is used by TTree::Draw to automatically weight each</span>
-<span class="token comment">/// selected entry in the resulting histogram.</span>
-<span class="token comment">/// For example the equivalent of</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///     chain.Draw(&quot;x&quot;,&quot;w&quot;)</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">/// is</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///     chain.SetWeight(w,&quot;global&quot;);</span>
-<span class="token comment">///     chain.Draw(&quot;x&quot;);</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">/// By default the weight used will be the weight</span>
-<span class="token comment">/// of each Tree in the TChain. However, one can force the individual</span>
-<span class="token comment">/// weights to be ignored by specifying the option &quot;global&quot;.</span>
-<span class="token comment">/// In this case, the TChain global weight will be used for all Trees.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetWeight</span><span class="hljs-params">(Double_t w=<span class="hljs-number">1</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Set chain weight.</span>
+<span class="hljs-comment">/// The weight is used by TTree::Draw to automatically weight each</span>
+<span class="hljs-comment">/// selected entry in the resulting histogram.</span>
+<span class="hljs-comment">/// For example the equivalent of</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     chain.Draw(&quot;x&quot;,&quot;w&quot;)</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// is</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     chain.SetWeight(w,&quot;global&quot;);</span>
+<span class="hljs-comment">///     chain.Draw(&quot;x&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// By default the weight used will be the weight</span>
+<span class="hljs-comment">/// of each Tree in the TChain. However, one can force the individual</span>
+<span class="hljs-comment">/// weights to be ignored by specifying the option &quot;global&quot;.</span>
+<span class="hljs-comment">/// In this case, the TChain global weight will be used for all Trees.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">UseCache</span><span class="token punctuation">(</span>Int_t maxCacheSize <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> Int_t pageSize <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">UseCache</span><span class="hljs-params">(Int_t maxCacheSize = <span class="hljs-number">10</span>, Int_t pageSize = <span class="hljs-number">0</span>)</span></span>;
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">///  Suppose we have 3 files f1.root, f2.root and f3.root. Each file contains a TTree object named &quot;T&quot;.</span>
-TChain <span class="token function">ch</span><span class="token punctuation">(</span><span class="token string">&quot;T&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  creates a chain to process a Tree called <span class="token string">&quot;T&quot;</span>
-ch<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">&quot;f1.root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ch<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">&quot;f2.root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ch<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">&quot;f3.root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ch<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;x&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">///  Suppose we have 3 files f1.root, f2.root and f3.root. Each file contains a TTree object named &quot;T&quot;.</span>
+<span class="hljs-function">TChain <span class="hljs-title">ch</span><span class="hljs-params">(<span class="hljs-string">&quot;T&quot;</span>)</span></span>;  creates a chain to process a Tree called <span class="hljs-string">&quot;T&quot;</span>
+ch.Add(<span class="hljs-string">&quot;f1.root&quot;</span>);
+ch.Add(<span class="hljs-string">&quot;f2.root&quot;</span>);
+ch.Add(<span class="hljs-string">&quot;f3.root&quot;</span>);
+ch.Draw(<span class="hljs-string">&quot;x&quot;</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">/// Each TChainElement has a name equal to the tree name of this TChain and a title equal to the file name. So, to loop over the TFiles that have been added to this chain:</span>
+<pre><code class="lang-cpp">/// Each TChainElement has a name equal to the tree name of this TChain and a title equal to the file name. So, to loop over the TFiles that have been added to this chain:
 
-TObjArray <span class="token operator">*</span>fileElements<span class="token operator">=</span>chain<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetListOfFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-TIter <span class="token function">next</span><span class="token punctuation">(</span>fileElements<span class="token punctuation">)</span><span class="token punctuation">;</span>
-TChainElement <span class="token operator">*</span>chEl<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span> chEl<span class="token operator">=</span><span class="token punctuation">(</span>TChainElement<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   TFile <span class="token function">f</span><span class="token punctuation">(</span>chEl<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//   ... do something with f ...</span>
-<span class="token punctuation">}</span>
+TObjArray *fileElements=chain-&gt;GetListOfFiles();
+TIter next(fileElements);
+TChainElement *chEl=0;
+while (( chEl=(TChainElement*)next() )) {
+   TFile f(chEl-&gt;GetTitle());
+//   ... do something with f ...
+}
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">/// Example using the file generated in $ROOTSYS/test/Event</span>
-<span class="token comment">/// merge two copies of Event.root</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">/// Example using the file generated in $ROOTSYS/test/Event</span>
+<span class="hljs-comment">/// merge two copies of Event.root</span>
 
-gSystem<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span><span class="token string">&quot;libEvent&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-TChain <span class="token function">ch</span><span class="token punctuation">(</span><span class="token string">&quot;T&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ch<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">&quot;Event1.root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ch<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">&quot;Event2.root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ch<span class="token punctuation">.</span><span class="token function">Merge</span><span class="token punctuation">(</span><span class="token string">&quot;all.root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gSystem.Load(<span class="hljs-string">&quot;libEvent&quot;</span>);
+<span class="hljs-function">TChain <span class="hljs-title">ch</span><span class="hljs-params">(<span class="hljs-string">&quot;T&quot;</span>)</span></span>;
+ch.Add(<span class="hljs-string">&quot;Event1.root&quot;</span>);
+ch.Add(<span class="hljs-string">&quot;Event2.root&quot;</span>);
+ch.Merge(<span class="hljs-string">&quot;all.root&quot;</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">/// If the chain is expecting the input tree inside a directory,</span>
-<span class="token comment">/// this directory is NOT created by this routine.</span>
-<span class="token comment">///</span>
-<span class="token comment">/// So if you do:</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">/// If the chain is expecting the input tree inside a directory,</span>
+<span class="hljs-comment">/// this directory is NOT created by this routine.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// So if you do:</span>
 
-TChain <span class="token function">ch</span><span class="token punctuation">(</span><span class="token string">&quot;mydir/mytree&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ch<span class="token punctuation">.</span><span class="token function">Merge</span><span class="token punctuation">(</span><span class="token string">&quot;newfile.root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-function">TChain <span class="hljs-title">ch</span><span class="hljs-params">(<span class="hljs-string">&quot;mydir/mytree&quot;</span>)</span></span>;
+ch.Merge(<span class="hljs-string">&quot;newfile.root&quot;</span>);
 
-<span class="token comment">/// The resulting file will not have subdirectories.  In order to</span>
-<span class="token comment">/// preserve the directory structure do the following instead:</span>
+<span class="hljs-comment">/// The resulting file will not have subdirectories.  In order to</span>
+<span class="hljs-comment">/// preserve the directory structure do the following instead:</span>
 
-TFile<span class="token operator">*</span> file <span class="token operator">=</span> TFile<span class="token operator">::</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&quot;newfile.root&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;RECREATE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-file<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token string">&quot;mydir&quot;</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">cd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ch<span class="token punctuation">.</span><span class="token function">Merge</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+TFile* file = TFile::Open(<span class="hljs-string">&quot;newfile.root&quot;</span>, <span class="hljs-string">&quot;RECREATE&quot;</span>);
+file-&gt;mkdir(<span class="hljs-string">&quot;mydir&quot;</span>)-&gt;cd();
+ch.Merge(file);
 
-<span class="token comment">/// The function returns the total number of files produced.</span>
-<span class="token comment">/// To check that all files have been merged use something like:</span>
+<span class="hljs-comment">/// The function returns the total number of files produced.</span>
+<span class="hljs-comment">/// To check that all files have been merged use something like:</span>
 
-<span class="token keyword">if</span> <span class="token punctuation">(</span>newchain<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span>oldchain<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token operator">not</span> all the file have been copied <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span>
+<span class="hljs-keyword">if</span> (newchain-&gt;GetEntries()!=oldchain-&gt;GetEntries()) {
+   ... not all the file have been copied ...
+}
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">/// This example has four chains each has 20 ROOT trees from 20 ROOT files.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">/// This example has four chains each has 20 ROOT trees from 20 ROOT files.</span>
 
-TChain <span class="token function">ch</span><span class="token punctuation">(</span><span class="token string">&quot;t&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// a chain with 20 trees from 20 files</span>
-TChain <span class="token function">ch1</span><span class="token punctuation">(</span><span class="token string">&quot;t1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-TChain <span class="token function">ch2</span><span class="token punctuation">(</span><span class="token string">&quot;t2&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-TChain <span class="token function">ch3</span><span class="token punctuation">(</span><span class="token string">&quot;t3&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-function">TChain <span class="hljs-title">ch</span><span class="hljs-params">(<span class="hljs-string">&quot;t&quot;</span>)</span></span>; <span class="hljs-comment">// a chain with 20 trees from 20 files</span>
+<span class="hljs-function">TChain <span class="hljs-title">ch1</span><span class="hljs-params">(<span class="hljs-string">&quot;t1&quot;</span>)</span></span>;
+<span class="hljs-function">TChain <span class="hljs-title">ch2</span><span class="hljs-params">(<span class="hljs-string">&quot;t2&quot;</span>)</span></span>;
+<span class="hljs-function">TChain <span class="hljs-title">ch3</span><span class="hljs-params">(<span class="hljs-string">&quot;t3&quot;</span>)</span></span>;
 
-<span class="token comment">/// Now we can add the friends to the first chain.</span>
+<span class="hljs-comment">/// Now we can add the friends to the first chain.</span>
 
-ch<span class="token punctuation">.</span><span class="token function">AddFriend</span><span class="token punctuation">(</span><span class="token string">&quot;t1&quot;</span><span class="token punctuation">)</span>
-ch<span class="token punctuation">.</span><span class="token function">AddFriend</span><span class="token punctuation">(</span><span class="token string">&quot;t2&quot;</span><span class="token punctuation">)</span>
-ch<span class="token punctuation">.</span><span class="token function">AddFriend</span><span class="token punctuation">(</span><span class="token string">&quot;t3&quot;</span><span class="token punctuation">)</span>
+ch.AddFriend(<span class="hljs-string">&quot;t1&quot;</span>)
+ch.AddFriend(<span class="hljs-string">&quot;t2&quot;</span>)
+ch.AddFriend(<span class="hljs-string">&quot;t3&quot;</span>)
 
-<span class="token comment">/// For example, this generates a 3-d scatter plot of variable &quot;var&quot; in the</span>
-<span class="token comment">/// TChain ch versus variable v1 in TChain t1 versus variable v2 in TChain t2.</span>
+<span class="hljs-comment">/// For example, this generates a 3-d scatter plot of variable &quot;var&quot; in the</span>
+<span class="hljs-comment">/// TChain ch versus variable v1 in TChain t1 versus variable v2 in TChain t2.</span>
 
-ch<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;var:t1.v1:t2.v2&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ch.Draw(<span class="hljs-string">&quot;var:t1.v1:t2.v2&quot;</span>);
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TChain.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -4278,7 +4290,7 @@ ch<span class="token punctuation">.</span><span class="token function">Draw</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TChain*","level":"1.2.10","depth":2,"next":{"title":"TCollection*-","level":"1.2.11","depth":2,"path":"class/TCollection.md","ref":"class/TCollection.md","articles":[]},"previous":{"title":"TCanvas*","level":"1.2.9","depth":2,"path":"class/TCanvas.md","ref":"class/TCanvas.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TChain.md","mtime":"2018-05-14T09:18:22.140Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TChain*","level":"1.2.10","depth":2,"next":{"title":"TCollection*-","level":"1.2.11","depth":2,"path":"class/TCollection.md","ref":"class/TCollection.md","articles":[]},"previous":{"title":"TCanvas*","level":"1.2.9","depth":2,"path":"class/TCanvas.md","ref":"class/TCanvas.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TChain.md","mtime":"2018-05-14T09:18:22.140Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4310,6 +4322,18 @@ ch<span class="token punctuation">.</span><span class="token function">Draw</spa
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

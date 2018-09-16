@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3690,181 +3702,181 @@ or minimizer will be invalid. One could eventually copying the
 class before issuing a new fit to avoid deleting this information.</p>
 <p>TBackCompFitter &#x7EE7;&#x627F; TVirtualFitter</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TBackCompFitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Constructor needed by TVirtualFitter interface. Same behavior as default constructor.</span>
-<span class="token comment">/// initialize setting name and the global pointer</span>
+<pre><code class="lang-cpp">   TBackCompFitter();
+/// Constructor needed by TVirtualFitter interface. Same behavior as default constructor.
+/// initialize setting name and the global pointer
 
-   <span class="token comment">//TBackCompFitter(ROOT::Fit::Fitter &amp; fitter, ROOT::Fit::FitData * );</span>
-   <span class="token function">TBackCompFitter</span><span class="token punctuation">(</span> <span class="token keyword">const</span> std<span class="token operator">::</span>shared_ptr<span class="token operator">&lt;</span>ROOT<span class="token operator">::</span>Fit<span class="token operator">::</span>Fitter<span class="token operator">&gt;</span> <span class="token operator">&amp;</span> fitter<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>shared_ptr<span class="token operator">&lt;</span>ROOT<span class="token operator">::</span>Fit<span class="token operator">::</span>FitData<span class="token operator">&gt;</span> <span class="token operator">&amp;</span> data  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Constructor used after having fit using directly ROOT::Fit::Fitter</span>
-<span class="token comment">/// will create a dummy fitter copying configuration and parameter settings</span>
+   //TBackCompFitter(ROOT::Fit::Fitter &amp; fitter, ROOT::Fit::FitData * );
+   TBackCompFitter( const std::shared_ptr&lt;ROOT::Fit::Fitter&gt; &amp; fitter, const std::shared_ptr&lt;ROOT::Fit::FitData&gt; &amp; data  );
+/// Constructor used after having fit using directly ROOT::Fit::Fitter
+/// will create a dummy fitter copying configuration and parameter settings
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TBackCompFitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Destructor - delete the managed objects</span>
+   virtual ~TBackCompFitter();/// Destructor - delete the managed objects
 
 
-   <span class="token keyword">enum</span> <span class="token punctuation">{</span>
-      kCanDeleteLast <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span>  <span class="token comment">// object can be deleted before creating a new one</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   enum {
+      kCanDeleteLast = BIT(9)  // object can be deleted before creating a new one
+   };
 
-   <span class="token comment">// inherited interface</span>
-   <span class="token keyword">virtual</span> Double_t  <span class="token function">Chisquare</span><span class="token punctuation">(</span>Int_t npar<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>params<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Do chisquare calculations in case of likelihood fits</span>
-<span class="token comment">/// Do evaluation a the minimum only</span>
+   // inherited interface
+   virtual Double_t  Chisquare(Int_t npar, Double_t *params) const;
+/// Do chisquare calculations in case of likelihood fits
+/// Do evaluation a the minimum only
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">ExecuteCommand</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>command<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>args<span class="token punctuation">,</span> Int_t nargs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute the command (Fortran Minuit compatible interface)</span>
+   virtual void      Clear(Option_t *option=&quot;&quot;);
+   virtual Int_t     ExecuteCommand(const char *command, Double_t *args, Int_t nargs);
+/// Execute the command (Fortran Minuit compatible interface)
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">FixParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Fix the parameter</span>
+   virtual void      FixParameter(Int_t ipar);/// Fix the parameter
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">GetConfidenceIntervals</span><span class="token punctuation">(</span>Int_t n<span class="token punctuation">,</span> Int_t ndim<span class="token punctuation">,</span> <span class="token keyword">const</span> Double_t <span class="token operator">*</span>x<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>ci<span class="token punctuation">,</span> Double_t cl<span class="token operator">=</span><span class="token number">0.95</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Computes point-by-point confidence intervals for the fitted function.</span>
-<span class="token comment">/// \param n    number of points</span>
-<span class="token comment">/// \param ndim dimensions of points</span>
-<span class="token comment">/// \param x    points, at which to compute the intervals, for ndim &gt; 1</span>
-<span class="token comment">///             should be in order: (x0,y0, x1, y1, ... xn, yn)</span>
-<span class="token comment">/// \param ci   computed intervals are returned in this array</span>
-<span class="token comment">/// \param cl   confidence level, default=0.95</span>
-<span class="token comment">/// NOTE, that the intervals are approximate for nonlinear(in parameters) models</span>
+   virtual void      GetConfidenceIntervals(Int_t n, Int_t ndim, const Double_t *x, Double_t *ci, Double_t cl=0.95);
+/// Computes point-by-point confidence intervals for the fitted function.
+/// \param n    number of points
+/// \param ndim dimensions of points
+/// \param x    points, at which to compute the intervals, for ndim &gt; 1
+///             should be in order: (x0,y0, x1, y1, ... xn, yn)
+/// \param ci   computed intervals are returned in this array
+/// \param cl   confidence level, default=0.95
+/// NOTE, that the intervals are approximate for nonlinear(in parameters) models
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">GetConfidenceIntervals</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Double_t cl<span class="token operator">=</span><span class="token number">0.95</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Computes confidence intervals at level cl. Default is 0.95</span>
-<span class="token comment">/// The TObject parameter can be a TGraphErrors, a TGraph2DErrors or a TH1,2,3.</span>
-<span class="token comment">/// For Graphs, confidence intervals are computed for each point,</span>
-<span class="token comment">/// the value of the graph at that point is set to the function value at that</span>
-<span class="token comment">/// point, and the graph y-errors (or z-errors) are set to the value of</span>
-<span class="token comment">/// the confidence interval at that point.</span>
-<span class="token comment">/// For Histograms, confidence intervals are computed for each bin center</span>
-<span class="token comment">/// The bin content of this bin is then set to the function value at the bin</span>
-<span class="token comment">/// center, and the bin error is set to the confidence interval value.</span>
-<span class="token comment">/// NOTE: confidence intervals are approximate for nonlinear models!</span>
-<span class="token comment">/// Allowed combinations:</span>
-<span class="token comment">/// Fitted object             | Passed object</span>
-<span class="token comment">/// --------------------------|------------------</span>
-<span class="token comment">/// TGraph                    | TGraphErrors, TH1</span>
-<span class="token comment">/// TGraphErrors, AsymmErrors | TGraphErrors, TH1</span>
-<span class="token comment">/// TH1                       | TGraphErrors, TH1</span>
-<span class="token comment">/// TGraph2D                  | TGraph2DErrors, TH2</span>
-<span class="token comment">/// TGraph2DErrors            | TGraph2DErrors, TH2</span>
-<span class="token comment">/// TH2                       | TGraph2DErrors, TH2</span>
-<span class="token comment">/// TH3                       | TH3</span>
+   virtual void      GetConfidenceIntervals(TObject *obj, Double_t cl=0.95);
+/// Computes confidence intervals at level cl. Default is 0.95
+/// The TObject parameter can be a TGraphErrors, a TGraph2DErrors or a TH1,2,3.
+/// For Graphs, confidence intervals are computed for each point,
+/// the value of the graph at that point is set to the function value at that
+/// point, and the graph y-errors (or z-errors) are set to the value of
+/// the confidence interval at that point.
+/// For Histograms, confidence intervals are computed for each bin center
+/// The bin content of this bin is then set to the function value at the bin
+/// center, and the bin error is set to the confidence interval value.
+/// NOTE: confidence intervals are approximate for nonlinear models!
+/// Allowed combinations:
+/// Fitted object             | Passed object
+/// --------------------------|------------------
+/// TGraph                    | TGraphErrors, TH1
+/// TGraphErrors, AsymmErrors | TGraphErrors, TH1
+/// TH1                       | TGraphErrors, TH1
+/// TGraph2D                  | TGraph2DErrors, TH2
+/// TGraph2DErrors            | TGraph2DErrors, TH2
+/// TH2                       | TGraph2DErrors, TH2
+/// TH3                       | TH3
 
-   <span class="token keyword">virtual</span> Double_t <span class="token operator">*</span><span class="token function">GetCovarianceMatrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get the error matrix in a pointer to a NxN array.</span>
-<span class="token comment">/// excluding the fixed parameters</span>
+   virtual Double_t *GetCovarianceMatrix() const;
+/// Get the error matrix in a pointer to a NxN array.
+/// excluding the fixed parameters
 
-   <span class="token keyword">virtual</span> Double_t  <span class="token function">GetCovarianceMatrixElement</span><span class="token punctuation">(</span>Int_t i<span class="token punctuation">,</span> Int_t j<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get error matrix element (return all zero if matrix is not available)</span>
+   virtual Double_t  GetCovarianceMatrixElement(Int_t i, Int_t j) const;
+/// Get error matrix element (return all zero if matrix is not available)
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetErrors</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">,</span>Double_t <span class="token operator">&amp;</span>eplus<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>eminus<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>eparab<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>globcc<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Get fit errors</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetNumberTotalParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Number of total parameters</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetNumberFreeParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   virtual Int_t     GetErrors(Int_t ipar,Double_t &amp;eplus, Double_t &amp;eminus, Double_t &amp;eparab, Double_t &amp;globcc) const;/// Get fit errors
+   virtual Int_t     GetNumberTotalParameters() const;/// Number of total parameters
+   virtual Int_t     GetNumberFreeParameters() const;
 
-   <span class="token keyword">virtual</span> Double_t  <span class="token function">GetParError</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Parameter error</span>
-   <span class="token keyword">virtual</span> Double_t  <span class="token function">GetParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Parameter value</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">,</span><span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span>Double_t <span class="token operator">&amp;</span>value<span class="token punctuation">,</span>Double_t <span class="token operator">&amp;</span>verr<span class="token punctuation">,</span>Double_t <span class="token operator">&amp;</span>vlow<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>vhigh<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Get all parameter info (name, value, errors)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetParName</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return name of parameter ipar</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetStats</span><span class="token punctuation">(</span>Double_t <span class="token operator">&amp;</span>amin<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>edm<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>errdef<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>nvpar<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>nparx<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Get fit statistical information</span>
-   <span class="token keyword">virtual</span> Double_t  <span class="token function">GetSumLog</span><span class="token punctuation">(</span>Int_t i<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Sum of log (un-needed)</span>
+   virtual Double_t  GetParError(Int_t ipar) const;/// Parameter error
+   virtual Double_t  GetParameter(Int_t ipar) const;/// Parameter value
+   virtual Int_t     GetParameter(Int_t ipar,char *name,Double_t &amp;value,Double_t &amp;verr,Double_t &amp;vlow, Double_t &amp;vhigh) const;/// Get all parameter info (name, value, errors)
+   virtual const char *GetParName(Int_t ipar) const;/// Return name of parameter ipar
+   virtual Int_t     GetStats(Double_t &amp;amin, Double_t &amp;edm, Double_t &amp;errdef, Int_t &amp;nvpar, Int_t &amp;nparx) const;/// Get fit statistical information
+   virtual Double_t  GetSumLog(Int_t i);/// Sum of log (un-needed)
 
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">IsFixed</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">;</span><span class="token comment">/// Query if parameter ipar is fixed</span>
+   virtual Bool_t    IsFixed(Int_t ipar) const ;/// Query if parameter ipar is fixed
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">PrintResults</span><span class="token punctuation">(</span>Int_t level<span class="token punctuation">,</span> Double_t amin<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Print the fit result.</span>
-<span class="token comment">/// Use PrintResults function in case of Minuit for old -style printing</span>
+   virtual void      PrintResults(Int_t level, Double_t amin) const;
+/// Print the fit result.
+/// Use PrintResults function in case of Minuit for old -style printing
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ReleaseParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Release a fit parameter</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetFitMethod</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set fit method (chi2 or likelihood).</span>
-<span class="token comment">/// According to the method the appropriate FCN function will be created</span>
+   virtual void      ReleaseParameter(Int_t ipar);/// Release a fit parameter
+   virtual void      SetFitMethod(const char *name);
+/// Set fit method (chi2 or likelihood).
+/// According to the method the appropriate FCN function will be created
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">SetParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">,</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>parname<span class="token punctuation">,</span>Double_t value<span class="token punctuation">,</span>Double_t verr<span class="token punctuation">,</span>Double_t vlow<span class="token punctuation">,</span> Double_t vhigh<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set (add) a new fit parameter passing initial value, step size (verr) and parameter limits</span>
-<span class="token comment">/// if vlow &gt; vhigh the parameter is unbounded</span>
-<span class="token comment">/// if the stepsize (verr) == 0 the parameter is treated as fixed</span>
+   virtual Int_t     SetParameter(Int_t ipar,const char *parname,Double_t value,Double_t verr,Double_t vlow, Double_t vhigh);
+/// Set (add) a new fit parameter passing initial value, step size (verr) and parameter limits
+/// if vlow &gt; vhigh the parameter is unbounded
+/// if the stepsize (verr) == 0 the parameter is treated as fixed
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetFCN</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>fcn<span class="token punctuation">)</span><span class="token punctuation">(</span>Int_t <span class="token operator">&amp;</span><span class="token punctuation">,</span> Double_t <span class="token operator">*</span><span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>f<span class="token punctuation">,</span> Double_t <span class="token operator">*</span><span class="token punctuation">,</span> Int_t<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Override setFCN to use the Adapter to Minuit2 FCN interface</span>
-<span class="token comment">/// To set the address of the minimization function</span>
+   virtual void      SetFCN(void (*fcn)(Int_t &amp;, Double_t *, Double_t &amp;f, Double_t *, Int_t) );
+/// Override setFCN to use the Adapter to Minuit2 FCN interface
+/// To set the address of the minimization function
 
-   <span class="token comment">// this for CINT (interactive functions)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetFCN</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the address of the minimization function</span>
-<span class="token comment">/// this function is called by CINT instead of the function above</span>
+   // this for CINT (interactive functions)
+   virtual void      SetFCN(void * );
+/// Set the address of the minimization function
+/// this function is called by CINT instead of the function above
 
-   <span class="token comment">// for using interpreted function passed by the user</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetMethodCall</span><span class="token punctuation">(</span>TMethodCall <span class="token operator">*</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span> fMethodCall <span class="token operator">=</span> m<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   // for using interpreted function passed by the user
+   virtual void SetMethodCall(TMethodCall * m) { fMethodCall = m; }
 
-   <span class="token comment">// get reference to Fit configuration (NOTE: it will be invalid when class is deleted)</span>
-   ROOT<span class="token operator">::</span>Fit<span class="token operator">::</span>FitConfig <span class="token operator">&amp;</span> <span class="token function">GetFitConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token keyword">return</span> fFitter<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Config</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   // get reference to Fit configuration (NOTE: it will be invalid when class is deleted)
+   ROOT::Fit::FitConfig &amp; GetFitConfig()  { return fFitter-&gt;Config(); }
 
-   <span class="token comment">// get reference to Fit Result object (NOTE: it will be invalid when class is deleted)</span>
-   <span class="token keyword">const</span> ROOT<span class="token operator">::</span>Fit<span class="token operator">::</span>FitResult <span class="token operator">&amp;</span> <span class="token function">GetFitResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fFitter<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   // get reference to Fit Result object (NOTE: it will be invalid when class is deleted)
+   const ROOT::Fit::FitResult &amp; GetFitResult() const { return fFitter-&gt;Result(); }
 
-   <span class="token comment">// get a copy of the Fit result returning directly a new  TFitResult</span>
-   TFitResult <span class="token operator">*</span> <span class="token function">GetTFitResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return a new copy of the TFitResult object which needs to be deleted later by the user</span>
+   // get a copy of the Fit result returning directly a new  TFitResult
+   TFitResult * GetTFitResult() const;
+/// Return a new copy of the TFitResult object which needs to be deleted later by the user
 
-   <span class="token comment">// get reference to Fit Data object (NOTE: it will be invalid when class is deleted)</span>
-   <span class="token keyword">const</span> ROOT<span class="token operator">::</span>Fit<span class="token operator">::</span>FitData <span class="token operator">&amp;</span> <span class="token function">GetFitData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token operator">*</span>fFitData<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   // get reference to Fit Data object (NOTE: it will be invalid when class is deleted)
+   const ROOT::Fit::FitData &amp; GetFitData() const { return *fFitData; }
 
-   <span class="token comment">// return pointer to last used minimizer</span>
-   ROOT<span class="token operator">::</span>Math<span class="token operator">::</span>Minimizer <span class="token operator">*</span> <span class="token function">GetMinimizer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return a pointer to the minimizer.</span>
-<span class="token comment">/// the return pointer will be valid after fitting and as long a new fit will not be done.</span>
-<span class="token comment">/// For keeping a minimizer pointer the method ReCreateMinimizer() could eventually be used</span>
+   // return pointer to last used minimizer
+   ROOT::Math::Minimizer * GetMinimizer() const;
+/// Return a pointer to the minimizer.
+/// the return pointer will be valid after fitting and as long a new fit will not be done.
+/// For keeping a minimizer pointer the method ReCreateMinimizer() could eventually be used
 
-   <span class="token comment">// return pointer to last used objective function</span>
-   ROOT<span class="token operator">::</span>Math<span class="token operator">::</span>IMultiGenFunction <span class="token operator">*</span> <span class="token function">GetObjFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return a pointer to the objective function (FCN)</span>
-<span class="token comment">/// If fitting directly using TBackCompFitter the pointer is managed by the class,</span>
-<span class="token comment">/// which has been set previously when calling SetObjFunction or SetFCN</span>
-<span class="token comment">/// Otherwise if the class is used in the backward compatible mode (e.g. after having fitted a TH1)</span>
-<span class="token comment">/// the return pointer will be valid after fitting and as long a new fit will not be done.</span>
+   // return pointer to last used objective function
+   ROOT::Math::IMultiGenFunction * GetObjFunction() const;
+/// Return a pointer to the objective function (FCN)
+/// If fitting directly using TBackCompFitter the pointer is managed by the class,
+/// which has been set previously when calling SetObjFunction or SetFCN
+/// Otherwise if the class is used in the backward compatible mode (e.g. after having fitted a TH1)
+/// the return pointer will be valid after fitting and as long a new fit will not be done.
 
-   <span class="token comment">// scan likelihood value of  parameter and fill the given graph.</span>
-   <span class="token keyword">bool</span>  <span class="token function">Scan</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> ipar<span class="token punctuation">,</span> TGraph <span class="token operator">*</span> gr<span class="token punctuation">,</span> <span class="token keyword">double</span> xmin <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">double</span> xmax <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///  Scan parameter ipar between value of xmin and xmax</span>
-<span class="token comment">///  A graph must be given which will be on return filled with the scan resul</span>
-<span class="token comment">///  If the graph size is zero, a default size n = 40 will be used</span>
+   // scan likelihood value of  parameter and fill the given graph.
+   bool  Scan(unsigned int ipar, TGraph * gr, double xmin = 0, double xmax = 0);
+///  Scan parameter ipar between value of xmin and xmax
+///  A graph must be given which will be on return filled with the scan resul
+///  If the graph size is zero, a default size n = 40 will be used
 
-   <span class="token comment">//    scan likelihood value for two  parameters and fill the given graph.</span>
-   <span class="token comment">//    bool  Scan2D(unsigned int ipar, unsigned int jpar, TGraph2D * gr,</span>
-   <span class="token comment">//                         double xmin = 0, double xmax = 0, double ymin = 0, double ymax = 0);</span>
+   //    scan likelihood value for two  parameters and fill the given graph.
+   //    bool  Scan2D(unsigned int ipar, unsigned int jpar, TGraph2D * gr,
+   //                         double xmin = 0, double xmax = 0, double ymin = 0, double ymax = 0);
 
-   <span class="token comment">// create contour of two parameters around the minimum</span>
-   <span class="token comment">// pass as option confidence level:  default is a value of 0.683</span>
-   <span class="token keyword">bool</span>  <span class="token function">Contour</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> ipar<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> jpar<span class="token punctuation">,</span> TGraph <span class="token operator">*</span> gr <span class="token punctuation">,</span> <span class="token keyword">double</span> confLevel <span class="token operator">=</span> <span class="token number">0.683</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a 2D contour around the minimum for the parameter ipar and jpar</span>
-<span class="token comment">/// if a minimum does not exist or is invalid it will return false</span>
-<span class="token comment">/// on exit a TGraph is filled with the contour points</span>
-<span class="token comment">/// the number of contur points is determined by the size of the TGraph.</span>
-<span class="token comment">/// if the size is zero a default number of points = 20 is used</span>
-<span class="token comment">/// pass optionally the confidence level, default is 0.683</span>
-<span class="token comment">/// it is assumed that ErrorDef() defines the right error definition</span>
-<span class="token comment">/// (i.e 1 sigma error for one parameter). If not the confidence level are scaled to new level</span>
+   // create contour of two parameters around the minimum
+   // pass as option confidence level:  default is a value of 0.683
+   bool  Contour(unsigned int ipar, unsigned int jpar, TGraph * gr , double confLevel = 0.683);
+/// Create a 2D contour around the minimum for the parameter ipar and jpar
+/// if a minimum does not exist or is invalid it will return false
+/// on exit a TGraph is filled with the contour points
+/// the number of contur points is determined by the size of the TGraph.
+/// if the size is zero a default number of points = 20 is used
+/// pass optionally the confidence level, default is 0.683
+/// it is assumed that ErrorDef() defines the right error definition
+/// (i.e 1 sigma error for one parameter). If not the confidence level are scaled to new level
 
-   <span class="token comment">// set FCN using new interface</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetObjFunction</span><span class="token punctuation">(</span>  ROOT<span class="token operator">::</span>Math<span class="token operator">::</span>IMultiGenFunction <span class="token operator">*</span> f<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the objective function for fitting</span>
-<span class="token comment">/// Needed if fitting directly using TBackCompFitter class</span>
-<span class="token comment">/// The class clones a copy of the function and manages it</span>
+   // set FCN using new interface
+   virtual void SetObjFunction(  ROOT::Math::IMultiGenFunction * f);
+/// Set the objective function for fitting
+/// Needed if fitting directly using TBackCompFitter class
+/// The class clones a copy of the function and manages it
 
-   <span class="token comment">// recreate minimizer and FCN for TMinuit fits and standard printout</span>
-   <span class="token keyword">void</span> <span class="token function">ReCreateMinimizer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Recreate a minimizer instance using the function and data</span>
-<span class="token comment">/// set objective function in minimizers function to re-create FCN from stored data object and fit options</span>
+   // recreate minimizer and FCN for TMinuit fits and standard printout
+   void ReCreateMinimizer();
+/// Recreate a minimizer instance using the function and data
+/// set objective function in minimizers function to re-create FCN from stored data object and fit options
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp">TBackCompFitter <span class="token operator">*</span> fitter <span class="token operator">=</span> <span class="token punctuation">(</span>TBackCompFitter <span class="token operator">*</span><span class="token punctuation">)</span> TVirtualFitter<span class="token operator">::</span><span class="token function">GetFitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ROOT<span class="token operator">::</span>Fit<span class="token operator">::</span>FitResult <span class="token operator">&amp;</span> result <span class="token operator">=</span> fitter<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetFitResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-result<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>std<span class="token operator">::</span>cout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">TBackCompFitter * fitter = (TBackCompFitter *) TVirtualFitter::GetFitter();
+ROOT::Fit::FitResult &amp; result = fitter-&gt;GetFitResult();
+result.Print(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>);
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TBackCompFitter.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3907,7 +3919,7 @@ result<span class="token punctuation">.</span><span class="token function">Print
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TBackCompFitter*","level":"1.2.4","depth":2,"next":{"title":"TBenchmark+","level":"1.2.5","depth":2,"path":"class/TBenchmark.md","ref":"class/TBenchmark.md","articles":[]},"previous":{"title":"TAxis*","level":"1.2.3","depth":2,"path":"class/TAxis.md","ref":"class/TAxis.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TBackCompFitter.md","mtime":"2018-05-14T09:18:22.447Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TBackCompFitter*","level":"1.2.4","depth":2,"next":{"title":"TBenchmark+","level":"1.2.5","depth":2,"path":"class/TBenchmark.md","ref":"class/TBenchmark.md","articles":[]},"previous":{"title":"TAxis*","level":"1.2.3","depth":2,"path":"class/TAxis.md","ref":"class/TAxis.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TBackCompFitter.md","mtime":"2018-05-14T09:18:22.447Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3939,6 +3951,18 @@ result<span class="token punctuation">.</span><span class="token function">Print
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

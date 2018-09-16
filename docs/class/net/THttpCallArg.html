@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,189 +3692,189 @@
 <p>THttpCallArg : public TObject</p>
 <p>Contains arguments for single HTTP call<br>Must be used in THttpEngine to process incoming http requests</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">THttpCallArg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token operator">~</span><span class="token function">THttpCallArg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   THttpCallArg();
+   ~THttpCallArg();
 
-   <span class="token comment">// these methods used to set http request arguments</span>
+   <span class="hljs-comment">// these methods used to set http request arguments</span>
 
-   <span class="token comment">/** set request method kind like GET or POST */</span>
-   <span class="token keyword">void</span> <span class="token function">SetMethod</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">)</span> <span class="token punctuation">{</span> fMethod <span class="token operator">=</span> method<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set request method kind like GET or POST */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetMethod</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *method)</span> </span>{ fMethod = method; }
 
-   <span class="token comment">/** set engine-specific top-name */</span>
-   <span class="token keyword">void</span> <span class="token function">SetTopName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>topname<span class="token punctuation">)</span> <span class="token punctuation">{</span> fTopName <span class="token operator">=</span> topname<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set engine-specific top-name */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetTopName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *topname)</span> </span>{ fTopName = topname; }
 
-   <span class="token keyword">void</span> <span class="token function">SetPathAndFileName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>fullpath<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// set complete path of requested http element</span>
-<span class="token comment">/// For instance, it could be &quot;/folder/subfolder/get.bin&quot;</span>
-<span class="token comment">/// Here &quot;/folder/subfolder/&quot; is element path and &quot;get.bin&quot; requested file.</span>
-<span class="token comment">/// One could set path and file name separately</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetPathAndFileName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fullpath)</span></span>;
+<span class="hljs-comment">/// set complete path of requested http element</span>
+<span class="hljs-comment">/// For instance, it could be &quot;/folder/subfolder/get.bin&quot;</span>
+<span class="hljs-comment">/// Here &quot;/folder/subfolder/&quot; is element path and &quot;get.bin&quot; requested file.</span>
+<span class="hljs-comment">/// One could set path and file name separately</span>
 
-   <span class="token comment">/** set request path name */</span>
-   <span class="token keyword">void</span> <span class="token function">SetPathName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token punctuation">{</span> fPathName <span class="token operator">=</span> p<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set request path name */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetPathName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *p)</span> </span>{ fPathName = p; }
 
-   <span class="token comment">/** set request file name */</span>
-   <span class="token keyword">void</span> <span class="token function">SetFileName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>f<span class="token punctuation">)</span> <span class="token punctuation">{</span> fFileName <span class="token operator">=</span> f<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set request file name */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetFileName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *f)</span> </span>{ fFileName = f; }
 
-   <span class="token comment">/** set name of authenticated user */</span>
-   <span class="token keyword">void</span> <span class="token function">SetUserName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span> fUserName <span class="token operator">=</span> n<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set name of authenticated user */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetUserName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *n)</span> </span>{ fUserName = n; }
 
-   <span class="token comment">/** set request query */</span>
-   <span class="token keyword">void</span> <span class="token function">SetQuery</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>q<span class="token punctuation">)</span> <span class="token punctuation">{</span> fQuery <span class="token operator">=</span> q<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set request query */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetQuery</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *q)</span> </span>{ fQuery = q; }
 
-   <span class="token keyword">void</span> <span class="token function">SetPostData</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>data<span class="token punctuation">,</span> Long_t length<span class="token punctuation">,</span> Bool_t make_copy <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// set data, posted with the request</span>
-<span class="token comment">/// buffer should be allocated with malloc(length+1) call,</span>
-<span class="token comment">/// while last byte will be set to 0</span>
-<span class="token comment">/// Than one could use post data as null-terminated string</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetPostData</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *data, Long_t length, Bool_t make_copy = kFALSE)</span></span>;
+<span class="hljs-comment">/// set data, posted with the request</span>
+<span class="hljs-comment">/// buffer should be allocated with malloc(length+1) call,</span>
+<span class="hljs-comment">/// while last byte will be set to 0</span>
+<span class="hljs-comment">/// Than one could use post data as null-terminated string</span>
 
-   <span class="token keyword">void</span> <span class="token function">SetWSHandle</span><span class="token punctuation">(</span>TNamed <span class="token operator">*</span>handle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// assign websocket handle with HTTP call</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetWSHandle</span><span class="hljs-params">(TNamed *handle)</span></span>;
+<span class="hljs-comment">/// assign websocket handle with HTTP call</span>
 
-   TNamed <span class="token operator">*</span><span class="token function">TakeWSHandle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// takeout websocket handle with HTTP call</span>
-<span class="token comment">/// can be done only once</span>
+   <span class="hljs-function">TNamed *<span class="hljs-title">TakeWSHandle</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// takeout websocket handle with HTTP call</span>
+<span class="hljs-comment">/// can be done only once</span>
 
-   <span class="token comment">/** set web-socket id */</span>
-   <span class="token keyword">void</span> <span class="token function">SetWSId</span><span class="token punctuation">(</span>UInt_t id<span class="token punctuation">)</span> <span class="token punctuation">{</span> fWSId <span class="token operator">=</span> id<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set web-socket id */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetWSId</span><span class="hljs-params">(UInt_t id)</span> </span>{ fWSId = id; }
 
-   <span class="token comment">/** get web-socket id */</span>
-   UInt_t <span class="token function">GetWSId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fWSId<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** get web-socket id */</span>
+   <span class="hljs-function">UInt_t <span class="hljs-title">GetWSId</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWSId; }
 
-   <span class="token comment">/** set full set of request header */</span>
-   <span class="token keyword">void</span> <span class="token function">SetRequestHeader</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>h<span class="token punctuation">)</span> <span class="token punctuation">{</span> fRequestHeader <span class="token operator">=</span> h <span class="token operator">?</span> h <span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set full set of request header */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetRequestHeader</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *h)</span> </span>{ fRequestHeader = h ? h : <span class="hljs-string">&quot;&quot;</span>; }
 
-   <span class="token comment">/** returns number of fields in request header */</span>
-   Int_t <span class="token function">NumRequestHeader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">CountHeader</span><span class="token punctuation">(</span>fRequestHeader<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Atoi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns number of fields in request header */</span>
+   <span class="hljs-function">Int_t <span class="hljs-title">NumRequestHeader</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> CountHeader(fRequestHeader).Atoi(); }
 
-   <span class="token comment">/** returns field name in request header */</span>
-   TString <span class="token function">GetRequestHeaderName</span><span class="token punctuation">(</span>Int_t number<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">CountHeader</span><span class="token punctuation">(</span>fRequestHeader<span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns field name in request header */</span>
+   <span class="hljs-function">TString <span class="hljs-title">GetRequestHeaderName</span><span class="hljs-params">(Int_t number)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> CountHeader(fRequestHeader, number); }
 
-   <span class="token comment">/** get named field from request header */</span>
-   TString <span class="token function">GetRequestHeader</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">AccessHeader</span><span class="token punctuation">(</span>fRequestHeader<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** get named field from request header */</span>
+   <span class="hljs-function">TString <span class="hljs-title">GetRequestHeader</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> </span>{ <span class="hljs-keyword">return</span> AccessHeader(fRequestHeader, name); }
 
-   <span class="token comment">/** returns engine-specific top-name */</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetTopName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTopName<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns engine-specific top-name */</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTopName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTopName.Data(); }
 
-   <span class="token comment">/** returns request method like GET or POST */</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMethod<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns request method like GET or POST */</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetMethod</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMethod.Data(); }
 
-   <span class="token comment">/** returns kTRUE if post method is used */</span>
-   Bool_t <span class="token function">IsMethod</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMethod<span class="token punctuation">.</span><span class="token function">CompareTo</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns kTRUE if post method is used */</span>
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsMethod</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMethod.CompareTo(name) == <span class="hljs-number">0</span>; }
 
-   <span class="token comment">/** returns kTRUE if post method is used */</span>
-   Bool_t <span class="token function">IsPostMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsMethod</span><span class="token punctuation">(</span><span class="token string">&quot;POST&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns kTRUE if post method is used */</span>
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsPostMethod</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsMethod(<span class="hljs-string">&quot;POST&quot;</span>); }
 
-   <span class="token comment">/** return pointer on posted with request data */</span>
-   <span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">GetPostData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPostData<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** return pointer on posted with request data */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">GetPostData</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPostData; }
 
-   <span class="token comment">/** return length of posted with request data */</span>
-   Long_t <span class="token function">GetPostDataLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPostDataLength<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** return length of posted with request data */</span>
+   <span class="hljs-function">Long_t <span class="hljs-title">GetPostDataLength</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPostDataLength; }
 
-   <span class="token comment">/** returns post data as TString */</span>
-   TString <span class="token function">GetPostDataAsString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TString</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">GetPostData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">GetPostDataLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns post data as TString */</span>
+   <span class="hljs-function">TString <span class="hljs-title">GetPostDataAsString</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TString((<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *) GetPostData(), GetPostDataLength()); }
 
-   <span class="token comment">/** returns path name from request URL */</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetPathName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPathName<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns path name from request URL */</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetPathName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPathName.Data(); }
 
-   <span class="token comment">/** returns file name from request URL */</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetFileName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fFileName<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns file name from request URL */</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetFileName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFileName.Data(); }
 
-   <span class="token comment">/** return authenticated user name (0 - when no authentication) */</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetUserName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fUserName<span class="token punctuation">.</span><span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">?</span> fUserName<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** return authenticated user name (0 - when no authentication) */</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetUserName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fUserName.Length() &gt; <span class="hljs-number">0</span> ? fUserName.Data() : <span class="hljs-number">0</span>; }
 
-   <span class="token comment">/** returns request query (string after ? in request URL) */</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fQuery<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns request query (string after ? in request URL) */</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetQuery</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fQuery.Data(); }
 
-   <span class="token comment">// these methods used in THttpServer to set results of request processing</span>
+   <span class="hljs-comment">// these methods used in THttpServer to set results of request processing</span>
 
-   <span class="token comment">/** set content type like &quot;text/xml&quot; or &quot;application/json&quot; */</span>
-   <span class="token keyword">void</span> <span class="token function">SetContentType</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>typ<span class="token punctuation">)</span> <span class="token punctuation">{</span> fContentType <span class="token operator">=</span> typ<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set content type like &quot;text/xml&quot; or &quot;application/json&quot; */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetContentType</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *typ)</span> </span>{ fContentType = typ; }
 
-   <span class="token comment">/** mark reply as 404 error - page/request not exists or refused */</span>
-   <span class="token keyword">void</span> <span class="token function">Set404</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetContentType</span><span class="token punctuation">(</span><span class="token string">&quot;_404_&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** mark reply as 404 error - page/request not exists or refused */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set404</span><span class="hljs-params">()</span> </span>{ SetContentType(<span class="hljs-string">&quot;_404_&quot;</span>); }
 
-   <span class="token comment">/** mark reply as postponed - submitting thread will not be inform */</span>
-   <span class="token keyword">void</span> <span class="token function">SetPostponed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetContentType</span><span class="token punctuation">(</span><span class="token string">&quot;_postponed_&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** mark reply as postponed - submitting thread will not be inform */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetPostponed</span><span class="hljs-params">()</span> </span>{ SetContentType(<span class="hljs-string">&quot;_postponed_&quot;</span>); }
 
-   <span class="token comment">/** indicate that http request should response with file content */</span>
-   <span class="token keyword">void</span> <span class="token function">SetFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-   <span class="token punctuation">{</span>
-      <span class="token function">SetContentType</span><span class="token punctuation">(</span><span class="token string">&quot;_file_&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>filename <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-         fContent <span class="token operator">=</span> filename<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** indicate that http request should response with file content */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename = <span class="hljs-number">0</span>)</span>
+   </span>{
+      SetContentType(<span class="hljs-string">&quot;_file_&quot;</span>);
+      <span class="hljs-keyword">if</span> (filename != <span class="hljs-number">0</span>)
+         fContent = filename;
+   }
 
-   <span class="token comment">/** set content type as XML */</span>
-   <span class="token keyword">void</span> <span class="token function">SetXml</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetContentType</span><span class="token punctuation">(</span><span class="token string">&quot;text/xml&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set content type as XML */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetXml</span><span class="hljs-params">()</span> </span>{ SetContentType(<span class="hljs-string">&quot;text/xml&quot;</span>); }
 
-   <span class="token comment">/** set content type as JSON */</span>
-   <span class="token keyword">void</span> <span class="token function">SetJson</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">SetContentType</span><span class="token punctuation">(</span><span class="token string">&quot;application/json&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** set content type as JSON */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetJson</span><span class="hljs-params">()</span> </span>{ SetContentType(<span class="hljs-string">&quot;application/json&quot;</span>); }
 
-   <span class="token keyword">void</span> <span class="token function">AddHeader</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set name: value pair to reply header</span>
-<span class="token comment">/// Content-Type field handled separately - one should use SetContentType() method</span>
-<span class="token comment">/// Content-Length field cannot be set at all;</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">AddHeader</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *value)</span></span>;
+<span class="hljs-comment">/// Set name: value pair to reply header</span>
+<span class="hljs-comment">/// Content-Type field handled separately - one should use SetContentType() method</span>
+<span class="hljs-comment">/// Content-Length field cannot be set at all;</span>
 
-   <span class="token comment">/** returns number of fields in header */</span>
-   Int_t <span class="token function">NumHeader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">CountHeader</span><span class="token punctuation">(</span>fHeader<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Atoi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns number of fields in header */</span>
+   <span class="hljs-function">Int_t <span class="hljs-title">NumHeader</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> CountHeader(fHeader).Atoi(); }
 
-   <span class="token comment">/** returns field name in header */</span>
-   TString <span class="token function">GetHeaderName</span><span class="token punctuation">(</span>Int_t number<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">CountHeader</span><span class="token punctuation">(</span>fHeader<span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** returns field name in header */</span>
+   <span class="hljs-function">TString <span class="hljs-title">GetHeaderName</span><span class="hljs-params">(Int_t number)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> CountHeader(fHeader, number); }
 
-   TString <span class="token function">GetHeader</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// return specified header</span>
+   <span class="hljs-function">TString <span class="hljs-title">GetHeader</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;<span class="hljs-comment">/// return specified header</span>
 
-   <span class="token comment">/** Set Content-Encoding header like gzip */</span>
-   <span class="token keyword">void</span> <span class="token function">SetEncoding</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>typ<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">AccessHeader</span><span class="token punctuation">(</span>fHeader<span class="token punctuation">,</span> <span class="token string">&quot;Content-Encoding&quot;</span><span class="token punctuation">,</span> typ<span class="token punctuation">,</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** Set Content-Encoding header like gzip */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetEncoding</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *typ)</span> </span>{ AccessHeader(fHeader, <span class="hljs-string">&quot;Content-Encoding&quot;</span>, typ, kTRUE); }
 
-   <span class="token comment">/** Set content directly */</span>
-   <span class="token keyword">void</span> <span class="token function">SetContent</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span> fContent <span class="token operator">=</span> c<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** Set content directly */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetContent</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *c)</span> </span>{ fContent = c; }
 
-   Bool_t <span class="token function">CompressWithGzip</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// compress reply data with gzip compression</span>
+   <span class="hljs-function">Bool_t <span class="hljs-title">CompressWithGzip</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// compress reply data with gzip compression</span>
 
-   <span class="token comment">/** Set kind of content zipping
+   <span class="hljs-comment">/** Set kind of content zipping
      * 0 - none
      * 1 - only when supported in request header
      * 2 - if supported and content size bigger than 10K
      * 3 - always */</span>
-   <span class="token keyword">void</span> <span class="token function">SetZipping</span><span class="token punctuation">(</span>Int_t kind<span class="token punctuation">)</span> <span class="token punctuation">{</span> fZipping <span class="token operator">=</span> kind<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetZipping</span><span class="hljs-params">(Int_t kind)</span> </span>{ fZipping = kind; }
 
-   <span class="token comment">/** return kind of content zipping */</span>
-   Int_t <span class="token function">GetZipping</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fZipping<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** return kind of content zipping */</span>
+   <span class="hljs-function">Int_t <span class="hljs-title">GetZipping</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fZipping; }
 
-   <span class="token comment">/** add extra http header value to the reply */</span>
-   <span class="token keyword">void</span> <span class="token function">SetExtraHeader</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">AddHeader</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/** add extra http header value to the reply */</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetExtraHeader</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *value)</span> </span>{ AddHeader(name, value); }
 
-   <span class="token comment">// Fill http header</span>
-   <span class="token keyword">void</span> <span class="token function">FillHttpHeader</span><span class="token punctuation">(</span>TString <span class="token operator">&amp;</span>buf<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>header <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Fill http header</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">FillHttpHeader</span><span class="hljs-params">(TString &amp;buf, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *header = <span class="hljs-number">0</span>)</span></span>;
 
-   <span class="token comment">// these methods used to return results of http request processing</span>
+   <span class="hljs-comment">// these methods used to return results of http request processing</span>
 
-   Bool_t <span class="token function">IsContentType</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>typ<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fContentType <span class="token operator">==</span> typ<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">Is404</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsContentType</span><span class="token punctuation">(</span><span class="token string">&quot;_404_&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">IsFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsContentType</span><span class="token punctuation">(</span><span class="token string">&quot;_file_&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">IsPostponed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsContentType</span><span class="token punctuation">(</span><span class="token string">&quot;_postponed_&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetContentType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fContentType<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsContentType</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *typ)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fContentType == typ; }
+   <span class="hljs-function">Bool_t <span class="hljs-title">Is404</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsContentType(<span class="hljs-string">&quot;_404_&quot;</span>); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsContentType(<span class="hljs-string">&quot;_file_&quot;</span>); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">IsPostponed</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsContentType(<span class="hljs-string">&quot;_postponed_&quot;</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetContentType</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fContentType.Data(); }
 
-   <span class="token keyword">void</span> <span class="token function">SetBinData</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>data<span class="token punctuation">,</span> Long_t length<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// set binary data, which will be returned as reply body</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetBinData</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *data, Long_t length)</span></span>;
+<span class="hljs-comment">/// set binary data, which will be returned as reply body</span>
 
-   Long_t <span class="token function">GetContentLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsBinData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> fBinDataLength <span class="token operator">:</span> fContent<span class="token punctuation">.</span><span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Long_t <span class="hljs-title">GetContentLength</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsBinData() ? fBinDataLength : fContent.Length(); }
 
-   <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">GetContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsBinData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> fBinData <span class="token operator">:</span> fContent<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *<span class="hljs-title">GetContent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsBinData() ? fBinData : fContent.Data(); }
 
-   <span class="token keyword">void</span> <span class="token function">NotifyCondition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// method used to notify condition which waiting when operation will complete</span>
-<span class="token comment">/// Condition notified only if not-postponed state is set</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">NotifyCondition</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// method used to notify condition which waiting when operation will complete</span>
+<span class="hljs-comment">/// Condition notified only if not-postponed state is set</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">HttpReplied</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// virtual method to inform object that http request is processed</span>
-<span class="token comment">/// Normally condition is notified and waiting thread will be awaked</span>
-<span class="token comment">/// One could reimplement this method in sub-class</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">HttpReplied</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// virtual method to inform object that http request is processed</span>
+<span class="hljs-comment">/// Normally condition is notified and waiting thread will be awaked</span>
+<span class="hljs-comment">/// One could reimplement this method in sub-class</span>
 </code></pre>
 <!-- THttpCallArg.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-06-05 23:58:56
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-06-05 23:58:56 </span> </footer>
                                 
                                 </section>
                             
@@ -3905,7 +3917,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"http/THttpCallArg","level":"1.5.3","depth":2,"next":{"title":"http/THttpEngine","level":"1.5.4","depth":2,"path":"class/net/THttpEngine.md","ref":"class/net/THttpEngine.md","articles":[]},"previous":{"title":"http/TFastCgi","level":"1.5.2","depth":2,"path":"class/net/TFastCgi.md","ref":"class/net/TFastCgi.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/net/THttpCallArg.md","mtime":"2018-06-05T15:58:56.399Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"http/THttpCallArg","level":"1.5.3","depth":2,"next":{"title":"http/THttpEngine","level":"1.5.4","depth":2,"path":"class/net/THttpEngine.md","ref":"class/net/THttpEngine.md","articles":[]},"previous":{"title":"http/TFastCgi","level":"1.5.2","depth":2,"path":"class/net/TFastCgi.md","ref":"class/net/TFastCgi.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/net/THttpCallArg.md","mtime":"2018-06-05T15:58:56.399Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3937,6 +3949,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

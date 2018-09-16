@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,286 +3692,286 @@
 <p>&#x7EE7;&#x627F; public TObject</p>
 <p>TVector3 is a general three vector class, which can be used for the description of different vectors in 3D.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">typedef</span> Double_t Scalar<span class="token punctuation">;</span>   <span class="token comment">// to be able to use it with the ROOT::Math::VectorUtil functions</span>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">typedef</span> Double_t Scalar;   <span class="hljs-comment">// to be able to use it with the ROOT::Math::VectorUtil functions</span>
 
-   <span class="token function">TVector3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TVector3();
 
-   <span class="token function">TVector3</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> Double_t z<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// The constructor.</span>
+   TVector3(Double_t x, Double_t y, Double_t z);
+   <span class="hljs-comment">// The constructor.</span>
 
-   <span class="token function">TVector3</span><span class="token punctuation">(</span><span class="token keyword">const</span> Double_t <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TVector3</span><span class="token punctuation">(</span><span class="token keyword">const</span> Float_t <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Constructors from an array</span>
+   TVector3(<span class="hljs-keyword">const</span> Double_t *);
+   TVector3(<span class="hljs-keyword">const</span> Float_t *);
+   <span class="hljs-comment">// Constructors from an array</span>
 
-   <span class="token function">TVector3</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// The copy constructor.</span>
+   TVector3(<span class="hljs-keyword">const</span> TVector3 &amp;);
+   <span class="hljs-comment">// The copy constructor.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TVector3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Destructor</span>
+   <span class="hljs-keyword">virtual</span> ~TVector3();
+   <span class="hljs-comment">// Destructor</span>
 
-   Double_t <span class="token keyword">operator</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token keyword">operator</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Get components by index (Geant4).</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">operator</span> <span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-keyword">inline</span> Double_t <span class="hljs-keyword">operator</span> [] (<span class="hljs-keyword">int</span>) <span class="hljs-keyword">const</span>;
+   <span class="hljs-comment">// Get components by index (Geant4).</span>
 
-   Double_t <span class="token operator">&amp;</span> <span class="token keyword">operator</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token operator">&amp;</span> <span class="token keyword">operator</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Set components by index.</span>
+   <span class="hljs-function">Double_t &amp; <span class="hljs-title">operator</span> <span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;
+   <span class="hljs-keyword">inline</span> Double_t &amp; <span class="hljs-keyword">operator</span> [] (<span class="hljs-keyword">int</span>);
+   <span class="hljs-comment">// Set components by index.</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">y</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">X</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">Y</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">Z</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">Px</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">Py</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">Pz</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The components in cartesian coordinate system.</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">x</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">y</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">z</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">X</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Y</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Z</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Px</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Py</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Pz</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The components in cartesian coordinate system.</span>
 
-   <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">SetX</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">SetY</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">SetZ</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">SetXYZ</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> Double_t z<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>        <span class="token function">SetPtEtaPhi</span><span class="token punctuation">(</span>Double_t pt<span class="token punctuation">,</span> Double_t eta<span class="token punctuation">,</span> Double_t phi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>        <span class="token function">SetPtThetaPhi</span><span class="token punctuation">(</span>Double_t pt<span class="token punctuation">,</span> Double_t theta<span class="token punctuation">,</span> Double_t phi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetX</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetY</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetZ</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetXYZ</span><span class="hljs-params">(Double_t x, Double_t y, Double_t z)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">SetPtEtaPhi</span><span class="hljs-params">(Double_t pt, Double_t eta, Double_t phi)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>        <span class="hljs-title">SetPtThetaPhi</span><span class="hljs-params">(Double_t pt, Double_t theta, Double_t phi)</span></span>;
 
-   <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">GetXYZ</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>carray<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">GetXYZ</span><span class="token punctuation">(</span>Float_t <span class="token operator">*</span>carray<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Get the components into an array</span>
-   <span class="token comment">// not checked!</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetXYZ</span><span class="hljs-params">(Double_t *carray)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetXYZ</span><span class="hljs-params">(Float_t *carray)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Get the components into an array</span>
+   <span class="hljs-comment">// not checked!</span>
 
-   Double_t <span class="token function">Phi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The azimuth angle. returns phi from -pi to pi</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">Phi</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The azimuth angle. returns phi from -pi to pi</span>
 
-   Double_t <span class="token function">Theta</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The polar angle.</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">Theta</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The polar angle.</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">CosTheta</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Cosine of the polar angle.</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">CosTheta</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Cosine of the polar angle.</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">Mag2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The magnitude squared (rho^2 in spherical coordinate system).</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Mag2</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The magnitude squared (rho^2 in spherical coordinate system).</span>
 
-   Double_t <span class="token function">Mag</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The magnitude (rho in spherical coordinate system).</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">Mag</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The magnitude (rho in spherical coordinate system).</span>
 
-   <span class="token keyword">void</span> <span class="token function">SetPhi</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Set phi keeping mag and theta constant (BaBar).</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetPhi</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Set phi keeping mag and theta constant (BaBar).</span>
 
-   <span class="token keyword">void</span> <span class="token function">SetTheta</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Set theta keeping mag and phi constant (BaBar).</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetTheta</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Set theta keeping mag and phi constant (BaBar).</span>
 
-   <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">SetMag</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Set magnitude keeping theta and phi constant (BaBar).</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetMag</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Set magnitude keeping theta and phi constant (BaBar).</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">Perp2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The transverse component squared (R^2 in cylindrical coordinate system).</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Perp2</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The transverse component squared (R^2 in cylindrical coordinate system).</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">Pt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Double_t <span class="token function">Perp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The transverse component (R in cylindrical coordinate system).</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Pt</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">Perp</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The transverse component (R in cylindrical coordinate system).</span>
 
-   <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">SetPerp</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Set the transverse component keeping phi and z constant.</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPerp</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Set the transverse component keeping phi and z constant.</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">Perp2</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The transverse component w.r.t. given axis squared.</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Perp2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The transverse component w.r.t. given axis squared.</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">Pt</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Double_t <span class="token function">Perp</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The transverse component w.r.t. given axis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Pt</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">Perp</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The transverse component w.r.t. given axis.</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">DeltaPhi</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Double_t <span class="token function">DeltaR</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">///return deltaR with respect to v</span>
-   <span class="token keyword">inline</span> Double_t <span class="token function">DrEtaPhi</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> TVector2 <span class="token function">EtaPhiVector</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span> <span class="token function">SetMagThetaPhi</span><span class="token punctuation">(</span>Double_t mag<span class="token punctuation">,</span> Double_t theta<span class="token punctuation">,</span> Double_t phi<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">///setter with mag, theta, phi</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">DeltaPhi</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Double_t <span class="hljs-title">DeltaR</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">///return deltaR with respect to v</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">DrEtaPhi</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> TVector2 <span class="hljs-title">EtaPhiVector</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetMagThetaPhi</span><span class="hljs-params">(Double_t mag, Double_t theta, Double_t phi)</span></span>;<span class="hljs-comment">///setter with mag, theta, phi</span>
 
-   <span class="token keyword">inline</span> TVector3 <span class="token operator">&amp;</span> <span class="token keyword">operator</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Assignment.</span>
+   <span class="hljs-keyword">inline</span> TVector3 &amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> TVector3 &amp;);
+   <span class="hljs-comment">// Assignment.</span>
 
-   <span class="token keyword">inline</span> Bool_t <span class="token keyword">operator</span> <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">inline</span> Bool_t <span class="token keyword">operator</span> <span class="token operator">!=</span> <span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Comparisons (Geant4).</span>
+   <span class="hljs-keyword">inline</span> Bool_t <span class="hljs-keyword">operator</span> == (<span class="hljs-keyword">const</span> TVector3 &amp;) <span class="hljs-keyword">const</span>;
+   <span class="hljs-keyword">inline</span> Bool_t <span class="hljs-keyword">operator</span> != (<span class="hljs-keyword">const</span> TVector3 &amp;) <span class="hljs-keyword">const</span>;
+   <span class="hljs-comment">// Comparisons (Geant4).</span>
 
-   <span class="token keyword">inline</span> TVector3 <span class="token operator">&amp;</span> <span class="token keyword">operator</span> <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Addition.</span>
+   <span class="hljs-keyword">inline</span> TVector3 &amp; <span class="hljs-keyword">operator</span> += (<span class="hljs-keyword">const</span> TVector3 &amp;);
+   <span class="hljs-comment">// Addition.</span>
 
-   <span class="token keyword">inline</span> TVector3 <span class="token operator">&amp;</span> <span class="token keyword">operator</span> <span class="token operator">-</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Subtraction.</span>
+   <span class="hljs-keyword">inline</span> TVector3 &amp; <span class="hljs-keyword">operator</span> -= (<span class="hljs-keyword">const</span> TVector3 &amp;);
+   <span class="hljs-comment">// Subtraction.</span>
 
-   <span class="token keyword">inline</span> TVector3 <span class="token keyword">operator</span> <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Unary minus.</span>
+   <span class="hljs-keyword">inline</span> TVector3 <span class="hljs-keyword">operator</span> - () <span class="hljs-keyword">const</span>;
+   <span class="hljs-comment">// Unary minus.</span>
 
-   <span class="token keyword">inline</span> TVector3 <span class="token operator">&amp;</span> <span class="token keyword">operator</span> <span class="token operator">*</span><span class="token operator">=</span> <span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Scaling with real numbers.</span>
+   <span class="hljs-keyword">inline</span> TVector3 &amp; <span class="hljs-keyword">operator</span> *= (Double_t);
+   <span class="hljs-comment">// Scaling with real numbers.</span>
 
-   TVector3 <span class="token function">Unit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Unit vector parallel to this.</span>
+   <span class="hljs-function">TVector3 <span class="hljs-title">Unit</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Unit vector parallel to this.</span>
 
-   <span class="token keyword">inline</span> TVector3 <span class="token function">Orthogonal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Vector orthogonal to this (Geant4).</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> TVector3 <span class="hljs-title">Orthogonal</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Vector orthogonal to this (Geant4).</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">Dot</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Scalar product.</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Dot</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Scalar product.</span>
 
-   <span class="token keyword">inline</span> TVector3 <span class="token function">Cross</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Cross product.</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> TVector3 <span class="hljs-title">Cross</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Cross product.</span>
 
-   Double_t <span class="token function">Angle</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// The angle w.r.t. another 3-vector.</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">Angle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3 &amp;)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// The angle w.r.t. another 3-vector.</span>
 
-   Double_t <span class="token function">PseudoRapidity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// Returns the pseudo-rapidity, i.e. -ln(tan(theta/2))</span>
+   <span class="hljs-function">Double_t <span class="hljs-title">PseudoRapidity</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// Returns the pseudo-rapidity, i.e. -ln(tan(theta/2))</span>
 
-   <span class="token keyword">inline</span> Double_t <span class="token function">Eta</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> Double_t <span class="hljs-title">Eta</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token keyword">void</span> <span class="token function">RotateX</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Rotates the Hep3Vector around the x-axis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RotateX</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Rotates the Hep3Vector around the x-axis.</span>
 
-   <span class="token keyword">void</span> <span class="token function">RotateY</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Rotates the Hep3Vector around the y-axis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RotateY</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Rotates the Hep3Vector around the y-axis.</span>
 
-   <span class="token keyword">void</span> <span class="token function">RotateZ</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Rotates the Hep3Vector around the z-axis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RotateZ</span><span class="hljs-params">(Double_t)</span></span>;
+   <span class="hljs-comment">// Rotates the Hep3Vector around the z-axis.</span>
 
-   <span class="token keyword">void</span> <span class="token function">RotateUz</span><span class="token punctuation">(</span><span class="token keyword">const</span> TVector3<span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Rotates reference frame from Uz to newUz (unit vector) (Geant4).</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RotateUz</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TVector3&amp;)</span></span>;
+   <span class="hljs-comment">// Rotates reference frame from Uz to newUz (unit vector) (Geant4).</span>
 
-   <span class="token keyword">void</span> <span class="token function">Rotate</span><span class="token punctuation">(</span>Double_t<span class="token punctuation">,</span> <span class="token keyword">const</span> TVector3 <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Rotates around the axis specified by another Hep3Vector.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Rotate</span><span class="hljs-params">(Double_t, <span class="hljs-keyword">const</span> TVector3 &amp;)</span></span>;
+   <span class="hljs-comment">// Rotates around the axis specified by another Hep3Vector.</span>
 
-   TVector3 <span class="token operator">&amp;</span> <span class="token keyword">operator</span> <span class="token operator">*</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">const</span> TRotation <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TVector3 <span class="token operator">&amp;</span> <span class="token function">Transform</span><span class="token punctuation">(</span><span class="token keyword">const</span> TRotation <span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Transformation with a Rotation matrix.</span>
+   TVector3 &amp; <span class="hljs-keyword">operator</span> *= (<span class="hljs-keyword">const</span> TRotation &amp;);
+   <span class="hljs-function">TVector3 &amp; <span class="hljs-title">Transform</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TRotation &amp;)</span></span>;
+   <span class="hljs-comment">// Transformation with a Rotation matrix.</span>
 
-   <span class="token keyword">inline</span> TVector2 <span class="token function">XYvector</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">inline</span> TVector2 <span class="hljs-title">XYvector</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token keyword">void</span> <span class="token function">Print</span><span class="token punctuation">(</span>Option_t<span class="token operator">*</span> option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">//print vector parameters</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Print</span><span class="hljs-params">(Option_t* option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">//print vector parameters</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// TVector3 has been implemented as a vector of three Double_t</span>
-<span class="token comment">// variables, representing the cartesian coordinates. By default all components</span>
-<span class="token comment">// are initialized to zero:</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TVector3 has been implemented as a vector of three Double_t</span>
+<span class="hljs-comment">// variables, representing the cartesian coordinates. By default all components</span>
+<span class="hljs-comment">// are initialized to zero:</span>
 
-TVector3 v1<span class="token punctuation">;</span>
-v1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
-TVector3 <span class="token function">v3</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// v3 = (1,2,3)</span>
-TVector3 <span class="token function">v4</span><span class="token punctuation">(</span>v2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// v4 = v2</span>
+TVector3 v1;
+v1 = (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
+TVector3 v3(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>); <span class="hljs-comment">// v3 = (1,2,3)</span>
+<span class="hljs-function">TVector3 <span class="hljs-title">v4</span><span class="hljs-params">(v2)</span></span>;<span class="hljs-comment">// v4 = v2</span>
 
-<span class="token comment">// It is also possible (but not recommended) to initialize a TVector3</span>
-<span class="token comment">// with a Double_t or Float_t C array.</span>
+<span class="hljs-comment">// It is also possible (but not recommended) to initialize a TVector3</span>
+<span class="hljs-comment">// with a Double_t or Float_t C array.</span>
 
-<span class="token comment">// You can get the basic components either by name or by index using operator():</span>
+<span class="hljs-comment">// You can get the basic components either by name or by index using operator():</span>
 
-xx <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">X</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> xx <span class="token operator">=</span><span class="token function">v1</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-yy <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">Y</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-yy <span class="token operator">=</span> <span class="token function">v1</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-zz <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">Z</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-zz <span class="token operator">=</span> <span class="token function">v1</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xx = v1.X(); xx =v1(<span class="hljs-number">0</span>);
+yy = v1.Y();
+yy = v1(<span class="hljs-number">1</span>);
+zz = v1.Z();
+zz = v1(<span class="hljs-number">2</span>);
 
-<span class="token comment">// The memberfunctions SetX(), SetY(), SetZ()</span>
-<span class="token comment">// and SetXYZ() allow to set the components:</span>
+<span class="hljs-comment">// The memberfunctions SetX(), SetY(), SetZ()</span>
+<span class="hljs-comment">// and SetXYZ() allow to set the components:</span>
 
- v1<span class="token punctuation">.</span><span class="token function">SetX</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token punctuation">)</span><span class="token punctuation">;</span> v1<span class="token punctuation">.</span><span class="token function">SetY</span><span class="token punctuation">(</span><span class="token number">2.</span><span class="token punctuation">)</span><span class="token punctuation">;</span> v1<span class="token punctuation">.</span><span class="token function">SetZ</span><span class="token punctuation">(</span><span class="token number">3.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- v1<span class="token punctuation">.</span><span class="token function">SetXYZ</span><span class="token punctuation">(</span><span class="token number">1.</span><span class="token punctuation">,</span><span class="token number">2.</span><span class="token punctuation">,</span><span class="token number">3.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-
-<span class="token comment">// Noncartesian coordinates</span>
-<span class="token comment">// To get information on the TVector3 in spherical (rho,phi,theta)</span>
-<span class="token comment">// or cylindrical (z,r,theta) coordinates, the</span>
-<span class="token comment">// the member functions Mag() (=magnitude=rho in spherical coordinates),</span>
-<span class="token comment">// Mag2(), Theta(), CosTheta(), Phi(),</span>
-<span class="token comment">// Perp() (the transverse component=r in cylindrical coordinates),Perp2() can be used:</span>
-
- Double_t m <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">Mag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// get magnitudeb (=rho=Sqrt(x*x+y*y+z*z)))</span>
- Double_t m2 <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">Mag2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// get magnitude squared</span>
- Double_t t <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">Theta</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// get polar angle</span>
- Double_t ct <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">CosTheta</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// get cos of theta</span>
- Double_t p <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">Phi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// get azimuth angle</span>
- Double_t pp <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">Perp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// get transverse component</span>
- Double_t pp2<span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">Perp2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// get transvers component squared</span>
-
-<span class="token comment">// It is also possible to get the transverse component with respect to another vector:</span>
-
- Double_t ppv1 <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">Perp</span><span class="token punctuation">(</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
- Double_t pp2v1 <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">Perp2</span><span class="token punctuation">(</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// The pseudo-rapidity ( eta=-ln (tan (theta/2)) ) can be obtained by Eta() or PseudoRapidity():</span>
-
- Double_t eta <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">PseudoRapidity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// There are set functions to change one of the noncartesian coordinates:</span>
-
- v<span class="token punctuation">.</span><span class="token function">SetTheta</span><span class="token punctuation">(</span><span class="token number">.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// keeping rho and phi</span>
- v<span class="token punctuation">.</span><span class="token function">SetPhi</span><span class="token punctuation">(</span><span class="token number">.8</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// keeping rho and theta</span>
- v<span class="token punctuation">.</span><span class="token function">SetMag</span><span class="token punctuation">(</span><span class="token number">10.</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// keeping theta and phi</span>
- v<span class="token punctuation">.</span><span class="token function">SetPerp</span><span class="token punctuation">(</span><span class="token number">3.</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// keeping z and phi</span>
+ v1.SetX(<span class="hljs-number">1.</span>); v1.SetY(<span class="hljs-number">2.</span>); v1.SetZ(<span class="hljs-number">3.</span>);
+ v1.SetXYZ(<span class="hljs-number">1.</span>,<span class="hljs-number">2.</span>,<span class="hljs-number">3.</span>);
 
 
-<span class="token comment">// Arithmetic / Comparison</span>
-<span class="token comment">// The TVector3 class provides the operators to add, subtract, scale and compare vectors:</span>
+<span class="hljs-comment">// Noncartesian coordinates</span>
+<span class="hljs-comment">// To get information on the TVector3 in spherical (rho,phi,theta)</span>
+<span class="hljs-comment">// or cylindrical (z,r,theta) coordinates, the</span>
+<span class="hljs-comment">// the member functions Mag() (=magnitude=rho in spherical coordinates),</span>
+<span class="hljs-comment">// Mag2(), Theta(), CosTheta(), Phi(),</span>
+<span class="hljs-comment">// Perp() (the transverse component=r in cylindrical coordinates),Perp2() can be used:</span>
 
- v3 <span class="token operator">=</span> <span class="token operator">-</span>v1<span class="token punctuation">;</span>
- v1 <span class="token operator">=</span> v2<span class="token operator">+</span>v3<span class="token punctuation">;</span>
- v1 <span class="token operator">+</span><span class="token operator">=</span> v3<span class="token punctuation">;</span>
- v1 <span class="token operator">=</span> v1 <span class="token operator">-</span> v3
- v1 <span class="token operator">-</span><span class="token operator">=</span> v3<span class="token punctuation">;</span>
- v1 <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
- v1 <span class="token operator">=</span> <span class="token number">5</span><span class="token operator">*</span>v2<span class="token punctuation">;</span>
+ Double_t m = v.Mag(); <span class="hljs-comment">// get magnitudeb (=rho=Sqrt(x*x+y*y+z*z)))</span>
+ Double_t m2 = v.Mag2(); <span class="hljs-comment">// get magnitude squared</span>
+ Double_t t = v.Theta(); <span class="hljs-comment">// get polar angle</span>
+ Double_t ct = v.CosTheta();<span class="hljs-comment">// get cos of theta</span>
+ Double_t p = v.Phi(); <span class="hljs-comment">// get azimuth angle</span>
+ Double_t pp = v.Perp(); <span class="hljs-comment">// get transverse component</span>
+ Double_t pp2= v.Perp2(); <span class="hljs-comment">// get transvers component squared</span>
 
- <span class="token keyword">if</span><span class="token punctuation">(</span>v1<span class="token operator">==</span>v2<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
- <span class="token keyword">if</span><span class="token punctuation">(</span>v1<span class="token operator">!=</span>v2<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
+<span class="hljs-comment">// It is also possible to get the transverse component with respect to another vector:</span>
 
+ Double_t ppv1 = v.Perp(v1);
+ Double_t pp2v1 = v.Perp2(v1);
 
-<span class="token comment">// Related Vectors</span>
- v2 <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">Unit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// get unit</span>
-<span class="token comment">// vector parallel to v1</span>
- v2 <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">Orthogonal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// get vector orthogonal to v1</span>
+<span class="hljs-comment">// The pseudo-rapidity ( eta=-ln (tan (theta/2)) ) can be obtained by Eta() or PseudoRapidity():</span>
 
-<span class="token comment">// Scalar and vector products</span>
- s <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">Dot</span><span class="token punctuation">(</span>v2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// scalar product</span>
- s <span class="token operator">=</span> v1 <span class="token operator">*</span> v2<span class="token punctuation">;</span> <span class="token comment">// scalar product</span>
- v <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">Cross</span><span class="token punctuation">(</span>v2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// vector product</span>
+ Double_t eta = v.PseudoRapidity();
 
-<span class="token comment">// Angle between two vectors</span>
- Double_t a <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">Angle</span><span class="token punctuation">(</span>v2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">// There are set functions to change one of the noncartesian coordinates:</span>
 
-<span class="token comment">// Rotations</span>
+ v.SetTheta(<span class="hljs-number">.5</span>); <span class="hljs-comment">// keeping rho and phi</span>
+ v.SetPhi(<span class="hljs-number">.8</span>); <span class="hljs-comment">// keeping rho and theta</span>
+ v.SetMag(<span class="hljs-number">10.</span>); <span class="hljs-comment">// keeping theta and phi</span>
+ v.SetPerp(<span class="hljs-number">3.</span>); <span class="hljs-comment">// keeping z and phi</span>
 
 
-<span class="token comment">// Rotation around axes</span>
- v<span class="token punctuation">.</span><span class="token function">RotateX</span><span class="token punctuation">(</span><span class="token number">.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- v<span class="token punctuation">.</span><span class="token function">RotateY</span><span class="token punctuation">(</span>TMath<span class="token operator">::</span><span class="token function">Pi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- v<span class="token punctuation">.</span><span class="token function">RotateZ</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">// Arithmetic / Comparison</span>
+<span class="hljs-comment">// The TVector3 class provides the operators to add, subtract, scale and compare vectors:</span>
 
-<span class="token comment">// Rotation around a vector</span>
- v1<span class="token punctuation">.</span><span class="token function">Rotate</span><span class="token punctuation">(</span>TMath<span class="token operator">::</span><span class="token function">Pi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">4</span><span class="token punctuation">,</span> v2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rotation around v2</span>
+ v3 = -v1;
+ v1 = v2+v3;
+ v1 += v3;
+ v1 = v1 - v3
+ v1 -= v3;
+ v1 *= <span class="hljs-number">10</span>;
+ v1 = <span class="hljs-number">5</span>*v2;
 
-<span class="token comment">// Rotation by TRotation</span>
-<span class="token comment">// TVector3 objects can be rotated by objects of the TRotation</span>
-<span class="token comment">// class using the Transform() member functions,</span>
-<span class="token comment">// the operator *= or the operator * of the TRotation class:</span>
+ <span class="hljs-keyword">if</span>(v1==v2) {...}
+ <span class="hljs-keyword">if</span>(v1!=v2) {...}
 
- TRotation m<span class="token punctuation">;</span>
- <span class="token comment">// ...</span>
- v1<span class="token punctuation">.</span><span class="token function">transform</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
- v1 <span class="token operator">=</span> m<span class="token operator">*</span>v1<span class="token punctuation">;</span>
- v1 <span class="token operator">*</span><span class="token operator">=</span> m<span class="token punctuation">;</span> <span class="token comment">// Attention v1 = m*v1</span>
 
-<span class="token comment">// Transformation from rotated frame</span>
- TVector3 direction <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">Unit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- v1<span class="token punctuation">.</span><span class="token function">RotateUz</span><span class="token punctuation">(</span>direction<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// direction must be TVector3 of unit length</span>
+<span class="hljs-comment">// Related Vectors</span>
+ v2 = v1.Unit(); <span class="hljs-comment">// get unit</span>
+<span class="hljs-comment">// vector parallel to v1</span>
+ v2 = v1.Orthogonal(); <span class="hljs-comment">// get vector orthogonal to v1</span>
 
-<span class="token comment">// transforms v1 from the rotated frame (z&apos; parallel to direction, x&apos; in</span>
-<span class="token comment">// the theta plane and y&apos; in the xy plane as well as perpendicular to the</span>
-<span class="token comment">// theta plane) to the (x,y,z) frame.</span>
+<span class="hljs-comment">// Scalar and vector products</span>
+ s = v1.Dot(v2); <span class="hljs-comment">// scalar product</span>
+ s = v1 * v2; <span class="hljs-comment">// scalar product</span>
+ v = v1.Cross(v2); <span class="hljs-comment">// vector product</span>
+
+<span class="hljs-comment">// Angle between two vectors</span>
+ Double_t a = v1.Angle(v2);
+
+<span class="hljs-comment">// Rotations</span>
+
+
+<span class="hljs-comment">// Rotation around axes</span>
+ v.RotateX(<span class="hljs-number">.5</span>);
+ v.RotateY(TMath::Pi());
+ v.RotateZ(angle);
+
+<span class="hljs-comment">// Rotation around a vector</span>
+ v1.Rotate(TMath::Pi()/<span class="hljs-number">4</span>, v2); <span class="hljs-comment">// rotation around v2</span>
+
+<span class="hljs-comment">// Rotation by TRotation</span>
+<span class="hljs-comment">// TVector3 objects can be rotated by objects of the TRotation</span>
+<span class="hljs-comment">// class using the Transform() member functions,</span>
+<span class="hljs-comment">// the operator *= or the operator * of the TRotation class:</span>
+
+ TRotation m;
+ <span class="hljs-comment">// ...</span>
+ v1.transform(m);
+ v1 = m*v1;
+ v1 *= m; <span class="hljs-comment">// Attention v1 = m*v1</span>
+
+<span class="hljs-comment">// Transformation from rotated frame</span>
+ TVector3 direction = v.Unit();
+ v1.RotateUz(direction); <span class="hljs-comment">// direction must be TVector3 of unit length</span>
+
+<span class="hljs-comment">// transforms v1 from the rotated frame (z&apos; parallel to direction, x&apos; in</span>
+<span class="hljs-comment">// the theta plane and y&apos; in the xy plane as well as perpendicular to the</span>
+<span class="hljs-comment">// theta plane) to the (x,y,z) frame.</span>
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TVector3.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -4002,7 +4014,7 @@ zz <span class="token operator">=</span> <span class="token function">v1</span><
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TVector3*","level":"1.2.107","depth":2,"next":{"title":"TVectorT","level":"1.2.108","depth":2,"path":"class/TVectorT.md","ref":"class/TVectorT.md","articles":[]},"previous":{"title":"TVector2","level":"1.2.106","depth":2,"path":"class/TVector2.md","ref":"class/TVector2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TVector3.md","mtime":"2018-05-14T09:18:21.104Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TVector3*","level":"1.2.107","depth":2,"next":{"title":"TVectorT","level":"1.2.108","depth":2,"path":"class/TVectorT.md","ref":"class/TVectorT.md","articles":[]},"previous":{"title":"TVector2","level":"1.2.106","depth":2,"path":"class/TVector2.md","ref":"class/TVector2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TVector3.md","mtime":"2018-05-14T09:18:21.104Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4034,6 +4046,18 @@ zz <span class="token operator">=</span> <span class="token function">v1</span><
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

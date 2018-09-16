@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3739,64 +3751,64 @@ entry is always the local entry number in the current tree.
 Assuming that fChain is the pointer to the TChain being processed,
 use <code>fChain-&gt;GetTree()-&gt;GetEntry(entry);</code></p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">enum</span> EAbort <span class="token punctuation">{</span> kContinue<span class="token punctuation">,</span> kAbortProcess<span class="token punctuation">,</span> kAbortFile <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span> EAbort { kContinue, kAbortProcess, kAbortFile };
 
-   <span class="token function">TSelector</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span>            <span class="token operator">~</span><span class="token function">TSelector</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TSelector();
+   <span class="hljs-keyword">virtual</span>            ~TSelector();
 
-   <span class="token keyword">virtual</span> <span class="token keyword">int</span>         <span class="token function">Version</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Init</span><span class="token punctuation">(</span>TTree <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Begin</span><span class="token punctuation">(</span>TTree <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SlaveBegin</span><span class="token punctuation">(</span>TTree <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">Notify</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetOption</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fOption<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Long64_t    <span class="token function">GetStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fStatus<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">GetEntry</span><span class="token punctuation">(</span>Long64_t <span class="token comment">/*entry*/</span><span class="token punctuation">,</span> Int_t <span class="token comment">/*getall*/</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">ProcessCut</span><span class="token punctuation">(</span>Long64_t <span class="token comment">/*entry*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">ProcessFill</span><span class="token punctuation">(</span>Long64_t <span class="token comment">/*entry*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">Process</span><span class="token punctuation">(</span>Long64_t <span class="token comment">/*entry*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetOption</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>option<span class="token punctuation">)</span> <span class="token punctuation">{</span> fOption <span class="token operator">=</span> option<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetObject</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span> fObject <span class="token operator">=</span> obj<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetInputList</span><span class="token punctuation">(</span>TList <span class="token operator">*</span>input<span class="token punctuation">)</span> <span class="token punctuation">{</span> fInput <span class="token operator">=</span> input<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetStatus</span><span class="token punctuation">(</span>Long64_t status<span class="token punctuation">)</span> <span class="token punctuation">{</span> fStatus <span class="token operator">=</span> status<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TList      <span class="token operator">*</span><span class="token function">GetInputList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fInput<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TList      <span class="token operator">*</span><span class="token function">GetOutputList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fOutput<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SlaveTerminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Terminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Abort</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>why<span class="token punctuation">,</span> EAbort what <span class="token operator">=</span> kAbortProcess<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Abort processing. If what = kAbortProcess, the Process() loop will be</span>
-<span class="token comment">/// aborted. If what = kAbortFile, the current file in a chain will be</span>
-<span class="token comment">/// aborted and the processing will continue with the next file, if there</span>
-<span class="token comment">/// is no next file then Process() will be aborted. Abort() can also  be</span>
-<span class="token comment">/// called from Begin(), SlaveBegin(), Init() and Notify(). After abort</span>
-<span class="token comment">/// the SlaveTerminate() and Terminate() are always called. The abort flag</span>
-<span class="token comment">/// can be checked in these methods using GetAbort().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span>         <span class="hljs-title">Version</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Init</span><span class="hljs-params">(TTree *)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Begin</span><span class="hljs-params">(TTree *)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SlaveBegin</span><span class="hljs-params">(TTree *)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">Notify</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetOption</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fOption; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t    <span class="hljs-title">GetStatus</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStatus; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">GetEntry</span><span class="hljs-params">(Long64_t <span class="hljs-comment">/*entry*/</span>, Int_t <span class="hljs-comment">/*getall*/</span> = <span class="hljs-number">0</span>)</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">ProcessCut</span><span class="hljs-params">(Long64_t <span class="hljs-comment">/*entry*/</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">ProcessFill</span><span class="hljs-params">(Long64_t <span class="hljs-comment">/*entry*/</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">Process</span><span class="hljs-params">(Long64_t <span class="hljs-comment">/*entry*/</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetOption</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *option)</span> </span>{ fOption = option; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetObject</span><span class="hljs-params">(TObject *obj)</span> </span>{ fObject = obj; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetInputList</span><span class="hljs-params">(TList *input)</span> </span>{ fInput = input; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetStatus</span><span class="hljs-params">(Long64_t status)</span> </span>{ fStatus = status; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TList      *<span class="hljs-title">GetInputList</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fInput; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TList      *<span class="hljs-title">GetOutputList</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fOutput; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SlaveTerminate</span><span class="hljs-params">()</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Terminate</span><span class="hljs-params">()</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Abort</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *why, EAbort what = kAbortProcess)</span></span>;
+<span class="hljs-comment">/// Abort processing. If what = kAbortProcess, the Process() loop will be</span>
+<span class="hljs-comment">/// aborted. If what = kAbortFile, the current file in a chain will be</span>
+<span class="hljs-comment">/// aborted and the processing will continue with the next file, if there</span>
+<span class="hljs-comment">/// is no next file then Process() will be aborted. Abort() can also  be</span>
+<span class="hljs-comment">/// called from Begin(), SlaveBegin(), Init() and Notify(). After abort</span>
+<span class="hljs-comment">/// the SlaveTerminate() and Terminate() are always called. The abort flag</span>
+<span class="hljs-comment">/// can be checked in these methods using GetAbort().</span>
 
-   <span class="token keyword">virtual</span> EAbort      <span class="token function">GetAbort</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fAbort<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">ResetAbort</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fAbort <span class="token operator">=</span> kContinue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> EAbort      <span class="hljs-title">GetAbort</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAbort; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">ResetAbort</span><span class="hljs-params">()</span> </span>{ fAbort = kContinue; }
 
-   <span class="token keyword">static</span>  TSelector  <span class="token operator">*</span><span class="token function">GetSelector</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// The code in filename is loaded (interpreted or compiled, see below),</span>
-<span class="token comment">/// filename must contain a valid class implementation derived from TSelector.</span>
-<span class="token comment">///</span>
-<span class="token comment">/// If filename is of the form file.C, the file will be interpreted.</span>
-<span class="token comment">/// If filename is of the form file.C++, the file file.C will be compiled</span>
-<span class="token comment">/// and dynamically loaded. The corresponding binary file and shared</span>
-<span class="token comment">/// library will be deleted at the end of the function.</span>
-<span class="token comment">/// If filename is of the form file.C+, the file file.C will be compiled</span>
-<span class="token comment">/// and dynamically loaded. At next call, if file.C is older than file.o</span>
-<span class="token comment">/// and file.so, the file.C is not compiled, only file.so is loaded.</span>
-<span class="token comment">///</span>
-<span class="token comment">/// The static function returns a pointer to a TSelector object</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  TSelector  *<span class="hljs-title">GetSelector</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename)</span></span>;
+<span class="hljs-comment">/// The code in filename is loaded (interpreted or compiled, see below),</span>
+<span class="hljs-comment">/// filename must contain a valid class implementation derived from TSelector.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// If filename is of the form file.C, the file will be interpreted.</span>
+<span class="hljs-comment">/// If filename is of the form file.C++, the file file.C will be compiled</span>
+<span class="hljs-comment">/// and dynamically loaded. The corresponding binary file and shared</span>
+<span class="hljs-comment">/// library will be deleted at the end of the function.</span>
+<span class="hljs-comment">/// If filename is of the form file.C+, the file file.C will be compiled</span>
+<span class="hljs-comment">/// and dynamically loaded. At next call, if file.C is older than file.o</span>
+<span class="hljs-comment">/// and file.so, the file.C is not compiled, only file.so is loaded.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// The static function returns a pointer to a TSelector object</span>
 
-   <span class="token keyword">static</span>  Bool_t      <span class="token function">IsStandardDraw</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>selec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find out if this is a standard selection used for Draw actions</span>
-<span class="token comment">/// (either TSelectorDraw, TProofDraw or deriving from them).</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  Bool_t      <span class="hljs-title">IsStandardDraw</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *selec)</span></span>;
+<span class="hljs-comment">/// Find out if this is a standard selection used for Draw actions</span>
+<span class="hljs-comment">/// (either TSelectorDraw, TProofDraw or deriving from them).</span>
 </code></pre>
 <!-- TSelector.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3839,7 +3851,7 @@ use <code>fChain-&gt;GetTree()-&gt;GetEntry(entry);</code></p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TSelector-","level":"1.2.75","depth":2,"next":{"title":"TSelectorCint","level":"1.2.76","depth":2,"path":"class/TSelectorCint.md","ref":"class/TSelectorCint.md","articles":[]},"previous":{"title":"TROOT*","level":"1.2.74","depth":2,"path":"class/TROOT.md","ref":"class/TROOT.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TSelector.md","mtime":"2018-05-14T09:18:22.261Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TSelector-","level":"1.2.75","depth":2,"next":{"title":"TSelectorCint","level":"1.2.76","depth":2,"path":"class/TSelectorCint.md","ref":"class/TSelectorCint.md","articles":[]},"previous":{"title":"TROOT*","level":"1.2.74","depth":2,"path":"class/TROOT.md","ref":"class/TROOT.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TSelector.md","mtime":"2018-05-14T09:18:22.261Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3871,6 +3883,18 @@ use <code>fChain-&gt;GetTree()-&gt;GetEntry(entry);</code></p>
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

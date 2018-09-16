@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,209 +3692,209 @@
 <p>Cannot be stored in a TCollection... use TObjString instead.</p>
 <p>The underlying string is stored as a char* that can be accessed via TString::Data().<br>TString provides Short String Optimization (SSO) so that short strings (&lt;15 on 64-bit and &lt;11 on 32-bit) are contained in the TString internal data structure without the need for mallocing the required space.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">enum</span> EStripType   <span class="token punctuation">{</span> kLeading <span class="token operator">=</span> <span class="token number">0x1</span><span class="token punctuation">,</span> kTrailing <span class="token operator">=</span> <span class="token number">0x2</span><span class="token punctuation">,</span> kBoth <span class="token operator">=</span> <span class="token number">0x3</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-   <span class="token keyword">enum</span> ECaseCompare <span class="token punctuation">{</span> kExact<span class="token punctuation">,</span> kIgnoreCase <span class="token punctuation">}</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> <span class="token keyword">const</span> Ssiz_t kNPOS <span class="token operator">=</span> <span class="token operator">::</span>kNPOS<span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   enum EStripType   { kLeading = 0x1, kTrailing = 0x2, kBoth = 0x3 };
+   enum ECaseCompare { kExact, kIgnoreCase };
+   static const Ssiz_t kNPOS = ::kNPOS;
 
-   <span class="token function">TString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                           <span class="token comment">// Null string</span>
-   <span class="token keyword">explicit</span> <span class="token function">TString</span><span class="token punctuation">(</span>Ssiz_t ic<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// Suggested capacity</span>
-   <span class="token function">TString</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// Copy constructor</span>
-   <span class="token function">TString</span><span class="token punctuation">(</span>TString <span class="token operator">&amp;&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// Move constructor</span>
-   <span class="token function">TString</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// Copy to embedded null</span>
-   <span class="token function">TString</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> Ssiz_t n<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// Copy past any embedded nulls</span>
-   <span class="token function">TString</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TString</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TString</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">,</span> Ssiz_t s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TString</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string_view <span class="token operator">&amp;</span>sub<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TString</span><span class="token punctuation">(</span><span class="token keyword">const</span> TSubString <span class="token operator">&amp;</span>sub<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TString();                           // Null string
+   explicit TString(Ssiz_t ic);         // Suggested capacity
+   TString(const TString &amp;s);           // Copy constructor
+   TString(TString &amp;&amp;s);                // Move constructor
+   TString(const char *s);              // Copy to embedded null
+   TString(const char *s, Ssiz_t n);    // Copy past any embedded nulls
+   TString(const std::string &amp;s);
+   TString(char c);
+   TString(char c, Ssiz_t s);
+   TString(const std::string_view &amp;sub);
+   TString(const TSubString &amp;sub);
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   virtual ~TString();
 
-   <span class="token comment">// ROOT I/O interface</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">FillBuffer</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">&amp;</span>buffer<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">ReadBuffer</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">&amp;</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Int_t    <span class="token function">Sizeof</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   // ROOT I/O interface
+   virtual void     FillBuffer(char *&amp;buffer) const;
+   virtual void     ReadBuffer(char *&amp;buffer);
+   virtual Int_t    Sizeof() const;
 
-   <span class="token keyword">static</span> TString  <span class="token operator">*</span><span class="token function">ReadString</span><span class="token punctuation">(</span>TBuffer <span class="token operator">&amp;</span>b<span class="token punctuation">,</span> <span class="token keyword">const</span> TClass <span class="token operator">*</span>clReq<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>      <span class="token function">WriteString</span><span class="token punctuation">(</span>TBuffer <span class="token operator">&amp;</span>b<span class="token punctuation">,</span> <span class="token keyword">const</span> TString <span class="token operator">*</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   static TString  *ReadString(TBuffer &amp;b, const TClass *clReq);
+   static void      WriteString(TBuffer &amp;b, const TString *a);
 
-   <span class="token keyword">friend</span> TBuffer <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span>TBuffer <span class="token operator">&amp;</span>b<span class="token punctuation">,</span> <span class="token keyword">const</span> TString <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   friend TBuffer &amp;operator&lt;&lt;(TBuffer &amp;b, const TString *obj);
 
-   <span class="token comment">// C I/O interface</span>
-   Bool_t   <span class="token function">Gets</span><span class="token punctuation">(</span>FILE <span class="token operator">*</span>fp<span class="token punctuation">,</span> Bool_t chop<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>     <span class="token function">Puts</span><span class="token punctuation">(</span>FILE <span class="token operator">*</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   // C I/O interface
+   Bool_t   Gets(FILE *fp, Bool_t chop=kTRUE);
+   void     Puts(FILE *fp);
 
-   <span class="token comment">// Type conversion</span>
-   <span class="token keyword">operator</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">GetPointer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">operator</span> std<span class="token operator">::</span><span class="token function">string_view</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> std<span class="token operator">::</span><span class="token function">string_view</span><span class="token punctuation">(</span><span class="token function">GetPointer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   // Type conversion
+   operator const char*() const { return GetPointer(); }
+   operator std::string_view() const { return std::string_view(GetPointer(),Length()); }
 
-   <span class="token comment">// Assignment</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">char</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// Replace string</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string_view <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TSubString <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Append string</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>Short_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>UShort_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>Int_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>UInt_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>Long_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>ULong_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>Float_t f<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>Double_t f<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>Long64_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString    <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>ULong64_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   // Assignment
+   TString    &amp;operator=(char s);                // Replace string
+   TString    &amp;operator=(const char *s);
+   TString    &amp;operator=(const TString &amp;s);
+   TString    &amp;operator=(const std::string &amp;s);
+   TString    &amp;operator=(const std::string_view &amp;s);
+   TString    &amp;operator=(const TSubString &amp;s);
+   TString    &amp;operator+=(const char *s);        // Append string
+   TString    &amp;operator+=(const TString &amp;s);
+   TString    &amp;operator+=(char c);
+   TString    &amp;operator+=(Short_t i);
+   TString    &amp;operator+=(UShort_t i);
+   TString    &amp;operator+=(Int_t i);
+   TString    &amp;operator+=(UInt_t i);
+   TString    &amp;operator+=(Long_t i);
+   TString    &amp;operator+=(ULong_t i);
+   TString    &amp;operator+=(Float_t f);
+   TString    &amp;operator+=(Double_t f);
+   TString    &amp;operator+=(Long64_t i);
+   TString    &amp;operator+=(ULong64_t i);
 
-   <span class="token comment">// Indexing operators</span>
-   <span class="token keyword">char</span>         <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>Ssiz_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// Indexing with bounds checking</span>
-   <span class="token keyword">char</span>         <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Ssiz_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// Indexing with optional bounds checking</span>
-   <span class="token keyword">char</span>          <span class="token keyword">operator</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>Ssiz_t i<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">char</span>          <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Ssiz_t i<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   TSubString    <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Ssiz_t start<span class="token punctuation">,</span> Ssiz_t len<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>   <span class="token comment">// Sub-string operator</span>
-   TSubString    <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">const</span> TRegexp <span class="token operator">&amp;</span>re<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>          <span class="token comment">// Match the RE</span>
-   TSubString    <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">const</span> TRegexp <span class="token operator">&amp;</span>re<span class="token punctuation">,</span> Ssiz_t start<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   TSubString    <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>TPRegexp <span class="token operator">&amp;</span>re<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>               <span class="token comment">// Match the Perl compatible Regular Expression</span>
-   TSubString    <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>TPRegexp <span class="token operator">&amp;</span>re<span class="token punctuation">,</span> Ssiz_t start<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   TSubString    <span class="token function">SubString</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pat<span class="token punctuation">,</span> Ssiz_t start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                           ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   // Indexing operators
+   char         &amp;operator[](Ssiz_t i);         // Indexing with bounds checking
+   char         &amp;operator()(Ssiz_t i);         // Indexing with optional bounds checking
+   char          operator[](Ssiz_t i) const;
+   char          operator()(Ssiz_t i) const;
+   TSubString    operator()(Ssiz_t start, Ssiz_t len) const;   // Sub-string operator
+   TSubString    operator()(const TRegexp &amp;re) const;          // Match the RE
+   TSubString    operator()(const TRegexp &amp;re, Ssiz_t start) const;
+   TSubString    operator()(TPRegexp &amp;re) const;               // Match the Perl compatible Regular Expression
+   TSubString    operator()(TPRegexp &amp;re, Ssiz_t start) const;
+   TSubString    SubString(const char *pat, Ssiz_t start = 0,
+                           ECaseCompare cmp = kExact) const;
 
-   <span class="token comment">// Non-static member functions</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cs<span class="token punctuation">,</span> Ssiz_t n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> Ssiz_t n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Append</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">,</span> Ssiz_t rep <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Append c rep times</span>
-   Int_t        <span class="token function">Atoi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Long64_t     <span class="token function">Atoll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Double_t     <span class="token function">Atof</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">BeginsWith</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span>      ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">BeginsWith</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>pat<span class="token punctuation">,</span> ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Capacity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">IsLong</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">GetLongCap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> kMinCap<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Ssiz_t       <span class="token function">Capacity</span><span class="token punctuation">(</span>Ssiz_t n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Chop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>         <span class="token function">Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">int</span>          <span class="token function">CompareTo</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cs<span class="token punctuation">,</span>    ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">int</span>          <span class="token function">CompareTo</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>st<span class="token punctuation">,</span> ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">Contains</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pat<span class="token punctuation">,</span>    ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">Contains</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>pat<span class="token punctuation">,</span> ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">Contains</span><span class="token punctuation">(</span><span class="token keyword">const</span> TRegexp <span class="token operator">&amp;</span>pat<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">Contains</span><span class="token punctuation">(</span>TPRegexp <span class="token operator">&amp;</span>pat<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Int_t        <span class="token function">CountChar</span><span class="token punctuation">(</span>Int_t c<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   TString      <span class="token function">Copy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>  <span class="token operator">*</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">GetPointer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t       <span class="token function">EndsWith</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pat<span class="token punctuation">,</span> ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">EqualTo</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cs<span class="token punctuation">,</span>    ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">EqualTo</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>st<span class="token punctuation">,</span> ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">First</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">First</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cs<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>         <span class="token function">Form</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>fmt<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
-<span class="token macro property">#<span class="token directive keyword">if</span> defined(__GNUC__) &amp;&amp; !defined(__CINT__)</span>
-   <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">format</span><span class="token punctuation">(</span>printf<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">/* 1 is the this pointer */</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-   <span class="token punctuation">;</span>
-   UInt_t       <span class="token function">Hash</span><span class="token punctuation">(</span>ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Index</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pat<span class="token punctuation">,</span> Ssiz_t i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                      ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Index</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> Ssiz_t i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                      ECaseCompare cmp <span class="token operator">=</span> kExact<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Index</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pat<span class="token punctuation">,</span> Ssiz_t patlen<span class="token punctuation">,</span> Ssiz_t i<span class="token punctuation">,</span>
-                      ECaseCompare cmp<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Index</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> Ssiz_t patlen<span class="token punctuation">,</span> Ssiz_t i<span class="token punctuation">,</span>
-                      ECaseCompare cmp<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Index</span><span class="token punctuation">(</span><span class="token keyword">const</span> TRegexp <span class="token operator">&amp;</span>pat<span class="token punctuation">,</span> Ssiz_t i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Index</span><span class="token punctuation">(</span><span class="token keyword">const</span> TRegexp <span class="token operator">&amp;</span>pat<span class="token punctuation">,</span> Ssiz_t <span class="token operator">*</span>ext<span class="token punctuation">,</span> Ssiz_t i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Index</span><span class="token punctuation">(</span>TPRegexp <span class="token operator">&amp;</span>pat<span class="token punctuation">,</span> Ssiz_t i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Index</span><span class="token punctuation">(</span>TPRegexp <span class="token operator">&amp;</span>pat<span class="token punctuation">,</span> Ssiz_t <span class="token operator">*</span>ext<span class="token punctuation">,</span> Ssiz_t i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Insert</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Insert</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> Ssiz_t extent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Insert</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">,</span> <span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Insert</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">,</span> <span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> Ssiz_t extent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsAscii</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsAlpha</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsAlnum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsDigit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsFloat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsHex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsBin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsOct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsDec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsInBaseN</span><span class="token punctuation">(</span>Int_t base<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsNull</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>         <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t       <span class="token function">IsWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token function">CountChar</span><span class="token punctuation">(</span><span class="token string">&apos; &apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Ssiz_t       <span class="token function">Last</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Ssiz_t       <span class="token function">Length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>         <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsLong</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">GetLongSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">GetShortSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t       <span class="token function">MaybeRegexp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">MaybeWildcard</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   TString      <span class="token function">MD5</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Prepend</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cs<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// Prepend a character string</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Prepend</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cs<span class="token punctuation">,</span> Ssiz_t n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Prepend</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Prepend</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> Ssiz_t n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Prepend</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">,</span> Ssiz_t rep <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Prepend c rep times</span>
-   std<span class="token operator">::</span>istream     <span class="token operator">&amp;</span><span class="token function">ReadFile</span><span class="token punctuation">(</span>std<span class="token operator">::</span>istream <span class="token operator">&amp;</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// Read to EOF or null character</span>
-   std<span class="token operator">::</span>istream     <span class="token operator">&amp;</span><span class="token function">ReadLine</span><span class="token punctuation">(</span>std<span class="token operator">::</span>istream <span class="token operator">&amp;</span>str<span class="token punctuation">,</span>
-                         Bool_t skipWhite <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Read to EOF or newline</span>
-   std<span class="token operator">::</span>istream     <span class="token operator">&amp;</span><span class="token function">ReadString</span><span class="token punctuation">(</span>std<span class="token operator">::</span>istream <span class="token operator">&amp;</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// Read to EOF or null character</span>
-   std<span class="token operator">::</span>istream     <span class="token operator">&amp;</span><span class="token function">ReadToDelim</span><span class="token punctuation">(</span>std<span class="token operator">::</span>istream <span class="token operator">&amp;</span>str<span class="token punctuation">,</span> <span class="token keyword">char</span> delim <span class="token operator">=</span> <span class="token string">&apos;\n&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Read to EOF or delimitor</span>
-   std<span class="token operator">::</span>istream     <span class="token operator">&amp;</span><span class="token function">ReadToken</span><span class="token punctuation">(</span>std<span class="token operator">::</span>istream <span class="token operator">&amp;</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// Read separated by white space</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Remove</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// Remove pos to end of string</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Remove</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">,</span> Ssiz_t n<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// Remove n chars starting at pos</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Remove</span><span class="token punctuation">(</span>EStripType s<span class="token punctuation">,</span> <span class="token keyword">char</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// Like Strip() but changing string directly</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Replace</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">,</span> Ssiz_t n<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Replace</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">,</span> Ssiz_t n<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> Ssiz_t ns<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Replace</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">,</span> Ssiz_t n<span class="token punctuation">,</span> <span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Replace</span><span class="token punctuation">(</span>Ssiz_t pos<span class="token punctuation">,</span> Ssiz_t n1<span class="token punctuation">,</span> <span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> Ssiz_t n2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">ReplaceAll</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s1<span class="token punctuation">,</span> <span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Find&amp;Replace all s1 with s2 if any</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">ReplaceAll</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s2<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// Find&amp;Replace all s1 with s2 if any</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">ReplaceAll</span><span class="token punctuation">(</span><span class="token keyword">const</span>    <span class="token keyword">char</span> <span class="token operator">*</span>s1<span class="token punctuation">,</span> <span class="token keyword">const</span> TString <span class="token operator">&amp;</span>s2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Find&amp;Replace all s1 with s2 if any</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">ReplaceAll</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s2<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// Find&amp;Replace all s1 with s2 if any</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">ReplaceAll</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s1<span class="token punctuation">,</span> Ssiz_t ls1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s2<span class="token punctuation">,</span> Ssiz_t ls2<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Find&amp;Replace all s1 with s2 if any</span>
-   <span class="token keyword">void</span>         <span class="token function">Resize</span><span class="token punctuation">(</span>Ssiz_t n<span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">// Truncate or add blanks as necessary</span>
-   TSubString   <span class="token function">Strip</span><span class="token punctuation">(</span>EStripType s <span class="token operator">=</span> kTrailing<span class="token punctuation">,</span> <span class="token keyword">char</span> c <span class="token operator">=</span> <span class="token string">&apos; &apos;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   TString     <span class="token operator">&amp;</span><span class="token function">Swap</span><span class="token punctuation">(</span>TString <span class="token operator">&amp;</span>other<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Swap the contents of this and other without reallocation</span>
-   <span class="token keyword">void</span>         <span class="token function">ToLower</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                              <span class="token comment">// Change self to lower-case</span>
-   <span class="token keyword">void</span>         <span class="token function">ToUpper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                              <span class="token comment">// Change self to upper-case</span>
-   TObjArray   <span class="token operator">*</span><span class="token function">Tokenize</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString <span class="token operator">&amp;</span>delim<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">Tokenize</span><span class="token punctuation">(</span>TString <span class="token operator">&amp;</span>tok<span class="token punctuation">,</span> Ssiz_t <span class="token operator">&amp;</span>from<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>delim <span class="token operator">=</span> <span class="token string">&quot; &quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   // Non-static member functions
+   TString     &amp;Append(const char *cs);
+   TString     &amp;Append(const char *cs, Ssiz_t n);
+   TString     &amp;Append(const TString &amp;s);
+   TString     &amp;Append(const TString &amp;s, Ssiz_t n);
+   TString     &amp;Append(char c, Ssiz_t rep = 1);   // Append c rep times
+   Int_t        Atoi() const;
+   Long64_t     Atoll() const;
+   Double_t     Atof() const;
+   Bool_t       BeginsWith(const char *s,      ECaseCompare cmp = kExact) const;
+   Bool_t       BeginsWith(const TString &amp;pat, ECaseCompare cmp = kExact) const;
+   Ssiz_t       Capacity() const { return (IsLong() ? GetLongCap() : kMinCap) - 1; }
+   Ssiz_t       Capacity(Ssiz_t n);
+   TString     &amp;Chop();
+   void         Clear();
+   int          CompareTo(const char *cs,    ECaseCompare cmp = kExact) const;
+   int          CompareTo(const TString &amp;st, ECaseCompare cmp = kExact) const;
+   Bool_t       Contains(const char *pat,    ECaseCompare cmp = kExact) const;
+   Bool_t       Contains(const TString &amp;pat, ECaseCompare cmp = kExact) const;
+   Bool_t       Contains(const TRegexp &amp;pat) const;
+   Bool_t       Contains(TPRegexp &amp;pat) const;
+   Int_t        CountChar(Int_t c) const;
+   TString      Copy() const;
+   const char  *Data() const { return GetPointer(); }
+   Bool_t       EndsWith(const char *pat, ECaseCompare cmp = kExact) const;
+   Bool_t       EqualTo(const char *cs,    ECaseCompare cmp = kExact) const;
+   Bool_t       EqualTo(const TString &amp;st, ECaseCompare cmp = kExact) const;
+   Ssiz_t       First(char c) const;
+   Ssiz_t       First(const char *cs) const;
+   void         Form(const char *fmt, ...)
+#if defined(__GNUC__) &amp;&amp; !defined(__CINT__)
+   __attribute__((format(printf, 2, 3)))   /* 1 is the this pointer */
+#endif
+   ;
+   UInt_t       Hash(ECaseCompare cmp = kExact) const;
+   Ssiz_t       Index(const char *pat, Ssiz_t i = 0,
+                      ECaseCompare cmp = kExact) const;
+   Ssiz_t       Index(const TString &amp;s, Ssiz_t i = 0,
+                      ECaseCompare cmp = kExact) const;
+   Ssiz_t       Index(const char *pat, Ssiz_t patlen, Ssiz_t i,
+                      ECaseCompare cmp) const;
+   Ssiz_t       Index(const TString &amp;s, Ssiz_t patlen, Ssiz_t i,
+                      ECaseCompare cmp) const;
+   Ssiz_t       Index(const TRegexp &amp;pat, Ssiz_t i = 0) const;
+   Ssiz_t       Index(const TRegexp &amp;pat, Ssiz_t *ext, Ssiz_t i = 0) const;
+   Ssiz_t       Index(TPRegexp &amp;pat, Ssiz_t i = 0) const;
+   Ssiz_t       Index(TPRegexp &amp;pat, Ssiz_t *ext, Ssiz_t i = 0) const;
+   TString     &amp;Insert(Ssiz_t pos, const char *s);
+   TString     &amp;Insert(Ssiz_t pos, const char *s, Ssiz_t extent);
+   TString     &amp;Insert(Ssiz_t pos, const TString &amp;s);
+   TString     &amp;Insert(Ssiz_t pos, const TString &amp;s, Ssiz_t extent);
+   Bool_t       IsAscii() const;
+   Bool_t       IsAlpha() const;
+   Bool_t       IsAlnum() const;
+   Bool_t       IsDigit() const;
+   Bool_t       IsFloat() const;
+   Bool_t       IsHex() const;
+   Bool_t       IsBin() const;
+   Bool_t       IsOct() const;
+   Bool_t       IsDec() const;
+   Bool_t       IsInBaseN(Int_t base) const;
+   Bool_t       IsNull() const         { return Length() == 0; }
+   Bool_t       IsWhitespace() const   { return (Length() == CountChar(&apos; &apos;)); }
+   Ssiz_t       Last(char c) const;
+   Ssiz_t       Length() const         { return IsLong() ? GetLongSize() : GetShortSize(); }
+   Bool_t       MaybeRegexp() const;
+   Bool_t       MaybeWildcard() const;
+   TString      MD5() const;
+   TString     &amp;Prepend(const char *cs);     // Prepend a character string
+   TString     &amp;Prepend(const char *cs, Ssiz_t n);
+   TString     &amp;Prepend(const TString &amp;s);
+   TString     &amp;Prepend(const TString &amp;s, Ssiz_t n);
+   TString     &amp;Prepend(char c, Ssiz_t rep = 1);  // Prepend c rep times
+   std::istream     &amp;ReadFile(std::istream &amp;str);      // Read to EOF or null character
+   std::istream     &amp;ReadLine(std::istream &amp;str,
+                         Bool_t skipWhite = kTRUE);   // Read to EOF or newline
+   std::istream     &amp;ReadString(std::istream &amp;str);             // Read to EOF or null character
+   std::istream     &amp;ReadToDelim(std::istream &amp;str, char delim = &apos;\n&apos;); // Read to EOF or delimitor
+   std::istream     &amp;ReadToken(std::istream &amp;str);                // Read separated by white space
+   TString     &amp;Remove(Ssiz_t pos);                     // Remove pos to end of string
+   TString     &amp;Remove(Ssiz_t pos, Ssiz_t n);           // Remove n chars starting at pos
+   TString     &amp;Remove(EStripType s, char c);           // Like Strip() but changing string directly
+   TString     &amp;Replace(Ssiz_t pos, Ssiz_t n, const char *s);
+   TString     &amp;Replace(Ssiz_t pos, Ssiz_t n, const char *s, Ssiz_t ns);
+   TString     &amp;Replace(Ssiz_t pos, Ssiz_t n, const TString &amp;s);
+   TString     &amp;Replace(Ssiz_t pos, Ssiz_t n1, const TString &amp;s, Ssiz_t n2);
+   TString     &amp;ReplaceAll(const TString &amp;s1, const TString &amp;s2); // Find&amp;Replace all s1 with s2 if any
+   TString     &amp;ReplaceAll(const TString &amp;s1, const char *s2);    // Find&amp;Replace all s1 with s2 if any
+   TString     &amp;ReplaceAll(const    char *s1, const TString &amp;s2); // Find&amp;Replace all s1 with s2 if any
+   TString     &amp;ReplaceAll(const char *s1, const char *s2);       // Find&amp;Replace all s1 with s2 if any
+   TString     &amp;ReplaceAll(const char *s1, Ssiz_t ls1, const char *s2, Ssiz_t ls2);  // Find&amp;Replace all s1 with s2 if any
+   void         Resize(Ssiz_t n);                       // Truncate or add blanks as necessary
+   TSubString   Strip(EStripType s = kTrailing, char c = &apos; &apos;) const;
+   TString     &amp;Swap(TString &amp;other); // Swap the contents of this and other without reallocation
+   void         ToLower();                              // Change self to lower-case
+   void         ToUpper();                              // Change self to upper-case
+   TObjArray   *Tokenize(const TString &amp;delim) const;
+   Bool_t       Tokenize(TString &amp;tok, Ssiz_t &amp;from, const char *delim = &quot; &quot;) const;
 
-   <span class="token comment">// Static member functions</span>
-   <span class="token keyword">static</span> UInt_t  <span class="token function">Hash</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>txt<span class="token punctuation">,</span> Int_t ntxt<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// Calculates hash index from any char string.</span>
-   <span class="token keyword">static</span> Ssiz_t  <span class="token function">InitialCapacity</span><span class="token punctuation">(</span>Ssiz_t ic <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// Initial allocation capacity</span>
-   <span class="token keyword">static</span> Ssiz_t  <span class="token function">MaxWaste</span><span class="token punctuation">(</span>Ssiz_t mw <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// Max empty space before reclaim</span>
-   <span class="token keyword">static</span> Ssiz_t  <span class="token function">ResizeIncrement</span><span class="token punctuation">(</span>Ssiz_t ri <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// Resizing increment</span>
-   <span class="token keyword">static</span> Ssiz_t  <span class="token function">GetInitialCapacity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Ssiz_t  <span class="token function">GetResizeIncrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Ssiz_t  <span class="token function">GetMaxWaste</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> TString Itoa   <span class="token punctuation">(</span>    Int_t value<span class="token punctuation">,</span> Int_t base<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Converts int to string with respect to the base specified (2-36)</span>
-   <span class="token keyword">static</span> TString UItoa  <span class="token punctuation">(</span>   UInt_t value<span class="token punctuation">,</span> Int_t base<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> TString LLtoa  <span class="token punctuation">(</span> Long64_t value<span class="token punctuation">,</span> Int_t base<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> TString ULLtoa <span class="token punctuation">(</span>ULong64_t value<span class="token punctuation">,</span> Int_t base<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> TString <span class="token function">BaseConvert</span><span class="token punctuation">(</span><span class="token keyword">const</span> TString<span class="token operator">&amp;</span> s_in<span class="token punctuation">,</span> Int_t base_in<span class="token punctuation">,</span> Int_t base_out<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Converts string from base base_in to base base_out (supported bases 2-36)</span>
-   <span class="token keyword">static</span> TString <span class="token function">Format</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>fmt<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
-<span class="token macro property">#<span class="token directive keyword">if</span> defined(__GNUC__) &amp;&amp; !defined(__CINT__)</span>
-   <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">format</span><span class="token punctuation">(</span>printf<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-   <span class="token punctuation">;</span>
+   // Static member functions
+   static UInt_t  Hash(const void *txt, Int_t ntxt);    // Calculates hash index from any char string.
+   static Ssiz_t  InitialCapacity(Ssiz_t ic = 15);      // Initial allocation capacity
+   static Ssiz_t  MaxWaste(Ssiz_t mw = 15);             // Max empty space before reclaim
+   static Ssiz_t  ResizeIncrement(Ssiz_t ri = 16);      // Resizing increment
+   static Ssiz_t  GetInitialCapacity();
+   static Ssiz_t  GetResizeIncrement();
+   static Ssiz_t  GetMaxWaste();
+   static TString Itoa   (    Int_t value, Int_t base);  // Converts int to string with respect to the base specified (2-36)
+   static TString UItoa  (   UInt_t value, Int_t base);
+   static TString LLtoa  ( Long64_t value, Int_t base);
+   static TString ULLtoa (ULong64_t value, Int_t base);
+   static TString BaseConvert(const TString&amp; s_in, Int_t base_in, Int_t base_out);  // Converts string from base base_in to base base_out (supported bases 2-36)
+   static TString Format(const char *fmt, ...)
+#if defined(__GNUC__) &amp;&amp; !defined(__CINT__)
+   __attribute__((format(printf, 1, 2)))
+#endif
+   ;
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// Substring operations are provided by the TSubString class, which</span>
-<span class="token comment">// holds a reference to the original string and its data, along with</span>
-<span class="token comment">// the offset and length of the substring. To retrieve the substring</span>
-<span class="token comment">// as a TString, construct a TString from it, eg:</span>
-root <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> TString <span class="token function">s</span><span class="token punctuation">(</span><span class="token string">&quot;hello world&quot;</span><span class="token punctuation">)</span>
-root <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> TString <span class="token function">s2</span><span class="token punctuation">(</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">)</span>
-root <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> s2
-<span class="token punctuation">(</span><span class="token keyword">class</span> <span class="token class-name">TString</span><span class="token punctuation">)</span><span class="token string">&quot;hello&quot;</span>
+<pre><code class="lang-cpp">// Substring operations are provided by the TSubString class, which
+// holds a reference to the original string and its data, along with
+// the offset and length of the substring. To retrieve the substring
+// as a TString, construct a TString from it, eg:
+root [0] TString s(&quot;hello world&quot;)
+root [1] TString s2( s(0,5) )
+root [2] s2
+(class TString)&quot;hello&quot;
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TString.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:20
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:20 </span> </footer>
                                 
                                 </section>
                             
@@ -3925,7 +3937,7 @@ root <span class="token punctuation">[</span><span class="token number">2</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TString+","level":"1.2.94","depth":2,"next":{"title":"TStyle+","level":"1.2.95","depth":2,"path":"class/TStyle.md","ref":"class/TStyle.md","articles":[]},"previous":{"title":"TStopwatch","level":"1.2.93","depth":2,"path":"class/TStopwatch.md","ref":"class/TStopwatch.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TString.md","mtime":"2018-05-14T09:18:20.907Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TString+","level":"1.2.94","depth":2,"next":{"title":"TStyle+","level":"1.2.95","depth":2,"path":"class/TStyle.md","ref":"class/TStyle.md","articles":[]},"previous":{"title":"TStopwatch","level":"1.2.93","depth":2,"path":"class/TStopwatch.md","ref":"class/TStopwatch.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TString.md","mtime":"2018-05-14T09:18:20.907Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3957,6 +3969,18 @@ root <span class="token punctuation">[</span><span class="token number">2</span>
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3679,139 +3691,139 @@
 <h1 id="tgcombobox"><a name="tgcombobox" class="plugin-anchor" href="#tgcombobox"><i class="fa fa-link" aria-hidden="true"></i></a>TGComboBox</h1>
 <p>TGComboBox &#x7EE7;&#x627F; TGCompositeFrame, TGWidget</p>
 <p>A combobox (also known as a drop down listbox) allows the selection<br>of one item out of a list of items. The selected item is visible in<br>a little window. To view the list of possible items one has to click<br>on a button on the right of the little window. This will drop down<br>a listbox. After selecting an item from the listbox the box will<br>disappear and the newly selected item will be shown in the little<br>window.</p>
-<pre class="language-"><code>Selecting an item in the combobox will generate the event:
+<pre><code>Selecting an item in the combobox will generate the event:
 kC_COMMAND, kCM_COMBOBOX, combobox id, item id.
 </code></pre><p>TGLineStyleComboBox &#x7EE7;&#x627F; TGComboBox<br>The TGLineStyleComboBox user callable and it creates a combobox for selecting the line style.</p>
 <p>TGLineWidthComboBox &#x7EE7;&#x627F; TGComboBox<br>The TGLineWidthComboBox user callable and it creates a combobox for selecting the line width.</p>
 <p>TGFontTypeComboBox &#x7EE7;&#x627F; TGComboBox<br>The TGFontTypeComboBox is user callable and it creates a combobox for selecting the font.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TGComboBox</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGComboBox</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-              UInt_t options <span class="token operator">=</span> kHorizontalFrame <span class="token operator">|</span> kSunkenFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">,</span>
-              Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a combo box widget.</span>
-   <span class="token function">TGComboBox</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-              UInt_t options <span class="token operator">=</span> kHorizontalFrame <span class="token operator">|</span> kSunkenFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">,</span>
-              Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create an editable combo box widget.</span>
+<pre><code class="lang-cpp">   TGComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+              UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
+              Pixel_t back = GetWhitePixel());<span class="hljs-comment">/// Create a combo box widget.</span>
+   TGComboBox(<span class="hljs-keyword">const</span> TGWindow *p, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, Int_t id = <span class="hljs-number">-1</span>,
+              UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
+              Pixel_t back = GetWhitePixel());<span class="hljs-comment">/// Create an editable combo box widget.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGComboBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete a combo box widget.</span>
+   <span class="hljs-keyword">virtual</span> ~TGComboBox();<span class="hljs-comment">/// Delete a combo box widget.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">DrawBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw border of combo box widget.</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TGDimension</span><span class="token punctuation">(</span>fWidth<span class="token punctuation">,</span> fHeight<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw border of combo box widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TGDimension(fWidth, fHeight); }
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button events in the combo box.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleDoubleClick</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle double click in text entry.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle pointer motion in text entry.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleSelection</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle selection in text entry.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleSelectionRequest</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle selection request in text entry.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">ProcessMessage</span><span class="token punctuation">(</span>Long_t msg<span class="token punctuation">,</span> Long_t parm1<span class="token punctuation">,</span> Long_t parm2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Process messages generated by the listbox and forward</span>
-<span class="token comment">/// messages to the combobox message handling window. Parm2 contains</span>
-<span class="token comment">/// the id of the selected listbox entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button events in the combo box.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleDoubleClick</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle double click in text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle pointer motion in text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleSelection</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle selection in text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleSelectionRequest</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle selection request in text entry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
+<span class="hljs-comment">/// Process messages generated by the listbox and forward</span>
+<span class="hljs-comment">/// messages to the combobox message handling window. Parm2 contains</span>
+<span class="hljs-comment">/// the id of the selected listbox entry.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AddEntry</span><span class="token punctuation">(</span>TGString <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id<span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AddEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id<span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AddEntry</span><span class="token punctuation">(</span>TGLBEntry <span class="token operator">*</span>lbe<span class="token punctuation">,</span> TGLayoutHints <span class="token operator">*</span>lhints<span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>lbe<span class="token punctuation">,</span> lhints<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">InsertEntry</span><span class="token punctuation">(</span>TGString <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id<span class="token punctuation">,</span> Int_t afterID<span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">InsertEntry</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> id<span class="token punctuation">,</span> afterID<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">InsertEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id<span class="token punctuation">,</span> Int_t afterID<span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">InsertEntry</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> id<span class="token punctuation">,</span> afterID<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">InsertEntry</span><span class="token punctuation">(</span>TGLBEntry <span class="token operator">*</span>lbe<span class="token punctuation">,</span> TGLayoutHints <span class="token operator">*</span>lhints<span class="token punctuation">,</span> Int_t afterID<span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">InsertEntry</span><span class="token punctuation">(</span>lbe<span class="token punctuation">,</span> lhints<span class="token punctuation">,</span> afterID<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">NewEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token string">&quot;Entry&quot;</span><span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">NewEntry</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">Resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>       <span class="token comment">//*MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">RemoveEntry</span><span class="token punctuation">(</span>Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">//*MENU*</span>
-<span class="token comment">/// Remove entry. If id == -1, the currently selected entry is removed</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntry</span><span class="hljs-params">(TGString *s, Int_t id)</span>
+                        </span>{ fListBox-&gt;AddEntry(s, id); Resize(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, Int_t id)</span>
+                        </span>{ fListBox-&gt;AddEntry(s, id); Resize(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntry</span><span class="hljs-params">(TGLBEntry *lbe, TGLayoutHints *lhints)</span>
+                        </span>{ fListBox-&gt;AddEntry(lbe, lhints); Resize(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InsertEntry</span><span class="hljs-params">(TGString *s, Int_t id, Int_t afterID)</span>
+                        </span>{ fListBox-&gt;InsertEntry(s, id, afterID); Resize(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InsertEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, Int_t id, Int_t afterID)</span>
+                        </span>{ fListBox-&gt;InsertEntry(s, id, afterID); Resize(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InsertEntry</span><span class="hljs-params">(TGLBEntry *lbe, TGLayoutHints *lhints, Int_t afterID)</span>
+                        </span>{ fListBox-&gt;InsertEntry(lbe, lhints, afterID); Resize(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">NewEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s = <span class="hljs-string">&quot;Entry&quot;</span>)</span>
+                        </span>{ fListBox-&gt;NewEntry(s); Resize(); }       <span class="hljs-comment">//*MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveEntry</span><span class="hljs-params">(Int_t id = <span class="hljs-number">-1</span>)</span></span>;                        <span class="hljs-comment">//*MENU*</span>
+<span class="hljs-comment">/// Remove entry. If id == -1, the currently selected entry is removed</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">RemoveAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                       <span class="token comment">//*MENU*</span>
-<span class="token comment">/// Remove all entries from combo box.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveAll</span><span class="hljs-params">()</span></span>;                                       <span class="hljs-comment">//*MENU*</span>
+<span class="hljs-comment">/// Remove all entries from combo box.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// layout combobox</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsTextInputEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>fTextEntry <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">EnableTextInput</span><span class="token punctuation">(</span>Bool_t on<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//*TOGGLE* *GETTER=IsTextInputEnabled</span>
-<span class="token comment">/// Switch text input or readonly mode of combobox (not perfect yet).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// layout combobox</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsTextInputEnabled</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (fTextEntry != <span class="hljs-number">0</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">EnableTextInput</span><span class="hljs-params">(Bool_t on)</span></span>;    <span class="hljs-comment">//*TOGGLE* *GETTER=IsTextInputEnabled</span>
+<span class="hljs-comment">/// Switch text input or readonly mode of combobox (not perfect yet).</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">RemoveEntries</span><span class="token punctuation">(</span>Int_t from_ID<span class="token punctuation">,</span> Int_t to_ID<span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">RemoveEntries</span><span class="token punctuation">(</span>from_ID<span class="token punctuation">,</span> to_ID<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t <span class="token function">GetNumberOfEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-                        <span class="token punctuation">{</span> <span class="token keyword">return</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetNumberOfEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveEntries</span><span class="hljs-params">(Int_t from_ID, Int_t to_ID)</span>
+                        </span>{ fListBox-&gt;RemoveEntries(from_ID, to_ID); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetNumberOfEntries</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
+                        </span>{ <span class="hljs-keyword">return</span> fListBox-&gt;GetNumberOfEntries(); }
 
-   <span class="token keyword">virtual</span> TGListBox    <span class="token operator">*</span><span class="token function">GetListBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fListBox<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGTextEntry  <span class="token operator">*</span><span class="token function">GetTextEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTextEntry<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGLBEntry    <span class="token operator">*</span><span class="token function">FindEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Find entry by name.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Select</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Emit signal.</span>
-<span class="token comment">/// Make the selected item visible in the combo box window</span>
-<span class="token comment">/// and emit signals according to the second parameter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGListBox    *<span class="hljs-title">GetListBox</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fListBox; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGTextEntry  *<span class="hljs-title">GetTextEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTextEntry; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLBEntry    *<span class="hljs-title">FindEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Find entry by name.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Select</span><span class="hljs-params">(Int_t id, Bool_t emit = kTRUE)</span></span>;<span class="hljs-comment">/// Emit signal.</span>
+<span class="hljs-comment">/// Make the selected item visible in the combo box window</span>
+<span class="hljs-comment">/// and emit signals according to the second parameter.</span>
 
-   <span class="token keyword">virtual</span> Int_t <span class="token function">GetSelected</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetSelected</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGLBEntry <span class="token operator">*</span><span class="token function">GetSelectedEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-                        <span class="token punctuation">{</span> <span class="token keyword">return</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetSelectedEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetTopEntry</span><span class="token punctuation">(</span>TGLBEntry <span class="token operator">*</span>e<span class="token punctuation">,</span> TGLayoutHints <span class="token operator">*</span>lh<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set a new combo box value (normally update of text string in</span>
-<span class="token comment">/// fSelEntry is done via fSelEntry::Update()).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fListBox-&gt;GetSelected(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLBEntry *<span class="hljs-title">GetSelectedEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
+                        </span>{ <span class="hljs-keyword">return</span> fListBox-&gt;GetSelectedEntry(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTopEntry</span><span class="hljs-params">(TGLBEntry *e, TGLayoutHints *lh)</span></span>;
+<span class="hljs-comment">/// Set a new combo box value (normally update of text string in</span>
+<span class="hljs-comment">/// fSelEntry is done via fSelEntry::Update()).</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetEnabled</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//*TOGGLE* *GETTER=IsEnabled</span>
-<span class="token comment">/// Set state of combo box. If kTRUE=enabled, kFALSE=disabled.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetEnabled</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;   <span class="hljs-comment">//*TOGGLE* *GETTER=IsEnabled</span>
+<span class="hljs-comment">/// Set state of combo box. If kTRUE=enabled, kFALSE=disabled.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span>  fDDButton<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">IsEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SortByName</span><span class="token punctuation">(</span>Bool_t ascend <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span>
-                  <span class="token punctuation">{</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SortByName</span><span class="token punctuation">(</span>ascend<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>            <span class="token comment">//*MENU*icon=bld_sortup.png*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsEnabled</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span>  fDDButton-&gt;IsEnabled(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SortByName</span><span class="hljs-params">(Bool_t ascend = kTRUE)</span>
+                  </span>{ fListBox-&gt;SortByName(ascend); }            <span class="hljs-comment">//*MENU*icon=bld_sortup.png*</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Selected</span><span class="token punctuation">(</span>Int_t widgetId<span class="token punctuation">,</span> Int_t id<span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Selected</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Selected(Int_t)&quot;</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Selected</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>txt<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Selected(char*)&quot;</span><span class="token punctuation">,</span> txt<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">ReturnPressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                     <span class="token comment">// *SIGNAL*</span>
-<span class="token comment">/// Add new entry to combo box when return key pressed inside text entry</span>
-<span class="token comment">/// ReturnPressed signal is emitted.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Selected</span><span class="hljs-params">(Int_t widgetId, Int_t id)</span></span>;                  <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Selected</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;Selected(Int_t)&quot;</span>, id); }  <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Selected</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *txt)</span> </span>{ Emit(<span class="hljs-string">&quot;Selected(char*)&quot;</span>, txt); } <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReturnPressed</span><span class="hljs-params">()</span></span>;                                     <span class="hljs-comment">// *SIGNAL*</span>
+<span class="hljs-comment">/// Add new entry to combo box when return key pressed inside text entry</span>
+<span class="hljs-comment">/// ReturnPressed signal is emitted.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a combo box widget as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a combo box widget as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <p><strong>TGLineStyleComboBox</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGLineStyleComboBox</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-              UInt_t options <span class="token operator">=</span> kHorizontalFrame <span class="token operator">|</span> kSunkenFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">,</span>
-              Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a line style combo box.</span>
+<pre><code class="lang-cpp">   TGLineStyleComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+              UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
+              Pixel_t back = GetWhitePixel());<span class="hljs-comment">/// Create a line style combo box.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a line style combo box widget as a C++ statement(s).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a line style combo box widget as a C++ statement(s).</span>
 </code></pre>
 <p><strong>TGLineWidthComboBox</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGLineWidthComboBox</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-              UInt_t options <span class="token operator">=</span> kHorizontalFrame <span class="token operator">|</span> kSunkenFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">,</span>
-              Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Bool_t none<span class="token operator">=</span>kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a line width combo box.</span>
-<span class="token comment">/// If &quot;none&quot; is equal to kTRUE the first entry is &quot;None&quot;.</span>
+<pre><code class="lang-cpp">   TGLineWidthComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+              UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
+              Pixel_t back = GetWhitePixel(), Bool_t none=kFALSE);
+<span class="hljs-comment">/// Create a line width combo box.</span>
+<span class="hljs-comment">/// If &quot;none&quot; is equal to kTRUE the first entry is &quot;None&quot;.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a line width combo box widget as a C++ statement(s).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a line width combo box widget as a C++ statement(s).</span>
 </code></pre>
 <p><strong>TGFontTypeComboBox</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGFontTypeComboBox</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-            UInt_t options <span class="token operator">=</span> kHorizontalFrame <span class="token operator">|</span> kSunkenFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">,</span>
-            Pixel_t bask <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a text font combo box.</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGFontTypeComboBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Text font combo box dtor.</span>
+<pre><code class="lang-cpp">   TGFontTypeComboBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+            UInt_t options = kHorizontalFrame | kSunkenFrame | kDoubleBorder,
+            Pixel_t bask = GetWhitePixel());<span class="hljs-comment">/// Create a text font combo box.</span>
+   <span class="hljs-keyword">virtual</span> ~TGFontTypeComboBox();<span class="hljs-comment">/// Text font combo box dtor.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TGComboBox.h&quot;</span></span>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TGComboBox.h&quot;</span></span>
 
-<span class="token comment">// TGComboBox</span>
-<span class="token comment">// &#x4E0B;&#x62C9;&#x9009;&#x9879;</span>
-TGComboBox <span class="token operator">*</span>fMonthBox<span class="token punctuation">;</span>
-fMonthBox <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGComboBox</span><span class="token punctuation">(</span>frame<span class="token punctuation">)</span><span class="token punctuation">;</span>
-frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fMonthBox<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsLeft<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fMonthBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span><span class="token string">&quot;AAA&quot;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fMonthBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span><span class="token string">&quot;BBB&quot;</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fMonthBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span><span class="token string">&quot;CCC&quot;</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fMonthBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Select</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// fMonthBox-&gt;Resize(100, /*fYearEntry*/-&gt;GetHeight());</span>
+<span class="hljs-comment">// TGComboBox</span>
+<span class="hljs-comment">// &#x4E0B;&#x62C9;&#x9009;&#x9879;</span>
+TGComboBox *fMonthBox;
+fMonthBox = <span class="hljs-keyword">new</span> TGComboBox(frame);
+frame-&gt;AddFrame(fMonthBox, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsLeft, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+fMonthBox-&gt;AddEntry(<span class="hljs-string">&quot;AAA&quot;</span>, <span class="hljs-number">1</span>);
+fMonthBox-&gt;AddEntry(<span class="hljs-string">&quot;BBB&quot;</span>, <span class="hljs-number">2</span>);
+fMonthBox-&gt;AddEntry(<span class="hljs-string">&quot;CCC&quot;</span>, <span class="hljs-number">3</span>);
+fMonthBox-&gt;Select(<span class="hljs-number">1</span>);
+<span class="hljs-comment">// fMonthBox-&gt;Resize(100, /*fYearEntry*/-&gt;GetHeight());</span>
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGComboBox.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3854,7 +3866,7 @@ fMonthBox<span class="token operator">-</span><span class="token operator">&gt;<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGComboBox*","level":"1.3.8","depth":2,"next":{"title":"TGCommandPlugin*","level":"1.3.9","depth":2,"path":"class/gui/TGCommandPlugin.md","ref":"class/gui/TGCommandPlugin.md","articles":[]},"previous":{"title":"TGColorSelect*","level":"1.3.7","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGComboBox.md","mtime":"2018-05-14T09:18:21.634Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGComboBox*","level":"1.3.8","depth":2,"next":{"title":"TGCommandPlugin*","level":"1.3.9","depth":2,"path":"class/gui/TGCommandPlugin.md","ref":"class/gui/TGCommandPlugin.md","articles":[]},"previous":{"title":"TGColorSelect*","level":"1.3.7","depth":2,"path":"class/gui/TGColorSelect.md","ref":"class/gui/TGColorSelect.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGComboBox.md","mtime":"2018-05-14T09:18:21.634Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3886,6 +3898,18 @@ fMonthBox<span class="token operator">-</span><span class="token operator">&gt;<
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

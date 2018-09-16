@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3684,39 +3696,39 @@ to identify a derived object in containers, directories and files.
 Most member functions defined in this base class are in general
 overridden by the derived classes.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option <span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Set name and title to empty strings (&quot;&quot;)</span>
-   <span class="token keyword">virtual</span> TObject <span class="token operator">*</span><span class="token function">Clone</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>newname<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">// Make a clone of an object using the Streamer facility. If newname is specified, this will be the name of the new object.</span>
-   <span class="token keyword">virtual</span> Int_t    <span class="token function">Compare</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">// Compare two TNamed objects. Returns 0 when equal, -1 when this is smaller and +1 when bigger (like strcmp).</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Copy</span><span class="token punctuation">(</span>TObject <span class="token operator">&amp;</span>named<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">// Copy this to obj.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">FillBuffer</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">&amp;</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// Encode TNamed into output buffer.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span>  <span class="token operator">*</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fName<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span>  <span class="token operator">*</span><span class="token function">GetTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTitle<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> ULong_t  <span class="token function">Hash</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fName<span class="token punctuation">.</span><span class="token function">Hash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t   <span class="token function">IsSortable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*   &#x8BBE;&#x7F6E;object identifier</span>
-<span class="token comment">/// Change (i.e. set) the name of the TNamed.</span>
-<span class="token comment">/// WARNING: if the object is a member of a THashTable or THashList container</span>
-<span class="token comment">/// the container must be Rehash()&apos;ed after SetName(). For example the list</span>
-<span class="token comment">/// of objects in the current directory is a THashList.</span>
+<pre><code class="lang-cpp">   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t *option =<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">//Set name and title to empty strings (&quot;&quot;)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject *<span class="hljs-title">Clone</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *newname=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// Make a clone of an object using the Streamer facility. If newname is specified, this will be the name of the new object.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">Compare</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// Compare two TNamed objects. Returns 0 when equal, -1 when this is smaller and +1 when bigger (like strcmp).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;named)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// Copy this to obj.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">FillBuffer</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *&amp;buffer)</span></span>;<span class="hljs-comment">// Encode TNamed into output buffer.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">GetName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fName; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">GetTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fTitle; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> ULong_t  <span class="hljs-title">Hash</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fName.Hash(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t   <span class="hljs-title">IsSortable</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>; <span class="hljs-comment">// *MENU*   &#x8BBE;&#x7F6E;object identifier</span>
+<span class="hljs-comment">/// Change (i.e. set) the name of the TNamed.</span>
+<span class="hljs-comment">/// WARNING: if the object is a member of a THashTable or THashList container</span>
+<span class="hljs-comment">/// the container must be Rehash()&apos;ed after SetName(). For example the list</span>
+<span class="hljs-comment">/// of objects in the current directory is a THashList.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetNameTitle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Change (i.e. set) all the TNamed parameters (name and title).</span>
-<span class="token comment">/// WARNING: if the name is changed and the object is a member of a</span>
-<span class="token comment">/// THashTable or THashList container the container must be Rehash()&apos;ed</span>
-<span class="token comment">/// after SetName(). For example the list of objects in the current</span>
-<span class="token comment">/// directory is a THashList.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetNameTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title)</span></span>;
+<span class="hljs-comment">/// Change (i.e. set) all the TNamed parameters (name and title).</span>
+<span class="hljs-comment">/// WARNING: if the name is changed and the object is a member of a</span>
+<span class="hljs-comment">/// THashTable or THashList container the container must be Rehash()&apos;ed</span>
+<span class="hljs-comment">/// after SetName(). For example the list of objects in the current</span>
+<span class="hljs-comment">/// directory is a THashList.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*  &#x8BBE;&#x7F6E;object title</span>
-<span class="token comment">/// Change (i.e. set) the title of the TNamed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*  &#x8BBE;&#x7F6E;object title</span>
+<span class="hljs-comment">/// Change (i.e. set) the title of the TNamed.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">// List TNamed name and title.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Print</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">// Print TNamed name and title.</span>
-   <span class="token keyword">virtual</span> Int_t    <span class="token function">Sizeof</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">// Return size of the TNamed part of the TObject.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// List TNamed name and title.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// Print TNamed name and title.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">Sizeof</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// Return size of the TNamed part of the TObject.</span>
 </code></pre>
 <!-- TNamed.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:23
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:23 </span> </footer>
                                 
                                 </section>
                             
@@ -3759,7 +3771,7 @@ overridden by the derived classes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TNamed+","level":"1.2.56","depth":2,"next":{"title":"TNeuron","level":"1.2.57","depth":2,"path":"class/TNeuron.md","ref":"class/TNeuron.md","articles":[]},"previous":{"title":"TMultiLayerPerceptron","level":"1.2.55","depth":2,"path":"class/TMultiLayerPerceptron.md","ref":"class/TMultiLayerPerceptron.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TNamed.md","mtime":"2018-05-14T09:18:23.171Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TNamed+","level":"1.2.56","depth":2,"next":{"title":"TNeuron","level":"1.2.57","depth":2,"path":"class/TNeuron.md","ref":"class/TNeuron.md","articles":[]},"previous":{"title":"TMultiLayerPerceptron","level":"1.2.55","depth":2,"path":"class/TMultiLayerPerceptron.md","ref":"class/TMultiLayerPerceptron.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TNamed.md","mtime":"2018-05-14T09:18:23.171Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3791,6 +3803,18 @@ overridden by the derived classes.</p>
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

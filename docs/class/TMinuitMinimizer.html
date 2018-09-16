@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3681,119 +3693,119 @@
 In addition the user can choose the minimizer algorithm: Migrad (the default one), Simplex, or Minimize (combined Migrad + Simplex)</p>
 <p>TMinuitMinimizer &#x7EE7;&#x627F; ROOT::Math::Minimizer</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token comment">/**
+<pre><code class="lang-cpp">   <span class="hljs-comment">/**
       Default constructor
    */</span>
-   TMinuitMinimizer <span class="token punctuation">(</span> ROOT<span class="token operator">::</span>Minuit<span class="token operator">::</span>EMinimizerType type <span class="token operator">=</span> ROOT<span class="token operator">::</span>Minuit<span class="token operator">::</span>kMigrad<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> ndim <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TMinuitMinimizer ( ROOT::Minuit::EMinimizerType type = ROOT::Minuit::kMigrad, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ndim = <span class="hljs-number">0</span>);
 
-   <span class="token comment">/**
+   <span class="hljs-comment">/**
       Constructor from a char * (used by PM)
    */</span>
-   TMinuitMinimizer <span class="token punctuation">(</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> type <span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> ndim <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TMinuitMinimizer ( <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * type , <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ndim = <span class="hljs-number">0</span>);
 
-   <span class="token comment">/**
+   <span class="hljs-comment">/**
       Destructor (no operations)
    */</span>
-   <span class="token operator">~</span>TMinuitMinimizer <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   ~TMinuitMinimizer ();
 
 
-   <span class="token comment">/// set the function to minimize</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetFunction</span><span class="token punctuation">(</span><span class="token keyword">const</span> ROOT<span class="token operator">::</span>Math<span class="token operator">::</span>IMultiGenFunction <span class="token operator">&amp;</span> func<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Set the objective function to be minimized, by passing a function object implement the</span>
-   <span class="token comment">// basic multi-dim Function interface. In this case the derivatives will be</span>
-   <span class="token comment">// calculated by Minuit</span>
-   <span class="token comment">// Here a TMinuit instance is created since only at this point we know the number of parameters</span>
+   <span class="hljs-comment">/// set the function to minimize</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetFunction</span><span class="hljs-params">(<span class="hljs-keyword">const</span> ROOT::Math::IMultiGenFunction &amp; func)</span></span>;
+   <span class="hljs-comment">// Set the objective function to be minimized, by passing a function object implement the</span>
+   <span class="hljs-comment">// basic multi-dim Function interface. In this case the derivatives will be</span>
+   <span class="hljs-comment">// calculated by Minuit</span>
+   <span class="hljs-comment">// Here a TMinuit instance is created since only at this point we know the number of parameters</span>
 
-   <span class="token comment">/// set the function to minimize</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetFunction</span><span class="token punctuation">(</span><span class="token keyword">const</span> ROOT<span class="token operator">::</span>Math<span class="token operator">::</span>IMultiGradFunction <span class="token operator">&amp;</span> func<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Set the objective function to be minimized, by passing a function object implement the</span>
-   <span class="token comment">// multi-dim gradient Function interface. In this case the function derivatives are provided</span>
-   <span class="token comment">// by the user via this interface and there not calculated by Minuit.</span>
+   <span class="hljs-comment">/// set the function to minimize</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetFunction</span><span class="hljs-params">(<span class="hljs-keyword">const</span> ROOT::Math::IMultiGradFunction &amp; func)</span></span>;
+   <span class="hljs-comment">// Set the objective function to be minimized, by passing a function object implement the</span>
+   <span class="hljs-comment">// multi-dim gradient Function interface. In this case the function derivatives are provided</span>
+   <span class="hljs-comment">// by the user via this interface and there not calculated by Minuit.</span>
 
-   <span class="token comment">/// set free variable</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetVariable</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> ivar<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span> name<span class="token punctuation">,</span> <span class="token keyword">double</span> val<span class="token punctuation">,</span> <span class="token keyword">double</span> step<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// set free variable</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetVariable</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ivar, <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp; name, <span class="hljs-keyword">double</span> val, <span class="hljs-keyword">double</span> step)</span></span>;
 
-   <span class="token comment">/// set upper/lower limited variable (override if minimizer supports them )</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetLimitedVariable</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> ivar <span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span> name <span class="token punctuation">,</span> <span class="token keyword">double</span> val <span class="token punctuation">,</span> <span class="token keyword">double</span> step <span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token comment">/* lower */</span><span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token comment">/* upper */</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// set upper/lower limited variable (override if minimizer supports them )</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetLimitedVariable</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ivar , <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp; name , <span class="hljs-keyword">double</span> val , <span class="hljs-keyword">double</span> step , <span class="hljs-keyword">double</span> <span class="hljs-comment">/* lower */</span>, <span class="hljs-keyword">double</span> <span class="hljs-comment">/* upper */</span>)</span></span>;
 
-   <span class="token comment">/// set lower limit variable  (override if minimizer supports them )</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetLowerLimitedVariable</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span>  ivar <span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span> name <span class="token punctuation">,</span> <span class="token keyword">double</span> val <span class="token punctuation">,</span> <span class="token keyword">double</span> step <span class="token punctuation">,</span> <span class="token keyword">double</span> lower <span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// set lower limit variable  (override if minimizer supports them )</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetLowerLimitedVariable</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>  ivar , <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp; name , <span class="hljs-keyword">double</span> val , <span class="hljs-keyword">double</span> step , <span class="hljs-keyword">double</span> lower )</span></span>;
 
-   <span class="token comment">/// set upper limit variable (override if minimizer supports them )</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetUpperLimitedVariable</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> ivar <span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span> name <span class="token punctuation">,</span> <span class="token keyword">double</span> val <span class="token punctuation">,</span> <span class="token keyword">double</span> step <span class="token punctuation">,</span> <span class="token keyword">double</span> upper <span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// set upper limit variable (override if minimizer supports them )</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetUpperLimitedVariable</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ivar , <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp; name , <span class="hljs-keyword">double</span> val , <span class="hljs-keyword">double</span> step , <span class="hljs-keyword">double</span> upper )</span></span>;
 
-   <span class="token comment">/// set fixed variable (override if minimizer supports them )</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetFixedVariable</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token comment">/* ivar */</span><span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span> <span class="token comment">/* name */</span><span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token comment">/* val */</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// set fixed variable (override if minimizer supports them )</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetFixedVariable</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-comment">/* ivar */</span>, <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp; <span class="hljs-comment">/* name */</span>, <span class="hljs-keyword">double</span> <span class="hljs-comment">/* val */</span>)</span></span>;
 
-   <span class="token comment">/// set the value of an existing variable</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetVariableValue</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// set the value of an existing variable</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetVariableValue</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> , <span class="hljs-keyword">double</span> )</span></span>;
 
-   <span class="token comment">/// set the step size of an existing variable</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetVariableStepSize</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">/// set the lower-limit of an existing variable</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetVariableLowerLimit</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">/// set the upper-limit of an existing variable</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetVariableUpperLimit</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">/// set the limits of an existing variable</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">SetVariableLimits</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> ivar<span class="token punctuation">,</span> <span class="token keyword">double</span> lower<span class="token punctuation">,</span> <span class="token keyword">double</span> upper<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">/// fix an existing variable</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">FixVariable</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">/// release an existing variable</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">ReleaseVariable</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">/// query if an existing variable is fixed (i.e. considered constant in the minimization)</span>
-   <span class="token comment">/// note that by default all variables are not fixed</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">IsFixedVariable</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">/// get variable settings in a variable object (like ROOT::Fit::ParamsSettings)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">GetVariableSettings</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span><span class="token punctuation">,</span> ROOT<span class="token operator">::</span>Fit<span class="token operator">::</span>ParameterSettings <span class="token operator">&amp;</span> <span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// set the step size of an existing variable</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetVariableStepSize</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> , <span class="hljs-keyword">double</span> )</span></span>;
+   <span class="hljs-comment">/// set the lower-limit of an existing variable</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetVariableLowerLimit</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> , <span class="hljs-keyword">double</span> )</span></span>;
+   <span class="hljs-comment">/// set the upper-limit of an existing variable</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetVariableUpperLimit</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> , <span class="hljs-keyword">double</span> )</span></span>;
+   <span class="hljs-comment">/// set the limits of an existing variable</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">SetVariableLimits</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ivar, <span class="hljs-keyword">double</span> lower, <span class="hljs-keyword">double</span> upper)</span></span>;
+   <span class="hljs-comment">/// fix an existing variable</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">FixVariable</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>)</span></span>;
+   <span class="hljs-comment">/// release an existing variable</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">ReleaseVariable</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>)</span></span>;
+   <span class="hljs-comment">/// query if an existing variable is fixed (i.e. considered constant in the minimization)</span>
+   <span class="hljs-comment">/// note that by default all variables are not fixed</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsFixedVariable</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">/// get variable settings in a variable object (like ROOT::Fit::ParamsSettings)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">GetVariableSettings</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>, ROOT::Fit::ParameterSettings &amp; )</span> <span class="hljs-keyword">const</span></span>;
 
 
-   <span class="token comment">/// method to perform the minimization</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">bool</span> <span class="token function">Minimize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// perform the minimization using the algorithm chosen previously by the user</span>
-   <span class="token comment">// By default Migrad is used.</span>
-   <span class="token comment">// Return true if the found minimum is valid and update internal chached values of</span>
-   <span class="token comment">// minimum values, errors and covariance matrix.</span>
-   <span class="token comment">// Status of minimizer is set to:</span>
-   <span class="token comment">// migradResult + 10*minosResult + 100*hesseResult + 1000*improveResult</span>
+   <span class="hljs-comment">/// method to perform the minimization</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">bool</span> <span class="hljs-title">Minimize</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-comment">// perform the minimization using the algorithm chosen previously by the user</span>
+   <span class="hljs-comment">// By default Migrad is used.</span>
+   <span class="hljs-comment">// Return true if the found minimum is valid and update internal chached values of</span>
+   <span class="hljs-comment">// minimum values, errors and covariance matrix.</span>
+   <span class="hljs-comment">// Status of minimizer is set to:</span>
+   <span class="hljs-comment">// migradResult + 10*minosResult + 100*hesseResult + 1000*improveResult</span>
 
-   <span class="token comment">/// return minimum function value</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">double</span> <span class="token function">MinValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// return minimum function value</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">MinValue</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token comment">/// return expected distance reached from the minimum</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">double</span> <span class="token function">Edm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// return expected distance reached from the minimum</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">Edm</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token comment">/// return  pointer to X values at the minimum</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">double</span> <span class="token operator">*</span>  <span class="token function">X</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token operator">&amp;</span>fParams<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/// return  pointer to X values at the minimum</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> *  <span class="hljs-title">X</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> &amp;fParams.front(); }
 
-   <span class="token comment">/// return pointer to gradient values at the minimum</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">double</span> <span class="token operator">*</span>  <span class="token function">MinGradient</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// not available in Minuit2</span>
+   <span class="hljs-comment">/// return pointer to gradient values at the minimum</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> *  <span class="hljs-title">MinGradient</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; } <span class="hljs-comment">// not available in Minuit2</span>
 
-   <span class="token comment">/// number of function calls to reach the minimum</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token function">NCalls</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// number of function calls to reach the minimum</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">NCalls</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token comment">/// this is &lt;= Function().NDim() which is the total</span>
-   <span class="token comment">/// number of variables (free+ constrained ones)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token function">NDim</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fDim<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/// this is &lt;= Function().NDim() which is the total</span>
+   <span class="hljs-comment">/// number of variables (free+ constrained ones)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">NDim</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fDim; }
 
-   <span class="token comment">/// number of free variables (real dimension of the problem)</span>
-   <span class="token comment">/// this is &lt;= Function().NDim() which is the total</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token function">NFree</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">// return number of free parameters</span>
+   <span class="hljs-comment">/// number of free variables (real dimension of the problem)</span>
+   <span class="hljs-comment">/// this is &lt;= Function().NDim() which is the total</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">NFree</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// return number of free parameters</span>
 
-   <span class="token comment">/// minimizer provides error and error matrix</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">ProvidesError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/// minimizer provides error and error matrix</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">ProvidesError</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; }
 
-   <span class="token comment">/// return errors at the minimum</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">double</span> <span class="token operator">*</span> <span class="token function">Errors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span>  <span class="token operator">&amp;</span>fErrors<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">/// return errors at the minimum</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> * <span class="hljs-title">Errors</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span>  &amp;fErrors.front(); }
 
-   <span class="token comment">/** return covariance matrices elements
+   <span class="hljs-comment">/** return covariance matrices elements
        if the variable is fixed the matrix is zero
        The ordering of the variables is the same as in errors
    */</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">double</span> <span class="token function">CovMatrix</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">(</span> fCovar<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> fDim<span class="token operator">*</span> j<span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token operator">?</span> fCovar<span class="token punctuation">[</span>i <span class="token operator">+</span> fDim<span class="token operator">*</span> j<span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">CovMatrix</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> j)</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-keyword">return</span> ( fCovar.size() &gt; (i + fDim* j) ) ? fCovar[i + fDim* j] : <span class="hljs-number">0</span>;
+   }
 
-   <span class="token comment">/**
+   <span class="hljs-comment">/**
        Fill the passed array with the  covariance matrix elements
        if the variable is fixed or const the value is zero.
        The array will be filled as cov[i *ndim + j]
@@ -3801,84 +3813,84 @@ In addition the user can choose the minimizer algorithm: Migrad (the default one
        This is different from the direct interface of Minuit2 or TMinuit where the
        values were obtained only to variable parameters
    */</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">GetCovMatrix</span><span class="token punctuation">(</span><span class="token keyword">double</span> <span class="token operator">*</span> cov<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">// get covariance matrix</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">GetCovMatrix</span><span class="hljs-params">(<span class="hljs-keyword">double</span> * cov)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">// get covariance matrix</span>
 
-   <span class="token comment">/**
+   <span class="hljs-comment">/**
        Fill the passed array with the Hessian matrix elements
        The Hessian matrix is the matrix of the second derivatives
        and is the inverse of the covariance matrix
        If the variable is fixed or const the values for that variables are zero.
        The array will be filled as h[i *ndim + j]
    */</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">GetHessianMatrix</span><span class="token punctuation">(</span><span class="token keyword">double</span> <span class="token operator">*</span> h<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// get Hessian - inverse of covariance matrix</span>
-   <span class="token comment">// just invert it</span>
-   <span class="token comment">// but need to get the compact form to avoid the zero for the fixed parameters</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">GetHessianMatrix</span><span class="hljs-params">(<span class="hljs-keyword">double</span> * h)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// get Hessian - inverse of covariance matrix</span>
+   <span class="hljs-comment">// just invert it</span>
+   <span class="hljs-comment">// but need to get the compact form to avoid the zero for the fixed parameters</span>
 
-   <span class="token comment">///return status of covariance matrix</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">int</span> <span class="token function">CovMatrixStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token comment">// return status of covariance matrix</span>
-   <span class="token comment">//           status:  0= not calculated at all</span>
-   <span class="token comment">//                    1= approximation only, not accurate</span>
-   <span class="token comment">//                    2= full matrix, but forced positive-definite</span>
-   <span class="token comment">//                    3= full accurate covariance matrix</span>
+   <span class="hljs-comment">///return status of covariance matrix</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span> <span class="hljs-title">CovMatrixStatus</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-comment">// return status of covariance matrix</span>
+   <span class="hljs-comment">//           status:  0= not calculated at all</span>
+   <span class="hljs-comment">//                    1= approximation only, not accurate</span>
+   <span class="hljs-comment">//                    2= full matrix, but forced positive-definite</span>
+   <span class="hljs-comment">//                    3= full accurate covariance matrix</span>
 
-   <span class="token comment">///global correlation coefficient for variable i</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">double</span> <span class="token function">GlobalCC</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">///global correlation coefficient for variable i</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">GlobalCC</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> )</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token comment">/// minos error for variable i, return false if Minos failed</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">GetMinosError</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token operator">&amp;</span> errLow<span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token operator">&amp;</span> errUp<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// global correlation coefficient for parameter i</span>
+   <span class="hljs-comment">/// minos error for variable i, return false if Minos failed</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">GetMinosError</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">double</span> &amp; errLow, <span class="hljs-keyword">double</span> &amp; errUp, <span class="hljs-keyword">int</span> = <span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">// global correlation coefficient for parameter i</span>
 
-   <span class="token comment">/**
+   <span class="hljs-comment">/**
       perform a full calculation of the Hessian matrix for error calculation
     */</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">Hesse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// perform calculation of Hessian</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Hesse</span><span class="hljs-params">()</span></span>;   <span class="hljs-comment">// perform calculation of Hessian</span>
 
-   <span class="token comment">/**
+   <span class="hljs-comment">/**
       scan a parameter i around the minimum. A minimization must have been done before,
       return false if it is not the case
     */</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">Scan</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>nstep<span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token operator">*</span> x<span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token operator">*</span> y<span class="token punctuation">,</span> <span class="token keyword">double</span> xmin <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">double</span> xmax <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// scan a parameter (variable) around the minimum value</span>
-   <span class="token comment">// the parameters must have been set before</span>
-   <span class="token comment">// if xmin=0 &amp;&amp; xmax == 0  by default scan around 2 sigma of the error</span>
-   <span class="token comment">// if the errors  are also zero then scan from min and max of parameter range</span>
-   <span class="token comment">// (if parameters are limited Minuit scan from min and max instead of 2 sigma by default)</span>
-   <span class="token comment">// (force in that case to use errors)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Scan</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> &amp;nstep, <span class="hljs-keyword">double</span> * x, <span class="hljs-keyword">double</span> * y, <span class="hljs-keyword">double</span> xmin = <span class="hljs-number">0</span>, <span class="hljs-keyword">double</span> xmax = <span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-comment">// scan a parameter (variable) around the minimum value</span>
+   <span class="hljs-comment">// the parameters must have been set before</span>
+   <span class="hljs-comment">// if xmin=0 &amp;&amp; xmax == 0  by default scan around 2 sigma of the error</span>
+   <span class="hljs-comment">// if the errors  are also zero then scan from min and max of parameter range</span>
+   <span class="hljs-comment">// (if parameters are limited Minuit scan from min and max instead of 2 sigma by default)</span>
+   <span class="hljs-comment">// (force in that case to use errors)</span>
 
-   <span class="token comment">/**
+   <span class="hljs-comment">/**
       find the contour points (xi,xj) of the function for parameter i and j around the minimum
       The contour will be find for value of the function = Min + ErrorUp();
     */</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">bool</span> <span class="token function">Contour</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span> npoints<span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token operator">*</span>xi<span class="token punctuation">,</span> <span class="token keyword">double</span> <span class="token operator">*</span>xj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// contour plot for parameter i and j</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Contour</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> &amp; npoints, <span class="hljs-keyword">double</span> *xi, <span class="hljs-keyword">double</span> *xj)</span></span>;<span class="hljs-comment">// contour plot for parameter i and j</span>
 
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">PrintResults</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PrintResults</span><span class="hljs-params">()</span></span>;
 
-   <span class="token comment">/// return reference to the objective function</span>
-   <span class="token comment">///virtual const ROOT::Math::IGenFunction &amp; Function() const;</span>
+   <span class="hljs-comment">/// return reference to the objective function</span>
+   <span class="hljs-comment">///virtual const ROOT::Math::IGenFunction &amp; Function() const;</span>
 
-   <span class="token comment">/// get name of variables (override if minimizer support storing of variable names)</span>
-   <span class="token keyword">virtual</span> std<span class="token operator">::</span>string <span class="token function">VariableName</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> ivar<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// get name of variables (override if minimizer support storing of variable names)</span>
+   <span class="hljs-keyword">virtual</span> <span class="hljs-built_in">std</span>::<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">VariableName</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ivar)</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token comment">/// get index of variable given a variable given a name</span>
-   <span class="token comment">/// return always -1 . (It is Not implemented)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">int</span> <span class="token function">VariableIndex</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string <span class="token operator">&amp;</span> name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// get index of variable given a variable given a name</span>
+   <span class="hljs-comment">/// return always -1 . (It is Not implemented)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span> <span class="hljs-title">VariableIndex</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp; name)</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token comment">/// static function to switch on/off usage of static global TMinuit instance (gMinuit)</span>
-   <span class="token comment">/// By default it is used (i.e. is on). Method returns the previous state</span>
-   <span class="token keyword">bool</span> <span class="token keyword">static</span> <span class="token function">UseStaticMinuit</span><span class="token punctuation">(</span><span class="token keyword">bool</span> on <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// static function to switch on/off usage of static global TMinuit instance (gMinuit)</span>
+   <span class="hljs-comment">/// By default it is used (i.e. is on). Method returns the previous state</span>
+   <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-keyword">static</span> <span class="hljs-title">UseStaticMinuit</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> on = <span class="hljs-literal">true</span>)</span></span>;
 
-   <span class="token comment">/// suppress the minuit warnings (if called with false will enable them)</span>
-   <span class="token comment">/// By default they are suppressed only when the printlevel is &lt;= 0</span>
-   <span class="token keyword">void</span> <span class="token function">SuppressMinuitWarnings</span><span class="token punctuation">(</span><span class="token keyword">bool</span> nowarn<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">/// suppress the minuit warnings (if called with false will enable them)</span>
+   <span class="hljs-comment">/// By default they are suppressed only when the printlevel is &lt;= 0</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SuppressMinuitWarnings</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> nowarn=<span class="hljs-literal">true</span>)</span></span>;
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TMinuitMinimizer.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3921,7 +3933,7 @@ In addition the user can choose the minimizer algorithm: Migrad (the default one
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TMinuitMinimizer*","level":"1.2.51","depth":2,"next":{"title":"TMLPAnalyzer","level":"1.2.52","depth":2,"path":"class/TMLPAnalyzer.md","ref":"class/TMLPAnalyzer.md","articles":[]},"previous":{"title":"TMinuit*","level":"1.2.50","depth":2,"path":"class/TMinuit.md","ref":"class/TMinuit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TMinuitMinimizer.md","mtime":"2018-05-14T09:18:22.092Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TMinuitMinimizer*","level":"1.2.51","depth":2,"next":{"title":"TMLPAnalyzer","level":"1.2.52","depth":2,"path":"class/TMLPAnalyzer.md","ref":"class/TMLPAnalyzer.md","articles":[]},"previous":{"title":"TMinuit*","level":"1.2.50","depth":2,"path":"class/TMinuit.md","ref":"class/TMinuit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TMinuitMinimizer.md","mtime":"2018-05-14T09:18:22.092Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3953,6 +3965,18 @@ In addition the user can choose the minimizer algorithm: Migrad (the default one
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

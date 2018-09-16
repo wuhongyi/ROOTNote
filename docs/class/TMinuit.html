@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,550 +3692,550 @@
 <p>The MINUIT minimisation package (base class)</p>
 <p>TMinuit &#x7EE7;&#x627F; TNamed</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">
-R__EXTERN TMinuit  <span class="token operator">*</span>gMinuit<span class="token punctuation">;</span>
+<pre><code class="lang-cpp">
+R__EXTERN TMinuit  *gMinuit;
 </code></pre>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TMinuit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TMinuit</span><span class="token punctuation">(</span>Int_t maxpar<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">///  maxpar is the maximum number of parameters used with this TMinuit object.</span>
-   <span class="token keyword">virtual</span>       <span class="token operator">~</span><span class="token function">TMinuit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">BuildArrays</span><span class="token punctuation">(</span>Int_t maxpar<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">///*-*-*-*-*-*-*Create internal Minuit arrays for the maxpar parameters*-*-*-*</span>
-   <span class="token keyword">virtual</span> TObject <span class="token operator">*</span><span class="token function">Clone</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>newname<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>   <span class="token comment">//Clone-Method to copy the function-pointer fFCN</span>
-<span class="token comment">/// Make a clone of an object using the Streamer facility.</span>
-<span class="token comment">/// Function pointer is copied to Clone</span>
-
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">Command</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>command<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// execute a Minuit command</span>
-<span class="token comment">///     Equivalent to MNEXCM except that the command is given as a</span>
-<span class="token comment">///     character string.</span>
-<span class="token comment">/// See TMinuit::mnhelp for the full list of available commands</span>
-<span class="token comment">/// See also http://wwwasdoc.web.cern.ch/wwwasdoc/minuit/node18.html for</span>
-<span class="token comment">///  a complete documentation of all the available commands</span>
-<span class="token comment">/// Returns the status of the execution:</span>
-<span class="token comment">///   = 0: command executed normally</span>
-<span class="token comment">///     1: command is blank, ignored</span>
-<span class="token comment">///     2: command line unreadable, ignored</span>
-<span class="token comment">///     3: unknown command, ignored</span>
-<span class="token comment">///     4: abnormal termination (e.g., MIGRAD not converged)</span>
-<span class="token comment">///     5: command is a request to read PARAMETER definitions</span>
-<span class="token comment">///     6: &apos;SET INPUT&apos; command</span>
-<span class="token comment">///     7: &apos;SET TITLE&apos; command</span>
-<span class="token comment">///     8: &apos;SET COVAR&apos; command</span>
-<span class="token comment">///     9: reserved</span>
-<span class="token comment">///    10: END command</span>
-<span class="token comment">///    11: EXIT or STOP command</span>
-<span class="token comment">///    12: RETURN command</span>
-
-   <span class="token keyword">virtual</span> TObject <span class="token operator">*</span><span class="token function">Contour</span><span class="token punctuation">(</span>Int_t npoints<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> Int_t pa1<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t pa2<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Creates a TGraph object describing the n-sigma contour of a</span>
-<span class="token comment">/// TMinuit fit. The contour of the parameters pa1 and pa2 is calculated</span>
-<span class="token comment">/// unsing npoints (&gt;=4) points. The TMinuit status will be</span>
-<span class="token comment">///  0   on success and</span>
-<span class="token comment">/// -1   if errors in the calling sequence (pa1, pa2 not variable)</span>
-<span class="token comment">///  1   if less than four points can be found</span>
-<span class="token comment">///  2   if npoints&lt;4</span>
-<span class="token comment">///  n&gt;3 if only n points can be found (n &lt; npoints)</span>
-<span class="token comment">/// The status can be obtained via TMinuit::GetStatus().</span>
-<span class="token comment">/// To get the n-sigma contour the ERRDEF parameter in Minuit has to set</span>
-<span class="token comment">/// to n^2. The fcn function has to be set before the routine is called.</span>
-<span class="token comment">/// The TGraph object is created via the interpreter. The user must cast it</span>
-<span class="token comment">/// to a TGraph*. Note that the TGraph is created with npoints+1 in order to</span>
-<span class="token comment">/// close the contour (setting last point equal to first point).</span>
-<span class="token comment">/// You can find an example in $ROOTSYS/tutorials/fit/fitcont.C</span>
-
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">DefineParameter</span><span class="token punctuation">(</span> Int_t parNo<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Double_t initVal<span class="token punctuation">,</span> Double_t initErr<span class="token punctuation">,</span> Double_t lowerLimit<span class="token punctuation">,</span> Double_t upperLimit <span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Define a parameter</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">DeleteArrays</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">///*-*-*-*-*-*-*-*-*-*-*-*Delete internal Minuit arrays*-*-*-*-*-*-*-*-*</span>
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">Eval</span><span class="token punctuation">(</span>Int_t npar<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>grad<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>fval<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>par<span class="token punctuation">,</span> Int_t flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Evaluate the minimisation function</span>
-<span class="token comment">///  Input parameters:</span>
-<span class="token comment">///    npar:    number of currently variable parameters</span>
-<span class="token comment">///    par:     array of (constant and variable) parameters</span>
-<span class="token comment">///    flag:    Indicates what is to be calculated (see example below)</span>
-<span class="token comment">///    grad:    array of gradients</span>
-<span class="token comment">///  Output parameters:</span>
-<span class="token comment">///    fval:    The calculated function value.</span>
-<span class="token comment">///    grad:    The (optional) vector of first derivatives).</span>
-<span class="token comment">/// The meaning of the parameters par is of course defined by the user,</span>
-<span class="token comment">/// who uses the values of those parameters to calculate their function value.</span>
-<span class="token comment">/// The starting values must be specified by the user.</span>
-<span class="token comment">/// Later values are determined by Minuit as it searches for the minimum</span>
-<span class="token comment">/// or performs whatever analysis is requested by the user.</span>
-<span class="token comment">///</span>
-<span class="token comment">/// Note that this virtual function may be redefined in a class derived from TMinuit.</span>
-<span class="token comment">/// The default function calls the function specified in SetFCN</span>
-
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">FixParameter</span><span class="token punctuation">(</span> Int_t parNo <span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// fix a parameter</span>
-   TMethodCall   <span class="token operator">*</span><span class="token function">GetMethodCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fMethodCall<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   TObject       <span class="token operator">*</span><span class="token function">GetObjectFit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fObjectFit<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Int_t          <span class="token function">GetMaxIterations</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fMaxIterations<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">GetNumFixedPars</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// returns the number of currently fixed parameters</span>
-
-
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">GetNumFreePars</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// returns the number of currently free parameters</span>
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">GetNumPars</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// returns the total number of parameters that have been defined</span>
-<span class="token comment">/// as fixed or free. The constant parameters are not counted.</span>
-
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">GetParameter</span><span class="token punctuation">(</span> Int_t parNo<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>currentValue<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>currentError <span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// return parameter value and error</span>
-
-   <span class="token keyword">virtual</span> TObject <span class="token operator">*</span><span class="token function">GetPlot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fPlot<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Int_t          <span class="token function">GetStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fStatus<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">Migrad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// invokes the MIGRAD minimizer</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnamin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*-*-*Initialize AMIN*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*C        Called  from many places.  Initializes the value of AMIN by</span>
-<span class="token comment">///*-*C        calling the user function. Prints out the function value and</span>
-<span class="token comment">///*-*C        parameter values if Print Flag value is high enough.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnbins</span><span class="token punctuation">(</span>Double_t a1<span class="token punctuation">,</span> Double_t a2<span class="token punctuation">,</span> Int_t naa<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>bl<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>bh<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>nb<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>bwid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*Compute reasonable histogram intervals*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Function TO DETERMINE REASONABLE HISTOGRAM INTERVALS</span>
-<span class="token comment">///*-*        GIVEN ABSOLUTE UPPER AND LOWER BOUNDS  A1 AND A2</span>
-<span class="token comment">///*-*        AND DESIRED MAXIMUM NUMBER OF BINS NAA</span>
-<span class="token comment">///*-*        PROGRAM MAKES REASONABLE BINNING FROM BL TO BH OF WIDTH BWID</span>
-<span class="token comment">///*-*        F. JAMES,   AUGUST, 1974 , stolen for Minuit, 1988</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mncalf</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>pvec<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>ycalf<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*Transform FCN to find further minima*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Called only from MNIMPR.  Transforms the function FCN</span>
-<span class="token comment">///*-*        by dividing out the quadratic part in order to find further</span>
-<span class="token comment">///*-*        minima.    Calculates  ycalf = (f-fmin)/(x-xmin)*v*(x-xmin)</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mncler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*Resets the parameter list to UNDEFINED*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Called from MINUIT and by option from MNEXCM</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mncntr</span><span class="token punctuation">(</span>Int_t ke1<span class="token punctuation">,</span> Int_t ke2<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>ierrf<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*Print function contours in two variables, on line printer*-*-*-*-*</span>
-<span class="token comment">///*-*                input arguments: parx, pary, devs, ngrid</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mncomd</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>crdbin<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>icondn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*Reads a command string and executes*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Called by user.  &apos;Reads&apos; a command string and executes.</span>
-<span class="token comment">///*-*     Equivalent to MNEXCM except that the command is given as a</span>
-<span class="token comment">///*-*          character string.</span>
-<span class="token comment">///*-*     ICONDN = 0: command executed normally</span>
-<span class="token comment">///*-*              1: command is blank, ignored</span>
-<span class="token comment">///*-*              2: command line unreadable, ignored</span>
-<span class="token comment">///*-*              3: unknown command, ignored</span>
-<span class="token comment">///*-*              4: abnormal termination (e.g., MIGRAD not converged)</span>
-<span class="token comment">///*-*              5: command is a request to read PARAMETER definitions</span>
-<span class="token comment">///*-*              6: &apos;SET INPUT&apos; command</span>
-<span class="token comment">///*-*              7: &apos;SET TITLE&apos; command</span>
-<span class="token comment">///*-*              8: &apos;SET COVAR&apos; command</span>
-<span class="token comment">///*-*              9: reserved</span>
-<span class="token comment">///*-*             10: END command</span>
-<span class="token comment">///*-*             11: EXIT or STOP command</span>
-<span class="token comment">///*-*             12: RETURN command</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mncont</span><span class="token punctuation">(</span>Int_t ke1<span class="token punctuation">,</span> Int_t ke2<span class="token punctuation">,</span> Int_t nptu<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>xptu<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>yptu<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>ierrf<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*Find points along a contour where FCN is minimum*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*       Find NPTU points along a contour where the function</span>
-<span class="token comment">///*-*             FMIN (X(KE1),X(KE2)) =  AMIN+UP</span>
-<span class="token comment">///*-*       where FMIN is the minimum of FCN with respect to all</span>
-<span class="token comment">///*-*       the other NPAR-2 variable parameters (if any).</span>
-<span class="token comment">///*-*   IERRF on return will be equal to the number of points found:</span>
-<span class="token comment">///*-*     NPTU if normal termination with NPTU points found</span>
-<span class="token comment">///*-*     -1   if errors in the calling sequence (KE1, KE2 not variable)</span>
-<span class="token comment">///*-*      0   if less than four points can be found (using MNMNOT)</span>
-<span class="token comment">///*-*     n&gt;3  if only n points can be found (n &lt; NPTU)</span>
-<span class="token comment">///*-*                 input arguments: parx, pary, devs, ngrid</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mncrck</span><span class="token punctuation">(</span>TString crdbuf<span class="token punctuation">,</span> Int_t maxcwd<span class="token punctuation">,</span> TString <span class="token operator">&amp;</span>comand<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>lnc
-                    <span class="token punctuation">,</span>  Int_t mxp<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>plist<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>llist<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>ierr<span class="token punctuation">,</span> Int_t isyswr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*-*Cracks the free-format input*-*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*       Cracks the free-format input, expecting zero or more</span>
-<span class="token comment">///*-*         alphanumeric fields (which it joins into COMAND(1:LNC))</span>
-<span class="token comment">///*-*         followed by one or more numeric fields separated by</span>
-<span class="token comment">///*-*         blanks and/or one comma.  The numeric fields are put into</span>
-<span class="token comment">///*-*         the LLIST (but at most MXP) elements of PLIST.</span>
-<span class="token comment">///*-*      IERR = 0 if no errors,</span>
-<span class="token comment">///*-*           = 1 if error(s).</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mncros</span><span class="token punctuation">(</span>Double_t <span class="token operator">&amp;</span>aopt<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>iercr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*Find point where MNEVAL=AMIN+UP*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*       Find point where MNEVAL=AMIN+UP, along the line through</span>
-<span class="token comment">///*-*       XMIDCR,YMIDCR with direction XDIRCR,YDIRCR,   where X and Y</span>
-<span class="token comment">///*-*       are parameters KE1CR and KE2CR.  If KE2CR=0 (from MINOS),</span>
-<span class="token comment">///*-*       only KE1CR is varied.  From MNCONT, both are varied.</span>
-<span class="token comment">///*-*       Crossing point is at</span>
-<span class="token comment">///*-*        (U(KE1),U(KE2)) = (XMID,YMID) + AOPT*(XDIR,YDIR)</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mncuve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*Makes sure that the current point is a local minimum*-*-*-*-*</span>
-<span class="token comment">///*-*        Makes sure that the current point is a local</span>
-<span class="token comment">///*-*        minimum and that the error matrix exists,</span>
-<span class="token comment">///*-*        or at least something good enough for MINOS and MNCONT</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnderi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*Calculates the first derivatives of FCN (GRD)*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Calculates the first derivatives of FCN (GRD),</span>
-<span class="token comment">///*-*        either by finite differences or by transforming the user-</span>
-<span class="token comment">///*-*        supplied derivatives to internal coordinates,</span>
-<span class="token comment">///*-*        according to whether fISW[2] is zero or one.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mndxdi</span><span class="token punctuation">(</span>Double_t pint<span class="token punctuation">,</span> Int_t ipar<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>dxdi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*Calculates the transformation factor between ext/internal values*-*</span>
-<span class="token comment">///*-*        calculates the transformation factor between external and</span>
-<span class="token comment">///*-*        internal parameter values.     this factor is one for</span>
-<span class="token comment">///*-*        parameters which are not limited.     called from MNEMAT.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mneig</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>a<span class="token punctuation">,</span> Int_t ndima<span class="token punctuation">,</span> Int_t n<span class="token punctuation">,</span> Int_t mits<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>work<span class="token punctuation">,</span> Double_t precis<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>ifault<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*-*Compute matrix eigen values*-*-*-*-*-*-*-*-*-*-*-*-*</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnemat</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>emat<span class="token punctuation">,</span> Int_t ndim<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Calculates the external error matrix from the internal matrix</span>
-<span class="token comment">/// Note that if the matrix is declared like Double_t matrix[5][5]</span>
-<span class="token comment">/// in the calling program, one has to call mnemat with, eg</span>
-<span class="token comment">///     gMinuit-&gt;mnemat(&amp;matrix[0][0],5);</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnerrs</span><span class="token punctuation">(</span>Int_t number<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>eplus<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>eminus<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>eparab<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>gcc<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*Utility routine to get MINOS errors*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*    Called by user.</span>
-<span class="token comment">///*-*    NUMBER is the parameter number</span>
-<span class="token comment">///*-*    values returned by MNERRS:</span>
-<span class="token comment">///*-*       EPLUS, EMINUS are MINOS errors of parameter NUMBER,</span>
-<span class="token comment">///*-*       EPARAB is &apos;parabolic&apos; error (from error matrix).</span>
-<span class="token comment">///*-*                 (Errors not calculated are set = 0)</span>
-<span class="token comment">///*-*       GCC is global correlation coefficient from error matrix</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mneval</span><span class="token punctuation">(</span>Double_t anext<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>fnext<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>ierev<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*Evaluates the function being analyzed by MNCROS*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*      Evaluates the function being analyzed by MNCROS, which is</span>
-<span class="token comment">///*-*      generally the minimum of FCN with respect to all remaining</span>
-<span class="token comment">///*-*      variable parameters.  The class data members contains the</span>
-<span class="token comment">///*-*      data necessary to know the values of U(KE1CR) and U(KE2CR)</span>
-<span class="token comment">///*-*      to be used, namely     U(KE1CR) = XMIDCR + ANEXT*XDIRCR</span>
-<span class="token comment">///*-*      and (if KE2CR .NE. 0)  U(KE2CR) = YMIDCR + ANEXT*YDIRCR</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnexcm</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>comand<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>plist<span class="token punctuation">,</span> Int_t llist<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>ierflg<span class="token punctuation">)</span> <span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*Interprets a command and takes appropriate action*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        either directly by skipping to the corresponding code in</span>
-<span class="token comment">///*-*        MNEXCM, or by setting up a call to a function</span>
-<span class="token comment">///*-*  recognized MINUIT commands:</span>
-<span class="token comment">///*-*  obsolete commands:</span>
-<span class="token comment">///*-*      IERFLG is now (94.5) defined the same as ICONDN in MNCOMD</span>
-<span class="token comment">///*-*            = 0: command executed normally</span>
-<span class="token comment">///*-*              1: command is blank, ignored</span>
-<span class="token comment">///*-*              2: command line unreadable, ignored</span>
-<span class="token comment">///*-*              3: unknown command, ignored</span>
-<span class="token comment">///*-*              4: abnormal termination (e.g., MIGRAD not converged)</span>
-<span class="token comment">///*-*              9: reserved</span>
-<span class="token comment">///*-*             10: END command</span>
-<span class="token comment">///*-*             11: EXIT or STOP command</span>
-<span class="token comment">///*-*             12: RETURN command</span>
-<span class="token comment">///*-*     see also http://wwwasdoc.web.cern.ch/wwwasdoc/minuit/node18.html for the possible list</span>
-<span class="token comment">///*-*     of all Minuit commands</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnexin</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>pint<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*Transforms the external parameter values U to internal values*-*-*</span>
-<span class="token comment">///*-*        Transforms the external parameter values U to internal</span>
-<span class="token comment">///*-*        values in the dense array PINT.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnfixp</span><span class="token punctuation">(</span>Int_t iint<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>ierr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*Removes parameter IINT from the internal parameter list*-*-*</span>
-<span class="token comment">///*-*        and arranges the rest of the list to fill the hole.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnfree</span><span class="token punctuation">(</span>Int_t k<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*Restores one or more fixed parameter(s) to variable status*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Restores one or more fixed parameter(s) to variable status</span>
-<span class="token comment">///*-*        by inserting it into the internal parameter list at the</span>
-<span class="token comment">///*-*        appropriate place.</span>
-<span class="token comment">///*-*        K = 0 means restore all parameters</span>
-<span class="token comment">///*-*        K = 1 means restore the last parameter fixed</span>
-<span class="token comment">///*-*        K = -I means restore external parameter I (if possible)</span>
-<span class="token comment">///*-*        IQ = fix-location where internal parameters were stored</span>
-<span class="token comment">///*-*        IR = external number of parameter being restored</span>
-<span class="token comment">///*-*        IS = internal number of parameter being restored</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mngrad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*Interprets the SET GRAD command*-*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*       Called from MNSET</span>
-<span class="token comment">///*-*       Interprets the SET GRAD command, which informs MINUIT whether</span>
-<span class="token comment">///*-*       the first derivatives of FCN will be calculated by the user</span>
-<span class="token comment">///*-*       inside FCN.  It can check the user derivative calculation</span>
-<span class="token comment">///*-*       by comparing it with a finite difference approximation.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnhelp</span><span class="token punctuation">(</span>TString comd<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//*-*  Global HELP: Summary of all commands</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnhelp</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>command<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///interface to Minuit help</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnhess</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*Calculates the full second-derivative matrix of FCN*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        by taking finite differences. When calculating diagonal</span>
-<span class="token comment">///*-*        elements, it may iterate so that step size is nearly that</span>
-<span class="token comment">///*-*        which gives function change= UP/10. The first derivatives</span>
-<span class="token comment">///*-*        of course come as a free side effect, but with a smaller</span>
-<span class="token comment">///*-*        step size in order to obtain a known accuracy.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnhes1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*Calculate first derivatives (GRD) and uncertainties (DGRD)*-*-*-*-*-*</span>
-<span class="token comment">///*-*         and appropriate step sizes GSTEP</span>
-<span class="token comment">///*-*      Called from MNHESS and MNGRAD</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnimpr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*Attempts to improve on a good local minimum*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Attempts to improve on a good local minimum by finding a</span>
-<span class="token comment">///*-*        better one.   The quadratic part of FCN is removed by MNCALF</span>
-<span class="token comment">///*-*        and this transformed function is minimized using the simplex</span>
-<span class="token comment">///*-*        method from several random starting points.</span>
-<span class="token comment">///*-*        ref. -- Goldstein and Price, Math.Comp. 25, 569 (1971)</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mninex</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>pint<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*Transforms from internal coordinates (PINT) to external (U)*-*-*-*</span>
-<span class="token comment">///*-*        The minimizing routines which work in</span>
-<span class="token comment">///*-*        internal coordinates call this routine before calling FCN.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mninit</span><span class="token punctuation">(</span>Int_t i1<span class="token punctuation">,</span> Int_t i2<span class="token punctuation">,</span> Int_t i3<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*Main initialization member function for MINUIT*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*     It initializes some constants</span>
-<span class="token comment">///*-*                (including the logical I/O unit nos.),</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnlims</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*Interprets the SET LIM command, to reset the parameter limits*-*-*-*</span>
-<span class="token comment">///*-*       Called from MNSET</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnline</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>start<span class="token punctuation">,</span> Double_t fstart<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>step<span class="token punctuation">,</span> Double_t slope<span class="token punctuation">,</span> Double_t toler<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*Perform a line search from position START*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        along direction STEP, where the length of vector STEP</span>
-<span class="token comment">///*-*                   gives the expected position of minimum.</span>
-<span class="token comment">///*-*        FSTART is value of function at START</span>
-<span class="token comment">///*-*        SLOPE (if non-zero) is df/dx along STEP at START</span>
-<span class="token comment">///*-*        TOLER is initial tolerance of minimum in direction STEP</span>
-<span class="token comment">///*-* SLAMBG and ALPHA control the maximum individual steps allowed.</span>
-<span class="token comment">///*-* The first step is always =1. The max length of second step is SLAMBG.</span>
-<span class="token comment">///*-* The max size of subsequent steps is the maximum previous successful</span>
-<span class="token comment">///*-*   step multiplied by ALPHA + the size of most recent successful step,</span>
-<span class="token comment">///*-*   but cannot be smaller than SLAMBG.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnmatu</span><span class="token punctuation">(</span>Int_t kode<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*Prints the covariance matrix v when KODE=1*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        always prints the global correlations, and</span>
-<span class="token comment">///*-*        calculates and prints the individual correlation coefficients</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnmigr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*Performs a local function minimization*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Performs a local function minimization using basically the</span>
-<span class="token comment">///*-*        method of Davidon-Fletcher-Powell as modified by Fletcher</span>
-<span class="token comment">///*-*        ref. -- Fletcher, Comp.J. 13,317 (1970)   &quot;switching method&quot;</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnmnos</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*Performs a MINOS error analysis*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Performs a MINOS error analysis on those parameters for</span>
-<span class="token comment">///*-*        which it is requested on the MINOS command by calling</span>
-<span class="token comment">///*-*        MNMNOT for each parameter requested.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnmnot</span><span class="token punctuation">(</span>Int_t ilax<span class="token punctuation">,</span> Int_t ilax2<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>val2pl<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>val2mi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*Performs a MINOS error analysis on one parameter*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        The parameter ILAX is varied, and the minimum of the</span>
-<span class="token comment">///*-*        function with respect to the other parameters is followed</span>
-<span class="token comment">///*-*        until it crosses the value FMIN+UP.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnparm</span><span class="token punctuation">(</span>Int_t k<span class="token punctuation">,</span> TString cnamj<span class="token punctuation">,</span> Double_t uk<span class="token punctuation">,</span> Double_t wk<span class="token punctuation">,</span> Double_t a<span class="token punctuation">,</span> Double_t b<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>ierflg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*Implements one parameter definition*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Called from MNPARS and user-callable</span>
-<span class="token comment">///*-*    Implements one parameter definition, that is:</span>
-<span class="token comment">///*-*          K     (external) parameter number</span>
-<span class="token comment">///*-*          CNAMK parameter name</span>
-<span class="token comment">///*-*          UK    starting value</span>
-<span class="token comment">///*-*          WK    starting step size or uncertainty</span>
-<span class="token comment">///*-*          A, B  lower and upper physical parameter limits</span>
-<span class="token comment">///*-*    and sets up (updates) the parameter lists.</span>
-<span class="token comment">///*-*    Output: IERFLG=0 if no problems</span>
-<span class="token comment">///*-*                  &gt;0 if MNPARM unable to implement definition</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnpars</span><span class="token punctuation">(</span>TString <span class="token operator">&amp;</span>crdbuf<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>icondn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*Implements one parameter definition*-*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Called from MNREAD and user-callable</span>
-<span class="token comment">///*-*    Implements one parameter definition, that is:</span>
-<span class="token comment">///*-*       parses the string CRDBUF and calls MNPARM</span>
-<span class="token comment">///*-* output conditions:</span>
-<span class="token comment">///*-*        ICONDN = 0    all OK</span>
-<span class="token comment">///*-*        ICONDN = 1    error, attempt to define parameter is ignored</span>
-<span class="token comment">///*-*        ICONDN = 2    end of parameter definitions</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnpfit</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>parx2p<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>pary2p<span class="token punctuation">,</span> Int_t npar2p<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>coef2p<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>sdev2p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*To fit a parabola to npar2p points*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*   npar2p   no. of points</span>
-<span class="token comment">///*-*   parx2p(i)   x value of point i</span>
-<span class="token comment">///*-*   pary2p(i)   y value of point i</span>
-<span class="token comment">///*-*</span>
-<span class="token comment">///*-*   coef2p(1...3)  coefficients of the fitted parabola</span>
-<span class="token comment">///*-*   y=coef2p(1) + coef2p(2)*x + coef2p(3)*x**2</span>
-<span class="token comment">///*-*   sdev2p= variance</span>
-<span class="token comment">///*-*   method : chi**2 = min equation solved explicitly</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnpint</span><span class="token punctuation">(</span>Double_t <span class="token operator">&amp;</span>pexti<span class="token punctuation">,</span> Int_t i<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>pinti<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*Calculates the internal parameter value PINTI*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        corresponding  to the external value PEXTI for parameter I.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnplot</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>xpt<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>ypt<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>chpt<span class="token punctuation">,</span> Int_t nxypt<span class="token punctuation">,</span> Int_t npagwd<span class="token punctuation">,</span> Int_t npagln<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*Plots points in array xypt onto one page with labelled axes*-*-*-*-*</span>
-<span class="token comment">///*-*        NXYPT is the number of points to be plotted</span>
-<span class="token comment">///*-*        XPT(I) = x-coord. of ith point</span>
-<span class="token comment">///*-*        YPT(I) = y-coord. of ith point</span>
-<span class="token comment">///*-*        CHPT(I) = character to be plotted at this position</span>
-<span class="token comment">///*-*        the input point arrays XPT, YPT, CHPT are destroyed.</span>
-<span class="token comment">///*-*   If fGraphicsmode is true (default), a TGraph object is produced</span>
-<span class="token comment">///*-*   via the Plug-in handler. To get the plot, you can do:</span>
-<span class="token comment">///*-*       TGraph *gr = (TGraph*)gMinuit-&gt;GetPlot();</span>
-<span class="token comment">///*-*       gr-&gt;Draw(&quot;al&quot;);</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnpout</span><span class="token punctuation">(</span>Int_t iuext<span class="token punctuation">,</span> TString <span class="token operator">&amp;</span>chnam<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>val<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>err<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>xlolim<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>xuplim<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>iuint<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*Provides the user with information concerning the current status*-*-*</span>
-<span class="token comment">///*-*          of parameter number IUEXT. Namely, it returns:</span>
-<span class="token comment">///*-*        CHNAM: the name of the parameter</span>
-<span class="token comment">///*-*        VAL: the current (external) value of the parameter</span>
-<span class="token comment">///*-*        ERR: the current estimate of the parameter uncertainty</span>
-<span class="token comment">///*-*        XLOLIM: the lower bound (or zero if no limits)</span>
-<span class="token comment">///*-*        XUPLIM: the upper bound (or zero if no limits)</span>
-<span class="token comment">///*-*        IUINT: the internal parameter number (or zero if not variable,</span>
-<span class="token comment">///*-*           or negative if undefined).</span>
-<span class="token comment">///*-*  Note also:  If IUEXT is negative, then it is -internal parameter</span>
-<span class="token comment">///*-*           number, and IUINT is returned as the EXTERNAL number.</span>
-<span class="token comment">///*-*     Except for IUINT, this is exactly the inverse of MNPARM</span>
-<span class="token comment">///*-*     User-called</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnprin</span><span class="token punctuation">(</span>Int_t inkode<span class="token punctuation">,</span> Double_t fval<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*Prints the values of the parameters at the time of the call*-*-*-*-*</span>
-<span class="token comment">///*-*        also prints other relevant information such as function value,</span>
-<span class="token comment">///*-*        estimated distance to minimum, parameter errors, step sizes.</span>
-<span class="token comment">///*-*</span>
-<span class="token comment">///*-*         According to the value of IKODE, the printout is:/</span>
-<span class="token comment">///*-*    IKODE=INKODE= 0    only info about function value</span>
-<span class="token comment">///*-*                  1    parameter values, errors, limits</span>
-<span class="token comment">///*-*                  2    values, errors, step sizes, internal values</span>
-<span class="token comment">///*-*                  3    values, errors, step sizes, first derivs.</span>
-<span class="token comment">///*-*                  4    values, parabolic errors, MINOS errors</span>
-<span class="token comment">///*-*    when INKODE=5, MNPRIN chooses IKODE=1,2, or 3, according to fISW[1]</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnpsdf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*Calculates the eigenvalues of v to see if positive-def*-*-*-*-*</span>
-<span class="token comment">///*-*        if not, adds constant along diagonal to make positive.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnrazz</span><span class="token punctuation">(</span>Double_t ynew<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>pnew<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>y<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>jh<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>jl<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*Called only by MNSIMP (and MNIMPR) to add a new point*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        and remove an old one from the current simplex, and get the</span>
-<span class="token comment">///*-*        estimated distance to minimum.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnrn15</span><span class="token punctuation">(</span>Double_t <span class="token operator">&amp;</span>val<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>inseed<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*This is a super-portable random number generator*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*         It should not overflow on any 32-bit machine.</span>
-<span class="token comment">///*-*         The cycle is only ~10**9, so use with care!</span>
-<span class="token comment">///*-*         Note especially that VAL must not be undefined on input.</span>
-<span class="token comment">///*-*                    Set Default Starting Seed</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnrset</span><span class="token punctuation">(</span>Int_t iopt<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*Resets function value and errors to UNDEFINED*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*    If IOPT=1,</span>
-<span class="token comment">///*-*    If IOPT=0, sets only MINOS errors to undefined</span>
-<span class="token comment">///*-*        Called from MNCLER and whenever problem changes, for example</span>
-<span class="token comment">///*-*        after SET LIMITS, SET PARAM, CALL FCN 6</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnsave</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnscan</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*Scans the values of FCN as a function of one parameter*-*-*-*-*-*</span>
-<span class="token comment">///*-*        and plots the resulting values as a curve using MNPLOT.</span>
-<span class="token comment">///*-*        It may be called to scan one parameter or all parameters.</span>
-<span class="token comment">///*-*        retains the best function and parameter values found.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnseek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*Performs a rough (but global) minimization by monte carlo search*-*</span>
-<span class="token comment">///*-*        Each time a new minimum is found, the search area is shifted</span>
-<span class="token comment">///*-*        to be centered at the best value.  Random points are chosen</span>
-<span class="token comment">///*-*        uniformly over a hypercube determined by current step sizes.</span>
-<span class="token comment">///*-*   The Metropolis algorithm accepts a worse point with probability</span>
-<span class="token comment">///*-*      exp(-d/UP), where d is the degradation.  Improved points</span>
-<span class="token comment">///*-*      are of course always accepted.  Actual steps are random</span>
-<span class="token comment">///*-*      multiples of the nominal steps (DIRIN).</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*Interprets the commands that start with SET and SHOW*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Called from MNEXCM</span>
-<span class="token comment">///*-*        file characteristics for SET INPUT</span>
-<span class="token comment">///*-*       &apos;SET &apos; or &apos;SHOW&apos;,  &apos;ON &apos; or &apos;OFF&apos;, &apos;SUPPRESSED&apos; or &apos;REPORTED  &apos;</span>
-<span class="token comment">///*-*        explanation of print level numbers -1:3  and strategies 0:2</span>
-<span class="token comment">///*-*        identification of debug options</span>
-<span class="token comment">///*-*        things that can be set or shown</span>
-<span class="token comment">///*-*        options not intended for normal users</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnsimp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*Minimization using the simplex method of Nelder and Mead*-*-*-*-*</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnstat</span><span class="token punctuation">(</span>Double_t <span class="token operator">&amp;</span>fmin<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>fedm<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>errdef<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>npari<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>nparx<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>istat<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*Returns concerning the current status of the minimization*-*-*-*-*</span>
-<span class="token comment">///*-*       User-called</span>
-<span class="token comment">///*-*          Namely, it returns:</span>
-<span class="token comment">///*-*        FMIN: the best function value found so far</span>
-<span class="token comment">///*-*        FEDM: the estimated vertical distance remaining to minimum</span>
-<span class="token comment">///*-*        ERRDEF: the value of UP defining parameter uncertainties</span>
-<span class="token comment">///*-*        NPARI: the number of currently variable parameters</span>
-<span class="token comment">///*-*        NPARX: the highest (external) parameter number defined by user</span>
-<span class="token comment">///*-*        ISTAT: a status integer indicating how good is the covariance</span>
-<span class="token comment">///*-*           matrix:  0= not calculated at all</span>
-<span class="token comment">///*-*                    1= approximation only, not accurate</span>
-<span class="token comment">///*-*                    2= full matrix, but forced positive-definite</span>
-<span class="token comment">///*-*                    3= full accurate covariance matrix</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mntiny</span><span class="token punctuation">(</span><span class="token keyword">volatile</span> Double_t epsp1<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>epsbak<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*To find the machine precision*-*-*-*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        Compares its argument with the value 1.0, and returns</span>
-<span class="token comment">///*-*        the value .TRUE. if they are equal.  To find EPSMAC</span>
-<span class="token comment">///*-*        safely by foiling the Fortran optimizer</span>
-
-   Bool_t         <span class="token function">mnunpt</span><span class="token punctuation">(</span>TString <span class="token operator">&amp;</span>cfname<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*Returns .TRUE. if CFNAME contains unprintable characters*-*-*-*</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnvert</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>a<span class="token punctuation">,</span> Int_t l<span class="token punctuation">,</span> Int_t m<span class="token punctuation">,</span> Int_t n<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>ifail<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*-*Inverts a symmetric matrix*-*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*        inverts a symmetric matrix.   matrix is first scaled to</span>
-<span class="token comment">///*-*        have all ones on the diagonal (equivalent to change of units)</span>
-<span class="token comment">///*-*        but no pivoting is done since matrix is positive-definite.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnwarn</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>copt<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>corg<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>cmes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*-*-*-*-*Prints Warning messages*-*-*-*-*-*-*-*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*     If COPT=&apos;W&apos;, CMES is a WARning message from CORG.</span>
-<span class="token comment">///*-*     If COPT=&apos;D&apos;, CMES is a DEBug message from CORG.</span>
-<span class="token comment">///*-*         If SET WARnings is in effect (the default), this routine</span>
-<span class="token comment">///*-*             prints the warning message CMES coming from CORG.</span>
-<span class="token comment">///*-*         If SET NOWarnings is in effect, the warning message is</span>
-<span class="token comment">///*-*             stored in a circular buffer of length kMAXMES.</span>
-<span class="token comment">///*-*         If called with CORG=CMES=&apos;SHO&apos;, it prints the messages in</span>
-<span class="token comment">///*-*             the circular buffer, FIFO, and empties the buffer.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">mnwerr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*-*Calculates the WERR, external parameter errors*-*-*-*-*-*-*</span>
-<span class="token comment">///*-*      and the global correlation coefficients, to be called</span>
-<span class="token comment">///*-*      whenever a new covariance matrix is available.</span>
-
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">Release</span><span class="token punctuation">(</span> Int_t parNo <span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// release a parameter</span>
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">SetErrorDef</span><span class="token punctuation">(</span> Double_t up <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// To get the n-sigma contour the error def parameter &quot;up&quot; has to set to n^2.</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetFCN</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>fcn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*To set the address of the minimization function*-*-*-*-*-*-*-*</span>
-<span class="token comment">///     this function is called by CINT instead of the function above</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetFCN</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>fcn<span class="token punctuation">)</span><span class="token punctuation">(</span>Int_t <span class="token operator">&amp;</span><span class="token punctuation">,</span> Double_t <span class="token operator">*</span><span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>f<span class="token punctuation">,</span> Double_t <span class="token operator">*</span><span class="token punctuation">,</span> Int_t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///*-*-*-*-*-*-*To set the address of the minimization function*-*-*-*-*-*-*-*</span>
-
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetGraphicsMode</span><span class="token punctuation">(</span>Bool_t mode<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span>fGraphicsMode <span class="token operator">=</span> mode<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetMaxIterations</span><span class="token punctuation">(</span>Int_t maxiter<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>fMaxIterations <span class="token operator">=</span> maxiter<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetObjectFit</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>fObjectFit<span class="token operator">=</span>obj<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">SetPrintLevel</span><span class="token punctuation">(</span> Int_t printLevel<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///set Minuit print level</span>
-<span class="token comment">/// printlevel = -1  quiet (also suppresse all warnings)</span>
-<span class="token comment">///            =  0  normal</span>
-<span class="token comment">///            =  1  verbose</span>
+<pre><code class="lang-cpp">   TMinuit();
+   TMinuit(Int_t maxpar);///  maxpar is the maximum number of parameters used with this TMinuit object.
+   virtual       ~TMinuit();
+   virtual void   BuildArrays(Int_t maxpar=15);///*-*-*-*-*-*-*Create internal Minuit arrays for the maxpar parameters*-*-*-*
+   virtual TObject *Clone(const char *newname=&quot;&quot;) const;   //Clone-Method to copy the function-pointer fFCN
+/// Make a clone of an object using the Streamer facility.
+/// Function pointer is copied to Clone
+
+   virtual Int_t  Command(const char *command);
+/// execute a Minuit command
+///     Equivalent to MNEXCM except that the command is given as a
+///     character string.
+/// See TMinuit::mnhelp for the full list of available commands
+/// See also http://wwwasdoc.web.cern.ch/wwwasdoc/minuit/node18.html for
+///  a complete documentation of all the available commands
+/// Returns the status of the execution:
+///   = 0: command executed normally
+///     1: command is blank, ignored
+///     2: command line unreadable, ignored
+///     3: unknown command, ignored
+///     4: abnormal termination (e.g., MIGRAD not converged)
+///     5: command is a request to read PARAMETER definitions
+///     6: &apos;SET INPUT&apos; command
+///     7: &apos;SET TITLE&apos; command
+///     8: &apos;SET COVAR&apos; command
+///     9: reserved
+///    10: END command
+///    11: EXIT or STOP command
+///    12: RETURN command
+
+   virtual TObject *Contour(Int_t npoints=10, Int_t pa1=0, Int_t pa2=1);
+/// Creates a TGraph object describing the n-sigma contour of a
+/// TMinuit fit. The contour of the parameters pa1 and pa2 is calculated
+/// unsing npoints (&gt;=4) points. The TMinuit status will be
+///  0   on success and
+/// -1   if errors in the calling sequence (pa1, pa2 not variable)
+///  1   if less than four points can be found
+///  2   if npoints&lt;4
+///  n&gt;3 if only n points can be found (n &lt; npoints)
+/// The status can be obtained via TMinuit::GetStatus().
+/// To get the n-sigma contour the ERRDEF parameter in Minuit has to set
+/// to n^2. The fcn function has to be set before the routine is called.
+/// The TGraph object is created via the interpreter. The user must cast it
+/// to a TGraph*. Note that the TGraph is created with npoints+1 in order to
+/// close the contour (setting last point equal to first point).
+/// You can find an example in $ROOTSYS/tutorials/fit/fitcont.C
+
+   virtual Int_t  DefineParameter( Int_t parNo, const char *name, Double_t initVal, Double_t initErr, Double_t lowerLimit, Double_t upperLimit );/// Define a parameter
+   virtual void   DeleteArrays();///*-*-*-*-*-*-*-*-*-*-*-*Delete internal Minuit arrays*-*-*-*-*-*-*-*-*
+   virtual Int_t  Eval(Int_t npar, Double_t *grad, Double_t &amp;fval, Double_t *par, Int_t flag);
+/// Evaluate the minimisation function
+///  Input parameters:
+///    npar:    number of currently variable parameters
+///    par:     array of (constant and variable) parameters
+///    flag:    Indicates what is to be calculated (see example below)
+///    grad:    array of gradients
+///  Output parameters:
+///    fval:    The calculated function value.
+///    grad:    The (optional) vector of first derivatives).
+/// The meaning of the parameters par is of course defined by the user,
+/// who uses the values of those parameters to calculate their function value.
+/// The starting values must be specified by the user.
+/// Later values are determined by Minuit as it searches for the minimum
+/// or performs whatever analysis is requested by the user.
+///
+/// Note that this virtual function may be redefined in a class derived from TMinuit.
+/// The default function calls the function specified in SetFCN
+
+   virtual Int_t  FixParameter( Int_t parNo );/// fix a parameter
+   TMethodCall   *GetMethodCall() const {return fMethodCall;}
+   TObject       *GetObjectFit() const {return fObjectFit;}
+   Int_t          GetMaxIterations() const {return fMaxIterations;}
+   virtual Int_t  GetNumFixedPars() const;/// returns the number of currently fixed parameters
+
+
+   virtual Int_t  GetNumFreePars() const;/// returns the number of currently free parameters
+   virtual Int_t  GetNumPars() const;
+/// returns the total number of parameters that have been defined
+/// as fixed or free. The constant parameters are not counted.
+
+   virtual Int_t  GetParameter( Int_t parNo, Double_t &amp;currentValue, Double_t &amp;currentError ) const;
+/// return parameter value and error
+
+   virtual TObject *GetPlot() const {return fPlot;}
+   Int_t          GetStatus() const {return fStatus;}
+   virtual Int_t  Migrad();/// invokes the MIGRAD minimizer
+   virtual void   mnamin();
+///*-*-*-*-*-*-*-*-*-*-*-*-*Initialize AMIN*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+///*-*C        Called  from many places.  Initializes the value of AMIN by
+///*-*C        calling the user function. Prints out the function value and
+///*-*C        parameter values if Print Flag value is high enough.
+
+   virtual void   mnbins(Double_t a1, Double_t a2, Int_t naa, Double_t &amp;bl, Double_t &amp;bh, Int_t &amp;nb, Double_t &amp;bwid);
+///*-*-*-*-*-*-*-*-*-*-*Compute reasonable histogram intervals*-*-*-*-*-*-*-*-*
+///*-*        Function TO DETERMINE REASONABLE HISTOGRAM INTERVALS
+///*-*        GIVEN ABSOLUTE UPPER AND LOWER BOUNDS  A1 AND A2
+///*-*        AND DESIRED MAXIMUM NUMBER OF BINS NAA
+///*-*        PROGRAM MAKES REASONABLE BINNING FROM BL TO BH OF WIDTH BWID
+///*-*        F. JAMES,   AUGUST, 1974 , stolen for Minuit, 1988
+
+   virtual void   mncalf(Double_t *pvec, Double_t &amp;ycalf);
+///*-*-*-*-*-*-*-*-*-*Transform FCN to find further minima*-*-*-*-*-*-*-*-*-*
+///*-*        Called only from MNIMPR.  Transforms the function FCN
+///*-*        by dividing out the quadratic part in order to find further
+///*-*        minima.    Calculates  ycalf = (f-fmin)/(x-xmin)*v*(x-xmin)
+
+   virtual void   mncler();
+///*-*-*-*-*-*-*-*-*-*-*Resets the parameter list to UNDEFINED*-*-*-*-*-*-*-*
+///*-*        Called from MINUIT and by option from MNEXCM
+
+   virtual void   mncntr(Int_t ke1, Int_t ke2, Int_t &amp;ierrf);
+///*-*-*-*-*Print function contours in two variables, on line printer*-*-*-*-*
+///*-*                input arguments: parx, pary, devs, ngrid
+
+   virtual void   mncomd(const char *crdbin, Int_t &amp;icondn);
+///*-*-*-*-*-*-*-*-*-*-*Reads a command string and executes*-*-*-*-*-*-*-*-*-*
+///*-*        Called by user.  &apos;Reads&apos; a command string and executes.
+///*-*     Equivalent to MNEXCM except that the command is given as a
+///*-*          character string.
+///*-*     ICONDN = 0: command executed normally
+///*-*              1: command is blank, ignored
+///*-*              2: command line unreadable, ignored
+///*-*              3: unknown command, ignored
+///*-*              4: abnormal termination (e.g., MIGRAD not converged)
+///*-*              5: command is a request to read PARAMETER definitions
+///*-*              6: &apos;SET INPUT&apos; command
+///*-*              7: &apos;SET TITLE&apos; command
+///*-*              8: &apos;SET COVAR&apos; command
+///*-*              9: reserved
+///*-*             10: END command
+///*-*             11: EXIT or STOP command
+///*-*             12: RETURN command
+
+   virtual void   mncont(Int_t ke1, Int_t ke2, Int_t nptu, Double_t *xptu, Double_t *yptu, Int_t &amp;ierrf);
+///*-*-*-*-*-*-*Find points along a contour where FCN is minimum*-*-*-*-*-*-*
+///*-*       Find NPTU points along a contour where the function
+///*-*             FMIN (X(KE1),X(KE2)) =  AMIN+UP
+///*-*       where FMIN is the minimum of FCN with respect to all
+///*-*       the other NPAR-2 variable parameters (if any).
+///*-*   IERRF on return will be equal to the number of points found:
+///*-*     NPTU if normal termination with NPTU points found
+///*-*     -1   if errors in the calling sequence (KE1, KE2 not variable)
+///*-*      0   if less than four points can be found (using MNMNOT)
+///*-*     n&gt;3  if only n points can be found (n &lt; NPTU)
+///*-*                 input arguments: parx, pary, devs, ngrid
+
+   virtual void   mncrck(TString crdbuf, Int_t maxcwd, TString &amp;comand, Int_t &amp;lnc
+                    ,  Int_t mxp, Double_t *plist, Int_t &amp;llist, Int_t &amp;ierr, Int_t isyswr);
+///*-*-*-*-*-*-*-*-*-*-*-*Cracks the free-format input*-*-*-*-*-*-*-*-*-*-*-*-*
+///*-*       Cracks the free-format input, expecting zero or more
+///*-*         alphanumeric fields (which it joins into COMAND(1:LNC))
+///*-*         followed by one or more numeric fields separated by
+///*-*         blanks and/or one comma.  The numeric fields are put into
+///*-*         the LLIST (but at most MXP) elements of PLIST.
+///*-*      IERR = 0 if no errors,
+///*-*           = 1 if error(s).
+
+   virtual void   mncros(Double_t &amp;aopt, Int_t &amp;iercr);
+///*-*-*-*-*-*-*-*-*-*-*Find point where MNEVAL=AMIN+UP*-*-*-*-*-*-*-*-*-*-*-*
+///*-*       Find point where MNEVAL=AMIN+UP, along the line through
+///*-*       XMIDCR,YMIDCR with direction XDIRCR,YDIRCR,   where X and Y
+///*-*       are parameters KE1CR and KE2CR.  If KE2CR=0 (from MINOS),
+///*-*       only KE1CR is varied.  From MNCONT, both are varied.
+///*-*       Crossing point is at
+///*-*        (U(KE1),U(KE2)) = (XMID,YMID) + AOPT*(XDIR,YDIR)
+
+   virtual void   mncuve();
+///*-*-*-*-*-*-*-*Makes sure that the current point is a local minimum*-*-*-*-*
+///*-*        Makes sure that the current point is a local
+///*-*        minimum and that the error matrix exists,
+///*-*        or at least something good enough for MINOS and MNCONT
+
+   virtual void   mnderi();
+///*-*-*-*-*-*-*-*Calculates the first derivatives of FCN (GRD)*-*-*-*-*-*-*-*
+///*-*        Calculates the first derivatives of FCN (GRD),
+///*-*        either by finite differences or by transforming the user-
+///*-*        supplied derivatives to internal coordinates,
+///*-*        according to whether fISW[2] is zero or one.
+
+   virtual void   mndxdi(Double_t pint, Int_t ipar, Double_t &amp;dxdi);
+///*-*-*-*Calculates the transformation factor between ext/internal values*-*
+///*-*        calculates the transformation factor between external and
+///*-*        internal parameter values.     this factor is one for
+///*-*        parameters which are not limited.     called from MNEMAT.
+
+   virtual void   mneig(Double_t *a, Int_t ndima, Int_t n, Int_t mits, Double_t *work, Double_t precis, Int_t &amp;ifault);
+///*-*-*-*-*-*-*-*-*-*-*-*Compute matrix eigen values*-*-*-*-*-*-*-*-*-*-*-*-*
+
+   virtual void   mnemat(Double_t *emat, Int_t ndim);
+/// Calculates the external error matrix from the internal matrix
+/// Note that if the matrix is declared like Double_t matrix[5][5]
+/// in the calling program, one has to call mnemat with, eg
+///     gMinuit-&gt;mnemat(&amp;matrix[0][0],5);
+
+   virtual void   mnerrs(Int_t number, Double_t &amp;eplus, Double_t &amp;eminus, Double_t &amp;eparab, Double_t &amp;gcc);
+///*-*-*-*-*-*-*-*-*-*Utility routine to get MINOS errors*-*-*-*-*-*-*-*-*-*-*
+///*-*    Called by user.
+///*-*    NUMBER is the parameter number
+///*-*    values returned by MNERRS:
+///*-*       EPLUS, EMINUS are MINOS errors of parameter NUMBER,
+///*-*       EPARAB is &apos;parabolic&apos; error (from error matrix).
+///*-*                 (Errors not calculated are set = 0)
+///*-*       GCC is global correlation coefficient from error matrix
+
+   virtual void   mneval(Double_t anext, Double_t &amp;fnext, Int_t &amp;ierev);
+///*-*-*-*-*-*-*Evaluates the function being analyzed by MNCROS*-*-*-*-*-*-*-*
+///*-*      Evaluates the function being analyzed by MNCROS, which is
+///*-*      generally the minimum of FCN with respect to all remaining
+///*-*      variable parameters.  The class data members contains the
+///*-*      data necessary to know the values of U(KE1CR) and U(KE2CR)
+///*-*      to be used, namely     U(KE1CR) = XMIDCR + ANEXT*XDIRCR
+///*-*      and (if KE2CR .NE. 0)  U(KE2CR) = YMIDCR + ANEXT*YDIRCR
+
+   virtual void   mnexcm(const char *comand, Double_t *plist, Int_t llist, Int_t &amp;ierflg) ;
+///*-*-*-*-*-*Interprets a command and takes appropriate action*-*-*-*-*-*-*-*
+///*-*        either directly by skipping to the corresponding code in
+///*-*        MNEXCM, or by setting up a call to a function
+///*-*  recognized MINUIT commands:
+///*-*  obsolete commands:
+///*-*      IERFLG is now (94.5) defined the same as ICONDN in MNCOMD
+///*-*            = 0: command executed normally
+///*-*              1: command is blank, ignored
+///*-*              2: command line unreadable, ignored
+///*-*              3: unknown command, ignored
+///*-*              4: abnormal termination (e.g., MIGRAD not converged)
+///*-*              9: reserved
+///*-*             10: END command
+///*-*             11: EXIT or STOP command
+///*-*             12: RETURN command
+///*-*     see also http://wwwasdoc.web.cern.ch/wwwasdoc/minuit/node18.html for the possible list
+///*-*     of all Minuit commands
+
+   virtual void   mnexin(Double_t *pint);
+///*-*-*-*-*Transforms the external parameter values U to internal values*-*-*
+///*-*        Transforms the external parameter values U to internal
+///*-*        values in the dense array PINT.
+
+   virtual void   mnfixp(Int_t iint, Int_t &amp;ierr);
+///*-*-*-*-*-*-*Removes parameter IINT from the internal parameter list*-*-*
+///*-*        and arranges the rest of the list to fill the hole.
+
+   virtual void   mnfree(Int_t k);
+///*-*-*-*Restores one or more fixed parameter(s) to variable status*-*-*-*-*-*
+///*-*        Restores one or more fixed parameter(s) to variable status
+///*-*        by inserting it into the internal parameter list at the
+///*-*        appropriate place.
+///*-*        K = 0 means restore all parameters
+///*-*        K = 1 means restore the last parameter fixed
+///*-*        K = -I means restore external parameter I (if possible)
+///*-*        IQ = fix-location where internal parameters were stored
+///*-*        IR = external number of parameter being restored
+///*-*        IS = internal number of parameter being restored
+
+   virtual void   mngrad();
+///*-*-*-*-*-*-*-*-*-*Interprets the SET GRAD command*-*-*-*-*-*-*-*-*-*-*-*-*
+///*-*       Called from MNSET
+///*-*       Interprets the SET GRAD command, which informs MINUIT whether
+///*-*       the first derivatives of FCN will be calculated by the user
+///*-*       inside FCN.  It can check the user derivative calculation
+///*-*       by comparing it with a finite difference approximation.
+
+   virtual void   mnhelp(TString comd);
+//*-*  Global HELP: Summary of all commands
+
+   virtual void   mnhelp(const char *command=&quot;&quot;);
+///interface to Minuit help
+
+   virtual void   mnhess();
+///*-*-*-*-*-*Calculates the full second-derivative matrix of FCN*-*-*-*-*-*-*-*
+///*-*        by taking finite differences. When calculating diagonal
+///*-*        elements, it may iterate so that step size is nearly that
+///*-*        which gives function change= UP/10. The first derivatives
+///*-*        of course come as a free side effect, but with a smaller
+///*-*        step size in order to obtain a known accuracy.
+
+   virtual void   mnhes1();
+///*-*-*-*Calculate first derivatives (GRD) and uncertainties (DGRD)*-*-*-*-*-*
+///*-*         and appropriate step sizes GSTEP
+///*-*      Called from MNHESS and MNGRAD
+
+   virtual void   mnimpr();
+///*-*-*-*-*-*-*Attempts to improve on a good local minimum*-*-*-*-*-*-*-*-*-*
+///*-*        Attempts to improve on a good local minimum by finding a
+///*-*        better one.   The quadratic part of FCN is removed by MNCALF
+///*-*        and this transformed function is minimized using the simplex
+///*-*        method from several random starting points.
+///*-*        ref. -- Goldstein and Price, Math.Comp. 25, 569 (1971)
+
+   virtual void   mninex(Double_t *pint);
+///*-*-*-*-*Transforms from internal coordinates (PINT) to external (U)*-*-*-*
+///*-*        The minimizing routines which work in
+///*-*        internal coordinates call this routine before calling FCN.
+
+   virtual void   mninit(Int_t i1, Int_t i2, Int_t i3);
+///*-*-*-*-*-*Main initialization member function for MINUIT*-*-*-*-*-*-*-*-*
+///*-*     It initializes some constants
+///*-*                (including the logical I/O unit nos.),
+
+   virtual void   mnlims();
+///*-*-*-*Interprets the SET LIM command, to reset the parameter limits*-*-*-*
+///*-*       Called from MNSET
+
+   virtual void   mnline(Double_t *start, Double_t fstart, Double_t *step, Double_t slope, Double_t toler);
+///*-*-*-*-*-*-*-*-*-*Perform a line search from position START*-*-*-*-*-*-*-*
+///*-*        along direction STEP, where the length of vector STEP
+///*-*                   gives the expected position of minimum.
+///*-*        FSTART is value of function at START
+///*-*        SLOPE (if non-zero) is df/dx along STEP at START
+///*-*        TOLER is initial tolerance of minimum in direction STEP
+///*-* SLAMBG and ALPHA control the maximum individual steps allowed.
+///*-* The first step is always =1. The max length of second step is SLAMBG.
+///*-* The max size of subsequent steps is the maximum previous successful
+///*-*   step multiplied by ALPHA + the size of most recent successful step,
+///*-*   but cannot be smaller than SLAMBG.
+
+   virtual void   mnmatu(Int_t kode);
+///*-*-*-*-*-*-*-*Prints the covariance matrix v when KODE=1*-*-*-*-*-*-*-*-*
+///*-*        always prints the global correlations, and
+///*-*        calculates and prints the individual correlation coefficients
+
+   virtual void   mnmigr();
+///*-*-*-*-*-*-*-*-*Performs a local function minimization*-*-*-*-*-*-*-*-*-*
+///*-*        Performs a local function minimization using basically the
+///*-*        method of Davidon-Fletcher-Powell as modified by Fletcher
+///*-*        ref. -- Fletcher, Comp.J. 13,317 (1970)   &quot;switching method&quot;
+
+   virtual void   mnmnos();
+///*-*-*-*-*-*-*-*-*-*-*Performs a MINOS error analysis*-*-*-*-*-*-*-*-*-*-*-*
+///*-*        Performs a MINOS error analysis on those parameters for
+///*-*        which it is requested on the MINOS command by calling
+///*-*        MNMNOT for each parameter requested.
+
+   virtual void   mnmnot(Int_t ilax, Int_t ilax2, Double_t &amp;val2pl, Double_t &amp;val2mi);
+///*-*-*-*-*-*Performs a MINOS error analysis on one parameter*-*-*-*-*-*-*-*-*
+///*-*        The parameter ILAX is varied, and the minimum of the
+///*-*        function with respect to the other parameters is followed
+///*-*        until it crosses the value FMIN+UP.
+
+   virtual void   mnparm(Int_t k, TString cnamj, Double_t uk, Double_t wk, Double_t a, Double_t b, Int_t &amp;ierflg);
+///*-*-*-*-*-*-*-*-*Implements one parameter definition*-*-*-*-*-*-*-*-*-*-*-*
+///*-*        Called from MNPARS and user-callable
+///*-*    Implements one parameter definition, that is:
+///*-*          K     (external) parameter number
+///*-*          CNAMK parameter name
+///*-*          UK    starting value
+///*-*          WK    starting step size or uncertainty
+///*-*          A, B  lower and upper physical parameter limits
+///*-*    and sets up (updates) the parameter lists.
+///*-*    Output: IERFLG=0 if no problems
+///*-*                  &gt;0 if MNPARM unable to implement definition
+
+   virtual void   mnpars(TString &amp;crdbuf, Int_t &amp;icondn);
+///*-*-*-*-*-*-*-*Implements one parameter definition*-*-*-*-*-*-*-*-*-*-*-*-*
+///*-*        Called from MNREAD and user-callable
+///*-*    Implements one parameter definition, that is:
+///*-*       parses the string CRDBUF and calls MNPARM
+///*-* output conditions:
+///*-*        ICONDN = 0    all OK
+///*-*        ICONDN = 1    error, attempt to define parameter is ignored
+///*-*        ICONDN = 2    end of parameter definitions
+
+   virtual void   mnpfit(Double_t *parx2p, Double_t *pary2p, Int_t npar2p, Double_t *coef2p, Double_t &amp;sdev2p);
+///*-*-*-*-*-*-*-*-*-*To fit a parabola to npar2p points*-*-*-*-*-*-*-*-*-*-*
+///*-*   npar2p   no. of points
+///*-*   parx2p(i)   x value of point i
+///*-*   pary2p(i)   y value of point i
+///*-*
+///*-*   coef2p(1...3)  coefficients of the fitted parabola
+///*-*   y=coef2p(1) + coef2p(2)*x + coef2p(3)*x**2
+///*-*   sdev2p= variance
+///*-*   method : chi**2 = min equation solved explicitly
+
+   virtual void   mnpint(Double_t &amp;pexti, Int_t i, Double_t &amp;pinti);
+///*-*-*-*-*-*-*Calculates the internal parameter value PINTI*-*-*-*-*-*-*-*
+///*-*        corresponding  to the external value PEXTI for parameter I.
+
+   virtual void   mnplot(Double_t *xpt, Double_t *ypt, char *chpt, Int_t nxypt, Int_t npagwd, Int_t npagln);
+///*-*-*-*Plots points in array xypt onto one page with labelled axes*-*-*-*-*
+///*-*        NXYPT is the number of points to be plotted
+///*-*        XPT(I) = x-coord. of ith point
+///*-*        YPT(I) = y-coord. of ith point
+///*-*        CHPT(I) = character to be plotted at this position
+///*-*        the input point arrays XPT, YPT, CHPT are destroyed.
+///*-*   If fGraphicsmode is true (default), a TGraph object is produced
+///*-*   via the Plug-in handler. To get the plot, you can do:
+///*-*       TGraph *gr = (TGraph*)gMinuit-&gt;GetPlot();
+///*-*       gr-&gt;Draw(&quot;al&quot;);
+
+   virtual void   mnpout(Int_t iuext, TString &amp;chnam, Double_t &amp;val, Double_t &amp;err, Double_t &amp;xlolim, Double_t &amp;xuplim, Int_t &amp;iuint) const;
+///*-*-*-*Provides the user with information concerning the current status*-*-*
+///*-*          of parameter number IUEXT. Namely, it returns:
+///*-*        CHNAM: the name of the parameter
+///*-*        VAL: the current (external) value of the parameter
+///*-*        ERR: the current estimate of the parameter uncertainty
+///*-*        XLOLIM: the lower bound (or zero if no limits)
+///*-*        XUPLIM: the upper bound (or zero if no limits)
+///*-*        IUINT: the internal parameter number (or zero if not variable,
+///*-*           or negative if undefined).
+///*-*  Note also:  If IUEXT is negative, then it is -internal parameter
+///*-*           number, and IUINT is returned as the EXTERNAL number.
+///*-*     Except for IUINT, this is exactly the inverse of MNPARM
+///*-*     User-called
+
+   virtual void   mnprin(Int_t inkode, Double_t fval);
+///*-*-*-*Prints the values of the parameters at the time of the call*-*-*-*-*
+///*-*        also prints other relevant information such as function value,
+///*-*        estimated distance to minimum, parameter errors, step sizes.
+///*-*
+///*-*         According to the value of IKODE, the printout is:/
+///*-*    IKODE=INKODE= 0    only info about function value
+///*-*                  1    parameter values, errors, limits
+///*-*                  2    values, errors, step sizes, internal values
+///*-*                  3    values, errors, step sizes, first derivs.
+///*-*                  4    values, parabolic errors, MINOS errors
+///*-*    when INKODE=5, MNPRIN chooses IKODE=1,2, or 3, according to fISW[1]
+
+   virtual void   mnpsdf();
+///*-*-*-*-*-*Calculates the eigenvalues of v to see if positive-def*-*-*-*-*
+///*-*        if not, adds constant along diagonal to make positive.
+
+   virtual void   mnrazz(Double_t ynew, Double_t *pnew, Double_t *y, Int_t &amp;jh, Int_t &amp;jl);
+///*-*-*-*-*Called only by MNSIMP (and MNIMPR) to add a new point*-*-*-*-*-*-*
+///*-*        and remove an old one from the current simplex, and get the
+///*-*        estimated distance to minimum.
+
+   virtual void   mnrn15(Double_t &amp;val, Int_t &amp;inseed);
+///*-*-*-*-*-*-*This is a super-portable random number generator*-*-*-*-*-*-*
+///*-*         It should not overflow on any 32-bit machine.
+///*-*         The cycle is only ~10**9, so use with care!
+///*-*         Note especially that VAL must not be undefined on input.
+///*-*                    Set Default Starting Seed
+
+   virtual void   mnrset(Int_t iopt);
+///*-*-*-*-*-*-*-*Resets function value and errors to UNDEFINED*-*-*-*-*-*-*-*
+///*-*    If IOPT=1,
+///*-*    If IOPT=0, sets only MINOS errors to undefined
+///*-*        Called from MNCLER and whenever problem changes, for example
+///*-*        after SET LIMITS, SET PARAM, CALL FCN 6
+
+   virtual void   mnsave();
+   virtual void   mnscan();
+///*-*-*-*-*Scans the values of FCN as a function of one parameter*-*-*-*-*-*
+///*-*        and plots the resulting values as a curve using MNPLOT.
+///*-*        It may be called to scan one parameter or all parameters.
+///*-*        retains the best function and parameter values found.
+
+   virtual void   mnseek();
+///*-*-*-*Performs a rough (but global) minimization by monte carlo search*-*
+///*-*        Each time a new minimum is found, the search area is shifted
+///*-*        to be centered at the best value.  Random points are chosen
+///*-*        uniformly over a hypercube determined by current step sizes.
+///*-*   The Metropolis algorithm accepts a worse point with probability
+///*-*      exp(-d/UP), where d is the degradation.  Improved points
+///*-*      are of course always accepted.  Actual steps are random
+///*-*      multiples of the nominal steps (DIRIN).
+
+   virtual void   mnset();
+///*-*-*-*-*Interprets the commands that start with SET and SHOW*-*-*-*-*-*-*
+///*-*        Called from MNEXCM
+///*-*        file characteristics for SET INPUT
+///*-*       &apos;SET &apos; or &apos;SHOW&apos;,  &apos;ON &apos; or &apos;OFF&apos;, &apos;SUPPRESSED&apos; or &apos;REPORTED  &apos;
+///*-*        explanation of print level numbers -1:3  and strategies 0:2
+///*-*        identification of debug options
+///*-*        things that can be set or shown
+///*-*        options not intended for normal users
+
+   virtual void   mnsimp();
+///*-*-*-*-*Minimization using the simplex method of Nelder and Mead*-*-*-*-*
+
+   virtual void   mnstat(Double_t &amp;fmin, Double_t &amp;fedm, Double_t &amp;errdef, Int_t &amp;npari, Int_t &amp;nparx, Int_t &amp;istat);
+///*-*-*-*-*Returns concerning the current status of the minimization*-*-*-*-*
+///*-*       User-called
+///*-*          Namely, it returns:
+///*-*        FMIN: the best function value found so far
+///*-*        FEDM: the estimated vertical distance remaining to minimum
+///*-*        ERRDEF: the value of UP defining parameter uncertainties
+///*-*        NPARI: the number of currently variable parameters
+///*-*        NPARX: the highest (external) parameter number defined by user
+///*-*        ISTAT: a status integer indicating how good is the covariance
+///*-*           matrix:  0= not calculated at all
+///*-*                    1= approximation only, not accurate
+///*-*                    2= full matrix, but forced positive-definite
+///*-*                    3= full accurate covariance matrix
+
+   virtual void   mntiny(volatile Double_t epsp1, Double_t &amp;epsbak);
+///*-*-*-*-*-*-*-*To find the machine precision*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+///*-*        Compares its argument with the value 1.0, and returns
+///*-*        the value .TRUE. if they are equal.  To find EPSMAC
+///*-*        safely by foiling the Fortran optimizer
+
+   Bool_t         mnunpt(TString &amp;cfname);
+///*-*-*-*-*-*Returns .TRUE. if CFNAME contains unprintable characters*-*-*-*
+
+   virtual void   mnvert(Double_t *a, Int_t l, Int_t m, Int_t n, Int_t &amp;ifail);
+///*-*-*-*-*-*-*-*-*-*-*-*Inverts a symmetric matrix*-*-*-*-*-*-*-*-*-*-*-*-*
+///*-*        inverts a symmetric matrix.   matrix is first scaled to
+///*-*        have all ones on the diagonal (equivalent to change of units)
+///*-*        but no pivoting is done since matrix is positive-definite.
+
+   virtual void   mnwarn(const char *copt, const char *corg, const char *cmes);
+///*-*-*-*-*-*-*-*-*-*-*-*Prints Warning messages*-*-*-*-*-*-*-*-*-*-*-*-*-*
+///*-*     If COPT=&apos;W&apos;, CMES is a WARning message from CORG.
+///*-*     If COPT=&apos;D&apos;, CMES is a DEBug message from CORG.
+///*-*         If SET WARnings is in effect (the default), this routine
+///*-*             prints the warning message CMES coming from CORG.
+///*-*         If SET NOWarnings is in effect, the warning message is
+///*-*             stored in a circular buffer of length kMAXMES.
+///*-*         If called with CORG=CMES=&apos;SHO&apos;, it prints the messages in
+///*-*             the circular buffer, FIFO, and empties the buffer.
+
+   virtual void   mnwerr();
+///*-*-*-*-*-*-*-*Calculates the WERR, external parameter errors*-*-*-*-*-*-*
+///*-*      and the global correlation coefficients, to be called
+///*-*      whenever a new covariance matrix is available.
+
+   virtual Int_t  Release( Int_t parNo );/// release a parameter
+   virtual Int_t  SetErrorDef( Double_t up );
+/// To get the n-sigma contour the error def parameter &quot;up&quot; has to set to n^2.
+
+   virtual void   SetFCN(void *fcn);
+///*-*-*-*-*-*-*To set the address of the minimization function*-*-*-*-*-*-*-*
+///     this function is called by CINT instead of the function above
+
+   virtual void   SetFCN(void (*fcn)(Int_t &amp;, Double_t *, Double_t &amp;f, Double_t *, Int_t));
+///*-*-*-*-*-*-*To set the address of the minimization function*-*-*-*-*-*-*-*
+
+   virtual void   SetGraphicsMode(Bool_t mode=kTRUE) {fGraphicsMode = mode;}
+   virtual void   SetMaxIterations(Int_t maxiter=500) {fMaxIterations = maxiter;}
+   virtual void   SetObjectFit(TObject *obj) {fObjectFit=obj;}
+   virtual Int_t  SetPrintLevel( Int_t printLevel=0 );
+///set Minuit print level
+/// printlevel = -1  quiet (also suppresse all warnings)
+///            =  0  normal
+///            =  1  verbose
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TMinuit.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:23
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:23 </span> </footer>
                                 
                                 </section>
                             
@@ -4266,7 +4278,7 @@ R__EXTERN TMinuit  <span class="token operator">*</span>gMinuit<span class="toke
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TMinuit*","level":"1.2.50","depth":2,"next":{"title":"TMinuitMinimizer*","level":"1.2.51","depth":2,"path":"class/TMinuitMinimizer.md","ref":"class/TMinuitMinimizer.md","articles":[]},"previous":{"title":"TMemFile","level":"1.2.49","depth":2,"path":"class/TMemFile.md","ref":"class/TMemFile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TMinuit.md","mtime":"2018-05-14T09:18:23.130Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TMinuit*","level":"1.2.50","depth":2,"next":{"title":"TMinuitMinimizer*","level":"1.2.51","depth":2,"path":"class/TMinuitMinimizer.md","ref":"class/TMinuitMinimizer.md","articles":[]},"previous":{"title":"TMemFile","level":"1.2.49","depth":2,"path":"class/TMemFile.md","ref":"class/TMemFile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TMinuit.md","mtime":"2018-05-14T09:18:23.130Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4298,6 +4310,18 @@ R__EXTERN TMinuit  <span class="token operator">*</span>gMinuit<span class="toke
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

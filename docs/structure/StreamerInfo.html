@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3668,7 +3680,7 @@
                                 
                                 <h1 id="streamerinfo"><a name="streamerinfo" class="plugin-anchor" href="#streamerinfo"><i class="fa fa-link" aria-hidden="true"></i></a>StreamerInfo</h1>
 <h2 id="streamerinfotxt"><a name="streamerinfotxt" class="plugin-anchor" href="#streamerinfotxt"><i class="fa fa-link" aria-hidden="true"></i></a>StreamerInfo.txt</h2>
-<pre class="language-"><code>//  Format of StreamerInfo record in release 3.02.06.
+<pre><code>//  Format of StreamerInfo record in release 3.02.06.
 //  It is probably not accessed by its key, but from its offset given in the file header.
 //  The StreamerInfo record DATA consists of a TList (list) object containing elements
 //  of class TStreamerInfo.
@@ -3779,7 +3791,7 @@
 //-------
 //  The objects stored in the TObjectArray in TStreamerInfo are of various classes, each of
 //     which inherits directly from the TStreamerElement class.  The possible classes (which
-//     we refer to collectively as TStreamer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>XXX</span><span class="token punctuation">&gt;</span></span>) are:
+//     we refer to collectively as TStreamer&lt;XXX&gt;) are:
 //
 //  TStreamerBase:          Used for a base class.  All others below used for data members.
 //  TStreamerBasicType:     For a basic type
@@ -3792,20 +3804,20 @@
 //  TStreamerSTL:           For an STL container (not yet used??)
 //  TStreamerSTLString:     For an STL string (not yet used??)
 //-------
-// Here is the format of a TStreamer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>XXX</span><span class="token punctuation">&gt;</span></span> object in Release 3.02.06.
+// Here is the format of a TStreamer&lt;XXX&gt; object in Release 3.02.06.
 // In description below,
-//     0-&gt;3  ByteCount = Number of remaining bytes in TStreamer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>XXX</span><span class="token punctuation">&gt;</span></span> object (uncompressed)
+//     0-&gt;3  ByteCount = Number of remaining bytes in TStreamer&lt;XXX&gt; object (uncompressed)
 //                     |   OR&apos;d with kByteCountMask (0x40000000)
-//     4-&gt;.. ClassInfo = Information about the specific TStreamer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>XXX</span><span class="token punctuation">&gt;</span></span> class
+//     4-&gt;.. ClassInfo = Information about the specific TStreamer&lt;XXX&gt; class
 //                     | If this is the first occurrence of a TStreamerXXX object in the record
 //                     |  4-&gt;7  -1        = New class tag (constant kNewClassTag = 0xffffffff)
-//                     |  8-&gt;.. Classname = Object Class Name &quot;TStreamer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>XXX</span><span class="token punctuation">&gt;</span></span>&quot; (null terminated)
+//                     |  8-&gt;.. Classname = Object Class Name &quot;TStreamer&lt;XXX&gt;&quot; (null terminated)
 //                     | Otherwise
 //                     |  4-&gt;7 clIdx      = Byte offset of new class tag in record, plus 2.
 //                    | OR&apos;d with kClassMask (0x80000000)
-//     0-&gt;3  ByteCount = Number of remaining bytes in TStreamer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>XXX</span><span class="token punctuation">&gt;</span></span> object (uncompressed)
+//     0-&gt;3  ByteCount = Number of remaining bytes in TStreamer&lt;XXX&gt; object (uncompressed)
 //                   |   OR&apos;d with kByteCountMask (0x40000000)
-//     4-&gt;5  Version   = Version of TStreamer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>XXX</span><span class="token punctuation">&gt;</span></span> Class
+//     4-&gt;5  Version   = Version of TStreamer&lt;XXX&gt; Class
 // -Begin TStreamerElement object (Base class of TStreamerXXX)
 //     0-&gt;3  ByteCount = Number of remaining bytes in TStreamerElement object (uncompressed)
 //                   |   OR&apos;d with kByteCountMask (0x40000000)
@@ -3862,7 +3874,7 @@
 //                      |  rather than a data member, the name used is &apos;BASE&apos;.
 //                      |  (TStreamerElement::fTypeName).
 // -End TStreamerElement object
-//     The remaining data is specific to the type of TStreamer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>XXX</span><span class="token punctuation">&gt;</span></span> class.
+//     The remaining data is specific to the type of TStreamer&lt;XXX&gt; class.
 //      For TStreamerInfoBase:
 //      0-&gt;3  fBaseVersion   = Version of base class that this TStreamerElement describes.
 //      For TStreamerBasicType:
@@ -3894,9 +3906,9 @@
 //                      | Same values as for fType above, with one addition: 365:STL string
 //      For TStreamerSTLString:
 //            No specific data
-</code></pre><footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:16:12
-</span></footer>
+</code></pre><script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:16:12 </span> </footer>
                                 
                                 </section>
                             
@@ -3939,7 +3951,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"StreamerInfo","level":"1.7.7","depth":2,"next":{"title":"TClonesArray","level":"1.7.8","depth":2,"path":"structure/TClonesArray.md","ref":"structure/TClonesArray.md","articles":[]},"previous":{"title":"keyslist","level":"1.7.6","depth":2,"path":"structure/keyslist.md","ref":"structure/keyslist.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"structure/StreamerInfo.md","mtime":"2018-05-14T09:16:12.599Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"StreamerInfo","level":"1.7.7","depth":2,"next":{"title":"TClonesArray","level":"1.7.8","depth":2,"path":"structure/TClonesArray.md","ref":"structure/TClonesArray.md","articles":[]},"previous":{"title":"keyslist","level":"1.7.6","depth":2,"path":"structure/keyslist.md","ref":"structure/keyslist.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"structure/StreamerInfo.md","mtime":"2018-05-14T09:16:12.599Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3971,6 +3983,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

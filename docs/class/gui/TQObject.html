@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3683,296 +3695,296 @@
 <p>TQObjSender &#x7EE7;&#x627F; TQObject</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TQObject</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TQObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// TQObject Constructor.</span>
-<span class="token comment">/// Comment:</span>
-<span class="token comment">///  - In order to minimize memory allocation fListOfSignals and</span>
-<span class="token comment">///    fListOfConnections are allocated only if it is neccesary</span>
-<span class="token comment">///  - When fListOfSignals/fListOfConnections are empty they will</span>
-<span class="token comment">///    be deleted</span>
+<pre><code class="lang-cpp">   TQObject();
+<span class="hljs-comment">/// TQObject Constructor.</span>
+<span class="hljs-comment">/// Comment:</span>
+<span class="hljs-comment">///  - In order to minimize memory allocation fListOfSignals and</span>
+<span class="hljs-comment">///    fListOfConnections are allocated only if it is neccesary</span>
+<span class="hljs-comment">///  - When fListOfSignals/fListOfConnections are empty they will</span>
+<span class="hljs-comment">///    be deleted</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TQObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// TQObject Destructor.</span>
-<span class="token comment">///    - delete all connections and signal list</span>
+   <span class="hljs-keyword">virtual</span> ~TQObject();
+<span class="hljs-comment">/// TQObject Destructor.</span>
+<span class="hljs-comment">///    - delete all connections and signal list</span>
 
-   TList   <span class="token operator">*</span><span class="token function">GetListOfClassSignals</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Returns pointer to list of signals of this class.</span>
-   TList   <span class="token operator">*</span><span class="token function">GetListOfSignals</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fListOfSignals<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TList   <span class="token operator">*</span><span class="token function">GetListOfConnections</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fListOfConnections<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">TList   *<span class="hljs-title">GetListOfClassSignals</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns pointer to list of signals of this class.</span>
+   <span class="hljs-function">TList   *<span class="hljs-title">GetListOfSignals</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fListOfSignals; }
+   <span class="hljs-function">TList   *<span class="hljs-title">GetListOfConnections</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fListOfConnections; }
 
-   Bool_t   <span class="token function">AreSignalsBlocked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fSignalsBlocked<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t   <span class="token function">BlockSignals</span><span class="token punctuation">(</span>Bool_t b<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> Bool_t ret <span class="token operator">=</span> fSignalsBlocked<span class="token punctuation">;</span> fSignalsBlocked <span class="token operator">=</span> b<span class="token punctuation">;</span> <span class="token keyword">return</span> ret<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Bool_t   <span class="hljs-title">AreSignalsBlocked</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fSignalsBlocked; }
+   <span class="hljs-function">Bool_t   <span class="hljs-title">BlockSignals</span><span class="hljs-params">(Bool_t b)</span>
+            </span>{ Bool_t ret = fSignalsBlocked; fSignalsBlocked = b; <span class="hljs-keyword">return</span> ret; }
 
-   <span class="token keyword">void</span>  <span class="token function">CollectClassSignalLists</span><span class="token punctuation">(</span>TList<span class="token operator">&amp;</span> list<span class="token punctuation">,</span> TClass<span class="token operator">*</span> cls<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Collect class signal lists from class cls and all its</span>
-<span class="token comment">/// base-classes.</span>
-<span class="token comment">/// The recursive traversal is not performed for classes not</span>
-<span class="token comment">/// deriving from TQClass.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">CollectClassSignalLists</span><span class="hljs-params">(TList&amp; <span class="hljs-built_in">list</span>, TClass* cls)</span></span>;
+<span class="hljs-comment">/// Collect class signal lists from class cls and all its</span>
+<span class="hljs-comment">/// base-classes.</span>
+<span class="hljs-comment">/// The recursive traversal is not performed for classes not</span>
+<span class="hljs-comment">/// deriving from TQClass.</span>
 
-   <span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">typename</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> T<span class="token operator">&gt;</span> <span class="token keyword">void</span> <span class="token function">EmitVA</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal_name<span class="token punctuation">,</span> Int_t <span class="token comment">/* nargs */</span><span class="token punctuation">,</span> <span class="token keyword">const</span> T<span class="token operator">&amp;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> params<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// void  EmitVA(const char *signal, Int_t nargs, ...);</span>
-   <span class="token keyword">void</span>  <span class="token function">EmitVA</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Int_t nargs<span class="token punctuation">,</span> va_list va<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">delete</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Acitvate signal without args.</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>... T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">EmitVA</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal_name, Int_t <span class="hljs-comment">/* nargs */</span>, <span class="hljs-keyword">const</span> T&amp;... params)</span></span>;
+   <span class="hljs-comment">// void  EmitVA(const char *signal, Int_t nargs, ...);</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">EmitVA</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Int_t nargs, va_list va)</span> </span>= <span class="hljs-keyword">delete</span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal)</span></span>;
+<span class="hljs-comment">/// Acitvate signal without args.</span>
 
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Long_t <span class="token operator">*</span>paramArr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Emit a signal with a varying number of arguments,</span>
-<span class="token comment">/// paramArr is an array of the parameters.</span>
-<span class="token comment">/// Note: any parameter should be converted to long type.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Long_t *paramArr)</span></span>;
+<span class="hljs-comment">/// Emit a signal with a varying number of arguments,</span>
+<span class="hljs-comment">/// paramArr is an array of the parameters.</span>
+<span class="hljs-comment">/// Note: any parameter should be converted to long type.</span>
 
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Activate signal with parameter text string.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *params)</span></span>;
+<span class="hljs-comment">/// Activate signal with parameter text string.</span>
 
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Double_t param<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Activate signal with single parameter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Double_t param)</span></span>;
+<span class="hljs-comment">/// Activate signal with single parameter.</span>
 
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Long_t param<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Activate signal with single parameter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Long_t param)</span></span>;
+<span class="hljs-comment">/// Activate signal with single parameter.</span>
 
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Long64_t param<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Activate signal with single parameter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Long64_t param)</span></span>;
+<span class="hljs-comment">/// Activate signal with single parameter.</span>
 
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Bool_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Char_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> UChar_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Short_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> UShort_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Int_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> UInt_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> ULong_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> ULong64_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Long64_t<span class="token punctuation">)</span> param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>  <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span> Float_t param<span class="token punctuation">)</span>
-         <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span>signal<span class="token punctuation">,</span> <span class="token punctuation">(</span>Double_t<span class="token punctuation">)</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Bool_t param)</span>
+         </span>{ Emit(signal, (Long_t)param); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Char_t param)</span>
+         </span>{ Emit(signal, (Long_t)param); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, UChar_t param)</span>
+         </span>{ Emit(signal, (Long_t)param); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Short_t param)</span>
+         </span>{ Emit(signal, (Long_t)param); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, UShort_t param)</span>
+         </span>{ Emit(signal, (Long_t)param); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Int_t param)</span>
+         </span>{ Emit(signal, (Long_t)param); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, UInt_t param)</span>
+         </span>{ Emit(signal, (Long_t)param); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, ULong_t param)</span>
+         </span>{ Emit(signal, (Long_t)param); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, ULong64_t param)</span>
+         </span>{ Emit(signal, (Long64_t) param); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>  <span class="hljs-title">Emit</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal, Float_t param)</span>
+         </span>{ Emit(signal, (Double_t)param); }
 
-   Bool_t <span class="token function">Connect</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span>
-                  <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>receiver_class<span class="token punctuation">,</span>
-                  <span class="token keyword">void</span> <span class="token operator">*</span>receiver<span class="token punctuation">,</span>
-                  <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>slot<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Non-static method is used to connect from the signal</span>
-<span class="token comment">/// of this object to the receiver slot.</span>
-<span class="token comment">/// Warning! No check on consistency of sender/receiver</span>
-<span class="token comment">/// classes/methods.</span>
-<span class="token comment">/// This method makes possible to have connection/signals from</span>
-<span class="token comment">/// interpreted class. See also RQ_OBJECT.h.</span>
+   <span class="hljs-function">Bool_t <span class="hljs-title">Connect</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal,
+                  <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *receiver_class,
+                  <span class="hljs-keyword">void</span> *receiver,
+                  <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *slot)</span></span>;
+<span class="hljs-comment">/// Non-static method is used to connect from the signal</span>
+<span class="hljs-comment">/// of this object to the receiver slot.</span>
+<span class="hljs-comment">/// Warning! No check on consistency of sender/receiver</span>
+<span class="hljs-comment">/// classes/methods.</span>
+<span class="hljs-comment">/// This method makes possible to have connection/signals from</span>
+<span class="hljs-comment">/// interpreted class. See also RQ_OBJECT.h.</span>
 
-   Bool_t <span class="token function">Disconnect</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                     <span class="token keyword">void</span> <span class="token operator">*</span>receiver <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>slot <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Disconnects signal of this object from slot of receiver.</span>
-<span class="token comment">/// Equivalent to Disconnect(this, signal, receiver, slot)</span>
+   <span class="hljs-function">Bool_t <span class="hljs-title">Disconnect</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal = <span class="hljs-number">0</span>,
+                     <span class="hljs-keyword">void</span> *receiver = <span class="hljs-number">0</span>,
+                     <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *slot = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Disconnects signal of this object from slot of receiver.</span>
+<span class="hljs-comment">/// Equivalent to Disconnect(this, signal, receiver, slot)</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">HighPriority</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal_name<span class="token punctuation">,</span>
-                               <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>slot_name <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// 1. If slot_name = 0 =&gt; makes signal defined by the signal_name</span>
-<span class="token comment">///    to be the first in the fListOfSignals, this decreases</span>
-<span class="token comment">///    the time for lookup.</span>
-<span class="token comment">/// 2. If slot_name != 0 =&gt; makes slot defined by the slot_name</span>
-<span class="token comment">///    to be executed first when signal_name is emitted.</span>
-<span class="token comment">/// Signal name is not compressed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">HighPriority</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal_name,
+                               <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *slot_name = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// 1. If slot_name = 0 =&gt; makes signal defined by the signal_name</span>
+<span class="hljs-comment">///    to be the first in the fListOfSignals, this decreases</span>
+<span class="hljs-comment">///    the time for lookup.</span>
+<span class="hljs-comment">/// 2. If slot_name != 0 =&gt; makes slot defined by the slot_name</span>
+<span class="hljs-comment">///    to be executed first when signal_name is emitted.</span>
+<span class="hljs-comment">/// Signal name is not compressed.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">LowPriority</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal_name<span class="token punctuation">,</span>
-                              <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>slot_name <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// 1. If slot_name = 0 =&gt; makes signal defined by the signal_name</span>
-<span class="token comment">///    to be the last in the fListOfSignals, this increase the time</span>
-<span class="token comment">///    for lookup.</span>
-<span class="token comment">/// 2. If slot_name != 0 =&gt; makes slot defined by the slot_name</span>
-<span class="token comment">///    to  be executed last when signal_name is emitted.</span>
-<span class="token comment">/// Signal name is not compressed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">LowPriority</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal_name,
+                              <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *slot_name = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// 1. If slot_name = 0 =&gt; makes signal defined by the signal_name</span>
+<span class="hljs-comment">///    to be the last in the fListOfSignals, this increase the time</span>
+<span class="hljs-comment">///    for lookup.</span>
+<span class="hljs-comment">/// 2. If slot_name != 0 =&gt; makes slot defined by the slot_name</span>
+<span class="hljs-comment">///    to  be executed last when signal_name is emitted.</span>
+<span class="hljs-comment">/// Signal name is not compressed.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HasConnection</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal_name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return true if there is any object connected to this signal.</span>
-<span class="token comment">/// Only checks for object signals.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HasConnection</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal_name)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return true if there is any object connected to this signal.</span>
+<span class="hljs-comment">/// Only checks for object signals.</span>
 
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">NumberOfSignals</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return number of signals for this object.</span>
-<span class="token comment">/// Only checks for object signals.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t  <span class="hljs-title">NumberOfSignals</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return number of signals for this object.</span>
+<span class="hljs-comment">/// Only checks for object signals.</span>
 
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">NumberOfConnections</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return number of connections for this object.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Connected</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*signal_name*/</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Disconnected</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*signal_name*/</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t  <span class="hljs-title">NumberOfConnections</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return number of connections for this object.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Connected</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*signal_name*/</span>)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Disconnected</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*signal_name*/</span>)</span> </span>{ }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Destroyed</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                  <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Destroyed()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>                 <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">ChangedBy</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>method<span class="token punctuation">)</span>
-                  <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;ChangedBy(char*)&quot;</span><span class="token punctuation">,</span> method<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>    <span class="token comment">// *SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Message</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>msg<span class="token punctuation">)</span>
-                  <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Message(char*)&quot;</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>         <span class="token comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Destroyed</span><span class="hljs-params">()</span>
+                  </span>{ Emit(<span class="hljs-string">&quot;Destroyed()&quot;</span>); }                 <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">ChangedBy</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *method)</span>
+                  </span>{ Emit(<span class="hljs-string">&quot;ChangedBy(char*)&quot;</span>, method); }    <span class="hljs-comment">// *SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Message</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *msg)</span>
+                  </span>{ Emit(<span class="hljs-string">&quot;Message(char*)&quot;</span>, msg); }         <span class="hljs-comment">// *SIGNAL*</span>
 
-   <span class="token keyword">static</span> Bool_t  <span class="token function">Connect</span><span class="token punctuation">(</span>TQObject <span class="token operator">*</span>sender<span class="token punctuation">,</span>
-                          <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span>
-                          <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>receiver_class<span class="token punctuation">,</span>
-                          <span class="token keyword">void</span> <span class="token operator">*</span>receiver<span class="token punctuation">,</span>
-                          <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>slot<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create connection between sender and receiver.</span>
-<span class="token comment">/// Signal and slot string must have a form:</span>
-<span class="token comment">///    &quot;Draw(char*, Option_t* ,Int_t)&quot;</span>
-<span class="token comment">/// All blanks and &quot;const&quot; words will be removed,</span>
-<span class="token comment">/// Warning:</span>
-<span class="token comment">///  If receiver is class not derived from TQObject and going to be</span>
-<span class="token comment">///  deleted, disconnect all connections to this receiver.</span>
-<span class="token comment">///  In case of class derived from TQObject it is done automatically.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">Connect</span><span class="hljs-params">(TQObject *sender,
+                          <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal,
+                          <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *receiver_class,
+                          <span class="hljs-keyword">void</span> *receiver,
+                          <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *slot)</span></span>;
+<span class="hljs-comment">/// Create connection between sender and receiver.</span>
+<span class="hljs-comment">/// Signal and slot string must have a form:</span>
+<span class="hljs-comment">///    &quot;Draw(char*, Option_t* ,Int_t)&quot;</span>
+<span class="hljs-comment">/// All blanks and &quot;const&quot; words will be removed,</span>
+<span class="hljs-comment">/// Warning:</span>
+<span class="hljs-comment">///  If receiver is class not derived from TQObject and going to be</span>
+<span class="hljs-comment">///  deleted, disconnect all connections to this receiver.</span>
+<span class="hljs-comment">///  In case of class derived from TQObject it is done automatically.</span>
 
 
-   <span class="token keyword">static</span> Bool_t  <span class="token function">Connect</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>sender_class<span class="token punctuation">,</span>
-                          <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span>
-                          <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>receiver_class<span class="token punctuation">,</span>
-                          <span class="token keyword">void</span> <span class="token operator">*</span>receiver<span class="token punctuation">,</span>
-                          <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>slot<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// This method allows to make a connection from any object</span>
-<span class="token comment">/// of the same class to a single slot.</span>
-<span class="token comment">/// Signal and slot string must have a form:</span>
-<span class="token comment">///    &quot;Draw(char*, Option_t* ,Int_t)&quot;</span>
-<span class="token comment">/// All blanks and &quot;const&quot; words will be removed,</span>
-<span class="token comment">/// Warning:</span>
-<span class="token comment">///  If receiver class not derived from TQObject and going to be</span>
-<span class="token comment">///  deleted, disconnect all connections to this receiver.</span>
-<span class="token comment">///  In case of class derived from TQObject it is done automatically.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">Connect</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *sender_class,
+                          <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal,
+                          <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *receiver_class,
+                          <span class="hljs-keyword">void</span> *receiver,
+                          <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *slot)</span></span>;
+<span class="hljs-comment">/// This method allows to make a connection from any object</span>
+<span class="hljs-comment">/// of the same class to a single slot.</span>
+<span class="hljs-comment">/// Signal and slot string must have a form:</span>
+<span class="hljs-comment">///    &quot;Draw(char*, Option_t* ,Int_t)&quot;</span>
+<span class="hljs-comment">/// All blanks and &quot;const&quot; words will be removed,</span>
+<span class="hljs-comment">/// Warning:</span>
+<span class="hljs-comment">///  If receiver class not derived from TQObject and going to be</span>
+<span class="hljs-comment">///  deleted, disconnect all connections to this receiver.</span>
+<span class="hljs-comment">///  In case of class derived from TQObject it is done automatically.</span>
 
-   <span class="token keyword">static</span> Bool_t  <span class="token function">Disconnect</span><span class="token punctuation">(</span>TQObject <span class="token operator">*</span>sender<span class="token punctuation">,</span>
-                             <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                             <span class="token keyword">void</span> <span class="token operator">*</span>receiver <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                             <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>slot <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Disconnects signal in object sender from slot_method in</span>
-<span class="token comment">/// object receiver. For objects derived from TQObject signal-slot</span>
-<span class="token comment">/// connection is removed when either of the objects involved</span>
-<span class="token comment">/// are destroyed.</span>
-<span class="token comment">/// Disconnect() is typically used in three ways, as the following</span>
-<span class="token comment">/// examples shows:</span>
-<span class="token comment">///  - Disconnect everything connected to an object&apos;s signals:</span>
-<span class="token comment">///       Disconnect(myObject);</span>
-<span class="token comment">///  - Disconnect everything connected to a signal:</span>
-<span class="token comment">///       Disconnect(myObject, &quot;mySignal()&quot;);</span>
-<span class="token comment">///  - Disconnect a specific receiver:</span>
-<span class="token comment">///       Disconnect(myObject, 0, myReceiver, 0);</span>
-<span class="token comment">/// 0 may be used as a wildcard in three of the four arguments,</span>
-<span class="token comment">/// meaning &quot;any signal&quot;, &quot;any receiving object&quot; or</span>
-<span class="token comment">/// &quot;any slot in the receiving object&quot;, respectively.</span>
-<span class="token comment">/// The sender has no default and may never be 0</span>
-<span class="token comment">/// (you cannot disconnect signals from more than one object).</span>
-<span class="token comment">/// If signal is 0, it disconnects receiver and slot_method</span>
-<span class="token comment">/// from any signal. If not, only the specified signal is</span>
-<span class="token comment">/// disconnected.</span>
-<span class="token comment">/// If  receiver is 0, it disconnects anything connected to signal.</span>
-<span class="token comment">/// If not, slots in objects other than receiver are not</span>
-<span class="token comment">/// disconnected</span>
-<span class="token comment">/// If slot_method is 0, it disconnects anything that is connected</span>
-<span class="token comment">/// to receiver.  If not, only slots named slot_method will be</span>
-<span class="token comment">/// disconnected, and all other slots are left alone.</span>
-<span class="token comment">/// The slot_method must be 0 if receiver is left out, so you</span>
-<span class="token comment">/// cannot disconnect a specifically-named slot on all objects.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">Disconnect</span><span class="hljs-params">(TQObject *sender,
+                             <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal = <span class="hljs-number">0</span>,
+                             <span class="hljs-keyword">void</span> *receiver = <span class="hljs-number">0</span>,
+                             <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *slot = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Disconnects signal in object sender from slot_method in</span>
+<span class="hljs-comment">/// object receiver. For objects derived from TQObject signal-slot</span>
+<span class="hljs-comment">/// connection is removed when either of the objects involved</span>
+<span class="hljs-comment">/// are destroyed.</span>
+<span class="hljs-comment">/// Disconnect() is typically used in three ways, as the following</span>
+<span class="hljs-comment">/// examples shows:</span>
+<span class="hljs-comment">///  - Disconnect everything connected to an object&apos;s signals:</span>
+<span class="hljs-comment">///       Disconnect(myObject);</span>
+<span class="hljs-comment">///  - Disconnect everything connected to a signal:</span>
+<span class="hljs-comment">///       Disconnect(myObject, &quot;mySignal()&quot;);</span>
+<span class="hljs-comment">///  - Disconnect a specific receiver:</span>
+<span class="hljs-comment">///       Disconnect(myObject, 0, myReceiver, 0);</span>
+<span class="hljs-comment">/// 0 may be used as a wildcard in three of the four arguments,</span>
+<span class="hljs-comment">/// meaning &quot;any signal&quot;, &quot;any receiving object&quot; or</span>
+<span class="hljs-comment">/// &quot;any slot in the receiving object&quot;, respectively.</span>
+<span class="hljs-comment">/// The sender has no default and may never be 0</span>
+<span class="hljs-comment">/// (you cannot disconnect signals from more than one object).</span>
+<span class="hljs-comment">/// If signal is 0, it disconnects receiver and slot_method</span>
+<span class="hljs-comment">/// from any signal. If not, only the specified signal is</span>
+<span class="hljs-comment">/// disconnected.</span>
+<span class="hljs-comment">/// If  receiver is 0, it disconnects anything connected to signal.</span>
+<span class="hljs-comment">/// If not, slots in objects other than receiver are not</span>
+<span class="hljs-comment">/// disconnected</span>
+<span class="hljs-comment">/// If slot_method is 0, it disconnects anything that is connected</span>
+<span class="hljs-comment">/// to receiver.  If not, only slots named slot_method will be</span>
+<span class="hljs-comment">/// disconnected, and all other slots are left alone.</span>
+<span class="hljs-comment">/// The slot_method must be 0 if receiver is left out, so you</span>
+<span class="hljs-comment">/// cannot disconnect a specifically-named slot on all objects.</span>
 
-   <span class="token keyword">static</span> Bool_t  <span class="token function">Disconnect</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>class_name<span class="token punctuation">,</span>
-                             <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>signal<span class="token punctuation">,</span>
-                             <span class="token keyword">void</span> <span class="token operator">*</span>receiver <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                             <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>slot <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Disconnects &quot;class signal&quot;. The class is defined by class_name.</span>
-<span class="token comment">/// See also Connect(class_name,signal,receiver,slot).</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">Disconnect</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *class_name,
+                             <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *signal,
+                             <span class="hljs-keyword">void</span> *receiver = <span class="hljs-number">0</span>,
+                             <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *slot = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Disconnects &quot;class signal&quot;. The class is defined by class_name.</span>
+<span class="hljs-comment">/// See also Connect(class_name,signal,receiver,slot).</span>
 
-   <span class="token keyword">static</span> Bool_t  <span class="token function">AreAllSignalsBlocked</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Returns true if all signals are blocked.</span>
-   <span class="token keyword">static</span> Bool_t  <span class="token function">BlockAllSignals</span><span class="token punctuation">(</span>Bool_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Block or unblock all signals. Returns the previous block status.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">AreAllSignalsBlocked</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Returns true if all signals are blocked.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">BlockAllSignals</span><span class="hljs-params">(Bool_t b)</span></span>;
+<span class="hljs-comment">/// Block or unblock all signals. Returns the previous block status.</span>
 </code></pre>
 <p><strong>TQObjSender</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TQObjSender</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">TQObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fSender</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fSenderClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TQObjSender</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TQObjSender() : TQObject(), fSender(<span class="hljs-number">0</span>), fSenderClass() { }
+   <span class="hljs-keyword">virtual</span> ~TQObjSender() { Disconnect(); }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetSender</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>sender<span class="token punctuation">)</span> <span class="token punctuation">{</span> fSender <span class="token operator">=</span> sender<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">SetSenderClassName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>sclass <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fSenderClass <span class="token operator">=</span> sclass<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetSender</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *sender)</span> </span>{ fSender = sender; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetSenderClassName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *sclass = <span class="hljs-string">&quot;&quot;</span>)</span> </span>{ fSenderClass = sclass; }
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// void TQObject::Emit(const char *signal_name)</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name)</span>
 
-theButton<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Clicked()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+theButton-&gt;Emit(<span class="hljs-string">&quot;Clicked()&quot;</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// void TQObject::Emit(const char *signal_name, Long_t param)</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, Long_t param)</span>
 
-theButton<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Clicked(int)&quot;</span><span class="token punctuation">,</span>id<span class="token punctuation">)</span>
+theButton-&gt;Emit(<span class="hljs-string">&quot;Clicked(int)&quot;</span>,id)
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// void TQObject::Emit(const char *signal_name, Long64_t param)</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, Long64_t param)</span>
 
-theButton<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Progress(Long64_t)&quot;</span><span class="token punctuation">,</span>processed<span class="token punctuation">)</span>
+theButton-&gt;Emit(<span class="hljs-string">&quot;Progress(Long64_t)&quot;</span>,processed)
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// void TQObject::Emit(const char *signal_name, Double_t param)</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, Double_t param)</span>
 
-theButton<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Scale(float)&quot;</span><span class="token punctuation">,</span>factor<span class="token punctuation">)</span>
+theButton-&gt;Emit(<span class="hljs-string">&quot;Scale(float)&quot;</span>,factor)
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// void TQObject::Emit(const char *signal_name, const char *params)</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, const char *params)</span>
 
-myObject<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Error(char*)&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Fatal error&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myObject-&gt;Emit(<span class="hljs-string">&quot;Error(char*)&quot;</span>,<span class="hljs-string">&quot;Fatal error&quot;</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// void TQObject::Emit(const char *signal_name, Long_t *paramArr)</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// void TQObject::Emit(const char *signal_name, Long_t *paramArr)</span>
 
-TQObject <span class="token operator">*</span>processor<span class="token punctuation">;</span> <span class="token comment">// data processor</span>
-TH1F     <span class="token operator">*</span>hist<span class="token punctuation">;</span>      <span class="token comment">// filled with processor results</span>
+TQObject *processor; <span class="hljs-comment">// data processor</span>
+TH1F     *hist;      <span class="hljs-comment">// filled with processor results</span>
 
-processor<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token string">&quot;Evaluated(Float_t,Float_t)&quot;</span><span class="token punctuation">,</span>
-                   <span class="token string">&quot;TH1F&quot;</span><span class="token punctuation">,</span>hist<span class="token punctuation">,</span><span class="token string">&quot;Fill12(Axis_t,Axis_t)&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+processor-&gt;Connect(<span class="hljs-string">&quot;Evaluated(Float_t,Float_t)&quot;</span>,
+                   <span class="hljs-string">&quot;TH1F&quot;</span>,hist,<span class="hljs-string">&quot;Fill12(Axis_t,Axis_t)&quot;</span>);
 
-Long_t args<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-args<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>processor<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetValue</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-args<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>Long_t<span class="token punctuation">)</span>processor<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetValue</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Long_t args[<span class="hljs-number">2</span>];
+args[<span class="hljs-number">0</span>] = (Long_t)processor-&gt;GetValue(<span class="hljs-number">1</span>);
+args[<span class="hljs-number">1</span>] = (Long_t)processor-&gt;GetValue(<span class="hljs-number">2</span>);
 
-processor<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Evaluated(Float_t,Float_t)&quot;</span><span class="token punctuation">,</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+processor-&gt;Emit(<span class="hljs-string">&quot;Evaluated(Float_t,Float_t)&quot;</span>,args);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// Bool_t TQObject::Connect(TQObject *sender,</span>
-<span class="token comment">//                          const char *signal,</span>
-<span class="token comment">//                          const char *cl,</span>
-<span class="token comment">//                          void *receiver,</span>
-<span class="token comment">//                          const char *slot)</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Bool_t TQObject::Connect(TQObject *sender,</span>
+<span class="hljs-comment">//                          const char *signal,</span>
+<span class="hljs-comment">//                          const char *cl,</span>
+<span class="hljs-comment">//                          void *receiver,</span>
+<span class="hljs-comment">//                          const char *slot)</span>
 
-<span class="token comment">/// cl != 0 - class name, it can be class with or</span>
-<span class="token comment">///           without dictionary, e.g interpreted class.</span>
-TGButton <span class="token operator">*</span>myButton<span class="token punctuation">;</span>
-TH2F     <span class="token operator">*</span>myHist<span class="token punctuation">;</span>
-TQObject<span class="token operator">::</span><span class="token function">Connect</span><span class="token punctuation">(</span>myButton<span class="token punctuation">,</span><span class="token string">&quot;Clicked()&quot;</span><span class="token punctuation">,</span>
-                  <span class="token string">&quot;TH2F&quot;</span><span class="token punctuation">,</span> myHist<span class="token punctuation">,</span><span class="token string">&quot;Draw(Option_t*)&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// cl != 0 - class name, it can be class with or</span>
+<span class="hljs-comment">///           without dictionary, e.g interpreted class.</span>
+TGButton *myButton;
+TH2F     *myHist;
+TQObject::Connect(myButton,<span class="hljs-string">&quot;Clicked()&quot;</span>,
+                  <span class="hljs-string">&quot;TH2F&quot;</span>, myHist,<span class="hljs-string">&quot;Draw(Option_t*)&quot;</span>);
 
-<span class="token comment">/// cl == 0 - corresponds to function (interpereted or global)</span>
-<span class="token comment">///           the name of the function is defined by the slot string,</span>
-<span class="token comment">///           parameter receiver should be 0.</span>
-TGButton <span class="token operator">*</span>myButton<span class="token punctuation">;</span>
-TH2F     <span class="token operator">*</span>myHist<span class="token punctuation">;</span>
-TQObject<span class="token operator">::</span><span class="token function">Connect</span><span class="token punctuation">(</span>myButton<span class="token punctuation">,</span><span class="token string">&quot;Clicked()&quot;</span><span class="token punctuation">,</span>
-                  <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token string">&quot;hsimple()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// cl == 0 - corresponds to function (interpereted or global)</span>
+<span class="hljs-comment">///           the name of the function is defined by the slot string,</span>
+<span class="hljs-comment">///           parameter receiver should be 0.</span>
+TGButton *myButton;
+TH2F     *myHist;
+TQObject::Connect(myButton,<span class="hljs-string">&quot;Clicked()&quot;</span>,
+                  <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,<span class="hljs-string">&quot;hsimple()&quot;</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// Bool_t TQObject::Connect(const char *class_name,</span>
-<span class="token comment">//                          const char *signal,</span>
-<span class="token comment">//                          const char *cl,</span>
-<span class="token comment">//                          void *receiver,</span>
-<span class="token comment">//                          const char *slot)</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Bool_t TQObject::Connect(const char *class_name,</span>
+<span class="hljs-comment">//                          const char *signal,</span>
+<span class="hljs-comment">//                          const char *cl,</span>
+<span class="hljs-comment">//                          void *receiver,</span>
+<span class="hljs-comment">//                          const char *slot)</span>
 
-<span class="token comment">/// cl != 0 - class name, it can be class with or</span>
-<span class="token comment">///           without dictionary, e.g interpreted class.</span>
+<span class="hljs-comment">/// cl != 0 - class name, it can be class with or</span>
+<span class="hljs-comment">///           without dictionary, e.g interpreted class.</span>
 
-TGButton <span class="token operator">*</span>myButton<span class="token punctuation">;</span>
-TH2F     <span class="token operator">*</span>myHist<span class="token punctuation">;</span>
+TGButton *myButton;
+TH2F     *myHist;
 
-TQObject<span class="token operator">::</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token string">&quot;TGButton&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Clicked()&quot;</span><span class="token punctuation">,</span>
-                   <span class="token string">&quot;TH2F&quot;</span><span class="token punctuation">,</span> myHist<span class="token punctuation">,</span> <span class="token string">&quot;Draw(Option_t*)&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+TQObject::Connect(<span class="hljs-string">&quot;TGButton&quot;</span>, <span class="hljs-string">&quot;Clicked()&quot;</span>,
+                   <span class="hljs-string">&quot;TH2F&quot;</span>, myHist, <span class="hljs-string">&quot;Draw(Option_t*)&quot;</span>);
 
-<span class="token comment">/// cl == 0 - corresponds to function (interpereted or global)</span>
-<span class="token comment">///           the name of the function is defined by the slot string,</span>
-<span class="token comment">///           parameter receiver should be 0.</span>
+<span class="hljs-comment">/// cl == 0 - corresponds to function (interpereted or global)</span>
+<span class="hljs-comment">///           the name of the function is defined by the slot string,</span>
+<span class="hljs-comment">///           parameter receiver should be 0.</span>
 
-TGButton <span class="token operator">*</span>myButton<span class="token punctuation">;</span>
-TH2F     <span class="token operator">*</span>myHist<span class="token punctuation">;</span>
-TQObject<span class="token operator">::</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token string">&quot;TGButton&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Clicked()&quot;</span><span class="token punctuation">,</span>
-                   <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;hsimple()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+TGButton *myButton;
+TH2F     *myHist;
+TQObject::Connect(<span class="hljs-string">&quot;TGButton&quot;</span>, <span class="hljs-string">&quot;Clicked()&quot;</span>,
+                   <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&quot;hsimple()&quot;</span>);
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TQObject.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -4015,7 +4027,7 @@ TQObject<span class="token operator">::</span><span class="token function">Conne
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TQObject*","level":"1.3.80","depth":2,"next":{"title":"TRootEmbeddedCanvas*","level":"1.3.81","depth":2,"path":"class/gui/TRootEmbeddedCanvas.md","ref":"class/gui/TRootEmbeddedCanvas.md","articles":[]},"previous":{"title":"TGXYLayout","level":"1.3.79","depth":2,"path":"class/gui/TGXYLayout.md","ref":"class/gui/TGXYLayout.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TQObject.md","mtime":"2018-05-14T09:18:21.884Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TQObject*","level":"1.3.80","depth":2,"next":{"title":"TRootEmbeddedCanvas*","level":"1.3.81","depth":2,"path":"class/gui/TRootEmbeddedCanvas.md","ref":"class/gui/TRootEmbeddedCanvas.md","articles":[]},"previous":{"title":"TGXYLayout","level":"1.3.79","depth":2,"path":"class/gui/TGXYLayout.md","ref":"class/gui/TGXYLayout.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TQObject.md","mtime":"2018-05-14T09:18:21.884Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4047,6 +4059,18 @@ TQObject<span class="token operator">::</span><span class="token function">Conne
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

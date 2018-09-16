@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,23 +3692,23 @@
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
-<pre class="language-"><code class="lang-cpp">TCanvas <span class="token operator">*</span>CPol <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;CPol&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;TGraphPolar Examples&quot;</span><span class="token punctuation">,</span><span class="token number">700</span><span class="token punctuation">,</span><span class="token number">700</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Double_t rmin<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-Double_t rmax<span class="token operator">=</span>TMath<span class="token operator">::</span><span class="token function">Pi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">;</span>
-Double_t r<span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-Double_t theta<span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-TF1 <span class="token operator">*</span> fp1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TF1</span><span class="token punctuation">(</span><span class="token string">&quot;fplot&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;cos(x)&quot;</span><span class="token punctuation">,</span>rmin<span class="token punctuation">,</span>rmax<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span>Int_t ipt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> ipt <span class="token operator">&lt;</span> <span class="token number">1000</span><span class="token punctuation">;</span> ipt<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-r<span class="token punctuation">[</span>ipt<span class="token punctuation">]</span> <span class="token operator">=</span> ipt<span class="token operator">*</span><span class="token punctuation">(</span>rmax<span class="token operator">-</span>rmin<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">1000</span><span class="token operator">+</span>rmin<span class="token punctuation">;</span>
-theta<span class="token punctuation">[</span>ipt<span class="token punctuation">]</span> <span class="token operator">=</span> fp1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Eval</span><span class="token punctuation">(</span>r<span class="token punctuation">[</span>ipt<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-TGraphPolar <span class="token operator">*</span> grP1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGraphPolar</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span>r<span class="token punctuation">,</span>theta<span class="token punctuation">)</span><span class="token punctuation">;</span>
-grP1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLineColor</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-grP1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;AOL&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">TCanvas *CPol = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;CPol&quot;</span>,<span class="hljs-string">&quot;TGraphPolar Examples&quot;</span>,<span class="hljs-number">700</span>,<span class="hljs-number">700</span>);
+Double_t rmin=<span class="hljs-number">0</span>;
+Double_t rmax=TMath::Pi()*<span class="hljs-number">2</span>;
+Double_t r[<span class="hljs-number">1000</span>];
+Double_t theta[<span class="hljs-number">1000</span>];
+TF1 * fp1 = <span class="hljs-keyword">new</span> TF1(<span class="hljs-string">&quot;fplot&quot;</span>,<span class="hljs-string">&quot;cos(x)&quot;</span>,rmin,rmax);
+<span class="hljs-keyword">for</span> (Int_t ipt = <span class="hljs-number">0</span>; ipt &lt; <span class="hljs-number">1000</span>; ipt++) {
+r[ipt] = ipt*(rmax-rmin)/<span class="hljs-number">1000</span>+rmin;
+theta[ipt] = fp1-&gt;Eval(r[ipt]);}
+TGraphPolar * grP1 = <span class="hljs-keyword">new</span> TGraphPolar(<span class="hljs-number">1000</span>,r,theta);
+grP1-&gt;SetLineColor(<span class="hljs-number">2</span>);
+grP1-&gt;Draw(<span class="hljs-string">&quot;AOL&quot;</span>);
 </code></pre>
 <!-- TGraphPolar.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3739,7 +3751,7 @@ grP1<span class="token operator">-</span><span class="token operator">&gt;</span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGraphPolar","level":"1.2.32","depth":2,"next":{"title":"TH1*","level":"1.2.33","depth":2,"path":"class/TH1.md","ref":"class/TH1.md","articles":[]},"previous":{"title":"TGraphErrors","level":"1.2.31","depth":2,"path":"class/TGraphErrors.md","ref":"class/TGraphErrors.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TGraphPolar.md","mtime":"2018-05-14T09:18:22.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGraphPolar","level":"1.2.32","depth":2,"next":{"title":"TH1*","level":"1.2.33","depth":2,"path":"class/TH1.md","ref":"class/TH1.md","articles":[]},"previous":{"title":"TGraphErrors","level":"1.2.31","depth":2,"path":"class/TGraphErrors.md","ref":"class/TGraphErrors.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TGraphPolar.md","mtime":"2018-05-14T09:18:22.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3771,6 +3783,18 @@ grP1<span class="token operator">-</span><span class="token operator">&gt;</span
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3683,312 +3695,312 @@ To make a graphical representation of an histogram axis, this class
 references the TGaxis class. TAxis supports axis with fixed or variable bin sizes.
 Labels may be associated to individual bins.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token comment">// TAxis status bits</span>
-   <span class="token keyword">enum</span> <span class="token punctuation">{</span>
-          kDecimals      <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kTickPlus      <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kTickMinus     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kAxisRange     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kCenterTitle   <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kCenterLabels  <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">//bit 13 is used by TObject</span>
-          kRotateTitle   <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kPalette       <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kNoExponent    <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kLabelsHori    <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kLabelsVert    <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kLabelsDown    <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kLabelsUp      <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kIsInteger     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          kMoreLogLabels <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">)</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-comment">// TAxis status bits</span>
+   <span class="hljs-keyword">enum</span> {
+          kDecimals      = BIT(<span class="hljs-number">7</span>),
+          kTickPlus      = BIT(<span class="hljs-number">9</span>),
+          kTickMinus     = BIT(<span class="hljs-number">10</span>),
+          kAxisRange     = BIT(<span class="hljs-number">11</span>),
+          kCenterTitle   = BIT(<span class="hljs-number">12</span>),
+          kCenterLabels  = BIT(<span class="hljs-number">14</span>), <span class="hljs-comment">//bit 13 is used by TObject</span>
+          kRotateTitle   = BIT(<span class="hljs-number">15</span>),
+          kPalette       = BIT(<span class="hljs-number">16</span>),
+          kNoExponent    = BIT(<span class="hljs-number">17</span>),
+          kLabelsHori    = BIT(<span class="hljs-number">18</span>),
+          kLabelsVert    = BIT(<span class="hljs-number">19</span>),
+          kLabelsDown    = BIT(<span class="hljs-number">20</span>),
+          kLabelsUp      = BIT(<span class="hljs-number">21</span>),
+          kIsInteger     = BIT(<span class="hljs-number">22</span>),
+          kMoreLogLabels = BIT(<span class="hljs-number">23</span>)
+   };
 
-   <span class="token function">TAxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TAxis</span><span class="token punctuation">(</span>Int_t nbins<span class="token punctuation">,</span> Double_t xmin<span class="token punctuation">,</span> Double_t xmax<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TAxis</span><span class="token punctuation">(</span>Int_t nbins<span class="token punctuation">,</span> <span class="token keyword">const</span> Double_t <span class="token operator">*</span>xbins<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TAxis</span><span class="token punctuation">(</span><span class="token keyword">const</span> TAxis <span class="token operator">&amp;</span>axis<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TAxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TAxis<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TAxis<span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TAxis();
+   TAxis(Int_t nbins, Double_t xmin, Double_t xmax);
+   TAxis(Int_t nbins, <span class="hljs-keyword">const</span> Double_t *xbins);
+   TAxis(<span class="hljs-keyword">const</span> TAxis &amp;axis);
+   <span class="hljs-keyword">virtual</span> ~TAxis();
+   TAxis&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TAxis&amp;);
 
-   Bool_t     <span class="token function">CanExtend</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>fBits2 <span class="token operator">&amp;</span> kCanExtend<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>       <span class="token function">SetCanExtend</span><span class="token punctuation">(</span>Bool_t canExtend<span class="token punctuation">)</span> <span class="token punctuation">{</span> fBits2 <span class="token operator">=</span> canExtend <span class="token operator">?</span> <span class="token punctuation">(</span>fBits2 <span class="token operator">|</span> kCanExtend<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span>fBits2 <span class="token operator">&amp;</span> <span class="token operator">~</span>kCanExtend<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>       <span class="token function">SetNoAlphanumeric</span><span class="token punctuation">(</span>Bool_t noalpha <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      fBits2 <span class="token operator">=</span> noalpha <span class="token operator">?</span> <span class="token punctuation">(</span>fBits2 <span class="token operator">|</span> kNotAlpha<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span>fBits2 <span class="token operator">&amp;</span> <span class="token operator">~</span>kNotAlpha<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">IsAlphanumeric</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         <span class="token function">SetCanExtend</span><span class="token punctuation">(</span>kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token function">SetAlphanumeric</span><span class="token punctuation">(</span>kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-   <span class="token punctuation">}</span>
+   <span class="hljs-function">Bool_t     <span class="hljs-title">CanExtend</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (fBits2 &amp; kCanExtend);  }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetCanExtend</span><span class="hljs-params">(Bool_t canExtend)</span> </span>{ fBits2 = canExtend ? (fBits2 | kCanExtend) : (fBits2 &amp; ~kCanExtend); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetNoAlphanumeric</span><span class="hljs-params">(Bool_t noalpha = kTRUE)</span> </span>{
+      fBits2 = noalpha ? (fBits2 | kNotAlpha) : (fBits2 &amp; ~kNotAlpha);
+      <span class="hljs-keyword">if</span> (IsAlphanumeric() ) {
+         SetCanExtend(kFALSE);
+         SetAlphanumeric(kFALSE);
+      }
+   }
 
-<span class="token comment">/// Center axis labels. If center = kTRUE axis labels will be centered</span>
-<span class="token comment">/// (hori axes only) on the bin center default is to center on the primary tick marks</span>
-<span class="token comment">/// This option does not make sense if there are more bins than tick marks</span>
-   <span class="token keyword">void</span>               <span class="token function">CenterLabels</span><span class="token punctuation">(</span>Bool_t center<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Center axis labels. If center = kTRUE axis labels will be centered</span>
+<span class="hljs-comment">/// (hori axes only) on the bin center default is to center on the primary tick marks</span>
+<span class="hljs-comment">/// This option does not make sense if there are more bins than tick marks</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>               <span class="hljs-title">CenterLabels</span><span class="hljs-params">(Bool_t center=kTRUE)</span></span>;
 
-<span class="token comment">/// Center axis title. If center = kTRUE axis title will be centered</span>
-<span class="token comment">/// default is right adjusted</span>
-   <span class="token keyword">void</span>               <span class="token function">CenterTitle</span><span class="token punctuation">(</span>Bool_t center<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Center axis title. If center = kTRUE axis title will be centered</span>
+<span class="hljs-comment">/// default is right adjusted</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>               <span class="hljs-title">CenterTitle</span><span class="hljs-params">(Bool_t center=kTRUE)</span></span>;
 
-<span class="token comment">/// Choose a reasonable time format from the coordinates in the active pad and the number of divisions in this axis</span>
-<span class="token comment">/// If orientation = &quot;X&quot;, the horizontal axis of the pad will be used for ref.</span>
-<span class="token comment">/// If orientation = &quot;Y&quot;, the vertical axis of the pad will be used for ref.   </span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>        <span class="token operator">*</span><span class="token function">ChooseTimeFormat</span><span class="token punctuation">(</span>Double_t axislength<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">Copy</span><span class="token punctuation">(</span>TObject <span class="token operator">&amp;</span>axis<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Copy axis structure to another axis</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">Delete</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span> <span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">DistancetoPrimitive</span><span class="token punctuation">(</span>Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Compute distance from point px,py to an axis</span>
-   <span class="token keyword">virtual</span> TObject   <span class="token operator">*</span><span class="token function">DrawClone</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span> <span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="hljs-comment">/// Choose a reasonable time format from the coordinates in the active pad and the number of divisions in this axis</span>
+<span class="hljs-comment">/// If orientation = &quot;X&quot;, the horizontal axis of the pad will be used for ref.</span>
+<span class="hljs-comment">/// If orientation = &quot;Y&quot;, the vertical axis of the pad will be used for ref.   </span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>        *<span class="hljs-title">ChooseTimeFormat</span><span class="hljs-params">(Double_t axislength=<span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;axis)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Copy axis structure to another axis</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Delete</span><span class="hljs-params">(Option_t * <span class="hljs-comment">/*option*/</span> =<span class="hljs-string">&quot;&quot;</span>)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;<span class="hljs-comment">/// Compute distance from point px,py to an axis</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject   *<span class="hljs-title">DrawClone</span><span class="hljs-params">(Option_t * <span class="hljs-comment">/*option*/</span> =<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
 
-<span class="token comment">/// Execute action corresponding to one event</span>
-<span class="token comment">///  This member function is called when an axis is clicked with the locator.</span>
-<span class="token comment">///  The axis range is set between the position where the mouse is pressed and the position where it is released.</span>
-<span class="token comment">///  If the mouse position is outside the current axis range when it is released the axis is unzoomed with the corresponding proportions.</span>
-<span class="token comment">///  Note that the mouse does not need to be in the pad or even canvas when it is released.   </span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">ExecuteEvent</span><span class="token punctuation">(</span>Int_t event<span class="token punctuation">,</span> Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Execute action corresponding to one event</span>
+<span class="hljs-comment">///  This member function is called when an axis is clicked with the locator.</span>
+<span class="hljs-comment">///  The axis range is set between the position where the mouse is pressed and the position where it is released.</span>
+<span class="hljs-comment">///  If the mouse position is outside the current axis range when it is released the axis is unzoomed with the corresponding proportions.</span>
+<span class="hljs-comment">///  Note that the mouse does not need to be in the pad or even canvas when it is released.   </span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
 
-<span class="token comment">/// Find bin number corresponding to abscissa x. NOTE: this method does not work with alphanumeric bins !!!</span>
-<span class="token comment">/// If x is underflow or overflow, attempt to extend the axis if TAxis::kCanExtend is true. Otherwise, return 0 or fNbins+1.</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">FindBin</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">FindBin</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">FindFixBin</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="hljs-comment">/// Find bin number corresponding to abscissa x. <span class="hljs-doctag">NOTE:</span> this method does not work with alphanumeric bins !!!</span>
+<span class="hljs-comment">/// If x is underflow or overflow, attempt to extend the axis if TAxis::kCanExtend is true. Otherwise, return 0 or fNbins+1.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindBin</span><span class="hljs-params">(Double_t x)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindBin</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> FindFixBin(x); }
 
-<span class="token comment">/// Find bin number with label.</span>
-<span class="token comment">/// If the List of labels does not exist create it and make the axis alphanumeric</span>
-<span class="token comment">/// If one wants just to add a single label- just call TAxis::SetBinLabel</span>
-<span class="token comment">/// If label is not in the list of labels do the following depending on the</span>
-<span class="token comment">/// bit TAxis::kCanExtend; of the axis.</span>
-<span class="token comment">///   - if the bit is set add the new label and if the number of labels exceeds</span>
-<span class="token comment">///      the number of bins, double the number of bins via TH1::LabelsInflate</span>
-<span class="token comment">///   - if the bit is not set and the histogram has labels in each bin</span>
-<span class="token comment">///        set the bit automatically and consider the histogram as alphanumeric</span>
-<span class="token comment">///     if histogram has only some bins with labels then the histogram is not</span>
-<span class="token comment">///     consider alphanumeric and return -1</span>
-<span class="token comment">/// -1 is returned only when the Axis has no parent histogram</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">FindBin</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>label<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Find bin number with label.</span>
+<span class="hljs-comment">/// If the List of labels does not exist create it and make the axis alphanumeric</span>
+<span class="hljs-comment">/// If one wants just to add a single label- just call TAxis::SetBinLabel</span>
+<span class="hljs-comment">/// If label is not in the list of labels do the following depending on the</span>
+<span class="hljs-comment">/// bit TAxis::kCanExtend; of the axis.</span>
+<span class="hljs-comment">///   - if the bit is set add the new label and if the number of labels exceeds</span>
+<span class="hljs-comment">///      the number of bins, double the number of bins via TH1::LabelsInflate</span>
+<span class="hljs-comment">///   - if the bit is not set and the histogram has labels in each bin</span>
+<span class="hljs-comment">///        set the bit automatically and consider the histogram as alphanumeric</span>
+<span class="hljs-comment">///     if histogram has only some bins with labels then the histogram is not</span>
+<span class="hljs-comment">///     consider alphanumeric and return -1</span>
+<span class="hljs-comment">/// -1 is returned only when the Axis has no parent histogram</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindBin</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span></span>;
 
-<span class="token comment">/// Find bin number corresponding to abscissa x</span>
-<span class="token comment">/// Identical to TAxis::FindBin except that if x is an underflow/overflow no attempt is made to extend the axis.</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">FindFixBin</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Find bin number corresponding to abscissa x</span>
+<span class="hljs-comment">/// Identical to TAxis::FindBin except that if x is an underflow/overflow no attempt is made to extend the axis.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindFixBin</span><span class="hljs-params">(Double_t x)</span> <span class="hljs-keyword">const</span></span>;
 
-<span class="token comment">/// Find bin number with label.</span>
-<span class="token comment">/// If the List of labels does not exist or the label doe not exist just return -1 .</span>
-<span class="token comment">/// Do not attempt to modify the axis. This is different than FindBin</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">FindFixBin</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>label<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">GetBinCenter</span><span class="token punctuation">(</span>Int_t bin<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return center of bin</span>
+<span class="hljs-comment">/// Find bin number with label.</span>
+<span class="hljs-comment">/// If the List of labels does not exist or the label doe not exist just return -1 .</span>
+<span class="hljs-comment">/// Do not attempt to modify the axis. This is different than FindBin</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t      <span class="hljs-title">FindFixBin</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinCenter</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return center of bin</span>
 
-<span class="token comment">/// Return center of bin in log</span>
-<span class="token comment">/// With a log-equidistant binning for a bin with low and up edges, the mean is :</span>
-<span class="token comment">/// 0.5*(ln low + ln up) i.e. sqrt(low*up) in logx (e.g. sqrt(10^0*10^2) = 10).</span>
-<span class="token comment">/// Imagine a bin with low=1 and up=100 :</span>
-<span class="token comment">/// - the center in lin is (100-1)/2=50.5</span>
-<span class="token comment">/// - the center in log would be sqrt(1*100)=10 (!=log(50.5))</span>
-<span class="token comment">/// NB: if the low edge of the bin is negative, the function returns the bin center</span>
-<span class="token comment">///     as computed by TAxis::GetBinCenter</span>
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">GetBinCenterLog</span><span class="token punctuation">(</span>Int_t bin<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>        <span class="token operator">*</span><span class="token function">GetBinLabel</span><span class="token punctuation">(</span>Int_t bin<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return label for bin</span>
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">GetBinLowEdge</span><span class="token punctuation">(</span>Int_t bin<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return low edge of bin</span>
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">GetBinUpEdge</span><span class="token punctuation">(</span>Int_t bin<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return up edge of bin</span>
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">GetBinWidth</span><span class="token punctuation">(</span>Int_t bin<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return bin width</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">GetCenter</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>center<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return an array with the center of all bins</span>
-           Bool_t     <span class="token function">GetCenterLabels</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kCenterLabels<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           Bool_t     <span class="token function">GetCenterTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kCenterTitle<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           Bool_t     <span class="token function">GetDecimals</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kDecimals<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   THashList         <span class="token operator">*</span><span class="token function">GetLabels</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLabels<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">GetLowEdge</span><span class="token punctuation">(</span>Double_t <span class="token operator">*</span>edge<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return an array with the lod edge of all bins</span>
-           Bool_t     <span class="token function">GetMoreLogLabels</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kMoreLogLabels<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           Int_t      <span class="token function">GetNbins</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fNbins<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           Bool_t     <span class="token function">GetNoExponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kNoExponent<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TObject   <span class="token operator">*</span><span class="token function">GetParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fParent<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Bool_t     <span class="token function">GetRotateTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kRotateTitle<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetTicks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return the ticks option (see SetTicks)</span>
-   <span class="token keyword">virtual</span> Bool_t     <span class="token function">GetTimeDisplay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTimeDisplay<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetTimeFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTimeFormat<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetTimeFormatOnly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return *only* the time format from the string fTimeFormat</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>        <span class="token operator">*</span><span class="token function">GetTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTitle<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">const</span> TArrayD     <span class="token operator">*</span><span class="token function">GetXbins</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token operator">&amp;</span>fXbins<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="hljs-comment">/// Return center of bin in log</span>
+<span class="hljs-comment">/// With a log-equidistant binning for a bin with low and up edges, the mean is :</span>
+<span class="hljs-comment">/// 0.5*(ln low + ln up) i.e. sqrt(low*up) in logx (e.g. sqrt(10^0*10^2) = 10).</span>
+<span class="hljs-comment">/// Imagine a bin with low=1 and up=100 :</span>
+<span class="hljs-comment">/// - the center in lin is (100-1)/2=50.5</span>
+<span class="hljs-comment">/// - the center in log would be sqrt(1*100)=10 (!=log(50.5))</span>
+<span class="hljs-comment">/// NB: if the low edge of the bin is negative, the function returns the bin center</span>
+<span class="hljs-comment">///     as computed by TAxis::GetBinCenter</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinCenterLog</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>        *<span class="hljs-title">GetBinLabel</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return label for bin</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinLowEdge</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return low edge of bin</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinUpEdge</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return up edge of bin</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t   <span class="hljs-title">GetBinWidth</span><span class="hljs-params">(Int_t bin)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return bin width</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">GetCenter</span><span class="hljs-params">(Double_t *center)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return an array with the center of all bins</span>
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetCenterLabels</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kCenterLabels); }
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetCenterTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kCenterTitle); }
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetDecimals</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kDecimals); }
+   <span class="hljs-function">THashList         *<span class="hljs-title">GetLabels</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLabels; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">GetLowEdge</span><span class="hljs-params">(Double_t *edge)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return an array with the lod edge of all bins</span>
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetMoreLogLabels</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kMoreLogLabels); }
+           <span class="hljs-function">Int_t      <span class="hljs-title">GetNbins</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNbins; }
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetNoExponent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kNoExponent); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject   *<span class="hljs-title">GetParent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fParent;}
+           <span class="hljs-function">Bool_t     <span class="hljs-title">GetRotateTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kRotateTitle); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTicks</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the ticks option (see SetTicks)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t     <span class="hljs-title">GetTimeDisplay</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTimeDisplay;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTimeFormat</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTimeFormat.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetTimeFormatOnly</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return *only* the time format from the string fTimeFormat</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>        *<span class="hljs-title">GetTitle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTitle.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TArrayD     *<span class="hljs-title">GetXbins</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> &amp;fXbins;}
 
-<span class="token comment">/// Return first bin on the axis</span>
-<span class="token comment">/// i.e. 1 if no range defined</span>
-<span class="token comment">/// NOTE: in some cases a zero is returned (see TAxis::SetRange)</span>
-           Int_t      <span class="token function">GetFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+<span class="hljs-comment">/// Return first bin on the axis</span>
+<span class="hljs-comment">/// i.e. 1 if no range defined</span>
+<span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span> in some cases a zero is returned (see TAxis::SetRange)</span>
+           <span class="hljs-function">Int_t      <span class="hljs-title">GetFirst</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-<span class="token comment">/// Return last bin on the axis</span>
-<span class="token comment">/// i.e. fNbins if no range defined</span>
-<span class="token comment">/// NOTE: in some cases a zero is returned (see TAxis::SetRange)</span>
-           Int_t      <span class="token function">GetLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-           Double_t   <span class="token function">GetXmin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fXmin<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Double_t   <span class="token function">GetXmax</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fXmax<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">ImportAttributes</span><span class="token punctuation">(</span><span class="token keyword">const</span> TAxis <span class="token operator">*</span>axis<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Copy axis attributes to this</span>
-   Bool_t             <span class="token function">IsVariableBinSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-                         <span class="token comment">// true if axis has variable bin sizes, false otherwise</span>
-                         <span class="token keyword">return</span> <span class="token punctuation">(</span>fXbins<span class="token punctuation">.</span><span class="token function">GetSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                      <span class="token punctuation">}</span>
+<span class="hljs-comment">/// Return last bin on the axis</span>
+<span class="hljs-comment">/// i.e. fNbins if no range defined</span>
+<span class="hljs-comment">/// <span class="hljs-doctag">NOTE:</span> in some cases a zero is returned (see TAxis::SetRange)</span>
+           <span class="hljs-function">Int_t      <span class="hljs-title">GetLast</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Double_t   <span class="hljs-title">GetXmin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXmin;}
+           <span class="hljs-function">Double_t   <span class="hljs-title">GetXmax</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXmax;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ImportAttributes</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TAxis *axis)</span></span>;<span class="hljs-comment">/// Copy axis attributes to this</span>
+   <span class="hljs-function">Bool_t             <span class="hljs-title">IsVariableBinSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+                         <span class="hljs-comment">// true if axis has variable bin sizes, false otherwise</span>
+                         <span class="hljs-keyword">return</span> (fXbins.GetSize() != <span class="hljs-number">0</span>);
+                      }
 
-<span class="token comment">///  Set option(s) to draw axis with labels</span>
-<span class="token comment">///  option = &quot;a&quot; sort by alphabetic order</span>
-<span class="token comment">///         = &quot;&gt;&quot; sort by decreasing values</span>
-<span class="token comment">///         = &quot;&lt;&quot; sort by increasing values</span>
-<span class="token comment">///         = &quot;h&quot; draw labels horizonthal</span>
-<span class="token comment">///         = &quot;v&quot; draw labels vertical</span>
-<span class="token comment">///         = &quot;u&quot; draw labels up (end of label right adjusted)</span>
-<span class="token comment">///         = &quot;d&quot; draw labels down (start of label left adjusted)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">LabelsOption</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;h&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU*</span>
+<span class="hljs-comment">///  Set option(s) to draw axis with labels</span>
+<span class="hljs-comment">///  option = &quot;a&quot; sort by alphabetic order</span>
+<span class="hljs-comment">///         = &quot;&gt;&quot; sort by decreasing values</span>
+<span class="hljs-comment">///         = &quot;&lt;&quot; sort by increasing values</span>
+<span class="hljs-comment">///         = &quot;h&quot; draw labels horizonthal</span>
+<span class="hljs-comment">///         = &quot;v&quot; draw labels vertical</span>
+<span class="hljs-comment">///         = &quot;u&quot; draw labels up (end of label right adjusted)</span>
+<span class="hljs-comment">///         = &quot;d&quot; draw labels down (start of label left adjusted)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">LabelsOption</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;h&quot;</span>)</span></span>;  <span class="hljs-comment">// *MENU*</span>
 
-<span class="token comment">/// Rotate title by 180 degrees. By default the title is drawn right adjusted.</span>
-<span class="token comment">/// If rotate is TRUE, the title is left adjusted at the end of the axis and rotated by 180 degrees</span>
-           <span class="token keyword">void</span>       <span class="token function">RotateTitle</span><span class="token punctuation">(</span>Bool_t rotate<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *TOGGLE* *GETTER=GetRotateTitle</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SaveAttributes</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>subname<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Save axis attributes as C++ statement(s) on output stream out</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">Set</span><span class="token punctuation">(</span>Int_t nbins<span class="token punctuation">,</span> Double_t xmin<span class="token punctuation">,</span> Double_t xmax<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Initialize axis with fix bins</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">Set</span><span class="token punctuation">(</span>Int_t nbins<span class="token punctuation">,</span> <span class="token keyword">const</span> Float_t <span class="token operator">*</span>xbins<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Initialize axis with variable bins</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">Set</span><span class="token punctuation">(</span>Int_t nbins<span class="token punctuation">,</span> <span class="token keyword">const</span> Double_t <span class="token operator">*</span>xbins<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Initialize axis with variable bins</span>
+<span class="hljs-comment">/// Rotate title by 180 degrees. By default the title is drawn right adjusted.</span>
+<span class="hljs-comment">/// If rotate is TRUE, the title is left adjusted at the end of the axis and rotated by 180 degrees</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">RotateTitle</span><span class="hljs-params">(Bool_t rotate=kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=GetRotateTitle</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SaveAttributes</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *subname)</span></span>;<span class="hljs-comment">/// Save axis attributes as C++ statement(s) on output stream out</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Set</span><span class="hljs-params">(Int_t nbins, Double_t xmin, Double_t xmax)</span></span>;<span class="hljs-comment">/// Initialize axis with fix bins</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Set</span><span class="hljs-params">(Int_t nbins, <span class="hljs-keyword">const</span> Float_t *xbins)</span></span>;<span class="hljs-comment">/// Initialize axis with variable bins</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">Set</span><span class="hljs-params">(Int_t nbins, <span class="hljs-keyword">const</span> Double_t *xbins)</span></span>;<span class="hljs-comment">/// Initialize axis with variable bins</span>
 
-<span class="token comment">/// Set label for bin.</span>
-<span class="token comment">/// If no label list exists, it is created. If all the bins have labels, the</span>
-<span class="token comment">/// axis becomes alphanumeric and extendable.</span>
-<span class="token comment">/// New labels will not be added with the Fill method but will end-up in the</span>
-<span class="token comment">/// underflow bin. See documentation of TAxis::FindBin(const char*)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetBinLabel</span><span class="token punctuation">(</span>Int_t bin<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>label<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x8BBE;&#x7F6E;bin&#x540D;&#x79F0;</span>
+<span class="hljs-comment">/// Set label for bin.</span>
+<span class="hljs-comment">/// If no label list exists, it is created. If all the bins have labels, the</span>
+<span class="hljs-comment">/// axis becomes alphanumeric and extendable.</span>
+<span class="hljs-comment">/// New labels will not be added with the Fill method but will end-up in the</span>
+<span class="hljs-comment">/// underflow bin. See documentation of TAxis::FindBin(const char*)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetBinLabel</span><span class="hljs-params">(Int_t bin, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span></span>;<span class="hljs-comment">//&#x8BBE;&#x7F6E;bin&#x540D;&#x79F0;</span>
 
-<span class="token comment">/// Sets the decimals flag</span>
-<span class="token comment">/// By default, blank characters are stripped, and then the label is correctly aligned.</span>
-<span class="token comment">/// If the dot is the last character of the string, it is also stripped, unless this option is specified.</span>
-           <span class="token keyword">void</span>       <span class="token function">SetDecimals</span><span class="token punctuation">(</span>Bool_t dot <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *TOGGLE* *GETTER=GetDecimals</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetDefaults</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set axis default values (from TStyle)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetDrawOption</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span> <span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetLimits</span><span class="token punctuation">(</span>Double_t xmin<span class="token punctuation">,</span> Double_t xmax<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/* set axis limits */</span> fXmin <span class="token operator">=</span> xmin<span class="token punctuation">;</span> fXmax <span class="token operator">=</span> xmax<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="hljs-comment">/// Sets the decimals flag</span>
+<span class="hljs-comment">/// By default, blank characters are stripped, and then the label is correctly aligned.</span>
+<span class="hljs-comment">/// If the dot is the last character of the string, it is also stripped, unless this option is specified.</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetDecimals</span><span class="hljs-params">(Bool_t dot = kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=GetDecimals</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetDefaults</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Set axis default values (from TStyle)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetDrawOption</span><span class="hljs-params">(Option_t * <span class="hljs-comment">/*option*/</span> =<span class="hljs-string">&quot;&quot;</span>)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetLimits</span><span class="hljs-params">(Double_t xmin, Double_t xmax)</span> </span>{ <span class="hljs-comment">/* set axis limits */</span> fXmin = xmin; fXmax = xmax; }
 
-<span class="token comment">/// Set the kMoreLogLabels bit flag</span>
-<span class="token comment">/// When this option is selected more labels are drawn when in log scale and there is a small number</span>
-<span class="token comment">/// of decades  (&lt;3).</span>
-<span class="token comment">/// The flag (in fBits) is passed to the drawing function TGaxis::PaintAxis</span>
-   <span class="token keyword">void</span>       <span class="token function">SetMoreLogLabels</span><span class="token punctuation">(</span>Bool_t more<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *TOGGLE* *GETTER=GetMoreLogLabels</span>
+<span class="hljs-comment">/// Set the kMoreLogLabels bit flag</span>
+<span class="hljs-comment">/// When this option is selected more labels are drawn when in log scale and there is a small number</span>
+<span class="hljs-comment">/// of decades  (&lt;3).</span>
+<span class="hljs-comment">/// The flag (in fBits) is passed to the drawing function TGaxis::PaintAxis</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetMoreLogLabels</span><span class="hljs-params">(Bool_t more=kTRUE)</span></span>;  <span class="hljs-comment">// *TOGGLE* *GETTER=GetMoreLogLabels</span>
 
-<span class="token comment">/// Set the NoExponent flag</span>
-<span class="token comment">/// By default, an exponent of the form 10^N is used when the label value are either all very small or very large.</span>
-<span class="token comment">/// The flag (in fBits) is passed to the drawing function TGaxis::PaintAxis</span>
-           <span class="token keyword">void</span>       <span class="token function">SetNoExponent</span><span class="token punctuation">(</span>Bool_t noExponent<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *TOGGLE* *GETTER=GetNoExponent</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetParent</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>fParent <span class="token operator">=</span> obj<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="hljs-comment">/// Set the NoExponent flag</span>
+<span class="hljs-comment">/// By default, an exponent of the form 10^N is used when the label value are either all very small or very large.</span>
+<span class="hljs-comment">/// The flag (in fBits) is passed to the drawing function TGaxis::PaintAxis</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>       <span class="hljs-title">SetNoExponent</span><span class="hljs-params">(Bool_t noExponent=kTRUE)</span></span>;  <span class="hljs-comment">// *TOGGLE* *GETTER=GetNoExponent</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetParent</span><span class="hljs-params">(TObject *obj)</span> </span>{fParent = obj;}
 
-<span class="token comment">///  Set the viewing range for the axis from bin first to last.</span>
-<span class="token comment">///  To set a range using the axis coordinates, use TAxis::SetRangeUser.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetRange</span><span class="token punctuation">(</span>Int_t first<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t last<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU*</span>
+<span class="hljs-comment">///  Set the viewing range for the axis from bin first to last.</span>
+<span class="hljs-comment">///  To set a range using the axis coordinates, use TAxis::SetRangeUser.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetRange</span><span class="hljs-params">(Int_t first=<span class="hljs-number">0</span>, Int_t last=<span class="hljs-number">0</span>)</span></span>;  <span class="hljs-comment">// *MENU*</span>
 
-<span class="token comment">///  Set the viewing range for the axis from ufirst to ulast (in user coordinates).</span>
-<span class="token comment">///  To set a range using the axis bin numbers, use TAxis::SetRange.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetRangeUser</span><span class="token punctuation">(</span>Double_t ufirst<span class="token punctuation">,</span> Double_t ulast<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU* &#x4EBA;&#x4E3A;&#x8BBE;&#x7F6E;&#x5750;&#x6807;&#x8303;&#x56F4;&#xFF01;</span>
+<span class="hljs-comment">///  Set the viewing range for the axis from ufirst to ulast (in user coordinates).</span>
+<span class="hljs-comment">///  To set a range using the axis bin numbers, use TAxis::SetRange.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetRangeUser</span><span class="hljs-params">(Double_t ufirst, Double_t ulast)</span></span>;  <span class="hljs-comment">// *MENU* &#x4EBA;&#x4E3A;&#x8BBE;&#x7F6E;&#x5750;&#x6807;&#x8303;&#x56F4;&#xFF01;</span>
 
-<span class="token comment">///  Set ticks orientation.</span>
-<span class="token comment">///  option = &quot;+&quot;  ticks drawn on the &quot;positive side&quot; (default)</span>
-<span class="token comment">///  option = &quot;-&quot;  ticks drawn on the &quot;negative side&quot;</span>
-<span class="token comment">///  option = &quot;+-&quot; ticks drawn on both sides</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetTicks</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;+&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*  //  option = &quot;+&quot;  ticks drawn on the &quot;positive side&quot; (default) ; option = &quot;-&quot;  ticks drawn on the &quot;negative side&quot; ; option = &quot;+-&quot; ticks drawn on both sides</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetTimeDisplay</span><span class="token punctuation">(</span>Int_t value<span class="token punctuation">)</span> <span class="token punctuation">{</span>fTimeDisplay <span class="token operator">=</span> <span class="token punctuation">(</span>value <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span> <span class="token comment">// *TOGGLE*</span>
+<span class="hljs-comment">///  Set ticks orientation.</span>
+<span class="hljs-comment">///  option = &quot;+&quot;  ticks drawn on the &quot;positive side&quot; (default)</span>
+<span class="hljs-comment">///  option = &quot;-&quot;  ticks drawn on the &quot;negative side&quot;</span>
+<span class="hljs-comment">///  option = &quot;+-&quot; ticks drawn on both sides</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTicks</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;+&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*  //  option = &quot;+&quot;  ticks drawn on the &quot;positive side&quot; (default) ; option = &quot;-&quot;  ticks drawn on the &quot;negative side&quot; ; option = &quot;+-&quot; ticks drawn on both sides</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTimeDisplay</span><span class="hljs-params">(Int_t value)</span> </span>{fTimeDisplay = (value != <span class="hljs-number">0</span>);} <span class="hljs-comment">// *TOGGLE*</span>
 
-<span class="token comment">/// Change the format used for time plotting</span>
-<span class="token comment">/// The format string for date and time use the same options as the one used</span>
-<span class="token comment">/// in the standard strftime C function, i.e. :</span>
-<span class="token comment">/// for date :</span>
-<span class="token comment">///          %a abbreviated weekday name</span>
-<span class="token comment">///          %b abbreviated month name</span>
-<span class="token comment">///          %d day of the month (01-31)</span>
-<span class="token comment">///          %m month (01-12)</span>
-<span class="token comment">///          %y year without century</span>
-<span class="token comment">/// for time :</span>
-<span class="token comment">///</span>
-<span class="token comment">///          %H hour (24-hour clock)</span>
-<span class="token comment">///          %I hour (12-hour clock)</span>
-<span class="token comment">///          %p local equivalent of AM or PM</span>
-<span class="token comment">///          %M minute (00-59)</span>
-<span class="token comment">///          %S seconds (00-61)</span>
-<span class="token comment">///          %% %</span>
-<span class="token comment">/// This function allows also to define the time offset. It is done via %F</span>
-<span class="token comment">/// which should be appended at the end of the format string. The time</span>
-<span class="token comment">/// offset has the following format: &apos;yyyy-mm-dd hh:mm:ss&apos;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetTimeFormat</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>format<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU*</span>
+<span class="hljs-comment">/// Change the format used for time plotting</span>
+<span class="hljs-comment">/// The format string for date and time use the same options as the one used</span>
+<span class="hljs-comment">/// in the standard strftime C function, i.e. :</span>
+<span class="hljs-comment">/// for date :</span>
+<span class="hljs-comment">///          %a abbreviated weekday name</span>
+<span class="hljs-comment">///          %b abbreviated month name</span>
+<span class="hljs-comment">///          %d day of the month (01-31)</span>
+<span class="hljs-comment">///          %m month (01-12)</span>
+<span class="hljs-comment">///          %y year without century</span>
+<span class="hljs-comment">/// for time :</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///          %H hour (24-hour clock)</span>
+<span class="hljs-comment">///          %I hour (12-hour clock)</span>
+<span class="hljs-comment">///          %p local equivalent of AM or PM</span>
+<span class="hljs-comment">///          %M minute (00-59)</span>
+<span class="hljs-comment">///          %S seconds (00-61)</span>
+<span class="hljs-comment">///          %% %</span>
+<span class="hljs-comment">/// This function allows also to define the time offset. It is done via %F</span>
+<span class="hljs-comment">/// which should be appended at the end of the format string. The time</span>
+<span class="hljs-comment">/// offset has the following format: &apos;yyyy-mm-dd hh:mm:ss&apos;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTimeFormat</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *format=<span class="hljs-string">&quot;&quot;</span>)</span></span>;  <span class="hljs-comment">// *MENU*</span>
 
-<span class="token comment">/// Change the time offset</span>
-<span class="token comment">/// If option = &quot;gmt&quot;, set display mode to GMT.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetTimeOffset</span><span class="token punctuation">(</span>Double_t toffset<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;local&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">UnZoom</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU* /// Reset first &amp; last bin to the full range</span>
+<span class="hljs-comment">/// Change the time offset</span>
+<span class="hljs-comment">/// If option = &quot;gmt&quot;, set display mode to GMT.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">SetTimeOffset</span><span class="hljs-params">(Double_t toffset, Option_t *option=<span class="hljs-string">&quot;local&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">UnZoom</span><span class="hljs-params">()</span></span>;  <span class="hljs-comment">// *MENU* /// Reset first &amp; last bin to the full range</span>
 
-<span class="token comment">/// Zoom out by a factor of &apos;factor&apos; (default =2)</span>
-<span class="token comment">///   uses previous zoom factor by default</span>
-<span class="token comment">/// Keep center defined by &apos;offset&apos; fixed</span>
-<span class="token comment">///   ie. -1 at left of current range, 0 in center, +1 at right</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">ZoomOut</span><span class="token punctuation">(</span>Double_t factor<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Double_t offset<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU*</span>
+<span class="hljs-comment">/// Zoom out by a factor of &apos;factor&apos; (default =2)</span>
+<span class="hljs-comment">///   uses previous zoom factor by default</span>
+<span class="hljs-comment">/// Keep center defined by &apos;offset&apos; fixed</span>
+<span class="hljs-comment">///   ie. -1 at left of current range, 0 in center, +1 at right</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       <span class="hljs-title">ZoomOut</span><span class="hljs-params">(Double_t factor=<span class="hljs-number">0</span>, Double_t offset=<span class="hljs-number">0</span>)</span></span>;  <span class="hljs-comment">// *MENU*</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//&#x8BBE;&#x7F6E;&#x5750;&#x6807;&#x8303;&#x56F4;</span>
-TAxis <span class="token operator">*</span>axis<span class="token operator">=</span>h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-axis<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetRangeUser</span><span class="token punctuation">(</span><span class="token number">950</span><span class="token punctuation">,</span><span class="token number">1300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-TAxis <span class="token operator">*</span>axisy<span class="token operator">=</span>h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-axisy<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetRangeUser</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x5750;&#x6807;&#x8303;&#x56F4;</span>
+TAxis *axis=h1-&gt;GetXaxis();
+axis-&gt;SetRangeUser(<span class="hljs-number">950</span>,<span class="hljs-number">1300</span>);
+TAxis *axisy=h1-&gt;GetYaxis();
+axisy-&gt;SetRangeUser(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>);
 
 
-<span class="token comment">//&#x76F4;&#x65B9;&#x56FE;&#x5750;&#x6807;&#x8BBE;&#x7F6E; TAttAxis.h</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetNdivisions</span><span class="token punctuation">(</span><span class="token number">611</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x5750;&#x6807;&#x523B;&#x5EA6;&#x8BBE;&#x7F6E;&#xFF0C;n = n1 + 100*n2 + 10000*n3 &#xFF0C;Where n1 is the number of primary divisions, n2 is the number of second order divisions and n3 is the number of third order divisions.</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitleSize</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitleFont</span><span class="token punctuation">(</span><span class="token number">43</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitleOffset</span><span class="token punctuation">(</span><span class="token number">3.</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x8C03;&#x8282;title&#x4E0E;&#x5750;&#x6807;&#x8F74;&#x7684;&#x8DDD;&#x79BB;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLabelFont</span><span class="token punctuation">(</span><span class="token number">44</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLabelSize</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token string">&quot;ratio h1/h2 &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetNdivisions</span><span class="token punctuation">(</span><span class="token number">505</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitleSize</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitleFont</span><span class="token punctuation">(</span><span class="token number">43</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitleOffset</span><span class="token punctuation">(</span><span class="token number">1.55</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x8C03;&#x8282;title&#x4E0E;&#x5750;&#x6807;&#x8F74;&#x7684;&#x8DDD;&#x79BB;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLabelFont</span><span class="token punctuation">(</span><span class="token number">43</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h3<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLabelSize</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">//&#x76F4;&#x65B9;&#x56FE;&#x5750;&#x6807;&#x8BBE;&#x7F6E; TAttAxis.h</span>
+h3-&gt;SetTitle(<span class="hljs-string">&quot;&quot;</span>);
+h3-&gt;GetXaxis()-&gt;SetNdivisions(<span class="hljs-number">611</span>);<span class="hljs-comment">//&#x5750;&#x6807;&#x523B;&#x5EA6;&#x8BBE;&#x7F6E;&#xFF0C;n = n1 + 100*n2 + 10000*n3 &#xFF0C;Where n1 is the number of primary divisions, n2 is the number of second order divisions and n3 is the number of third order divisions.</span>
+h3-&gt;GetXaxis()-&gt;SetTitleSize(<span class="hljs-number">20</span>);
+h3-&gt;GetXaxis()-&gt;SetTitleFont(<span class="hljs-number">43</span>);
+h3-&gt;GetXaxis()-&gt;SetTitleOffset(<span class="hljs-number">3.</span>);<span class="hljs-comment">//&#x8C03;&#x8282;title&#x4E0E;&#x5750;&#x6807;&#x8F74;&#x7684;&#x8DDD;&#x79BB;</span>
+h3-&gt;GetXaxis()-&gt;SetLabelFont(<span class="hljs-number">44</span>);
+h3-&gt;GetXaxis()-&gt;SetLabelSize(<span class="hljs-number">20</span>);
+h3-&gt;GetYaxis()-&gt;SetTitle(<span class="hljs-string">&quot;ratio h1/h2 &quot;</span>);
+h3-&gt;GetYaxis()-&gt;SetNdivisions(<span class="hljs-number">505</span>);
+h3-&gt;GetYaxis()-&gt;SetTitleSize(<span class="hljs-number">20</span>);
+h3-&gt;GetYaxis()-&gt;SetTitleFont(<span class="hljs-number">43</span>);
+h3-&gt;GetYaxis()-&gt;SetTitleOffset(<span class="hljs-number">1.55</span>);<span class="hljs-comment">//&#x8C03;&#x8282;title&#x4E0E;&#x5750;&#x6807;&#x8F74;&#x7684;&#x8DDD;&#x79BB;</span>
+h3-&gt;GetYaxis()-&gt;SetLabelFont(<span class="hljs-number">43</span>);
+h3-&gt;GetYaxis()-&gt;SetLabelSize(<span class="hljs-number">15</span>);
 
 
-h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLineColor</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//1 black;2 red;3 green;4 blue;5yellow;6 magenta;&#x2026;&#x2026;</span>
-h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLogx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//&#x8BBE;&#x7F6E;x&#x8F74;&#x4E3A;&#x5BF9;&#x6570;&#x5750;&#x6807;&#x8F74;</span>
-h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token string">&quot;x&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token string">&quot;X axis title&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token string">&quot;Y axis title&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetZaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token string">&quot;Z axis title&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token string">&quot;title name;X axis;Y axis&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">CenterTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetYaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">CenterTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+h1-&gt;SetLineColor(<span class="hljs-number">1</span>);
+<span class="hljs-comment">//1 black;2 red;3 green;4 blue;5yellow;6 magenta;&#x2026;&#x2026;</span>
+h1-&gt;SetLogx();   <span class="hljs-comment">//&#x8BBE;&#x7F6E;x&#x8F74;&#x4E3A;&#x5BF9;&#x6570;&#x5750;&#x6807;&#x8F74;</span>
+h1-&gt;GetXaxis()-&gt;SetTitle(<span class="hljs-string">&quot;x&quot;</span>);
+h-&gt;GetXaxis()-&gt;SetTitle(<span class="hljs-string">&quot;X axis title&quot;</span>);
+h-&gt;GetYaxis()-&gt;SetTitle(<span class="hljs-string">&quot;Y axis title&quot;</span>);
+h-&gt;GetZaxis()-&gt;SetTitle(<span class="hljs-string">&quot;Z axis title&quot;</span>);
+h1-&gt;SetTitle(<span class="hljs-string">&quot;title name;X axis;Y axis&quot;</span>);
+h-&gt;GetXaxis()-&gt;CenterTitle();
+h-&gt;GetYaxis()-&gt;CenterTitle();
 
-h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetFrameFillColor</span><span class="token punctuation">(</span><span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//&#x8BBE;&#x7F6E;&#x56FE;&#x7247;&#x80CC;&#x666F;&#x989C;&#x8272;</span>
+h1-&gt;SetFrameFillColor(<span class="hljs-number">33</span>);    <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x56FE;&#x7247;&#x80CC;&#x666F;&#x989C;&#x8272;</span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">/// Change the format used for time plotting</span>
-<span class="token comment">/// The format string for date and time use the same options as the one used</span>
-<span class="token comment">/// in the standard strftime C function, i.e. :</span>
-<span class="token comment">/// for date :</span>
-<span class="token comment">///          %a abbreviated weekday name</span>
-<span class="token comment">///          %b abbreviated month name</span>
-<span class="token comment">///          %d day of the month (01-31)</span>
-<span class="token comment">///          %m month (01-12)</span>
-<span class="token comment">///          %y year without century</span>
-<span class="token comment">/// for time :</span>
-<span class="token comment">///          %H hour (24-hour clock)</span>
-<span class="token comment">///          %I hour (12-hour clock)</span>
-<span class="token comment">///          %p local equivalent of AM or PM</span>
-<span class="token comment">///          %M minute (00-59)</span>
-<span class="token comment">///          %S seconds (00-61)</span>
-<span class="token comment">///          %% %</span>
-<span class="token comment">/// This function allows also to define the time offset. It is done via %F</span>
-<span class="token comment">/// which should be appended at the end of the format string. The time</span>
-<span class="token comment">/// offset has the following format: &apos;yyyy-mm-dd hh:mm:ss&apos;</span>
-<span class="token comment">/// Example:</span>
-h <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TH1F</span><span class="token punctuation">(</span><span class="token string">&quot;Test&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;h&quot;</span><span class="token punctuation">,</span><span class="token number">3000</span><span class="token punctuation">,</span><span class="token number">0.</span><span class="token punctuation">,</span><span class="token number">200000.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTimeDisplay</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetXaxis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTimeFormat</span><span class="token punctuation">(</span><span class="token string">&quot;%d\/%m\/%y%F2000-02-28 13:00:01&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">/// Change the format used for time plotting</span>
+<span class="hljs-comment">/// The format string for date and time use the same options as the one used</span>
+<span class="hljs-comment">/// in the standard strftime C function, i.e. :</span>
+<span class="hljs-comment">/// for date :</span>
+<span class="hljs-comment">///          %a abbreviated weekday name</span>
+<span class="hljs-comment">///          %b abbreviated month name</span>
+<span class="hljs-comment">///          %d day of the month (01-31)</span>
+<span class="hljs-comment">///          %m month (01-12)</span>
+<span class="hljs-comment">///          %y year without century</span>
+<span class="hljs-comment">/// for time :</span>
+<span class="hljs-comment">///          %H hour (24-hour clock)</span>
+<span class="hljs-comment">///          %I hour (12-hour clock)</span>
+<span class="hljs-comment">///          %p local equivalent of AM or PM</span>
+<span class="hljs-comment">///          %M minute (00-59)</span>
+<span class="hljs-comment">///          %S seconds (00-61)</span>
+<span class="hljs-comment">///          %% %</span>
+<span class="hljs-comment">/// This function allows also to define the time offset. It is done via %F</span>
+<span class="hljs-comment">/// which should be appended at the end of the format string. The time</span>
+<span class="hljs-comment">/// offset has the following format: &apos;yyyy-mm-dd hh:mm:ss&apos;</span>
+<span class="hljs-comment">/// Example:</span>
+h = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;Test&quot;</span>,<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-number">3000</span>,<span class="hljs-number">0.</span>,<span class="hljs-number">200000.</span>);
+h-&gt;GetXaxis()-&gt;SetTimeDisplay(<span class="hljs-number">1</span>);
+h-&gt;GetXaxis()-&gt;SetTimeFormat(<span class="hljs-string">&quot;%d\/%m\/%y%F2000-02-28 13:00:01&quot;</span>);
 
-<span class="token comment">/// This defines the time format being &quot;dd/mm/yy&quot; and the time offset as the</span>
-<span class="token comment">/// February 28th 2003 at 13:00:01</span>
-<span class="token comment">/// If %F is not specified, the time offset used will be the one defined by:</span>
-<span class="token comment">/// gStyle-&gt;SetTimeOffset. For example like that:</span>
+<span class="hljs-comment">/// This defines the time format being &quot;dd/mm/yy&quot; and the time offset as the</span>
+<span class="hljs-comment">/// February 28th 2003 at 13:00:01</span>
+<span class="hljs-comment">/// If %F is not specified, the time offset used will be the one defined by:</span>
+<span class="hljs-comment">/// gStyle-&gt;SetTimeOffset. For example like that:</span>
 
-TDatime <span class="token function">da</span><span class="token punctuation">(</span><span class="token number">2003</span><span class="token punctuation">,</span><span class="token number">02</span><span class="token punctuation">,</span><span class="token number">28</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">00</span><span class="token punctuation">,</span><span class="token number">00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-gStyle<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTimeOffset</span><span class="token punctuation">(</span>da<span class="token punctuation">.</span><span class="token function">Convert</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-function">TDatime <span class="hljs-title">da</span><span class="hljs-params">(<span class="hljs-number">2003</span>,<span class="hljs-number">02</span>,<span class="hljs-number">28</span>,<span class="hljs-number">12</span>,<span class="hljs-number">00</span>,<span class="hljs-number">00</span>)</span></span>;
+gStyle-&gt;SetTimeOffset(da.Convert());
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TAxis.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -4031,7 +4043,7 @@ gStyle<span class="token operator">-</span><span class="token operator">&gt;</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TAxis*","level":"1.2.3","depth":2,"next":{"title":"TBackCompFitter*","level":"1.2.4","depth":2,"path":"class/TBackCompFitter.md","ref":"class/TBackCompFitter.md","articles":[]},"previous":{"title":"TAttAxis*","level":"1.2.2","depth":2,"path":"class/TAttAxis.md","ref":"class/TAttAxis.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TAxis.md","mtime":"2018-05-14T09:18:21.213Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TAxis*","level":"1.2.3","depth":2,"next":{"title":"TBackCompFitter*","level":"1.2.4","depth":2,"path":"class/TBackCompFitter.md","ref":"class/TBackCompFitter.md","articles":[]},"previous":{"title":"TAttAxis*","level":"1.2.2","depth":2,"path":"class/TAttAxis.md","ref":"class/TAttAxis.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TAxis.md","mtime":"2018-05-14T09:18:21.213Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4063,6 +4075,18 @@ gStyle<span class="token operator">-</span><span class="token operator">&gt;</sp
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

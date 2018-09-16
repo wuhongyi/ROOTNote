@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3679,83 +3691,83 @@
 <h1 id="tline"><a name="tline" class="plugin-anchor" href="#tline"><i class="fa fa-link" aria-hidden="true"></i></a>TLine</h1>
 <p>&#x7EE7;&#x627F; TObject, TAttLine, TAttBBox2D</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token comment">// TLine status bits</span>
-   <span class="token keyword">enum</span> <span class="token punctuation">{</span>
-      kLineNDC    <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// Use NDC coordinates</span>
-      kVertical   <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// Line is vertical</span>
-      kHorizontal <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>  <span class="token comment">// Line is horizontal</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-comment">// TLine status bits</span>
+   <span class="hljs-keyword">enum</span> {
+      kLineNDC    = BIT(<span class="hljs-number">14</span>), <span class="hljs-comment">// Use NDC coordinates</span>
+      kVertical   = BIT(<span class="hljs-number">15</span>), <span class="hljs-comment">// Line is vertical</span>
+      kHorizontal = BIT(<span class="hljs-number">16</span>)  <span class="hljs-comment">// Line is horizontal</span>
+   };
 
-   <span class="token function">TLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Line default constructor.</span>
-   <span class="token function">TLine</span><span class="token punctuation">(</span>Double_t x1<span class="token punctuation">,</span> Double_t y1<span class="token punctuation">,</span>Double_t x2<span class="token punctuation">,</span> Double_t  y2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Line normal constructor.</span>
-   <span class="token function">TLine</span><span class="token punctuation">(</span><span class="token keyword">const</span> TLine <span class="token operator">&amp;</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Line copy constructor.</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TLine();<span class="hljs-comment">/// Line default constructor.</span>
+   TLine(Double_t x1, Double_t y1,Double_t x2, Double_t  y2);<span class="hljs-comment">/// Line normal constructor.</span>
+   TLine(<span class="hljs-keyword">const</span> TLine &amp;line);<span class="hljs-comment">/// Line copy constructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TLine();
 
-   <span class="token keyword">void</span>                 <span class="token function">Copy</span><span class="token punctuation">(</span>TObject <span class="token operator">&amp;</span>line<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Copy this line to line.</span>
-   <span class="token keyword">virtual</span> Int_t        <span class="token function">DistancetoPrimitive</span><span class="token punctuation">(</span>Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Compute distance from point px,py to a line.</span>
-   <span class="token keyword">virtual</span> TLine       <span class="token operator">*</span><span class="token function">DrawLine</span><span class="token punctuation">(</span>Double_t x1<span class="token punctuation">,</span> Double_t y1<span class="token punctuation">,</span>Double_t x2<span class="token punctuation">,</span> Double_t y2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw this line with new coordinates.</span>
-   <span class="token keyword">virtual</span> TLine       <span class="token operator">*</span><span class="token function">DrawLineNDC</span><span class="token punctuation">(</span>Double_t x1<span class="token punctuation">,</span> Double_t y1<span class="token punctuation">,</span>Double_t x2<span class="token punctuation">,</span> Double_t y2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw this line with new coordinates in NDC.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">ExecuteEvent</span><span class="token punctuation">(</span>Int_t event<span class="token punctuation">,</span> Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute action corresponding to one event.</span>
-<span class="token comment">///  This member function is called when a line is clicked with the locator</span>
-<span class="token comment">///  If Left button clicked on one of the line end points, this point</span>
-<span class="token comment">///     follows the cursor until button is released.</span>
-<span class="token comment">///  if Middle button clicked, the line is moved parallel to itself</span>
-<span class="token comment">///     until the button is released.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                 <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;line)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Copy this line to line.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t        <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;<span class="hljs-comment">/// Compute distance from point px,py to a line.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLine       *<span class="hljs-title">DrawLine</span><span class="hljs-params">(Double_t x1, Double_t y1,Double_t x2, Double_t y2)</span></span>;<span class="hljs-comment">/// Draw this line with new coordinates.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLine       *<span class="hljs-title">DrawLineNDC</span><span class="hljs-params">(Double_t x1, Double_t y1,Double_t x2, Double_t y2)</span></span>;<span class="hljs-comment">/// Draw this line with new coordinates in NDC.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
+<span class="hljs-comment">/// Execute action corresponding to one event.</span>
+<span class="hljs-comment">///  This member function is called when a line is clicked with the locator</span>
+<span class="hljs-comment">///  If Left button clicked on one of the line end points, this point</span>
+<span class="hljs-comment">///     follows the cursor until button is released.</span>
+<span class="hljs-comment">///  if Middle button clicked, the line is moved parallel to itself</span>
+<span class="hljs-comment">///     until the button is released.</span>
 
-   Double_t             <span class="token function">GetX1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fX1<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Double_t             <span class="token function">GetX2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fX2<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Double_t             <span class="token function">GetY1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fY1<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Double_t             <span class="token function">GetY2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fY2<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Bool_t               <span class="token function">IsHorizontal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Check whether this line is to be drawn horizontally.</span>
-   Bool_t               <span class="token function">IsVertical</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Check whether this line is to be drawn vertically.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// List this line with its attributes.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">Paint</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Paint this line with its current attributes.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">PaintLine</span><span class="token punctuation">(</span>Double_t x1<span class="token punctuation">,</span> Double_t y1<span class="token punctuation">,</span>Double_t x2<span class="token punctuation">,</span> Double_t  y2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw this line with new coordinates.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">PaintLineNDC</span><span class="token punctuation">(</span>Double_t u1<span class="token punctuation">,</span> Double_t v1<span class="token punctuation">,</span>Double_t u2<span class="token punctuation">,</span> Double_t  v2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw this line with new coordinates in NDC.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">Print</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Save primitive as a C++ statement(s) on output stream out</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetNDC</span><span class="token punctuation">(</span>Bool_t isNDC<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set NDC mode on if isNDC = kTRUE, off otherwise</span>
-   <span class="token keyword">void</span>                 <span class="token function">SetHorizontal</span><span class="token punctuation">(</span>Bool_t set <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *TOGGLE* *GETTER=IsHorizontal</span>
-<span class="token comment">/// Force the line to be drawn horizontally.</span>
-<span class="token comment">/// Makes fY2 equal to fY1. The line length is kept.</span>
-<span class="token comment">/// TArrow and TGaxis also get this function by inheritance.</span>
+   <span class="hljs-function">Double_t             <span class="hljs-title">GetX1</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fX1;}
+   <span class="hljs-function">Double_t             <span class="hljs-title">GetX2</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fX2;}
+   <span class="hljs-function">Double_t             <span class="hljs-title">GetY1</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fY1;}
+   <span class="hljs-function">Double_t             <span class="hljs-title">GetY2</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fY2;}
+   <span class="hljs-function">Bool_t               <span class="hljs-title">IsHorizontal</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Check whether this line is to be drawn horizontally.</span>
+   <span class="hljs-function">Bool_t               <span class="hljs-title">IsVertical</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Check whether this line is to be drawn vertically.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List this line with its attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Paint this line with its current attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">PaintLine</span><span class="hljs-params">(Double_t x1, Double_t y1,Double_t x2, Double_t  y2)</span></span>;<span class="hljs-comment">/// Draw this line with new coordinates.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">PaintLineNDC</span><span class="hljs-params">(Double_t u1, Double_t v1,Double_t u2, Double_t  v2)</span></span>;<span class="hljs-comment">/// Draw this line with new coordinates in NDC.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetNDC</span><span class="hljs-params">(Bool_t isNDC=kTRUE)</span></span>;<span class="hljs-comment">/// Set NDC mode on if isNDC = kTRUE, off otherwise</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                 <span class="hljs-title">SetHorizontal</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span> = kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=IsHorizontal</span>
+<span class="hljs-comment">/// Force the line to be drawn horizontally.</span>
+<span class="hljs-comment">/// Makes fY2 equal to fY1. The line length is kept.</span>
+<span class="hljs-comment">/// TArrow and TGaxis also get this function by inheritance.</span>
 
-   <span class="token keyword">void</span>                 <span class="token function">SetVertical</span><span class="token punctuation">(</span>Bool_t set <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *TOGGLE* *GETTER=IsVertical</span>
-<span class="token comment">/// Force the line to be drawn vertically.</span>
-<span class="token comment">/// Makes fX2 equal to fX1. The line length is kept.</span>
-<span class="token comment">/// TArrow and TGaxis also get this function by inheritance.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                 <span class="hljs-title">SetVertical</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span> = kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=IsVertical</span>
+<span class="hljs-comment">/// Force the line to be drawn vertically.</span>
+<span class="hljs-comment">/// Makes fX2 equal to fX1. The line length is kept.</span>
+<span class="hljs-comment">/// TArrow and TGaxis also get this function by inheritance.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetX1</span><span class="token punctuation">(</span>Double_t x1<span class="token punctuation">)</span> <span class="token punctuation">{</span>fX1<span class="token operator">=</span>x1<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetX2</span><span class="token punctuation">(</span>Double_t x2<span class="token punctuation">)</span> <span class="token punctuation">{</span>fX2<span class="token operator">=</span>x2<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetY1</span><span class="token punctuation">(</span>Double_t y1<span class="token punctuation">)</span> <span class="token punctuation">{</span>fY1<span class="token operator">=</span>y1<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetY2</span><span class="token punctuation">(</span>Double_t y2<span class="token punctuation">)</span> <span class="token punctuation">{</span>fY2<span class="token operator">=</span>y2<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Rectangle_t  <span class="token function">GetBBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return the bounding Box of the Line</span>
-   <span class="token keyword">virtual</span> TPoint       <span class="token function">GetBBoxCenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return the center of the BoundingBox as TPoint in pixels</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxCenter</span><span class="token punctuation">(</span><span class="token keyword">const</span> TPoint <span class="token operator">&amp;</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set center of the BoundingBox</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxCenterX</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t x<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set X coordinate of the center of the BoundingBox</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxCenterY</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t y<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set Y coordinate of the center of the BoundingBox</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxX1</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set left hand side of BoundingBox to a value</span>
-<span class="token comment">/// (resize in x direction on left)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetX1</span><span class="hljs-params">(Double_t x1)</span> </span>{fX1=x1;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetX2</span><span class="hljs-params">(Double_t x2)</span> </span>{fX2=x2;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetY1</span><span class="hljs-params">(Double_t y1)</span> </span>{fY1=y1;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetY2</span><span class="hljs-params">(Double_t y2)</span> </span>{fY2=y2;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Rectangle_t  <span class="hljs-title">GetBBox</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return the bounding Box of the Line</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TPoint       <span class="hljs-title">GetBBoxCenter</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Return the center of the BoundingBox as TPoint in pixels</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenter</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TPoint &amp;p)</span></span>;<span class="hljs-comment">/// Set center of the BoundingBox</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenterX</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>;<span class="hljs-comment">/// Set X coordinate of the center of the BoundingBox</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenterY</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>;<span class="hljs-comment">/// Set Y coordinate of the center of the BoundingBox</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxX1</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>;
+<span class="hljs-comment">/// Set left hand side of BoundingBox to a value</span>
+<span class="hljs-comment">/// (resize in x direction on left)</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxX2</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set right hand side of BoundingBox to a value</span>
-<span class="token comment">/// (resize in x direction on right)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxX2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>;
+<span class="hljs-comment">/// Set right hand side of BoundingBox to a value</span>
+<span class="hljs-comment">/// (resize in x direction on right)</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxY1</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set top of BoundingBox to a value (resize in y direction on top)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxY1</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>;
+<span class="hljs-comment">/// Set top of BoundingBox to a value (resize in y direction on top)</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxY2</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set bottom of BoundingBox to a value</span>
-<span class="token comment">/// (resize in y direction on bottom)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxY2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>;
+<span class="hljs-comment">/// Set bottom of BoundingBox to a value</span>
+<span class="hljs-comment">/// (resize in y direction on bottom)</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TLine.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:23
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:23 </span> </footer>
                                 
                                 </section>
                             
@@ -3798,7 +3810,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TLine*","level":"1.2.40","depth":2,"next":{"title":"TLinearFitter*","level":"1.2.41","depth":2,"path":"class/TLinearFitter.md","ref":"class/TLinearFitter.md","articles":[]},"previous":{"title":"TLegendEntry*","level":"1.2.39","depth":2,"path":"class/TLegendEntry.md","ref":"class/TLegendEntry.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TLine.md","mtime":"2018-05-14T09:18:23.035Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TLine*","level":"1.2.40","depth":2,"next":{"title":"TLinearFitter*","level":"1.2.41","depth":2,"path":"class/TLinearFitter.md","ref":"class/TLinearFitter.md","articles":[]},"previous":{"title":"TLegendEntry*","level":"1.2.39","depth":2,"path":"class/TLegendEntry.md","ref":"class/TLegendEntry.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TLine.md","mtime":"2018-05-14T09:18:23.035Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3830,6 +3842,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

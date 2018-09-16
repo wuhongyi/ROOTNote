@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3677,117 +3689,117 @@
 ;;     Update #: 55
 ;; URL: http://wuhongyi.cn -->
 <h1 id="readme"><a name="readme" class="plugin-anchor" href="#readme"><i class="fa fa-link" aria-hidden="true"></i></a>README</h1>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// System predefined widget message types. Message types are constants  </span>
-<span class="token comment">// that indicate which widget sent the message and by which widget      </span>
-<span class="token comment">// function (sub-message). Make sure your own message types don&apos;t clash  </span>
-<span class="token comment">// whith the ones defined in this file. ROOT reserves all message ids   </span>
-<span class="token comment">// between 0 - 1000. User defined messages should be in the range       </span>
-<span class="token comment">// 1001 - 10000. Sub-messages must always be in the range 1-255.        </span>
-<span class="token comment">// To use MK_MSG() just cast your message id&apos;s to an EWidgetMessageType.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// System predefined widget message types. Message types are constants  </span>
+<span class="hljs-comment">// that indicate which widget sent the message and by which widget      </span>
+<span class="hljs-comment">// function (sub-message). Make sure your own message types don&apos;t clash  </span>
+<span class="hljs-comment">// whith the ones defined in this file. ROOT reserves all message ids   </span>
+<span class="hljs-comment">// between 0 - 1000. User defined messages should be in the range       </span>
+<span class="hljs-comment">// 1001 - 10000. Sub-messages must always be in the range 1-255.        </span>
+<span class="hljs-comment">// To use MK_MSG() just cast your message id&apos;s to an EWidgetMessageType.</span>
 
-<span class="token comment">// WidgetMessageTypes</span>
-<span class="token keyword">enum</span> EWidgetMessageTypes <span class="token punctuation">{</span>
-   kC_COMMAND          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kCM_MENU            <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kCM_MENUSELECT      <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      kCM_BUTTON          <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-      kCM_CHECKBUTTON     <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-      kCM_RADIOBUTTON     <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
-      kCM_LISTBOX         <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
-      kCM_COMBOBOX        <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span>
-      kCM_TAB             <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
-   kC_HSCROLL          <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-   kC_VSCROLL          <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-      kSB_LINEUP          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kSB_LINEDOWN        <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      kSB_PAGEUP          <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-      kSB_PAGEDOWN        <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-      kSB_SLIDERTRACK     <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
-      kSB_SLIDERPOS       <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
-   kC_TEXTENTRY        <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-      kTE_TEXTCHANGED     <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kTE_ENTER           <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      kTE_TAB             <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-      kTE_KEY             <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-   kC_CONTAINER        <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
-      kCT_ITEMCLICK       <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kCT_ITEMDBLCLICK    <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      kCT_SELCHANGED      <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-      kCT_KEY             <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-   kC_HSLIDER          <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
-   kC_VSLIDER          <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span>
-      kSL_POS             <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kSL_TRACK           <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      kSL_PRESS           <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-      kSL_RELEASE         <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-      kSL_POINTER         <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
-   kC_LISTTREE         <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
-   kC_TEXTVIEW         <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">,</span>
-      kTXT_ISMARKED       <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kTXT_DATACHANGE     <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      kTXT_CLICK2         <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-      kTXT_CLICK3         <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-      kTXT_F3             <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
-      kTXT_OPEN           <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
-      kTXT_CLOSE          <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span>
-      kTXT_SAVE           <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
-   kC_COLORSEL         <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span>
-      kCOL_CLICK          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kCOL_SELCHANGED     <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-   kC_PATTERNSEL       <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">,</span>
-      kPAT_CLICK          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kPAT_SELCHANGED     <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-   kC_MARKERSEL        <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">,</span>
-      kMAR_CLICK          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kMAR_SELCHANGED     <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-   kC_POPUP            <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">,</span>
-      kPOP_HIDE           <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-   kC_DOCK             <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>
-      kDOCK_DOCK          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kDOCK_UNDOCK        <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      kDOCK_SHOW          <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-      kDOCK_HIDE          <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-   kC_MDI              <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">,</span>
-      kMDI_CURRENT        <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      kMDI_CREATE         <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      kMDI_CLOSE          <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
-      kMDI_RESTORE        <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
-      kMDI_MOVE           <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">,</span>
-      kMDI_SIZE           <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span>
-      kMDI_MINIMIZE       <span class="token operator">=</span> <span class="token number">64</span><span class="token punctuation">,</span>
-      kMDI_MAXIMIZE       <span class="token operator">=</span> <span class="token number">128</span><span class="token punctuation">,</span>
-      kMDI_HELP           <span class="token operator">=</span> <span class="token number">256</span><span class="token punctuation">,</span>
-      kMDI_MENU           <span class="token operator">=</span> <span class="token number">512</span><span class="token punctuation">,</span>
-   kC_USER             <span class="token operator">=</span> <span class="token number">1001</span><span class="token punctuation">,</span>
-   kC_MSGMAX           <span class="token operator">=</span> <span class="token number">10000</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="hljs-comment">// WidgetMessageTypes</span>
+<span class="hljs-keyword">enum</span> EWidgetMessageTypes {
+   kC_COMMAND          = <span class="hljs-number">1</span>,
+      kCM_MENU            = <span class="hljs-number">1</span>,
+      kCM_MENUSELECT      = <span class="hljs-number">2</span>,
+      kCM_BUTTON          = <span class="hljs-number">3</span>,
+      kCM_CHECKBUTTON     = <span class="hljs-number">4</span>,
+      kCM_RADIOBUTTON     = <span class="hljs-number">5</span>,
+      kCM_LISTBOX         = <span class="hljs-number">6</span>,
+      kCM_COMBOBOX        = <span class="hljs-number">7</span>,
+      kCM_TAB             = <span class="hljs-number">8</span>,
+   kC_HSCROLL          = <span class="hljs-number">2</span>,
+   kC_VSCROLL          = <span class="hljs-number">3</span>,
+      kSB_LINEUP          = <span class="hljs-number">1</span>,
+      kSB_LINEDOWN        = <span class="hljs-number">2</span>,
+      kSB_PAGEUP          = <span class="hljs-number">3</span>,
+      kSB_PAGEDOWN        = <span class="hljs-number">4</span>,
+      kSB_SLIDERTRACK     = <span class="hljs-number">5</span>,
+      kSB_SLIDERPOS       = <span class="hljs-number">6</span>,
+   kC_TEXTENTRY        = <span class="hljs-number">4</span>,
+      kTE_TEXTCHANGED     = <span class="hljs-number">1</span>,
+      kTE_ENTER           = <span class="hljs-number">2</span>,
+      kTE_TAB             = <span class="hljs-number">3</span>,
+      kTE_KEY             = <span class="hljs-number">4</span>,
+   kC_CONTAINER        = <span class="hljs-number">5</span>,
+      kCT_ITEMCLICK       = <span class="hljs-number">1</span>,
+      kCT_ITEMDBLCLICK    = <span class="hljs-number">2</span>,
+      kCT_SELCHANGED      = <span class="hljs-number">3</span>,
+      kCT_KEY             = <span class="hljs-number">4</span>,
+   kC_HSLIDER          = <span class="hljs-number">6</span>,
+   kC_VSLIDER          = <span class="hljs-number">7</span>,
+      kSL_POS             = <span class="hljs-number">1</span>,
+      kSL_TRACK           = <span class="hljs-number">2</span>,
+      kSL_PRESS           = <span class="hljs-number">3</span>,
+      kSL_RELEASE         = <span class="hljs-number">4</span>,
+      kSL_POINTER         = <span class="hljs-number">5</span>,
+   kC_LISTTREE         = <span class="hljs-number">8</span>,
+   kC_TEXTVIEW         = <span class="hljs-number">9</span>,
+      kTXT_ISMARKED       = <span class="hljs-number">1</span>,
+      kTXT_DATACHANGE     = <span class="hljs-number">2</span>,
+      kTXT_CLICK2         = <span class="hljs-number">3</span>,
+      kTXT_CLICK3         = <span class="hljs-number">4</span>,
+      kTXT_F3             = <span class="hljs-number">5</span>,
+      kTXT_OPEN           = <span class="hljs-number">6</span>,
+      kTXT_CLOSE          = <span class="hljs-number">7</span>,
+      kTXT_SAVE           = <span class="hljs-number">8</span>,
+   kC_COLORSEL         = <span class="hljs-number">10</span>,
+      kCOL_CLICK          = <span class="hljs-number">1</span>,
+      kCOL_SELCHANGED     = <span class="hljs-number">2</span>,
+   kC_PATTERNSEL       = <span class="hljs-number">11</span>,
+      kPAT_CLICK          = <span class="hljs-number">1</span>,
+      kPAT_SELCHANGED     = <span class="hljs-number">2</span>,
+   kC_MARKERSEL        = <span class="hljs-number">12</span>,
+      kMAR_CLICK          = <span class="hljs-number">1</span>,
+      kMAR_SELCHANGED     = <span class="hljs-number">2</span>,
+   kC_POPUP            = <span class="hljs-number">13</span>,
+      kPOP_HIDE           = <span class="hljs-number">1</span>,
+   kC_DOCK             = <span class="hljs-number">14</span>,
+      kDOCK_DOCK          = <span class="hljs-number">1</span>,
+      kDOCK_UNDOCK        = <span class="hljs-number">2</span>,
+      kDOCK_SHOW          = <span class="hljs-number">3</span>,
+      kDOCK_HIDE          = <span class="hljs-number">4</span>,
+   kC_MDI              = <span class="hljs-number">15</span>,
+      kMDI_CURRENT        = <span class="hljs-number">1</span>,
+      kMDI_CREATE         = <span class="hljs-number">2</span>,
+      kMDI_CLOSE          = <span class="hljs-number">4</span>,
+      kMDI_RESTORE        = <span class="hljs-number">8</span>,
+      kMDI_MOVE           = <span class="hljs-number">16</span>,
+      kMDI_SIZE           = <span class="hljs-number">32</span>,
+      kMDI_MINIMIZE       = <span class="hljs-number">64</span>,
+      kMDI_MAXIMIZE       = <span class="hljs-number">128</span>,
+      kMDI_HELP           = <span class="hljs-number">256</span>,
+      kMDI_MENU           = <span class="hljs-number">512</span>,
+   kC_USER             = <span class="hljs-number">1001</span>,
+   kC_MSGMAX           = <span class="hljs-number">10000</span>
+};
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//Buttons.h</span>
-<span class="token keyword">enum</span> EEventType <span class="token punctuation">{</span>
-   kNoEvent       <span class="token operator">=</span>  <span class="token number">0</span><span class="token punctuation">,</span>
-   kButton1Down   <span class="token operator">=</span>  <span class="token number">1</span><span class="token punctuation">,</span> kButton2Down   <span class="token operator">=</span>  <span class="token number">2</span><span class="token punctuation">,</span> kButton3Down   <span class="token operator">=</span>  <span class="token number">3</span><span class="token punctuation">,</span> kKeyDown  <span class="token operator">=</span>  <span class="token number">4</span><span class="token punctuation">,</span>
-   kWheelUp       <span class="token operator">=</span>  <span class="token number">5</span><span class="token punctuation">,</span> kWheelDown     <span class="token operator">=</span>  <span class="token number">6</span><span class="token punctuation">,</span> kButton1Shift  <span class="token operator">=</span>  <span class="token number">7</span><span class="token punctuation">,</span> kButton1ShiftMotion  <span class="token operator">=</span>  <span class="token number">8</span><span class="token punctuation">,</span>
-   kButton1Up     <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">,</span> kButton2Up     <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">,</span> kButton3Up     <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">,</span> kKeyUp    <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>
-   kButton1Motion <span class="token operator">=</span> <span class="token number">21</span><span class="token punctuation">,</span> kButton2Motion <span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">,</span> kButton3Motion <span class="token operator">=</span> <span class="token number">23</span><span class="token punctuation">,</span> kKeyPress <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">,</span>
-   kArrowKeyPress <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">,</span> kArrowKeyRelease <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">,</span>
-   kButton1Locate <span class="token operator">=</span> <span class="token number">41</span><span class="token punctuation">,</span> kButton2Locate <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">,</span> kButton3Locate <span class="token operator">=</span> <span class="token number">43</span><span class="token punctuation">,</span> kESC      <span class="token operator">=</span> <span class="token number">27</span><span class="token punctuation">,</span>
-   kMouseMotion   <span class="token operator">=</span> <span class="token number">51</span><span class="token punctuation">,</span> kMouseEnter    <span class="token operator">=</span> <span class="token number">52</span><span class="token punctuation">,</span> kMouseLeave    <span class="token operator">=</span> <span class="token number">53</span><span class="token punctuation">,</span>
-   kButton1Double <span class="token operator">=</span> <span class="token number">61</span><span class="token punctuation">,</span> kButton2Double <span class="token operator">=</span> <span class="token number">62</span><span class="token punctuation">,</span> kButton3Double <span class="token operator">=</span> <span class="token number">63</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//Buttons.h</span>
+<span class="hljs-keyword">enum</span> EEventType {
+   kNoEvent       =  <span class="hljs-number">0</span>,
+   kButton1Down   =  <span class="hljs-number">1</span>, kButton2Down   =  <span class="hljs-number">2</span>, kButton3Down   =  <span class="hljs-number">3</span>, kKeyDown  =  <span class="hljs-number">4</span>,
+   kWheelUp       =  <span class="hljs-number">5</span>, kWheelDown     =  <span class="hljs-number">6</span>, kButton1Shift  =  <span class="hljs-number">7</span>, kButton1ShiftMotion  =  <span class="hljs-number">8</span>,
+   kButton1Up     = <span class="hljs-number">11</span>, kButton2Up     = <span class="hljs-number">12</span>, kButton3Up     = <span class="hljs-number">13</span>, kKeyUp    = <span class="hljs-number">14</span>,
+   kButton1Motion = <span class="hljs-number">21</span>, kButton2Motion = <span class="hljs-number">22</span>, kButton3Motion = <span class="hljs-number">23</span>, kKeyPress = <span class="hljs-number">24</span>,
+   kArrowKeyPress = <span class="hljs-number">25</span>, kArrowKeyRelease = <span class="hljs-number">26</span>,
+   kButton1Locate = <span class="hljs-number">41</span>, kButton2Locate = <span class="hljs-number">42</span>, kButton3Locate = <span class="hljs-number">43</span>, kESC      = <span class="hljs-number">27</span>,
+   kMouseMotion   = <span class="hljs-number">51</span>, kMouseEnter    = <span class="hljs-number">52</span>, kMouseLeave    = <span class="hljs-number">53</span>,
+   kButton1Double = <span class="hljs-number">61</span>, kButton2Double = <span class="hljs-number">62</span>, kButton3Double = <span class="hljs-number">63</span>
+};
 
-<span class="token keyword">enum</span> EEditMode <span class="token punctuation">{</span>
-   kPolyLine  <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>  kSPolyLine <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>  kPolyGone  <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
-   kSPolyGone <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>  kBox       <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>  kDelete    <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
-   kPad       <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span>  kText      <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>  kEditor    <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">,</span>
-   kExit      <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> kPave      <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">,</span> kPaveLabel <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">,</span>
-   kPaveText  <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">,</span> kPavesText <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span> kEllipse   <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">,</span>
-   kArc       <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">,</span> kLine      <span class="token operator">=</span> <span class="token number">17</span><span class="token punctuation">,</span> kArrow     <span class="token operator">=</span> <span class="token number">18</span><span class="token punctuation">,</span>
-   kGraph     <span class="token operator">=</span> <span class="token number">19</span><span class="token punctuation">,</span> kMarker    <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span> kPolyMarker<span class="token operator">=</span> <span class="token number">21</span><span class="token punctuation">,</span>
-   kPolyLine3D<span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">,</span> kWbox      <span class="token operator">=</span> <span class="token number">23</span><span class="token punctuation">,</span> kGaxis     <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">,</span>
-   kF1        <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">,</span> kF2        <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">,</span> kF3        <span class="token operator">=</span> <span class="token number">27</span><span class="token punctuation">,</span>
-   kDiamond   <span class="token operator">=</span> <span class="token number">28</span><span class="token punctuation">,</span> kPolyMarker3D <span class="token operator">=</span> <span class="token number">29</span><span class="token punctuation">,</span> kButton <span class="token operator">=</span> <span class="token number">101</span><span class="token punctuation">,</span>
-   kCutG      <span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> kCurlyLine <span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">,</span> kCurlyArc  <span class="token operator">=</span> <span class="token number">201</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">enum</span> EEditMode {
+   kPolyLine  = <span class="hljs-number">1</span>,  kSPolyLine = <span class="hljs-number">2</span>,  kPolyGone  = <span class="hljs-number">3</span>,
+   kSPolyGone = <span class="hljs-number">4</span>,  kBox       = <span class="hljs-number">5</span>,  kDelete    = <span class="hljs-number">6</span>,
+   kPad       = <span class="hljs-number">7</span>,  kText      = <span class="hljs-number">8</span>,  kEditor    = <span class="hljs-number">9</span>,
+   kExit      = <span class="hljs-number">10</span>, kPave      = <span class="hljs-number">11</span>, kPaveLabel = <span class="hljs-number">12</span>,
+   kPaveText  = <span class="hljs-number">13</span>, kPavesText = <span class="hljs-number">14</span>, kEllipse   = <span class="hljs-number">15</span>,
+   kArc       = <span class="hljs-number">16</span>, kLine      = <span class="hljs-number">17</span>, kArrow     = <span class="hljs-number">18</span>,
+   kGraph     = <span class="hljs-number">19</span>, kMarker    = <span class="hljs-number">20</span>, kPolyMarker= <span class="hljs-number">21</span>,
+   kPolyLine3D= <span class="hljs-number">22</span>, kWbox      = <span class="hljs-number">23</span>, kGaxis     = <span class="hljs-number">24</span>,
+   kF1        = <span class="hljs-number">25</span>, kF2        = <span class="hljs-number">26</span>, kF3        = <span class="hljs-number">27</span>,
+   kDiamond   = <span class="hljs-number">28</span>, kPolyMarker3D = <span class="hljs-number">29</span>, kButton = <span class="hljs-number">101</span>,
+   kCutG      =<span class="hljs-number">100</span>, kCurlyLine =<span class="hljs-number">200</span>, kCurlyArc  = <span class="hljs-number">201</span>
+};
 </code></pre>
 <ul>
 <li>TGCheckButton</li>
@@ -3808,381 +3820,381 @@
 <li>TGVButtonGroup</li>
 <li>TGTextButton</li>
 </ul>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGButton, TGTextButton, TGPictureButton, TGCheckButton TGRadioButton //</span>
-<span class="token comment">// and TGSplitButton                                                    //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// This header defines all GUI button widgets.                          //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGButton is a button abstract base class. It defines general button  //</span>
-<span class="token comment">// behaviour.                                                           //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting a text or picture button will generate the event:          //</span>
-<span class="token comment">// kC_COMMAND, kCM_BUTTON, button id, user data.                        //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting a check button will generate the event:                    //</span>
-<span class="token comment">// kC_COMMAND, kCM_CHECKBUTTON, button id, user data.                   //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting a radio button will generate the event:                    //</span>
-<span class="token comment">// kC_COMMAND, kCM_RADIOBUTTON, button id, user data.                   //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// If a command string has been specified (via SetCommand()) then this  //</span>
-<span class="token comment">// command string will be executed via the interpreter whenever a       //</span>
-<span class="token comment">// button is selected. A command string can contain the macros:         //</span>
-<span class="token comment">// $MSG   -- kC_COMMAND, kCM[CHECK|RADIO]BUTTON packed message          //</span>
-<span class="token comment">//           (use GET_MSG() and GET_SUBMSG() to unpack)                 //</span>
-<span class="token comment">// $PARM1 -- button id                                                  //</span>
-<span class="token comment">// $PARM2 -- user data pointer                                          //</span>
-<span class="token comment">// Before executing these macros are expanded into the respective       //</span>
-<span class="token comment">// Long_t&apos;s                                                             //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGButton, TGTextButton, TGPictureButton, TGCheckButton TGRadioButton //</span>
+<span class="hljs-comment">// and TGSplitButton                                                    //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// This header defines all GUI button widgets.                          //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGButton is a button abstract base class. It defines general button  //</span>
+<span class="hljs-comment">// behaviour.                                                           //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting a text or picture button will generate the event:          //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_BUTTON, button id, user data.                        //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting a check button will generate the event:                    //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_CHECKBUTTON, button id, user data.                   //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting a radio button will generate the event:                    //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_RADIOBUTTON, button id, user data.                   //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// If a command string has been specified (via SetCommand()) then this  //</span>
+<span class="hljs-comment">// command string will be executed via the interpreter whenever a       //</span>
+<span class="hljs-comment">// button is selected. A command string can contain the macros:         //</span>
+<span class="hljs-comment">// $MSG   -- kC_COMMAND, kCM[CHECK|RADIO]BUTTON packed message          //</span>
+<span class="hljs-comment">//           (use GET_MSG() and GET_SUBMSG() to unpack)                 //</span>
+<span class="hljs-comment">// $PARM1 -- button id                                                  //</span>
+<span class="hljs-comment">// $PARM2 -- user data pointer                                          //</span>
+<span class="hljs-comment">// Before executing these macros are expanded into the respective       //</span>
+<span class="hljs-comment">// Long_t&apos;s                                                             //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGColorPalette, TGColorPick and TGColorDialog.                       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGColorPalette is a widget showing an matrix of color cells. The //</span>
-<span class="token comment">// colors can be set and selected.                                      //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGColorPick is a widget which allows a color to be picked from   //</span>
-<span class="token comment">// HLS space. It consists of two elements: a color map window from      //</span>
-<span class="token comment">// where the user can select the hue and saturation level of a color,   //</span>
-<span class="token comment">// and a slider to select color&apos;s lightness.                            //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting a color in these two widgets will generate the event:      //</span>
-<span class="token comment">// kC_COLORSEL, kCOL_CLICK, widget id, 0.                               //</span>
-<span class="token comment">// and the signal:                                                      //</span>
-<span class="token comment">// ColorSelected(Pixel_t color)                                         //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGColorDialog presents a full featured color selection dialog.   //</span>
-<span class="token comment">// It uses 2 TGColorPalette&apos;s and the TGColorPick widgets.              //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGColorPalette, TGColorPick and TGColorDialog.                       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGColorPalette is a widget showing an matrix of color cells. The //</span>
+<span class="hljs-comment">// colors can be set and selected.                                      //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGColorPick is a widget which allows a color to be picked from   //</span>
+<span class="hljs-comment">// HLS space. It consists of two elements: a color map window from      //</span>
+<span class="hljs-comment">// where the user can select the hue and saturation level of a color,   //</span>
+<span class="hljs-comment">// and a slider to select color&apos;s lightness.                            //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting a color in these two widgets will generate the event:      //</span>
+<span class="hljs-comment">// kC_COLORSEL, kCOL_CLICK, widget id, 0.                               //</span>
+<span class="hljs-comment">// and the signal:                                                      //</span>
+<span class="hljs-comment">// ColorSelected(Pixel_t color)                                         //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGColorDialog presents a full featured color selection dialog.   //</span>
+<span class="hljs-comment">// It uses 2 TGColorPalette&apos;s and the TGColorPick widgets.              //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGColorFrame, TG16ColorSelector, TGColorPopup and TGColorSelect.     //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGColorFrame is a small frame with border showing a specific     //</span>
-<span class="token comment">// color.                                                               //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TG16ColorSelector is a composite frame with 16 TGColorFrames.    //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGColorPopup is a popup containing a TG16ColorSelector and a     //</span>
-<span class="token comment">// &quot;More...&quot; button which popups up a TGColorDialog allowing custom     //</span>
-<span class="token comment">// color selection.                                                     //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGColorSelect widget is like a checkbutton but instead of the    //</span>
-<span class="token comment">// check mark there is color area with a little down arrow. When        //</span>
-<span class="token comment">// clicked on the arrow the TGColorPopup pops up.                       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting a color in this widget will generate the event:            //</span>
-<span class="token comment">// kC_COLORSEL, kCOL_SELCHANGED, widget id, pixel.                      //</span>
-<span class="token comment">// and the signal:                                                      //</span>
-<span class="token comment">// ColorSelected(Pixel_t pixel)                                         //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGColorFrame, TG16ColorSelector, TGColorPopup and TGColorSelect.     //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGColorFrame is a small frame with border showing a specific     //</span>
+<span class="hljs-comment">// color.                                                               //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TG16ColorSelector is a composite frame with 16 TGColorFrames.    //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGColorPopup is a popup containing a TG16ColorSelector and a     //</span>
+<span class="hljs-comment">// &quot;More...&quot; button which popups up a TGColorDialog allowing custom     //</span>
+<span class="hljs-comment">// color selection.                                                     //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGColorSelect widget is like a checkbutton but instead of the    //</span>
+<span class="hljs-comment">// check mark there is color area with a little down arrow. When        //</span>
+<span class="hljs-comment">// clicked on the arrow the TGColorPopup pops up.                       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting a color in this widget will generate the event:            //</span>
+<span class="hljs-comment">// kC_COLORSEL, kCOL_SELCHANGED, widget id, pixel.                      //</span>
+<span class="hljs-comment">// and the signal:                                                      //</span>
+<span class="hljs-comment">// ColorSelected(Pixel_t pixel)                                         //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGComboBox, TGComboBoxPopup                                          //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A combobox (also known as a drop down listbox) allows the selection  //</span>
-<span class="token comment">// of one item out of a list of items. The selected item is visible in  //</span>
-<span class="token comment">// a little window. To view the list of possible items one has to click //</span>
-<span class="token comment">// on a button on the right of the little window. This will drop down   //</span>
-<span class="token comment">// a listbox. After selecting an item from the listbox the box will     //</span>
-<span class="token comment">// disappear and the newly selected item will be shown in the little    //</span>
-<span class="token comment">// window.                                                              //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGComboBox is user callable. The TGComboBoxPopup is a service    //</span>
-<span class="token comment">// class of the combobox.                                               //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting an item in the combobox will generate the event:           //</span>
-<span class="token comment">// kC_COMMAND, kCM_COMBOBOX, combobox id, item id.                      //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGComboBox, TGComboBoxPopup                                          //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A combobox (also known as a drop down listbox) allows the selection  //</span>
+<span class="hljs-comment">// of one item out of a list of items. The selected item is visible in  //</span>
+<span class="hljs-comment">// a little window. To view the list of possible items one has to click //</span>
+<span class="hljs-comment">// on a button on the right of the little window. This will drop down   //</span>
+<span class="hljs-comment">// a listbox. After selecting an item from the listbox the box will     //</span>
+<span class="hljs-comment">// disappear and the newly selected item will be shown in the little    //</span>
+<span class="hljs-comment">// window.                                                              //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGComboBox is user callable. The TGComboBoxPopup is a service    //</span>
+<span class="hljs-comment">// class of the combobox.                                               //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting an item in the combobox will generate the event:           //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_COMBOBOX, combobox id, item id.                      //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGDoubleSlider, TGDoubleVSlider and TGDoubleHSlider                  //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// DoubleSlider widgets allow easy selection of a min and a max value   //</span>
-<span class="token comment">// out of a range.                                                      //</span>
-<span class="token comment">// DoubleSliders can be either horizontal or vertical oriented and      //</span>
-<span class="token comment">// there is a choice of three different types of tick marks.            //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// To change the min value press the mouse near to the left / bottom    //</span>
-<span class="token comment">// edge of the slider.                                                  //</span>
-<span class="token comment">// To change the max value press the mouse near to the right / top      //</span>
-<span class="token comment">// edge of the slider.                                                  //</span>
-<span class="token comment">// To change both values simultaneously press the mouse near to the     //</span>
-<span class="token comment">// center of the slider.                                                //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGDoubleSlider is an abstract base class. Use the concrete           //</span>
-<span class="token comment">// TGDoubleVSlider and TGDoubleHSlider.                                 //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Dragging the slider will generate the event:                         //</span>
-<span class="token comment">// kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             //</span>
-<span class="token comment">// kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Pressing the mouse will generate the event:                          //</span>
-<span class="token comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
-<span class="token comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Releasing the mouse will generate the event:                         //</span>
-<span class="token comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
-<span class="token comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Use the functions GetMinPosition(), GetMaxPosition() and             //</span>
-<span class="token comment">// GetPosition() to retrieve the position of the slider.                //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGDoubleSlider, TGDoubleVSlider and TGDoubleHSlider                  //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// DoubleSlider widgets allow easy selection of a min and a max value   //</span>
+<span class="hljs-comment">// out of a range.                                                      //</span>
+<span class="hljs-comment">// DoubleSliders can be either horizontal or vertical oriented and      //</span>
+<span class="hljs-comment">// there is a choice of three different types of tick marks.            //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// To change the min value press the mouse near to the left / bottom    //</span>
+<span class="hljs-comment">// edge of the slider.                                                  //</span>
+<span class="hljs-comment">// To change the max value press the mouse near to the right / top      //</span>
+<span class="hljs-comment">// edge of the slider.                                                  //</span>
+<span class="hljs-comment">// To change both values simultaneously press the mouse near to the     //</span>
+<span class="hljs-comment">// center of the slider.                                                //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGDoubleSlider is an abstract base class. Use the concrete           //</span>
+<span class="hljs-comment">// TGDoubleVSlider and TGDoubleHSlider.                                 //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Dragging the slider will generate the event:                         //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Pressing the mouse will generate the event:                          //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Releasing the mouse will generate the event:                         //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Use the functions GetMinPosition(), GetMaxPosition() and             //</span>
+<span class="hljs-comment">// GetPosition() to retrieve the position of the slider.                //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGListBox, TGLBContainer, TGLBEntry and TGTextLBEntry                //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A listbox is a box, possibly with scrollbar, containing entries.     //</span>
-<span class="token comment">// Currently entries are simple text strings (TGTextLBEntry).           //</span>
-<span class="token comment">// A TGListBox looks a lot like a TGCanvas. It has a TGViewPort         //</span>
-<span class="token comment">// containing a TGLBContainer which contains the entries and it also    //</span>
-<span class="token comment">// has a vertical scrollbar which becomes visible if there are more     //</span>
-<span class="token comment">// items than fit in the visible part of the container.                 //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGListBox is user callable. The other classes are service        //</span>
-<span class="token comment">// classes of the listbox.                                              //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting an item in the listbox will generate the event:            //</span>
-<span class="token comment">// kC_COMMAND, kCM_LISTBOX, listbox id, item id.                        //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGListBox, TGLBContainer, TGLBEntry and TGTextLBEntry                //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A listbox is a box, possibly with scrollbar, containing entries.     //</span>
+<span class="hljs-comment">// Currently entries are simple text strings (TGTextLBEntry).           //</span>
+<span class="hljs-comment">// A TGListBox looks a lot like a TGCanvas. It has a TGViewPort         //</span>
+<span class="hljs-comment">// containing a TGLBContainer which contains the entries and it also    //</span>
+<span class="hljs-comment">// has a vertical scrollbar which becomes visible if there are more     //</span>
+<span class="hljs-comment">// items than fit in the visible part of the container.                 //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGListBox is user callable. The other classes are service        //</span>
+<span class="hljs-comment">// classes of the listbox.                                              //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting an item in the listbox will generate the event:            //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_LISTBOX, listbox id, item id.                        //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGListTree and TGListTreeItem                                        //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A list tree is a widget that can contain a number of items           //</span>
-<span class="token comment">// arranged in a tree structure. The items are represented by small     //</span>
-<span class="token comment">// folder icons that can be either open or closed.                      //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGListTree is user callable. The TGListTreeItem is a service     //</span>
-<span class="token comment">// class of the list tree.                                              //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A list tree can generate the following events:                       //</span>
-<span class="token comment">// kC_LISTTREE, kCT_ITEMCLICK, which button, location (y&lt;&lt;16|x).        //</span>
-<span class="token comment">// kC_LISTTREE, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).     //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGListTree and TGListTreeItem                                        //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A list tree is a widget that can contain a number of items           //</span>
+<span class="hljs-comment">// arranged in a tree structure. The items are represented by small     //</span>
+<span class="hljs-comment">// folder icons that can be either open or closed.                      //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGListTree is user callable. The TGListTreeItem is a service     //</span>
+<span class="hljs-comment">// class of the list tree.                                              //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A list tree can generate the following events:                       //</span>
+<span class="hljs-comment">// kC_LISTTREE, kCT_ITEMCLICK, which button, location (y&lt;&lt;16|x).        //</span>
+<span class="hljs-comment">// kC_LISTTREE, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).     //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGListView, TGLVContainer and TGLVEntry                              //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A list view is a widget that can contain a number of items           //</span>
-<span class="token comment">// arranged in a grid or list. The items can be represented either      //</span>
-<span class="token comment">// by a string or by an icon.                                           //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGListView is user callable. The other classes are service       //</span>
-<span class="token comment">// classes of the list view.                                            //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A list view can generate the following events:                       //</span>
-<span class="token comment">// kC_CONTAINER, kCT_SELCHANGED, total items, selected items.           //</span>
-<span class="token comment">// kC_CONTAINER, kCT_ITEMCLICK, which button, location (y&lt;&lt;16|x).       //</span>
-<span class="token comment">// kC_CONTAINER, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).    //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGListView, TGLVContainer and TGLVEntry                              //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A list view is a widget that can contain a number of items           //</span>
+<span class="hljs-comment">// arranged in a grid or list. The items can be represented either      //</span>
+<span class="hljs-comment">// by a string or by an icon.                                           //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGListView is user callable. The other classes are service       //</span>
+<span class="hljs-comment">// classes of the list view.                                            //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A list view can generate the following events:                       //</span>
+<span class="hljs-comment">// kC_CONTAINER, kCT_SELCHANGED, total items, selected items.           //</span>
+<span class="hljs-comment">// kC_CONTAINER, kCT_ITEMCLICK, which button, location (y&lt;&lt;16|x).       //</span>
+<span class="hljs-comment">// kC_CONTAINER, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).    //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGMenuBar, TGPopupMenu, TGMenuTitle and TGMenuEntry                  //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// This header contains all different menu classes.                     //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Selecting a menu item will generate the event:                       //</span>
-<span class="token comment">// kC_COMMAND, kCM_MENU, menu id, user data.                            //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGMenuBar, TGPopupMenu, TGMenuTitle and TGMenuEntry                  //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// This header contains all different menu classes.                     //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Selecting a menu item will generate the event:                       //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_MENU, menu id, user data.                            //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGScrollBar and TGScrollBarElement                                   //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The classes in this file implement scrollbars. Scrollbars can be     //</span>
-<span class="token comment">// either placed horizontal or vertical. A scrollbar contains three     //</span>
-<span class="token comment">// TGScrollBarElements: The &quot;head&quot;, &quot;tail&quot; and &quot;slider&quot;. The head and   //</span>
-<span class="token comment">// tail are fixed at either end and have the typical arrows in them.    //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGHScrollBar will generate the following event messages:         //</span>
-<span class="token comment">// kC_HSCROLL, kSB_SLIDERPOS, position, 0                               //</span>
-<span class="token comment">// kC_HSCROLL, kSB_SLIDERTRACK, position, 0                             //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGVScrollBar will generate the following event messages:         //</span>
-<span class="token comment">// kC_VSCROLL, kSB_SLIDERPOS, position, 0                               //</span>
-<span class="token comment">// kC_VSCROLL, kSB_SLIDERTRACK, position, 0                             //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGScrollBar and TGScrollBarElement                                   //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The classes in this file implement scrollbars. Scrollbars can be     //</span>
+<span class="hljs-comment">// either placed horizontal or vertical. A scrollbar contains three     //</span>
+<span class="hljs-comment">// TGScrollBarElements: The &quot;head&quot;, &quot;tail&quot; and &quot;slider&quot;. The head and   //</span>
+<span class="hljs-comment">// tail are fixed at either end and have the typical arrows in them.    //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGHScrollBar will generate the following event messages:         //</span>
+<span class="hljs-comment">// kC_HSCROLL, kSB_SLIDERPOS, position, 0                               //</span>
+<span class="hljs-comment">// kC_HSCROLL, kSB_SLIDERTRACK, position, 0                             //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGVScrollBar will generate the following event messages:         //</span>
+<span class="hljs-comment">// kC_VSCROLL, kSB_SLIDERPOS, position, 0                               //</span>
+<span class="hljs-comment">// kC_VSCROLL, kSB_SLIDERTRACK, position, 0                             //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGSlider, TGVSlider and TGHSlider                                    //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Slider widgets allow easy selection of a range.                      //</span>
-<span class="token comment">// Sliders can be either horizontal or vertical oriented and there is   //</span>
-<span class="token comment">// a choice of two different slider types and three different types     //</span>
-<span class="token comment">// of tick marks.                                                       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGSlider is an abstract base class. Use the concrete TGVSlider and   //</span>
-<span class="token comment">// TGHSlider.                                                           //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Dragging the slider will generate the event:                         //</span>
-<span class="token comment">// kC_VSLIDER, kSL_POS, slider id, position  (for vertical slider)      //</span>
-<span class="token comment">// kC_HSLIDER, kSL_POS, slider id, position  (for horizontal slider)    //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Pressing the mouse will generate the event:                          //</span>
-<span class="token comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
-<span class="token comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Releasing the mouse will generate the event:                         //</span>
-<span class="token comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
-<span class="token comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGSlider, TGVSlider and TGHSlider                                    //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Slider widgets allow easy selection of a range.                      //</span>
+<span class="hljs-comment">// Sliders can be either horizontal or vertical oriented and there is   //</span>
+<span class="hljs-comment">// a choice of two different slider types and three different types     //</span>
+<span class="hljs-comment">// of tick marks.                                                       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGSlider is an abstract base class. Use the concrete TGVSlider and   //</span>
+<span class="hljs-comment">// TGHSlider.                                                           //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Dragging the slider will generate the event:                         //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_POS, slider id, position  (for vertical slider)      //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_POS, slider id, position  (for horizontal slider)    //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Pressing the mouse will generate the event:                          //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Releasing the mouse will generate the event:                         //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGTab, TGTabElement, TGTabLayout                                     //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A tab widget contains a set of composite frames each with a little   //</span>
-<span class="token comment">// tab with a name (like a set of folders with tabs).                   //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGTab is user callable. The TGTabElement and TGTabLayout are     //</span>
-<span class="token comment">// is a service classes of the tab widget.                              //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Clicking on a tab will bring the associated composite frame to the   //</span>
-<span class="token comment">// front and generate the following event:                              //</span>
-<span class="token comment">// kC_COMMAND, kCM_TAB, tab id, 0.                                      //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGTab, TGTabElement, TGTabLayout                                     //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A tab widget contains a set of composite frames each with a little   //</span>
+<span class="hljs-comment">// tab with a name (like a set of folders with tabs).                   //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGTab is user callable. The TGTabElement and TGTabLayout are     //</span>
+<span class="hljs-comment">// is a service classes of the tab widget.                              //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Clicking on a tab will bring the associated composite frame to the   //</span>
+<span class="hljs-comment">// front and generate the following event:                              //</span>
+<span class="hljs-comment">// kC_COMMAND, kCM_TAB, tab id, 0.                                      //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGTextEntry                                                          //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A TGTextEntry is a one line text input widget.                       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Changing text in the text entry widget will generate the event:      //</span>
-<span class="token comment">// kC_TEXTENTRY, kTE_TEXTCHANGED, widget id, 0.                         //</span>
-<span class="token comment">// Hitting the enter key will generate:                                 //</span>
-<span class="token comment">// kC_TEXTENTRY, kTE_ENTER, widget id, 0.                               //</span>
-<span class="token comment">// Hitting the tab key will generate:                                   //</span>
-<span class="token comment">// kC_TEXTENTRY, kTE_TAB, widget id, 0.                                 //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGTextEntry                                                          //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A TGTextEntry is a one line text input widget.                       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Changing text in the text entry widget will generate the event:      //</span>
+<span class="hljs-comment">// kC_TEXTENTRY, kTE_TEXTCHANGED, widget id, 0.                         //</span>
+<span class="hljs-comment">// Hitting the enter key will generate:                                 //</span>
+<span class="hljs-comment">// kC_TEXTENTRY, kTE_ENTER, widget id, 0.                               //</span>
+<span class="hljs-comment">// Hitting the tab key will generate:                                   //</span>
+<span class="hljs-comment">// kC_TEXTENTRY, kTE_TAB, widget id, 0.                                 //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGTripleVSlider and TGTripleHSlider                                  //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TripleSlider inherit from DoubleSlider widgets and allow easy        //</span>
-<span class="token comment">// selection of a min, max and pointer value out of a range.            //</span>
-<span class="token comment">// The pointer position can be constrained to edges of slider and / or  //</span>
-<span class="token comment">// can be relative to the slider position.                              //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// To change the min value press the mouse near to the left / bottom    //</span>
-<span class="token comment">// edge of the slider.                                                  //</span>
-<span class="token comment">// To change the max value press the mouse near to the right / top      //</span>
-<span class="token comment">// edge of the slider.                                                  //</span>
-<span class="token comment">// To change both values simultaneously press the mouse near to the     //</span>
-<span class="token comment">// center of the slider.                                                //</span>
-<span class="token comment">// To change pointer value press the mouse on the pointer and drag it   //</span>
-<span class="token comment">// to the desired position                                              //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Dragging the slider will generate the event:                         //</span>
-<span class="token comment">// kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             //</span>
-<span class="token comment">// kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Pressing the mouse will generate the event:                          //</span>
-<span class="token comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
-<span class="token comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Releasing the mouse will generate the event:                         //</span>
-<span class="token comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
-<span class="token comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Moving the pointer will generate the event:                          //</span>
-<span class="token comment">// kC_VSLIDER, kSL_POINTER, slider id, 0  (for vertical slider)         //</span>
-<span class="token comment">// kC_HSLIDER, kSL_POINTER, slider id, 0  (for horizontal slider)       //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// Use the functions GetMinPosition(), GetMaxPosition() and             //</span>
-<span class="token comment">// GetPosition() to retrieve the position of the slider.                //</span>
-<span class="token comment">// Use the function GetPointerPosition() to retrieve the position of    //</span>
-<span class="token comment">// the pointer                                                          //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGTripleVSlider and TGTripleHSlider                                  //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TripleSlider inherit from DoubleSlider widgets and allow easy        //</span>
+<span class="hljs-comment">// selection of a min, max and pointer value out of a range.            //</span>
+<span class="hljs-comment">// The pointer position can be constrained to edges of slider and / or  //</span>
+<span class="hljs-comment">// can be relative to the slider position.                              //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// To change the min value press the mouse near to the left / bottom    //</span>
+<span class="hljs-comment">// edge of the slider.                                                  //</span>
+<span class="hljs-comment">// To change the max value press the mouse near to the right / top      //</span>
+<span class="hljs-comment">// edge of the slider.                                                  //</span>
+<span class="hljs-comment">// To change both values simultaneously press the mouse near to the     //</span>
+<span class="hljs-comment">// center of the slider.                                                //</span>
+<span class="hljs-comment">// To change pointer value press the mouse on the pointer and drag it   //</span>
+<span class="hljs-comment">// to the desired position                                              //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Dragging the slider will generate the event:                         //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Pressing the mouse will generate the event:                          //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Releasing the mouse will generate the event:                         //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Moving the pointer will generate the event:                          //</span>
+<span class="hljs-comment">// kC_VSLIDER, kSL_POINTER, slider id, 0  (for vertical slider)         //</span>
+<span class="hljs-comment">// kC_HSLIDER, kSL_POINTER, slider id, 0  (for horizontal slider)       //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// Use the functions GetMinPosition(), GetMaxPosition() and             //</span>
+<span class="hljs-comment">// GetPosition() to retrieve the position of the slider.                //</span>
+<span class="hljs-comment">// Use the function GetPointerPosition() to retrieve the position of    //</span>
+<span class="hljs-comment">// the pointer                                                          //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// TGView                                                               //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// A TGView provides the infrastructure for text viewer and editor      //</span>
-<span class="token comment">// widgets. It provides a canvas (TGViewFrame) and (optionally) a       //</span>
-<span class="token comment">// vertical and horizontal scrollbar and methods for marking and        //</span>
-<span class="token comment">// scrolling.                                                           //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">// The TGView (and derivatives) will generate the following             //</span>
-<span class="token comment">// event messages:                                                      //</span>
-<span class="token comment">// kC_TEXTVIEW, kTXT_ISMARKED, widget id, [true|false]                  //</span>
-<span class="token comment">// kC_TEXTVIEW, kTXT_DATACHANGE, widget id, 0                           //</span>
-<span class="token comment">// kC_TEXTVIEW, kTXT_CLICK2, widget id, position (y &lt;&lt; 16) | x)         //</span>
-<span class="token comment">// kC_TEXTVIEW, kTXT_CLICK3, widget id, position (y &lt;&lt; 16) | x)         //</span>
-<span class="token comment">// kC_TEXTVIEW, kTXT_F3, widget id, true                                //</span>
-<span class="token comment">//                                                                      //</span>
-<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// TGView                                                               //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// A TGView provides the infrastructure for text viewer and editor      //</span>
+<span class="hljs-comment">// widgets. It provides a canvas (TGViewFrame) and (optionally) a       //</span>
+<span class="hljs-comment">// vertical and horizontal scrollbar and methods for marking and        //</span>
+<span class="hljs-comment">// scrolling.                                                           //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">// The TGView (and derivatives) will generate the following             //</span>
+<span class="hljs-comment">// event messages:                                                      //</span>
+<span class="hljs-comment">// kC_TEXTVIEW, kTXT_ISMARKED, widget id, [true|false]                  //</span>
+<span class="hljs-comment">// kC_TEXTVIEW, kTXT_DATACHANGE, widget id, 0                           //</span>
+<span class="hljs-comment">// kC_TEXTVIEW, kTXT_CLICK2, widget id, position (y &lt;&lt; 16) | x)         //</span>
+<span class="hljs-comment">// kC_TEXTVIEW, kTXT_CLICK3, widget id, position (y &lt;&lt; 16) | x)         //</span>
+<span class="hljs-comment">// kC_TEXTVIEW, kTXT_F3, widget id, true                                //</span>
+<span class="hljs-comment">//                                                                      //</span>
+<span class="hljs-comment">//////////////////////////////////////////////////////////////////////////</span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>gFonts<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>    <span class="token comment">//   unix name,     name</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>                                           <span class="token string">&quot;&quot;</span>                         <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//not used</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-times-medium-i-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>     <span class="token string">&quot;1. times italic&quot;</span>          <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-times-bold-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>       <span class="token string">&quot;2. times bold&quot;</span>            <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-times-bold-i-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>       <span class="token string">&quot;3. times bold italic&quot;</span>     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;4. helvetica&quot;</span>             <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-helvetica-medium-o-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;5. helvetica italic&quot;</span>      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-helvetica-bold-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>   <span class="token string">&quot;6. helvetica bold&quot;</span>        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-helvetica-bold-o-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>   <span class="token string">&quot;7. helvetica bold italic&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-courier-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>   <span class="token string">&quot;8. courier&quot;</span>               <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-courier-medium-o-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>   <span class="token string">&quot;9. courier italic&quot;</span>        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-courier-bold-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>     <span class="token string">&quot;10. courier bold&quot;</span>         <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-courier-bold-o-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>     <span class="token string">&quot;11. courier bold italic&quot;</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-symbol-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>    <span class="token string">&quot;12. symbol&quot;</span>               <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token string">&quot;-*-times-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>     <span class="token string">&quot;13. times&quot;</span>                <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   <span class="token punctuation">{</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *gFonts[][<span class="hljs-number">2</span>] = {    <span class="hljs-comment">//   unix name,     name</span>
+   { <span class="hljs-string">&quot;&quot;</span>,                                           <span class="hljs-string">&quot;&quot;</span>                         }, <span class="hljs-comment">//not used</span>
+   { <span class="hljs-string">&quot;-*-times-medium-i-*-*-12-*-*-*-*-*-*-*&quot;</span>,     <span class="hljs-string">&quot;1. times italic&quot;</span>          },
+   { <span class="hljs-string">&quot;-*-times-bold-r-*-*-12-*-*-*-*-*-*-*&quot;</span>,       <span class="hljs-string">&quot;2. times bold&quot;</span>            },
+   { <span class="hljs-string">&quot;-*-times-bold-i-*-*-12-*-*-*-*-*-*-*&quot;</span>,       <span class="hljs-string">&quot;3. times bold italic&quot;</span>     },
+   { <span class="hljs-string">&quot;-*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span>, <span class="hljs-string">&quot;4. helvetica&quot;</span>             },
+   { <span class="hljs-string">&quot;-*-helvetica-medium-o-*-*-12-*-*-*-*-*-*-*&quot;</span>, <span class="hljs-string">&quot;5. helvetica italic&quot;</span>      },
+   { <span class="hljs-string">&quot;-*-helvetica-bold-r-*-*-12-*-*-*-*-*-*-*&quot;</span>,   <span class="hljs-string">&quot;6. helvetica bold&quot;</span>        },
+   { <span class="hljs-string">&quot;-*-helvetica-bold-o-*-*-12-*-*-*-*-*-*-*&quot;</span>,   <span class="hljs-string">&quot;7. helvetica bold italic&quot;</span> },
+   { <span class="hljs-string">&quot;-*-courier-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span>,   <span class="hljs-string">&quot;8. courier&quot;</span>               },
+   { <span class="hljs-string">&quot;-*-courier-medium-o-*-*-12-*-*-*-*-*-*-*&quot;</span>,   <span class="hljs-string">&quot;9. courier italic&quot;</span>        },
+   { <span class="hljs-string">&quot;-*-courier-bold-r-*-*-12-*-*-*-*-*-*-*&quot;</span>,     <span class="hljs-string">&quot;10. courier bold&quot;</span>         },
+   { <span class="hljs-string">&quot;-*-courier-bold-o-*-*-12-*-*-*-*-*-*-*&quot;</span>,     <span class="hljs-string">&quot;11. courier bold italic&quot;</span>  },
+   { <span class="hljs-string">&quot;-*-symbol-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span>,    <span class="hljs-string">&quot;12. symbol&quot;</span>               },
+   { <span class="hljs-string">&quot;-*-times-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span>,     <span class="hljs-string">&quot;13. times&quot;</span>                },
+   { <span class="hljs-number">0</span>, <span class="hljs-number">0</span>}
+};
 </code></pre>
-<pre class="language-"><code class="lang-cpp">
-TGGC <span class="token operator">*</span>fTextGC<span class="token punctuation">;</span>
-<span class="token keyword">const</span> TGFont <span class="token operator">*</span>font <span class="token operator">=</span> gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetFont</span><span class="token punctuation">(</span><span class="token string">&quot;-*-times-bold-r-*-*-18-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>font<span class="token punctuation">)</span> font <span class="token operator">=</span> gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetResourcePool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetDefaultFont</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-FontStruct_t labelfont <span class="token operator">=</span> font<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-GCValues_t   gval<span class="token punctuation">;</span>
-gval<span class="token punctuation">.</span>fMask <span class="token operator">=</span> kGCBackground <span class="token operator">|</span> kGCFont <span class="token operator">|</span> kGCForeground<span class="token punctuation">;</span>
-gval<span class="token punctuation">.</span>fFont <span class="token operator">=</span> font<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetFontHandle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetColorByName</span><span class="token punctuation">(</span><span class="token string">&quot;yellow&quot;</span><span class="token punctuation">,</span> gval<span class="token punctuation">.</span>fBackground<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fTextGC <span class="token operator">=</span> gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetGC</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>gval<span class="token punctuation">,</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-ULong_t bcolor<span class="token punctuation">,</span> ycolor<span class="token punctuation">;</span>
-gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetColorByName</span><span class="token punctuation">(</span><span class="token string">&quot;yellow&quot;</span><span class="token punctuation">,</span> ycolor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetColorByName</span><span class="token punctuation">(</span><span class="token string">&quot;blue&quot;</span><span class="token punctuation">,</span> bcolor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fStatus <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGLabel</span><span class="token punctuation">(</span>frame<span class="token punctuation">,</span> <span class="token string">&quot;OwnFont &amp; Bck/ForgrColor&quot;</span><span class="token punctuation">,</span> fTextGC<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> labelfont<span class="token punctuation">,</span> kChildFrame<span class="token punctuation">,</span> bcolor<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//</span>
-fStatus<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextColor</span><span class="token punctuation">(</span>ycolor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// fStatus-&gt;ChangeOptions(fStatus-&gt;GetOptions() | kFixedSize);</span>
-<span class="token comment">// fStatus-&gt;Resize(350, 80);</span>
-frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fStatus<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsNormal<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">
+TGGC *fTextGC;
+<span class="hljs-keyword">const</span> TGFont *font = gClient-&gt;GetFont(<span class="hljs-string">&quot;-*-times-bold-r-*-*-18-*-*-*-*-*-*-*&quot;</span>);
+<span class="hljs-keyword">if</span> (!font) font = gClient-&gt;GetResourcePool()-&gt;GetDefaultFont();
+FontStruct_t labelfont = font-&gt;GetFontStruct();
+GCValues_t   gval;
+gval.fMask = kGCBackground | kGCFont | kGCForeground;
+gval.fFont = font-&gt;GetFontHandle();
+gClient-&gt;GetColorByName(<span class="hljs-string">&quot;yellow&quot;</span>, gval.fBackground);
+fTextGC = gClient-&gt;GetGC(&amp;gval, kTRUE);
+ULong_t bcolor, ycolor;
+gClient-&gt;GetColorByName(<span class="hljs-string">&quot;yellow&quot;</span>, ycolor);
+gClient-&gt;GetColorByName(<span class="hljs-string">&quot;blue&quot;</span>, bcolor);
+fStatus = <span class="hljs-keyword">new</span> TGLabel(frame, <span class="hljs-string">&quot;OwnFont &amp; Bck/ForgrColor&quot;</span>, fTextGC-&gt;GetGC(), labelfont, kChildFrame, bcolor);<span class="hljs-comment">//</span>
+fStatus-&gt;SetTextColor(ycolor);
+<span class="hljs-comment">// fStatus-&gt;ChangeOptions(fStatus-&gt;GetOptions() | kFixedSize);</span>
+<span class="hljs-comment">// fStatus-&gt;Resize(350, 80);</span>
+frame-&gt;AddFrame(fStatus, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsNormal, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>));
 </code></pre>
 <!-- README.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -4225,7 +4237,7 @@ frame<span class="token operator">-</span><span class="token operator">&gt;</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"图形界面的使用","level":"1.3","depth":1,"next":{"title":"GuiTypes*","level":"1.3.1","depth":2,"path":"class/gui/GuiTypes.md","ref":"class/gui/GuiTypes.md","articles":[]},"previous":{"title":"TVirtualFitter*","level":"1.2.109","depth":2,"path":"class/TVirtualFitter.md","ref":"class/TVirtualFitter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/README.md","mtime":"2018-05-14T09:18:21.567Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"图形界面的使用","level":"1.3","depth":1,"next":{"title":"GuiTypes*","level":"1.3.1","depth":2,"path":"class/gui/GuiTypes.md","ref":"class/gui/GuiTypes.md","articles":[]},"previous":{"title":"TVirtualFitter*","level":"1.2.109","depth":2,"path":"class/TVirtualFitter.md","ref":"class/TVirtualFitter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/README.md","mtime":"2018-05-14T09:18:21.567Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4257,6 +4269,18 @@ frame<span class="token operator">-</span><span class="token operator">&gt;</spa
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

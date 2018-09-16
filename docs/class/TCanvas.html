@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3683,384 +3695,384 @@ manager. A ROOT session may have several canvases open at any given time.</p>
 <p>A Canvas may be subdivided into independent graphical areas: the <strong>Pads</strong>.
 A canvas has a default pad which has the name of the canvas itself.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">public</span><span class="token operator">:</span>
-   <span class="token comment">// TCanvas status bits</span>
-   <span class="token keyword">enum</span> <span class="token punctuation">{</span>
-      kShowEventStatus  <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kAutoExec         <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kMenuBar          <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kShowToolBar      <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kShowEditor       <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kMoveOpaque       <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kResizeOpaque     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kIsGrayscale      <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      kShowToolTips     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">)</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+   <span class="hljs-comment">// TCanvas status bits</span>
+   <span class="hljs-keyword">enum</span> {
+      kShowEventStatus  = BIT(<span class="hljs-number">15</span>),
+      kAutoExec         = BIT(<span class="hljs-number">16</span>),
+      kMenuBar          = BIT(<span class="hljs-number">17</span>),
+      kShowToolBar      = BIT(<span class="hljs-number">18</span>),
+      kShowEditor       = BIT(<span class="hljs-number">19</span>),
+      kMoveOpaque       = BIT(<span class="hljs-number">20</span>),
+      kResizeOpaque     = BIT(<span class="hljs-number">21</span>),
+      kIsGrayscale      = BIT(<span class="hljs-number">22</span>),
+      kShowToolTips     = BIT(<span class="hljs-number">23</span>)
+   };
 
-   <span class="token function">TCanvas</span><span class="token punctuation">(</span>Bool_t build<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Int_t form<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a new canvas with a predefined size form.</span>
-<span class="token comment">/// If form &lt; 0  the menubar is not shown.</span>
-<span class="token comment">/// - form = 1    700x500 at 10,10 (set by TStyle::SetCanvasDefH,W,X,Y)</span>
-<span class="token comment">/// - form = 2    500x500 at 20,20</span>
-<span class="token comment">/// - form = 3    500x500 at 30,30</span>
-<span class="token comment">/// - form = 4    500x500 at 40,40</span>
-<span class="token comment">/// - form = 5    500x500 at 50,50</span>
-<span class="token comment">/// If &quot;name&quot; starts with &quot;gl&quot; the canvas is ready to receive GL output.</span>
+   TCanvas(Bool_t build=kTRUE);
+   TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>, Int_t form=<span class="hljs-number">1</span>);
+<span class="hljs-comment">/// Create a new canvas with a predefined size form.</span>
+<span class="hljs-comment">/// If form &lt; 0  the menubar is not shown.</span>
+<span class="hljs-comment">/// - form = 1    700x500 at 10,10 (set by TStyle::SetCanvasDefH,W,X,Y)</span>
+<span class="hljs-comment">/// - form = 2    500x500 at 20,20</span>
+<span class="hljs-comment">/// - form = 3    500x500 at 30,30</span>
+<span class="hljs-comment">/// - form = 4    500x500 at 40,40</span>
+<span class="hljs-comment">/// - form = 5    500x500 at 50,50</span>
+<span class="hljs-comment">/// If &quot;name&quot; starts with &quot;gl&quot; the canvas is ready to receive GL output.</span>
 
-   <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">,</span> Int_t ww<span class="token punctuation">,</span> Int_t wh<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a new canvas at a random position.</span>
-<span class="token comment">/// \param[in] name    canvas name</span>
-<span class="token comment">/// \param[in] title   canvas title</span>
-<span class="token comment">/// \param[in] ww      is the canvas size in pixels along X</span>
-<span class="token comment">///                    (if ww &lt; 0  the menubar is not shown)</span>
-<span class="token comment">/// \param[in] wh      is the canvas size in pixels along Y</span>
-<span class="token comment">/// If &quot;name&quot; starts with &quot;gl&quot; the canvas is ready to receive GL output.</span>
+   TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t ww, Int_t wh);
+<span class="hljs-comment">/// Create a new canvas at a random position.</span>
+<span class="hljs-comment">/// \param[in] name    canvas name</span>
+<span class="hljs-comment">/// \param[in] title   canvas title</span>
+<span class="hljs-comment">/// \param[in] ww      is the canvas size in pixels along X</span>
+<span class="hljs-comment">///                    (if ww &lt; 0  the menubar is not shown)</span>
+<span class="hljs-comment">/// \param[in] wh      is the canvas size in pixels along Y</span>
+<span class="hljs-comment">/// If &quot;name&quot; starts with &quot;gl&quot; the canvas is ready to receive GL output.</span>
 
-   <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">,</span> Int_t wtopx<span class="token punctuation">,</span> Int_t wtopy<span class="token punctuation">,</span>
-           Int_t ww<span class="token punctuation">,</span> Int_t wh<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a new canvas.</span>
-<span class="token comment">/// \param[in] name         canvas name</span>
-<span class="token comment">/// \param[in] title        canvas title</span>
-<span class="token comment">/// \param[in] wtopx,wtopy  are the pixel coordinates of the top left corner of</span>
-<span class="token comment">///                         the canvas  (if wtopx &lt; 0) the menubar is not shown)</span>
-<span class="token comment">/// \param[in] ww           is the canvas size in pixels along X</span>
-<span class="token comment">/// \param[in] wh           is the canvas size in pixels along Y</span>
-<span class="token comment">/// If &quot;name&quot; starts with &quot;gl&quot; the canvas is ready to receive GL output.</span>
+   TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t wtopx, Int_t wtopy,
+           Int_t ww, Int_t wh);
+<span class="hljs-comment">/// Create a new canvas.</span>
+<span class="hljs-comment">/// \param[in] name         canvas name</span>
+<span class="hljs-comment">/// \param[in] title        canvas title</span>
+<span class="hljs-comment">/// \param[in] wtopx,wtopy  are the pixel coordinates of the top left corner of</span>
+<span class="hljs-comment">///                         the canvas  (if wtopx &lt; 0) the menubar is not shown)</span>
+<span class="hljs-comment">/// \param[in] ww           is the canvas size in pixels along X</span>
+<span class="hljs-comment">/// \param[in] wh           is the canvas size in pixels along Y</span>
+<span class="hljs-comment">/// If &quot;name&quot; starts with &quot;gl&quot; the canvas is ready to receive GL output.</span>
 
-   <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Int_t ww<span class="token punctuation">,</span> Int_t wh<span class="token punctuation">,</span> Int_t winid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create an embedded canvas, i.e. a canvas that is in a TGCanvas widget</span>
-<span class="token comment">/// which is placed in a TGFrame. This ctor is only called via the</span>
-<span class="token comment">/// TRootEmbeddedCanvas class.</span>
-<span class="token comment">/// If &quot;name&quot; starts with &quot;gl&quot; the canvas is ready to receive GL output.</span>
+   TCanvas(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Int_t ww, Int_t wh, Int_t winid);
+<span class="hljs-comment">/// Create an embedded canvas, i.e. a canvas that is in a TGCanvas widget</span>
+<span class="hljs-comment">/// which is placed in a TGFrame. This ctor is only called via the</span>
+<span class="hljs-comment">/// TRootEmbeddedCanvas class.</span>
+<span class="hljs-comment">/// If &quot;name&quot; starts with &quot;gl&quot; the canvas is ready to receive GL output.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">virtual</span> ~TCanvas();
 
-   <span class="token comment">//-- used by friend TThread class</span>
-   <span class="token keyword">void</span> <span class="token function">Constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span> <span class="token function">Constructor</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">,</span> Int_t form<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a new canvas with a predefined size form.</span>
-<span class="token comment">/// If form &lt; 0  the menubar is not shown.</span>
-<span class="token comment">/// - form = 1    700x500 at 10,10 (set by TStyle::SetCanvasDefH,W,X,Y)</span>
-<span class="token comment">/// - form = 2    500x500 at 20,20</span>
-<span class="token comment">/// - form = 3    500x500 at 30,30</span>
-<span class="token comment">/// - form = 4    500x500 at 40,40</span>
-<span class="token comment">/// - form = 5    500x500 at 50,50</span>
+   <span class="hljs-comment">//-- used by friend TThread class</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Constructor</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Constructor</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t form)</span></span>;
+<span class="hljs-comment">/// Create a new canvas with a predefined size form.</span>
+<span class="hljs-comment">/// If form &lt; 0  the menubar is not shown.</span>
+<span class="hljs-comment">/// - form = 1    700x500 at 10,10 (set by TStyle::SetCanvasDefH,W,X,Y)</span>
+<span class="hljs-comment">/// - form = 2    500x500 at 20,20</span>
+<span class="hljs-comment">/// - form = 3    500x500 at 30,30</span>
+<span class="hljs-comment">/// - form = 4    500x500 at 40,40</span>
+<span class="hljs-comment">/// - form = 5    500x500 at 50,50</span>
 
-   <span class="token keyword">void</span> <span class="token function">Constructor</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">,</span> Int_t ww<span class="token punctuation">,</span> Int_t wh<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a new canvas at a random position.</span>
-<span class="token comment">/// \param[in] name    canvas name</span>
-<span class="token comment">/// \param[in] title   canvas title</span>
-<span class="token comment">/// \param[in] ww      is the canvas size in pixels along X</span>
-<span class="token comment">///                    (if ww &lt; 0  the menubar is not shown)</span>
-<span class="token comment">/// \param[in] wh      is the canvas size in pixels along Y</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Constructor</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Int_t ww, Int_t wh)</span></span>;
+<span class="hljs-comment">/// Create a new canvas at a random position.</span>
+<span class="hljs-comment">/// \param[in] name    canvas name</span>
+<span class="hljs-comment">/// \param[in] title   canvas title</span>
+<span class="hljs-comment">/// \param[in] ww      is the canvas size in pixels along X</span>
+<span class="hljs-comment">///                    (if ww &lt; 0  the menubar is not shown)</span>
+<span class="hljs-comment">/// \param[in] wh      is the canvas size in pixels along Y</span>
 
-   <span class="token keyword">void</span> <span class="token function">Constructor</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">,</span>
-           Int_t wtopx<span class="token punctuation">,</span> Int_t wtopy<span class="token punctuation">,</span> Int_t ww<span class="token punctuation">,</span> Int_t wh<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a new canvas.</span>
-<span class="token comment">/// \param[in] name         canvas name</span>
-<span class="token comment">/// \param[in] title        canvas title</span>
-<span class="token comment">/// \param[in] wtopx,wtopy  are the pixel coordinates of the top left corner of</span>
-<span class="token comment">///                         the canvas  (if wtopx &lt; 0) the menubar is not shown)</span>
-<span class="token comment">/// \param[in] ww           is the canvas size in pixels along X</span>
-<span class="token comment">/// \param[in] wh           is the canvas size in pixels along Y</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Constructor</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title,
+           Int_t wtopx, Int_t wtopy, Int_t ww, Int_t wh)</span></span>;
+<span class="hljs-comment">/// Create a new canvas.</span>
+<span class="hljs-comment">/// \param[in] name         canvas name</span>
+<span class="hljs-comment">/// \param[in] title        canvas title</span>
+<span class="hljs-comment">/// \param[in] wtopx,wtopy  are the pixel coordinates of the top left corner of</span>
+<span class="hljs-comment">///                         the canvas  (if wtopx &lt; 0) the menubar is not shown)</span>
+<span class="hljs-comment">/// \param[in] ww           is the canvas size in pixels along X</span>
+<span class="hljs-comment">/// \param[in] wh           is the canvas size in pixels along Y</span>
 
-   <span class="token keyword">void</span> <span class="token function">Destructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Actual canvas destructor.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Destructor</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Actual canvas destructor.</span>
 
-   TVirtualPad      <span class="token operator">*</span><span class="token function">cd</span><span class="token punctuation">(</span>Int_t subpadnumber<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set current canvas &amp; pad. Returns the new current pad,</span>
-<span class="token comment">/// or 0 in case of failure.</span>
-<span class="token comment">/// See TPad::cd() for an explanation of the parameter.</span>
+   <span class="hljs-function">TVirtualPad      *<span class="hljs-title">cd</span><span class="hljs-params">(Int_t subpadnumber=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Set current canvas &amp; pad. Returns the new current pad,</span>
+<span class="hljs-comment">/// or 0 in case of failure.</span>
+<span class="hljs-comment">/// See TPad::cd() for an explanation of the parameter.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Browse</span><span class="token punctuation">(</span>TBrowser <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>              <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// Remove all primitives from the canvas.</span>
-<span class="token comment">// If option &quot;D&quot; is specified, direct subpads are cleared but not deleted.</span>
-<span class="token comment">// This option is not recursive, i.e. pads in direct subpads are deleted.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">// Remove all primitives from the canvas.</span>
+<span class="hljs-comment">// If option &quot;D&quot; is specified, direct subpads are cleared but not deleted.</span>
+<span class="hljs-comment">// This option is not recursive, i.e. pads in direct subpads are deleted.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">Close</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Close canvas. Delete window/pads data structure</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Delete</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">MayNotUse</span><span class="token punctuation">(</span><span class="token string">&quot;Delete()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">DisconnectWidget</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// used by TCanvasImp  /// Used by friend class TCanvasImp.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Draw</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw a canvas.</span>
-<span class="token comment">/// If a canvas with the name is already on the screen, the canvas is repainted.</span>
-<span class="token comment">/// This function is useful when a canvas object has been saved in a Root file.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Close</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Close canvas. Delete window/pads data structure</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Delete</span><span class="hljs-params">(Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span> </span>{ MayNotUse(<span class="hljs-string">&quot;Delete()&quot;</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">DisconnectWidget</span><span class="hljs-params">()</span></span>;  <span class="hljs-comment">// used by TCanvasImp  /// Used by friend class TCanvasImp.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Draw</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Draw a canvas.</span>
+<span class="hljs-comment">/// If a canvas with the name is already on the screen, the canvas is repainted.</span>
+<span class="hljs-comment">/// This function is useful when a canvas object has been saved in a Root file.</span>
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">DrawClone</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Draw a clone of this canvas</span>
-<span class="token comment">/// A new canvas is created that is a clone of this canvas</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">DrawClone</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Draw a clone of this canvas</span>
+<span class="hljs-comment">/// A new canvas is created that is a clone of this canvas</span>
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">DrawClonePad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Draw a clone of this canvas into the current pad</span>
-<span class="token comment">/// In an interactive session, select the destination/current pad</span>
-<span class="token comment">/// with the middle mouse button, then point to the canvas area to select</span>
-<span class="token comment">/// the canvas context menu item DrawClonePad.</span>
-<span class="token comment">/// Note that the original canvas may have subpads.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">DrawClonePad</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Draw a clone of this canvas into the current pad</span>
+<span class="hljs-comment">/// In an interactive session, select the destination/current pad</span>
+<span class="hljs-comment">/// with the middle mouse button, then point to the canvas area to select</span>
+<span class="hljs-comment">/// the canvas context menu item DrawClonePad.</span>
+<span class="hljs-comment">/// Note that the original canvas may have subpads.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">EditorBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Get editor bar.</span>
-   <span class="token keyword">void</span>              <span class="token function">EmbedInto</span><span class="token punctuation">(</span>Int_t winid<span class="token punctuation">,</span> Int_t ww<span class="token punctuation">,</span> Int_t wh<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Embedded a canvas into a TRootEmbeddedCanvas. This method is only called</span>
-<span class="token comment">/// via TRootEmbeddedCanvas::AdoptCanvas.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">EditorBar</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Get editor bar.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">EmbedInto</span><span class="hljs-params">(Int_t winid, Int_t ww, Int_t wh)</span></span>;
+<span class="hljs-comment">/// Embedded a canvas into a TRootEmbeddedCanvas. This method is only called</span>
+<span class="hljs-comment">/// via TRootEmbeddedCanvas::AdoptCanvas.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">EnterLeave</span><span class="token punctuation">(</span>TPad <span class="token operator">*</span>prevSelPad<span class="token punctuation">,</span> TObject <span class="token operator">*</span>prevSelObj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Generate kMouseEnter and kMouseLeave events depending on the previously</span>
-<span class="token comment">/// selected object and the currently selected object. Does nothing if the</span>
-<span class="token comment">/// selected object does not change.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">EnterLeave</span><span class="hljs-params">(TPad *prevSelPad, TObject *prevSelObj)</span></span>;
+<span class="hljs-comment">/// Generate kMouseEnter and kMouseLeave events depending on the previously</span>
+<span class="hljs-comment">/// selected object and the currently selected object. Does nothing if the</span>
+<span class="hljs-comment">/// selected object does not change.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">FeedbackMode</span><span class="token punctuation">(</span>Bool_t set<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Turn rubberband feedback mode on or off.</span>
-   <span class="token keyword">void</span>              <span class="token function">Flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Flush canvas buffers.</span>
-   <span class="token keyword">void</span>              <span class="token function">UseCurrentStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU* /// Force a copy of current style for all objects in canvas.</span>
-   <span class="token keyword">void</span>              <span class="token function">ForceUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fCanvasImp<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">ForceUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetDISPLAY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fDISPLAY<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   TContextMenu     <span class="token operator">*</span><span class="token function">GetContextMenu</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fContextMenu<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-   Int_t             <span class="token function">GetDoubleBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fDoubleBuffer<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fEvent<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetEventX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fEventX<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetEventY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fEventY<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Color_t           <span class="token function">GetHighLightColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fHighLightColor<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TVirtualPad      <span class="token operator">*</span><span class="token function">GetPadSave</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPadSave<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">ClearPadSave</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fPadSave <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TObject          <span class="token operator">*</span><span class="token function">GetSelected</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fSelected<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   TObject          <span class="token operator">*</span><span class="token function">GetClickSelected</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fClickSelected<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetSelectedX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fSelectedX<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetSelectedY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fSelectedY<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Option_t         <span class="token operator">*</span><span class="token function">GetSelectedOpt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fSelectedOpt<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   TVirtualPad      <span class="token operator">*</span><span class="token function">GetSelectedPad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fSelectedPad<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TVirtualPad      <span class="token operator">*</span><span class="token function">GetClickSelectedPad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fClickSelectedPad<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">GetShowEventStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kShowEventStatus<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">GetShowToolBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kShowToolBar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">GetShowEditor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kShowEditor<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">GetShowToolTips</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kShowToolTips<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">GetAutoExec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kAutoExec<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Size_t            <span class="token function">GetXsizeUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fXsizeUser<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Size_t            <span class="token function">GetYsizeUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fYsizeUser<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Size_t            <span class="token function">GetXsizeReal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fXsizeReal<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Size_t            <span class="token function">GetYsizeReal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fYsizeReal<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetCanvasID</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fCanvasID<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   TCanvasImp       <span class="token operator">*</span><span class="token function">GetCanvasImp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fCanvasImp<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetWindowTopX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Returns current top x position of window on screen.</span>
-   Int_t             <span class="token function">GetWindowTopY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Returns current top y position of window on screen.</span>
-   UInt_t            <span class="token function">GetWindowWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fWindowWidth<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   UInt_t            <span class="token function">GetWindowHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fWindowHeight<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   UInt_t            <span class="token function">GetWw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fCw<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   UInt_t            <span class="token function">GetWh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fCh<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">GetCanvasPar</span><span class="token punctuation">(</span>Int_t <span class="token operator">&amp;</span>wtopx<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>wtopy<span class="token punctuation">,</span> UInt_t <span class="token operator">&amp;</span>ww<span class="token punctuation">,</span> UInt_t <span class="token operator">&amp;</span>wh<span class="token punctuation">)</span>
-                     <span class="token punctuation">{</span>wtopx<span class="token operator">=</span><span class="token function">GetWindowTopX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> wtopy<span class="token operator">=</span>fWindowTopY<span class="token punctuation">;</span> ww<span class="token operator">=</span>fWindowWidth<span class="token punctuation">;</span> wh<span class="token operator">=</span>fWindowHeight<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">HandleInput</span><span class="token punctuation">(</span>EEventType button<span class="token punctuation">,</span> Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Handle Input Events.</span>
-<span class="token comment">/// Handle input events, like button up/down in current canvas.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">FeedbackMode</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span>)</span></span>;<span class="hljs-comment">/// Turn rubberband feedback mode on or off.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Flush</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Flush canvas buffers.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">UseCurrentStyle</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU* /// Force a copy of current style for all objects in canvas.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">ForceUpdate</span><span class="hljs-params">()</span> </span>{ fCanvasImp-&gt;ForceUpdate(); }
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>       *<span class="hljs-title">GetDISPLAY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fDISPLAY.Data();}
+   <span class="hljs-function">TContextMenu     *<span class="hljs-title">GetContextMenu</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fContextMenu;};
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetDoubleBuffer</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fDoubleBuffer;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetEvent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEvent; }
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetEventX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEventX; }
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetEventY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEventY; }
+   <span class="hljs-function">Color_t           <span class="hljs-title">GetHighLightColor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fHighLightColor; }
+   <span class="hljs-function">TVirtualPad      *<span class="hljs-title">GetPadSave</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPadSave; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">ClearPadSave</span><span class="hljs-params">()</span> </span>{ fPadSave = <span class="hljs-number">0</span>; }
+   <span class="hljs-function">TObject          *<span class="hljs-title">GetSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSelected;}
+   <span class="hljs-function">TObject          *<span class="hljs-title">GetClickSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fClickSelected;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetSelectedX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSelectedX;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetSelectedY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSelectedY;}
+   <span class="hljs-function">Option_t         *<span class="hljs-title">GetSelectedOpt</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSelectedOpt.Data();}
+   <span class="hljs-function">TVirtualPad      *<span class="hljs-title">GetSelectedPad</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fSelectedPad; }
+   <span class="hljs-function">TVirtualPad      *<span class="hljs-title">GetClickSelectedPad</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fClickSelectedPad; }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetShowEventStatus</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kShowEventStatus); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetShowToolBar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kShowToolBar); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetShowEditor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kShowEditor); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetShowToolTips</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kShowToolTips); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">GetAutoExec</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kAutoExec); }
+   <span class="hljs-function">Size_t            <span class="hljs-title">GetXsizeUser</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXsizeUser;}
+   <span class="hljs-function">Size_t            <span class="hljs-title">GetYsizeUser</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fYsizeUser;}
+   <span class="hljs-function">Size_t            <span class="hljs-title">GetXsizeReal</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fXsizeReal;}
+   <span class="hljs-function">Size_t            <span class="hljs-title">GetYsizeReal</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fYsizeReal;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetCanvasID</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fCanvasID;}
+   <span class="hljs-function">TCanvasImp       *<span class="hljs-title">GetCanvasImp</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fCanvasImp;}
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetWindowTopX</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Returns current top x position of window on screen.</span>
+   <span class="hljs-function">Int_t             <span class="hljs-title">GetWindowTopY</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Returns current top y position of window on screen.</span>
+   <span class="hljs-function">UInt_t            <span class="hljs-title">GetWindowWidth</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWindowWidth; }
+   <span class="hljs-function">UInt_t            <span class="hljs-title">GetWindowHeight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWindowHeight; }
+   <span class="hljs-function">UInt_t            <span class="hljs-title">GetWw</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fCw; }
+   <span class="hljs-function">UInt_t            <span class="hljs-title">GetWh</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fCh; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">GetCanvasPar</span><span class="hljs-params">(Int_t &amp;wtopx, Int_t &amp;wtopy, UInt_t &amp;ww, UInt_t &amp;wh)</span>
+                     </span>{wtopx=GetWindowTopX(); wtopy=fWindowTopY; ww=fWindowWidth; wh=fWindowHeight;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">HandleInput</span><span class="hljs-params">(EEventType button, Int_t x, Int_t y)</span></span>;
+<span class="hljs-comment">/// Handle Input Events.</span>
+<span class="hljs-comment">/// Handle input events, like button up/down in current canvas.</span>
 
-   Bool_t            <span class="token function">HasMenuBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kMenuBar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">Iconify</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fCanvasImp<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Iconify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsBatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fBatch<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsDrawn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fDrawn<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Is folder ?</span>
-   Bool_t            <span class="token function">IsGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Check whether this canvas is to be drawn in grayscale mode.</span>
-   Bool_t            <span class="token function">IsRetained</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fRetained<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// List all pads.</span>
-   <span class="token keyword">void</span>              <span class="token function">MoveOpaque</span><span class="token punctuation">(</span>Int_t set<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set option to move objects/pads in a canvas.</span>
-<span class="token comment">///  - set = 1 (default) graphics objects are moved in opaque mode</span>
-<span class="token comment">///  - set = 0 only the outline of objects is drawn when moving them</span>
-<span class="token comment">/// The option opaque produces the best effect. It requires however a</span>
-<span class="token comment">/// a reasonably fast workstation or response time.</span>
+   <span class="hljs-function">Bool_t            <span class="hljs-title">HasMenuBar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kMenuBar); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Iconify</span><span class="hljs-params">()</span> </span>{ fCanvasImp-&gt;Iconify(); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsBatch</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fBatch; }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsDrawn</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fDrawn; }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsFolder</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Is folder ?</span>
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsGrayscale</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Check whether this canvas is to be drawn in grayscale mode.</span>
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsRetained</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fRetained; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List all pads.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">MoveOpaque</span><span class="hljs-params">(Int_t <span class="hljs-built_in">set</span>=<span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Set option to move objects/pads in a canvas.</span>
+<span class="hljs-comment">///  - set = 1 (default) graphics objects are moved in opaque mode</span>
+<span class="hljs-comment">///  - set = 0 only the outline of objects is drawn when moving them</span>
+<span class="hljs-comment">/// The option opaque produces the best effect. It requires however a</span>
+<span class="hljs-comment">/// a reasonably fast workstation or response time.</span>
 
-   Bool_t            <span class="token function">OpaqueMoving</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kMoveOpaque<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">OpaqueResizing</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TestBit</span><span class="token punctuation">(</span>kResizeOpaque<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Paint</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Paint canvas.</span>
-   <span class="token keyword">virtual</span> TPad     <span class="token operator">*</span><span class="token function">Pick</span><span class="token punctuation">(</span>Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">,</span> TObjLink <span class="token operator">*</span><span class="token operator">&amp;</span>pickobj<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> TPad<span class="token operator">::</span><span class="token function">Pick</span><span class="token punctuation">(</span>px<span class="token punctuation">,</span> py<span class="token punctuation">,</span> pickobj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TPad     <span class="token operator">*</span><span class="token function">Pick</span><span class="token punctuation">(</span>Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">,</span> TObject <span class="token operator">*</span>prevSelObj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Prepare for pick, call TPad::Pick() and when selected object</span>
-<span class="token comment">/// is different from previous then emit Picked() signal.</span>
+   <span class="hljs-function">Bool_t            <span class="hljs-title">OpaqueMoving</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kMoveOpaque); }
+   <span class="hljs-function">Bool_t            <span class="hljs-title">OpaqueResizing</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TestBit(kResizeOpaque); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Paint canvas.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TPad     *<span class="hljs-title">Pick</span><span class="hljs-params">(Int_t px, Int_t py, TObjLink *&amp;pickobj)</span> </span>{ <span class="hljs-keyword">return</span> TPad::Pick(px, py, pickobj); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TPad     *<span class="hljs-title">Pick</span><span class="hljs-params">(Int_t px, Int_t py, TObject *prevSelObj)</span></span>;
+<span class="hljs-comment">/// Prepare for pick, call TPad::Pick() and when selected object</span>
+<span class="hljs-comment">/// is different from previous then emit Picked() signal.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Picked</span><span class="token punctuation">(</span>TPad <span class="token operator">*</span>selpad<span class="token punctuation">,</span> TObject <span class="token operator">*</span>selected<span class="token punctuation">,</span> Int_t event<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// *SIGNAL*</span>
-<span class="token comment">/// Emit Picked() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Picked</span><span class="hljs-params">(TPad *selpad, TObject *selected, Int_t event)</span></span>;             <span class="hljs-comment">// *SIGNAL*</span>
+<span class="hljs-comment">/// Emit Picked() signal.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ProcessedEvent</span><span class="token punctuation">(</span>Int_t event<span class="token punctuation">,</span> Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">,</span> TObject <span class="token operator">*</span>selected<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *SIGNAL*</span>
-<span class="token comment">/// Emit ProcessedEvent() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ProcessedEvent</span><span class="hljs-params">(Int_t event, Int_t x, Int_t y, TObject *selected)</span></span>; <span class="hljs-comment">// *SIGNAL*</span>
+<span class="hljs-comment">/// Emit ProcessedEvent() signal.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Selected</span><span class="token punctuation">(</span>TVirtualPad <span class="token operator">*</span>pad<span class="token punctuation">,</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Int_t event<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// *SIGNAL*</span>
-<span class="token comment">/// Emit Selected() signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Selected</span><span class="hljs-params">(TVirtualPad *pad, TObject *obj, Int_t event)</span></span>;            <span class="hljs-comment">// *SIGNAL*</span>
+<span class="hljs-comment">/// Emit Selected() signal.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Cleared</span><span class="token punctuation">(</span>TVirtualPad <span class="token operator">*</span>pad<span class="token punctuation">)</span><span class="token punctuation">;</span>                                        <span class="token comment">// *SIGNAL*</span>
-<span class="token comment">/// Emit pad Cleared signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Cleared</span><span class="hljs-params">(TVirtualPad *pad)</span></span>;                                        <span class="hljs-comment">// *SIGNAL*</span>
+<span class="hljs-comment">/// Emit pad Cleared signal.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Closed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                                         <span class="token comment">// *SIGNAL*</span>
-<span class="token comment">/// Emit Closed signal.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Closed</span><span class="hljs-params">()</span></span>;                                                         <span class="hljs-comment">// *SIGNAL*</span>
+<span class="hljs-comment">/// Emit Closed signal.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">RaiseWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fCanvasImp<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">RaiseWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">ResetDrawn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fDrawn<span class="token operator">=</span>kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Resize</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Recompute canvas parameters following a X11 Resize.</span>
-   <span class="token keyword">void</span>              <span class="token function">ResizeOpaque</span><span class="token punctuation">(</span>Int_t set<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set option to resize objects/pads in a canvas.</span>
-<span class="token comment">///  - set = 1 (default) graphics objects are resized in opaque mode</span>
-<span class="token comment">///  - set = 0 only the outline of objects is drawn when resizing them</span>
-<span class="token comment">/// The option opaque produces the best effect. It requires however a</span>
-<span class="token comment">/// a reasonably fast workstation or response time.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">RaiseWindow</span><span class="hljs-params">()</span> </span>{ fCanvasImp-&gt;RaiseWindow(); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">ResetDrawn</span><span class="hljs-params">()</span> </span>{ fDrawn=kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Resize</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Recompute canvas parameters following a X11 Resize.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">ResizeOpaque</span><span class="hljs-params">(Int_t <span class="hljs-built_in">set</span>=<span class="hljs-number">1</span>)</span></span>;
+<span class="hljs-comment">/// Set option to resize objects/pads in a canvas.</span>
+<span class="hljs-comment">///  - set = 1 (default) graphics objects are resized in opaque mode</span>
+<span class="hljs-comment">///  - set = 0 only the outline of objects is drawn when resizing them</span>
+<span class="hljs-comment">/// The option opaque produces the best effect. It requires however a</span>
+<span class="hljs-comment">/// a reasonably fast workstation or response time.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">SaveSource</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// Save primitives in this canvas as a C++ macro file.</span>
-<span class="token comment">// This function loops on all the canvas primitives and for each primitive</span>
-<span class="token comment">// calls the object SavePrimitive function.</span>
-<span class="token comment">// When outputing floating point numbers, the default precision is 7 digits.</span>
-<span class="token comment">// The precision can be changed (via system.rootrc) by changing the value</span>
-<span class="token comment">// of the environment variable &quot;Canvas.SavePrecision&quot;</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SaveSource</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename=<span class="hljs-string">&quot;&quot;</span>, Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">// Save primitives in this canvas as a C++ macro file.</span>
+<span class="hljs-comment">// This function loops on all the canvas primitives and for each primitive</span>
+<span class="hljs-comment">// calls the object SavePrimitive function.</span>
+<span class="hljs-comment">// When outputing floating point numbers, the default precision is 7 digits.</span>
+<span class="hljs-comment">// The precision can be changed (via system.rootrc) by changing the value</span>
+<span class="hljs-comment">// of the environment variable &quot;Canvas.SavePrecision&quot;</span>
 
-   <span class="token keyword">void</span>              <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token comment">// Save primitives in this canvas in C++ macro file with GUI.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-comment">// Save primitives in this canvas in C++ macro file with GUI.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetCursor</span><span class="token punctuation">(</span>ECursor cursor<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set cursor.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetDoubleBuffer</span><span class="token punctuation">(</span>Int_t mode<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set Double Buffer On/Off.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetFixedAspectRatio</span><span class="token punctuation">(</span>Bool_t fixed <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *TOGGLE*</span>
-<span class="token comment">/// Fix canvas aspect ratio to current value if fixed is true.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetCursor</span><span class="hljs-params">(ECursor cursor)</span></span>;<span class="hljs-comment">/// Set cursor.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetDoubleBuffer</span><span class="hljs-params">(Int_t mode=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">/// Set Double Buffer On/Off.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFixedAspectRatio</span><span class="hljs-params">(Bool_t fixed = kTRUE)</span></span>;  <span class="hljs-comment">// *TOGGLE*</span>
+<span class="hljs-comment">/// Fix canvas aspect ratio to current value if fixed is true.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">SetGrayscale</span><span class="token punctuation">(</span>Bool_t set <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *TOGGLE* *GETTER=IsGrayscale</span>
-<span class="token comment">/// Set whether this canvas should be painted in grayscale, and re-paint</span>
-<span class="token comment">/// it if necessary.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetGrayscale</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span> = kTRUE)</span></span>; <span class="hljs-comment">// *TOGGLE* *GETTER=IsGrayscale</span>
+<span class="hljs-comment">/// Set whether this canvas should be painted in grayscale, and re-paint</span>
+<span class="hljs-comment">/// it if necessary.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">SetWindowPosition</span><span class="token punctuation">(</span>Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">)</span> <span class="token punctuation">{</span> fCanvasImp<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetWindowPosition</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetWindowSize</span><span class="token punctuation">(</span>UInt_t ww<span class="token punctuation">,</span> UInt_t wh<span class="token punctuation">)</span> <span class="token punctuation">{</span> fCanvasImp<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetWindowSize</span><span class="token punctuation">(</span>ww<span class="token punctuation">,</span> wh<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetCanvasSize</span><span class="token punctuation">(</span>UInt_t ww<span class="token punctuation">,</span> UInt_t wh<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Set Width and Height of canvas to ww and wh respectively. If ww and/or wh</span>
-<span class="token comment">/// are greater than the current canvas window a scroll bar is automatically</span>
-<span class="token comment">/// generated. Use this function to zoom in a canvas and navigate via</span>
-<span class="token comment">/// the scroll bars. The Width and Height in this method are different from those</span>
-<span class="token comment">/// given in the TCanvas constructors where these two dimension include the size</span>
-<span class="token comment">/// of the window decoration whereas they do not in this method.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetWindowPosition</span><span class="hljs-params">(Int_t x, Int_t y)</span> </span>{ fCanvasImp-&gt;SetWindowPosition(x, y); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetWindowSize</span><span class="hljs-params">(UInt_t ww, UInt_t wh)</span> </span>{ fCanvasImp-&gt;SetWindowSize(ww, wh); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetCanvasSize</span><span class="hljs-params">(UInt_t ww, UInt_t wh)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set Width and Height of canvas to ww and wh respectively. If ww and/or wh</span>
+<span class="hljs-comment">/// are greater than the current canvas window a scroll bar is automatically</span>
+<span class="hljs-comment">/// generated. Use this function to zoom in a canvas and navigate via</span>
+<span class="hljs-comment">/// the scroll bars. The Width and Height in this method are different from those</span>
+<span class="hljs-comment">/// given in the TCanvas constructors where these two dimension include the size</span>
+<span class="hljs-comment">/// of the window decoration whereas they do not in this method.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">SetHighLightColor</span><span class="token punctuation">(</span>Color_t col<span class="token punctuation">)</span> <span class="token punctuation">{</span> fHighLightColor <span class="token operator">=</span> col<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetSelected</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set selected canvas.</span>
-   <span class="token keyword">void</span>              <span class="token function">SetClickSelected</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span> fClickSelected <span class="token operator">=</span> obj<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetSelectedPad</span><span class="token punctuation">(</span>TPad <span class="token operator">*</span>pad<span class="token punctuation">)</span> <span class="token punctuation">{</span> fSelectedPad <span class="token operator">=</span> pad<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetClickSelectedPad</span><span class="token punctuation">(</span>TPad <span class="token operator">*</span>pad<span class="token punctuation">)</span> <span class="token punctuation">{</span> fClickSelectedPad <span class="token operator">=</span> pad<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fCanvasImp<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Size</span><span class="token punctuation">(</span>Float_t xsizeuser<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Float_t ysizeuser<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the canvas scale in centimeters.</span>
-<span class="token comment">/// This information is used by PostScript to set the page size.</span>
-<span class="token comment">/// \param[in] xsize   size of the canvas in centimeters along X</span>
-<span class="token comment">/// \param[in] ysize   size of the canvas in centimeters along Y</span>
-<span class="token comment">///  if xsize and ysize are not equal to 0, then the scale factors will</span>
-<span class="token comment">///  be computed to keep the ratio ysize/xsize independently of the canvas</span>
-<span class="token comment">///  size (parts of the physical canvas will be unused).</span>
-<span class="token comment">///  if xsize = 0 and ysize is not zero, then xsize will be computed</span>
-<span class="token comment">///     to fit to the current canvas scale. If the canvas is resized,</span>
-<span class="token comment">///     a new value for xsize will be recomputed. In this case the aspect</span>
-<span class="token comment">///     ratio is not preserved.</span>
-<span class="token comment">///  if both xsize = 0 and ysize = 0, then the scaling is automatic.</span>
-<span class="token comment">///  the largest dimension will be allocated a size of 20 centimeters.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetHighLightColor</span><span class="hljs-params">(Color_t col)</span> </span>{ fHighLightColor = col; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetSelected</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Set selected canvas.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetClickSelected</span><span class="hljs-params">(TObject *obj)</span> </span>{ fClickSelected = obj; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetSelectedPad</span><span class="hljs-params">(TPad *pad)</span> </span>{ fSelectedPad = pad; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetClickSelectedPad</span><span class="hljs-params">(TPad *pad)</span> </span>{ fClickSelectedPad = pad; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">Show</span><span class="hljs-params">()</span> </span>{ fCanvasImp-&gt;Show(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Size</span><span class="hljs-params">(Float_t xsizeuser=<span class="hljs-number">0</span>, Float_t ysizeuser=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Set the canvas scale in centimeters.</span>
+<span class="hljs-comment">/// This information is used by PostScript to set the page size.</span>
+<span class="hljs-comment">/// \param[in] xsize   size of the canvas in centimeters along X</span>
+<span class="hljs-comment">/// \param[in] ysize   size of the canvas in centimeters along Y</span>
+<span class="hljs-comment">///  if xsize and ysize are not equal to 0, then the scale factors will</span>
+<span class="hljs-comment">///  be computed to keep the ratio ysize/xsize independently of the canvas</span>
+<span class="hljs-comment">///  size (parts of the physical canvas will be unused).</span>
+<span class="hljs-comment">///  if xsize = 0 and ysize is not zero, then xsize will be computed</span>
+<span class="hljs-comment">///     to fit to the current canvas scale. If the canvas is resized,</span>
+<span class="hljs-comment">///     a new value for xsize will be recomputed. In this case the aspect</span>
+<span class="hljs-comment">///     ratio is not preserved.</span>
+<span class="hljs-comment">///  if both xsize = 0 and ysize = 0, then the scaling is automatic.</span>
+<span class="hljs-comment">///  the largest dimension will be allocated a size of 20 centimeters.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">SetBatch</span><span class="token punctuation">(</span>Bool_t batch<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Toggle batch mode. However, if the canvas is created without a window</span>
-<span class="token comment">/// then batch mode always stays set.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetBatch</span><span class="hljs-params">(Bool_t batch=kTRUE)</span></span>;
+<span class="hljs-comment">/// Toggle batch mode. However, if the canvas is created without a window</span>
+<span class="hljs-comment">/// then batch mode always stays set.</span>
 
-   <span class="token keyword">static</span>  <span class="token keyword">void</span>      <span class="token function">SetFolder</span><span class="token punctuation">(</span>Bool_t isfolder<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// If isfolder=kTRUE, the canvas can be browsed like a folder</span>
-<span class="token comment">/// by default a canvas is not browsable.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFolder</span><span class="hljs-params">(Bool_t isfolder=kTRUE)</span></span>;
+<span class="hljs-comment">/// If isfolder=kTRUE, the canvas can be browsed like a folder</span>
+<span class="hljs-comment">/// by default a canvas is not browsable.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">SetPadSave</span><span class="token punctuation">(</span>TPad <span class="token operator">*</span>pad<span class="token punctuation">)</span> <span class="token punctuation">{</span>fPadSave <span class="token operator">=</span> pad<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetRetained</span><span class="token punctuation">(</span>Bool_t retained<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fRetained<span class="token operator">=</span>retained<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set canvas title.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ToggleEventStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Toggle event statusbar.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ToggleAutoExec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Toggle pad auto execution of list of TExecs.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ToggleToolBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Toggle toolbar.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ToggleEditor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Toggle editor.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ToggleToolTips</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Toggle tooltip display.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Update canvas pad buffers.  &#x5237;&#x65B0;&#x753B;&#x677F;</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetPadSave</span><span class="hljs-params">(TPad *pad)</span> </span>{fPadSave = pad;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetRetained</span><span class="hljs-params">(Bool_t retained=kTRUE)</span> </span>{ fRetained=retained;}
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Set canvas title.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleEventStatus</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Toggle event statusbar.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleAutoExec</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Toggle pad auto execution of list of TExecs.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleToolBar</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Toggle toolbar.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleEditor</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Toggle editor.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ToggleToolTips</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Toggle tooltip display.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Update</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Update canvas pad buffers.  &#x5237;&#x65B0;&#x753B;&#x677F;</span>
 
-   Bool_t              <span class="token function">UseGL</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fUseGL<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>                <span class="token function">SetSupportGL</span><span class="token punctuation">(</span>Bool_t support<span class="token punctuation">)</span> <span class="token punctuation">{</span>fUseGL <span class="token operator">=</span> support<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   TVirtualPadPainter <span class="token operator">*</span><span class="token function">GetCanvasPainter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Access and (probably) creation of pad painter.</span>
-   <span class="token keyword">void</span>                <span class="token function">DeleteCanvasPainter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">///assert on IsBatch() == false?</span>
+   <span class="hljs-function">Bool_t              <span class="hljs-title">UseGL</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fUseGL; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">SetSupportGL</span><span class="hljs-params">(Bool_t support)</span> </span>{fUseGL = support;}
+   <span class="hljs-function">TVirtualPadPainter *<span class="hljs-title">GetCanvasPainter</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Access and (probably) creation of pad painter.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>                <span class="hljs-title">DeleteCanvasPainter</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">///assert on IsBatch() == false?</span>
 
-   <span class="token keyword">static</span> TCanvas   <span class="token operator">*</span><span class="token function">MakeDefCanvas</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Static function to build a default canvas.</span>
-   <span class="token keyword">static</span> Bool_t     <span class="token function">SupportAlpha</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Static function returning &quot;true&quot; if transparency is supported.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> TCanvas   *<span class="hljs-title">MakeDefCanvas</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static function to build a default canvas.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t     <span class="hljs-title">SupportAlpha</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static function returning &quot;true&quot; if transparency is supported.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//&#x5224;&#x65AD;&#x753B;&#x677F;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;</span>
-  TCanvas <span class="token operator">*</span>c <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>TCanvas <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>gROOT<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetListOfCanvases</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token string">&quot;c&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span> c<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;c&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5224;&#x65AD;&#x753B;&#x677F;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;</span>
+  TCanvas *c = ((TCanvas *)(gROOT-&gt;GetListOfCanvases()-&gt;FindObject(<span class="hljs-string">&quot;c&quot;</span>)));
+  <span class="hljs-keyword">if</span> (c) { c-&gt;Clear(); } <span class="hljs-keyword">else</span> { c = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>); }
 </code></pre>
-<pre class="language-"><code class="lang-cpp">TCanvas <span class="token operator">*</span>MyC <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;MyC&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Test canvas&quot;</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>     <span class="token comment">//&#x65B0;&#x5EFA;&#x753B;&#x677F;</span>
-MyC<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetFillColor</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                <span class="token comment">//&#x8BBE;&#x7F6E;&#x753B;&#x677F;&#x80CC;&#x666F;&#x989C;&#x8272;</span>
-MyC<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Divide</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                     <span class="token comment">//&#x5C06;&#x753B;&#x677F;&#x5206;&#x6210;2*2&#x56DB;&#x4E2A;&#x533A;&#x57DF;</span>
-MyC<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">cd</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                           <span class="token comment">//&#x6307;&#x5411;&#x7B2C;&#x4E00;&#x4E2A;&#x533A;&#x57DF;</span>
-f1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                           <span class="token comment">//&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x533A;&#x57DF;&#x753B;&#x56FE;f1</span>
+<pre><code class="lang-cpp">TCanvas *MyC = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;MyC&quot;</span>,<span class="hljs-string">&quot;Test canvas&quot;</span>,<span class="hljs-number">1</span>)     <span class="hljs-comment">//&#x65B0;&#x5EFA;&#x753B;&#x677F;</span>
+MyC-&gt;SetFillColor(<span class="hljs-number">42</span>);                                <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x753B;&#x677F;&#x80CC;&#x666F;&#x989C;&#x8272;</span>
+MyC-&gt;Divide(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>);                                     <span class="hljs-comment">//&#x5C06;&#x753B;&#x677F;&#x5206;&#x6210;2*2&#x56DB;&#x4E2A;&#x533A;&#x57DF;</span>
+MyC-&gt;cd(<span class="hljs-number">1</span>);                                           <span class="hljs-comment">//&#x6307;&#x5411;&#x7B2C;&#x4E00;&#x4E2A;&#x533A;&#x57DF;</span>
+f1-&gt;Draw();                                           <span class="hljs-comment">//&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x533A;&#x57DF;&#x753B;&#x56FE;f1</span>
 
-MyC<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SaveAs</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+MyC-&gt;SaveAs(<span class="hljs-string">&quot;&quot;</span>);
 
-TH1<span class="token operator">*</span> hc <span class="token operator">=</span> <span class="token punctuation">(</span>TH1<span class="token operator">*</span><span class="token punctuation">)</span>f1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                          <span class="token comment">//&#x514B;&#x9686;&#x76F4;&#x65B9;&#x56FE;</span>
+TH1* hc = (TH1*)f1-&gt;Clone();                          <span class="hljs-comment">//&#x514B;&#x9686;&#x76F4;&#x65B9;&#x56FE;</span>
 
-<span class="token comment">//&#x8BBE;&#x7F6E;&#x753B;&#x677F;</span>
-TCanvas <span class="token operator">*</span>c1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;&#x753B;&#x677F;&#x6807;&#x9898;&#x5728;&#x8FD9;&quot;</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">700</span><span class="token punctuation">,</span><span class="token number">700</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
-TCanvas <span class="token operator">*</span>c1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;&#x753B;&#x677F;&#x6807;&#x9898;&#x5728;&#x8FD9;&quot;</span><span class="token punctuation">,</span><span class="token number">900</span><span class="token punctuation">,</span><span class="token number">700</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x753B;&#x677F;</span>
+TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;&#x753B;&#x677F;&#x6807;&#x9898;&#x5728;&#x8FD9;&quot;</span>,<span class="hljs-number">200</span>,<span class="hljs-number">10</span>,<span class="hljs-number">700</span>,<span class="hljs-number">700</span>);    
+TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;&#x753B;&#x677F;&#x6807;&#x9898;&#x5728;&#x8FD9;&quot;</span>,<span class="hljs-number">900</span>,<span class="hljs-number">700</span>);
 
-c1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Divide</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x5C06;&#x753B;&#x677F;&#x5206;&#x6210;&#x56DB;&#x4EFD;&#xFF0C;2*2    </span>
-c1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetFillColor</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x8BBE;&#x7F6E;&#x753B;&#x677F;&#x80CC;&#x666F;&#x989C;&#x8272;</span>
+c1-&gt;Divide(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>);<span class="hljs-comment">//&#x5C06;&#x753B;&#x677F;&#x5206;&#x6210;&#x56DB;&#x4EFD;&#xFF0C;2*2    </span>
+c1-&gt;SetFillColor(<span class="hljs-number">40</span>);<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x753B;&#x677F;&#x80CC;&#x666F;&#x989C;&#x8272;</span>
 
 
-TCanvas <span class="token operator">*</span>canv <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;image&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;ccc&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-canv<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">ToggleEventStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-canv<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetRightMargin</span><span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-canv<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLeftMargin</span><span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-canv<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTopMargin</span><span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-canv<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetBottomMargin</span><span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+TCanvas *canv = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;image&quot;</span>, <span class="hljs-string">&quot;ccc&quot;</span>);
+canv-&gt;ToggleEventStatus();
+canv-&gt;SetRightMargin(<span class="hljs-number">0.2</span>);
+canv-&gt;SetLeftMargin(<span class="hljs-number">0.01</span>);
+canv-&gt;SetTopMargin(<span class="hljs-number">0.01</span>);
+canv-&gt;SetBottomMargin(<span class="hljs-number">0.01</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// At creation time, no matter if in interactive or batch mode, the canvas size</span>
-<span class="token comment">// defines the size of the canvas window (including the size of the window</span>
-<span class="token comment">// manager&apos;s decoration). To define precisely the graphics area size of a canvas in</span>
-<span class="token comment">// the interactive mode, the following four lines of code should be used:</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// At creation time, no matter if in interactive or batch mode, the canvas size</span>
+<span class="hljs-comment">// defines the size of the canvas window (including the size of the window</span>
+<span class="hljs-comment">// manager&apos;s decoration). To define precisely the graphics area size of a canvas in</span>
+<span class="hljs-comment">// the interactive mode, the following four lines of code should be used:</span>
 
-      Double_t w <span class="token operator">=</span> <span class="token number">600</span><span class="token punctuation">;</span>
-      Double_t h <span class="token operator">=</span> <span class="token number">600</span><span class="token punctuation">;</span>
-      TCanvas <span class="token operator">*</span> c1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;c&quot;</span><span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      c<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetWindowSize</span><span class="token punctuation">(</span>w <span class="token operator">+</span> <span class="token punctuation">(</span>w <span class="token operator">-</span> c<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetWw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> h <span class="token operator">+</span> <span class="token punctuation">(</span>h <span class="token operator">-</span> c<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetWh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      Double_t w = <span class="hljs-number">600</span>;
+      Double_t h = <span class="hljs-number">600</span>;
+      TCanvas * c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, w, h);
+      c-&gt;SetWindowSize(w + (w - c-&gt;GetWw()), h + (h - c-&gt;GetWh()));
 
-<span class="token comment">// and in the batch mode simply do:</span>
+<span class="hljs-comment">// and in the batch mode simply do:</span>
 
-      c<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetCanvasSize</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      c-&gt;SetCanvasSize(w,h);
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
-<pre class="language-"><code class="lang-cpp">Canvas <span class="token operator">*</span><span class="token function">statsEditing</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token comment">//    - how to remove a stat element from the stat box </span>
-<span class="token comment">//    - how to add a new one</span>
-<span class="token comment">//&#x5982;&#x4F55;&#x9664;&#x53BB;&#x56FE;&#x4E0A;&#x53F3;&#x4E0A;&#x89D2;box&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#x5DF2;&#x7ECF;&#x6DFB;&#x52A0;&#x4FE1;&#x606F;</span>
+<pre><code class="lang-cpp"><span class="hljs-function">Canvas *<span class="hljs-title">statsEditing</span><span class="hljs-params">()</span> </span>{
+<span class="hljs-comment">//    - how to remove a stat element from the stat box </span>
+<span class="hljs-comment">//    - how to add a new one</span>
+<span class="hljs-comment">//&#x5982;&#x4F55;&#x9664;&#x53BB;&#x56FE;&#x4E0A;&#x53F3;&#x4E0A;&#x89D2;box&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#x5DF2;&#x7ECF;&#x6DFB;&#x52A0;&#x4FE1;&#x606F;</span>
 
-   <span class="token comment">// Create and plot a test histogram with stats</span>
-   TCanvas <span class="token operator">*</span>se <span class="token operator">=</span> <span class="token keyword">new</span> TCanvas<span class="token punctuation">;</span>
-   TH1F <span class="token operator">*</span>h <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TH1F</span><span class="token punctuation">(</span><span class="token string">&quot;h&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;test&quot;</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">FillRandom</span><span class="token punctuation">(</span><span class="token string">&quot;gaus&quot;</span><span class="token punctuation">,</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   gStyle<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetOptStat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   se<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Create and plot a test histogram with stats</span>
+   TCanvas *se = <span class="hljs-keyword">new</span> TCanvas;
+   TH1F *h = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">-3</span>,<span class="hljs-number">3</span>);
+   h-&gt;FillRandom(<span class="hljs-string">&quot;gaus&quot;</span>,<span class="hljs-number">3000</span>);
+   gStyle-&gt;SetOptStat();
+   h-&gt;Draw();
+   se-&gt;Update();
 
-   <span class="token comment">// Retrieve the stat box</span>
-   TPaveStats <span class="token operator">*</span>ps <span class="token operator">=</span> <span class="token punctuation">(</span>TPaveStats<span class="token operator">*</span><span class="token punctuation">)</span>se<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetPrimitive</span><span class="token punctuation">(</span><span class="token string">&quot;stats&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   ps<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetName</span><span class="token punctuation">(</span><span class="token string">&quot;mystats&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TList <span class="token operator">*</span>list <span class="token operator">=</span> ps<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetListOfLines</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Retrieve the stat box</span>
+   TPaveStats *ps = (TPaveStats*)se-&gt;GetPrimitive(<span class="hljs-string">&quot;stats&quot;</span>);
+   ps-&gt;SetName(<span class="hljs-string">&quot;mystats&quot;</span>);
+   TList *<span class="hljs-built_in">list</span> = ps-&gt;GetListOfLines();
 
-   <span class="token comment">// Remove the RMS line</span>
-   TText <span class="token operator">*</span>tconst <span class="token operator">=</span> ps<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetLineWith</span><span class="token punctuation">(</span><span class="token string">&quot;RMS&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   list<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Remove</span><span class="token punctuation">(</span>tconst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Remove the RMS line</span>
+   TText *tconst = ps-&gt;GetLineWith(<span class="hljs-string">&quot;RMS&quot;</span>);
+   <span class="hljs-built_in">list</span>-&gt;Remove(tconst);
 
-   <span class="token comment">// Add a new line in the stat box.</span>
-   <span class="token comment">// Note that &quot;=&quot; is a control character</span>
-   TLatex <span class="token operator">*</span>myt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TLatex</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">&quot;Test = 10&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   myt <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextFont</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   myt <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextSize</span><span class="token punctuation">(</span><span class="token number">0.04</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   myt <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextColor</span><span class="token punctuation">(</span>kRed<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   list<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Add</span><span class="token punctuation">(</span>myt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Add a new line in the stat box.</span>
+   <span class="hljs-comment">// Note that &quot;=&quot; is a control character</span>
+   TLatex *myt = <span class="hljs-keyword">new</span> TLatex(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-string">&quot;Test = 10&quot;</span>);
+   myt -&gt;SetTextFont(<span class="hljs-number">42</span>);
+   myt -&gt;SetTextSize(<span class="hljs-number">0.04</span>);
+   myt -&gt;SetTextColor(kRed);
+   <span class="hljs-built_in">list</span>-&gt;Add(myt);
 
-   <span class="token comment">// the following line is needed to avoid that the automatic redrawing of stats</span>
-   h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetStats</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// the following line is needed to avoid that the automatic redrawing of stats</span>
+   h-&gt;SetStats(<span class="hljs-number">0</span>);
 
-   se<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Modified</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">return</span> se<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+   se-&gt;Modified();
+   <span class="hljs-keyword">return</span> se;
+}
 </code></pre>
 <!-- TCanvas.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -4103,7 +4115,7 @@ canv<span class="token operator">-</span><span class="token operator">&gt;</span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCanvas*","level":"1.2.9","depth":2,"next":{"title":"TChain*","level":"1.2.10","depth":2,"path":"class/TChain.md","ref":"class/TChain.md","articles":[]},"previous":{"title":"TBufferFile","level":"1.2.8","depth":2,"path":"class/TBufferFile.md","ref":"class/TBufferFile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TCanvas.md","mtime":"2018-05-14T09:18:22.633Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCanvas*","level":"1.2.9","depth":2,"next":{"title":"TChain*","level":"1.2.10","depth":2,"path":"class/TChain.md","ref":"class/TChain.md","articles":[]},"previous":{"title":"TBufferFile","level":"1.2.8","depth":2,"path":"class/TBufferFile.md","ref":"class/TBufferFile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TCanvas.md","mtime":"2018-05-14T09:18:22.633Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4135,6 +4147,18 @@ canv<span class="token operator">-</span><span class="token operator">&gt;</span
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

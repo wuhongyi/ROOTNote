@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3681,235 +3693,235 @@
 <p>TGNumberEntry &#x7EE7;&#x627F; TGCompositeFrame, TGWidget, TGNumberFormat</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TGNumberFormat</strong></p>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">class</span> <span class="token class-name">TGNumberFormat</span> <span class="token punctuation">{</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-   <span class="token keyword">enum</span> EStyle <span class="token punctuation">{</span>             <span class="token comment">// Style of number entry field</span>
-      kNESInteger <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>       <span class="token comment">// Integer</span>
-      kNESRealOne <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>       <span class="token comment">// Fixed fraction real, one digit</span>
-      kNESRealTwo <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>       <span class="token comment">// Fixed fraction real, two digit</span>
-      kNESRealThree <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>     <span class="token comment">// Fixed fraction real, three digit</span>
-      kNESRealFour <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>      <span class="token comment">// Fixed fraction real, four digit</span>
-      kNESReal <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>          <span class="token comment">// Real number</span>
-      kNESDegree <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>        <span class="token comment">// Degree</span>
-      kNESMinSec <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span>        <span class="token comment">// Minute:seconds</span>
-      kNESHourMin <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>       <span class="token comment">// Hour:minutes</span>
-      kNESHourMinSec <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">,</span>    <span class="token comment">// Hour:minute:seconds</span>
-      kNESDayMYear <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span>     <span class="token comment">// Day/month/year</span>
-      kNESMDayYear <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">,</span>     <span class="token comment">// Month/day/year</span>
-      kNESHex <span class="token operator">=</span> <span class="token number">12</span>           <span class="token comment">// Hex</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> TGNumberFormat {
+<span class="hljs-keyword">public</span>:
+   <span class="hljs-keyword">enum</span> EStyle {             <span class="hljs-comment">// Style of number entry field</span>
+      kNESInteger = <span class="hljs-number">0</span>,       <span class="hljs-comment">// Integer</span>
+      kNESRealOne = <span class="hljs-number">1</span>,       <span class="hljs-comment">// Fixed fraction real, one digit</span>
+      kNESRealTwo = <span class="hljs-number">2</span>,       <span class="hljs-comment">// Fixed fraction real, two digit</span>
+      kNESRealThree = <span class="hljs-number">3</span>,     <span class="hljs-comment">// Fixed fraction real, three digit</span>
+      kNESRealFour = <span class="hljs-number">4</span>,      <span class="hljs-comment">// Fixed fraction real, four digit</span>
+      kNESReal = <span class="hljs-number">5</span>,          <span class="hljs-comment">// Real number</span>
+      kNESDegree = <span class="hljs-number">6</span>,        <span class="hljs-comment">// Degree</span>
+      kNESMinSec = <span class="hljs-number">7</span>,        <span class="hljs-comment">// Minute:seconds</span>
+      kNESHourMin = <span class="hljs-number">8</span>,       <span class="hljs-comment">// Hour:minutes</span>
+      kNESHourMinSec = <span class="hljs-number">9</span>,    <span class="hljs-comment">// Hour:minute:seconds</span>
+      kNESDayMYear = <span class="hljs-number">10</span>,     <span class="hljs-comment">// Day/month/year</span>
+      kNESMDayYear = <span class="hljs-number">11</span>,     <span class="hljs-comment">// Month/day/year</span>
+      kNESHex = <span class="hljs-number">12</span>           <span class="hljs-comment">// Hex</span>
+   };
 
-   <span class="token keyword">enum</span> EAttribute <span class="token punctuation">{</span>         <span class="token comment">// Attributes of number entry field</span>
-      kNEAAnyNumber <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>     <span class="token comment">// Any number</span>
-      kNEANonNegative <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>   <span class="token comment">// Non-negative number</span>
-      kNEAPositive <span class="token operator">=</span> <span class="token number">2</span>       <span class="token comment">// Positive number</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">enum</span> EAttribute {         <span class="hljs-comment">// Attributes of number entry field</span>
+      kNEAAnyNumber = <span class="hljs-number">0</span>,     <span class="hljs-comment">// Any number</span>
+      kNEANonNegative = <span class="hljs-number">1</span>,   <span class="hljs-comment">// Non-negative number</span>
+      kNEAPositive = <span class="hljs-number">2</span>       <span class="hljs-comment">// Positive number</span>
+   };
 
-   <span class="token keyword">enum</span> ELimit <span class="token punctuation">{</span>             <span class="token comment">// Limit selection of number entry field</span>
-      kNELNoLimits <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>      <span class="token comment">// No limits</span>
-      kNELLimitMin <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>      <span class="token comment">// Lower limit only</span>
-      kNELLimitMax <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>      <span class="token comment">// Upper limit only</span>
-      kNELLimitMinMax <span class="token operator">=</span> <span class="token number">3</span>    <span class="token comment">// Both lower and upper limits</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">enum</span> ELimit {             <span class="hljs-comment">// Limit selection of number entry field</span>
+      kNELNoLimits = <span class="hljs-number">0</span>,      <span class="hljs-comment">// No limits</span>
+      kNELLimitMin = <span class="hljs-number">1</span>,      <span class="hljs-comment">// Lower limit only</span>
+      kNELLimitMax = <span class="hljs-number">2</span>,      <span class="hljs-comment">// Upper limit only</span>
+      kNELLimitMinMax = <span class="hljs-number">3</span>    <span class="hljs-comment">// Both lower and upper limits</span>
+   };
 
-   <span class="token keyword">enum</span> EStepSize <span class="token punctuation">{</span>          <span class="token comment">// Step for number entry field increase</span>
-      kNSSSmall <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>         <span class="token comment">// Small step</span>
-      kNSSMedium <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>        <span class="token comment">// Medium step</span>
-      kNSSLarge <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>         <span class="token comment">// Large step</span>
-      kNSSHuge <span class="token operator">=</span> <span class="token number">3</span>           <span class="token comment">// Huge step</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">enum</span> EStepSize {          <span class="hljs-comment">// Step for number entry field increase</span>
+      kNSSSmall = <span class="hljs-number">0</span>,         <span class="hljs-comment">// Small step</span>
+      kNSSMedium = <span class="hljs-number">1</span>,        <span class="hljs-comment">// Medium step</span>
+      kNSSLarge = <span class="hljs-number">2</span>,         <span class="hljs-comment">// Large step</span>
+      kNSSHuge = <span class="hljs-number">3</span>           <span class="hljs-comment">// Huge step</span>
+   };
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGNumberFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token function">ClassDef</span><span class="token punctuation">(</span>TGNumberFormat<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment">// Class defining namespace for several enums used by TGNumberEntry</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">virtual</span> ~TGNumberFormat() { }
+   ClassDef(TGNumberFormat,<span class="hljs-number">0</span>)  <span class="hljs-comment">// Class defining namespace for several enums used by TGNumberEntry</span>
+};
 </code></pre>
 <p><strong>TGNumberEntryField</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGNumberEntryField</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> Int_t id<span class="token punctuation">,</span>
-                      Double_t val<span class="token punctuation">,</span> GContext_t norm<span class="token punctuation">,</span>
-                      FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                      UInt_t option <span class="token operator">=</span> kSunkenFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">,</span>
-                      Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TGNumberEntryField</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                      Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> Double_t val <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                      EStyle style <span class="token operator">=</span> kNESReal<span class="token punctuation">,</span>
-                      EAttribute attr <span class="token operator">=</span> kNEAAnyNumber<span class="token punctuation">,</span>
-                      ELimit limits <span class="token operator">=</span> kNELNoLimits<span class="token punctuation">,</span>
-                      Double_t min <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Double_t max <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGNumberEntryField(<span class="hljs-keyword">const</span> TGWindow *p, Int_t id,
+                      Double_t val, GContext_t norm,
+                      FontStruct_t font = GetDefaultFontStruct(),
+                      UInt_t option = kSunkenFrame | kDoubleBorder,
+                      Pixel_t back = GetWhitePixel());
+   TGNumberEntryField(<span class="hljs-keyword">const</span> TGWindow *parent = <span class="hljs-number">0</span>,
+                      Int_t id = <span class="hljs-number">-1</span>, Double_t val = <span class="hljs-number">0</span>,
+                      EStyle style = kNESReal,
+                      EAttribute attr = kNEAAnyNumber,
+                      ELimit limits = kNELNoLimits,
+                      Double_t min = <span class="hljs-number">0</span>, Double_t max = <span class="hljs-number">1</span>);
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetNumber</span><span class="token punctuation">(</span>Double_t val<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetIntNumber</span><span class="token punctuation">(</span>Long_t val<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetTime</span><span class="token punctuation">(</span>Int_t hour<span class="token punctuation">,</span> Int_t min<span class="token punctuation">,</span> Int_t sec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetDate</span><span class="token punctuation">(</span>Int_t year<span class="token punctuation">,</span> Int_t month<span class="token punctuation">,</span> Int_t day<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetHexNumber</span><span class="token punctuation">(</span>ULong_t val<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> text<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetNumber</span><span class="hljs-params">(Double_t val)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetIntNumber</span><span class="hljs-params">(Long_t val)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTime</span><span class="hljs-params">(Int_t hour, Int_t min, Int_t sec)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDate</span><span class="hljs-params">(Int_t year, Int_t month, Int_t day)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetHexNumber</span><span class="hljs-params">(ULong_t val)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* text, Bool_t emit = kTRUE)</span></span>;
 
-   <span class="token keyword">virtual</span> Double_t <span class="token function">GetNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Long_t   <span class="token function">GetIntNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">GetTime</span><span class="token punctuation">(</span>Int_t<span class="token operator">&amp;</span> hour<span class="token punctuation">,</span> Int_t<span class="token operator">&amp;</span> min<span class="token punctuation">,</span> Int_t<span class="token operator">&amp;</span> sec<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">GetDate</span><span class="token punctuation">(</span>Int_t<span class="token operator">&amp;</span> year<span class="token punctuation">,</span> Int_t<span class="token operator">&amp;</span> month<span class="token punctuation">,</span> Int_t<span class="token operator">&amp;</span> day<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> ULong_t  <span class="token function">GetHexNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long_t   <span class="hljs-title">GetIntNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTime</span><span class="hljs-params">(Int_t&amp; hour, Int_t&amp; min, Int_t&amp; sec)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetDate</span><span class="hljs-params">(Int_t&amp; year, Int_t&amp; month, Int_t&amp; day)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> ULong_t  <span class="hljs-title">GetHexNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token keyword">virtual</span> Int_t <span class="token function">GetCharWidth</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> text <span class="token operator">=</span> <span class="token string">&quot;0&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">IncreaseNumber</span><span class="token punctuation">(</span>EStepSize step <span class="token operator">=</span> kNSSSmall<span class="token punctuation">,</span>
-                                Int_t sign <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Bool_t logstep <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">SetFormat</span><span class="token punctuation">(</span>EStyle style<span class="token punctuation">,</span>
-                           EAttribute attr <span class="token operator">=</span> kNEAAnyNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">SetLimits</span><span class="token punctuation">(</span>ELimit limits <span class="token operator">=</span> kNELNoLimits<span class="token punctuation">,</span>
-                           Double_t min <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Double_t max <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">SetState</span><span class="token punctuation">(</span>Bool_t state<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">SetLogStep</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Set logarithmic steps</span>
-      fStepLog <span class="token operator">=</span> on<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetCharWidth</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* text = <span class="hljs-string">&quot;0&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">IncreaseNumber</span><span class="hljs-params">(EStepSize step = kNSSSmall,
+                                Int_t sign = <span class="hljs-number">1</span>, Bool_t logstep = kFALSE)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetFormat</span><span class="hljs-params">(EStyle style,
+                           EAttribute attr = kNEAAnyNumber)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetLimits</span><span class="hljs-params">(ELimit limits = kNELNoLimits,
+                           Double_t min = <span class="hljs-number">0</span>, Double_t max = <span class="hljs-number">1</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetState</span><span class="hljs-params">(Bool_t state)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetLogStep</span><span class="hljs-params">(Bool_t on = kTRUE)</span> </span>{
+      <span class="hljs-comment">// Set logarithmic steps</span>
+      fStepLog = on; }
 
-   <span class="token keyword">virtual</span> EStyle <span class="token function">GetNumStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numerical style</span>
-      <span class="token keyword">return</span> fNumStyle<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> EAttribute <span class="token function">GetNumAttr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numerical attribute</span>
-      <span class="token keyword">return</span> fNumAttr<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> ELimit <span class="token function">GetNumLimits</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numerialc limit attribute</span>
-      <span class="token keyword">return</span> fNumLimits<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Double_t <span class="token function">GetNumMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the lower limit</span>
-      <span class="token keyword">return</span> fNumMin<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Double_t <span class="token function">GetNumMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the upper limit</span>
-      <span class="token keyword">return</span> fNumMax<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsLogStep</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Is log step enabled?</span>
-      <span class="token keyword">return</span> fStepLog<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> EStyle <span class="hljs-title">GetNumStyle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numerical style</span>
+      <span class="hljs-keyword">return</span> fNumStyle; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> EAttribute <span class="hljs-title">GetNumAttr</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numerical attribute</span>
+      <span class="hljs-keyword">return</span> fNumAttr; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> ELimit <span class="hljs-title">GetNumLimits</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numerialc limit attribute</span>
+      <span class="hljs-keyword">return</span> fNumLimits; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetNumMin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the lower limit</span>
+      <span class="hljs-keyword">return</span> fNumMin; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetNumMax</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the upper limit</span>
+      <span class="hljs-keyword">return</span> fNumMax; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsLogStep</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Is log step enabled?</span>
+      <span class="hljs-keyword">return</span> fStepLog; }
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleKey</span><span class="token punctuation">(</span>Event_t<span class="token operator">*</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t HandleFocusChange <span class="token punctuation">(</span>Event_t<span class="token operator">*</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">TextChanged</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">ReturnPressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsEditable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">InvalidInput</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>instr<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;InvalidInput(char*)&quot;</span><span class="token punctuation">,</span> instr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t* event)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleFocusChange</span> <span class="hljs-params">(Event_t* event)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">TextChanged</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text = <span class="hljs-number">0</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">ReturnPressed</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsEditable</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">InvalidInput</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *instr)</span> </span>{ Emit(<span class="hljs-string">&quot;InvalidInput(char*)&quot;</span>, instr); }   <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGNumberEntry</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGNumberEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Double_t val <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                 Int_t digitwidth <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                 EStyle style <span class="token operator">=</span> kNESReal<span class="token punctuation">,</span>
-                 EAttribute attr <span class="token operator">=</span> kNEAAnyNumber<span class="token punctuation">,</span>
-                 ELimit limits <span class="token operator">=</span> kNELNoLimits<span class="token punctuation">,</span>
-                 Double_t min <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Double_t max <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGNumberEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGNumberEntry(<span class="hljs-keyword">const</span> TGWindow *parent = <span class="hljs-number">0</span>, Double_t val = <span class="hljs-number">0</span>,
+                 Int_t digitwidth = <span class="hljs-number">5</span>, Int_t id = <span class="hljs-number">-1</span>,
+                 EStyle style = kNESReal,
+                 EAttribute attr = kNEAAnyNumber,
+                 ELimit limits = kNELNoLimits,
+                 Double_t min = <span class="hljs-number">0</span>, Double_t max = <span class="hljs-number">1</span>);
+   <span class="hljs-keyword">virtual</span> ~TGNumberEntry();
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetNumber</span><span class="token punctuation">(</span>Double_t val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Set the numeric value (floating point representation)</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetNumber</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetIntNumber</span><span class="token punctuation">(</span>Long_t val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Set the numeric value (integer representation)</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetIntNumber</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetTime</span><span class="token punctuation">(</span>Int_t hour<span class="token punctuation">,</span> Int_t min<span class="token punctuation">,</span> Int_t sec<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Set the numeric value (time format)</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTime</span><span class="token punctuation">(</span>hour<span class="token punctuation">,</span> min<span class="token punctuation">,</span> sec<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetDate</span><span class="token punctuation">(</span>Int_t year<span class="token punctuation">,</span> Int_t month<span class="token punctuation">,</span> Int_t day<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Set the numeric value (date format)</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetDate</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> month<span class="token punctuation">,</span> day<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetHexNumber</span><span class="token punctuation">(</span>ULong_t val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Set the numeric value (hex format)</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetHexNumber</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Set the value (text format)</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetText</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetState</span><span class="token punctuation">(</span>Bool_t enable <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetNumber</span><span class="hljs-params">(Double_t val)</span> </span>{
+      <span class="hljs-comment">// Set the numeric value (floating point representation)</span>
+      fNumericEntry-&gt;SetNumber(val); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetIntNumber</span><span class="hljs-params">(Long_t val)</span> </span>{
+      <span class="hljs-comment">// Set the numeric value (integer representation)</span>
+      fNumericEntry-&gt;SetIntNumber(val); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTime</span><span class="hljs-params">(Int_t hour, Int_t min, Int_t sec)</span> </span>{
+      <span class="hljs-comment">// Set the numeric value (time format)</span>
+      fNumericEntry-&gt;SetTime(hour, min, sec); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDate</span><span class="hljs-params">(Int_t year, Int_t month, Int_t day)</span> </span>{
+      <span class="hljs-comment">// Set the numeric value (date format)</span>
+      fNumericEntry-&gt;SetDate(year, month, day); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetHexNumber</span><span class="hljs-params">(ULong_t val)</span> </span>{
+      <span class="hljs-comment">// Set the numeric value (hex format)</span>
+      fNumericEntry-&gt;SetHexNumber(val); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* text)</span> </span>{
+      <span class="hljs-comment">// Set the value (text format)</span>
+      fNumericEntry-&gt;SetText(text); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetState</span><span class="hljs-params">(Bool_t enable = kTRUE)</span></span>;
 
-   <span class="token keyword">virtual</span> Double_t <span class="token function">GetNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numeric value (floating point representation)</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Long_t <span class="token function">GetIntNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numeric value (integer representation)</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span>GetIntNumber <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">GetTime</span><span class="token punctuation">(</span>Int_t<span class="token operator">&amp;</span> hour<span class="token punctuation">,</span> Int_t<span class="token operator">&amp;</span> min<span class="token punctuation">,</span> Int_t<span class="token operator">&amp;</span> sec<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numeric value (time format)</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetTime</span><span class="token punctuation">(</span>hour<span class="token punctuation">,</span> min<span class="token punctuation">,</span> sec<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">GetDate</span><span class="token punctuation">(</span>Int_t<span class="token operator">&amp;</span> year<span class="token punctuation">,</span> Int_t<span class="token operator">&amp;</span> month<span class="token punctuation">,</span> Int_t<span class="token operator">&amp;</span> day<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numeric value (date format)</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetDate</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> month<span class="token punctuation">,</span> day<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> ULong_t <span class="token function">GetHexNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numeric value (hex format)</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetHexNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">IncreaseNumber</span><span class="token punctuation">(</span>EStepSize step <span class="token operator">=</span> kNSSSmall<span class="token punctuation">,</span>
-                               Int_t sign <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Bool_t logstep <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Increase the number value</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">IncreaseNumber</span><span class="token punctuation">(</span>step<span class="token punctuation">,</span> sign<span class="token punctuation">,</span> logstep<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetFormat</span><span class="token punctuation">(</span>EStyle style<span class="token punctuation">,</span> EAttribute attr <span class="token operator">=</span> TGNumberFormat<span class="token operator">::</span>kNEAAnyNumber<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Set the numerical format</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetFormat</span><span class="token punctuation">(</span>style<span class="token punctuation">,</span> attr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetLimits</span><span class="token punctuation">(</span>ELimit limits <span class="token operator">=</span> TGNumberFormat<span class="token operator">::</span>kNELNoLimits<span class="token punctuation">,</span>
-                          Double_t min <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Double_t max <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Set the numerical limits.</span>
-      fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLimits</span><span class="token punctuation">(</span>limits<span class="token punctuation">,</span> min<span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numeric value (floating point representation)</span>
+      <span class="hljs-keyword">return</span> fNumericEntry-&gt;GetNumber(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long_t <span class="hljs-title">GetIntNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numeric value (integer representation)</span>
+      <span class="hljs-keyword">return</span> fNumericEntry-&gt;GetIntNumber (); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetTime</span><span class="hljs-params">(Int_t&amp; hour, Int_t&amp; min, Int_t&amp; sec)</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numeric value (time format)</span>
+      fNumericEntry-&gt;GetTime(hour, min, sec); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetDate</span><span class="hljs-params">(Int_t&amp; year, Int_t&amp; month, Int_t&amp; day)</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numeric value (date format)</span>
+      fNumericEntry-&gt;GetDate(year, month, day); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> ULong_t <span class="hljs-title">GetHexNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numeric value (hex format)</span>
+      <span class="hljs-keyword">return</span> fNumericEntry-&gt;GetHexNumber(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">IncreaseNumber</span><span class="hljs-params">(EStepSize step = kNSSSmall,
+                               Int_t sign = <span class="hljs-number">1</span>, Bool_t logstep = kFALSE)</span> </span>{
+      <span class="hljs-comment">// Increase the number value</span>
+      fNumericEntry-&gt;IncreaseNumber(step, sign, logstep); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetFormat</span><span class="hljs-params">(EStyle style, EAttribute attr = TGNumberFormat::kNEAAnyNumber)</span> </span>{
+      <span class="hljs-comment">// Set the numerical format</span>
+      fNumericEntry-&gt;SetFormat(style, attr); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetLimits</span><span class="hljs-params">(ELimit limits = TGNumberFormat::kNELNoLimits,
+                          Double_t min = <span class="hljs-number">0</span>, Double_t max = <span class="hljs-number">1</span>)</span> </span>{
+      <span class="hljs-comment">// Set the numerical limits.</span>
+      fNumericEntry-&gt;SetLimits(limits, min, max); }
 
-   <span class="token keyword">virtual</span> EStyle <span class="token function">GetNumStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numerical style</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetNumStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> EAttribute <span class="token function">GetNumAttr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numerical attribute</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetNumAttr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> ELimit <span class="token function">GetNumLimits</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the numerical limit attribute</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetNumLimits</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Double_t <span class="token function">GetNumMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the lower limit</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetNumMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Double_t <span class="token function">GetNumMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the upper limit</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetNumMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsLogStep</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Is log step enabled?</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">IsLogStep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetButtonToNum</span><span class="token punctuation">(</span>Bool_t state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> EStyle <span class="hljs-title">GetNumStyle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numerical style</span>
+      <span class="hljs-keyword">return</span> fNumericEntry-&gt;GetNumStyle(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> EAttribute <span class="hljs-title">GetNumAttr</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numerical attribute</span>
+      <span class="hljs-keyword">return</span> fNumericEntry-&gt;GetNumAttr(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> ELimit <span class="hljs-title">GetNumLimits</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the numerical limit attribute</span>
+      <span class="hljs-keyword">return</span> fNumericEntry-&gt;GetNumLimits(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetNumMin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the lower limit</span>
+      <span class="hljs-keyword">return</span> fNumericEntry-&gt;GetNumMin(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Double_t <span class="hljs-title">GetNumMax</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the upper limit</span>
+      <span class="hljs-keyword">return</span> fNumericEntry-&gt;GetNumMax(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsLogStep</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Is log step enabled?</span>
+      <span class="hljs-keyword">return</span> fNumericEntry-&gt;IsLogStep(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetButtonToNum</span><span class="hljs-params">(Bool_t state)</span></span>;
 
-   <span class="token keyword">void</span> <span class="token function">SetNumStyle</span><span class="token punctuation">(</span>EStyle style<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         <span class="token function">SetFormat</span><span class="token punctuation">(</span>style<span class="token punctuation">,</span> <span class="token function">GetNumAttr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>                  <span class="token comment">//*SUBMENU*</span>
-   <span class="token keyword">void</span> <span class="token function">SetNumAttr</span><span class="token punctuation">(</span>EAttribute attr <span class="token operator">=</span> kNEAAnyNumber<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         <span class="token function">SetFormat</span><span class="token punctuation">(</span><span class="token function">GetNumStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> attr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>                  <span class="token comment">//*SUBMENU*</span>
-   <span class="token keyword">void</span> <span class="token function">SetNumLimits</span><span class="token punctuation">(</span>ELimit limits <span class="token operator">=</span> kNELNoLimits<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         <span class="token function">SetLimits</span><span class="token punctuation">(</span>limits<span class="token punctuation">,</span> <span class="token function">GetNumMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">GetNumMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span>    <span class="token comment">//*SUBMENU*</span>
-   <span class="token keyword">void</span> <span class="token function">SetLimitValues</span><span class="token punctuation">(</span>Double_t min <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Double_t max <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         <span class="token function">SetLimits</span><span class="token punctuation">(</span><span class="token function">GetNumLimits</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> min<span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span>            <span class="token comment">//*MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetLogStep</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">//*TOGGLE* *GETTER=IsLogStep</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetNumStyle</span><span class="hljs-params">(EStyle style)</span> </span>{
+         SetFormat(style, GetNumAttr()); }                  <span class="hljs-comment">//*SUBMENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetNumAttr</span><span class="hljs-params">(EAttribute attr = kNEAAnyNumber)</span> </span>{
+         SetFormat(GetNumStyle(), attr); }                  <span class="hljs-comment">//*SUBMENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetNumLimits</span><span class="hljs-params">(ELimit limits = kNELNoLimits)</span> </span>{
+         SetLimits(limits, GetNumMin(), GetNumMax());  }    <span class="hljs-comment">//*SUBMENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetLimitValues</span><span class="hljs-params">(Double_t min = <span class="hljs-number">0</span>, Double_t max = <span class="hljs-number">1</span>)</span> </span>{
+         SetLimits(GetNumLimits(), min, max);  }            <span class="hljs-comment">//*MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetLogStep</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;              <span class="hljs-comment">//*TOGGLE* *GETTER=IsLogStep</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Associate</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">ProcessMessage</span><span class="token punctuation">(</span>Long_t msg<span class="token punctuation">,</span> Long_t parm1<span class="token punctuation">,</span> Long_t parm2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">ValueChanged</span><span class="token punctuation">(</span>Long_t val<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">ValueSet</span><span class="token punctuation">(</span>Long_t val<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Associate</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGWindow *w)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">ValueChanged</span><span class="hljs-params">(Long_t val)</span></span>;     <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">ValueSet</span><span class="hljs-params">(Long_t val)</span></span>;         <span class="hljs-comment">//*SIGNAL*</span>
 
-   TGNumberEntryField <span class="token operator">*</span><span class="token function">GetNumberEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the number entry field</span>
-      <span class="token keyword">return</span> fNumericEntry<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TGButton <span class="token operator">*</span><span class="token function">GetButtonUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the up button</span>
-      <span class="token keyword">return</span> fButtonUp<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TGButton <span class="token operator">*</span><span class="token function">GetButtonDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Get the down button</span>
-      <span class="token keyword">return</span> fButtonDown<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">TGNumberEntryField *<span class="hljs-title">GetNumberEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the number entry field</span>
+      <span class="hljs-keyword">return</span> fNumericEntry; }
+   <span class="hljs-function">TGButton *<span class="hljs-title">GetButtonUp</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the up button</span>
+      <span class="hljs-keyword">return</span> fButtonUp; }
+   <span class="hljs-function">TGButton *<span class="hljs-title">GetButtonDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-comment">// Get the down button</span>
+      <span class="hljs-keyword">return</span> fButtonDown; }
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsEditable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsEditable</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
 
-   UInt_t <span class="token function">GetDefaultHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fNumericEntry<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetDefaultHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGLayoutManager <span class="token operator">*</span><span class="token function">GetLayoutManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-function">UInt_t <span class="hljs-title">GetDefaultHeight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNumericEntry-&gt;GetDefaultHeight(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLayoutManager *<span class="hljs-title">GetLayoutManager</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TGNumberEntry.h&quot;</span></span>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TGNumberEntry.h&quot;</span></span>
 
-<span class="token comment">// TGNumberEntry</span>
-TGNumberEntry <span class="token operator">*</span>fYearEntry <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGNumberEntry</span><span class="token punctuation">(</span>frame<span class="token punctuation">,</span> <span class="token number">2016</span><span class="token comment">/*&#x521D;&#x59CB;&#x503C;*/</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token comment">/*&#x80FD;&#x5BB9;&#x7EB3;&#x4F4D;&#x6570;*/</span><span class="token punctuation">,</span> IDs<span class="token punctuation">,</span>TGNumberFormat<span class="token operator">::</span>kNESInteger<span class="token punctuation">,</span>TGNumberFormat<span class="token operator">::</span>kNEAPositive<span class="token punctuation">,</span>TGNumberFormat<span class="token operator">::</span>kNELLimitMin<span class="token punctuation">,</span> <span class="token number">1995</span><span class="token comment">/*min*/</span><span class="token punctuation">,</span><span class="token number">2020</span><span class="token comment">/*max*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fYearEntry<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsLeft<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// fYearEntry-&gt;Connect(&quot;ValueSet(Long_t)&quot;, &quot;MyMainFrame&quot;, this, &quot;DoSetlabel()&quot;);</span>
-<span class="token comment">// (fYearEntry-&gt;GetNumberEntry())-&gt;Connect(&quot;ReturnPressed()&quot;, &quot;MyMainFrame&quot;, this,&quot;DoSetlabel()&quot;);</span>
+<span class="hljs-comment">// TGNumberEntry</span>
+TGNumberEntry *fYearEntry = <span class="hljs-keyword">new</span> TGNumberEntry(frame, <span class="hljs-number">2016</span><span class="hljs-comment">/*&#x521D;&#x59CB;&#x503C;*/</span>, <span class="hljs-number">5</span><span class="hljs-comment">/*&#x80FD;&#x5BB9;&#x7EB3;&#x4F4D;&#x6570;*/</span>, IDs,TGNumberFormat::kNESInteger,TGNumberFormat::kNEAPositive,TGNumberFormat::kNELLimitMin, <span class="hljs-number">1995</span><span class="hljs-comment">/*min*/</span>,<span class="hljs-number">2020</span><span class="hljs-comment">/*max*/</span>);
+frame-&gt;AddFrame(fYearEntry, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsLeft, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+<span class="hljs-comment">// fYearEntry-&gt;Connect(&quot;ValueSet(Long_t)&quot;, &quot;MyMainFrame&quot;, this, &quot;DoSetlabel()&quot;);</span>
+<span class="hljs-comment">// (fYearEntry-&gt;GetNumberEntry())-&gt;Connect(&quot;ReturnPressed()&quot;, &quot;MyMainFrame&quot;, this,&quot;DoSetlabel()&quot;);</span>
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGNumberEntry.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3952,7 +3964,7 @@ frame<span class="token operator">-</span><span class="token operator">&gt;</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGNumberEntry+","level":"1.3.39","depth":2,"next":{"title":"TGObject*","level":"1.3.40","depth":2,"path":"class/gui/TGObject.md","ref":"class/gui/TGObject.md","articles":[]},"previous":{"title":"TGMsgBox","level":"1.3.38","depth":2,"path":"class/gui/TGMsgBox.md","ref":"class/gui/TGMsgBox.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGNumberEntry.md","mtime":"2018-05-14T09:18:21.806Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGNumberEntry+","level":"1.3.39","depth":2,"next":{"title":"TGObject*","level":"1.3.40","depth":2,"path":"class/gui/TGObject.md","ref":"class/gui/TGObject.md","articles":[]},"previous":{"title":"TGMsgBox","level":"1.3.38","depth":2,"path":"class/gui/TGMsgBox.md","ref":"class/gui/TGMsgBox.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGNumberEntry.md","mtime":"2018-05-14T09:18:21.806Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3984,6 +3996,18 @@ frame<span class="token operator">-</span><span class="token operator">&gt;</spa
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

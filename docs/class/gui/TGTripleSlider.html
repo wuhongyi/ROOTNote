@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3679,7 +3691,7 @@
 <h1 id="tgtripleslider"><a name="tgtripleslider" class="plugin-anchor" href="#tgtripleslider"><i class="fa fa-link" aria-hidden="true"></i></a>TGTripleSlider</h1>
 <p>TripleSlider inherit from DoubleSlider widgets and allow easy<br>selection of a min, max and pointer value out of a range.<br>The pointer position can be constrained to edges of slider and / or<br>can be relative to the slider position.                              </p>
 <p>To change the min value press the mouse near to the left / bottom<br>edge of the slider.<br>To change the max value press the mouse near to the right / top<br>edge of the slider.<br>To change both values simultaneously press the mouse near to the<br>center of the slider.<br>To change pointer value press the mouse on the pointer and drag it<br>to the desired position                                              </p>
-<pre class="language-"><code>Dragging the slider will generate the event:                         
+<pre><code>Dragging the slider will generate the event:                         
 kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             
 kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           
 
@@ -3699,85 +3711,85 @@ kC_HSLIDER, kSL_POINTER, slider id, 0  (for horizontal slider)
 <p>TGTripleHSlider &#x7EE7;&#x627F; TGDoubleHSlider</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TGTripleVSlider</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGTripleVSlider</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> UInt_t type <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                   UInt_t options <span class="token operator">=</span> kVerticalFrame<span class="token punctuation">,</span>
-                   Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                   Bool_t reversed <span class="token operator">=</span> kFALSE<span class="token punctuation">,</span>
-                   Bool_t mark_ends <span class="token operator">=</span> kFALSE<span class="token punctuation">,</span>
-                   Bool_t constrained <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span>
-                   Bool_t relative <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGTripleVSlider(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t h = <span class="hljs-number">1</span>, UInt_t type = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
+                   UInt_t options = kVerticalFrame,
+                   Pixel_t back = GetDefaultFrameBackground(),
+                   Bool_t reversed = kFALSE,
+                   Bool_t mark_ends = kFALSE,
+                   Bool_t constrained = kTRUE,
+                   Bool_t relative = kFALSE);
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGTripleVSlider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete vertical slider widget.</span>
+   <span class="hljs-keyword">virtual</span> ~TGTripleVSlider();<span class="hljs-comment">/// Delete vertical slider widget.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">PointerPositionChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;PointerPositionChanged()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">DrawPointer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw slider pointer</span>
-   <span class="token keyword">virtual</span> Float_t   <span class="token function">GetPointerPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>fReversedScale<span class="token punctuation">)</span> <span class="token keyword">return</span> fVmin <span class="token operator">+</span> fVmax <span class="token operator">-</span> fSCz<span class="token punctuation">;</span>
-      <span class="token keyword">else</span> <span class="token keyword">return</span> fSCz<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event in vertical slider.</span>
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">HandleConfigureNotify</span><span class="token punctuation">(</span>Event_t<span class="token operator">*</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handles resize events for this widget.</span>
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in vertical slider.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetConstrained</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set pointer position constrained in the slider range.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetPointerPosition</span><span class="token punctuation">(</span>Float_t pos<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set pointer position in scaled (real) value</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetRelative</span><span class="token punctuation">(</span>Bool_t rel <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fRelative <span class="token operator">=</span> rel<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">PointerPositionChanged</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;PointerPositionChanged()&quot;</span>); } <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">DrawPointer</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw slider pointer</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t   <span class="hljs-title">GetPointerPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-keyword">if</span> (fReversedScale) <span class="hljs-keyword">return</span> fVmin + fVmax - fSCz;
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> fSCz;
+   }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event in vertical slider.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">HandleConfigureNotify</span><span class="hljs-params">(Event_t* event)</span></span>;<span class="hljs-comment">/// Handles resize events for this widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in vertical slider.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetConstrained</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;<span class="hljs-comment">/// Set pointer position constrained in the slider range.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetPointerPosition</span><span class="hljs-params">(Float_t pos)</span></span>;<span class="hljs-comment">/// Set pointer position in scaled (real) value</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetRelative</span><span class="hljs-params">(Bool_t rel = kTRUE)</span> </span>{ fRelative = rel; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <p><strong>TGTripleHSlider</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGTripleHSlider</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> UInt_t type <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-                   UInt_t options <span class="token operator">=</span> kHorizontalFrame<span class="token punctuation">,</span>
-                   Pixel_t back <span class="token operator">=</span> <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                   Bool_t reversed <span class="token operator">=</span> kFALSE<span class="token punctuation">,</span>
-                   Bool_t mark_ends <span class="token operator">=</span> kFALSE<span class="token punctuation">,</span>
-                   Bool_t constrained <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span>
-                   Bool_t relative <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGTripleHSlider(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t type = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
+                   UInt_t options = kHorizontalFrame,
+                   Pixel_t back = GetDefaultFrameBackground(),
+                   Bool_t reversed = kFALSE,
+                   Bool_t mark_ends = kFALSE,
+                   Bool_t constrained = kTRUE,
+                   Bool_t relative = kFALSE);
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGTripleHSlider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete a horizontal slider widget.</span>
+   <span class="hljs-keyword">virtual</span> ~TGTripleHSlider();<span class="hljs-comment">/// Delete a horizontal slider widget.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">PointerPositionChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;PointerPositionChanged()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">DrawPointer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw slider pointer</span>
-   <span class="token keyword">virtual</span> Float_t   <span class="token function">GetPointerPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>fReversedScale<span class="token punctuation">)</span> <span class="token keyword">return</span> fVmin <span class="token operator">+</span> fVmax <span class="token operator">-</span> fSCz<span class="token punctuation">;</span>
-      <span class="token keyword">else</span> <span class="token keyword">return</span> fSCz<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button event in horizontal slider widget.</span>
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">HandleConfigureNotify</span><span class="token punctuation">(</span>Event_t<span class="token operator">*</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handles resize events for this widget.</span>
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse motion event in horizontal slide widget.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetConstrained</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set pointer position constrained in the slider range.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetPointerPosition</span><span class="token punctuation">(</span>Float_t pos<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set pointer position in scaled (real) value</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetRelative</span><span class="token punctuation">(</span>Bool_t rel <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fRelative <span class="token operator">=</span> rel<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">PointerPositionChanged</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;PointerPositionChanged()&quot;</span>); } <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">DrawPointer</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw slider pointer</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t   <span class="hljs-title">GetPointerPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{
+      <span class="hljs-keyword">if</span> (fReversedScale) <span class="hljs-keyword">return</span> fVmin + fVmax - fSCz;
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> fSCz;
+   }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button event in horizontal slider widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">HandleConfigureNotify</span><span class="hljs-params">(Event_t* event)</span></span>;<span class="hljs-comment">/// Handles resize events for this widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse motion event in horizontal slide widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetConstrained</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;<span class="hljs-comment">/// Set pointer position constrained in the slider range.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetPointerPosition</span><span class="hljs-params">(Float_t pos)</span></span>;<span class="hljs-comment">/// Set pointer position in scaled (real) value</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetRelative</span><span class="hljs-params">(Bool_t rel = kTRUE)</span> </span>{ fRelative = rel; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save an horizontal slider as a C++ statement(s) on output stream out.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TGTripleSlider.h&quot;</span></span>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TGTripleSlider.h&quot;</span></span>
 
-<span class="token comment">// TGTripleSlider</span>
-<span class="token comment">// &#x53EF;&#x8C03;&#x8282;&#x8303;&#x56F4;&#xFF0C;&#x5DE6;&#x53F3;&#x8FB9;&#x754C;&#x5916;&#x52A0;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x503C;</span>
-TGTripleHSlider <span class="token operator">*</span>fHslider1<span class="token punctuation">;</span>
-fHslider1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGTripleHSlider</span><span class="token punctuation">(</span>frame<span class="token punctuation">,</span> <span class="token number">190</span><span class="token punctuation">,</span> kDoubleScaleBoth<span class="token punctuation">,</span> IDs<span class="token punctuation">,</span>
-                kHorizontalFrame<span class="token punctuation">,</span>
-                <span class="token function">GetDefaultFrameBackground</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                kFALSE<span class="token punctuation">,</span> kFALSE<span class="token punctuation">,</span> kFALSE<span class="token punctuation">,</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token string">&quot;PointerPositionChanged()&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;TTripleSliderDemo&quot;</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">&quot;DoSlider()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token string">&quot;PositionChanged()&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;TTripleSliderDemo&quot;</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">&quot;DoSlider()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetRange</span><span class="token punctuation">(</span><span class="token number">0.05</span><span class="token punctuation">,</span><span class="token number">5.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fHslider1<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsTop <span class="token operator">|</span> kLHintsExpandX<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetMinPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Float_t</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetPointerPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Float_t</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetMaxPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//Float_t</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetPointerPosition</span><span class="token punctuation">(</span><span class="token function">atof</span><span class="token punctuation">(</span><span class="token string">&quot;1.23&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetPosition</span><span class="token punctuation">(</span><span class="token function">atof</span><span class="token punctuation">(</span><span class="token string">&quot;5.0&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetMaxPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetPosition</span><span class="token punctuation">(</span>fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetMinPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">atof</span><span class="token punctuation">(</span><span class="token string">&quot;0.1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetConstrained</span><span class="token punctuation">(</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-fHslider1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetRelative</span><span class="token punctuation">(</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">// TGTripleSlider</span>
+<span class="hljs-comment">// &#x53EF;&#x8C03;&#x8282;&#x8303;&#x56F4;&#xFF0C;&#x5DE6;&#x53F3;&#x8FB9;&#x754C;&#x5916;&#x52A0;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x503C;</span>
+TGTripleHSlider *fHslider1;
+fHslider1 = <span class="hljs-keyword">new</span> TGTripleHSlider(frame, <span class="hljs-number">190</span>, kDoubleScaleBoth, IDs,
+                kHorizontalFrame,
+                GetDefaultFrameBackground(),
+                kFALSE, kFALSE, kFALSE, kFALSE);
+fHslider1-&gt;Connect(<span class="hljs-string">&quot;PointerPositionChanged()&quot;</span>, <span class="hljs-string">&quot;TTripleSliderDemo&quot;</span>, <span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;DoSlider()&quot;</span>);
+fHslider1-&gt;Connect(<span class="hljs-string">&quot;PositionChanged()&quot;</span>, <span class="hljs-string">&quot;TTripleSliderDemo&quot;</span>, <span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;DoSlider()&quot;</span>);
+fHslider1-&gt;SetRange(<span class="hljs-number">0.05</span>,<span class="hljs-number">5.0</span>);
+frame-&gt;AddFrame(fHslider1, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsTop | kLHintsExpandX, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>));
+fHslider1-&gt;GetMinPosition();<span class="hljs-comment">//Float_t</span>
+fHslider1-&gt;GetPointerPosition();<span class="hljs-comment">//Float_t</span>
+fHslider1-&gt;GetMaxPosition());<span class="hljs-comment">//Float_t</span>
+fHslider1-&gt;SetPointerPosition(atof(<span class="hljs-string">&quot;1.23&quot;</span>));
+fHslider1-&gt;SetPosition(atof(<span class="hljs-string">&quot;5.0&quot;</span>), fHslider1-&gt;GetMaxPosition());
+fHslider1-&gt;SetPosition(fHslider1-&gt;GetMinPosition(), atof(<span class="hljs-string">&quot;0.1&quot;</span>);
+fHslider1-&gt;SetConstrained(kTRUE);
+fHslider1-&gt;SetRelative(kTRUE);
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGTripleSlider.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3820,7 +3832,7 @@ fHslider1<span class="token operator">-</span><span class="token operator">&gt;<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGTripleSlider*","level":"1.3.74","depth":2,"next":{"title":"TGuiBuilder","level":"1.3.75","depth":2,"path":"class/gui/TGuiBuilder.md","ref":"class/gui/TGuiBuilder.md","articles":[]},"previous":{"title":"TGToolTip","level":"1.3.73","depth":2,"path":"class/gui/TGToolTip.md","ref":"class/gui/TGToolTip.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGTripleSlider.md","mtime":"2018-05-14T09:18:21.528Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGTripleSlider*","level":"1.3.74","depth":2,"next":{"title":"TGuiBuilder","level":"1.3.75","depth":2,"path":"class/gui/TGuiBuilder.md","ref":"class/gui/TGuiBuilder.md","articles":[]},"previous":{"title":"TGToolTip","level":"1.3.73","depth":2,"path":"class/gui/TGToolTip.md","ref":"class/gui/TGToolTip.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGTripleSlider.md","mtime":"2018-05-14T09:18:21.528Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3852,6 +3864,18 @@ fHslider1<span class="token operator">-</span><span class="token operator">&gt;<
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

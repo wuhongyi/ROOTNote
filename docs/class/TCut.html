@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,71 +3692,71 @@
 <p>&#x7EE7;&#x627F; TNamed</p>
 <p>A specialized string object used in TTree selections.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TCut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TCut</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TCut</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TCut</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>cut<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TCut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TCut();
+   TCut(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title);
+   TCut(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title);
+   TCut(<span class="hljs-keyword">const</span> TCut &amp;cut);
+   <span class="hljs-keyword">virtual</span> ~TCut();
 
-   <span class="token comment">// Assignment</span>
-   TCut<span class="token operator">&amp;</span>    <span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TCut<span class="token operator">&amp;</span>    <span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TCut<span class="token operator">&amp;</span>    <span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TCut<span class="token operator">&amp;</span>    <span class="token keyword">operator</span><span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TCut<span class="token operator">&amp;</span>    <span class="token keyword">operator</span><span class="token operator">*</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TCut<span class="token operator">&amp;</span>    <span class="token keyword">operator</span><span class="token operator">*</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Assignment</span>
+   TCut&amp;    <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *rhs);
+   TCut&amp;    <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> TCut &amp;rhs);
+   TCut&amp;    <span class="hljs-keyword">operator</span>+=(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *rhs);
+   TCut&amp;    <span class="hljs-keyword">operator</span>+=(<span class="hljs-keyword">const</span> TCut &amp;rhs);
+   TCut&amp;    <span class="hljs-keyword">operator</span>*=(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *rhs);
+   TCut&amp;    <span class="hljs-keyword">operator</span>*=(<span class="hljs-keyword">const</span> TCut &amp;rhs);
 
-   <span class="token comment">// Comparison</span>
-   Bool_t   <span class="token keyword">operator</span><span class="token operator">==</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>rhs<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t   <span class="token keyword">operator</span><span class="token operator">==</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t   <span class="token keyword">operator</span><span class="token operator">!=</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>rhs<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t   <span class="token keyword">operator</span><span class="token operator">!=</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Comparison</span>
+   Bool_t   <span class="hljs-keyword">operator</span>==(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *rhs) <span class="hljs-keyword">const</span>;
+   Bool_t   <span class="hljs-keyword">operator</span>==(<span class="hljs-keyword">const</span> TCut &amp;rhs) <span class="hljs-keyword">const</span>;
+   Bool_t   <span class="hljs-keyword">operator</span>!=(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *rhs) <span class="hljs-keyword">const</span>;
+   Bool_t   <span class="hljs-keyword">operator</span>!=(<span class="hljs-keyword">const</span> TCut &amp;rhs) <span class="hljs-keyword">const</span>;
 
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// Preventing warnings with -Weffc++ in GCC since the overloading of the &amp;&amp; and || operators was a design choice.</span>
-<span class="token macro property">#<span class="token directive keyword">if</span> (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__) &gt;= 40600</span>
-<span class="token macro property">#<span class="token directive keyword">pragma</span> GCC diagnostic push</span>
-<span class="token macro property">#<span class="token directive keyword">pragma</span> GCC diagnostic ignored &quot;-Weffc++&quot;</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">||</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">||</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">||</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token macro property">#<span class="token directive keyword">if</span> (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__) &gt;= 40600</span>
-<span class="token macro property">#<span class="token directive keyword">pragma</span> GCC diagnostic pop</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
-   <span class="token keyword">friend</span> TCut <span class="token keyword">operator</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">const</span> TCut <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> TCut &amp;lhs, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *lhs, <span class="hljs-keyword">const</span> TCut &amp;rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> TCut &amp;lhs, <span class="hljs-keyword">const</span> TCut &amp;rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> TCut &amp;lhs, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *lhs, <span class="hljs-keyword">const</span> TCut &amp;rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> TCut &amp;lhs, <span class="hljs-keyword">const</span> TCut &amp;rhs);
+<span class="hljs-comment">// Preventing warnings with -Weffc++ in GCC since the overloading of the &amp;&amp; and || operators was a design choice.</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__) &gt;= 40600</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> GCC diagnostic push</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> GCC diagnostic ignored <span class="hljs-meta-string">&quot;-Weffc++&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>&amp;&amp;(<span class="hljs-keyword">const</span> TCut &amp;lhs, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>&amp;&amp;(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *lhs, <span class="hljs-keyword">const</span> TCut &amp;rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>&amp;&amp;(<span class="hljs-keyword">const</span> TCut &amp;lhs, <span class="hljs-keyword">const</span> TCut &amp;rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>||(<span class="hljs-keyword">const</span> TCut &amp;lhs, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>||(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *lhs, <span class="hljs-keyword">const</span> TCut &amp;rhs);
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>||(<span class="hljs-keyword">const</span> TCut &amp;lhs, <span class="hljs-keyword">const</span> TCut &amp;rhs);
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__) &gt;= 40600</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> GCC diagnostic pop</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+   <span class="hljs-keyword">friend</span> TCut <span class="hljs-keyword">operator</span>!(<span class="hljs-keyword">const</span> TCut &amp;rhs);
 
-   <span class="token comment">// Type conversion</span>
-   <span class="token keyword">operator</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">GetTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">// Type conversion</span>
+   <span class="hljs-keyword">operator</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>*() <span class="hljs-keyword">const</span> { <span class="hljs-keyword">return</span> GetTitle(); }
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// A specialized string object used for TTree selections.</span>
-<span class="token comment">// A TCut object has a name and a title. It does not add any data</span>
-<span class="token comment">// members compared to a TNamed. It only add a set of operators to</span>
-<span class="token comment">// facilitate logical string concatenation. </span>
-<span class="token comment">// Operators =, +=, +, *, !, &amp;&amp;, || overloaded.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// A specialized string object used for TTree selections.</span>
+<span class="hljs-comment">// A TCut object has a name and a title. It does not add any data</span>
+<span class="hljs-comment">// members compared to a TNamed. It only add a set of operators to</span>
+<span class="hljs-comment">// facilitate logical string concatenation. </span>
+<span class="hljs-comment">// Operators =, +=, +, *, !, &amp;&amp;, || overloaded.</span>
 
-    Root <span class="token operator">&gt;</span> TCut c1 <span class="token operator">=</span> <span class="token string">&quot;x&lt;1&quot;</span>
-    Root <span class="token operator">&gt;</span> TCut c2 <span class="token operator">=</span> <span class="token string">&quot;y&lt;0&quot;</span>
-    Root <span class="token operator">&gt;</span> TCut c3 <span class="token operator">=</span> c1<span class="token operator">&amp;&amp;</span>c2
-    Root <span class="token operator">&gt;</span> ntuple<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;x&quot;</span><span class="token punctuation">,</span> c1<span class="token punctuation">)</span>
-    Root <span class="token operator">&gt;</span> ntuple<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;x&quot;</span><span class="token punctuation">,</span> c1<span class="token operator">||</span><span class="token string">&quot;x&gt;0&quot;</span><span class="token punctuation">)</span>
-    Root <span class="token operator">&gt;</span> ntuple<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;x&quot;</span><span class="token punctuation">,</span> c1<span class="token operator">&amp;&amp;</span>c2<span class="token punctuation">)</span>
-    Root <span class="token operator">&gt;</span> ntuple<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;x&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;(x+y)&quot;</span><span class="token operator">*</span><span class="token punctuation">(</span>c1<span class="token operator">&amp;&amp;</span>c2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    Root &gt; TCut c1 = <span class="hljs-string">&quot;x&lt;1&quot;</span>
+    Root &gt; TCut c2 = <span class="hljs-string">&quot;y&lt;0&quot;</span>
+    Root &gt; TCut c3 = c1&amp;&amp;c2
+    Root &gt; ntuple.Draw(<span class="hljs-string">&quot;x&quot;</span>, c1)
+    Root &gt; ntuple.Draw(<span class="hljs-string">&quot;x&quot;</span>, c1||<span class="hljs-string">&quot;x&gt;0&quot;</span>)
+    Root &gt; ntuple.Draw(<span class="hljs-string">&quot;x&quot;</span>, c1&amp;&amp;c2)
+    Root &gt; ntuple.Draw(<span class="hljs-string">&quot;x&quot;</span>, <span class="hljs-string">&quot;(x+y)&quot;</span>*(c1&amp;&amp;c2))
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TCut.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3787,7 +3799,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCut*","level":"1.2.13","depth":2,"next":{"title":"TCutG*","level":"1.2.14","depth":2,"path":"class/TCutG.md","ref":"class/TCutG.md","articles":[]},"previous":{"title":"TColor","level":"1.2.12","depth":2,"path":"class/TColor.md","ref":"class/TColor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TCut.md","mtime":"2018-05-14T09:18:22.780Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCut*","level":"1.2.13","depth":2,"next":{"title":"TCutG*","level":"1.2.14","depth":2,"path":"class/TCutG.md","ref":"class/TCutG.md","articles":[]},"previous":{"title":"TColor","level":"1.2.12","depth":2,"path":"class/TColor.md","ref":"class/TColor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TCut.md","mtime":"2018-05-14T09:18:22.780Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3819,6 +3831,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

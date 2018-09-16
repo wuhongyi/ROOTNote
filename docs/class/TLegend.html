@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3701,204 +3713,204 @@ associated to this object and an option which a combination of:  </p>
 <li>E: draw vertical error bar</li>
 </ul>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TLegend</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TLegend</span><span class="token punctuation">(</span> Double_t x1<span class="token punctuation">,</span> Double_t y1<span class="token punctuation">,</span> Double_t x2<span class="token punctuation">,</span> Double_t y2<span class="token punctuation">,</span>
-            <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> header <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Option_t<span class="token operator">*</span> option<span class="token operator">=</span><span class="token string">&quot;brNDC&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Normal constructor.</span>
-<span class="token comment">/// A TLegend is a Pave with several TLegendEntry(s).</span>
-<span class="token comment">/// x1,y1,x2,y2 are the coordinates of the Legend in the current pad</span>
-<span class="token comment">/// (in normalised coordinates by default)</span>
-<span class="token comment">/// &quot;header&quot; is the title that will be displayed at the top of the legend</span>
-<span class="token comment">/// it is treated like a regular entry and supports TLatex. The default</span>
-<span class="token comment">/// is no header (header = 0).</span>
-<span class="token comment">/// The options are the same as for TPave Default = &quot;brNDC&quot;</span>
+<pre><code class="lang-cpp">   TLegend();
+   TLegend( Double_t x1, Double_t y1, Double_t x2, Double_t y2,
+            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* header = <span class="hljs-string">&quot;&quot;</span>, Option_t* option=<span class="hljs-string">&quot;brNDC&quot;</span> );
+<span class="hljs-comment">/// Normal constructor.</span>
+<span class="hljs-comment">/// A TLegend is a Pave with several TLegendEntry(s).</span>
+<span class="hljs-comment">/// x1,y1,x2,y2 are the coordinates of the Legend in the current pad</span>
+<span class="hljs-comment">/// (in normalised coordinates by default)</span>
+<span class="hljs-comment">/// &quot;header&quot; is the title that will be displayed at the top of the legend</span>
+<span class="hljs-comment">/// it is treated like a regular entry and supports TLatex. The default</span>
+<span class="hljs-comment">/// is no header (header = 0).</span>
+<span class="hljs-comment">/// The options are the same as for TPave Default = &quot;brNDC&quot;</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TLegend</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TLegend</span><span class="token punctuation">(</span> <span class="token keyword">const</span> TLegend <span class="token operator">&amp;</span>legend <span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">virtual</span> ~TLegend();
+   TLegend( <span class="hljs-keyword">const</span> TLegend &amp;legend );
 
-   TLegendEntry   <span class="token operator">*</span><span class="token function">AddEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject<span class="token operator">*</span> obj<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> label <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;lpf&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add a new entry to this legend. &quot;obj&quot; is the object to be represented.</span>
-<span class="token comment">/// &quot;label&quot; is the text you wish to associate with obj in the legend.</span>
-<span class="token comment">/// If &quot;label&quot; is null or empty, the title of the object will be used.</span>
-<span class="token comment">/// Options are:</span>
-<span class="token comment">///  - L: draw line associated with TAttLine if obj inherits from TAttLine</span>
-<span class="token comment">///  - P: draw polymarker associated with TAttMarker if obj inherits from TAttMarker</span>
-<span class="token comment">///  - F: draw a box with fill associated wit TAttFill if obj inherits TAttFill</span>
-<span class="token comment">///  - E: draw vertical error bar if option &quot;L&quot; is also specified</span>
+   <span class="hljs-function">TLegendEntry   *<span class="hljs-title">AddEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject* obj, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* label = <span class="hljs-string">&quot;&quot;</span>, Option_t* option = <span class="hljs-string">&quot;lpf&quot;</span> )</span></span>;
+<span class="hljs-comment">/// Add a new entry to this legend. &quot;obj&quot; is the object to be represented.</span>
+<span class="hljs-comment">/// &quot;label&quot; is the text you wish to associate with obj in the legend.</span>
+<span class="hljs-comment">/// If &quot;label&quot; is null or empty, the title of the object will be used.</span>
+<span class="hljs-comment">/// Options are:</span>
+<span class="hljs-comment">///  - L: draw line associated with TAttLine if obj inherits from TAttLine</span>
+<span class="hljs-comment">///  - P: draw polymarker associated with TAttMarker if obj inherits from TAttMarker</span>
+<span class="hljs-comment">///  - F: draw a box with fill associated wit TAttFill if obj inherits TAttFill</span>
+<span class="hljs-comment">///  - E: draw vertical error bar if option &quot;L&quot; is also specified</span>
 
-   TLegendEntry   <span class="token operator">*</span><span class="token function">AddEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> label <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;lpf&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add a new entry to this legend. &quot;name&quot; is the name of an object in the pad to</span>
-<span class="token comment">/// be represented label is the text you wish to associate with obj in the legend</span>
-<span class="token comment">/// if label is null or empty, the title of the object will be used.</span>
-<span class="token comment">/// Options are:</span>
-<span class="token comment">///  - L: draw line associated with TAttLine if obj inherits from TAttLine</span>
-<span class="token comment">///  - P: draw polymarker associated with TAttMarker if obj inherits from TAttMarker</span>
-<span class="token comment">///  - F: draw a box with fill associated wit TAttFill if obj inherits TAttFill</span>
-<span class="token comment">///  - E: draw vertical error bar if option &quot;L&quot; is also specified</span>
+   <span class="hljs-function">TLegendEntry   *<span class="hljs-title">AddEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* label = <span class="hljs-string">&quot;&quot;</span>, Option_t* option = <span class="hljs-string">&quot;lpf&quot;</span> )</span></span>;
+<span class="hljs-comment">/// Add a new entry to this legend. &quot;name&quot; is the name of an object in the pad to</span>
+<span class="hljs-comment">/// be represented label is the text you wish to associate with obj in the legend</span>
+<span class="hljs-comment">/// if label is null or empty, the title of the object will be used.</span>
+<span class="hljs-comment">/// Options are:</span>
+<span class="hljs-comment">///  - L: draw line associated with TAttLine if obj inherits from TAttLine</span>
+<span class="hljs-comment">///  - P: draw polymarker associated with TAttMarker if obj inherits from TAttMarker</span>
+<span class="hljs-comment">///  - F: draw a box with fill associated wit TAttFill if obj inherits TAttFill</span>
+<span class="hljs-comment">///  - E: draw vertical error bar if option &quot;L&quot; is also specified</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">Clear</span><span class="token punctuation">(</span> Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU* /// Clear all entries in this legend, including the header.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">Copy</span><span class="token punctuation">(</span> TObject <span class="token operator">&amp;</span>obj <span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">/// Copy this legend into &quot;obj&quot;.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">DeleteEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU* /// Delete entry at the mouse position.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">Draw</span><span class="token punctuation">(</span> Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw this legend with its current attributes.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">EditEntryAttFill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Edit the fill attributes for the entry pointed by the mouse.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">EditEntryAttLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Edit the line attributes for the entry pointed by the mouse.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">EditEntryAttMarker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Edit the marker attributes for the entry pointed by the mouse.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">EditEntryAttText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Edit the text attributes for the entry pointed by the mouse.</span>
-   Float_t         <span class="token function">GetColumnSeparation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fColumnSeparation<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TLegendEntry   <span class="token operator">*</span><span class="token function">GetEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get entry pointed to by the mouse.</span>
-<span class="token comment">/// This method is mostly a tool for other methods inside this class.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">Clear</span><span class="hljs-params">( Option_t* option = <span class="hljs-string">&quot;&quot;</span> )</span></span>; <span class="hljs-comment">// *MENU* /// Clear all entries in this legend, including the header.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">Copy</span><span class="hljs-params">( TObject &amp;obj )</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">/// Copy this legend into &quot;obj&quot;.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">DeleteEntry</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU* /// Delete entry at the mouse position.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">Draw</span><span class="hljs-params">( Option_t* option = <span class="hljs-string">&quot;&quot;</span> )</span></span>;<span class="hljs-comment">/// Draw this legend with its current attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">EditEntryAttFill</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Edit the fill attributes for the entry pointed by the mouse.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">EditEntryAttLine</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Edit the line attributes for the entry pointed by the mouse.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">EditEntryAttMarker</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Edit the marker attributes for the entry pointed by the mouse.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">EditEntryAttText</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Edit the text attributes for the entry pointed by the mouse.</span>
+   <span class="hljs-function">Float_t         <span class="hljs-title">GetColumnSeparation</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fColumnSeparation; }
+   <span class="hljs-function">TLegendEntry   *<span class="hljs-title">GetEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Get entry pointed to by the mouse.</span>
+<span class="hljs-comment">/// This method is mostly a tool for other methods inside this class.</span>
 
-   Float_t         <span class="token function">GetEntrySeparation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fEntrySeparation<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetHeader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns the header, which is the title that appears at the top</span>
-<span class="token comment">/// of the legend.</span>
+   <span class="hljs-function">Float_t         <span class="hljs-title">GetEntrySeparation</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEntrySeparation; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetHeader</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the header, which is the title that appears at the top</span>
+<span class="hljs-comment">/// of the legend.</span>
 
-   TList          <span class="token operator">*</span><span class="token function">GetListOfPrimitives</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fPrimitives<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Float_t         <span class="token function">GetMargin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMargin<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t           <span class="token function">GetNColumns</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fNColumns<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t           <span class="token function">GetNRows</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Get the number of rows.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">InsertEntry</span><span class="token punctuation">(</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> objectName <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> label <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
-                               Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;lpf&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Add a new entry before the entry at the mouse position.</span>
+   <span class="hljs-function">TList          *<span class="hljs-title">GetListOfPrimitives</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fPrimitives;}
+   <span class="hljs-function">Float_t         <span class="hljs-title">GetMargin</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMargin; }
+   <span class="hljs-function">Int_t           <span class="hljs-title">GetNColumns</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNColumns; }
+   <span class="hljs-function">Int_t           <span class="hljs-title">GetNRows</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Get the number of rows.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">InsertEntry</span><span class="hljs-params">( <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* objectName = <span class="hljs-string">&quot;&quot;</span>,<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* label = <span class="hljs-string">&quot;&quot;</span>,
+                               Option_t* option = <span class="hljs-string">&quot;lpf&quot;</span> )</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Add a new entry before the entry at the mouse position.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">Paint</span><span class="token punctuation">(</span> Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Paint this legend with its current attributes.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">PaintPrimitives</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Paint the entries (list of primitives) for this legend.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">Print</span><span class="token punctuation">(</span> Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Paint this legend with its current attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">Paint</span><span class="hljs-params">( Option_t* option = <span class="hljs-string">&quot;&quot;</span> )</span></span>;<span class="hljs-comment">/// Paint this legend with its current attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">PaintPrimitives</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Paint the entries (list of primitives) for this legend.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">Print</span><span class="hljs-params">( Option_t* option = <span class="hljs-string">&quot;&quot;</span> )</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Paint this legend with its current attributes.</span>
 
-<span class="token comment">/// Dump this TLegend and its contents.</span>
+<span class="hljs-comment">/// Dump this TLegend and its contents.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">RecursiveRemove</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Reset the legend entries pointing to &quot;obj&quot;.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">RecursiveRemove</span><span class="hljs-params">(TObject *obj)</span></span>;
+<span class="hljs-comment">/// Reset the legend entries pointing to &quot;obj&quot;.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option  <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save this legend as C++ statements on output stream out</span>
-<span class="token comment">/// to be used with the SaveAs .C option.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option  = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save this legend as C++ statements on output stream out</span>
+<span class="hljs-comment">/// to be used with the SaveAs .C option.</span>
 
-   <span class="token keyword">void</span>            <span class="token function">SetDefaults</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fEntrySeparation <span class="token operator">=</span> <span class="token number">0.1f</span><span class="token punctuation">;</span> fMargin <span class="token operator">=</span> <span class="token number">0.25f</span><span class="token punctuation">;</span> fNColumns <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> fColumnSeparation <span class="token operator">=</span> <span class="token number">0.0f</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>            <span class="token function">SetColumnSeparation</span><span class="token punctuation">(</span> Float_t columnSeparation <span class="token punctuation">)</span>
-                     <span class="token punctuation">{</span> fColumnSeparation <span class="token operator">=</span> columnSeparation<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">SetEntryLabel</span><span class="token punctuation">(</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> label <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Edit the label of the entry pointed to by the mouse.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>            <span class="hljs-title">SetDefaults</span><span class="hljs-params">()</span> </span>{ fEntrySeparation = <span class="hljs-number">0.1f</span>; fMargin = <span class="hljs-number">0.25f</span>; fNColumns = <span class="hljs-number">1</span>; fColumnSeparation = <span class="hljs-number">0.0f</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>            <span class="hljs-title">SetColumnSeparation</span><span class="hljs-params">( Float_t columnSeparation )</span>
+                     </span>{ fColumnSeparation = columnSeparation; } <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SetEntryLabel</span><span class="hljs-params">( <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* label )</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Edit the label of the entry pointed to by the mouse.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">SetEntryOption</span><span class="token punctuation">(</span> Option_t<span class="token operator">*</span> option <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Edit the option of the entry pointed to by the mouse.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SetEntryOption</span><span class="hljs-params">( Option_t* option )</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Edit the option of the entry pointed to by the mouse.</span>
 
-   <span class="token keyword">void</span>            <span class="token function">SetEntrySeparation</span><span class="token punctuation">(</span> Float_t entryseparation <span class="token punctuation">)</span>
-                     <span class="token punctuation">{</span> fEntrySeparation <span class="token operator">=</span> entryseparation<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">SetHeader</span><span class="token punctuation">(</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>header <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Sets the header, which is the &quot;title&quot; that appears at the top of the legend.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>            <span class="hljs-title">SetEntrySeparation</span><span class="hljs-params">( Float_t entryseparation )</span>
+                     </span>{ fEntrySeparation = entryseparation; } <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SetHeader</span><span class="hljs-params">( <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *header = <span class="hljs-string">&quot;&quot;</span> )</span></span>;  <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Sets the header, which is the &quot;title&quot; that appears at the top of the legend.</span>
 
-   <span class="token keyword">void</span>            <span class="token function">SetMargin</span><span class="token punctuation">(</span> Float_t margin <span class="token punctuation">)</span> <span class="token punctuation">{</span> fMargin <span class="token operator">=</span> margin<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *MENU*</span>
-   <span class="token keyword">void</span>            <span class="token function">SetNColumns</span><span class="token punctuation">(</span> Int_t nColumns <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Set the number of columns for the legend. The header, if set, is given</span>
-<span class="token comment">/// its own row. After that, every nColumns entries are inserted into the</span>
-<span class="token comment">/// same row. For example, if one calls legend.SetNColumns(2), and there</span>
-<span class="token comment">/// is no header, then the first two TObjects added to the legend will be</span>
-<span class="token comment">/// in the first row, the next two will appear in the second row, and so on.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>            <span class="hljs-title">SetMargin</span><span class="hljs-params">( Float_t margin )</span> </span>{ fMargin = margin; } <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>            <span class="hljs-title">SetNColumns</span><span class="hljs-params">( Int_t nColumns )</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set the number of columns for the legend. The header, if set, is given</span>
+<span class="hljs-comment">/// its own row. After that, every nColumns entries are inserted into the</span>
+<span class="hljs-comment">/// same row. For example, if one calls legend.SetNColumns(2), and there</span>
+<span class="hljs-comment">/// is no header, then the first two TObjects added to the legend will be</span>
+<span class="hljs-comment">/// in the first row, the next two will appear in the second row, and so on.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// In particular it can be interesting to change the text alignement that way. In</span>
-<span class="token comment">// order to have a base-line vertical alignment instead of a centered one simply do:</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// In particular it can be interesting to change the text alignement that way. In</span>
+<span class="hljs-comment">// order to have a base-line vertical alignment instead of a centered one simply do:</span>
 
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextAlign</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   leg-&gt;SetTextAlign(<span class="hljs-number">13</span>);
 
-<span class="token comment">// or</span>
+<span class="hljs-comment">// or</span>
 
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextAlign</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   leg-&gt;SetTextAlign(<span class="hljs-number">11</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp">The <span class="token keyword">default</span> value of some TLegend attributes can be changed <span class="token keyword">using</span>
-gStyle<span class="token punctuation">.</span> The <span class="token keyword">default</span> settings are<span class="token operator">:</span>
+<pre><code class="lang-cpp">The <span class="hljs-keyword">default</span> value of some TLegend attributes can be changed <span class="hljs-keyword">using</span>
+gStyle. The <span class="hljs-keyword">default</span> settings are:
 
-   <span class="token function">SetLegendBorderSize</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">SetLegendFillColor</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">SetLegendFont</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">SetLegendTextSize</span><span class="token punctuation">(</span><span class="token number">0.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   SetLegendBorderSize(<span class="hljs-number">1</span>);
+   SetLegendFillColor(<span class="hljs-number">0</span>);
+   SetLegendFont(<span class="hljs-number">42</span>);
+   SetLegendTextSize(<span class="hljs-number">0.</span>);
 
-<span class="token comment">// The global attributes change the default values for the next created legends.</span>
+<span class="hljs-comment">// The global attributes change the default values for the next created legends.</span>
 
-<span class="token comment">// Text attributes can be also changed individually on each legend entry:</span>
+<span class="hljs-comment">// Text attributes can be also changed individually on each legend entry:</span>
 
-   TLegendEntry <span class="token operator">*</span>le <span class="token operator">=</span> leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>h1<span class="token punctuation">,</span><span class="token string">&quot;Histogram filled with random numbers&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;f&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   le<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextColor</span><span class="token punctuation">(</span>kBlue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+   TLegendEntry *le = leg-&gt;AddEntry(h1,<span class="hljs-string">&quot;Histogram filled with random numbers&quot;</span>,<span class="hljs-string">&quot;f&quot;</span>);
+   le-&gt;SetTextColor(kBlue);;
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// When an object is added by name, a scan is performed on the list of objects</span>
-<span class="token comment">// contained in the current pad (gPad) and also in the possible TMultiGraph and</span>
-<span class="token comment">// THStack present in the pad. If a matching name is found, the corresponding</span>
-<span class="token comment">// object is added in the legend using its pointer.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// When an object is added by name, a scan is performed on the list of objects</span>
+<span class="hljs-comment">// contained in the current pad (gPad) and also in the possible TMultiGraph and</span>
+<span class="hljs-comment">// THStack present in the pad. If a matching name is found, the corresponding</span>
+<span class="hljs-comment">// object is added in the legend using its pointer.</span>
 
-   TCanvas <span class="token operator">*</span>c1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;c1&quot;</span><span class="token punctuation">,</span><span class="token number">600</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   gStyle<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetOptStat</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TCanvas *c1 = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-number">600</span>,<span class="hljs-number">500</span>);
+   gStyle-&gt;SetOptStat(<span class="hljs-number">0</span>);
 
-   TH1F <span class="token operator">*</span>h1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TH1F</span><span class="token punctuation">(</span><span class="token string">&quot;h1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;TLegend Example&quot;</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">FillRandom</span><span class="token punctuation">(</span><span class="token string">&quot;gaus&quot;</span><span class="token punctuation">,</span><span class="token number">30000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetFillColor</span><span class="token punctuation">(</span>kGreen<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetFillStyle</span><span class="token punctuation">(</span><span class="token number">3003</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   h1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TH1F *h1 = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;h1&quot;</span>,<span class="hljs-string">&quot;TLegend Example&quot;</span>,<span class="hljs-number">200</span>,<span class="hljs-number">-10</span>,<span class="hljs-number">10</span>);
+   h1-&gt;FillRandom(<span class="hljs-string">&quot;gaus&quot;</span>,<span class="hljs-number">30000</span>);
+   h1-&gt;SetFillColor(kGreen);
+   h1-&gt;SetFillStyle(<span class="hljs-number">3003</span>);
+   h1-&gt;Draw();
 
-   TF1 <span class="token operator">*</span>f1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token function">TF1</span><span class="token punctuation">(</span><span class="token string">&quot;f1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;1000*TMath::Abs(sin(x)/x)&quot;</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLineColor</span><span class="token punctuation">(</span>kBlue<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLineWidth</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;same&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TF1 *f1=<span class="hljs-keyword">new</span> TF1(<span class="hljs-string">&quot;f1&quot;</span>,<span class="hljs-string">&quot;1000*TMath::Abs(sin(x)/x)&quot;</span>,<span class="hljs-number">-10</span>,<span class="hljs-number">10</span>);
+   f1-&gt;SetLineColor(kBlue);
+   f1-&gt;SetLineWidth(<span class="hljs-number">4</span>);
+   f1-&gt;Draw(<span class="hljs-string">&quot;same&quot;</span>);
 
-   <span class="token keyword">const</span> Int_t n <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
-   Double_t x<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">,</span> ex<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">,</span> ey<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-   <span class="token keyword">for</span> <span class="token punctuation">(</span>Int_t i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      x<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">=</span> i<span class="token operator">*</span><span class="token number">0.1</span><span class="token punctuation">;</span>
-      y<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">=</span> <span class="token number">1000</span><span class="token operator">*</span><span class="token function">sin</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      x<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">=</span> <span class="token number">17.8</span><span class="token operator">*</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">8.9</span><span class="token punctuation">;</span>
-      ex<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span>
-      ey<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10.</span><span class="token operator">*</span>i<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   TGraphErrors <span class="token operator">*</span>gr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGraphErrors</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>ex<span class="token punctuation">,</span>ey<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   gr<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetName</span><span class="token punctuation">(</span><span class="token string">&quot;gr&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   gr<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLineColor</span><span class="token punctuation">(</span>kRed<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   gr<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLineWidth</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   gr<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetMarkerStyle</span><span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   gr<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetMarkerSize</span><span class="token punctuation">(</span><span class="token number">1.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   gr<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetMarkerColor</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   gr<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;P&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">const</span> Int_t n = <span class="hljs-number">20</span>;
+   Double_t x[n], y[n], ex[n], ey[n];
+   <span class="hljs-keyword">for</span> (Int_t i=<span class="hljs-number">0</span>;i&lt;n;i++) {
+      x[i]  = i*<span class="hljs-number">0.1</span>;
+      y[i]  = <span class="hljs-number">1000</span>*<span class="hljs-built_in">sin</span>(x[i]+<span class="hljs-number">0.2</span>);
+      x[i]  = <span class="hljs-number">17.8</span>*x[i]<span class="hljs-number">-8.9</span>;
+      ex[i] = <span class="hljs-number">1.0</span>;
+      ey[i] = <span class="hljs-number">10.</span>*i;
+   }
+   TGraphErrors *gr = <span class="hljs-keyword">new</span> TGraphErrors(n,x,y,ex,ey);
+   gr-&gt;SetName(<span class="hljs-string">&quot;gr&quot;</span>);
+   gr-&gt;SetLineColor(kRed);
+   gr-&gt;SetLineWidth(<span class="hljs-number">2</span>);
+   gr-&gt;SetMarkerStyle(<span class="hljs-number">21</span>);
+   gr-&gt;SetMarkerSize(<span class="hljs-number">1.3</span>);
+   gr-&gt;SetMarkerColor(<span class="hljs-number">7</span>);
+   gr-&gt;Draw(<span class="hljs-string">&quot;P&quot;</span>);
 
-   leg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TLegend</span><span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">,</span><span class="token number">0.7</span><span class="token punctuation">,</span><span class="token number">0.48</span><span class="token punctuation">,</span><span class="token number">0.9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetHeader</span><span class="token punctuation">(</span><span class="token string">&quot;The Legend Title&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>h1<span class="token punctuation">,</span><span class="token string">&quot;Histogram filled with random numbers&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;f&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span><span class="token string">&quot;f1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Function abs(#frac{sin(x)}{x})&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;l&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span><span class="token string">&quot;gr&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Graph with error bars&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;lep&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   leg = <span class="hljs-keyword">new</span> TLegend(<span class="hljs-number">0.1</span>,<span class="hljs-number">0.7</span>,<span class="hljs-number">0.48</span>,<span class="hljs-number">0.9</span>);
+   leg-&gt;SetHeader(<span class="hljs-string">&quot;The Legend Title&quot;</span>);
+   leg-&gt;AddEntry(h1,<span class="hljs-string">&quot;Histogram filled with random numbers&quot;</span>,<span class="hljs-string">&quot;f&quot;</span>);
+   leg-&gt;AddEntry(<span class="hljs-string">&quot;f1&quot;</span>,<span class="hljs-string">&quot;Function abs(#frac{sin(x)}{x})&quot;</span>,<span class="hljs-string">&quot;l&quot;</span>);
+   leg-&gt;AddEntry(<span class="hljs-string">&quot;gr&quot;</span>,<span class="hljs-string">&quot;Graph with error bars&quot;</span>,<span class="hljs-string">&quot;lep&quot;</span>);
+   leg-&gt;Draw();
 
-   <span class="token keyword">return</span> c1<span class="token punctuation">;</span>
+   <span class="hljs-keyword">return</span> c1;
 </code></pre>
-<pre class="language-"><code class="lang-cpp">It is possible to draw the legend entries over several columns <span class="token keyword">using</span>
-the method <span class="token function">SetNColumns</span><span class="token punctuation">(</span><span class="token punctuation">)</span> like in the following example<span class="token punctuation">.</span>
+<pre><code class="lang-cpp">It is possible to draw the legend entries over several columns using
+the method SetNColumns() like in the following example.
 
-   TCanvas <span class="token operator">*</span>c3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c2&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;c2&quot;</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">,</span><span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TCanvas *c3 = new TCanvas(&quot;c2&quot;,&quot;c2&quot;,500,300);
 
-   TLegend<span class="token operator">*</span> leg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TLegend</span><span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">.8</span><span class="token punctuation">,</span> <span class="token number">.8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TH1<span class="token operator">*</span> h <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TH1F</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TLegend* leg = new TLegend(0.2, 0.2, .8, .8);
+   TH1* h = new TH1F(&quot;&quot;, &quot;&quot;, 1, 0, 1);
 
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token function">SetNColumns</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   leg-&gt; SetNColumns(2);
 
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>h<span class="token punctuation">,</span> <span class="token string">&quot;Column 1 line 1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;l&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>h<span class="token punctuation">,</span> <span class="token string">&quot;Column 2 line 1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;l&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>h<span class="token punctuation">,</span> <span class="token string">&quot;Column 1 line 2&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;l&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>h<span class="token punctuation">,</span> <span class="token string">&quot;Column 2 line 2&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;l&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   leg-&gt;AddEntry(h, &quot;Column 1 line 1&quot;, &quot;l&quot;);
+   leg-&gt;AddEntry(h, &quot;Column 2 line 1&quot;, &quot;l&quot;);
+   leg-&gt;AddEntry(h, &quot;Column 1 line 2&quot;, &quot;l&quot;);
+   leg-&gt;AddEntry(h, &quot;Column 2 line 2&quot;, &quot;l&quot;);
 
-   leg<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">return</span> c3<span class="token punctuation">;</span>
+   leg-&gt;Draw();
+   return c3;
 </code></pre>
-<pre class="language-"><code class="lang-cpp">TLegend <span class="token operator">*</span>legend <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TLegend</span><span class="token punctuation">(</span><span class="token number">0.55</span><span class="token punctuation">,</span><span class="token number">0.65</span><span class="token punctuation">,</span><span class="token number">0.76</span><span class="token punctuation">,</span><span class="token number">0.82</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-legend<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetHeader</span><span class="token punctuation">(</span><span class="token string">&quot;The Legend Title&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-legend<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextSize</span><span class="token punctuation">(</span><span class="token number">0.05</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-legend<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetBorderSize</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-legend<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>h1<span class="token punctuation">,</span><span class="token string">&quot;All nations&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-legend<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>h2<span class="token punctuation">,</span><span class="token string">&quot;French only&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-legend<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">TLegend *legend = <span class="hljs-keyword">new</span> TLegend(<span class="hljs-number">0.55</span>,<span class="hljs-number">0.65</span>,<span class="hljs-number">0.76</span>,<span class="hljs-number">0.82</span>);
+legend-&gt;SetHeader(<span class="hljs-string">&quot;The Legend Title&quot;</span>);
+legend-&gt;SetTextSize(<span class="hljs-number">0.05</span>);
+legend-&gt;SetBorderSize(<span class="hljs-number">0</span>);
+legend-&gt;AddEntry(h1,<span class="hljs-string">&quot;All nations&quot;</span>,<span class="hljs-string">&quot;&quot;</span>);
+legend-&gt;AddEntry(h2,<span class="hljs-string">&quot;French only&quot;</span>,<span class="hljs-string">&quot;&quot;</span>);
+legend-&gt;Draw();
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TLegend.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3941,7 +3953,7 @@ legend<span class="token operator">-</span><span class="token operator">&gt;</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TLegend*","level":"1.2.38","depth":2,"next":{"title":"TLegendEntry*","level":"1.2.39","depth":2,"path":"class/TLegendEntry.md","ref":"class/TLegendEntry.md","articles":[]},"previous":{"title":"TLatex*","level":"1.2.37","depth":2,"path":"class/TLatex.md","ref":"class/TLatex.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TLegend.md","mtime":"2018-05-14T09:18:22.480Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TLegend*","level":"1.2.38","depth":2,"next":{"title":"TLegendEntry*","level":"1.2.39","depth":2,"path":"class/TLegendEntry.md","ref":"class/TLegendEntry.md","articles":[]},"previous":{"title":"TLatex*","level":"1.2.37","depth":2,"path":"class/TLatex.md","ref":"class/TLatex.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TLegend.md","mtime":"2018-05-14T09:18:22.480Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3973,6 +3985,18 @@ legend<span class="token operator">-</span><span class="token operator">&gt;</sp
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

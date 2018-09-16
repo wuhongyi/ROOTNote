@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,155 +3692,155 @@
 <p>The ROOT standard fitter based on TMinuit</p>
 <p>TFitter &#x7EE7;&#x627F; TVirtualFitter</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TFitter</span><span class="token punctuation">(</span>Int_t maxpar <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TFitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">Chisquare</span><span class="token punctuation">(</span>Int_t npar<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>params<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">;</span><span class="token comment">/// return a chisquare equivalent</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// reset the fitter environment</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">ExecuteCommand</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>command<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>args<span class="token punctuation">,</span> Int_t nargs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute a fitter command;</span>
-<span class="token comment">///   command : command string</span>
-<span class="token comment">///   args    : list of nargs command arguments</span>
+<pre><code class="lang-cpp">   TFitter(Int_t maxpar = 25);
+   virtual ~TFitter();
+   virtual Double_t   Chisquare(Int_t npar, Double_t *params) const ;/// return a chisquare equivalent
+   virtual void       Clear(Option_t *option=&quot;&quot;);/// reset the fitter environment
+   virtual Int_t      ExecuteCommand(const char *command, Double_t *args, Int_t nargs);
+/// Execute a fitter command;
+///   command : command string
+///   args    : list of nargs command arguments
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">FitChisquare</span><span class="token punctuation">(</span>Int_t <span class="token operator">&amp;</span>npar<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>gin<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>f<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>u<span class="token punctuation">,</span> Int_t flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///  Minimization function for H1s using a Chisquare method</span>
-<span class="token comment">///  Default method (function evaluated at center of bin)</span>
-<span class="token comment">///  for each point the cache contains the following info</span>
-<span class="token comment">///    -1D : bc,e, xc  (bin content, error, x of center of bin)</span>
-<span class="token comment">///    -2D : bc,e, xc,yc</span>
-<span class="token comment">///    -3D : bc,e, xc,yc,zc</span>
+   virtual void       FitChisquare(Int_t &amp;npar, Double_t *gin, Double_t &amp;f, Double_t *u, Int_t flag);
+///  Minimization function for H1s using a Chisquare method
+///  Default method (function evaluated at center of bin)
+///  for each point the cache contains the following info
+///    -1D : bc,e, xc  (bin content, error, x of center of bin)
+///    -2D : bc,e, xc,yc
+///    -3D : bc,e, xc,yc,zc
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">FitChisquareI</span><span class="token punctuation">(</span>Int_t <span class="token operator">&amp;</span>npar<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>gin<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>f<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>u<span class="token punctuation">,</span> Int_t flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///  Minimization function for H1s using a Chisquare method</span>
-<span class="token comment">///  The &quot;I&quot;ntegral method is used</span>
-<span class="token comment">///  for each point the cache contains the following info</span>
-<span class="token comment">///    -1D : bc,e, xc,xw  (bin content, error, x of center of bin, x bin width of bin)</span>
-<span class="token comment">///    -2D : bc,e, xc,xw,yc,yw</span>
-<span class="token comment">///    -3D : bc,e, xc,xw,yc,yw,zc,zw</span>
+   virtual void       FitChisquareI(Int_t &amp;npar, Double_t *gin, Double_t &amp;f, Double_t *u, Int_t flag);
+///  Minimization function for H1s using a Chisquare method
+///  The &quot;I&quot;ntegral method is used
+///  for each point the cache contains the following info
+///    -1D : bc,e, xc,xw  (bin content, error, x of center of bin, x bin width of bin)
+///    -2D : bc,e, xc,xw,yc,yw
+///    -3D : bc,e, xc,xw,yc,yw,zc,zw
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">FitLikelihood</span><span class="token punctuation">(</span>Int_t <span class="token operator">&amp;</span>npar<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>gin<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>f<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>u<span class="token punctuation">,</span> Int_t flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///  Minimization function for H1s using a Likelihood method*-*-*-*-*-*</span>
-<span class="token comment">///     Basically, it forms the likelihood by determining the Poisson</span>
-<span class="token comment">///     probability that given a number of entries in a particular bin,</span>
-<span class="token comment">///     the fit would predict it&apos;s value.  This is then done for each bin,</span>
-<span class="token comment">///     and the sum of the logs is taken as the likelihood.</span>
-<span class="token comment">///  Default method (function evaluated at center of bin)</span>
-<span class="token comment">///  for each point the cache contains the following info</span>
-<span class="token comment">///    -1D : bc,e, xc  (bin content, error, x of center of bin)</span>
-<span class="token comment">///    -2D : bc,e, xc,yc</span>
-<span class="token comment">///    -3D : bc,e, xc,yc,zc</span>
+   virtual void       FitLikelihood(Int_t &amp;npar, Double_t *gin, Double_t &amp;f, Double_t *u, Int_t flag);
+///  Minimization function for H1s using a Likelihood method*-*-*-*-*-*
+///     Basically, it forms the likelihood by determining the Poisson
+///     probability that given a number of entries in a particular bin,
+///     the fit would predict it&apos;s value.  This is then done for each bin,
+///     and the sum of the logs is taken as the likelihood.
+///  Default method (function evaluated at center of bin)
+///  for each point the cache contains the following info
+///    -1D : bc,e, xc  (bin content, error, x of center of bin)
+///    -2D : bc,e, xc,yc
+///    -3D : bc,e, xc,yc,zc
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">FitLikelihoodI</span><span class="token punctuation">(</span>Int_t <span class="token operator">&amp;</span>npar<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>gin<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>f<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>u<span class="token punctuation">,</span> Int_t flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///  Minimization function for H1s using a Likelihood method*-*-*-*-*-*</span>
-<span class="token comment">///     Basically, it forms the likelihood by determining the Poisson</span>
-<span class="token comment">///     probability that given a number of entries in a particular bin,</span>
-<span class="token comment">///     the fit would predict it&apos;s value.  This is then done for each bin,</span>
-<span class="token comment">///     and the sum of the logs is taken as the likelihood.</span>
-<span class="token comment">///  The &quot;I&quot;ntegral method is used</span>
-<span class="token comment">///  for each point the cache contains the following info</span>
-<span class="token comment">///    -1D : bc,e, xc,xw  (bin content, error, x of center of bin, x bin width of bin)</span>
-<span class="token comment">///    -2D : bc,e, xc,xw,yc,yw</span>
-<span class="token comment">///    -3D : bc,e, xc,xw,yc,yw,zc,zw</span>
+   virtual void       FitLikelihoodI(Int_t &amp;npar, Double_t *gin, Double_t &amp;f, Double_t *u, Int_t flag);
+///  Minimization function for H1s using a Likelihood method*-*-*-*-*-*
+///     Basically, it forms the likelihood by determining the Poisson
+///     probability that given a number of entries in a particular bin,
+///     the fit would predict it&apos;s value.  This is then done for each bin,
+///     and the sum of the logs is taken as the likelihood.
+///  The &quot;I&quot;ntegral method is used
+///  for each point the cache contains the following info
+///    -1D : bc,e, xc,xw  (bin content, error, x of center of bin, x bin width of bin)
+///    -2D : bc,e, xc,xw,yc,yw
+///    -3D : bc,e, xc,xw,yc,yw,zc,zw
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">FixParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Fix parameter ipar.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">GetConfidenceIntervals</span><span class="token punctuation">(</span>Int_t n<span class="token punctuation">,</span> Int_t ndim<span class="token punctuation">,</span> <span class="token keyword">const</span> Double_t <span class="token operator">*</span>x<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>ci<span class="token punctuation">,</span> Double_t cl<span class="token operator">=</span><span class="token number">0.95</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///Computes point-by-point confidence intervals for the fitted function</span>
-<span class="token comment">///Parameters:</span>
-<span class="token comment">///n - number of points</span>
-<span class="token comment">///ndim - dimensions of points</span>
-<span class="token comment">///x - points, at which to compute the intervals, for ndim &gt; 1</span>
-<span class="token comment">///    should be in order: (x0,y0, x1, y1, ... xn, yn)</span>
-<span class="token comment">///ci - computed intervals are returned in this array</span>
-<span class="token comment">///cl - confidence level, default=0.95</span>
-<span class="token comment">///NOTE, that the intervals are approximate for nonlinear(in parameters) models</span>
+   virtual void       FixParameter(Int_t ipar);/// Fix parameter ipar.
+   virtual void       GetConfidenceIntervals(Int_t n, Int_t ndim, const Double_t *x, Double_t *ci, Double_t cl=0.95);
+///Computes point-by-point confidence intervals for the fitted function
+///Parameters:
+///n - number of points
+///ndim - dimensions of points
+///x - points, at which to compute the intervals, for ndim &gt; 1
+///    should be in order: (x0,y0, x1, y1, ... xn, yn)
+///ci - computed intervals are returned in this array
+///cl - confidence level, default=0.95
+///NOTE, that the intervals are approximate for nonlinear(in parameters) models
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">GetConfidenceIntervals</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Double_t cl<span class="token operator">=</span><span class="token number">0.95</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///Computes confidence intervals at level cl. Default is 0.95</span>
-<span class="token comment">///The TObject parameter can be a TGraphErrors, a TGraph2DErrors or a TH1,2,3.</span>
-<span class="token comment">///For Graphs, confidence intervals are computed for each point,</span>
-<span class="token comment">///the value of the graph at that point is set to the function value at that</span>
-<span class="token comment">///point, and the graph y-errors (or z-errors) are set to the value of</span>
-<span class="token comment">///the confidence interval at that point.</span>
-<span class="token comment">///For Histograms, confidence intervals are computed for each bin center</span>
-<span class="token comment">///The bin content of this bin is then set to the function value at the bin</span>
-<span class="token comment">///center, and the bin error is set to the confidence interval value.</span>
-<span class="token comment">///NOTE: confidence intervals are approximate for nonlinear models!</span>
-<span class="token comment">///Allowed combinations:</span>
-<span class="token comment">///Fitted object               Passed object</span>
-<span class="token comment">///TGraph                      TGraphErrors, TH1</span>
-<span class="token comment">///TGraphErrors, AsymmErrors   TGraphErrors, TH1</span>
-<span class="token comment">///TH1                         TGraphErrors, TH1</span>
-<span class="token comment">///TGraph2D                    TGraph2DErrors, TH2</span>
-<span class="token comment">///TGraph2DErrors              TGraph2DErrors, TH2</span>
-<span class="token comment">///TH2                         TGraph2DErrors, TH2</span>
-<span class="token comment">///TH3                         TH3</span>
+   virtual void       GetConfidenceIntervals(TObject *obj, Double_t cl=0.95);
+///Computes confidence intervals at level cl. Default is 0.95
+///The TObject parameter can be a TGraphErrors, a TGraph2DErrors or a TH1,2,3.
+///For Graphs, confidence intervals are computed for each point,
+///the value of the graph at that point is set to the function value at that
+///point, and the graph y-errors (or z-errors) are set to the value of
+///the confidence interval at that point.
+///For Histograms, confidence intervals are computed for each bin center
+///The bin content of this bin is then set to the function value at the bin
+///center, and the bin error is set to the confidence interval value.
+///NOTE: confidence intervals are approximate for nonlinear models!
+///Allowed combinations:
+///Fitted object               Passed object
+///TGraph                      TGraphErrors, TH1
+///TGraphErrors, AsymmErrors   TGraphErrors, TH1
+///TH1                         TGraphErrors, TH1
+///TGraph2D                    TGraph2DErrors, TH2
+///TGraph2DErrors              TGraph2DErrors, TH2
+///TH2                         TGraph2DErrors, TH2
+///TH3                         TH3
 
-   <span class="token keyword">virtual</span> Double_t  <span class="token operator">*</span><span class="token function">GetCovarianceMatrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// return a pointer to the covariance matrix</span>
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">GetCovarianceMatrixElement</span><span class="token punctuation">(</span>Int_t i<span class="token punctuation">,</span> Int_t j<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// return element i,j from the covariance matrix</span>
+   virtual Double_t  *GetCovarianceMatrix() const;/// return a pointer to the covariance matrix
+   virtual Double_t   GetCovarianceMatrixElement(Int_t i, Int_t j) const;
+/// return element i,j from the covariance matrix
 
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">GetErrors</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">,</span>Double_t <span class="token operator">&amp;</span>eplus<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>eminus<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>eparab<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>globcc<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// return current errors for a parameter</span>
-<span class="token comment">///   ipar     : parameter number</span>
-<span class="token comment">///   eplus    : upper error</span>
-<span class="token comment">///   eminus   : lower error</span>
-<span class="token comment">///   eparab   : parabolic error</span>
-<span class="token comment">///   globcc   : global correlation coefficient</span>
+   virtual Int_t      GetErrors(Int_t ipar,Double_t &amp;eplus, Double_t &amp;eminus, Double_t &amp;eparab, Double_t &amp;globcc) const;
+/// return current errors for a parameter
+///   ipar     : parameter number
+///   eplus    : upper error
+///   eminus   : lower error
+///   eparab   : parabolic error
+///   globcc   : global correlation coefficient
 
-   TMinuit           <span class="token operator">*</span><span class="token function">GetMinuit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fMinuit<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">GetNumberTotalParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// return the total number of parameters (free + fixed)</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">GetNumberFreeParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// return the number of free parameters</span>
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">GetParError</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// return error of parameter ipar</span>
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">GetParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// return current value of parameter ipar</span>
+   TMinuit           *GetMinuit() const {return fMinuit;}
+   virtual Int_t      GetNumberTotalParameters() const;/// return the total number of parameters (free + fixed)
+   virtual Int_t      GetNumberFreeParameters() const;/// return the number of free parameters
+   virtual Double_t   GetParError(Int_t ipar) const;/// return error of parameter ipar
+   virtual Double_t   GetParameter(Int_t ipar) const;
+/// return current value of parameter ipar
 
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">GetParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">,</span><span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span>Double_t <span class="token operator">&amp;</span>value<span class="token punctuation">,</span>Double_t <span class="token operator">&amp;</span>verr<span class="token punctuation">,</span>Double_t <span class="token operator">&amp;</span>vlow<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>vhigh<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// return current values for a parameter</span>
-<span class="token comment">///   ipar     : parameter number</span>
-<span class="token comment">///   parname  : parameter name</span>
-<span class="token comment">///   value    : initial parameter value</span>
-<span class="token comment">///   verr     : initial error for this parameter</span>
-<span class="token comment">///   vlow     : lower value for the parameter</span>
-<span class="token comment">///   vhigh    : upper value for the parameter</span>
-<span class="token comment">///  WARNING! parname must be suitably dimensionned in the calling function.</span>
+   virtual Int_t      GetParameter(Int_t ipar,char *name,Double_t &amp;value,Double_t &amp;verr,Double_t &amp;vlow, Double_t &amp;vhigh) const;
+/// return current values for a parameter
+///   ipar     : parameter number
+///   parname  : parameter name
+///   value    : initial parameter value
+///   verr     : initial error for this parameter
+///   vlow     : lower value for the parameter
+///   vhigh    : upper value for the parameter
+///  WARNING! parname must be suitably dimensionned in the calling function.
 
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetParName</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// return name of parameter ipar</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">GetStats</span><span class="token punctuation">(</span>Double_t <span class="token operator">&amp;</span>amin<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>edm<span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>errdef<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>nvpar<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>nparx<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// return global fit parameters</span>
-<span class="token comment">///   amin     : chisquare</span>
-<span class="token comment">///   edm      : estimated distance to minimum</span>
-<span class="token comment">///   errdef</span>
-<span class="token comment">///   nvpar    : number of variable parameters</span>
-<span class="token comment">///   nparx    : total number of parameters</span>
+   virtual const char *GetParName(Int_t ipar) const;/// return name of parameter ipar
+   virtual Int_t      GetStats(Double_t &amp;amin, Double_t &amp;edm, Double_t &amp;errdef, Int_t &amp;nvpar, Int_t &amp;nparx) const;
+/// return global fit parameters
+///   amin     : chisquare
+///   edm      : estimated distance to minimum
+///   errdef
+///   nvpar    : number of variable parameters
+///   nparx    : total number of parameters
 
-   <span class="token keyword">virtual</span> Double_t   <span class="token function">GetSumLog</span><span class="token punctuation">(</span>Int_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// return Sum(log(i) i=0,n</span>
-<span class="token comment">/// used by log likelihood fits</span>
+   virtual Double_t   GetSumLog(Int_t i);
+/// return Sum(log(i) i=0,n
+/// used by log likelihood fits
 
-   <span class="token keyword">virtual</span> Bool_t     <span class="token function">IsFixed</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">///return kTRUE if parameter ipar is fixed, kFALSE othersise)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">PrintResults</span><span class="token punctuation">(</span>Int_t level<span class="token punctuation">,</span> Double_t amin<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Print fit results</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">ReleaseParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Release parameter ipar.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetFCN</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>fcn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Specify the address of the fitting algorithm (from the interpreter)</span>
+   virtual Bool_t     IsFixed(Int_t ipar) const;///return kTRUE if parameter ipar is fixed, kFALSE othersise)
+   virtual void       PrintResults(Int_t level, Double_t amin) const;/// Print fit results
+   virtual void       ReleaseParameter(Int_t ipar);/// Release parameter ipar.
+   virtual void       SetFCN(void *fcn);
+/// Specify the address of the fitting algorithm (from the interpreter)
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetFCN</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>fcn<span class="token punctuation">)</span><span class="token punctuation">(</span>Int_t <span class="token operator">&amp;</span><span class="token punctuation">,</span> Double_t <span class="token operator">*</span><span class="token punctuation">,</span> Double_t <span class="token operator">&amp;</span>f<span class="token punctuation">,</span> Double_t <span class="token operator">*</span><span class="token punctuation">,</span> Int_t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Specify the address of the fitting algorithm</span>
+   virtual void       SetFCN(void (*fcn)(Int_t &amp;, Double_t *, Double_t &amp;f, Double_t *, Int_t));
+/// Specify the address of the fitting algorithm
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token function">SetFitMethod</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// ret fit method (chisquare or loglikelihood)</span>
-   <span class="token keyword">virtual</span> Int_t      <span class="token function">SetParameter</span><span class="token punctuation">(</span>Int_t ipar<span class="token punctuation">,</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>parname<span class="token punctuation">,</span>Double_t value<span class="token punctuation">,</span>Double_t verr<span class="token punctuation">,</span>Double_t vlow<span class="token punctuation">,</span> Double_t vhigh<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// set initial values for a parameter</span>
-<span class="token comment">///   ipar     : parameter number</span>
-<span class="token comment">///   parname  : parameter name</span>
-<span class="token comment">///   value    : initial parameter value</span>
-<span class="token comment">///   verr     : initial error for this parameter</span>
-<span class="token comment">///   vlow     : lower value for the parameter</span>
-<span class="token comment">///   vhigh    : upper value for the parameter</span>
+   virtual void       SetFitMethod(const char *name);/// ret fit method (chisquare or loglikelihood)
+   virtual Int_t      SetParameter(Int_t ipar,const char *parname,Double_t value,Double_t verr,Double_t vlow, Double_t vhigh);
+/// set initial values for a parameter
+///   ipar     : parameter number
+///   parname  : parameter name
+///   value    : initial parameter value
+///   verr     : initial error for this parameter
+///   vlow     : lower value for the parameter
+///   vhigh    : upper value for the parameter
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TFitter.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3871,7 +3883,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TFitter*","level":"1.2.23","depth":2,"next":{"title":"TFitResult","level":"1.2.24","depth":2,"path":"class/TFitResult.md","ref":"class/TFitResult.md","articles":[]},"previous":{"title":"TFileMerger","level":"1.2.22","depth":2,"path":"class/TFileMerger.md","ref":"class/TFileMerger.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TFitter.md","mtime":"2018-05-14T09:18:22.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TFitter*","level":"1.2.23","depth":2,"next":{"title":"TFitResult","level":"1.2.24","depth":2,"path":"class/TFitResult.md","ref":"class/TFitResult.md","articles":[]},"previous":{"title":"TFileMerger","level":"1.2.22","depth":2,"path":"class/TFileMerger.md","ref":"class/TFileMerger.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TFitter.md","mtime":"2018-05-14T09:18:22.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3903,6 +3915,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

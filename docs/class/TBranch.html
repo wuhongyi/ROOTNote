@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3684,322 +3696,322 @@
 <li>the list of TLeaves (branch description) </li>
 </ul>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TBranch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TBranch</span><span class="token punctuation">(</span>TTree <span class="token operator">*</span>tree<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>address<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>leaflist<span class="token punctuation">,</span> Int_t basketsize<span class="token operator">=</span><span class="token number">32000</span><span class="token punctuation">,</span> Int_t compress<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a Branch as a child of a Tree</span>
-<span class="token comment">///       * address is the address of the first item of a structure</span>
-<span class="token comment">///         or the address of a pointer to an object (see example in TTree.cxx).</span>
-<span class="token comment">///       * leaflist is the concatenation of all the variable names and types</span>
-<span class="token comment">///         separated by a colon character :</span>
-<span class="token comment">///         The variable name and the variable type are separated by a</span>
-<span class="token comment">///         slash (/). The variable type must be 1 character. (Characters</span>
-<span class="token comment">///         after the first are legal and will be appended to the visible</span>
-<span class="token comment">///         name of the leaf, but have no effect.) If no type is given, the</span>
-<span class="token comment">///         type of the variable is assumed to be the same as the previous</span>
-<span class="token comment">///         variable. If the first variable does not have a type, it is</span>
-<span class="token comment">///         assumed of type F by default. The list of currently supported</span>
-<span class="token comment">///         types is given below:</span>
-<span class="token comment">///            - C : a character string terminated by the 0 character</span>
-<span class="token comment">///            - B : an 8 bit signed integer (Char_t)</span>
-<span class="token comment">///            - b : an 8 bit unsigned integer (UChar_t)</span>
-<span class="token comment">///            - S : a 16 bit signed integer (Short_t)</span>
-<span class="token comment">///            - s : a 16 bit unsigned integer (UShort_t)</span>
-<span class="token comment">///            - I : a 32 bit signed integer (Int_t)</span>
-<span class="token comment">///            - i : a 32 bit unsigned integer (UInt_t)</span>
-<span class="token comment">///            - F : a 32 bit floating point (Float_t)</span>
-<span class="token comment">///            - D : a 64 bit floating point (Double_t)</span>
-<span class="token comment">///            - L : a 64 bit signed integer (Long64_t)</span>
-<span class="token comment">///            - l : a 64 bit unsigned integer (ULong64_t)</span>
-<span class="token comment">///            - O : [the letter &apos;o&apos;, not a zero] a boolean (Bool_t)</span>
-<span class="token comment">///         Arrays of values are supported with the following syntax:</span>
-<span class="token comment">///         - If leaf name has the form var[nelem], where nelem is alphanumeric, then</span>
-<span class="token comment">///              if nelem is a leaf name, it is used as the variable size of the array,</span>
-<span class="token comment">///              otherwise return 0.</span>
-<span class="token comment">///              The leaf referred to by nelem **MUST** be an int (/I),</span>
-<span class="token comment">///         - If leaf name has the form var[nelem], where nelem is a non-negative integers, then</span>
-<span class="token comment">///              it is used as the fixed size of the array.</span>
-<span class="token comment">///         - If leaf name has the form of a multi dimension array (e.g. var[nelem][nelem2])</span>
-<span class="token comment">///              where nelem and nelem2 are non-negative integers) then</span>
-<span class="token comment">///              it is used as a 2 dimensional array of fixed size.</span>
-<span class="token comment">///         - Any of other form is not supported.</span>
-<span class="token comment">///    Note that the TTree will assume that all the item are contiguous in memory.</span>
-<span class="token comment">///    On some platform, this is not always true of the member of a struct or a class,</span>
-<span class="token comment">///    due to padding and alignment.  Sorting your data member in order of decreasing</span>
-<span class="token comment">///    sizeof usually leads to their being contiguous in memory.</span>
-<span class="token comment">///       * bufsize is the buffer size in bytes for this branch</span>
-<span class="token comment">///         The default value is 32000 bytes and should be ok for most cases.</span>
-<span class="token comment">///         You can specify a larger value (e.g. 256000) if your Tree is not split</span>
-<span class="token comment">///         and each entry is large (Megabytes)</span>
-<span class="token comment">///         A small value for bufsize is optimum if you intend to access</span>
-<span class="token comment">///         the entries in the Tree randomly and your Tree is in split mode.</span>
-<span class="token comment">///   Note that in case the data type is an object, this branch can contain</span>
-<span class="token comment">///   only this object.</span>
-<span class="token comment">///    Note that this function is invoked by TTree::Branch</span>
+<pre><code class="lang-cpp">   TBranch();
+   TBranch(TTree *tree, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">void</span> *address, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *leaflist, Int_t basketsize=<span class="hljs-number">32000</span>, Int_t compress=<span class="hljs-number">-1</span>);
+<span class="hljs-comment">/// Create a Branch as a child of a Tree</span>
+<span class="hljs-comment">///       * address is the address of the first item of a structure</span>
+<span class="hljs-comment">///         or the address of a pointer to an object (see example in TTree.cxx).</span>
+<span class="hljs-comment">///       * leaflist is the concatenation of all the variable names and types</span>
+<span class="hljs-comment">///         separated by a colon character :</span>
+<span class="hljs-comment">///         The variable name and the variable type are separated by a</span>
+<span class="hljs-comment">///         slash (/). The variable type must be 1 character. (Characters</span>
+<span class="hljs-comment">///         after the first are legal and will be appended to the visible</span>
+<span class="hljs-comment">///         name of the leaf, but have no effect.) If no type is given, the</span>
+<span class="hljs-comment">///         type of the variable is assumed to be the same as the previous</span>
+<span class="hljs-comment">///         variable. If the first variable does not have a type, it is</span>
+<span class="hljs-comment">///         assumed of type F by default. The list of currently supported</span>
+<span class="hljs-comment">///         types is given below:</span>
+<span class="hljs-comment">///            - C : a character string terminated by the 0 character</span>
+<span class="hljs-comment">///            - B : an 8 bit signed integer (Char_t)</span>
+<span class="hljs-comment">///            - b : an 8 bit unsigned integer (UChar_t)</span>
+<span class="hljs-comment">///            - S : a 16 bit signed integer (Short_t)</span>
+<span class="hljs-comment">///            - s : a 16 bit unsigned integer (UShort_t)</span>
+<span class="hljs-comment">///            - I : a 32 bit signed integer (Int_t)</span>
+<span class="hljs-comment">///            - i : a 32 bit unsigned integer (UInt_t)</span>
+<span class="hljs-comment">///            - F : a 32 bit floating point (Float_t)</span>
+<span class="hljs-comment">///            - D : a 64 bit floating point (Double_t)</span>
+<span class="hljs-comment">///            - L : a 64 bit signed integer (Long64_t)</span>
+<span class="hljs-comment">///            - l : a 64 bit unsigned integer (ULong64_t)</span>
+<span class="hljs-comment">///            - O : [the letter &apos;o&apos;, not a zero] a boolean (Bool_t)</span>
+<span class="hljs-comment">///         Arrays of values are supported with the following syntax:</span>
+<span class="hljs-comment">///         - If leaf name has the form var[nelem], where nelem is alphanumeric, then</span>
+<span class="hljs-comment">///              if nelem is a leaf name, it is used as the variable size of the array,</span>
+<span class="hljs-comment">///              otherwise return 0.</span>
+<span class="hljs-comment">///              The leaf referred to by nelem **MUST** be an int (/I),</span>
+<span class="hljs-comment">///         - If leaf name has the form var[nelem], where nelem is a non-negative integers, then</span>
+<span class="hljs-comment">///              it is used as the fixed size of the array.</span>
+<span class="hljs-comment">///         - If leaf name has the form of a multi dimension array (e.g. var[nelem][nelem2])</span>
+<span class="hljs-comment">///              where nelem and nelem2 are non-negative integers) then</span>
+<span class="hljs-comment">///              it is used as a 2 dimensional array of fixed size.</span>
+<span class="hljs-comment">///         - Any of other form is not supported.</span>
+<span class="hljs-comment">///    Note that the TTree will assume that all the item are contiguous in memory.</span>
+<span class="hljs-comment">///    On some platform, this is not always true of the member of a struct or a class,</span>
+<span class="hljs-comment">///    due to padding and alignment.  Sorting your data member in order of decreasing</span>
+<span class="hljs-comment">///    sizeof usually leads to their being contiguous in memory.</span>
+<span class="hljs-comment">///       * bufsize is the buffer size in bytes for this branch</span>
+<span class="hljs-comment">///         The default value is 32000 bytes and should be ok for most cases.</span>
+<span class="hljs-comment">///         You can specify a larger value (e.g. 256000) if your Tree is not split</span>
+<span class="hljs-comment">///         and each entry is large (Megabytes)</span>
+<span class="hljs-comment">///         A small value for bufsize is optimum if you intend to access</span>
+<span class="hljs-comment">///         the entries in the Tree randomly and your Tree is in split mode.</span>
+<span class="hljs-comment">///   Note that in case the data type is an object, this branch can contain</span>
+<span class="hljs-comment">///   only this object.</span>
+<span class="hljs-comment">///    Note that this function is invoked by TTree::Branch</span>
 
-   <span class="token function">TBranch</span><span class="token punctuation">(</span>TBranch <span class="token operator">*</span>parent<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>address<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>leaflist<span class="token punctuation">,</span> Int_t basketsize<span class="token operator">=</span><span class="token number">32000</span><span class="token punctuation">,</span> Int_t compress<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TBranch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TBranch(TBranch *parent, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">void</span> *address, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *leaflist, Int_t basketsize=<span class="hljs-number">32000</span>, Int_t compress=<span class="hljs-number">-1</span>);
+   <span class="hljs-keyword">virtual</span> ~TBranch();
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddBasket</span><span class="token punctuation">(</span>TBasket <span class="token operator">&amp;</span>b<span class="token punctuation">,</span> Bool_t ondisk<span class="token punctuation">,</span> Long64_t startEntry<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Add the basket to this branch.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddLastBasket</span><span class="token punctuation">(</span>Long64_t startEntry<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Add the start entry of the write basket (not yet created)</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Browse</span><span class="token punctuation">(</span>TBrowser <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Browser interface.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">DeleteBaskets</span><span class="token punctuation">(</span>Option_t<span class="token operator">*</span> option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token comment">/// Loop on all branch baskets. If the file where branch buffers reside is</span>
- <span class="token comment">/// writable, free the disk space associated to the baskets of the branch,</span>
- <span class="token comment">/// then call Reset(). If the option contains &quot;all&quot;, delete also the baskets</span>
- <span class="token comment">/// for the subbranches.</span>
- <span class="token comment">/// The branch is reset.</span>
- <span class="token comment">/// NOTE that this function must be used with extreme care. Deleting branch baskets</span>
- <span class="token comment">/// fragments the file and may introduce inefficiencies when adding new entries</span>
- <span class="token comment">/// in the Tree or later on when reading the Tree.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddBasket</span><span class="hljs-params">(TBasket &amp;b, Bool_t ondisk, Long64_t startEntry)</span></span>;<span class="hljs-comment">/// Add the basket to this branch.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddLastBasket</span><span class="hljs-params">(Long64_t startEntry)</span></span>;<span class="hljs-comment">/// Add the start entry of the write basket (not yet created)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;<span class="hljs-comment">/// Browser interface.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">DeleteBaskets</span><span class="hljs-params">(Option_t* option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+ <span class="hljs-comment">/// Loop on all branch baskets. If the file where branch buffers reside is</span>
+ <span class="hljs-comment">/// writable, free the disk space associated to the baskets of the branch,</span>
+ <span class="hljs-comment">/// then call Reset(). If the option contains &quot;all&quot;, delete also the baskets</span>
+ <span class="hljs-comment">/// for the subbranches.</span>
+ <span class="hljs-comment">/// The branch is reset.</span>
+ <span class="hljs-comment">/// NOTE that this function must be used with extreme care. Deleting branch baskets</span>
+ <span class="hljs-comment">/// fragments the file and may introduce inefficiencies when adding new entries</span>
+ <span class="hljs-comment">/// in the Tree or later on when reading the Tree.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">DropBaskets</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Loop on all branch baskets. Drop all baskets from memory except readbasket.</span>
-<span class="token comment">/// If the option contains &quot;all&quot;, drop all baskets including</span>
-<span class="token comment">/// read- and write-baskets (unless they are not stored individually on disk).</span>
-<span class="token comment">/// The option &quot;all&quot; also lead to DropBaskets being called on the sub-branches.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">DropBaskets</span><span class="hljs-params">(Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Loop on all branch baskets. Drop all baskets from memory except readbasket.</span>
+<span class="hljs-comment">/// If the option contains &quot;all&quot;, drop all baskets including</span>
+<span class="hljs-comment">/// read- and write-baskets (unless they are not stored individually on disk).</span>
+<span class="hljs-comment">/// The option &quot;all&quot; also lead to DropBaskets being called on the sub-branches.</span>
 
-           <span class="token keyword">void</span>      <span class="token function">ExpandBasketArrays</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Increase BasketEntry buffer of a minimum of 10 locations</span>
-<span class="token comment">/// and a maximum of 50 per cent of current size.</span>
+           <span class="hljs-function"><span class="hljs-keyword">void</span>      <span class="hljs-title">ExpandBasketArrays</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Increase BasketEntry buffer of a minimum of 10 locations</span>
+<span class="hljs-comment">/// and a maximum of 50 per cent of current size.</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">Fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Loop on all leaves of this branch to fill Basket buffer.</span>
-<span class="token comment">/// The function returns the number of bytes committed to the memory basket.</span>
-<span class="token comment">/// If a write error occurs, the number of bytes returned is -1.</span>
-<span class="token comment">/// If no data are written, because e.g. the branch is disabled,</span>
-<span class="token comment">/// the number of bytes returned is 0.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">Fill</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Loop on all leaves of this branch to fill Basket buffer.</span>
+<span class="hljs-comment">/// The function returns the number of bytes committed to the memory basket.</span>
+<span class="hljs-comment">/// If a write error occurs, the number of bytes returned is -1.</span>
+<span class="hljs-comment">/// If no data are written, because e.g. the branch is disabled,</span>
+<span class="hljs-comment">/// the number of bytes returned is 0.</span>
 
-   <span class="token keyword">virtual</span> TBranch  <span class="token operator">*</span><span class="token function">FindBranch</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Find the immediate sub-branch with passed name.</span>
-   <span class="token keyword">virtual</span> TLeaf    <span class="token operator">*</span><span class="token function">FindLeaf</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Find the leaf corresponding to the name &apos;searchname&apos;.</span>
-           Int_t     <span class="token function">FlushBaskets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Flush to disk all the baskets of this branch and any of subbranches.</span>
-<span class="token comment">/// Return the number of bytes written or -1 in case of write error.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBranch  *<span class="hljs-title">FindBranch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;<span class="hljs-comment">/// Find the immediate sub-branch with passed name.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">FindLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;<span class="hljs-comment">/// Find the leaf corresponding to the name &apos;searchname&apos;.</span>
+           <span class="hljs-function">Int_t     <span class="hljs-title">FlushBaskets</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Flush to disk all the baskets of this branch and any of subbranches.</span>
+<span class="hljs-comment">/// Return the number of bytes written or -1 in case of write error.</span>
 
-           Int_t     <span class="token function">FlushOneBasket</span><span class="token punctuation">(</span>UInt_t which<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// If we have a write basket in memory and it contains some entries and</span>
-<span class="token comment">/// has not yet been written to disk, we write it and delete it from memory.</span>
-<span class="token comment">/// Return the number of bytes written;</span>
+           <span class="hljs-function">Int_t     <span class="hljs-title">FlushOneBasket</span><span class="hljs-params">(UInt_t which)</span></span>;
+<span class="hljs-comment">/// If we have a write basket in memory and it contains some entries and</span>
+<span class="hljs-comment">/// has not yet been written to disk, we write it and delete it from memory.</span>
+<span class="hljs-comment">/// Return the number of bytes written;</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">char</span>     <span class="token operator">*</span><span class="token function">GetAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fAddress<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           TBasket  <span class="token operator">*</span><span class="token function">GetBasket</span><span class="token punctuation">(</span>Int_t basket<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return pointer to basket basketnumber in this Branch</span>
-           Int_t    <span class="token operator">*</span><span class="token function">GetBasketBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fBasketBytes<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Long64_t <span class="token operator">*</span><span class="token function">GetBasketEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fBasketEntry<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Long64_t  <span class="token function">GetBasketSeek</span><span class="token punctuation">(</span>Int_t basket<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return address of basket in the file</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetBasketSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fBasketSize<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TList    <span class="token operator">*</span><span class="token function">GetBrowsables</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns (and, if 0, creates) browsable objects for this branch</span>
-<span class="token comment">/// See TVirtualBranchBrowsable::FillListOfBrowsables.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">char</span>     *<span class="hljs-title">GetAddress</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fAddress;}
+           <span class="hljs-function">TBasket  *<span class="hljs-title">GetBasket</span><span class="hljs-params">(Int_t basket)</span></span>;<span class="hljs-comment">/// Return pointer to basket basketnumber in this Branch</span>
+           <span class="hljs-function">Int_t    *<span class="hljs-title">GetBasketBytes</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fBasketBytes;}
+           <span class="hljs-function">Long64_t *<span class="hljs-title">GetBasketEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fBasketEntry;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t  <span class="hljs-title">GetBasketSeek</span><span class="hljs-params">(Int_t basket)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return address of basket in the file</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetBasketSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fBasketSize;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TList    *<span class="hljs-title">GetBrowsables</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Returns (and, if 0, creates) browsable objects for this branch</span>
+<span class="hljs-comment">/// See TVirtualBranchBrowsable::FillListOfBrowsables.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">GetClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-           Int_t     <span class="token function">GetCompressionAlgorithm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-           Int_t     <span class="token function">GetCompressionLevel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-           Int_t     <span class="token function">GetCompressionSettings</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   TDirectory       <span class="token operator">*</span><span class="token function">GetDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fDirectory<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetEntry</span><span class="token punctuation">(</span>Long64_t entry<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t getall <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Read all leaves of entry and return total number of bytes read.</span>
-<span class="token comment">/// The input argument &quot;entry&quot; is the entry number in the current tree.</span>
-<span class="token comment">/// In case of a TChain, the entry number in the current Tree must be found</span>
-<span class="token comment">/// before calling this function. </span>
-<span class="token comment">/// The function returns the number of bytes read from the input buffer.</span>
-<span class="token comment">/// If entry does not exist, the function returns 0.</span>
-<span class="token comment">/// If an I/O error occurs, the function returns -1.</span>
-<span class="token comment">/// See IMPORTANT REMARKS in TTree::GetEntry.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* <span class="hljs-title">GetClassName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetCompressionAlgorithm</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetCompressionLevel</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetCompressionSettings</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">TDirectory       *<span class="hljs-title">GetDirectory</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fDirectory;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetEntry</span><span class="hljs-params">(Long64_t entry=<span class="hljs-number">0</span>, Int_t getall = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Read all leaves of entry and return total number of bytes read.</span>
+<span class="hljs-comment">/// The input argument &quot;entry&quot; is the entry number in the current tree.</span>
+<span class="hljs-comment">/// In case of a TChain, the entry number in the current Tree must be found</span>
+<span class="hljs-comment">/// before calling this function. </span>
+<span class="hljs-comment">/// The function returns the number of bytes read from the input buffer.</span>
+<span class="hljs-comment">/// If entry does not exist, the function returns 0.</span>
+<span class="hljs-comment">/// If an I/O error occurs, the function returns -1.</span>
+<span class="hljs-comment">/// See IMPORTANT REMARKS in TTree::GetEntry.</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetEntryExport</span><span class="token punctuation">(</span>Long64_t entry<span class="token punctuation">,</span> Int_t getall<span class="token punctuation">,</span> TClonesArray <span class="token operator">*</span>list<span class="token punctuation">,</span> Int_t n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Read all leaves of an entry and export buffers to real objects in a TClonesArray list.</span>
-<span class="token comment">/// Returns total number of bytes read.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetEntryExport</span><span class="hljs-params">(Long64_t entry, Int_t getall, TClonesArray *<span class="hljs-built_in">list</span>, Int_t n)</span></span>;
+<span class="hljs-comment">/// Read all leaves of an entry and export buffers to real objects in a TClonesArray list.</span>
+<span class="hljs-comment">/// Returns total number of bytes read.</span>
 
-           Int_t     <span class="token function">GetEntryOffsetLen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fEntryOffsetLen<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-           Int_t     <span class="token function">GetEvent</span><span class="token punctuation">(</span>Long64_t entry<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token function">GetEntry</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetIconName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return icon name depending on type of branch.</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetExpectedType</span><span class="token punctuation">(</span>TClass <span class="token operator">*</span><span class="token operator">&amp;</span>clptr<span class="token punctuation">,</span>EDataType <span class="token operator">&amp;</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Fill expectedClass and expectedType with information on the data type of the</span>
-<span class="token comment">/// object/values contained in this branch (and thus the type of pointers</span>
-<span class="token comment">/// expected to be passed to Set[Branch]Address</span>
-<span class="token comment">/// return 0 in case of success and &gt; 0 in case of failure.</span>
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetEntryOffsetLen</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEntryOffsetLen; }
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetEvent</span><span class="hljs-params">(Long64_t entry=<span class="hljs-number">0</span>)</span> </span>{<span class="hljs-keyword">return</span> GetEntry(entry);}
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>       *<span class="hljs-title">GetIconName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return icon name depending on type of branch.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetExpectedType</span><span class="hljs-params">(TClass *&amp;clptr,EDataType &amp;type)</span></span>;
+<span class="hljs-comment">/// Fill expectedClass and expectedType with information on the data type of the</span>
+<span class="hljs-comment">/// object/values contained in this branch (and thus the type of pointers</span>
+<span class="hljs-comment">/// expected to be passed to Set[Branch]Address</span>
+<span class="hljs-comment">/// return 0 in case of success and &gt; 0 in case of failure.</span>
 
-   <span class="token keyword">virtual</span> TLeaf    <span class="token operator">*</span><span class="token function">GetLeaf</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return pointer to the 1st Leaf named name in thisBranch</span>
-   <span class="token keyword">virtual</span> TFile    <span class="token operator">*</span><span class="token function">GetFile</span><span class="token punctuation">(</span>Int_t mode<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pointer to the file where branch buffers reside, returns 0</span>
-<span class="token comment">/// in case branch buffers reside in the same file as tree header.</span>
-<span class="token comment">/// If mode is 1 the branch buffer file is recreated.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLeaf    *<span class="hljs-title">GetLeaf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return pointer to the 1st Leaf named name in thisBranch</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFile    *<span class="hljs-title">GetFile</span><span class="hljs-params">(Int_t mode=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Return pointer to the file where branch buffers reside, returns 0</span>
+<span class="hljs-comment">/// in case branch buffers reside in the same file as tree header.</span>
+<span class="hljs-comment">/// If mode is 1 the branch buffer file is recreated.</span>
 
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetFileName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fFileName<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Int_t     <span class="token function">GetOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>      <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fOffset<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Int_t     <span class="token function">GetReadBasket</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fReadBasket<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Long64_t  <span class="token function">GetReadEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fReadEntry<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Int_t     <span class="token function">GetWriteBasket</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fWriteBasket<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Long64_t  <span class="token function">GetTotalSize</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span>   <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return total number of bytes in the branch (including current buffer)</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>       *<span class="hljs-title">GetFileName</span><span class="hljs-params">()</span>    <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fFileName.Data();}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetOffset</span><span class="hljs-params">()</span>      <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fOffset;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetReadBasket</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fReadBasket;}
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetReadEntry</span><span class="hljs-params">()</span>   <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fReadEntry;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetWriteBasket</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fWriteBasket;}
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetTotalSize</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span>   <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return total number of bytes in the branch (including current buffer)</span>
 
-           Long64_t  <span class="token function">GetTotBytes</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span>    <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return total number of bytes in the branch (excluding current buffer)</span>
-<span class="token comment">/// if option =&quot;*&quot; includes all sub-branches of this branch too</span>
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetTotBytes</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span>    <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return total number of bytes in the branch (excluding current buffer)</span>
+<span class="hljs-comment">/// if option =&quot;*&quot; includes all sub-branches of this branch too</span>
 
-           Long64_t  <span class="token function">GetZipBytes</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span>    <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return total number of zip bytes in the branch</span>
-<span class="token comment">/// if option =&quot;*&quot; includes all sub-branches of this branch too</span>
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetZipBytes</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span>    <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return total number of zip bytes in the branch</span>
+<span class="hljs-comment">/// if option =&quot;*&quot; includes all sub-branches of this branch too</span>
 
-           Long64_t  <span class="token function">GetEntryNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fEntryNumber<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Long64_t  <span class="token function">GetFirstEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fFirstEntry<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-         TObjArray  <span class="token operator">*</span><span class="token function">GetListOfBaskets</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token operator">&amp;</span>fBaskets<span class="token punctuation">;</span><span class="token punctuation">}</span>
-         TObjArray  <span class="token operator">*</span><span class="token function">GetListOfBranches</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token operator">&amp;</span>fBranches<span class="token punctuation">;</span><span class="token punctuation">}</span>
-         TObjArray  <span class="token operator">*</span><span class="token function">GetListOfLeaves</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token operator">&amp;</span>fLeaves<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Int_t     <span class="token function">GetMaxBaskets</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span>  <span class="token punctuation">{</span><span class="token keyword">return</span> fMaxBaskets<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Int_t     <span class="token function">GetNleaves</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fNleaves<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Int_t     <span class="token function">GetSplitLevel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fSplitLevel<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           Long64_t  <span class="token function">GetEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fEntries<span class="token punctuation">;</span><span class="token punctuation">}</span>
-           TTree    <span class="token operator">*</span><span class="token function">GetTree</span><span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTree<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">GetRow</span><span class="token punctuation">(</span>Int_t row<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return all elements of one row unpacked in internal array fValues</span>
-<span class="token comment">/// [Actually just returns 1 (?)]</span>
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetEntryNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fEntryNumber;}
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetFirstEntry</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fFirstEntry; }
+         <span class="hljs-function">TObjArray  *<span class="hljs-title">GetListOfBaskets</span><span class="hljs-params">()</span>  </span>{<span class="hljs-keyword">return</span> &amp;fBaskets;}
+         <span class="hljs-function">TObjArray  *<span class="hljs-title">GetListOfBranches</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> &amp;fBranches;}
+         <span class="hljs-function">TObjArray  *<span class="hljs-title">GetListOfLeaves</span><span class="hljs-params">()</span>   </span>{<span class="hljs-keyword">return</span> &amp;fLeaves;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetMaxBaskets</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span>  </span>{<span class="hljs-keyword">return</span> fMaxBaskets;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetNleaves</span><span class="hljs-params">()</span>     <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fNleaves;}
+           <span class="hljs-function">Int_t     <span class="hljs-title">GetSplitLevel</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSplitLevel;}
+           <span class="hljs-function">Long64_t  <span class="hljs-title">GetEntries</span><span class="hljs-params">()</span>     <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fEntries;}
+           <span class="hljs-function">TTree    *<span class="hljs-title">GetTree</span><span class="hljs-params">()</span>        <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTree;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">GetRow</span><span class="hljs-params">(Int_t row)</span></span>;
+<span class="hljs-comment">/// Return all elements of one row unpacked in internal array fValues</span>
+<span class="hljs-comment">/// [Actually just returns 1 (?)]</span>
 
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">GetMakeClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return whether this branch is in a mode where the object are decomposed</span>
-<span class="token comment">/// or not (Also known as MakeClass mode).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">GetMakeClass</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return whether this branch is in a mode where the object are decomposed</span>
+<span class="hljs-comment">/// or not (Also known as MakeClass mode).</span>
 
-   TBranch          <span class="token operator">*</span><span class="token function">GetMother</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Get our top-level parent branch in the tree.</span>
-   TBranch          <span class="token operator">*</span><span class="token function">GetSubBranch</span><span class="token punctuation">(</span><span class="token keyword">const</span> TBranch <span class="token operator">*</span>br<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find the parent branch of child.</span>
-<span class="token comment">/// Return 0 if child is not in this branch hierarchy.</span>
+   <span class="hljs-function">TBranch          *<span class="hljs-title">GetMother</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Get our top-level parent branch in the tree.</span>
+   <span class="hljs-function">TBranch          *<span class="hljs-title">GetSubBranch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TBranch *br)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find the parent branch of child.</span>
+<span class="hljs-comment">/// Return 0 if child is not in this branch hierarchy.</span>
 
-   Bool_t            <span class="token function">IsAutoDelete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return kTRUE if an existing object in a TBranchObject must be deleted.</span>
-   Bool_t            <span class="token function">IsFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return kTRUE if more than one leaf or browsables, kFALSE otherwise.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">KeepCircular</span><span class="token punctuation">(</span>Long64_t maxEntries<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// keep a maximum of fMaxEntries in memory</span>
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsAutoDelete</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return kTRUE if an existing object in a TBranchObject must be deleted.</span>
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsFolder</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return kTRUE if more than one leaf or browsables, kFALSE otherwise.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">KeepCircular</span><span class="hljs-params">(Long64_t maxEntries)</span></span>;<span class="hljs-comment">/// keep a maximum of fMaxEntries in memory</span>
 
-   <span class="token keyword">virtual</span> Int_t     <span class="token function">LoadBaskets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///  Baskets associated to this branch are forced to be in memory.</span>
-<span class="token comment">///  You can call TTree::SetMaxVirtualSize(maxmemory) to instruct</span>
-<span class="token comment">///  the system that the total size of the imported baskets does not</span>
-<span class="token comment">///  exceed maxmemory bytes.</span>
-<span class="token comment">///  The function returns the number of baskets that have been put in memory.</span>
-<span class="token comment">///  This method may be called to force all baskets of one or more branches</span>
-<span class="token comment">///  in memory when random access to entries in this branch is required.</span>
-<span class="token comment">///  See also TTree::LoadBaskets to load all baskets of all branches in memory.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t     <span class="hljs-title">LoadBaskets</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">///  Baskets associated to this branch are forced to be in memory.</span>
+<span class="hljs-comment">///  You can call TTree::SetMaxVirtualSize(maxmemory) to instruct</span>
+<span class="hljs-comment">///  the system that the total size of the imported baskets does not</span>
+<span class="hljs-comment">///  exceed maxmemory bytes.</span>
+<span class="hljs-comment">///  The function returns the number of baskets that have been put in memory.</span>
+<span class="hljs-comment">///  This method may be called to force all baskets of one or more branches</span>
+<span class="hljs-comment">///  in memory when random access to entries in this branch is required.</span>
+<span class="hljs-comment">///  See also TTree::LoadBaskets to load all baskets of all branches in memory.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Print</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Print TBranch parameters</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Print TBranch parameters</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ReadBasket</span><span class="token punctuation">(</span>TBuffer <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Refresh</span><span class="token punctuation">(</span>TBranch <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Refresh this branch using new information in b</span>
-<span class="token comment">/// This function is called by TTree::Refresh</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ReadBasket</span><span class="hljs-params">(TBuffer &amp;b)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Refresh</span><span class="hljs-params">(TBranch *b)</span></span>;
+<span class="hljs-comment">/// Refresh this branch using new information in b</span>
+<span class="hljs-comment">/// This function is called by TTree::Refresh</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Reset</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Reset a Branch.</span>
-<span class="token comment">/// - Existing buffers are deleted.</span>
-<span class="token comment">/// - Entries, max and min are reset.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Reset</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Reset a Branch.</span>
+<span class="hljs-comment">/// - Existing buffers are deleted.</span>
+<span class="hljs-comment">/// - Entries, max and min are reset.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ResetAfterMerge</span><span class="token punctuation">(</span>TFileMergeInfo <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Reset a Branch.</span>
-<span class="token comment">/// - Existing buffers are deleted.</span>
-<span class="token comment">/// - Entries, max and min are reset.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetAfterMerge</span><span class="hljs-params">(TFileMergeInfo *)</span></span>;
+<span class="hljs-comment">/// Reset a Branch.</span>
+<span class="hljs-comment">/// - Existing buffers are deleted.</span>
+<span class="hljs-comment">/// - Entries, max and min are reset.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ResetAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Reset the address of the branch.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetAddress</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Reset the address of the branch.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">ResetReadEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>fReadEntry <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetAddress</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>add<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set address of this branch.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetReadEntry</span><span class="hljs-params">()</span> </span>{fReadEntry = <span class="hljs-number">-1</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetAddress</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *add)</span></span>;<span class="hljs-comment">/// Set address of this branch.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetObject</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>objadd<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set object this branch is pointing to.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetAutoDelete</span><span class="token punctuation">(</span>Bool_t autodel<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the automatic delete bit.</span>
-<span class="token comment">/// This bit is used by TBranchObject::ReadBasket to decide if an object</span>
-<span class="token comment">/// referenced by a TBranchObject must be deleted or not before reading</span>
-<span class="token comment">/// a new entry.</span>
-<span class="token comment">/// If autodel is kTRUE, this existing object will be deleted, a new object</span>
-<span class="token comment">/// created by the default constructor, then read from disk by the streamer.</span>
-<span class="token comment">/// If autodel is kFALSE, the existing object is not deleted.  Root assumes</span>
-<span class="token comment">/// that the user is taking care of deleting any internal object or array</span>
-<span class="token comment">/// (this can be done in the streamer).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetObject</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *objadd)</span></span>;<span class="hljs-comment">/// Set object this branch is pointing to.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetAutoDelete</span><span class="hljs-params">(Bool_t autodel=kTRUE)</span></span>;
+<span class="hljs-comment">/// Set the automatic delete bit.</span>
+<span class="hljs-comment">/// This bit is used by TBranchObject::ReadBasket to decide if an object</span>
+<span class="hljs-comment">/// referenced by a TBranchObject must be deleted or not before reading</span>
+<span class="hljs-comment">/// a new entry.</span>
+<span class="hljs-comment">/// If autodel is kTRUE, this existing object will be deleted, a new object</span>
+<span class="hljs-comment">/// created by the default constructor, then read from disk by the streamer.</span>
+<span class="hljs-comment">/// If autodel is kFALSE, the existing object is not deleted.  Root assumes</span>
+<span class="hljs-comment">/// that the user is taking care of deleting any internal object or array</span>
+<span class="hljs-comment">/// (this can be done in the streamer).</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetBasketSize</span><span class="token punctuation">(</span>Int_t buffsize<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the basket size</span>
-<span class="token comment">/// The function makes sure that the basket size is greater than fEntryOffsetlen</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetBasketSize</span><span class="hljs-params">(Int_t buffsize)</span></span>;
+<span class="hljs-comment">/// Set the basket size</span>
+<span class="hljs-comment">/// The function makes sure that the basket size is greater than fEntryOffsetlen</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetBufferAddress</span><span class="token punctuation">(</span>TBuffer <span class="token operator">*</span>entryBuffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set address of this branch directly from a TBuffer to avoid streaming.</span>
-<span class="token comment">/// Note: We do not take ownership of the buffer.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetBufferAddress</span><span class="hljs-params">(TBuffer *entryBuffer)</span></span>;
+<span class="hljs-comment">/// Set address of this branch directly from a TBuffer to avoid streaming.</span>
+<span class="hljs-comment">/// Note: We do not take ownership of the buffer.</span>
 
-   <span class="token keyword">void</span>              <span class="token function">SetCompressionAlgorithm</span><span class="token punctuation">(</span>Int_t algorithm<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set compression algorithm.</span>
-   <span class="token keyword">void</span>              <span class="token function">SetCompressionLevel</span><span class="token punctuation">(</span>Int_t level<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set compression level.</span>
-   <span class="token keyword">void</span>              <span class="token function">SetCompressionSettings</span><span class="token punctuation">(</span>Int_t settings<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set compression settings.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetEntries</span><span class="token punctuation">(</span>Long64_t entries<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the number of entries in this branch.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetEntryOffsetLen</span><span class="token punctuation">(</span>Int_t len<span class="token punctuation">,</span> Bool_t updateSubBranches <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Update the default value for the branch&apos;s fEntryOffsetLen if and only if</span>
-<span class="token comment">/// it was already non zero (and the new value is not zero)</span>
-<span class="token comment">/// If updateExisting is true, also update all the existing branches.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetCompressionAlgorithm</span><span class="hljs-params">(Int_t algorithm=<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">/// Set compression algorithm.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetCompressionLevel</span><span class="hljs-params">(Int_t level=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">/// Set compression level.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>              <span class="hljs-title">SetCompressionSettings</span><span class="hljs-params">(Int_t settings=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">/// Set compression settings.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEntries</span><span class="hljs-params">(Long64_t entries)</span></span>;<span class="hljs-comment">/// Set the number of entries in this branch.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetEntryOffsetLen</span><span class="hljs-params">(Int_t len, Bool_t updateSubBranches = kFALSE)</span></span>;
+<span class="hljs-comment">/// Update the default value for the branch&apos;s fEntryOffsetLen if and only if</span>
+<span class="hljs-comment">/// it was already non zero (and the new value is not zero)</span>
+<span class="hljs-comment">/// If updateExisting is true, also update all the existing branches.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetFirstEntry</span><span class="token punctuation">(</span> Long64_t entry <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">///set the first entry number (case of TBranchSTL)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFirstEntry</span><span class="hljs-params">( Long64_t entry )</span></span>;
+<span class="hljs-comment">///set the first entry number (case of TBranchSTL)</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetFile</span><span class="token punctuation">(</span>TFile <span class="token operator">*</span>file<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set file where this branch writes/reads its buffers.</span>
-<span class="token comment">/// By default the branch buffers reside in the file where the</span>
-<span class="token comment">/// Tree was created.</span>
-<span class="token comment">/// If the file name where the tree was created is an absolute</span>
-<span class="token comment">/// path name or an URL (e.g. /castor/... or root://host/...)</span>
-<span class="token comment">/// and if the fname is not an absolute path name or an URL then</span>
-<span class="token comment">/// the path of the tree file is prepended to fname to make the</span>
-<span class="token comment">/// branch file relative to the tree file. In this case one can</span>
-<span class="token comment">/// move the tree + all branch files to a different location in</span>
-<span class="token comment">/// the file system and still access the branch files.</span>
-<span class="token comment">/// The ROOT file will be connected only when necessary.</span>
-<span class="token comment">/// If called by TBranch::Fill (via TBasket::WriteFile), the file</span>
-<span class="token comment">/// will be created with the option &quot;recreate&quot;.</span>
-<span class="token comment">/// If called by TBranch::GetEntry (via TBranch::GetBasket), the file</span>
-<span class="token comment">/// will be opened in read mode.</span>
-<span class="token comment">/// To open a file in &quot;update&quot; mode or with a certain compression</span>
-<span class="token comment">/// level, use TBranch::SetFile(TFile *file).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFile</span><span class="hljs-params">(TFile *file=<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Set file where this branch writes/reads its buffers.</span>
+<span class="hljs-comment">/// By default the branch buffers reside in the file where the</span>
+<span class="hljs-comment">/// Tree was created.</span>
+<span class="hljs-comment">/// If the file name where the tree was created is an absolute</span>
+<span class="hljs-comment">/// path name or an URL (e.g. /castor/... or root://host/...)</span>
+<span class="hljs-comment">/// and if the fname is not an absolute path name or an URL then</span>
+<span class="hljs-comment">/// the path of the tree file is prepended to fname to make the</span>
+<span class="hljs-comment">/// branch file relative to the tree file. In this case one can</span>
+<span class="hljs-comment">/// move the tree + all branch files to a different location in</span>
+<span class="hljs-comment">/// the file system and still access the branch files.</span>
+<span class="hljs-comment">/// The ROOT file will be connected only when necessary.</span>
+<span class="hljs-comment">/// If called by TBranch::Fill (via TBasket::WriteFile), the file</span>
+<span class="hljs-comment">/// will be created with the option &quot;recreate&quot;.</span>
+<span class="hljs-comment">/// If called by TBranch::GetEntry (via TBranch::GetBasket), the file</span>
+<span class="hljs-comment">/// will be opened in read mode.</span>
+<span class="hljs-comment">/// To open a file in &quot;update&quot; mode or with a certain compression</span>
+<span class="hljs-comment">/// level, use TBranch::SetFile(TFile *file).</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set file where this branch writes/reads its buffers.</span>
-<span class="token comment">/// By default the branch buffers reside in the file where the</span>
-<span class="token comment">/// Tree was created.</span>
-<span class="token comment">/// If the file name where the tree was created is an absolute</span>
-<span class="token comment">/// path name or an URL (e.g. /castor/... or root://host/...)</span>
-<span class="token comment">/// and if the fname is not an absolute path name or an URL then</span>
-<span class="token comment">/// the path of the tree file is prepended to fname to make the</span>
-<span class="token comment">/// branch file relative to the tree file. In this case one can</span>
-<span class="token comment">/// move the tree + all branch files to a different location in</span>
-<span class="token comment">/// the file system and still access the branch files.</span>
-<span class="token comment">/// The ROOT file will be connected only when necessary.</span>
-<span class="token comment">/// If called by TBranch::Fill (via TBasket::WriteFile), the file</span>
-<span class="token comment">/// will be created with the option &quot;recreate&quot;.</span>
-<span class="token comment">/// If called by TBranch::GetEntry (via TBranch::GetBasket), the file</span>
-<span class="token comment">/// will be opened in read mode.</span>
-<span class="token comment">/// To open a file in &quot;update&quot; mode or with a certain compression</span>
-<span class="token comment">/// level, use TBranch::SetFile(TFile *file).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename)</span></span>;
+<span class="hljs-comment">/// Set file where this branch writes/reads its buffers.</span>
+<span class="hljs-comment">/// By default the branch buffers reside in the file where the</span>
+<span class="hljs-comment">/// Tree was created.</span>
+<span class="hljs-comment">/// If the file name where the tree was created is an absolute</span>
+<span class="hljs-comment">/// path name or an URL (e.g. /castor/... or root://host/...)</span>
+<span class="hljs-comment">/// and if the fname is not an absolute path name or an URL then</span>
+<span class="hljs-comment">/// the path of the tree file is prepended to fname to make the</span>
+<span class="hljs-comment">/// branch file relative to the tree file. In this case one can</span>
+<span class="hljs-comment">/// move the tree + all branch files to a different location in</span>
+<span class="hljs-comment">/// the file system and still access the branch files.</span>
+<span class="hljs-comment">/// The ROOT file will be connected only when necessary.</span>
+<span class="hljs-comment">/// If called by TBranch::Fill (via TBasket::WriteFile), the file</span>
+<span class="hljs-comment">/// will be created with the option &quot;recreate&quot;.</span>
+<span class="hljs-comment">/// If called by TBranch::GetEntry (via TBranch::GetBasket), the file</span>
+<span class="hljs-comment">/// will be opened in read mode.</span>
+<span class="hljs-comment">/// To open a file in &quot;update&quot; mode or with a certain compression</span>
+<span class="hljs-comment">/// level, use TBranch::SetFile(TFile *file).</span>
 
-   <span class="token keyword">virtual</span> Bool_t    <span class="token function">SetMakeClass</span><span class="token punctuation">(</span>Bool_t decomposeObj <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the branch in a mode where the object are decomposed</span>
-<span class="token comment">/// (Also known as MakeClass mode).</span>
-<span class="token comment">/// Return whether the setting was possible (it is not possible for</span>
-<span class="token comment">/// TBranch and TBranchObject).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t    <span class="hljs-title">SetMakeClass</span><span class="hljs-params">(Bool_t decomposeObj = kTRUE)</span></span>;
+<span class="hljs-comment">/// Set the branch in a mode where the object are decomposed</span>
+<span class="hljs-comment">/// (Also known as MakeClass mode).</span>
+<span class="hljs-comment">/// Return whether the setting was possible (it is not possible for</span>
+<span class="hljs-comment">/// TBranch and TBranchObject).</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetOffset</span><span class="token punctuation">(</span>Int_t offset<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>fOffset<span class="token operator">=</span>offset<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetStatus</span><span class="token punctuation">(</span>Bool_t status<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set branch status to Process or DoNotProcess.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetTree</span><span class="token punctuation">(</span>TTree <span class="token operator">*</span>tree<span class="token punctuation">)</span> <span class="token punctuation">{</span> fTree <span class="token operator">=</span> tree<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">SetupAddresses</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// If the branch address is not set,  we set all addresses starting with</span>
-<span class="token comment">/// the top level parent branch.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetOffset</span><span class="hljs-params">(Int_t offset=<span class="hljs-number">0</span>)</span> </span>{fOffset=offset;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetStatus</span><span class="hljs-params">(Bool_t status=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">/// Set branch status to Process or DoNotProcess.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetTree</span><span class="hljs-params">(TTree *tree)</span> </span>{ fTree = tree;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">SetupAddresses</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// If the branch address is not set,  we set all addresses starting with</span>
+<span class="hljs-comment">/// the top level parent branch.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">UpdateAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">UpdateFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Refresh the value of fDirectory (i.e. where this branch writes/reads its buffers)</span>
-<span class="token comment">/// with the current value of fTree-&gt;GetCurrentFile unless this branch has been</span>
-<span class="token comment">/// redirected to a different file.  Also update the sub-branches.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">UpdateAddress</span><span class="hljs-params">()</span> </span>{;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">UpdateFile</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Refresh the value of fDirectory (i.e. where this branch writes/reads its buffers)</span>
+<span class="hljs-comment">/// with the current value of fTree-&gt;GetCurrentFile unless this branch has been</span>
+<span class="hljs-comment">/// redirected to a different file.  Also update the sub-branches.</span>
 
-   <span class="token keyword">static</span>  <span class="token keyword">void</span>      <span class="token function">ResetCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Static function resetting fgCount</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>      <span class="hljs-title">ResetCount</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Static function resetting fgCount</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp">TChain<span class="token operator">*</span> chain <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
-Long64_t localEntry <span class="token operator">=</span> chain<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">LoadTree</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">;</span>
-branch<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetEntry</span><span class="token punctuation">(</span>localEntry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">TChain* chain = ...;
+Long64_t localEntry = chain-&gt;LoadTree(entry);
+branch-&gt;GetEntry(localEntry);
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TBranch.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -4042,7 +4054,7 @@ branch<span class="token operator">-</span><span class="token operator">&gt;</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TBranch*","level":"1.2.6","depth":2,"next":{"title":"TBuffer+","level":"1.2.7","depth":2,"path":"class/TBuffer.md","ref":"class/TBuffer.md","articles":[]},"previous":{"title":"TBenchmark+","level":"1.2.5","depth":2,"path":"class/TBenchmark.md","ref":"class/TBenchmark.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TBranch.md","mtime":"2018-05-14T09:18:22.830Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TBranch*","level":"1.2.6","depth":2,"next":{"title":"TBuffer+","level":"1.2.7","depth":2,"path":"class/TBuffer.md","ref":"class/TBuffer.md","articles":[]},"previous":{"title":"TBenchmark+","level":"1.2.5","depth":2,"path":"class/TBenchmark.md","ref":"class/TBenchmark.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TBranch.md","mtime":"2018-05-14T09:18:22.830Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4074,6 +4086,18 @@ branch<span class="token operator">-</span><span class="token operator">&gt;</sp
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

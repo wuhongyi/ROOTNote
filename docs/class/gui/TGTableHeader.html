@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3681,38 +3693,38 @@
 <p>TGTableHeader is for internal use in TGTable only.</p>
 <p>TGTableHeader &#x7EE7;&#x627F; TGTableCell</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGTableHeader</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> TGTable <span class="token operator">*</span>table <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                 TGString <span class="token operator">*</span>label <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t position <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                 EHeaderType type <span class="token operator">=</span> kColumnHeader<span class="token punctuation">,</span> UInt_t width <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">,</span>
-                 UInt_t height <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">,</span> GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 UInt_t option <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TGTableHeader</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> TGTable <span class="token operator">*</span>table<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>label<span class="token punctuation">,</span>
-                 UInt_t position<span class="token punctuation">,</span> EHeaderType type <span class="token operator">=</span> kColumnHeader<span class="token punctuation">,</span>
-                 UInt_t width <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">,</span> UInt_t height <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">,</span>
-                 GContext_t norm <span class="token operator">=</span> <span class="token function">GetDefaultGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 FontStruct_t font <span class="token operator">=</span> <span class="token function">GetDefaultFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 UInt_t option <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGTableHeader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGTableHeader(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, TGTable *table = <span class="hljs-number">0</span>,
+                 TGString *label = <span class="hljs-number">0</span>, UInt_t position = <span class="hljs-number">0</span>,
+                 EHeaderType type = kColumnHeader, UInt_t width = <span class="hljs-number">80</span>,
+                 UInt_t height = <span class="hljs-number">25</span>, GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 UInt_t option = <span class="hljs-number">0</span>);
+   TGTableHeader(<span class="hljs-keyword">const</span> TGWindow *p, TGTable *table, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label,
+                 UInt_t position, EHeaderType type = kColumnHeader,
+                 UInt_t width = <span class="hljs-number">80</span>, UInt_t height = <span class="hljs-number">25</span>,
+                 GContext_t norm = GetDefaultGC()(),
+                 FontStruct_t font = GetDefaultFontStruct(),
+                 UInt_t option = <span class="hljs-number">0</span>);
+   <span class="hljs-keyword">virtual</span> ~TGTableHeader();
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetWidth</span><span class="token punctuation">(</span>UInt_t width<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Resize the TGTableHeader.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetHeight</span><span class="token punctuation">(</span>UInt_t height<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Resize the TGTableHeader.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetWidth</span><span class="hljs-params">(UInt_t width)</span></span>;<span class="hljs-comment">/// Resize the TGTableHeader.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetHeight</span><span class="hljs-params">(UInt_t height)</span></span>;<span class="hljs-comment">/// Resize the TGTableHeader.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetLabel</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>label<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the label of the TGTableHeader to label.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetLabel</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *label)</span></span>;<span class="hljs-comment">/// Set the label of the TGTableHeader to label.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetDefaultLabel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the label of the TGTableHeader to the default label, &quot;Row #&quot; or &quot;Col #&quot;.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetPosition</span><span class="token punctuation">(</span>UInt_t pos<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the position of the TGTableHeader to pos.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Resize</span><span class="token punctuation">(</span>UInt_t width<span class="token punctuation">,</span> UInt_t height<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Resize width or height</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Resize</span><span class="token punctuation">(</span>TGDimension newsize<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// depending on type</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Sort</span><span class="token punctuation">(</span>Bool_t order <span class="token operator">=</span> kSortAscending<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Sort the contents of this row or column in given order.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">UpdatePosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Update the positon of the TGTableHeader.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDefaultLabel</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Set the label of the TGTableHeader to the default label, &quot;Row #&quot; or &quot;Col #&quot;.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPosition</span><span class="hljs-params">(UInt_t pos)</span></span>;<span class="hljs-comment">/// Set the position of the TGTableHeader to pos.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Resize</span><span class="hljs-params">(UInt_t width, UInt_t height)</span></span>;  <span class="hljs-comment">// Resize width or height</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Resize</span><span class="hljs-params">(TGDimension newsize)</span></span>;          <span class="hljs-comment">// depending on type</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Sort</span><span class="hljs-params">(Bool_t order = kSortAscending)</span></span>;<span class="hljs-comment">/// Sort the contents of this row or column in given order.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UpdatePosition</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Update the positon of the TGTableHeader.</span>
 
-   <span class="token keyword">virtual</span> EHeaderType <span class="token function">GetType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fType<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> EHeaderType <span class="hljs-title">GetType</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fType; }
 </code></pre>
 <!-- TGTableHeader.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3755,7 +3767,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGTableHeader-","level":"1.3.62","depth":2,"next":{"title":"TGTableLayout-","level":"1.3.63","depth":2,"path":"class/gui/TGTableLayout.md","ref":"class/gui/TGTableLayout.md","articles":[]},"previous":{"title":"TGTableContainer-","level":"1.3.61","depth":2,"path":"class/gui/TGTableContainer.md","ref":"class/gui/TGTableContainer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGTableHeader.md","mtime":"2018-05-14T09:18:21.354Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGTableHeader-","level":"1.3.62","depth":2,"next":{"title":"TGTableLayout-","level":"1.3.63","depth":2,"path":"class/gui/TGTableLayout.md","ref":"class/gui/TGTableLayout.md","articles":[]},"previous":{"title":"TGTableContainer-","level":"1.3.61","depth":2,"path":"class/gui/TGTableContainer.md","ref":"class/gui/TGTableContainer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGTableHeader.md","mtime":"2018-05-14T09:18:21.354Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3787,6 +3799,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

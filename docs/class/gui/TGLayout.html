@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3691,148 +3703,148 @@ This class describes layout hints used by the layout classes.</p>
 <p>TGListLayout : public TGTileLayout</p>
 <p>TGListDetailsLayout : public TGTileLayout</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//---- layout hints</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//---- layout hints</span>
 
-<span class="token keyword">enum</span> ELayoutHints <span class="token punctuation">{</span>
-   kLHintsNoHints <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-   kLHintsLeft    <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kLHintsCenterX <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kLHintsRight   <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kLHintsTop     <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kLHintsCenterY <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kLHintsBottom  <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kLHintsExpandX <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kLHintsExpandY <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-   kLHintsNormal  <span class="token operator">=</span> <span class="token punctuation">(</span>kLHintsLeft <span class="token operator">|</span> kLHintsTop<span class="token punctuation">)</span>
-   <span class="token comment">// bits 8-11 used by ETableLayoutHints</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">enum</span> ELayoutHints {
+   kLHintsNoHints = <span class="hljs-number">0</span>,
+   kLHintsLeft    = BIT(<span class="hljs-number">0</span>),
+   kLHintsCenterX = BIT(<span class="hljs-number">1</span>),
+   kLHintsRight   = BIT(<span class="hljs-number">2</span>),
+   kLHintsTop     = BIT(<span class="hljs-number">3</span>),
+   kLHintsCenterY = BIT(<span class="hljs-number">4</span>),
+   kLHintsBottom  = BIT(<span class="hljs-number">5</span>),
+   kLHintsExpandX = BIT(<span class="hljs-number">6</span>),
+   kLHintsExpandY = BIT(<span class="hljs-number">7</span>),
+   kLHintsNormal  = (kLHintsLeft | kLHintsTop)
+   <span class="hljs-comment">// bits 8-11 used by ETableLayoutHints</span>
+};
 </code></pre>
 <p><strong>TGLayoutHints</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>ULong_t hints <span class="token operator">=</span> kLHintsNormal<span class="token punctuation">,</span>
-                 Int_t padleft <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t padright <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                 Int_t padtop <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t padbottom <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">:</span>
-     <span class="token function">fFE</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fPrev</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fLayoutHints</span><span class="token punctuation">(</span>hints<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fPadtop</span><span class="token punctuation">(</span>padtop<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fPadbottom</span><span class="token punctuation">(</span>padbottom<span class="token punctuation">)</span><span class="token punctuation">,</span>
-     <span class="token function">fPadleft</span><span class="token punctuation">(</span>padleft<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fPadright</span><span class="token punctuation">(</span>padright<span class="token punctuation">)</span>
-     <span class="token punctuation">{</span> <span class="token function">SetRefCount</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGLayoutHints(ULong_t hints = kLHintsNormal,
+                 Int_t padleft = <span class="hljs-number">0</span>, Int_t padright = <span class="hljs-number">0</span>,
+                 Int_t padtop = <span class="hljs-number">0</span>, Int_t padbottom = <span class="hljs-number">0</span>):
+     fFE(<span class="hljs-number">0</span>), fPrev(<span class="hljs-number">0</span>), fLayoutHints(hints), fPadtop(padtop), fPadbottom(padbottom),
+     fPadleft(padleft), fPadright(padright)
+     { SetRefCount(<span class="hljs-number">0</span>); }
 
-   <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGLayoutHints <span class="token operator">&amp;</span>lh<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TGLayoutHints(<span class="hljs-keyword">const</span> TGLayoutHints &amp;lh);
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGLayoutHints</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">virtual</span> ~TGLayoutHints();
 
-   ULong_t <span class="token function">GetLayoutHints</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLayoutHints<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t   <span class="token function">GetPadTop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPadtop<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t   <span class="token function">GetPadBottom</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPadbottom<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t   <span class="token function">GetPadLeft</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPadleft<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t   <span class="token function">GetPadRight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPadright<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">ULong_t <span class="hljs-title">GetLayoutHints</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLayoutHints; }
+   <span class="hljs-function">Int_t   <span class="hljs-title">GetPadTop</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPadtop; }
+   <span class="hljs-function">Int_t   <span class="hljs-title">GetPadBottom</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPadbottom; }
+   <span class="hljs-function">Int_t   <span class="hljs-title">GetPadLeft</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPadleft; }
+   <span class="hljs-function">Int_t   <span class="hljs-title">GetPadRight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPadright; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetLayoutHints</span><span class="token punctuation">(</span>ULong_t lh<span class="token punctuation">)</span> <span class="token punctuation">{</span> fLayoutHints <span class="token operator">=</span> lh<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetPadTop</span><span class="token punctuation">(</span>Int_t v<span class="token punctuation">)</span>  <span class="token punctuation">{</span>  fPadtop <span class="token operator">=</span> v<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetPadBottom</span><span class="token punctuation">(</span>Int_t v<span class="token punctuation">)</span>  <span class="token punctuation">{</span>  fPadbottom <span class="token operator">=</span> v<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetPadLeft</span><span class="token punctuation">(</span>Int_t v<span class="token punctuation">)</span>  <span class="token punctuation">{</span>  fPadleft <span class="token operator">=</span> v<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetPadRight</span><span class="token punctuation">(</span>Int_t v<span class="token punctuation">)</span>  <span class="token punctuation">{</span>  fPadright <span class="token operator">=</span> v<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetLayoutHints</span><span class="hljs-params">(ULong_t lh)</span> </span>{ fLayoutHints = lh; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPadTop</span><span class="hljs-params">(Int_t v)</span>  </span>{  fPadtop = v; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPadBottom</span><span class="hljs-params">(Int_t v)</span>  </span>{  fPadbottom = v; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPadLeft</span><span class="hljs-params">(Int_t v)</span>  </span>{  fPadleft = v; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetPadRight</span><span class="hljs-params">(Int_t v)</span>  </span>{  fPadright = v; }
 
-   <span class="token keyword">void</span> <span class="token function">Print</span><span class="token punctuation">(</span>Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span> <span class="token function">ls</span><span class="token punctuation">(</span>Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token function">Print</span><span class="token punctuation">(</span>option<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Print</span><span class="hljs-params">(Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ls</span><span class="hljs-params">(Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span> </span>{ Print(option); }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGFrameElement</strong></p>
-<pre class="language-"><code class="lang-cpp">
-   TGFrame        <span class="token operator">*</span>fFrame<span class="token punctuation">;</span>    <span class="token comment">// frame used in layout</span>
-   Int_t           fState<span class="token punctuation">;</span>    <span class="token comment">// EFrameState defined in TGFrame.h</span>
-   TGLayoutHints  <span class="token operator">*</span>fLayout<span class="token punctuation">;</span>   <span class="token comment">// layout hints used in layout</span>
+<pre><code class="lang-cpp">
+   TGFrame        *fFrame;    <span class="hljs-comment">// frame used in layout</span>
+   Int_t           fState;    <span class="hljs-comment">// EFrameState defined in TGFrame.h</span>
+   TGLayoutHints  *fLayout;   <span class="hljs-comment">// layout hints used in layout</span>
 
-   <span class="token function">TGFrameElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">fFrame</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fLayout</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token function">TGFrameElement</span><span class="token punctuation">(</span>TGFrame <span class="token operator">*</span>f<span class="token punctuation">,</span> TGLayoutHints <span class="token operator">*</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token operator">~</span><span class="token function">TGFrameElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TGFrameElement() : fFrame(<span class="hljs-number">0</span>), fState(<span class="hljs-number">0</span>), fLayout(<span class="hljs-number">0</span>) { }
+   TGFrameElement(TGFrame *f, TGLayoutHints *l);
+   ~TGFrameElement();
 
-   <span class="token keyword">void</span> <span class="token function">Print</span><span class="token punctuation">(</span>Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span> <span class="token function">ls</span><span class="token punctuation">(</span>Option_t<span class="token operator">*</span> option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token function">Print</span><span class="token punctuation">(</span>option<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Print</span><span class="hljs-params">(Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ls</span><span class="hljs-params">(Option_t* option = <span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span> </span>{ Print(option); }
 </code></pre>
 <p><strong>TGLayoutManager</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGLayoutManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">fModified</span><span class="token punctuation">(</span>kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGLayoutManager() : fModified(kTRUE) {}
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetDefaultWidth</span><span class="token punctuation">(</span>UInt_t <span class="token comment">/* w */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetDefaultHeight</span><span class="token punctuation">(</span>UInt_t <span class="token comment">/* h */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsModified</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fModified<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetModified</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fModified <span class="token operator">=</span> flag<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>= <span class="hljs-number">0</span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDefaultWidth</span><span class="hljs-params">(UInt_t <span class="hljs-comment">/* w */</span>)</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDefaultHeight</span><span class="hljs-params">(UInt_t <span class="hljs-comment">/* h */</span>)</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsModified</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fModified; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetModified</span><span class="hljs-params">(Bool_t flag = kTRUE)</span> </span>{ fModified = flag; }
 </code></pre>
 <p><strong>TGVerticalLayout</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGVerticalLayout</span><span class="token punctuation">(</span>TGCompositeFrame <span class="token operator">*</span>main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGVerticalLayout(TGCompositeFrame *main);
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGHorizontalLayout</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGHorizontalLayout</span><span class="token punctuation">(</span>TGCompositeFrame <span class="token operator">*</span>main<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">TGVerticalLayout</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGHorizontalLayout(TGCompositeFrame *main) : TGVerticalLayout(main) { }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGRowLayout</strong></p>
-<pre class="language-"><code class="lang-cpp">   Int_t   fSep<span class="token punctuation">;</span>             <span class="token comment">// interval between frames</span>
+<pre><code class="lang-cpp">   Int_t   fSep;             <span class="hljs-comment">// interval between frames</span>
 
-   <span class="token function">TGRowLayout</span><span class="token punctuation">(</span>TGCompositeFrame <span class="token operator">*</span>main<span class="token punctuation">,</span> Int_t s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">:</span>
-      <span class="token function">TGVerticalLayout</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fSep</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+   TGRowLayout(TGCompositeFrame *main, Int_t s = <span class="hljs-number">0</span>) :
+      TGVerticalLayout(main), fSep(s) { }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGColumnLayout</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGColumnLayout</span><span class="token punctuation">(</span>TGCompositeFrame <span class="token operator">*</span>main<span class="token punctuation">,</span> Int_t s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">TGRowLayout</span><span class="token punctuation">(</span>main<span class="token punctuation">,</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGColumnLayout(TGCompositeFrame *main, Int_t s = <span class="hljs-number">0</span>) : TGRowLayout(main, s) { }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGMatrixLayout</strong></p>
-<pre class="language-"><code class="lang-cpp">   Int_t   fSep<span class="token punctuation">;</span>                      <span class="token comment">// interval between frames</span>
-   Int_t   fHints<span class="token punctuation">;</span>                    <span class="token comment">// layout hints (currently not used)</span>
-   UInt_t  fRows<span class="token punctuation">;</span>                     <span class="token comment">// number of rows</span>
-   UInt_t  fColumns<span class="token punctuation">;</span>                  <span class="token comment">// number of columns</span>
+<pre><code class="lang-cpp">   Int_t   fSep;                      <span class="hljs-comment">// interval between frames</span>
+   Int_t   fHints;                    <span class="hljs-comment">// layout hints (currently not used)</span>
+   UInt_t  fRows;                     <span class="hljs-comment">// number of rows</span>
+   UInt_t  fColumns;                  <span class="hljs-comment">// number of columns</span>
 
-   <span class="token function">TGMatrixLayout</span><span class="token punctuation">(</span>TGCompositeFrame <span class="token operator">*</span>main<span class="token punctuation">,</span> UInt_t r<span class="token punctuation">,</span> UInt_t c<span class="token punctuation">,</span> Int_t s<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t h<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TGMatrixLayout(TGCompositeFrame *main, UInt_t r, UInt_t c, Int_t s=<span class="hljs-number">0</span>, Int_t h=<span class="hljs-number">0</span>);
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGTileLayout</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGTileLayout</span><span class="token punctuation">(</span>TGCompositeFrame <span class="token operator">*</span>main<span class="token punctuation">,</span> Int_t sep <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGTileLayout(TGCompositeFrame *main, Int_t sep = <span class="hljs-number">0</span>);
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsModified</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fModified<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsModified</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fModified; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGListLayout</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGListLayout</span><span class="token punctuation">(</span>TGCompositeFrame <span class="token operator">*</span>main<span class="token punctuation">,</span> Int_t sep <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">:</span>
-      <span class="token function">TGTileLayout</span><span class="token punctuation">(</span>main<span class="token punctuation">,</span> sep<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGListLayout(TGCompositeFrame *main, Int_t sep = <span class="hljs-number">0</span>) :
+      TGTileLayout(main, sep) { }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <p><strong>TGListDetailsLayout</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGListDetailsLayout</span><span class="token punctuation">(</span>TGCompositeFrame <span class="token operator">*</span>main<span class="token punctuation">,</span> Int_t sep <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">:</span>
-      <span class="token function">TGTileLayout</span><span class="token punctuation">(</span>main<span class="token punctuation">,</span> sep<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fWidth</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGListDetailsLayout(TGCompositeFrame *main, Int_t sep = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">0</span>) :
+      TGTileLayout(main, sep), fWidth(w) { }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetDefaultWidth</span><span class="token punctuation">(</span>UInt_t w<span class="token punctuation">)</span> <span class="token punctuation">{</span> fWidth <span class="token operator">=</span> w<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDefaultWidth</span><span class="hljs-params">(UInt_t w)</span> </span>{ fWidth = w; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGLayout.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3875,7 +3887,7 @@ This class describes layout hints used by the layout classes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGLayout+","level":"1.3.28","depth":2,"next":{"title":"TGListBox+","level":"1.3.29","depth":2,"path":"class/gui/TGListBox.md","ref":"class/gui/TGListBox.md","articles":[]},"previous":{"title":"TGLabel*","level":"1.3.27","depth":2,"path":"class/gui/TGLabel.md","ref":"class/gui/TGLabel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGLayout.md","mtime":"2018-05-14T09:18:21.868Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGLayout+","level":"1.3.28","depth":2,"next":{"title":"TGListBox+","level":"1.3.29","depth":2,"path":"class/gui/TGListBox.md","ref":"class/gui/TGListBox.md","articles":[]},"previous":{"title":"TGLabel*","level":"1.3.27","depth":2,"path":"class/gui/TGLabel.md","ref":"class/gui/TGLabel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGLayout.md","mtime":"2018-05-14T09:18:21.868Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3907,6 +3919,18 @@ This class describes layout hints used by the layout classes.</p>
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

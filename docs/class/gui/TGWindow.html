@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3682,99 +3694,99 @@
 <p>Handle events for windows that are not part of the native ROOT GUI.<br>Typically windows created by Xt or Motif.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TGWindow</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">enum</span>  EEditMode <span class="token punctuation">{</span>
-      kEditEnable        <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>          <span class="token comment">// allow edit of this window</span>
-      kEditDisable       <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// disable edit of this window</span>
-      kEditDisableEvents <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// window events cannot be editted</span>
-      kEditDisableGrab   <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// window grab cannot be editted</span>
-      kEditDisableLayout <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// window layout cannot be editted</span>
-      kEditDisableResize <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// window size cannot be editted</span>
-      kEditDisableHeight <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// window height cannot be editted</span>
-      kEditDisableWidth  <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token comment">// window width cannot be editted</span>
-      kEditDisableBtnEnable <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment">// window can handle mouse button events</span>
-      kEditDisableKeyEnable <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>   <span class="token comment">// window can handle keyboard events</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span>  EEditMode {
+      kEditEnable        = <span class="hljs-number">0</span>,          <span class="hljs-comment">// allow edit of this window</span>
+      kEditDisable       = BIT(<span class="hljs-number">0</span>),     <span class="hljs-comment">// disable edit of this window</span>
+      kEditDisableEvents = BIT(<span class="hljs-number">1</span>),     <span class="hljs-comment">// window events cannot be editted</span>
+      kEditDisableGrab   = BIT(<span class="hljs-number">2</span>),     <span class="hljs-comment">// window grab cannot be editted</span>
+      kEditDisableLayout = BIT(<span class="hljs-number">3</span>),     <span class="hljs-comment">// window layout cannot be editted</span>
+      kEditDisableResize = BIT(<span class="hljs-number">4</span>),     <span class="hljs-comment">// window size cannot be editted</span>
+      kEditDisableHeight = BIT(<span class="hljs-number">5</span>),     <span class="hljs-comment">// window height cannot be editted</span>
+      kEditDisableWidth  = BIT(<span class="hljs-number">6</span>),     <span class="hljs-comment">// window width cannot be editted</span>
+      kEditDisableBtnEnable = BIT(<span class="hljs-number">7</span>),  <span class="hljs-comment">// window can handle mouse button events</span>
+      kEditDisableKeyEnable = BIT(<span class="hljs-number">8</span>)   <span class="hljs-comment">// window can handle keyboard events</span>
+   };
 
-   <span class="token function">TGWindow</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-            UInt_t w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t border <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-            Int_t depth <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-            UInt_t clss <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-            <span class="token keyword">void</span> <span class="token operator">*</span>visual <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-            SetWindowAttributes_t <span class="token operator">*</span>attr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-            UInt_t wtype <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a new window. Parent p must exist otherwise the root window</span>
-<span class="token comment">/// is taken as parent. No arguments specified results in values from</span>
-<span class="token comment">/// parent to be taken (or defaults).</span>
+   TGWindow(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t x = <span class="hljs-number">0</span>, Int_t y = <span class="hljs-number">0</span>,
+            UInt_t w = <span class="hljs-number">0</span>, UInt_t h = <span class="hljs-number">0</span>, UInt_t border = <span class="hljs-number">0</span>,
+            Int_t depth = <span class="hljs-number">0</span>,
+            UInt_t clss = <span class="hljs-number">0</span>,
+            <span class="hljs-keyword">void</span> *visual = <span class="hljs-number">0</span>,
+            SetWindowAttributes_t *attr = <span class="hljs-number">0</span>,
+            UInt_t wtype = <span class="hljs-number">0</span>);
+<span class="hljs-comment">/// Create a new window. Parent p must exist otherwise the root window</span>
+<span class="hljs-comment">/// is taken as parent. No arguments specified results in values from</span>
+<span class="hljs-comment">/// parent to be taken (or defaults).</span>
 
-   <span class="token function">TGWindow</span><span class="token punctuation">(</span>TGClient <span class="token operator">*</span>c<span class="token punctuation">,</span> Window_t id<span class="token punctuation">,</span> <span class="token keyword">const</span> TGWindow <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Create a copy of a window.</span>
+   TGWindow(TGClient *c, Window_t id, <span class="hljs-keyword">const</span> TGWindow *parent = <span class="hljs-number">0</span>);<span class="hljs-comment">/// Create a copy of a window.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Window destructor. Unregisters the window.</span>
+   <span class="hljs-keyword">virtual</span> ~TGWindow();<span class="hljs-comment">/// Window destructor. Unregisters the window.</span>
 
-   <span class="token keyword">const</span> TGWindow <span class="token operator">*</span><span class="token function">GetParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fParent<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> TGWindow <span class="token operator">*</span><span class="token function">GetMainFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Returns top level main frame.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGWindow *<span class="hljs-title">GetParent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fParent; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> TGWindow *<span class="hljs-title">GetMainFrame</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns top level main frame.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MapWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">MapWindow</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MapSubwindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">MapSubwindows</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MapRaised</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">MapRaised</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">UnmapWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">UnmapWindow</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">DestroyWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">DestroyWindow</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">DestroySubwindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">DestroySubwindows</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">RaiseWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">RaiseWindow</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">LowerWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">LowerWindow</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">IconifyWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">IconifyWindow</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">ReparentWindow</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p<span class="token punctuation">,</span> Int_t x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Reparent window, make p the new parent and position the window at</span>
-<span class="token comment">/// position (x,y) in new parent.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MapWindow</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;MapWindow(fId); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MapSubwindows</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;MapSubwindows(fId); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MapRaised</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;MapRaised(fId); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UnmapWindow</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;UnmapWindow(fId); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DestroyWindow</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;DestroyWindow(fId); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DestroySubwindows</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;DestroySubwindows(fId); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RaiseWindow</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;RaiseWindow(fId); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LowerWindow</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;LowerWindow(fId); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">IconifyWindow</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;IconifyWindow(fId); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReparentWindow</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGWindow *p, Int_t x = <span class="hljs-number">0</span>, Int_t y = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Reparent window, make p the new parent and position the window at</span>
+<span class="hljs-comment">/// position (x,y) in new parent.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">RequestFocus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetInputFocus</span><span class="token punctuation">(</span>fId<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RequestFocus</span><span class="hljs-params">()</span> </span>{ gVirtualX-&gt;SetInputFocus(fId); }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetBackgroundColor</span><span class="token punctuation">(</span>Pixel_t color<span class="token punctuation">)</span>
-                  <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetWindowBackground</span><span class="token punctuation">(</span>fId<span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetBackgroundPixmap</span><span class="token punctuation">(</span>Pixmap_t pixmap<span class="token punctuation">)</span>
-                  <span class="token punctuation">{</span> gVirtualX<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetWindowBackgroundPixmap</span><span class="token punctuation">(</span>fId<span class="token punctuation">,</span> pixmap<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetBackgroundColor</span><span class="hljs-params">(Pixel_t color)</span>
+                  </span>{ gVirtualX-&gt;SetWindowBackground(fId, color); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetBackgroundPixmap</span><span class="hljs-params">(Pixmap_t pixmap)</span>
+                  </span>{ gVirtualX-&gt;SetWindowBackgroundPixmap(fId, pixmap); }
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleExpose</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-                  <span class="token punctuation">{</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token operator">-</span><span class="token operator">&gt;</span>fCount <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> fClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">NeedRedraw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleEvent</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleTimer</span><span class="token punctuation">(</span>TTimer <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleIdleEvent</span><span class="token punctuation">(</span>TGIdleHandler <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleExpose</span><span class="hljs-params">(Event_t *event)</span>
+                  </span>{ <span class="hljs-keyword">if</span> (event-&gt;fCount == <span class="hljs-number">0</span>) fClient-&gt;NeedRedraw(<span class="hljs-keyword">this</span>); <span class="hljs-keyword">return</span> kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleEvent</span><span class="hljs-params">(Event_t *)</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleTimer</span><span class="hljs-params">(TTimer *)</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleIdleEvent</span><span class="hljs-params">(TGIdleHandler *)</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Move</span><span class="token punctuation">(</span>Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Move the window.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Resize</span><span class="token punctuation">(</span>UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Resize the window.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">MoveResize</span><span class="token punctuation">(</span>Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">,</span> UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Move and resize the window.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsMapped</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Returns kTRUE if window is mapped on screen, kFALSE otherwise.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsEditable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>fClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> UInt_t <span class="token function">GetEditDisabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fEditDisabled<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetEditDisabled</span><span class="token punctuation">(</span>UInt_t on <span class="token operator">=</span> kEditDisable<span class="token punctuation">)</span> <span class="token punctuation">{</span> fEditDisabled <span class="token operator">=</span> on<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetEditable</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span>
-                  <span class="token punctuation">{</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>fEditDisabled <span class="token operator">&amp;</span> kEditDisable<span class="token punctuation">)</span><span class="token punctuation">)</span> fClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetRoot</span><span class="token punctuation">(</span>on <span class="token operator">?</span> <span class="token keyword">this</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">MustCleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Print</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Print window id.</span>
-<span class="token comment">/// If option is &quot;tree&quot; - print all parent windows tree</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Move</span><span class="hljs-params">(Int_t x, Int_t y)</span></span>;<span class="hljs-comment">/// Move the window.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Resize</span><span class="hljs-params">(UInt_t w, UInt_t h)</span></span>;<span class="hljs-comment">/// Resize the window.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">MoveResize</span><span class="hljs-params">(Int_t x, Int_t y, UInt_t w, UInt_t h)</span></span>;<span class="hljs-comment">/// Move and resize the window.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsMapped</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Returns kTRUE if window is mapped on screen, kFALSE otherwise.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsEditable</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (fClient-&gt;GetRoot() == <span class="hljs-keyword">this</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> UInt_t <span class="hljs-title">GetEditDisabled</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fEditDisabled; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetEditDisabled</span><span class="hljs-params">(UInt_t on = kEditDisable)</span> </span>{ fEditDisabled = on; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetEditable</span><span class="hljs-params">(Bool_t on = kTRUE)</span>
+                  </span>{ <span class="hljs-keyword">if</span> (!(fEditDisabled &amp; kEditDisable)) fClient-&gt;SetRoot(on ? <span class="hljs-keyword">this</span> : <span class="hljs-number">0</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t  <span class="hljs-title">MustCleanup</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Print window id.</span>
+<span class="hljs-comment">/// If option is &quot;tree&quot; - print all parent windows tree</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetWindowName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set window name.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return unique name, used in SavePrimitive methods.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span> fName <span class="token operator">=</span> name<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetWindowName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">/// Set window name.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return unique name, used in SavePrimitive methods.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> </span>{ fName = name; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetMapSubwindows</span><span class="token punctuation">(</span>Bool_t <span class="token comment">/*on*/</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">IsMapSubwindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetMapSubwindows</span><span class="hljs-params">(Bool_t <span class="hljs-comment">/*on*/</span>)</span> </span>{  }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">IsMapSubwindows</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
 
-   <span class="token keyword">static</span> Int_t        <span class="token function">GetCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return global window counter (total number of created windows).</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t        <span class="hljs-title">GetCounter</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Return global window counter (total number of created windows).</span>
 </code></pre>
 <hr>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGUnknownWindowHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGUnknownWindowHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<pre><code class="lang-cpp">   TGUnknownWindowHandler() { }
+   <span class="hljs-keyword">virtual</span> ~TGUnknownWindowHandler() { }
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleEvent</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleEvent</span><span class="hljs-params">(Event_t *)</span> </span>= <span class="hljs-number">0</span>;
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGWindow.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3817,7 +3829,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGWindow*","level":"1.3.78","depth":2,"next":{"title":"TGXYLayout","level":"1.3.79","depth":2,"path":"class/gui/TGXYLayout.md","ref":"class/gui/TGXYLayout.md","articles":[]},"previous":{"title":"TGWidget*","level":"1.3.77","depth":2,"path":"class/gui/TGWidget.md","ref":"class/gui/TGWidget.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGWindow.md","mtime":"2018-05-14T09:18:21.684Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGWindow*","level":"1.3.78","depth":2,"next":{"title":"TGXYLayout","level":"1.3.79","depth":2,"path":"class/gui/TGXYLayout.md","ref":"class/gui/TGXYLayout.md","articles":[]},"previous":{"title":"TGWidget*","level":"1.3.77","depth":2,"path":"class/gui/TGWidget.md","ref":"class/gui/TGWidget.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGWindow.md","mtime":"2018-05-14T09:18:21.684Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3849,6 +3861,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

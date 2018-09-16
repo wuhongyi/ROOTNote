@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,54 +3692,54 @@
 <p><strong>&#x7EE7;&#x627F; TRandom</strong></p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p>Ranlux random number generator class (periodicity &gt; 10**14) </p>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">/// Luxury level is set in the same way as the original FORTRAN routine.</span>
-<span class="token comment">///  level 0  (p=24): equivalent to the original RCARRY of Marsaglia</span>
-<span class="token comment">///           and Zaman, very long period, but fails many tests.</span>
-<span class="token comment">///  level 1  (p=48): considerable improvement in quality over level 0,</span>
-<span class="token comment">///           now passes the gap test, but still fails spectral test.</span>
-<span class="token comment">///  level 2  (p=97): passes all known tests, but theoretically still</span>
-<span class="token comment">///           defective.</span>
-<span class="token comment">///  level 3  (p=223): DEFAULT VALUE.  Any theoretically possible</span>
-<span class="token comment">///           correlations have very small chance of being observed.</span>
-<span class="token comment">///  level 4  (p=389): highest possible luxury, all 24 bits chaotic.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">/// Luxury level is set in the same way as the original FORTRAN routine.</span>
+<span class="hljs-comment">///  level 0  (p=24): equivalent to the original RCARRY of Marsaglia</span>
+<span class="hljs-comment">///           and Zaman, very long period, but fails many tests.</span>
+<span class="hljs-comment">///  level 1  (p=48): considerable improvement in quality over level 0,</span>
+<span class="hljs-comment">///           now passes the gap test, but still fails spectral test.</span>
+<span class="hljs-comment">///  level 2  (p=97): passes all known tests, but theoretically still</span>
+<span class="hljs-comment">///           defective.</span>
+<span class="hljs-comment">///  level 3  (p=223): DEFAULT VALUE.  Any theoretically possible</span>
+<span class="hljs-comment">///           correlations have very small chance of being observed.</span>
+<span class="hljs-comment">///  level 4  (p=389): highest possible luxury, all 24 bits chaotic.</span>
 
-   <span class="token function">TRandom1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TRandom1</span><span class="token punctuation">(</span>UInt_t seed<span class="token punctuation">,</span> Int_t lux <span class="token operator">=</span> <span class="token number">3</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TRandom1</span><span class="token punctuation">(</span>Int_t rowIndex<span class="token punctuation">,</span> Int_t colIndex<span class="token punctuation">,</span> Int_t lux <span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TRandom1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   TRandom1();
+   TRandom1(UInt_t seed, Int_t lux = <span class="hljs-number">3</span> );
+   TRandom1(Int_t rowIndex, Int_t colIndex, Int_t lux );
+   <span class="hljs-keyword">virtual</span> ~TRandom1();
 
-   <span class="token keyword">virtual</span>  Int_t    <span class="token function">GetLuxury</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fLuxury<span class="token punctuation">;</span><span class="token punctuation">}</span>
-                    <span class="token comment">// Get the current seed (first element of the table)</span>
-   <span class="token keyword">virtual</span>  UInt_t   <span class="token function">GetSeed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span>  UInt_t <span class="token punctuation">(</span> fFloatSeedTable<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">/</span>  fMantissaBit24 <span class="token punctuation">)</span> <span class="token punctuation">;</span> <span class="token punctuation">}</span>
-                    <span class="token comment">// Gets the current seed.</span>
-   <span class="token keyword">const</span> UInt_t     <span class="token operator">*</span><span class="token function">GetTheSeeds</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fTheSeeds<span class="token punctuation">;</span><span class="token punctuation">}</span>
-                     <span class="token comment">// Gets the current array of seeds.</span>
-   <span class="token keyword">static</span>   <span class="token keyword">void</span>     <span class="token function">GetTableSeeds</span><span class="token punctuation">(</span>UInt_t<span class="token operator">*</span> seeds<span class="token punctuation">,</span> Int_t index<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">///static function returning the table of seeds</span>
-                     <span class="token comment">// Gets back seed values stored in the table, given the index.</span>
-   <span class="token keyword">virtual</span>  Double_t <span class="token function">Rndm</span><span class="token punctuation">(</span>Int_t i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#xFF08;0&#xFF0C;1]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">RndmArray</span><span class="token punctuation">(</span>Int_t size<span class="token punctuation">,</span> Float_t <span class="token operator">*</span>vect<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">///return an array of random numbers in ]0,1]</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">RndmArray</span><span class="token punctuation">(</span>Int_t size<span class="token punctuation">,</span> Double_t <span class="token operator">*</span>vect<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">///return an array of random numbers in ]0,1[</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">SetSeed2</span><span class="token punctuation">(</span>UInt_t seed<span class="token punctuation">,</span> Int_t lux<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// The initialisation is carried out using a Multiplicative</span>
-<span class="token comment">/// Congruential generator using formula constants of L&apos;Ecuyer</span>
-<span class="token comment">/// as described in &quot;A review of pseudorandom number generators&quot;</span>
-<span class="token comment">/// (Fred James) published in Computer Physics Communications 60 (1990)</span>
-<span class="token comment">/// pages 329-344</span>
-<span class="token comment">/// modified for the case of seed = 0. In that case a random 64 bits seed based on</span>
-<span class="token comment">/// TUUID (using TRandom3(0) ) is generated in order to have a unique seed</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Int_t    <span class="hljs-title">GetLuxury</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fLuxury;}
+                    <span class="hljs-comment">// Get the current seed (first element of the table)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  UInt_t   <span class="hljs-title">GetSeed</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span>  UInt_t ( fFloatSeedTable[<span class="hljs-number">0</span>] /  fMantissaBit24 ) ; }
+                    <span class="hljs-comment">// Gets the current seed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> UInt_t     *<span class="hljs-title">GetTheSeeds</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fTheSeeds;}
+                     <span class="hljs-comment">// Gets the current array of seeds.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span>   <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTableSeeds</span><span class="hljs-params">(UInt_t* seeds, Int_t index)</span></span>;<span class="hljs-comment">///static function returning the table of seeds</span>
+                     <span class="hljs-comment">// Gets back seed values stored in the table, given the index.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Rndm</span><span class="hljs-params">(Int_t i=<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">//&#xFF08;0&#xFF0C;1]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">RndmArray</span><span class="hljs-params">(Int_t size, Float_t *vect)</span></span>;<span class="hljs-comment">///return an array of random numbers in ]0,1]</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">RndmArray</span><span class="hljs-params">(Int_t size, Double_t *vect)</span></span>;<span class="hljs-comment">///return an array of random numbers in ]0,1[</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetSeed2</span><span class="hljs-params">(UInt_t seed, Int_t lux=<span class="hljs-number">3</span>)</span></span>;
+<span class="hljs-comment">/// The initialisation is carried out using a Multiplicative</span>
+<span class="hljs-comment">/// Congruential generator using formula constants of L&apos;Ecuyer</span>
+<span class="hljs-comment">/// as described in &quot;A review of pseudorandom number generators&quot;</span>
+<span class="hljs-comment">/// (Fred James) published in Computer Physics Communications 60 (1990)</span>
+<span class="hljs-comment">/// pages 329-344</span>
+<span class="hljs-comment">/// modified for the case of seed = 0. In that case a random 64 bits seed based on</span>
+<span class="hljs-comment">/// TUUID (using TRandom3(0) ) is generated in order to have a unique seed</span>
 
-                     <span class="token comment">// Sets the state of the algorithm according to seed.</span>
-                     <span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">SetSeeds</span><span class="token punctuation">(</span><span class="token keyword">const</span> UInt_t <span class="token operator">*</span> seeds<span class="token punctuation">,</span> Int_t lux<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                     <span class="hljs-comment">// Sets the state of the algorithm according to seed.</span>
+                     <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetSeeds</span><span class="hljs-params">(<span class="hljs-keyword">const</span> UInt_t * seeds, Int_t lux=<span class="hljs-number">3</span>)</span></span>;
 
 
-                     <span class="token comment">// Sets the state of the algorithm according to the zero terminated</span>
-                     <span class="token comment">// array of seeds. Only the first seed is used.</span>
-   <span class="token keyword">virtual</span>  <span class="token keyword">void</span>     <span class="token function">SetSeed</span><span class="token punctuation">(</span>UInt_t seed<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                     <span class="hljs-comment">// Sets the state of the algorithm according to the zero terminated</span>
+                     <span class="hljs-comment">// array of seeds. Only the first seed is used.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetSeed</span><span class="hljs-params">(UInt_t seed)</span></span>;
 </code></pre>
 <!-- TRandom1.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3770,7 +3782,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TRandom1*","level":"1.2.71","depth":2,"next":{"title":"TRandom2*","level":"1.2.72","depth":2,"path":"class/TRandom2.md","ref":"class/TRandom2.md","articles":[]},"previous":{"title":"TRandom*","level":"1.2.70","depth":2,"path":"class/TRandom.md","ref":"class/TRandom.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TRandom1.md","mtime":"2018-05-14T09:18:22.103Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TRandom1*","level":"1.2.71","depth":2,"next":{"title":"TRandom2*","level":"1.2.72","depth":2,"path":"class/TRandom2.md","ref":"class/TRandom2.md","articles":[]},"previous":{"title":"TRandom*","level":"1.2.70","depth":2,"path":"class/TRandom.md","ref":"class/TRandom.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TRandom1.md","mtime":"2018-05-14T09:18:22.103Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3802,6 +3814,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

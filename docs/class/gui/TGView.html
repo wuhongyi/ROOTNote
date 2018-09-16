@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3693,91 +3705,91 @@
 </ul>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TGView</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">enum</span> <span class="token punctuation">{</span> kNoHSB <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> kNoVSB <span class="token operator">=</span> <span class="token function">BIT</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-   <span class="token keyword">enum</span> <span class="token punctuation">{</span> kHorizontal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> kVertical <span class="token operator">=</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span> { kNoHSB = BIT(<span class="hljs-number">0</span>), kNoVSB = BIT(<span class="hljs-number">1</span>) };
+   <span class="hljs-keyword">enum</span> { kHorizontal = <span class="hljs-number">0</span>, kVertical = <span class="hljs-number">1</span> };
 
-   <span class="token function">TGView</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t w <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> UInt_t h <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-          UInt_t xMargin <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t yMargin <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-          UInt_t options <span class="token operator">=</span> kSunkenFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">,</span>
-          UInt_t sboptions <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-          Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create an editor view, containing an TGEditorFrame and (optionally)</span>
-<span class="token comment">/// a horizontal and vertical scrollbar.</span>
+   TGView(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, UInt_t w = <span class="hljs-number">1</span>, UInt_t h = <span class="hljs-number">1</span>, Int_t id = <span class="hljs-number">-1</span>,
+          UInt_t xMargin = <span class="hljs-number">0</span>, UInt_t yMargin = <span class="hljs-number">0</span>,
+          UInt_t options = kSunkenFrame | kDoubleBorder,
+          UInt_t sboptions = <span class="hljs-number">0</span>,
+          Pixel_t back = GetWhitePixel());
+<span class="hljs-comment">/// Create an editor view, containing an TGEditorFrame and (optionally)</span>
+<span class="hljs-comment">/// a horizontal and vertical scrollbar.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Delete view.</span>
+   <span class="hljs-keyword">virtual</span> ~TGView();<span class="hljs-comment">/// Delete view.</span>
 
-   TGViewFrame   <span class="token operator">*</span><span class="token function">GetCanvas</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fCanvas<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">TGViewFrame   *<span class="hljs-title">GetCanvas</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fCanvas; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Clear view.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetVisibleStart</span><span class="token punctuation">(</span>Int_t newTop<span class="token punctuation">,</span> Int_t direction<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Scroll view in specified direction to make newTop the visible location.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Clear view.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetVisibleStart</span><span class="hljs-params">(Int_t newTop, Int_t direction)</span></span>;
+<span class="hljs-comment">/// Scroll view in specified direction to make newTop the visible location.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">ScrollCanvas</span><span class="token punctuation">(</span>Int_t newTop<span class="token punctuation">,</span> Int_t direction<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Scroll the canvas to new_top in the kVertical or kHorizontal direction.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">ScrollCanvas</span><span class="hljs-params">(Int_t newTop, Int_t direction)</span></span>;
+<span class="hljs-comment">/// Scroll the canvas to new_top in the kVertical or kHorizontal direction.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">ProcessMessage</span><span class="token punctuation">(</span>Long_t msg<span class="token punctuation">,</span> Long_t parm1<span class="token punctuation">,</span> Long_t parm2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">DrawBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw the border of the text edit widget.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// layout view</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetLayoutManager</span><span class="token punctuation">(</span>TGLayoutManager<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">DrawRegion</span><span class="token punctuation">(</span>Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">,</span> UInt_t width<span class="token punctuation">,</span> UInt_t height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw the border of the text edit widget.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// layout view</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetLayoutManager</span><span class="hljs-params">(TGLayoutManager*)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">DrawRegion</span><span class="hljs-params">(Int_t x, Int_t y, UInt_t width, UInt_t height)</span></span>;
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">ScrollToPosition</span><span class="token punctuation">(</span>TGLongPosition newPos<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Scroll the canvas to pos.</span>
-   <span class="token keyword">void</span> <span class="token function">ScrollUp</span><span class="token punctuation">(</span>Int_t pixels<span class="token punctuation">)</span>
-      <span class="token punctuation">{</span> <span class="token function">ScrollToPosition</span><span class="token punctuation">(</span><span class="token function">TGLongPosition</span><span class="token punctuation">(</span>fVisible<span class="token punctuation">.</span>fX<span class="token punctuation">,</span> fVisible<span class="token punctuation">.</span>fY <span class="token operator">+</span> pixels<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">ScrollDown</span><span class="token punctuation">(</span>Int_t pixels<span class="token punctuation">)</span>
-      <span class="token punctuation">{</span> <span class="token function">ScrollToPosition</span><span class="token punctuation">(</span><span class="token function">TGLongPosition</span><span class="token punctuation">(</span>fVisible<span class="token punctuation">.</span>fX<span class="token punctuation">,</span> fVisible<span class="token punctuation">.</span>fY <span class="token operator">-</span> pixels<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">ScrollLeft</span><span class="token punctuation">(</span>Int_t pixels<span class="token punctuation">)</span>
-      <span class="token punctuation">{</span> <span class="token function">ScrollToPosition</span><span class="token punctuation">(</span><span class="token function">TGLongPosition</span><span class="token punctuation">(</span>fVisible<span class="token punctuation">.</span>fX <span class="token operator">+</span> pixels<span class="token punctuation">,</span> fVisible<span class="token punctuation">.</span>fY<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">ScrollRight</span><span class="token punctuation">(</span>Int_t  pixels<span class="token punctuation">)</span>
-      <span class="token punctuation">{</span> <span class="token function">ScrollToPosition</span><span class="token punctuation">(</span><span class="token function">TGLongPosition</span><span class="token punctuation">(</span>fVisible<span class="token punctuation">.</span>fX <span class="token operator">-</span> pixels<span class="token punctuation">,</span> fVisible<span class="token punctuation">.</span>fY<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ScrollToPosition</span><span class="hljs-params">(TGLongPosition newPos)</span></span>;<span class="hljs-comment">/// Scroll the canvas to pos.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ScrollUp</span><span class="hljs-params">(Int_t pixels)</span>
+      </span>{ ScrollToPosition(TGLongPosition(fVisible.fX, fVisible.fY + pixels)); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ScrollDown</span><span class="hljs-params">(Int_t pixels)</span>
+      </span>{ ScrollToPosition(TGLongPosition(fVisible.fX, fVisible.fY - pixels)); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ScrollLeft</span><span class="hljs-params">(Int_t pixels)</span>
+      </span>{ ScrollToPosition(TGLongPosition(fVisible.fX + pixels, fVisible.fY)); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ScrollRight</span><span class="hljs-params">(Int_t  pixels)</span>
+      </span>{ ScrollToPosition(TGLongPosition(fVisible.fX - pixels, fVisible.fY)); }
 
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TGDimension</span><span class="token punctuation">(</span>fWidth<span class="token punctuation">,</span> fHeight<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TGDimension <span class="token function">GetVirtualSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVirtualSize<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TGLongPosition  <span class="token function">GetScrollValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fScrollVal<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TGLongPosition  <span class="token function">GetScrollPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVisible<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TGDimension(fWidth, fHeight); }
+   <span class="hljs-function">TGDimension <span class="hljs-title">GetVirtualSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVirtualSize; }
+   <span class="hljs-function">TGLongPosition  <span class="hljs-title">GetScrollValue</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fScrollVal; }
+   <span class="hljs-function">TGLongPosition  <span class="hljs-title">GetScrollPosition</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVisible; }
 
-   TGLongPosition <span class="token function">ToVirtual</span><span class="token punctuation">(</span>TGLongPosition coord<span class="token punctuation">)</span>  <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> coord <span class="token operator">+</span> fVisible<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TGLongPosition <span class="token function">ToPhysical</span><span class="token punctuation">(</span>TGLongPosition coord<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> coord <span class="token operator">-</span> fVisible<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">TGLongPosition <span class="hljs-title">ToVirtual</span><span class="hljs-params">(TGLongPosition coord)</span>  <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> coord + fVisible; }
+   <span class="hljs-function">TGLongPosition <span class="hljs-title">ToPhysical</span><span class="hljs-params">(TGLongPosition coord)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> coord - fVisible; }
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// handle button</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleExpose</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle expose events.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// handle button</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleExpose</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle expose events.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">ChangeBackground</span><span class="token punctuation">(</span>Pixel_t<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Change background color of the canvas frame.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetBackgroundColor</span><span class="token punctuation">(</span>Pixel_t<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set background color of the canvas frame.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">SetBackgroundPixmap</span><span class="token punctuation">(</span>Pixmap_t p<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set backgound  pixmap</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>   <span class="token function">UpdateBackgroundStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// set some gc values</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">ChangeBackground</span><span class="hljs-params">(Pixel_t)</span></span>;<span class="hljs-comment">/// Change background color of the canvas frame.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetBackgroundColor</span><span class="hljs-params">(Pixel_t)</span></span>;<span class="hljs-comment">/// Set background color of the canvas frame.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">SetBackgroundPixmap</span><span class="hljs-params">(Pixmap_t p)</span></span>;<span class="hljs-comment">/// Set backgound  pixmap</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">UpdateBackgroundStart</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// set some gc values</span>
 
-   <span class="token keyword">const</span> TGGC <span class="token operator">&amp;</span><span class="token function">GetViewWhiteGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fWhiteGC<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGGC &amp;<span class="hljs-title">GetViewWhiteGC</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fWhiteGC; }
 </code></pre>
 <p><strong>TGViewFrame</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGViewFrame</span><span class="token punctuation">(</span>TGView <span class="token operator">*</span>v<span class="token punctuation">,</span> UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">,</span> UInt_t options <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-               Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGViewFrame(TGView *v, UInt_t w, UInt_t h, UInt_t options = <span class="hljs-number">0</span>,
+               Pixel_t back = GetWhitePixel());
 
-   Bool_t <span class="token function">HandleSelectionRequest</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token keyword">return</span> fView<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HandleSelectionRequest</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">HandleSelectionClear</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token keyword">return</span> fView<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HandleSelectionClear</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">HandleSelection</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token keyword">return</span> fView<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HandleSelection</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token keyword">return</span> fView<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HandleButton</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">HandleExpose</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token keyword">return</span> fView<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HandleExpose</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">HandleCrossing</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token keyword">return</span> fView<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HandleCrossing</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">HandleMotion</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token keyword">return</span> fView<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HandleMotion</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">HandleKey</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token keyword">return</span> fView<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HandleKey</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t <span class="token function">HandleDoubleClick</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token keyword">return</span> fView<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">HandleDoubleClick</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Bool_t <span class="hljs-title">HandleSelectionRequest</span><span class="hljs-params">(Event_t *event)</span>
+            </span>{ <span class="hljs-keyword">return</span> fView-&gt;HandleSelectionRequest(event); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">HandleSelectionClear</span><span class="hljs-params">(Event_t *event)</span>
+            </span>{ <span class="hljs-keyword">return</span> fView-&gt;HandleSelectionClear(event); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">HandleSelection</span><span class="hljs-params">(Event_t *event)</span>
+            </span>{ <span class="hljs-keyword">return</span> fView-&gt;HandleSelection(event); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span>
+            </span>{ <span class="hljs-keyword">return</span> fView-&gt;HandleButton(event); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">HandleExpose</span><span class="hljs-params">(Event_t *event)</span>
+            </span>{ <span class="hljs-keyword">return</span> fView-&gt;HandleExpose(event); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">HandleCrossing</span><span class="hljs-params">(Event_t *event)</span>
+            </span>{ <span class="hljs-keyword">return</span> fView-&gt;HandleCrossing(event); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">HandleMotion</span><span class="hljs-params">(Event_t *event)</span>
+            </span>{ <span class="hljs-keyword">return</span> fView-&gt;HandleMotion(event); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">HandleKey</span><span class="hljs-params">(Event_t *event)</span>
+            </span>{ <span class="hljs-keyword">return</span> fView-&gt;HandleKey(event); }
+   <span class="hljs-function">Bool_t <span class="hljs-title">HandleDoubleClick</span><span class="hljs-params">(Event_t *event)</span>
+            </span>{ <span class="hljs-keyword">return</span> fView-&gt;HandleDoubleClick(event); }
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGView.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3820,7 +3832,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGView*","level":"1.3.76","depth":2,"next":{"title":"TGWidget*","level":"1.3.77","depth":2,"path":"class/gui/TGWidget.md","ref":"class/gui/TGWidget.md","articles":[]},"previous":{"title":"TGuiBuilder","level":"1.3.75","depth":2,"path":"class/gui/TGuiBuilder.md","ref":"class/gui/TGuiBuilder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGView.md","mtime":"2018-05-14T09:18:21.247Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGView*","level":"1.3.76","depth":2,"next":{"title":"TGWidget*","level":"1.3.77","depth":2,"path":"class/gui/TGWidget.md","ref":"class/gui/TGWidget.md","articles":[]},"previous":{"title":"TGuiBuilder","level":"1.3.75","depth":2,"path":"class/gui/TGuiBuilder.md","ref":"class/gui/TGuiBuilder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGView.md","mtime":"2018-05-14T09:18:21.247Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3852,6 +3864,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3679,124 +3691,124 @@
 <h1 id="tpavestats"><a name="tpavestats" class="plugin-anchor" href="#tpavestats"><i class="fa fa-link" aria-hidden="true"></i></a>TPaveStats</h1>
 <p>&#x7EE7;&#x627F; TPaveText</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TPaveStats</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TPaveStats</span><span class="token punctuation">(</span>Double_t x1<span class="token punctuation">,</span> Double_t y1<span class="token punctuation">,</span>Double_t x2 <span class="token punctuation">,</span>Double_t y2<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;br&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// TPaveStats normal constructor.</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TPaveStats</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TBox    <span class="token operator">*</span><span class="token function">AddBox</span><span class="token punctuation">(</span>Double_t <span class="token punctuation">,</span> Double_t <span class="token punctuation">,</span> Double_t <span class="token punctuation">,</span> Double_t<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TLine   <span class="token operator">*</span><span class="token function">AddLine</span><span class="token punctuation">(</span>Double_t <span class="token punctuation">,</span> Double_t <span class="token punctuation">,</span> Double_t<span class="token punctuation">,</span> Double_t<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">DeleteText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">EditText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span>  <span class="token operator">*</span><span class="token function">GetFitFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fFitFormat<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span>  <span class="token operator">*</span><span class="token function">GetStatFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fStatFormat<span class="token punctuation">.</span><span class="token function">Data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Int_t            <span class="token function">GetOptFit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return the fit option.</span>
-   Int_t            <span class="token function">GetOptStat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return the stat option.</span>
-   TObject         <span class="token operator">*</span><span class="token function">GetParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fParent<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Paint</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Paint the pave stat.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">InsertText</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">InsertLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">ReadFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span><span class="token punctuation">,</span> Int_t<span class="token punctuation">,</span> Int_t<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save primitive as a C++ statement(s) on output stream out.</span>
+<pre><code class="lang-cpp">   TPaveStats();
+   TPaveStats(Double_t x1, Double_t y1,Double_t x2 ,Double_t y2, Option_t *option=<span class="hljs-string">&quot;br&quot;</span>);<span class="hljs-comment">/// TPaveStats normal constructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TPaveStats();
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TBox    *<span class="hljs-title">AddBox</span><span class="hljs-params">(Double_t , Double_t , Double_t , Double_t)</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TLine   *<span class="hljs-title">AddLine</span><span class="hljs-params">(Double_t , Double_t , Double_t, Double_t)</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">DeleteText</span><span class="hljs-params">()</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">EditText</span><span class="hljs-params">()</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">GetFitFormat</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fFitFormat.Data();}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">GetStatFormat</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fStatFormat.Data();}
+   <span class="hljs-function">Int_t            <span class="hljs-title">GetOptFit</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the fit option.</span>
+   <span class="hljs-function">Int_t            <span class="hljs-title">GetOptStat</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the stat option.</span>
+   <span class="hljs-function">TObject         *<span class="hljs-title">GetParent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fParent;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Paint the pave stat.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">InsertText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">InsertLine</span><span class="hljs-params">()</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *, Option_t *, Int_t, Int_t)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SaveStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Save This TPaveStats options in current style.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SaveStyle</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Save This TPaveStats options in current style.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetAllWith</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span><span class="token punctuation">,</span> Double_t<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetMargin</span><span class="token punctuation">(</span>Float_t<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetFitFormat</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>format<span class="token operator">=</span><span class="token string">&quot;5.4g&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Change (i.e. set) the format for printing fit parameters in statistics box.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetAllWith</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *, Option_t *, Double_t)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetMargin</span><span class="hljs-params">(Float_t)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetFitFormat</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *format=<span class="hljs-string">&quot;5.4g&quot;</span>)</span></span>;    <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Change (i.e. set) the format for printing fit parameters in statistics box.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetStatFormat</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>format<span class="token operator">=</span><span class="token string">&quot;6.4g&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Change (i.e. set) the format for printing statistics.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetStatFormat</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *format=<span class="hljs-string">&quot;6.4g&quot;</span>)</span></span>;   <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Change (i.e. set) the format for printing statistics.</span>
 
-   <span class="token keyword">void</span>             <span class="token function">SetOptFit</span><span class="token punctuation">(</span>Int_t fit<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Set the fit option.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">SetOptFit</span><span class="hljs-params">(Int_t fit=<span class="hljs-number">1</span>)</span></span>;                     <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set the fit option.</span>
 
-   <span class="token keyword">void</span>             <span class="token function">SetOptStat</span><span class="token punctuation">(</span>Int_t stat<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Set the stat option.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">SetOptStat</span><span class="hljs-params">(Int_t stat=<span class="hljs-number">1</span>)</span></span>;                   <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Set the stat option.</span>
 
-   <span class="token keyword">void</span>             <span class="token function">SetParent</span><span class="token punctuation">(</span>TObject<span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>fParent <span class="token operator">=</span> obj<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">UseCurrentStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Replace current attributes by current style.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">SetParent</span><span class="hljs-params">(TObject*obj)</span> </span>{fParent = obj;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">UseCurrentStyle</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Replace current attributes by current style.</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//&#x8BBE;&#x7F6E;TPave&#x53C2;&#x6570;</span>
-TPaveStats <span class="token operator">*</span>ps2 <span class="token operator">=</span> <span class="token punctuation">(</span>TPaveStats<span class="token operator">*</span><span class="token punctuation">)</span>h2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetListOfFunctions</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token string">&quot;stats&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-ps2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetX1NDC</span><span class="token punctuation">(</span><span class="token number">0.65</span><span class="token punctuation">)</span><span class="token punctuation">;</span> ps2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetX2NDC</span><span class="token punctuation">(</span><span class="token number">0.85</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x8BBE;&#x7F6E;&#x4F4D;&#x7F6E;</span>
-ps2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextColor</span><span class="token punctuation">(</span>kRed<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x8BBE;&#x7F6E;&#x989C;&#x8272;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x8BBE;&#x7F6E;TPave&#x53C2;&#x6570;</span>
+TPaveStats *ps2 = (TPaveStats*)h2-&gt;GetListOfFunctions()-&gt;FindObject(<span class="hljs-string">&quot;stats&quot;</span>);
+ps2-&gt;SetX1NDC(<span class="hljs-number">0.65</span>); ps2-&gt;SetX2NDC(<span class="hljs-number">0.85</span>);<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x4F4D;&#x7F6E;</span>
+ps2-&gt;SetTextColor(kRed);<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x989C;&#x8272;</span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// When a histogram is painted, a TPaveStats object is created and added</span>
-<span class="token comment">// to the list of functions of the histogram. If a TPaveStats object</span>
-<span class="token comment">// already exists in the histogram list of functions, the existing object is just</span>
-<span class="token comment">// updated with the current histogram parameters.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// When a histogram is painted, a TPaveStats object is created and added</span>
+<span class="hljs-comment">// to the list of functions of the histogram. If a TPaveStats object</span>
+<span class="hljs-comment">// already exists in the histogram list of functions, the existing object is just</span>
+<span class="hljs-comment">// updated with the current histogram parameters.</span>
 
-<span class="token comment">// Once a histogram is painted, the statistics box can be accessed using</span>
-<span class="token comment">// h-&gt;FindObject(&quot;stats&quot;). In the command line it is enough to do:</span>
+<span class="hljs-comment">// Once a histogram is painted, the statistics box can be accessed using</span>
+<span class="hljs-comment">// h-&gt;FindObject(&quot;stats&quot;). In the command line it is enough to do:</span>
 
-Root <span class="token operator">&gt;</span> h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-Root <span class="token operator">&gt;</span> TPaveStats <span class="token operator">*</span>st <span class="token operator">=</span> <span class="token punctuation">(</span>TPaveStats<span class="token operator">*</span><span class="token punctuation">)</span>h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token string">&quot;stats&quot;</span><span class="token punctuation">)</span>
+Root &gt; h-&gt;Draw()
+Root &gt; TPaveStats *st = (TPaveStats*)h-&gt;FindObject(<span class="hljs-string">&quot;stats&quot;</span>)
 
-<span class="token comment">// because after h-&gt;Draw() the histogram is automatically painted. But</span>
-<span class="token comment">// in a script file the painting should be forced using gPad-&gt;Update()</span>
-<span class="token comment">// in order to make sure the statistics box is created:</span>
+<span class="hljs-comment">// because after h-&gt;Draw() the histogram is automatically painted. But</span>
+<span class="hljs-comment">// in a script file the painting should be forced using gPad-&gt;Update()</span>
+<span class="hljs-comment">// in order to make sure the statistics box is created:</span>
 
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-gPad<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-TPaveStats <span class="token operator">*</span>st <span class="token operator">=</span> <span class="token punctuation">(</span>TPaveStats<span class="token operator">*</span><span class="token punctuation">)</span>h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token string">&quot;stats&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+h-&gt;Draw();
+gPad-&gt;Update();
+TPaveStats *st = (TPaveStats*)h-&gt;FindObject(<span class="hljs-string">&quot;stats&quot;</span>);
 
-<span class="token comment">// Without gPad-&gt;Update() the line h-&gt;FindObject(&quot;stats&quot;)</span>
-<span class="token comment">// returns a null pointer.</span>
+<span class="hljs-comment">// Without gPad-&gt;Update() the line h-&gt;FindObject(&quot;stats&quot;)</span>
+<span class="hljs-comment">// returns a null pointer.</span>
 
-<span class="token comment">// When a histogram is drawn with the option &quot;SAME&quot;, the statistics box</span>
-<span class="token comment">// is not drawn. To force the statistics box drawing with the option</span>
-<span class="token comment">// &quot;SAME&quot;, the option &quot;SAMES&quot; must be used.</span>
-<span class="token comment">// If the new statistics box hides the previous statistics box, one can change</span>
-<span class="token comment">// its position with these lines (&quot;h&quot; being the pointer to the histogram):</span>
+<span class="hljs-comment">// When a histogram is drawn with the option &quot;SAME&quot;, the statistics box</span>
+<span class="hljs-comment">// is not drawn. To force the statistics box drawing with the option</span>
+<span class="hljs-comment">// &quot;SAME&quot;, the option &quot;SAMES&quot; must be used.</span>
+<span class="hljs-comment">// If the new statistics box hides the previous statistics box, one can change</span>
+<span class="hljs-comment">// its position with these lines (&quot;h&quot; being the pointer to the histogram):</span>
 
-Root <span class="token operator">&gt;</span> TPaveStats <span class="token operator">*</span>st <span class="token operator">=</span> <span class="token punctuation">(</span>TPaveStats<span class="token operator">*</span><span class="token punctuation">)</span>h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token string">&quot;stats&quot;</span><span class="token punctuation">)</span>
-Root <span class="token operator">&gt;</span> st<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetX1NDC</span><span class="token punctuation">(</span>newx1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//new x start position</span>
-Root <span class="token operator">&gt;</span> st<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetX2NDC</span><span class="token punctuation">(</span>newx2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//new x end position</span>
+Root &gt; TPaveStats *st = (TPaveStats*)h-&gt;FindObject(<span class="hljs-string">&quot;stats&quot;</span>)
+Root &gt; st-&gt;SetX1NDC(newx1); <span class="hljs-comment">//new x start position</span>
+Root &gt; st-&gt;SetX2NDC(newx2); <span class="hljs-comment">//new x end position</span>
 
-<span class="token comment">// To change the type of information for an histogram with an existing</span>
-<span class="token comment">// TPaveStats one should do:</span>
+<span class="hljs-comment">// To change the type of information for an histogram with an existing</span>
+<span class="hljs-comment">// TPaveStats one should do:</span>
 
-st<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetOptStat</span><span class="token punctuation">(</span>mode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+st-&gt;SetOptStat(mode);
 
-<span class="token comment">// Where &quot;mode&quot; has the same meaning than when calling</span>
-<span class="token comment">// gStyle-&gt;SetOptStat(mode)` (see above).</span>
+<span class="hljs-comment">// Where &quot;mode&quot; has the same meaning than when calling</span>
+<span class="hljs-comment">// gStyle-&gt;SetOptStat(mode)` (see above).</span>
 
-<span class="token comment">// One can delete the statistics box for a histogram TH1* h with:</span>
+<span class="hljs-comment">// One can delete the statistics box for a histogram TH1* h with:</span>
 
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetStats</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+h-&gt;SetStats(<span class="hljs-number">0</span>)
 
-<span class="token comment">// and activate it again with:</span>
+<span class="hljs-comment">// and activate it again with:</span>
 
-h<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetStats</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+h-&gt;SetStats(<span class="hljs-number">1</span>).
 
-<span class="token comment">// The type of information about fit parameters printed in the histogram statistics</span>
-<span class="token comment">// box can be selected via the parameter mode. The parameter mode can be</span>
-<span class="token comment">// = pcev  (default = 0111)</span>
+<span class="hljs-comment">// The type of information about fit parameters printed in the histogram statistics</span>
+<span class="hljs-comment">// box can be selected via the parameter mode. The parameter mode can be</span>
+<span class="hljs-comment">// = pcev  (default = 0111)</span>
 
-<span class="token comment">//      p = 1;  print Probability</span>
-<span class="token comment">//      c = 1;  print Chisquare/Number of degrees of freedom</span>
-<span class="token comment">//      e = 1;  print errors (if e=1, v must be 1)</span>
-<span class="token comment">//      v = 1;  print name/values of parameters</span>
+<span class="hljs-comment">//      p = 1;  print Probability</span>
+<span class="hljs-comment">//      c = 1;  print Chisquare/Number of degrees of freedom</span>
+<span class="hljs-comment">//      e = 1;  print errors (if e=1, v must be 1)</span>
+<span class="hljs-comment">//      v = 1;  print name/values of parameters</span>
 
-gStyle<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetOptFit</span><span class="token punctuation">(</span><span class="token number">1011</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gStyle-&gt;SetOptFit(<span class="hljs-number">1011</span>);
 
-<span class="token comment">// print fit probability, parameter names/values and errors.</span>
+<span class="hljs-comment">// print fit probability, parameter names/values and errors.</span>
 
-<span class="token comment">//  1. When &quot;v&quot; = 1 is specified, only the non-fixed parameters are shown.</span>
-<span class="token comment">//  2. When &quot;v&quot; = 2 all parameters are shown.</span>
+<span class="hljs-comment">//  1. When &quot;v&quot; = 1 is specified, only the non-fixed parameters are shown.</span>
+<span class="hljs-comment">//  2. When &quot;v&quot; = 2 all parameters are shown.</span>
 
-<span class="token comment">// Note: gStyle-&gt;SetOptFit(1) means &quot;default value&quot;, so it is equivalent</span>
-<span class="token comment">// to gStyle-&gt;SetOptFit(111)</span>
+<span class="hljs-comment">// Note: gStyle-&gt;SetOptFit(1) means &quot;default value&quot;, so it is equivalent</span>
+<span class="hljs-comment">// to gStyle-&gt;SetOptFit(111)</span>
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TPaveStats.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3839,7 +3851,7 @@ gStyle<span class="token operator">-</span><span class="token operator">&gt;</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TPaveStats*","level":"1.2.61","depth":2,"next":{"title":"TPolyMarker","level":"1.2.62","depth":2,"path":"class/TPolyMarker.md","ref":"class/TPolyMarker.md","articles":[]},"previous":{"title":"TPad*","level":"1.2.60","depth":2,"path":"class/TPad.md","ref":"class/TPad.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TPaveStats.md","mtime":"2018-05-14T09:18:21.006Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TPaveStats*","level":"1.2.61","depth":2,"next":{"title":"TPolyMarker","level":"1.2.62","depth":2,"path":"class/TPolyMarker.md","ref":"class/TPolyMarker.md","articles":[]},"previous":{"title":"TPad*","level":"1.2.60","depth":2,"path":"class/TPad.md","ref":"class/TPad.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TPaveStats.md","mtime":"2018-05-14T09:18:21.006Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3871,6 +3883,18 @@ gStyle<span class="token operator">-</span><span class="token operator">&gt;</sp
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,173 +3692,173 @@
 <p>TGClient &#x7EE7;&#x627F; TObject, TQObject , friend TGCocoa</p>
 <p>Window client. In client server windowing systems, like X11 this<br>class is used to make the initial connection to the window server.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGClient</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>dpyName <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a connection with the display sever on host dpyName and setup</span>
-<span class="token comment">/// the complete GUI system, i.e., graphics contexts, fonts, etc. for all</span>
-<span class="token comment">/// widgets.</span>
+<pre><code class="lang-cpp">   TGClient(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *dpyName = <span class="hljs-number">0</span>);
+<span class="hljs-comment">/// Create a connection with the display sever on host dpyName and setup</span>
+<span class="hljs-comment">/// the complete GUI system, i.e., graphics contexts, fonts, etc. for all</span>
+<span class="hljs-comment">/// widgets.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Closing down client: cleanup and close X connection.</span>
+   <span class="hljs-keyword">virtual</span> ~TGClient();<span class="hljs-comment">/// Closing down client: cleanup and close X connection.</span>
 
-   <span class="token keyword">const</span> TGWindow <span class="token operator">*</span><span class="token function">GetRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns current root (i.e. base) window. By changing the root</span>
-<span class="token comment">/// window one can change the window hierarchy, e.g. a top level</span>
-<span class="token comment">/// frame (TGMainFrame) can be embedded in another window.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGWindow *<span class="hljs-title">GetRoot</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns current root (i.e. base) window. By changing the root</span>
+<span class="hljs-comment">/// window one can change the window hierarchy, e.g. a top level</span>
+<span class="hljs-comment">/// frame (TGMainFrame) can be embedded in another window.</span>
 
-   <span class="token keyword">const</span> TGWindow <span class="token operator">*</span><span class="token function">GetDefaultRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns the root (i.e. desktop) window. Should only be used as parent</span>
-<span class="token comment">/// for frames that will never be embedded, like popups, message boxes,</span>
-<span class="token comment">/// etc. (like TGToolTips, TGMessageBox, etc.).</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGWindow *<span class="hljs-title">GetDefaultRoot</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the root (i.e. desktop) window. Should only be used as parent</span>
+<span class="hljs-comment">/// for frames that will never be embedded, like popups, message boxes,</span>
+<span class="hljs-comment">/// etc. (like TGToolTips, TGMessageBox, etc.).</span>
 
-   <span class="token keyword">void</span>            <span class="token function">SetRoot</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>root <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Sets the current root (i.e. base) window. By changing the root</span>
-<span class="token comment">/// window one can change the window hierarchy, e.g. a top level</span>
-<span class="token comment">/// frame (TGMainFrame) can be embedded in another window.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>            <span class="hljs-title">SetRoot</span><span class="hljs-params">(TGWindow *root = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Sets the current root (i.e. base) window. By changing the root</span>
+<span class="hljs-comment">/// window one can change the window hierarchy, e.g. a top level</span>
+<span class="hljs-comment">/// frame (TGMainFrame) can be embedded in another window.</span>
 
-   TGWindow       <span class="token operator">*</span><span class="token function">GetWindowById</span><span class="token punctuation">(</span>Window_t sw<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find a TGWindow via its handle. If window is not found return 0.</span>
+   <span class="hljs-function">TGWindow       *<span class="hljs-title">GetWindowById</span><span class="hljs-params">(Window_t sw)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find a TGWindow via its handle. If window is not found return 0.</span>
 
-   TGWindow       <span class="token operator">*</span><span class="token function">GetWindowByName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find a TGWindow via its name (unique name used in TGWindow::SavePrimitive).</span>
-<span class="token comment">/// If window is not found return 0.</span>
+   <span class="hljs-function">TGWindow       *<span class="hljs-title">GetWindowByName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find a TGWindow via its name (unique name used in TGWindow::SavePrimitive).</span>
+<span class="hljs-comment">/// If window is not found return 0.</span>
 
-   UInt_t       <span class="token function">GetDisplayWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Get display width.</span>
-   UInt_t       <span class="token function">GetDisplayHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Get display height.</span>
+   <span class="hljs-function">UInt_t       <span class="hljs-title">GetDisplayWidth</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Get display width.</span>
+   <span class="hljs-function">UInt_t       <span class="hljs-title">GetDisplayHeight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Get display height.</span>
 
-   Bool_t       <span class="token function">IsEditable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fRoot <span class="token operator">!=</span> fDefaultRoot<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t       <span class="token function">IsEditDisabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Returns kTRUE if edit/guibuilding is forbidden.</span>
-   <span class="token keyword">void</span>         <span class="token function">SetEditDisabled</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// If on is kTRUE editting/guibuilding is forbidden.</span>
+   <span class="hljs-function">Bool_t       <span class="hljs-title">IsEditable</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fRoot != fDefaultRoot; }
+   <span class="hljs-function">Bool_t       <span class="hljs-title">IsEditDisabled</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns kTRUE if edit/guibuilding is forbidden.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetEditDisabled</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;<span class="hljs-comment">/// If on is kTRUE editting/guibuilding is forbidden.</span>
 
-   FontStruct_t <span class="token function">GetFontByName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Bool_t fixedDefault <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get a font by name. If font is not found, fixed font is returned,</span>
-<span class="token comment">/// if fixed font also does not exist return 0 and print error.</span>
-<span class="token comment">/// The loaded font needs to be freed using TVirtualX::DeleteFont().</span>
-<span class="token comment">/// If fixedDefault is false the &quot;fixed&quot; font will not be substituted</span>
-<span class="token comment">/// as fallback when the asked for font does not exist.</span>
+   <span class="hljs-function">FontStruct_t <span class="hljs-title">GetFontByName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Bool_t fixedDefault = kTRUE)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Get a font by name. If font is not found, fixed font is returned,</span>
+<span class="hljs-comment">/// if fixed font also does not exist return 0 and print error.</span>
+<span class="hljs-comment">/// The loaded font needs to be freed using TVirtualX::DeleteFont().</span>
+<span class="hljs-comment">/// If fixedDefault is false the &quot;fixed&quot; font will not be substituted</span>
+<span class="hljs-comment">/// as fallback when the asked for font does not exist.</span>
 
-   Bool_t       <span class="token function">GetColorByName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Pixel_t <span class="token operator">&amp;</span>pixel<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get a color by name. If color is found return kTRUE and pixel is</span>
-<span class="token comment">/// set to the color&apos;s pixel value, kFALSE otherwise.</span>
+   <span class="hljs-function">Bool_t       <span class="hljs-title">GetColorByName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Pixel_t &amp;pixel)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Get a color by name. If color is found return kTRUE and pixel is</span>
+<span class="hljs-comment">/// set to the color&apos;s pixel value, kFALSE otherwise.</span>
 
-   Pixel_t      <span class="token function">GetHilite</span><span class="token punctuation">(</span>Pixel_t base_color<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return pixel value of hilite color based on base_color.</span>
-   Pixel_t      <span class="token function">GetShadow</span><span class="token punctuation">(</span>Pixel_t base_color<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pixel value of shadow color based on base_color.</span>
-<span class="token comment">/// Shadow is 60% of base_color intensity.</span>
+   <span class="hljs-function">Pixel_t      <span class="hljs-title">GetHilite</span><span class="hljs-params">(Pixel_t base_color)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return pixel value of hilite color based on base_color.</span>
+   <span class="hljs-function">Pixel_t      <span class="hljs-title">GetShadow</span><span class="hljs-params">(Pixel_t base_color)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return pixel value of shadow color based on base_color.</span>
+<span class="hljs-comment">/// Shadow is 60% of base_color intensity.</span>
 
-   <span class="token keyword">void</span>         <span class="token function">FreeColor</span><span class="token punctuation">(</span>Pixel_t color<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Free color.</span>
-   <span class="token keyword">void</span>         <span class="token function">ForceRedraw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fForceRedraw <span class="token operator">=</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>         <span class="token function">NeedRedraw</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">,</span> Bool_t force <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set redraw flags.</span>
-   <span class="token keyword">void</span>         <span class="token function">CancelRedraw</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>         <span class="token function">RegisterWindow</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Add a TGWindow to the clients list of windows.</span>
-   <span class="token keyword">void</span>         <span class="token function">UnregisterWindow</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Remove a TGWindow from the list of windows.</span>
-   <span class="token keyword">void</span>         <span class="token function">RegisterPopup</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add a popup menu to the list of popups. This list is used to pass</span>
-<span class="token comment">/// events to popup menus that are popped up over a transient window which</span>
-<span class="token comment">/// is waited for (see WaitFor()).</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">FreeColor</span><span class="hljs-params">(Pixel_t color)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Free color.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">ForceRedraw</span><span class="hljs-params">()</span> </span>{ fForceRedraw = kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">NeedRedraw</span><span class="hljs-params">(TGWindow *w, Bool_t force = kFALSE)</span></span>;<span class="hljs-comment">/// Set redraw flags.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">CancelRedraw</span><span class="hljs-params">(TGWindow *w)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">RegisterWindow</span><span class="hljs-params">(TGWindow *w)</span></span>;<span class="hljs-comment">/// Add a TGWindow to the clients list of windows.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">UnregisterWindow</span><span class="hljs-params">(TGWindow *w)</span></span>;<span class="hljs-comment">/// Remove a TGWindow from the list of windows.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">RegisterPopup</span><span class="hljs-params">(TGWindow *w)</span></span>;
+<span class="hljs-comment">/// Add a popup menu to the list of popups. This list is used to pass</span>
+<span class="hljs-comment">/// events to popup menus that are popped up over a transient window which</span>
+<span class="hljs-comment">/// is waited for (see WaitFor()).</span>
 
-   <span class="token keyword">void</span>         <span class="token function">UnregisterPopup</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Remove a popup menu from the list of popups.</span>
-   <span class="token keyword">void</span>         <span class="token function">AddUnknownWindowHandler</span><span class="token punctuation">(</span>TGUnknownWindowHandler <span class="token operator">*</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add handler for unknown (i.e. unregistered) windows.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">UnregisterPopup</span><span class="hljs-params">(TGWindow *w)</span></span>;<span class="hljs-comment">/// Remove a popup menu from the list of popups.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">AddUnknownWindowHandler</span><span class="hljs-params">(TGUnknownWindowHandler *h)</span></span>;
+<span class="hljs-comment">/// Add handler for unknown (i.e. unregistered) windows.</span>
 
-   <span class="token keyword">void</span>         <span class="token function">RemoveUnknownWindowHandler</span><span class="token punctuation">(</span>TGUnknownWindowHandler <span class="token operator">*</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Remove handler for unknown (i.e. unregistered) windows.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">RemoveUnknownWindowHandler</span><span class="hljs-params">(TGUnknownWindowHandler *h)</span></span>;
+<span class="hljs-comment">/// Remove handler for unknown (i.e. unregistered) windows.</span>
 
-   <span class="token keyword">void</span>         <span class="token function">AddIdleHandler</span><span class="token punctuation">(</span>TGIdleHandler <span class="token operator">*</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Add handler for idle events.</span>
-   <span class="token keyword">void</span>         <span class="token function">RemoveIdleHandler</span><span class="token punctuation">(</span>TGIdleHandler <span class="token operator">*</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Remove handler for idle events.</span>
-   Bool_t       <span class="token function">HandleInput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Handles input from the display server. Returns kTRUE if one or more</span>
-<span class="token comment">/// events have been processed, kFALSE otherwise.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">AddIdleHandler</span><span class="hljs-params">(TGIdleHandler *h)</span></span>;<span class="hljs-comment">/// Add handler for idle events.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">RemoveIdleHandler</span><span class="hljs-params">(TGIdleHandler *h)</span></span>;<span class="hljs-comment">/// Remove handler for idle events.</span>
+   <span class="hljs-function">Bool_t       <span class="hljs-title">HandleInput</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Handles input from the display server. Returns kTRUE if one or more</span>
+<span class="hljs-comment">/// events have been processed, kFALSE otherwise.</span>
 
-   <span class="token keyword">void</span>         <span class="token function">ProcessLine</span><span class="token punctuation">(</span>TString cmd<span class="token punctuation">,</span> Long_t msg<span class="token punctuation">,</span> Long_t parm1<span class="token punctuation">,</span> Long_t parm2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute string &quot;cmd&quot; via the interpreter. Before executing replace</span>
-<span class="token comment">/// in the command string the token $MSG, $PARM1 and $PARM2 by msg,</span>
-<span class="token comment">/// parm1 and parm2, respectively. The function in cmd string must accept</span>
-<span class="token comment">/// these as longs.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">ProcessLine</span><span class="hljs-params">(TString cmd, Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
+<span class="hljs-comment">/// Execute string &quot;cmd&quot; via the interpreter. Before executing replace</span>
+<span class="hljs-comment">/// in the command string the token $MSG, $PARM1 and $PARM2 by msg,</span>
+<span class="hljs-comment">/// parm1 and parm2, respectively. The function in cmd string must accept</span>
+<span class="hljs-comment">/// these as longs.</span>
 
-   <span class="token keyword">void</span>         <span class="token function">WaitFor</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Wait for window to be destroyed.</span>
-   <span class="token keyword">void</span>         <span class="token function">WaitForUnmap</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Wait for window to be unmapped.</span>
-   <span class="token keyword">void</span>         <span class="token function">ResetWaitFor</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// reset waiting</span>
-   EGEventType  <span class="token function">GetWaitForEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>  <span class="token punctuation">{</span> <span class="token keyword">return</span> fWaitForEvent<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Window_t     <span class="token function">GetWaitForWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fWaitForWindow<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>         <span class="token function">SetWaitForWindow</span><span class="token punctuation">(</span>Window_t wid<span class="token punctuation">)</span> <span class="token punctuation">{</span>fWaitForWindow <span class="token operator">=</span> wid<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   Bool_t       <span class="token function">ProcessEventsFor</span><span class="token punctuation">(</span>TGWindow <span class="token operator">*</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Like gSystem-&gt;ProcessEvents() but then only allow events for w to</span>
-<span class="token comment">/// be processed. For example to interrupt the processing and destroy</span>
-<span class="token comment">/// the window, call gROOT-&gt;SetInterrupt() before destroying the window.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">WaitFor</span><span class="hljs-params">(TGWindow *w)</span></span>;<span class="hljs-comment">/// Wait for window to be destroyed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">WaitForUnmap</span><span class="hljs-params">(TGWindow *w)</span></span>;<span class="hljs-comment">/// Wait for window to be unmapped.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">ResetWaitFor</span><span class="hljs-params">(TGWindow *w)</span></span>;<span class="hljs-comment">/// reset waiting</span>
+   <span class="hljs-function">EGEventType  <span class="hljs-title">GetWaitForEvent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{ <span class="hljs-keyword">return</span> fWaitForEvent;}
+   <span class="hljs-function">Window_t     <span class="hljs-title">GetWaitForWindow</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWaitForWindow; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">SetWaitForWindow</span><span class="hljs-params">(Window_t wid)</span> </span>{fWaitForWindow = wid;}
+   <span class="hljs-function">Bool_t       <span class="hljs-title">ProcessEventsFor</span><span class="hljs-params">(TGWindow *w)</span></span>;
+<span class="hljs-comment">/// Like gSystem-&gt;ProcessEvents() but then only allow events for w to</span>
+<span class="hljs-comment">/// be processed. For example to interrupt the processing and destroy</span>
+<span class="hljs-comment">/// the window, call gROOT-&gt;SetInterrupt() before destroying the window.</span>
 
-   Bool_t       <span class="token function">HandleEvent</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle a GUI event.</span>
-   Bool_t       <span class="token function">HandleMaskEvent</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">,</span> Window_t wid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Handle masked events only if window wid is the window for which the</span>
-<span class="token comment">/// event was reported or if wid is a parent of the event window. The not</span>
-<span class="token comment">/// masked event are handled directly. The masked events are:</span>
-<span class="token comment">/// kButtonPress, kButtonRelease, kKeyPress, kKeyRelease, kEnterNotify,</span>
-<span class="token comment">/// kLeaveNotify, kMotionNotify.</span>
+   <span class="hljs-function">Bool_t       <span class="hljs-title">HandleEvent</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle a GUI event.</span>
+   <span class="hljs-function">Bool_t       <span class="hljs-title">HandleMaskEvent</span><span class="hljs-params">(Event_t *event, Window_t wid)</span></span>;
+<span class="hljs-comment">/// Handle masked events only if window wid is the window for which the</span>
+<span class="hljs-comment">/// event was reported or if wid is a parent of the event window. The not</span>
+<span class="hljs-comment">/// masked event are handled directly. The masked events are:</span>
+<span class="hljs-comment">/// kButtonPress, kButtonRelease, kKeyPress, kKeyRelease, kEnterNotify,</span>
+<span class="hljs-comment">/// kLeaveNotify, kMotionNotify.</span>
 
-   <span class="token keyword">void</span>         <span class="token function">RegisteredWindow</span><span class="token punctuation">(</span>Window_t w<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// Emits a signal when a Window has been registered in TGClient.</span>
-<span class="token comment">/// Used in TRecorder.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">RegisteredWindow</span><span class="hljs-params">(Window_t w)</span></span>;      <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// Emits a signal when a Window has been registered in TGClient.</span>
+<span class="hljs-comment">/// Used in TRecorder.</span>
 
-   <span class="token keyword">void</span>         <span class="token function">ProcessedEvent</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">,</span> Window_t wid<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//*SIGNAL*</span>
-<span class="token comment">/// Emits a signal when an event has been processed.</span>
-<span class="token comment">/// Used in TRecorder.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">ProcessedEvent</span><span class="hljs-params">(Event_t *event, Window_t wid)</span></span>;   <span class="hljs-comment">//*SIGNAL*</span>
+<span class="hljs-comment">/// Emits a signal when an event has been processed.</span>
+<span class="hljs-comment">/// Used in TRecorder.</span>
 
-   <span class="token keyword">const</span> TGResourcePool <span class="token operator">*</span><span class="token function">GetResourcePool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fResourcePool<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGResourcePool *<span class="hljs-title">GetResourcePool</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fResourcePool; }
 
-   TGPicturePool   <span class="token operator">*</span><span class="token function">GetPicturePool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPicturePool<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> TGPicture <span class="token operator">*</span><span class="token function">GetPicture</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get picture from the picture pool. Picture must be freed using</span>
-<span class="token comment">/// TGClient::FreePicture(). If picture is not found 0 is returned.</span>
+   <span class="hljs-function">TGPicturePool   *<span class="hljs-title">GetPicturePool</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPicturePool; }
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetPicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;
+<span class="hljs-comment">/// Get picture from the picture pool. Picture must be freed using</span>
+<span class="hljs-comment">/// TGClient::FreePicture(). If picture is not found 0 is returned.</span>
 
-   <span class="token keyword">const</span> TGPicture <span class="token operator">*</span><span class="token function">GetPicture</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> UInt_t new_width<span class="token punctuation">,</span> UInt_t new_height<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get picture with specified size from pool (picture will be scaled if</span>
-<span class="token comment">/// necessary). Picture must be freed using TGClient::FreePicture(). If</span>
-<span class="token comment">/// picture is not found 0 is returned.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> TGPicture *<span class="hljs-title">GetPicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, UInt_t new_width, UInt_t new_height)</span></span>;
+<span class="hljs-comment">/// Get picture with specified size from pool (picture will be scaled if</span>
+<span class="hljs-comment">/// necessary). Picture must be freed using TGClient::FreePicture(). If</span>
+<span class="hljs-comment">/// picture is not found 0 is returned.</span>
 
-   <span class="token keyword">void</span>             <span class="token function">FreePicture</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGPicture <span class="token operator">*</span>pic<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Free picture resource.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">FreePicture</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGPicture *pic)</span></span>;<span class="hljs-comment">/// Free picture resource.</span>
 
-   TGGCPool        <span class="token operator">*</span><span class="token function">GetGCPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fGCPool<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TGGC            <span class="token operator">*</span><span class="token function">GetGC</span><span class="token punctuation">(</span>GCValues_t <span class="token operator">*</span>values<span class="token punctuation">,</span> Bool_t rw <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get graphics context from the gc pool. Context must be freed via</span>
-<span class="token comment">/// TGClient::FreeGC(). If rw is true a new read/write-able GC</span>
-<span class="token comment">/// is returned, otherwise a shared read-only context is returned.</span>
-<span class="token comment">/// For historical reasons it is also possible to create directly a</span>
-<span class="token comment">/// TGGC object, but it is advised to use this new interface only.</span>
+   <span class="hljs-function">TGGCPool        *<span class="hljs-title">GetGCPool</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fGCPool; }
+   <span class="hljs-function">TGGC            *<span class="hljs-title">GetGC</span><span class="hljs-params">(GCValues_t *values, Bool_t rw = kFALSE)</span></span>;
+<span class="hljs-comment">/// Get graphics context from the gc pool. Context must be freed via</span>
+<span class="hljs-comment">/// TGClient::FreeGC(). If rw is true a new read/write-able GC</span>
+<span class="hljs-comment">/// is returned, otherwise a shared read-only context is returned.</span>
+<span class="hljs-comment">/// For historical reasons it is also possible to create directly a</span>
+<span class="hljs-comment">/// TGGC object, but it is advised to use this new interface only.</span>
 
-   <span class="token keyword">void</span>             <span class="token function">FreeGC</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGGC <span class="token operator">*</span>gc<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Free a graphics context.</span>
-   <span class="token keyword">void</span>             <span class="token function">FreeGC</span><span class="token punctuation">(</span>GContext_t gc<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Free a graphics context.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">FreeGC</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGGC *gc)</span></span>;<span class="hljs-comment">/// Free a graphics context.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">FreeGC</span><span class="hljs-params">(GContext_t gc)</span></span>;<span class="hljs-comment">/// Free a graphics context.</span>
 
-   TGFontPool      <span class="token operator">*</span><span class="token function">GetFontPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fFontPool<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TGFont          <span class="token operator">*</span><span class="token function">GetFont</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>font<span class="token punctuation">,</span> Bool_t fixedDefault <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Get a font from the font pool. Fonts must be freed via</span>
-<span class="token comment">/// TGClient::FreeFont(). Returns 0 in case of error or if font</span>
-<span class="token comment">/// does not exist. If fixedDefault is false the &quot;fixed&quot; font</span>
-<span class="token comment">/// will not be substituted as fallback when the asked for font</span>
-<span class="token comment">/// does not exist.</span>
+   <span class="hljs-function">TGFontPool      *<span class="hljs-title">GetFontPool</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFontPool; }
+   <span class="hljs-function">TGFont          *<span class="hljs-title">GetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *font, Bool_t fixedDefault = kTRUE)</span></span>;
+<span class="hljs-comment">/// Get a font from the font pool. Fonts must be freed via</span>
+<span class="hljs-comment">/// TGClient::FreeFont(). Returns 0 in case of error or if font</span>
+<span class="hljs-comment">/// does not exist. If fixedDefault is false the &quot;fixed&quot; font</span>
+<span class="hljs-comment">/// will not be substituted as fallback when the asked for font</span>
+<span class="hljs-comment">/// does not exist.</span>
 
-   TGFont          <span class="token operator">*</span><span class="token function">GetFont</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGFont <span class="token operator">*</span>font<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Get again specified font. Will increase its usage count.</span>
-   <span class="token keyword">void</span>             <span class="token function">FreeFont</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGFont <span class="token operator">*</span>font<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Free a font.</span>
+   <span class="hljs-function">TGFont          *<span class="hljs-title">GetFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGFont *font)</span></span>;<span class="hljs-comment">/// Get again specified font. Will increase its usage count.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">FreeFont</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TGFont *font)</span></span>;<span class="hljs-comment">/// Free a font.</span>
 
-   UInt_t           <span class="token function">GetStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fStyle<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>             <span class="token function">SetStyle</span><span class="token punctuation">(</span>UInt_t newstyle<span class="token punctuation">)</span> <span class="token punctuation">{</span> fStyle <span class="token operator">=</span> newstyle<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>             <span class="token function">SetStyle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>style<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set the button style (modern or classic).</span>
+   <span class="hljs-function">UInt_t           <span class="hljs-title">GetStyle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fStyle; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">SetStyle</span><span class="hljs-params">(UInt_t newstyle)</span> </span>{ fStyle = newstyle; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">SetStyle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *style)</span></span>;<span class="hljs-comment">/// Set the button style (modern or classic).</span>
 
-   Colormap_t       <span class="token function">GetDefaultColormap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fDefaultColormap<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TGMimeTypes     <span class="token operator">*</span><span class="token function">GetMimeTypeList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMimeTypeList<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Colormap_t       <span class="hljs-title">GetDefaultColormap</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fDefaultColormap; }
+   <span class="hljs-function">TGMimeTypes     *<span class="hljs-title">GetMimeTypeList</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMimeTypeList; }
 
-   THashList       <span class="token operator">*</span><span class="token function">GetListOfWindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fWlist<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TList           <span class="token operator">*</span><span class="token function">GetListOfPopups</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPlist<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">THashList       *<span class="hljs-title">GetListOfWindows</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fWlist; }
+   <span class="hljs-function">TList           *<span class="hljs-title">GetListOfPopups</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fPlist; }
 
-   <span class="token keyword">static</span> TGClient <span class="token operator">*</span><span class="token function">Instance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Returns global gClient (initialize graphics first, if not already done)</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> TGClient *<span class="hljs-title">Instance</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Returns global gClient (initialize graphics first, if not already done)</span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">ifndef</span> __CINT__</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> gClient (TGClient::Instance())</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> __CINT__</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> gClient (TGClient::Instance())</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGClient.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3889,7 +3901,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGClient*","level":"1.3.5","depth":2,"next":{"title":"TGColorDialog*","level":"1.3.6","depth":2,"path":"class/gui/TGColorDialog.md","ref":"class/gui/TGColorDialog.md","articles":[]},"previous":{"title":"TGCanvas*","level":"1.3.4","depth":2,"path":"class/gui/TGCanvas.md","ref":"class/gui/TGCanvas.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGClient.md","mtime":"2018-05-14T09:18:21.578Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGClient*","level":"1.3.5","depth":2,"next":{"title":"TGColorDialog*","level":"1.3.6","depth":2,"path":"class/gui/TGColorDialog.md","ref":"class/gui/TGColorDialog.md","articles":[]},"previous":{"title":"TGCanvas*","level":"1.3.4","depth":2,"path":"class/gui/TGCanvas.md","ref":"class/gui/TGCanvas.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGClient.md","mtime":"2018-05-14T09:18:21.578Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3921,6 +3933,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

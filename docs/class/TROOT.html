@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,478 +3692,478 @@
 <p>&#x7EE7;&#x627F; TDirectory</p>
 <p>The TROOT object is the entry point to the ROOT system.<br>The single instance of TROOT is accessible via the global gROOT.<br>Using the gROOT pointer one has access to basically every object created in a ROOT based program. The TROOT object is essentially a container of several lists pointing to the main ROOT objects.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">void</span>              <span class="token function">AddClass</span><span class="token punctuation">(</span>TClass <span class="token operator">*</span>cl<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add a class to the list and map of classes.</span>
-<span class="token comment">/// This routine is deprecated, use TClass::AddClass directly.</span>
+<pre><code class="lang-cpp">   void              AddClass(TClass *cl);
+/// Add a class to the list and map of classes.
+/// This routine is deprecated, use TClass::AddClass directly.
 
-   <span class="token keyword">void</span>              <span class="token function">AddClassGenerator</span><span class="token punctuation">(</span>TClassGenerator <span class="token operator">*</span>gen<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add a class generator.  This generator will be called by TClass::GetClass</span>
-<span class="token comment">/// in case its does not find a loaded rootcint dictionary to request the</span>
-<span class="token comment">/// creation of a TClass object.</span>
+   void              AddClassGenerator(TClassGenerator *gen);
+/// Add a class generator.  This generator will be called by TClass::GetClass
+/// in case its does not find a loaded rootcint dictionary to request the
+/// creation of a TClass object.
 
-   <span class="token keyword">void</span>              <span class="token function">Browse</span><span class="token punctuation">(</span>TBrowser <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Add browsable objects to TBrowser.</span>
-   Bool_t            <span class="token function">ClassSaved</span><span class="token punctuation">(</span>TClass <span class="token operator">*</span>cl<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// return class status bit kClassSaved for class cl</span>
-<span class="token comment">/// This function is called by the SavePrimitive functions writing</span>
-<span class="token comment">/// the C++ code for an object.</span>
+   void              Browse(TBrowser *b);/// Add browsable objects to TBrowser.
+   Bool_t            ClassSaved(TClass *cl);
+/// return class status bit kClassSaved for class cl
+/// This function is called by the SavePrimitive functions writing
+/// the C++ code for an object.
 
-   <span class="token keyword">void</span>              <span class="token function">CloseFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Close any files and sockets that gROOT knows about.</span>
-<span class="token comment">/// This can be used to insures that the files and sockets are closed before any library is unloaded!</span>
+   void              CloseFiles();
+/// Close any files and sockets that gROOT knows about.
+/// This can be used to insures that the files and sockets are closed before any library is unloaded!
 
-   <span class="token keyword">void</span>              <span class="token function">EndOfProcessCleanups</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute the cleanups necessary at the end of the process, in particular</span>
-<span class="token comment">/// those that must be executed before the library start being unloaded.</span>
+   void              EndOfProcessCleanups();
+/// Execute the cleanups necessary at the end of the process, in particular
+/// those that must be executed before the library start being unloaded.
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns address of a ROOT object if it exists</span>
-<span class="token comment">/// If name contains at least one &quot;/&quot; the function calls FindObjectany</span>
-<span class="token comment">/// else</span>
-<span class="token comment">/// This function looks in the following order in the ROOT lists:</span>
-<span class="token comment">///     - List of files</span>
-<span class="token comment">///     - List of memory mapped files</span>
-<span class="token comment">///     - List of functions</span>
-<span class="token comment">///     - List of geometries</span>
-<span class="token comment">///     - List of canvases</span>
-<span class="token comment">///     - List of styles</span>
-<span class="token comment">///     - List of specials</span>
-<span class="token comment">///     - List of materials in current geometry</span>
-<span class="token comment">///     - List of shapes in current geometry</span>
-<span class="token comment">///     - List of matrices in current geometry</span>
-<span class="token comment">///     - List of Nodes in current geometry</span>
-<span class="token comment">///     - Current Directory in memory</span>
-<span class="token comment">///     - Current Directory on file</span>
+   virtual TObject  *FindObject(const char *name) const;
+/// Returns address of a ROOT object if it exists
+/// If name contains at least one &quot;/&quot; the function calls FindObjectany
+/// else
+/// This function looks in the following order in the ROOT lists:
+///     - List of files
+///     - List of memory mapped files
+///     - List of functions
+///     - List of geometries
+///     - List of canvases
+///     - List of styles
+///     - List of specials
+///     - List of materials in current geometry
+///     - List of shapes in current geometry
+///     - List of matrices in current geometry
+///     - List of Nodes in current geometry
+///     - Current Directory in memory
+///     - Current Directory on file
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Find an object in one Root folder</span>
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">FindObjectAny</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return a pointer to the first object with name starting at //root.</span>
-<span class="token comment">/// This function scans the list of all folders.</span>
-<span class="token comment">/// if no object found in folders, it scans the memory list of all files.</span>
+   virtual TObject  *FindObject(const TObject *obj) const;/// Find an object in one Root folder
+   virtual TObject  *FindObjectAny(const char *name) const;
+/// Return a pointer to the first object with name starting at //root.
+/// This function scans the list of all folders.
+/// if no object found in folders, it scans the memory list of all files.
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">FindObjectAnyFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Scan the memory lists of all files for an object with name</span>
-   TObject          <span class="token operator">*</span><span class="token function">FindSpecialObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token operator">&amp;</span>where<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns address and folder of a ROOT object if it exists</span>
-<span class="token comment">/// This function looks in the following order in the ROOT lists:</span>
-<span class="token comment">///     - List of files</span>
-<span class="token comment">///     - List of memory mapped files</span>
-<span class="token comment">///     - List of functions</span>
-<span class="token comment">///     - List of geometries</span>
-<span class="token comment">///     - List of canvases</span>
-<span class="token comment">///     - List of styles</span>
-<span class="token comment">///     - List of specials</span>
-<span class="token comment">///     - List of materials in current geometry</span>
-<span class="token comment">///     - List of shapes in current geometry</span>
-<span class="token comment">///     - List of matrices in current geometry</span>
-<span class="token comment">///     - List of Nodes in current geometry</span>
-<span class="token comment">///     - Current Directory in memory</span>
-<span class="token comment">///     - Current Directory on file</span>
+   virtual TObject  *FindObjectAnyFile(const char *name) const;/// Scan the memory lists of all files for an object with name
+   TObject          *FindSpecialObject(const char *name, void *&amp;where);
+/// Returns address and folder of a ROOT object if it exists
+/// This function looks in the following order in the ROOT lists:
+///     - List of files
+///     - List of memory mapped files
+///     - List of functions
+///     - List of geometries
+///     - List of canvases
+///     - List of styles
+///     - List of specials
+///     - List of materials in current geometry
+///     - List of shapes in current geometry
+///     - List of matrices in current geometry
+///     - List of Nodes in current geometry
+///     - Current Directory in memory
+///     - Current Directory on file
 
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">FindObjectClassName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Returns class name of a ROOT object including CINT globals.</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">FindObjectPathName</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return path name of obj somewhere in the //root/... path.</span>
-<span class="token comment">/// The function returns the first occurence of the object in the list</span>
-<span class="token comment">/// of folders. The returned string points to a static char array in TROOT.</span>
-<span class="token comment">/// If this function is called in a loop or recursively, it is the</span>
-<span class="token comment">/// user&apos;s responsibility to copy this string in their area.</span>
+   const char       *FindObjectClassName(const char *name) const;/// Returns class name of a ROOT object including CINT globals.
+   const char       *FindObjectPathName(const TObject *obj) const;
+/// Return path name of obj somewhere in the //root/... path.
+/// The function returns the first occurence of the object in the list
+/// of folders. The returned string points to a static char array in TROOT.
+/// If this function is called in a loop or recursively, it is the
+/// user&apos;s responsibility to copy this string in their area.
 
-   TClass           <span class="token operator">*</span><span class="token function">FindSTLClass</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Bool_t load<span class="token punctuation">,</span> Bool_t silent <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// return a TClass object corresponding to &apos;name&apos; assuming it is an STL container.</span>
-<span class="token comment">/// In particular we looking for possible alternative name (default template</span>
-<span class="token comment">/// parameter, typedefs template arguments, typedefed name).</span>
-   <span class="token comment">// Example of inputs are</span>
-   <span class="token comment">//   vector&lt;int&gt;  (*)</span>
-   <span class="token comment">//   vector&lt;Int_t&gt;</span>
-   <span class="token comment">//   vector&lt;long long&gt;</span>
-   <span class="token comment">//   vector&lt;Long_64_t&gt; (*)</span>
-   <span class="token comment">//   vector&lt;int, allocator&lt;int&gt; &gt;</span>
-   <span class="token comment">//   vector&lt;Int_t, allocator&lt;int&gt; &gt;</span>
-   <span class="token comment">//   One of the possibly expensive operation is the resolving of the typedef</span>
-   <span class="token comment">//   which can provoke the parsing of the header files (and/or the loading</span>
-   <span class="token comment">//   of clang pcms information).</span>
-
-
-   <span class="token keyword">void</span>              <span class="token function">ForceStyle</span><span class="token punctuation">(</span>Bool_t force <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fForceStyle <span class="token operator">=</span> force<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">FromPopUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fFromPopUp<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TPluginManager   <span class="token operator">*</span><span class="token function">GetPluginManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPluginManager<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TApplication     <span class="token operator">*</span><span class="token function">GetApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fApplication<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TInterpreter     <span class="token operator">*</span><span class="token function">GetInterpreter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fInterpreter<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TClass           <span class="token operator">*</span><span class="token function">GetClass</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Bool_t load <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Bool_t silent <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pointer to class with name. Obsolete, use TClass::GetClass directly</span>
-
-   TClass           <span class="token operator">*</span><span class="token function">GetClass</span><span class="token punctuation">(</span><span class="token keyword">const</span> type_info <span class="token operator">&amp;</span>typeinfo<span class="token punctuation">,</span> Bool_t load <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Bool_t silent <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pointer to class from its name. Obsolete, use TClass::GetClass directly</span>
-<span class="token comment">/// See TClass::GetClass</span>
-
-   TColor           <span class="token operator">*</span><span class="token function">GetColor</span><span class="token punctuation">(</span>Int_t color<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return address of color with index color.</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetConfigOptions</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fConfigOptions<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetConfigFeatures</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fConfigFeatures<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetCutClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fCutClassName<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetDefCanvasName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fDefCanvasName<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">GetEditHistograms</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fEditHistograms<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetEditorMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fEditorMode<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">GetForceStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fForceStyle<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetBuiltDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fBuiltDate<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetBuiltTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fBuiltTime<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetGitCommit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fGitCommit<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetGitBranch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fGitBranch<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetGitDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return date/time make was run.</span>
-   Int_t             <span class="token function">GetVersionDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVersionDate<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetVersionTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVersionTime<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetVersionInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVersionInt<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetVersionCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVersionCode<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>       <span class="token operator">*</span><span class="token function">GetVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVersion<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TCollection      <span class="token operator">*</span><span class="token function">GetListOfClasses</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fClasses<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfColors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fColors<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TCollection      <span class="token operator">*</span><span class="token function">GetListOfTypes</span><span class="token punctuation">(</span>Bool_t load <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return a dynamic list giving access to all TDataTypes (typedefs)</span>
-<span class="token comment">/// currently defined.</span>
-   TCollection      <span class="token operator">*</span><span class="token function">GetListOfGlobals</span><span class="token punctuation">(</span>Bool_t load <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return list containing the TGlobals currently defined.</span>
-<span class="token comment">/// Since globals are created and deleted during execution of the</span>
-<span class="token comment">/// program, we need to update the list of globals every time we</span>
-<span class="token comment">/// execute this method. However, when calling this function in</span>
-<span class="token comment">/// a (tight) loop where no interpreter symbols will be created</span>
-<span class="token comment">/// you can set load=kFALSE (default).</span>
-
-   TCollection      <span class="token operator">*</span><span class="token function">GetListOfGlobalFunctions</span><span class="token punctuation">(</span>Bool_t load <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return list containing the TFunctions currently defined.</span>
-<span class="token comment">/// Since functions are created and deleted during execution of the</span>
-<span class="token comment">/// program, we need to update the list of functions every time we</span>
-<span class="token comment">/// execute this method. However, when calling this function in</span>
-<span class="token comment">/// a (tight) loop where no interpreter symbols will be created</span>
-<span class="token comment">/// you can set load=kFALSE (default).</span>
-
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfClosedObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fClosedObjects<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>       <span class="token punctuation">{</span> <span class="token keyword">return</span> fFiles<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfMappedFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMappedFiles<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfSockets</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>     <span class="token punctuation">{</span> <span class="token keyword">return</span> fSockets<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfCanvases</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>    <span class="token punctuation">{</span> <span class="token keyword">return</span> fCanvases<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfStyles</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>      <span class="token punctuation">{</span> <span class="token keyword">return</span> fStyles<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TCollection      <span class="token operator">*</span><span class="token function">GetListOfFunctions</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>   <span class="token punctuation">{</span> <span class="token keyword">return</span> fFunctions<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TCollection      <span class="token operator">*</span><span class="token function">GetListOfFunctionOverloads</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return the collection of functions named &quot;name&quot;.</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfGeometries</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>  <span class="token punctuation">{</span> <span class="token keyword">return</span> fGeometries<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfBrowsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>    <span class="token punctuation">{</span> <span class="token keyword">return</span> fBrowsers<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfSpecials</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>    <span class="token punctuation">{</span> <span class="token keyword">return</span> fSpecials<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfTasks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>       <span class="token punctuation">{</span> <span class="token keyword">return</span> fTasks<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfCleanups</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>    <span class="token punctuation">{</span> <span class="token keyword">return</span> fCleanups<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfStreamerInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fStreamerInfo<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfMessageHandlers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMessageHandlers<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TCollection      <span class="token operator">*</span><span class="token function">GetListOfClassGenerators</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fClassGenerators<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfSecContexts</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fSecContexts<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfProofs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fProofs<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetClipboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fClipboard<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TSeqCollection   <span class="token operator">*</span><span class="token function">GetListOfDataSets</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fDataSets<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TCollection      <span class="token operator">*</span><span class="token function">GetListOfEnums</span><span class="token punctuation">(</span>Bool_t load <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TCollection      <span class="token operator">*</span><span class="token function">GetListOfFunctionTemplates</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TList            <span class="token operator">*</span><span class="token function">GetListOfBrowsables</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fBrowsables<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TDataType        <span class="token operator">*</span><span class="token function">GetType</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Bool_t load <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return pointer to type with name.</span>
-   TFile            <span class="token operator">*</span><span class="token function">GetFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>gDirectory <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token keyword">return</span> gDirectory<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   TFile            <span class="token operator">*</span><span class="token function">GetFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return pointer to file with name.</span>
-   TFunctionTemplate<span class="token operator">*</span><span class="token function">GetFunctionTemplate</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TStyle           <span class="token operator">*</span><span class="token function">GetStyle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return pointer to style with name</span>
-   TObject          <span class="token operator">*</span><span class="token function">GetFunction</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return pointer to function with name.</span>
-   TGlobal          <span class="token operator">*</span><span class="token function">GetGlobal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Bool_t load <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pointer to global variable by name. If load is true force</span>
-<span class="token comment">/// reading of all currently defined globals from CINT (more expensive).</span>
-
-   TGlobal          <span class="token operator">*</span><span class="token function">GetGlobal</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Bool_t load <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return pointer to global variable with address addr.</span>
-   TFunction        <span class="token operator">*</span><span class="token function">GetGlobalFunction</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>params <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Bool_t load <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pointer to global function by name.</span>
-<span class="token comment">/// If params != 0 it will also resolve overloading other it returns the first</span>
-<span class="token comment">/// name match.</span>
-<span class="token comment">/// If params == 0 and load is true force reading of all currently defined</span>
-<span class="token comment">/// global functions from Cling.</span>
-<span class="token comment">/// The param string must be of the form: &quot;3189,\&quot;aap\&quot;,1.3&quot;.</span>
-
-   TFunction        <span class="token operator">*</span><span class="token function">GetGlobalFunctionWithPrototype</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>proto <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Bool_t load <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pointer to global function by name. If proto != 0</span>
-<span class="token comment">/// it will also resolve overloading. If load is true force reading</span>
-<span class="token comment">/// of all currently defined global functions from CINT (more expensive).</span>
-<span class="token comment">/// The proto string must be of the form: &quot;int, char*, float&quot;.</span>
-
-   TObject          <span class="token operator">*</span><span class="token function">GetGeometry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return pointer to Geometry with name</span>
-   <span class="token keyword">const</span> TObject    <span class="token operator">*</span><span class="token function">GetSelectedPrimitive</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fPrimitive<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TVirtualPad      <span class="token operator">*</span><span class="token function">GetSelectedPad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fSelectPad<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetNclasses</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fClasses<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">GetNtypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTypes<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TFolder          <span class="token operator">*</span><span class="token function">GetRootFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fRootFolder<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   TProcessUUID     <span class="token operator">*</span><span class="token function">GetUUIDs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fUUIDs<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">Idle</span><span class="token punctuation">(</span>UInt_t idleTimeInSec<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>command <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Execute command when system has been idle for idleTimeInSec seconds.</span>
-   Int_t             <span class="token function">IgnoreInclude</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>fname<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>expandedfname<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return 1 if the name of the given include file corresponds to a class that</span>
-<span class="token comment">///  is known to ROOT, e.g. &quot;TLorentzVector.h&quot; versus TLorentzVector.</span>
-
-   Bool_t            <span class="token function">IsBatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fBatch<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsExecutingMacro</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fExecutingMacro<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsInterrupted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fInterrupt<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsEscaped</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fEscape<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsLineProcessing</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLineIsProcessing <span class="token operator">?</span> kTRUE <span class="token operator">:</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsProofServ</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fName <span class="token operator">==</span> <span class="token string">&quot;proofserv&quot;</span> <span class="token operator">?</span> kTRUE <span class="token operator">:</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Bool_t            <span class="token function">IsRootFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return true if the file is local and is (likely) to be a ROOT file</span>
-   <span class="token keyword">void</span>              <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// To list all objects of the application.</span>
-<span class="token comment">/// Loop on all objects created in the ROOT linked lists.</span>
-<span class="token comment">/// Objects may be files and windows or any other object directly</span>
-<span class="token comment">/// attached to the ROOT linked list.</span>
-
-   Int_t             <span class="token function">LoadClass</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>classname<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>libname<span class="token punctuation">,</span> Bool_t check <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Check if class &quot;classname&quot; is known to the interpreter (in fact,</span>
-<span class="token comment">/// this check is not needed anymore, so classname is ignored). If</span>
-<span class="token comment">/// not it will load library &quot;libname&quot;. If the library name does</span>
-<span class="token comment">/// not start with &quot;lib&quot;, &quot;lib&quot; will be prepended and a search will</span>
-<span class="token comment">/// be made in the DynamicPath (see .rootrc). If not found a search</span>
-<span class="token comment">/// will be made on libname (without &quot;lib&quot; prepended) and if not found</span>
-<span class="token comment">/// a direct try of libname will be made (in case it contained an</span>
-<span class="token comment">/// absolute path).</span>
-<span class="token comment">/// If check is true it will only check if libname exists and is</span>
-<span class="token comment">/// readable.</span>
-<span class="token comment">/// Returns 0 on successful loading, -1 in case libname does not</span>
-<span class="token comment">/// exist or in case of error and -2 in case of version mismatch.</span>
-
-   TClass           <span class="token operator">*</span><span class="token function">LoadClass</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Bool_t silent <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Helper function used by TClass::GetClass().</span>
-<span class="token comment">/// This function attempts to load the dictionary for &apos;classname&apos;</span>
-<span class="token comment">/// either from the TClassTable or from the list of generator.</span>
-<span class="token comment">/// If silent is &apos;true&apos;, do not warn about missing dictionary for the class.</span>
-<span class="token comment">/// (typically used for class that are used only for transient members)</span>
-<span class="token comment">/// The &apos;requestedname&apos; is expected to be already normalized.</span>
-
-   Int_t             <span class="token function">LoadMacro</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">,</span> Int_t <span class="token operator">*</span>error <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Bool_t check <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Load a macro in the interpreter&apos;s memory. Equivalent to the command line</span>
-<span class="token comment">/// command &quot;.L filename&quot;. If the filename has &quot;+&quot; or &quot;++&quot; appended</span>
-<span class="token comment">/// the macro will be compiled by ACLiC. The filename must have the format:</span>
-<span class="token comment">/// [path/]macro.C[+|++[g|O]].</span>
-<span class="token comment">/// The possible error codes are defined by TInterpreter::EErrorCode.</span>
-<span class="token comment">/// If check is true it will only check if filename exists and is</span>
-<span class="token comment">/// readable.</span>
-<span class="token comment">/// Returns 0 on successful loading and -1 in case filename does not</span>
-<span class="token comment">/// exist or in case of error.</span>
-
-   Long_t            <span class="token function">Macro</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">,</span> Int_t <span class="token operator">*</span>error <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Bool_t padUpdate <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute a macro in the interpreter. Equivalent to the command line</span>
-<span class="token comment">/// command &quot;.x filename&quot;. If the filename has &quot;+&quot; or &quot;++&quot; appended</span>
-<span class="token comment">/// the macro will be compiled by ACLiC. The filename must have the format:</span>
-<span class="token comment">/// [path/]macro.C[+|++[g|O]][(args)].</span>
-<span class="token comment">/// The possible error codes are defined by TInterpreter::EErrorCode.</span>
-<span class="token comment">/// If padUpdate is true (default) update the current pad.</span>
-<span class="token comment">/// Returns the macro return value.</span>
-
-   TCanvas          <span class="token operator">*</span><span class="token function">MakeDefCanvas</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return a default canvas.</span>
-   <span class="token keyword">void</span>              <span class="token function">Message</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">,</span> <span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Process message id called by obj.</span>
-   Bool_t            <span class="token function">MustClean</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMustClean<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Long_t            <span class="token function">ProcessLine</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>line<span class="token punctuation">,</span> Int_t <span class="token operator">*</span>error <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Process interpreter command via TApplication::ProcessLine().</span>
-<span class="token comment">/// On Win32 the line will be processed asynchronously by sending</span>
-<span class="token comment">/// it to the CINT interpreter thread. For explicit synchronous processing</span>
-<span class="token comment">/// use ProcessLineSync(). On non-Win32 platforms there is no difference</span>
-<span class="token comment">/// between ProcessLine() and ProcessLineSync().</span>
-<span class="token comment">/// The possible error codes are defined by TInterpreter::EErrorCode. In</span>
-<span class="token comment">/// particular, error will equal to TInterpreter::kProcessing until the</span>
-<span class="token comment">/// CINT interpreted thread has finished executing the line.</span>
-<span class="token comment">/// Returns the result of the command, cast to a Long_t.</span>
-
-   Long_t            <span class="token function">ProcessLineSync</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>line<span class="token punctuation">,</span> Int_t <span class="token operator">*</span>error <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Process interpreter command via TApplication::ProcessLine().</span>
-<span class="token comment">/// On Win32 the line will be processed synchronously (i.e. it will</span>
-<span class="token comment">/// only return when the CINT interpreter thread has finished executing</span>
-<span class="token comment">/// the line). On non-Win32 platforms there is no difference between</span>
-<span class="token comment">/// ProcessLine() and ProcessLineSync().</span>
-<span class="token comment">/// The possible error codes are defined by TInterpreter::EErrorCode.</span>
-<span class="token comment">/// Returns the result of the command, cast to a Long_t.</span>
-
-   Long_t            <span class="token function">ProcessLineFast</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>line<span class="token punctuation">,</span> Int_t <span class="token operator">*</span>error <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// Process interpreter command directly via CINT interpreter.</span>
-<span class="token comment">/// Only executable statements are allowed (no variable declarations),</span>
-<span class="token comment">/// In all other cases use TROOT::ProcessLine().</span>
-<span class="token comment">/// The possible error codes are defined by TInterpreter::EErrorCode.</span>
-
-   Bool_t            <span class="token function">ReadingObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Deprecated (will be removed in next release).</span>
-   <span class="token keyword">void</span>              <span class="token function">RefreshBrowsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Refresh all browsers. Call this method when some command line</span>
-<span class="token comment">/// command or script has changed the browser contents. Not needed</span>
-<span class="token comment">/// for objects that have the kMustCleanup bit set. Most useful to</span>
-<span class="token comment">/// update browsers that show the file system or other objects external</span>
-<span class="token comment">/// to the running ROOT session.</span>
-
-   <span class="token keyword">static</span> <span class="token keyword">void</span>       <span class="token function">RegisterModule</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> modulename<span class="token punctuation">,</span>
-                                    <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> headers<span class="token punctuation">,</span>
-                                    <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> includePaths<span class="token punctuation">,</span>
-                                    <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> payLoadCode<span class="token punctuation">,</span>
-                                    <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> fwdDeclCode<span class="token punctuation">,</span>
-                                    <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>triggerFunc<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                                    <span class="token keyword">const</span> FwdDeclArgsToKeepCollection_t<span class="token operator">&amp;</span> fwdDeclsArgToSkip<span class="token punctuation">,</span>
-                                    <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> classesHeaders<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Called by static dictionary initialization to register clang modules</span>
-<span class="token comment">/// for headers. Calls TCling::RegisterModule() unless gCling</span>
-<span class="token comment">/// is NULL, i.e. during startup, where the information is buffered in</span>
-<span class="token comment">/// the static GetModuleHeaderInfoBuffer().</span>
-   <span class="token comment">// First a side track to insure proper end of process behavior.</span>
-   <span class="token comment">// Register for each loaded dictionary (and thus for each library),</span>
-   <span class="token comment">// that we need to Close the ROOT files as soon as this library</span>
-   <span class="token comment">// might start being unloaded after main.</span>
-   <span class="token comment">// By calling atexit here (rather than directly from within the</span>
-   <span class="token comment">// library) we make sure that this is not called if the library is</span>
-   <span class="token comment">// &apos;only&apos; dlclosed.</span>
-   <span class="token comment">// On Ubuntu the linker strips the unused libraries.  Eventhough</span>
-   <span class="token comment">// stressHistogram is explicitly linked against libNet, it is not</span>
-   <span class="token comment">// retained and thus is loaded only as needed in the middle part of</span>
-   <span class="token comment">// the execution.  Concretely this also means that it is loaded</span>
-   <span class="token comment">// *after* the construction of the TApplication object and thus</span>
-   <span class="token comment">// after the registration (atexit) of the EndOfProcessCleanups</span>
-   <span class="token comment">// routine.  Consequently, after the end of main, libNet is</span>
-   <span class="token comment">// unloaded before EndOfProcessCleanups is called.  When</span>
-   <span class="token comment">// EndOfProcessCleanups is executed it indirectly needs the TClass</span>
-   <span class="token comment">// for TSocket and its search will use resources that have already</span>
-   <span class="token comment">// been unloaded (technically the function static in TUnixSystem&apos;s</span>
-   <span class="token comment">// DynamicPath and the dictionary from libNet).</span>
-   <span class="token comment">// Similarly, the ordering (before this commit) was broken in the</span>
-   <span class="token comment">// following case:</span>
-   <span class="token comment">//    TApplication creation (EndOfProcessCleanups registration)</span>
-   <span class="token comment">//    load UserLibrary</span>
-   <span class="token comment">//    create TFile</span>
-   <span class="token comment">//    Append UserObject to TFile</span>
-   <span class="token comment">// and after the end of main the order of execution was</span>
-   <span class="token comment">//    unload UserLibrary</span>
-   <span class="token comment">//    call EndOfProcessCleanups</span>
-   <span class="token comment">//       Write the TFile</span>
-   <span class="token comment">//         attempt to write the user object.</span>
-   <span class="token comment">//    ....</span>
-   <span class="token comment">// where what we need is to have the files closen/written before</span>
-   <span class="token comment">// the unloading of the library.</span>
-   <span class="token comment">// To solve the problem we now register an atexit function for</span>
-   <span class="token comment">// every dictionary thus making sure there is at least one executed</span>
-   <span class="token comment">// before the first library tear down after main.</span>
-   <span class="token comment">// If atexit is called directly within a library&apos;s code, the</span>
-   <span class="token comment">// function will called *either* when the library is &apos;dlclose&apos;d or</span>
-   <span class="token comment">// after then end of main (whichever comes first).  We do *not*</span>
-   <span class="token comment">// want the files to be closed whenever a library is unloaded via</span>
-   <span class="token comment">// dlclose.  To avoid this, we add the function (CallCloseFiles)</span>
-   <span class="token comment">// from the dictionary indirectly (via ROOT::RegisterModule).  In</span>
-   <span class="token comment">// this case the function will only only be called either when</span>
-   <span class="token comment">// libCore is &apos;dlclose&apos;d or right after the end of main.</span>
+   TClass           *FindSTLClass(const char *name, Bool_t load, Bool_t silent = kFALSE) const;
+/// return a TClass object corresponding to &apos;name&apos; assuming it is an STL container.
+/// In particular we looking for possible alternative name (default template
+/// parameter, typedefs template arguments, typedefed name).
+   // Example of inputs are
+   //   vector&lt;int&gt;  (*)
+   //   vector&lt;Int_t&gt;
+   //   vector&lt;long long&gt;
+   //   vector&lt;Long_64_t&gt; (*)
+   //   vector&lt;int, allocator&lt;int&gt; &gt;
+   //   vector&lt;Int_t, allocator&lt;int&gt; &gt;
+   //   One of the possibly expensive operation is the resolving of the typedef
+   //   which can provoke the parsing of the header files (and/or the loading
+   //   of clang pcms information).
 
 
-    <span class="token keyword">void</span>              <span class="token function">RemoveClass</span><span class="token punctuation">(</span>TClass <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Remove a class from the list and map of classes.</span>
-<span class="token comment">/// This routine is deprecated, use TClass::RemoveClass directly.</span>
+   void              ForceStyle(Bool_t force = kTRUE) { fForceStyle = force; }
+   Bool_t            FromPopUp() const { return fFromPopUp; }
+   TPluginManager   *GetPluginManager() const { return fPluginManager; }
+   TApplication     *GetApplication() const { return fApplication; }
+   TInterpreter     *GetInterpreter() const { return fInterpreter; }
+   TClass           *GetClass(const char *name, Bool_t load = kTRUE, Bool_t silent = kFALSE) const;
+/// Return pointer to class with name. Obsolete, use TClass::GetClass directly
 
-    <span class="token keyword">void</span>              <span class="token function">Reset</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Delete all global interpreter objects created since the last call to Reset</span>
-<span class="token comment">/// If option=&quot;a&quot; is set reset to startup context (i.e. unload also</span>
-<span class="token comment">/// all loaded files, classes, structs, typedefs, etc.).</span>
-<span class="token comment">/// This function is typically used at the beginning (or end) of an unnamed macro</span>
-<span class="token comment">/// to clean the environment.</span>
-<span class="token comment">/// IMPORTANT WARNING:</span>
-<span class="token comment">/// Do not use this call from within any function (neither compiled nor</span>
-<span class="token comment">/// interpreted.  This should only be used from a unnamed macro</span>
-<span class="token comment">/// (which starts with a { (curly braces)  ).  For example, using TROOT::Reset</span>
-<span class="token comment">/// from within an interpreted function will lead to the unloading of the</span>
-<span class="token comment">/// dictionary and source file, including the one defining the function being</span>
-<span class="token comment">/// executed.</span>
+   TClass           *GetClass(const type_info &amp;typeinfo, Bool_t load = kTRUE, Bool_t silent = kFALSE) const;
+/// Return pointer to class from its name. Obsolete, use TClass::GetClass directly
+/// See TClass::GetClass
 
-   <span class="token keyword">void</span>              <span class="token function">SaveContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Save the current interpreter context.</span>
-   <span class="token keyword">void</span>              <span class="token function">SetApplication</span><span class="token punctuation">(</span>TApplication <span class="token operator">*</span>app<span class="token punctuation">)</span> <span class="token punctuation">{</span> fApplication <span class="token operator">=</span> app<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetBatch</span><span class="token punctuation">(</span>Bool_t batch <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fBatch <span class="token operator">=</span> batch<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetCutClassName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name <span class="token operator">=</span> <span class="token string">&quot;TCutG&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the default graphical cut class name for the graphics editor</span>
-<span class="token comment">/// By default the graphics editor creates an instance of a class TCutG.</span>
-<span class="token comment">/// This function may be called to specify a different class that MUST</span>
-<span class="token comment">/// derive from TCutG</span>
+   TColor           *GetColor(Int_t color) const;/// Return address of color with index color.
+   const char       *GetConfigOptions() const { return fConfigOptions; }
+   const char       *GetConfigFeatures() const { return fConfigFeatures; }
+   const char       *GetCutClassName() const { return fCutClassName; }
+   const char       *GetDefCanvasName() const { return fDefCanvasName; }
+   Bool_t            GetEditHistograms() const { return fEditHistograms; }
+   Int_t             GetEditorMode() const { return fEditorMode; }
+   Bool_t            GetForceStyle() const { return fForceStyle; }
+   Int_t             GetBuiltDate() const { return fBuiltDate; }
+   Int_t             GetBuiltTime() const { return fBuiltTime; }
+   const char       *GetGitCommit() const { return fGitCommit; }
+   const char       *GetGitBranch() const { return fGitBranch; }
+   const char       *GetGitDate();/// Return date/time make was run.
+   Int_t             GetVersionDate() const { return fVersionDate; }
+   Int_t             GetVersionTime() const { return fVersionTime; }
+   Int_t             GetVersionInt() const { return fVersionInt; }
+   Int_t             GetVersionCode() const { return fVersionCode; }
+   const char       *GetVersion() const { return fVersion; }
+   TCollection      *GetListOfClasses() const { return fClasses; }
+   TSeqCollection   *GetListOfColors() const { return fColors; }
+   TCollection      *GetListOfTypes(Bool_t load = kFALSE);/// Return a dynamic list giving access to all TDataTypes (typedefs)
+/// currently defined.
+   TCollection      *GetListOfGlobals(Bool_t load = kFALSE);
+/// Return list containing the TGlobals currently defined.
+/// Since globals are created and deleted during execution of the
+/// program, we need to update the list of globals every time we
+/// execute this method. However, when calling this function in
+/// a (tight) loop where no interpreter symbols will be created
+/// you can set load=kFALSE (default).
 
-   <span class="token keyword">void</span>              <span class="token function">SetDefCanvasName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name <span class="token operator">=</span> <span class="token string">&quot;c1&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fDefCanvasName <span class="token operator">=</span> name<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetEditHistograms</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fEditHistograms <span class="token operator">=</span> flag<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetEditorMode</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>mode <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set editor mode</span>
-<span class="token comment">// mode: &quot;Arc&quot; &quot;Line&quot; &quot;Arrow&quot; &quot;Button&quot; &quot;Diamond&quot; &quot;Ellipse&quot; &quot;Pad&quot; &quot;Pave&quot; &quot;PaveLabel&quot; &quot;PaveText&quot; &quot;PavesText&quot; &quot;PolyLine&quot; &quot;CurlyLine&quot; &quot;CurlyArc&quot; &quot;Text&quot; &quot;Marker&quot; &quot;CutG&quot;</span>
+   TCollection      *GetListOfGlobalFunctions(Bool_t load = kFALSE);
+/// Return list containing the TFunctions currently defined.
+/// Since functions are created and deleted during execution of the
+/// program, we need to update the list of functions every time we
+/// execute this method. However, when calling this function in
+/// a (tight) loop where no interpreter symbols will be created
+/// you can set load=kFALSE (default).
 
-   <span class="token keyword">void</span>              <span class="token function">SetExecutingMacro</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fExecutingMacro <span class="token operator">=</span> flag<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetFromPopUp</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fFromPopUp <span class="token operator">=</span> flag<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetInterrupt</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fInterrupt <span class="token operator">=</span> flag<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetEscape</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fEscape <span class="token operator">=</span> flag<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetLineIsProcessing</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fLineIsProcessing<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetLineHasBeenProcessed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>fLineIsProcessing<span class="token punctuation">)</span> fLineIsProcessing<span class="token operator">--</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetReadingObject</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>              <span class="token function">SetMustClean</span><span class="token punctuation">(</span>Bool_t flag <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> fMustClean<span class="token operator">=</span>flag<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetSelectedPrimitive</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span> fPrimitive <span class="token operator">=</span> obj<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetSelectedPad</span><span class="token punctuation">(</span>TVirtualPad <span class="token operator">*</span>pad<span class="token punctuation">)</span> <span class="token punctuation">{</span> fSelectPad <span class="token operator">=</span> pad<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>              <span class="token function">SetStyle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>stylename <span class="token operator">=</span> <span class="token string">&quot;Default&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Change current style to style with name stylename</span>
-   <span class="token keyword">void</span>              <span class="token function">Time</span><span class="token punctuation">(</span>Int_t casetime<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> fTimer <span class="token operator">=</span> casetime<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t             <span class="token function">Timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fTimer<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   TSeqCollection   *GetListOfClosedObjects() const { return fClosedObjects; }
+   TSeqCollection   *GetListOfFiles() const       { return fFiles; }
+   TSeqCollection   *GetListOfMappedFiles() const { return fMappedFiles; }
+   TSeqCollection   *GetListOfSockets() const     { return fSockets; }
+   TSeqCollection   *GetListOfCanvases() const    { return fCanvases; }
+   TSeqCollection   *GetListOfStyles() const      { return fStyles; }
+   TCollection      *GetListOfFunctions() const   { return fFunctions; }
+   TCollection      *GetListOfFunctionOverloads(const char* name) const;/// Return the collection of functions named &quot;name&quot;.
+   TSeqCollection   *GetListOfGeometries() const  { return fGeometries; }
+   TSeqCollection   *GetListOfBrowsers() const    { return fBrowsers; }
+   TSeqCollection   *GetListOfSpecials() const    { return fSpecials; }
+   TSeqCollection   *GetListOfTasks() const       { return fTasks; }
+   TSeqCollection   *GetListOfCleanups() const    { return fCleanups; }
+   TSeqCollection   *GetListOfStreamerInfo() const { return fStreamerInfo; }
+   TSeqCollection   *GetListOfMessageHandlers() const { return fMessageHandlers; }
+   TCollection      *GetListOfClassGenerators() const { return fClassGenerators; }
+   TSeqCollection   *GetListOfSecContexts() const { return fSecContexts; }
+   TSeqCollection   *GetListOfProofs() const { return fProofs; }
+   TSeqCollection   *GetClipboard() const { return fClipboard; }
+   TSeqCollection   *GetListOfDataSets() const { return fDataSets; }
+   TCollection      *GetListOfEnums(Bool_t load = kFALSE);
+   TCollection      *GetListOfFunctionTemplates();
+   TList            *GetListOfBrowsables() const { return fBrowsables; }
+   TDataType        *GetType(const char *name, Bool_t load = kFALSE) const;/// Return pointer to type with name.
+   TFile            *GetFile() const { if (gDirectory != this) return gDirectory-&gt;GetFile(); else return 0;}
+   TFile            *GetFile(const char *name) const;/// Return pointer to file with name.
+   TFunctionTemplate*GetFunctionTemplate(const char *name);
+   TStyle           *GetStyle(const char *name) const;/// Return pointer to style with name
+   TObject          *GetFunction(const char *name) const;/// Return pointer to function with name.
+   TGlobal          *GetGlobal(const char *name, Bool_t load = kFALSE) const;
+/// Return pointer to global variable by name. If load is true force
+/// reading of all currently defined globals from CINT (more expensive).
 
-   <span class="token comment">//---- static functions</span>
-   <span class="token keyword">static</span> Int_t       <span class="token function">DecreaseDirLevel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Decrease the indentation level for ls().</span>
-   <span class="token keyword">static</span> Int_t       <span class="token function">GetDirLevel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">///return directory level</span>
-   <span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetMacroPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Get macro search path. Static utility function.</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>        <span class="token function">SetMacroPath</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>newpath<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set or extend the macro search path. Static utility function.</span>
-<span class="token comment">/// If newpath=0 or &quot;&quot; reset to value specified in the rootrc file.</span>
+   TGlobal          *GetGlobal(const TObject *obj, Bool_t load = kFALSE) const;/// Return pointer to global variable with address addr.
+   TFunction        *GetGlobalFunction(const char *name, const char *params = 0, Bool_t load = kFALSE);
+/// Return pointer to global function by name.
+/// If params != 0 it will also resolve overloading other it returns the first
+/// name match.
+/// If params == 0 and load is true force reading of all currently defined
+/// global functions from Cling.
+/// The param string must be of the form: &quot;3189,\&quot;aap\&quot;,1.3&quot;.
 
-   <span class="token keyword">static</span> Int_t       <span class="token function">IncreaseDirLevel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Increase the indentation level for ls().</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>        <span class="token function">IndentLevel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Functions used by ls() to indent an object hierarchy.</span>
-   <span class="token keyword">static</span> Bool_t      <span class="token function">Initialized</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return kTRUE if the TROOT object has been initialized.</span>
-   <span class="token keyword">static</span> Bool_t      <span class="token function">MemCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return kTRUE if the memory leak checker is on.</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>        <span class="token function">SetDirLevel</span><span class="token punctuation">(</span>Int_t level <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return Indentation level for ls().</span>
-   <span class="token keyword">static</span> Int_t       <span class="token function">ConvertVersionCode2Int</span><span class="token punctuation">(</span>Int_t code<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Convert version code to an integer, i.e. 331527 -&gt; 51507.</span>
-   <span class="token keyword">static</span> Int_t       <span class="token function">ConvertVersionInt2Code</span><span class="token punctuation">(</span>Int_t v<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Convert version as an integer to version code as used in RVersion.h.</span>
-   <span class="token keyword">static</span> Int_t       <span class="token function">RootVersionCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Return ROOT version code as defined in RVersion.h.</span>
-   <span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">&amp;</span><span class="token function">GetExtraInterpreterArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetTutorialsDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Get the tutorials directory in the installation. Static utility function.</span>
+   TFunction        *GetGlobalFunctionWithPrototype(const char *name, const char *proto = 0, Bool_t load = kFALSE);
+/// Return pointer to global function by name. If proto != 0
+/// it will also resolve overloading. If load is true force reading
+/// of all currently defined global functions from CINT (more expensive).
+/// The proto string must be of the form: &quot;int, char*, float&quot;.
+
+   TObject          *GetGeometry(const char *name) const;/// Return pointer to Geometry with name
+   const TObject    *GetSelectedPrimitive() const { return fPrimitive; }
+   TVirtualPad      *GetSelectedPad() const { return fSelectPad; }
+   Int_t             GetNclasses() const { return fClasses-&gt;GetSize(); }
+   Int_t             GetNtypes() const { return fTypes-&gt;GetSize(); }
+   TFolder          *GetRootFolder() const { return fRootFolder; }
+   TProcessUUID     *GetUUIDs() const { return fUUIDs; }
+   void              Idle(UInt_t idleTimeInSec, const char *command = 0);/// Execute command when system has been idle for idleTimeInSec seconds.
+   Int_t             IgnoreInclude(const char *fname, const char *expandedfname);
+/// Return 1 if the name of the given include file corresponds to a class that
+///  is known to ROOT, e.g. &quot;TLorentzVector.h&quot; versus TLorentzVector.
+
+   Bool_t            IsBatch() const { return fBatch; }
+   Bool_t            IsExecutingMacro() const { return fExecutingMacro; }
+   Bool_t            IsFolder() const { return kTRUE; }
+   Bool_t            IsInterrupted() const { return fInterrupt; }
+   Bool_t            IsEscaped() const { return fEscape; }
+   Bool_t            IsLineProcessing() const { return fLineIsProcessing ? kTRUE : kFALSE; }
+   Bool_t            IsProofServ() const { return fName == &quot;proofserv&quot; ? kTRUE : kFALSE; }
+   Bool_t            IsRootFile(const char *filename) const;/// Return true if the file is local and is (likely) to be a ROOT file
+   void              ls(Option_t *option = &quot;&quot;) const;
+/// To list all objects of the application.
+/// Loop on all objects created in the ROOT linked lists.
+/// Objects may be files and windows or any other object directly
+/// attached to the ROOT linked list.
+
+   Int_t             LoadClass(const char *classname, const char *libname, Bool_t check = kFALSE);
+/// Check if class &quot;classname&quot; is known to the interpreter (in fact,
+/// this check is not needed anymore, so classname is ignored). If
+/// not it will load library &quot;libname&quot;. If the library name does
+/// not start with &quot;lib&quot;, &quot;lib&quot; will be prepended and a search will
+/// be made in the DynamicPath (see .rootrc). If not found a search
+/// will be made on libname (without &quot;lib&quot; prepended) and if not found
+/// a direct try of libname will be made (in case it contained an
+/// absolute path).
+/// If check is true it will only check if libname exists and is
+/// readable.
+/// Returns 0 on successful loading, -1 in case libname does not
+/// exist or in case of error and -2 in case of version mismatch.
+
+   TClass           *LoadClass(const char *name, Bool_t silent = kFALSE) const;
+/// Helper function used by TClass::GetClass().
+/// This function attempts to load the dictionary for &apos;classname&apos;
+/// either from the TClassTable or from the list of generator.
+/// If silent is &apos;true&apos;, do not warn about missing dictionary for the class.
+/// (typically used for class that are used only for transient members)
+/// The &apos;requestedname&apos; is expected to be already normalized.
+
+   Int_t             LoadMacro(const char *filename, Int_t *error = 0, Bool_t check = kFALSE);
+/// Load a macro in the interpreter&apos;s memory. Equivalent to the command line
+/// command &quot;.L filename&quot;. If the filename has &quot;+&quot; or &quot;++&quot; appended
+/// the macro will be compiled by ACLiC. The filename must have the format:
+/// [path/]macro.C[+|++[g|O]].
+/// The possible error codes are defined by TInterpreter::EErrorCode.
+/// If check is true it will only check if filename exists and is
+/// readable.
+/// Returns 0 on successful loading and -1 in case filename does not
+/// exist or in case of error.
+
+   Long_t            Macro(const char *filename, Int_t *error = 0, Bool_t padUpdate = kTRUE);
+/// Execute a macro in the interpreter. Equivalent to the command line
+/// command &quot;.x filename&quot;. If the filename has &quot;+&quot; or &quot;++&quot; appended
+/// the macro will be compiled by ACLiC. The filename must have the format:
+/// [path/]macro.C[+|++[g|O]][(args)].
+/// The possible error codes are defined by TInterpreter::EErrorCode.
+/// If padUpdate is true (default) update the current pad.
+/// Returns the macro return value.
+
+   TCanvas          *MakeDefCanvas() const;/// Return a default canvas.
+   void              Message(Int_t id, const TObject *obj);/// Process message id called by obj.
+   Bool_t            MustClean() const { return fMustClean; }
+   Long_t            ProcessLine(const char *line, Int_t *error = 0);
+/// Process interpreter command via TApplication::ProcessLine().
+/// On Win32 the line will be processed asynchronously by sending
+/// it to the CINT interpreter thread. For explicit synchronous processing
+/// use ProcessLineSync(). On non-Win32 platforms there is no difference
+/// between ProcessLine() and ProcessLineSync().
+/// The possible error codes are defined by TInterpreter::EErrorCode. In
+/// particular, error will equal to TInterpreter::kProcessing until the
+/// CINT interpreted thread has finished executing the line.
+/// Returns the result of the command, cast to a Long_t.
+
+   Long_t            ProcessLineSync(const char *line, Int_t *error = 0);
+/// Process interpreter command via TApplication::ProcessLine().
+/// On Win32 the line will be processed synchronously (i.e. it will
+/// only return when the CINT interpreter thread has finished executing
+/// the line). On non-Win32 platforms there is no difference between
+/// ProcessLine() and ProcessLineSync().
+/// The possible error codes are defined by TInterpreter::EErrorCode.
+/// Returns the result of the command, cast to a Long_t.
+
+   Long_t            ProcessLineFast(const char *line, Int_t *error = 0);
+// Process interpreter command directly via CINT interpreter.
+/// Only executable statements are allowed (no variable declarations),
+/// In all other cases use TROOT::ProcessLine().
+/// The possible error codes are defined by TInterpreter::EErrorCode.
+
+   Bool_t            ReadingObject() const;/// Deprecated (will be removed in next release).
+   void              RefreshBrowsers();
+/// Refresh all browsers. Call this method when some command line
+/// command or script has changed the browser contents. Not needed
+/// for objects that have the kMustCleanup bit set. Most useful to
+/// update browsers that show the file system or other objects external
+/// to the running ROOT session.
+
+   static void       RegisterModule(const char* modulename,
+                                    const char** headers,
+                                    const char** includePaths,
+                                    const char* payLoadCode,
+                                    const char* fwdDeclCode,
+                                    void (*triggerFunc)(),
+                                    const FwdDeclArgsToKeepCollection_t&amp; fwdDeclsArgToSkip,
+                                    const char** classesHeaders);
+/// Called by static dictionary initialization to register clang modules
+/// for headers. Calls TCling::RegisterModule() unless gCling
+/// is NULL, i.e. during startup, where the information is buffered in
+/// the static GetModuleHeaderInfoBuffer().
+   // First a side track to insure proper end of process behavior.
+   // Register for each loaded dictionary (and thus for each library),
+   // that we need to Close the ROOT files as soon as this library
+   // might start being unloaded after main.
+   // By calling atexit here (rather than directly from within the
+   // library) we make sure that this is not called if the library is
+   // &apos;only&apos; dlclosed.
+   // On Ubuntu the linker strips the unused libraries.  Eventhough
+   // stressHistogram is explicitly linked against libNet, it is not
+   // retained and thus is loaded only as needed in the middle part of
+   // the execution.  Concretely this also means that it is loaded
+   // *after* the construction of the TApplication object and thus
+   // after the registration (atexit) of the EndOfProcessCleanups
+   // routine.  Consequently, after the end of main, libNet is
+   // unloaded before EndOfProcessCleanups is called.  When
+   // EndOfProcessCleanups is executed it indirectly needs the TClass
+   // for TSocket and its search will use resources that have already
+   // been unloaded (technically the function static in TUnixSystem&apos;s
+   // DynamicPath and the dictionary from libNet).
+   // Similarly, the ordering (before this commit) was broken in the
+   // following case:
+   //    TApplication creation (EndOfProcessCleanups registration)
+   //    load UserLibrary
+   //    create TFile
+   //    Append UserObject to TFile
+   // and after the end of main the order of execution was
+   //    unload UserLibrary
+   //    call EndOfProcessCleanups
+   //       Write the TFile
+   //         attempt to write the user object.
+   //    ....
+   // where what we need is to have the files closen/written before
+   // the unloading of the library.
+   // To solve the problem we now register an atexit function for
+   // every dictionary thus making sure there is at least one executed
+   // before the first library tear down after main.
+   // If atexit is called directly within a library&apos;s code, the
+   // function will called *either* when the library is &apos;dlclose&apos;d or
+   // after then end of main (whichever comes first).  We do *not*
+   // want the files to be closed whenever a library is unloaded via
+   // dlclose.  To avoid this, we add the function (CallCloseFiles)
+   // from the dictionary indirectly (via ROOT::RegisterModule).  In
+   // this case the function will only only be called either when
+   // libCore is &apos;dlclose&apos;d or right after the end of main.
+
+
+    void              RemoveClass(TClass *);
+/// Remove a class from the list and map of classes.
+/// This routine is deprecated, use TClass::RemoveClass directly.
+
+    void              Reset(Option_t *option=&quot;&quot;);
+/// Delete all global interpreter objects created since the last call to Reset
+/// If option=&quot;a&quot; is set reset to startup context (i.e. unload also
+/// all loaded files, classes, structs, typedefs, etc.).
+/// This function is typically used at the beginning (or end) of an unnamed macro
+/// to clean the environment.
+/// IMPORTANT WARNING:
+/// Do not use this call from within any function (neither compiled nor
+/// interpreted.  This should only be used from a unnamed macro
+/// (which starts with a { (curly braces)  ).  For example, using TROOT::Reset
+/// from within an interpreted function will lead to the unloading of the
+/// dictionary and source file, including the one defining the function being
+/// executed.
+
+   void              SaveContext();/// Save the current interpreter context.
+   void              SetApplication(TApplication *app) { fApplication = app; }
+   void              SetBatch(Bool_t batch = kTRUE) { fBatch = batch; }
+   void              SetCutClassName(const char *name = &quot;TCutG&quot;);
+/// Set the default graphical cut class name for the graphics editor
+/// By default the graphics editor creates an instance of a class TCutG.
+/// This function may be called to specify a different class that MUST
+/// derive from TCutG
+
+   void              SetDefCanvasName(const char *name = &quot;c1&quot;) { fDefCanvasName = name; }
+   void              SetEditHistograms(Bool_t flag = kTRUE) { fEditHistograms = flag; }
+   void              SetEditorMode(const char *mode = &quot;&quot;);/// Set editor mode
+// mode: &quot;Arc&quot; &quot;Line&quot; &quot;Arrow&quot; &quot;Button&quot; &quot;Diamond&quot; &quot;Ellipse&quot; &quot;Pad&quot; &quot;Pave&quot; &quot;PaveLabel&quot; &quot;PaveText&quot; &quot;PavesText&quot; &quot;PolyLine&quot; &quot;CurlyLine&quot; &quot;CurlyArc&quot; &quot;Text&quot; &quot;Marker&quot; &quot;CutG&quot;
+
+   void              SetExecutingMacro(Bool_t flag = kTRUE) { fExecutingMacro = flag; }
+   void              SetFromPopUp(Bool_t flag = kTRUE) { fFromPopUp = flag; }
+   void              SetInterrupt(Bool_t flag = kTRUE) { fInterrupt = flag; }
+   void              SetEscape(Bool_t flag = kTRUE) { fEscape = flag; }
+   void              SetLineIsProcessing() { fLineIsProcessing++; }
+   void              SetLineHasBeenProcessed() { if (fLineIsProcessing) fLineIsProcessing--; }
+   void              SetReadingObject(Bool_t flag = kTRUE);
+   void              SetMustClean(Bool_t flag = kTRUE) { fMustClean=flag; }
+   void              SetSelectedPrimitive(const TObject *obj) { fPrimitive = obj; }
+   void              SetSelectedPad(TVirtualPad *pad) { fSelectPad = pad; }
+   void              SetStyle(const char *stylename = &quot;Default&quot;);/// Change current style to style with name stylename
+   void              Time(Int_t casetime=1) { fTimer = casetime; }
+   Int_t             Timer() const { return fTimer; }
+
+   //---- static functions
+   static Int_t       DecreaseDirLevel();/// Decrease the indentation level for ls().
+   static Int_t       GetDirLevel();///return directory level
+   static const char *GetMacroPath();/// Get macro search path. Static utility function.
+   static void        SetMacroPath(const char *newpath);
+/// Set or extend the macro search path. Static utility function.
+/// If newpath=0 or &quot;&quot; reset to value specified in the rootrc file.
+
+   static Int_t       IncreaseDirLevel();/// Increase the indentation level for ls().
+   static void        IndentLevel();/// Functions used by ls() to indent an object hierarchy.
+   static Bool_t      Initialized();/// Return kTRUE if the TROOT object has been initialized.
+   static Bool_t      MemCheck();/// Return kTRUE if the memory leak checker is on.
+   static void        SetDirLevel(Int_t level = 0);/// Return Indentation level for ls().
+   static Int_t       ConvertVersionCode2Int(Int_t code);/// Convert version code to an integer, i.e. 331527 -&gt; 51507.
+   static Int_t       ConvertVersionInt2Code(Int_t v);/// Convert version as an integer to version code as used in RVersion.h.
+   static Int_t       RootVersionCode();/// Return ROOT version code as defined in RVersion.h.
+   static const char**&amp;GetExtraInterpreterArgs();
+   static const char *GetTutorialsDir();/// Get the tutorials directory in the installation. Static utility function.
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// The following lists are accessible from gROOT object:</span>
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfClasses
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfColors
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfTypes
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfGlobals
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfGlobalFunctions
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfFiles
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfMappedFiles
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfSockets
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfSecContexts
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfCanvases
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfStyles
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfFunctions
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfSpecials <span class="token punctuation">(</span><span class="token keyword">for</span> example graphical cuts<span class="token punctuation">)</span>
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfGeometries
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfBrowsers
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfCleanups
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span>GetListOfMessageHandlers
+<pre><code class="lang-cpp"><span class="hljs-comment">// The following lists are accessible from gROOT object:</span>
+gROOT-&gt;GetListOfClasses
+gROOT-&gt;GetListOfColors
+gROOT-&gt;GetListOfTypes
+gROOT-&gt;GetListOfGlobals
+gROOT-&gt;GetListOfGlobalFunctions
+gROOT-&gt;GetListOfFiles
+gROOT-&gt;GetListOfMappedFiles
+gROOT-&gt;GetListOfSockets
+gROOT-&gt;GetListOfSecContexts
+gROOT-&gt;GetListOfCanvases
+gROOT-&gt;GetListOfStyles
+gROOT-&gt;GetListOfFunctions
+gROOT-&gt;GetListOfSpecials (<span class="hljs-keyword">for</span> example graphical cuts)
+gROOT-&gt;GetListOfGeometries
+gROOT-&gt;GetListOfBrowsers
+gROOT-&gt;GetListOfCleanups
+gROOT-&gt;GetListOfMessageHandlers
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//  The ROOT object must be created as a static object. An example</span>
-<span class="token comment">//  of a main program creating an interactive version is shown below:</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//  The ROOT object must be created as a static object. An example</span>
+<span class="hljs-comment">//  of a main program creating an interactive version is shown below:</span>
 
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TRint.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TRint.h&quot;</span></span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-   TRint <span class="token operator">*</span>theApp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TRint</span><span class="token punctuation">(</span><span class="token string">&quot;ROOT example&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> **argv)</span>
+</span>{
+   TRint *theApp = <span class="hljs-keyword">new</span> TRint(<span class="hljs-string">&quot;ROOT example&quot;</span>, &amp;argc, argv);
 
-   <span class="token comment">// Init Intrinsics, build all windows, and enter event loop</span>
-   theApp<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Init Intrinsics, build all windows, and enter event loop</span>
+   theApp-&gt;Run();
 
-   <span class="token keyword">return</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+   <span class="hljs-keyword">return</span>(<span class="hljs-number">0</span>);
+}
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">/// Return a dynamic list giving access to all TDataTypes (typedefs)</span>
-<span class="token comment">/// currently defined.</span>
-<span class="token comment">///</span>
-<span class="token comment">/// The list is populated on demand.  Calling</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">/// Return a dynamic list giving access to all TDataTypes (typedefs)</span>
+<span class="hljs-comment">/// currently defined.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// The list is populated on demand.  Calling</span>
 
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetListOfTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">FindObject</span><span class="token punctuation">(</span>nameoftype<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gROOT-&gt;GetListOfTypes()-&gt;FindObject(nameoftype);
 
-<span class="token comment">/// will return the TDataType corresponding to &apos;nameoftype&apos;.  If the</span>
-<span class="token comment">/// TDataType is not already in the list itself and the type does exist,</span>
-<span class="token comment">/// a new TDataType will be created and added to the list.</span>
-<span class="token comment">/// Calling</span>
+<span class="hljs-comment">/// will return the TDataType corresponding to &apos;nameoftype&apos;.  If the</span>
+<span class="hljs-comment">/// TDataType is not already in the list itself and the type does exist,</span>
+<span class="hljs-comment">/// a new TDataType will be created and added to the list.</span>
+<span class="hljs-comment">/// Calling</span>
 
-gROOT<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetListOfTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">ls</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// or Print()</span>
+gROOT-&gt;GetListOfTypes()-&gt;ls(); <span class="hljs-comment">// or Print()</span>
 
-<span class="token comment">/// list only the typedefs that have been previously accessed through the</span>
-<span class="token comment">/// list (plus the builtins types).</span>
+<span class="hljs-comment">/// list only the typedefs that have been previously accessed through the</span>
+<span class="hljs-comment">/// list (plus the builtins types).</span>
 </code></pre>
 <!-- TROOT.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -4194,7 +4206,7 @@ gROOT<span class="token operator">-</span><span class="token operator">&gt;</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TROOT*","level":"1.2.74","depth":2,"next":{"title":"TSelector-","level":"1.2.75","depth":2,"path":"class/TSelector.md","ref":"class/TSelector.md","articles":[]},"previous":{"title":"TRandom3*","level":"1.2.73","depth":2,"path":"class/TRandom3.md","ref":"class/TRandom3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TROOT.md","mtime":"2018-05-14T09:18:22.854Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TROOT*","level":"1.2.74","depth":2,"next":{"title":"TSelector-","level":"1.2.75","depth":2,"path":"class/TSelector.md","ref":"class/TSelector.md","articles":[]},"previous":{"title":"TRandom3*","level":"1.2.73","depth":2,"path":"class/TRandom3.md","ref":"class/TRandom3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TROOT.md","mtime":"2018-05-14T09:18:22.854Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4226,6 +4238,18 @@ gROOT<span class="token operator">-</span><span class="token operator">&gt;</spa
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

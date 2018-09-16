@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3684,156 +3696,156 @@ inserted in a TList. Before being inserted into the list the object
 pointer is wrapped in a TObjLink object which contains, besides
 the object pointer also a previous and next pointer.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">typedef</span> TListIter Iterator_t<span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">typedef</span> TListIter Iterator_t;
 
-   <span class="token function">TList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">fFirst</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fLast</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fCache</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fAscending</span><span class="token punctuation">(</span>kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token function">TList</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">fFirst</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fLast</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fCache</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fAscending</span><span class="token punctuation">(</span>kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span> <span class="token comment">// for backward compatibility, don&apos;t use</span>
-   <span class="token keyword">virtual</span>           <span class="token operator">~</span><span class="token function">TList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Remove all objects from the list. Does not delete the objects</span>
-<span class="token comment">/// unless the TList is the owner (set via SetOwner()) and option</span>
-<span class="token comment">/// &quot;nodelete&quot; is not set.</span>
-<span class="token comment">/// If option=&quot;nodelete&quot; then don&apos;t delete any heap objects that were</span>
-<span class="token comment">/// marked with the kCanDelete bit, otherwise these objects will be</span>
-<span class="token comment">/// deleted (this option is used by THashTable::Clear()).</span>
+   TList() : fFirst(<span class="hljs-number">0</span>), fLast(<span class="hljs-number">0</span>), fCache(<span class="hljs-number">0</span>), fAscending(kTRUE) { }
+   TList(TObject *) : fFirst(<span class="hljs-number">0</span>), fLast(<span class="hljs-number">0</span>), fCache(<span class="hljs-number">0</span>), fAscending(kTRUE) { } <span class="hljs-comment">// for backward compatibility, don&apos;t use</span>
+   <span class="hljs-keyword">virtual</span>           ~TList();
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Remove all objects from the list. Does not delete the objects</span>
+<span class="hljs-comment">/// unless the TList is the owner (set via SetOwner()) and option</span>
+<span class="hljs-comment">/// &quot;nodelete&quot; is not set.</span>
+<span class="hljs-comment">/// If option=&quot;nodelete&quot; then don&apos;t delete any heap objects that were</span>
+<span class="hljs-comment">/// marked with the kCanDelete bit, otherwise these objects will be</span>
+<span class="hljs-comment">/// deleted (this option is used by THashTable::Clear()).</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Delete</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Remove all objects from the list AND delete all heap based objects.</span>
-<span class="token comment">/// If option=&quot;slow&quot; then keep list consistent during delete. This allows</span>
-<span class="token comment">/// recursive list operations during the delete (e.g. during the dtor</span>
-<span class="token comment">/// of an object in this list one can still access the list to search for</span>
-<span class="token comment">/// other not yet deleted objects).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Delete</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Remove all objects from the list AND delete all heap based objects.</span>
+<span class="hljs-comment">/// If option=&quot;slow&quot; then keep list consistent during delete. This allows</span>
+<span class="hljs-comment">/// recursive list operations during the delete (e.g. during the dtor</span>
+<span class="hljs-comment">/// of an object in this list one can still access the list to search for</span>
+<span class="hljs-comment">/// other not yet deleted objects).</span>
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find an object in this list using its name. Requires a sequential</span>
-<span class="token comment">/// scan till the object has been found. Returns 0 if object with specified</span>
-<span class="token comment">/// name is not found. This method overrides the generic FindObject()</span>
-<span class="token comment">/// of TCollection for efficiency reasons.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find an object in this list using its name. Requires a sequential</span>
+<span class="hljs-comment">/// scan till the object has been found. Returns 0 if object with specified</span>
+<span class="hljs-comment">/// name is not found. This method overrides the generic FindObject()</span>
+<span class="hljs-comment">/// of TCollection for efficiency reasons.</span>
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find an object in this list using the object&apos;s IsEqual()</span>
-<span class="token comment">/// member function. Requires a sequential scan till the object has</span>
-<span class="token comment">/// been found. Returns 0 if object is not found.</span>
-<span class="token comment">/// This method overrides the generic FindObject() of TCollection for</span>
-<span class="token comment">/// efficiency reasons.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find an object in this list using the object&apos;s IsEqual()</span>
+<span class="hljs-comment">/// member function. Requires a sequential scan till the object has</span>
+<span class="hljs-comment">/// been found. Returns 0 if object is not found.</span>
+<span class="hljs-comment">/// This method overrides the generic FindObject() of TCollection for</span>
+<span class="hljs-comment">/// efficiency reasons.</span>
 
-   <span class="token keyword">virtual</span> TIterator <span class="token operator">*</span><span class="token function">MakeIterator</span><span class="token punctuation">(</span>Bool_t dir <span class="token operator">=</span> kIterForward<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TIterator *<span class="hljs-title">MakeIterator</span><span class="hljs-params">(Bool_t dir = kIterForward)</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Add</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">AddLast</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Add</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>opt<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">AddLast</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> opt<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddFirst</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Add object at the beginning of the list.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddFirst</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>opt<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add object at the beginning of the list and also store option.</span>
-<span class="token comment">/// Storing an option is useful when one wants to change the behaviour</span>
-<span class="token comment">/// of an object a little without having to create a complete new</span>
-<span class="token comment">/// copy of the object. This feature is used, for example, by the Draw()</span>
-<span class="token comment">/// method. It allows the same object to be drawn in different ways.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Add</span><span class="hljs-params">(TObject *obj)</span> </span>{ AddLast(obj); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Add</span><span class="hljs-params">(TObject *obj, Option_t *opt)</span> </span>{ AddLast(obj, opt); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddFirst</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Add object at the beginning of the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddFirst</span><span class="hljs-params">(TObject *obj, Option_t *opt)</span></span>;
+<span class="hljs-comment">/// Add object at the beginning of the list and also store option.</span>
+<span class="hljs-comment">/// Storing an option is useful when one wants to change the behaviour</span>
+<span class="hljs-comment">/// of an object a little without having to create a complete new</span>
+<span class="hljs-comment">/// copy of the object. This feature is used, for example, by the Draw()</span>
+<span class="hljs-comment">/// method. It allows the same object to be drawn in different ways.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddLast</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Add object at the end of the list.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddLast</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>opt<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Add object at the end of the list and also store option.</span>
-<span class="token comment">/// Storing an option is useful when one wants to change the behaviour</span>
-<span class="token comment">/// of an object a little without having to create a complete new</span>
-<span class="token comment">/// copy of the object. This feature is used, for example, by the Draw()</span>
-<span class="token comment">/// method. It allows the same object to be drawn in different ways.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddLast</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Add object at the end of the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddLast</span><span class="hljs-params">(TObject *obj, Option_t *opt)</span></span>;
+<span class="hljs-comment">/// Add object at the end of the list and also store option.</span>
+<span class="hljs-comment">/// Storing an option is useful when one wants to change the behaviour</span>
+<span class="hljs-comment">/// of an object a little without having to create a complete new</span>
+<span class="hljs-comment">/// copy of the object. This feature is used, for example, by the Draw()</span>
+<span class="hljs-comment">/// method. It allows the same object to be drawn in different ways.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddAt</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Int_t idx<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Insert object at position idx in the list.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddAfter</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>after<span class="token punctuation">,</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Insert object after object after in the list.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddAfter</span><span class="token punctuation">(</span>TObjLink <span class="token operator">*</span>after<span class="token punctuation">,</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Insert object after the specified ObjLink object. If after = 0 then add</span>
-<span class="token comment">/// to the tail of the list. An ObjLink can be obtained by looping over a list</span>
-<span class="token comment">/// using the above describe iterator method 3.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddAt</span><span class="hljs-params">(TObject *obj, Int_t idx)</span></span>;<span class="hljs-comment">/// Insert object at position idx in the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddAfter</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *after, TObject *obj)</span></span>;<span class="hljs-comment">/// Insert object after object after in the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddAfter</span><span class="hljs-params">(TObjLink *after, TObject *obj)</span></span>;
+<span class="hljs-comment">/// Insert object after the specified ObjLink object. If after = 0 then add</span>
+<span class="hljs-comment">/// to the tail of the list. An ObjLink can be obtained by looping over a list</span>
+<span class="hljs-comment">/// using the above describe iterator method 3.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddBefore</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>before<span class="token punctuation">,</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Insert object before object before in the list.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">AddBefore</span><span class="token punctuation">(</span>TObjLink <span class="token operator">*</span>before<span class="token punctuation">,</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Insert object before the specified ObjLink object. If before = 0 then add</span>
-<span class="token comment">/// to the head of the list. An ObjLink can be obtained by looping over a list</span>
-<span class="token comment">/// using the above describe iterator method 3.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddBefore</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *before, TObject *obj)</span></span>;<span class="hljs-comment">/// Insert object before object before in the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">AddBefore</span><span class="hljs-params">(TObjLink *before, TObject *obj)</span></span>;
+<span class="hljs-comment">/// Insert object before the specified ObjLink object. If before = 0 then add</span>
+<span class="hljs-comment">/// to the head of the list. An ObjLink can be obtained by looping over a list</span>
+<span class="hljs-comment">/// using the above describe iterator method 3.</span>
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">Remove</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Remove object from the list.</span>
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">Remove</span><span class="token punctuation">(</span>TObjLink <span class="token operator">*</span>lnk<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Remove object link (and therefore the object it contains) from the list.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">RemoveLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Remove the last object of the list.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">RecursiveRemove</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Remove object from this collection and recursively remove the object</span>
-<span class="token comment">/// from all other objects (and collections).</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">Remove</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Remove object from the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">Remove</span><span class="hljs-params">(TObjLink *lnk)</span></span>;<span class="hljs-comment">/// Remove object link (and therefore the object it contains) from the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">RemoveLast</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Remove the last object of the list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">RecursiveRemove</span><span class="hljs-params">(TObject *obj)</span></span>;
+<span class="hljs-comment">/// Remove object from this collection and recursively remove the object</span>
+<span class="hljs-comment">/// from all other objects (and collections).</span>
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">At</span><span class="token punctuation">(</span>Int_t idx<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Returns the object at position idx. Returns 0 if idx is out of range.</span>
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">After</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns the object after object obj. Obj is found using the</span>
-<span class="token comment">/// object&apos;s IsEqual() method.  Returns 0 if obj is last in list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">At</span><span class="hljs-params">(Int_t idx)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Returns the object at position idx. Returns 0 if idx is out of range.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">After</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the object after object obj. Obj is found using the</span>
+<span class="hljs-comment">/// object&apos;s IsEqual() method.  Returns 0 if obj is last in list.</span>
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">Before</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns the object before object obj. Obj is found using the</span>
-<span class="token comment">/// object&apos;s IsEqual() method.  Returns 0 if obj is first in list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">Before</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the object before object obj. Obj is found using the</span>
+<span class="hljs-comment">/// object&apos;s IsEqual() method.  Returns 0 if obj is first in list.</span>
 
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">First</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return the first object in the list. Returns 0 when list is empty.</span>
-   <span class="token keyword">virtual</span> TObjLink <span class="token operator">*</span><span class="token function">FirstLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fFirst<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TObject <span class="token operator">*</span><span class="token operator">*</span><span class="token function">GetObjectRef</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return address of pointer to obj</span>
-   <span class="token keyword">virtual</span> TObject  <span class="token operator">*</span><span class="token function">Last</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Return the last object in the list. Returns 0 when list is empty.</span>
-   <span class="token keyword">virtual</span> TObjLink <span class="token operator">*</span><span class="token function">LastLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLast<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">First</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the first object in the list. Returns 0 when list is empty.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObjLink *<span class="hljs-title">FirstLink</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fFirst; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject **<span class="hljs-title">GetObjectRef</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return address of pointer to obj</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject  *<span class="hljs-title">Last</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Return the last object in the list. Returns 0 when list is empty.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObjLink *<span class="hljs-title">LastLink</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLast; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>      <span class="token function">Sort</span><span class="token punctuation">(</span>Bool_t order <span class="token operator">=</span> kSortAscending<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Sort linked list. Real sorting is done in private function DoSort().</span>
-<span class="token comment">/// The list can only be sorted when is contains objects of a sortable</span>
-<span class="token comment">/// class.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>      <span class="hljs-title">Sort</span><span class="hljs-params">(Bool_t order = kSortAscending)</span></span>;
+<span class="hljs-comment">/// Sort linked list. Real sorting is done in private function DoSort().</span>
+<span class="hljs-comment">/// The list can only be sorted when is contains objects of a sortable</span>
+<span class="hljs-comment">/// class.</span>
 
-   Bool_t            <span class="token function">IsAscending</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fAscending<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Bool_t            <span class="hljs-title">IsAscending</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fAscending; }
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// There are basically four ways to iterate over a TList (in order</span>
-<span class="token comment">// of preference, if not forced by other constraints):</span>
+<pre><code class="lang-cpp">// There are basically four ways to iterate over a TList (in order
+// of preference, if not forced by other constraints):
 
-<span class="token comment">//   1. Using the R__FOR_EACH macro:</span>
+//   1. Using the R__FOR_EACH macro:
 
-<span class="token function">GetListOfPrimitives</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">R__FOR_EACH</span><span class="token punctuation">(</span>TObject<span class="token punctuation">,</span>Paint<span class="token punctuation">)</span><span class="token punctuation">(</span>option<span class="token punctuation">)</span><span class="token punctuation">;</span>
+GetListOfPrimitives()-&gt;R__FOR_EACH(TObject,Paint)(option);
 
-<span class="token comment">//  2. Using the TList iterator TListIter (via the wrapper class TIter):</span>
+//  2. Using the TList iterator TListIter (via the wrapper class TIter):
 
-TIter <span class="token function">next</span><span class="token punctuation">(</span><span class="token function">GetListOfPrimitives</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj <span class="token operator">=</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-   obj<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span>next<span class="token punctuation">.</span><span class="token function">GetOption</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+TIter next(GetListOfPrimitives());
+while ((TObject *obj = next()))
+   obj-&gt;Draw(next.GetOption());
 
-<span class="token comment">//  3. Using the TList iterator TListIter and std::for_each algorithm:</span>
+//  3. Using the TList iterator TListIter and std::for_each algorithm:
 
-  <span class="token comment">// A function object, which will be applied to each element</span>
-  <span class="token comment">// of the given range.</span>
-<span class="token keyword">struct</span> STestFunctor <span class="token punctuation">{</span>
-   <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>aObj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-TIter <span class="token function">iter</span><span class="token punctuation">(</span>mylist<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">for_each</span><span class="token punctuation">(</span> iter<span class="token punctuation">.</span><span class="token function">Begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> TIter<span class="token operator">::</span><span class="token function">End</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">STestFunctor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  // A function object, which will be applied to each element
+  // of the given range.
+struct STestFunctor {
+   bool operator()(TObject *aObj) {
+      ...
+      return true;
+   }
+}
+...
+...
+TIter iter(mylist);
+for_each( iter.Begin(), TIter::End(), STestFunctor() );
 
-<span class="token comment">//  4. Using the TObjLink list entries (that wrap the TObject*):</span>
+//  4. Using the TObjLink list entries (that wrap the TObject*):
 
-TObjLink <span class="token operator">*</span>lnk <span class="token operator">=</span> <span class="token function">GetListOfPrimitives</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">FirstLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">while</span> <span class="token punctuation">(</span>lnk<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   lnk<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span>lnk<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetOption</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   lnk <span class="token operator">=</span> lnk<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+TObjLink *lnk = GetListOfPrimitives()-&gt;FirstLink();
+while (lnk) {
+   lnk-&gt;GetObject()-&gt;Draw(lnk-&gt;GetOption());
+   lnk = lnk-&gt;Next();
+}
 
-<span class="token comment">//  5. Using the TList&apos;s After() and Before() member functions:</span>
+//  5. Using the TList&apos;s After() and Before() member functions:
 
-TFree <span class="token operator">*</span>idcur <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
-<span class="token keyword">while</span> <span class="token punctuation">(</span>idcur<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-   idcur <span class="token operator">=</span> <span class="token punctuation">(</span>TFree<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">GetListOfFree</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">After</span><span class="token punctuation">(</span>idcur<span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token punctuation">}</span>
+TFree *idcur = this;
+while (idcur) {
+   ...
+   ...
+   idcur = (TFree*)GetListOfFree()-&gt;After(idcur);
+         }
 
-<span class="token comment">// Methods 2, 3 and 4 can also easily iterate backwards using either</span>
-<span class="token comment">// a backward TIter (using argument kIterBackward) or by using</span>
-<span class="token comment">// LastLink() and lnk-&gt;Prev() or by using the Before() member.</span>
+// Methods 2, 3 and 4 can also easily iterate backwards using either
+// a backward TIter (using argument kIterBackward) or by using
+// LastLink() and lnk-&gt;Prev() or by using the Before() member.
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TList.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3876,7 +3888,7 @@ TFree <span class="token operator">*</span>idcur <span class="token operator">=<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TList*","level":"1.2.42","depth":2,"next":{"title":"TMath*","level":"1.2.43","depth":2,"path":"class/TMath.md","ref":"class/TMath.md","articles":[]},"previous":{"title":"TLinearFitter*","level":"1.2.41","depth":2,"path":"class/TLinearFitter.md","ref":"class/TLinearFitter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TList.md","mtime":"2018-05-14T09:18:21.971Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TList*","level":"1.2.42","depth":2,"next":{"title":"TMath*","level":"1.2.43","depth":2,"path":"class/TMath.md","ref":"class/TMath.md","articles":[]},"previous":{"title":"TLinearFitter*","level":"1.2.41","depth":2,"path":"class/TLinearFitter.md","ref":"class/TLinearFitter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TList.md","mtime":"2018-05-14T09:18:21.971Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3908,6 +3920,18 @@ TFree <span class="token operator">*</span>idcur <span class="token operator">=<
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

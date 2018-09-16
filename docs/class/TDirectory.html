@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3681,396 +3693,396 @@
 <p>&#x7EE7;&#x627F;TNamed</p>
 <p>Describe directory structure in memory.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// &#x5168;&#x5C40;</span>
-<span class="token macro property">#<span class="token directive keyword">ifndef</span> __CINT__</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> gDirectory (TDirectory::CurrentDirectory())</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x5168;&#x5C40;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> __CINT__</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> gDirectory (TDirectory::CurrentDirectory())</span>
 
-<span class="token macro property">#<span class="token directive keyword">elif</span> defined(__MAKECINT__)</span>
-<span class="token comment">// To properly handle the use of gDirectory in header files (in static declarations)</span>
-R__EXTERN TDirectory <span class="token operator">*</span>gDirectory<span class="token punctuation">;</span>
-<span class="token macro property">#<span class="token directive keyword">endif</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">elif</span> defined(__MAKECINT__)</span>
+<span class="hljs-comment">// To properly handle the use of gDirectory in header files (in static declarations)</span>
+R__EXTERN TDirectory *gDirectory;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp">   <span class="token comment">/** @class Context
+<pre><code class="lang-cpp">   <span class="hljs-comment">/** @class Context
      *
      *  Small helper to keep current directory context.
      *  Automatically reverts to &quot;old&quot; directory
      */</span>
-   <span class="token keyword">class</span> <span class="token class-name">TContext</span>  <span class="token punctuation">{</span>
-   <span class="token keyword">private</span><span class="token operator">:</span>
-      TDirectory <span class="token operator">*</span>fDirectory<span class="token punctuation">;</span>   <span class="token comment">//! Pointer to the previous current directory.</span>
-      TContext   <span class="token operator">*</span>fPrevious<span class="token punctuation">;</span>    <span class="token comment">//! Pointer to the next TContext in the implied list of context pointing to fPrevious.</span>
-      TContext   <span class="token operator">*</span>fNext<span class="token punctuation">;</span>        <span class="token comment">//! Pointer to the next TContext in the implied list of context pointing to fPrevious.</span>
-      <span class="token function">TContext</span><span class="token punctuation">(</span>TContext<span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      TContext<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span>TContext<span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">void</span> <span class="token function">CdNull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">friend</span> <span class="token keyword">class</span> <span class="token class-name">TDirectory</span><span class="token punctuation">;</span>
-   <span class="token keyword">public</span><span class="token operator">:</span>
-      <span class="token function">TContext</span><span class="token punctuation">(</span>TDirectory<span class="token operator">*</span> previous<span class="token punctuation">,</span> TDirectory<span class="token operator">*</span> newCurrent<span class="token punctuation">)</span>
-         <span class="token operator">:</span> <span class="token function">fDirectory</span><span class="token punctuation">(</span>previous<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">fPrevious</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">fNext</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-      <span class="token punctuation">{</span>
-         <span class="token comment">// Store the current directory so we can restore it</span>
-         <span class="token comment">// later and cd to the new directory.</span>
-         <span class="token keyword">if</span> <span class="token punctuation">(</span> fDirectory <span class="token punctuation">)</span> fDirectory<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">RegisterContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token keyword">if</span> <span class="token punctuation">(</span> newCurrent <span class="token punctuation">)</span> newCurrent<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">cd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token keyword">else</span> <span class="token function">CdNull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-      <span class="token function">TContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">fDirectory</span><span class="token punctuation">(</span>TDirectory<span class="token operator">::</span><span class="token function">CurrentDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">fPrevious</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">fNext</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-      <span class="token punctuation">{</span>
-         <span class="token comment">// Store the current directory so we can restore it</span>
-         <span class="token comment">// later and cd to the new directory.</span>
-         <span class="token keyword">if</span> <span class="token punctuation">(</span> fDirectory <span class="token punctuation">)</span> fDirectory<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">RegisterContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-      <span class="token function">TContext</span><span class="token punctuation">(</span>TDirectory<span class="token operator">*</span> newCurrent<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">fDirectory</span><span class="token punctuation">(</span>TDirectory<span class="token operator">::</span><span class="token function">CurrentDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">fPrevious</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">fNext</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-      <span class="token punctuation">{</span>
-         <span class="token comment">// Store the current directory so we can restore it</span>
-         <span class="token comment">// later and cd to the new directory.</span>
-         <span class="token keyword">if</span> <span class="token punctuation">(</span> fDirectory <span class="token punctuation">)</span> fDirectory<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">RegisterContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token keyword">if</span> <span class="token punctuation">(</span> newCurrent <span class="token punctuation">)</span> newCurrent<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">cd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token keyword">else</span> <span class="token function">CdNull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-      <span class="token operator">~</span><span class="token function">TContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token punctuation">{</span>
-         <span class="token comment">// Destructor.   Reset the current directory to its</span>
-         <span class="token comment">// previous state.</span>
-         <span class="token keyword">if</span> <span class="token punctuation">(</span> fDirectory <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            fDirectory<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">UnregisterContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            fDirectory<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">cd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token punctuation">}</span>
-         <span class="token keyword">else</span> <span class="token function">CdNull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   <span class="hljs-keyword">class</span> TContext  {
+   <span class="hljs-keyword">private</span>:
+      TDirectory *fDirectory;   <span class="hljs-comment">//! Pointer to the previous current directory.</span>
+      TContext   *fPrevious;    <span class="hljs-comment">//! Pointer to the next TContext in the implied list of context pointing to fPrevious.</span>
+      TContext   *fNext;        <span class="hljs-comment">//! Pointer to the next TContext in the implied list of context pointing to fPrevious.</span>
+      TContext(TContext&amp;);
+      TContext&amp; <span class="hljs-keyword">operator</span>=(TContext&amp;);
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CdNull</span><span class="hljs-params">()</span></span>;
+      <span class="hljs-keyword">friend</span> <span class="hljs-keyword">class</span> TDirectory;
+   <span class="hljs-keyword">public</span>:
+      TContext(TDirectory* previous, TDirectory* newCurrent)
+         : fDirectory(previous),fPrevious(<span class="hljs-number">0</span>),fNext(<span class="hljs-number">0</span>)
+      {
+         <span class="hljs-comment">// Store the current directory so we can restore it</span>
+         <span class="hljs-comment">// later and cd to the new directory.</span>
+         <span class="hljs-keyword">if</span> ( fDirectory ) fDirectory-&gt;RegisterContext(<span class="hljs-keyword">this</span>);
+         <span class="hljs-keyword">if</span> ( newCurrent ) newCurrent-&gt;cd();
+         <span class="hljs-keyword">else</span> CdNull();
+      }
+      TContext() : fDirectory(TDirectory::CurrentDirectory()),fPrevious(<span class="hljs-number">0</span>),fNext(<span class="hljs-number">0</span>)
+      {
+         <span class="hljs-comment">// Store the current directory so we can restore it</span>
+         <span class="hljs-comment">// later and cd to the new directory.</span>
+         <span class="hljs-keyword">if</span> ( fDirectory ) fDirectory-&gt;RegisterContext(<span class="hljs-keyword">this</span>);
+      }
+      TContext(TDirectory* newCurrent) : fDirectory(TDirectory::CurrentDirectory()),fPrevious(<span class="hljs-number">0</span>),fNext(<span class="hljs-number">0</span>)
+      {
+         <span class="hljs-comment">// Store the current directory so we can restore it</span>
+         <span class="hljs-comment">// later and cd to the new directory.</span>
+         <span class="hljs-keyword">if</span> ( fDirectory ) fDirectory-&gt;RegisterContext(<span class="hljs-keyword">this</span>);
+         <span class="hljs-keyword">if</span> ( newCurrent ) newCurrent-&gt;cd();
+         <span class="hljs-keyword">else</span> CdNull();
+      }
+      ~TContext()
+      {
+         <span class="hljs-comment">// Destructor.   Reset the current directory to its</span>
+         <span class="hljs-comment">// previous state.</span>
+         <span class="hljs-keyword">if</span> ( fDirectory ) {
+            fDirectory-&gt;UnregisterContext(<span class="hljs-keyword">this</span>);
+            fDirectory-&gt;cd();
+         }
+         <span class="hljs-keyword">else</span> CdNull();
+      }
+   };
 
 
 
-   <span class="token function">TDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a new Directory.</span>
-<span class="token comment">///  A new directory with name,title is created in the current directory</span>
-<span class="token comment">///  The directory header information is immediately saved in the file</span>
-<span class="token comment">///  A new key is added in the parent directory</span>
-<span class="token comment">///  When this constructor is called from a class directly derived</span>
-<span class="token comment">///  from TDirectory, the third argument classname MUST be specified.</span>
-<span class="token comment">///  In this case, classname must be the name of the derived class.</span>
-<span class="token comment">///  Note that the directory name cannot contain slashes.</span>
+   TDirectory();
+<span class="hljs-comment">/// Create a new Directory.</span>
+<span class="hljs-comment">///  A new directory with name,title is created in the current directory</span>
+<span class="hljs-comment">///  The directory header information is immediately saved in the file</span>
+<span class="hljs-comment">///  A new key is added in the parent directory</span>
+<span class="hljs-comment">///  When this constructor is called from a class directly derived</span>
+<span class="hljs-comment">///  from TDirectory, the third argument classname MUST be specified.</span>
+<span class="hljs-comment">///  In this case, classname must be the name of the derived class.</span>
+<span class="hljs-comment">///  Note that the directory name cannot contain slashes.</span>
 
-   <span class="token function">TDirectory</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> TDirectory<span class="token operator">*</span> motherDir <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span>  <span class="token keyword">void</span>        <span class="token function">AddDirectory</span><span class="token punctuation">(</span>Bool_t add<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Sets the flag controlling the automatic add objects like histograms, TGraph2D, etc</span>
-<span class="token comment">/// in memory</span>
-<span class="token comment">/// By default (fAddDirectory = kTRUE), these objects are automatically added</span>
-<span class="token comment">/// to the list of objects in memory.</span>
-<span class="token comment">/// Note that in the classes like TH1, TGraph2D supporting this facility,</span>
-<span class="token comment">/// one object can be removed from its support directory</span>
-<span class="token comment">/// by calling object-&gt;SetDirectory(0) or object-&gt;SetDirectory(dir) to add it</span>
-<span class="token comment">/// to the list of objects in the directory dir.</span>
-<span class="token comment">///  NOTE that this is a static function. To call it, use:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///     TDirectory::AddDirectory</span>
-<span class="token comment">/// ~~~</span>
+   TDirectory(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title, Option_t *option=<span class="hljs-string">&quot;&quot;</span>, TDirectory* motherDir = <span class="hljs-number">0</span>);
+   <span class="hljs-keyword">virtual</span> ~TDirectory();
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  <span class="hljs-keyword">void</span>        <span class="hljs-title">AddDirectory</span><span class="hljs-params">(Bool_t add=kTRUE)</span></span>;
+<span class="hljs-comment">/// Sets the flag controlling the automatic add objects like histograms, TGraph2D, etc</span>
+<span class="hljs-comment">/// in memory</span>
+<span class="hljs-comment">/// By default (fAddDirectory = kTRUE), these objects are automatically added</span>
+<span class="hljs-comment">/// to the list of objects in memory.</span>
+<span class="hljs-comment">/// Note that in the classes like TH1, TGraph2D supporting this facility,</span>
+<span class="hljs-comment">/// one object can be removed from its support directory</span>
+<span class="hljs-comment">/// by calling object-&gt;SetDirectory(0) or object-&gt;SetDirectory(dir) to add it</span>
+<span class="hljs-comment">/// to the list of objects in the directory dir.</span>
+<span class="hljs-comment">///  NOTE that this is a static function. To call it, use:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///     TDirectory::AddDirectory</span>
+<span class="hljs-comment">/// ~~~</span>
 
-   <span class="token keyword">static</span>  Bool_t      <span class="token function">AddDirectoryStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static function: see TDirectory::AddDirectory for more comments.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span>  Bool_t      <span class="hljs-title">AddDirectoryStatus</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Static function: see TDirectory::AddDirectory for more comments.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Append</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Bool_t replace <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Append object to this directory.</span>
-<span class="token comment">/// If `replace` is true:</span>
-<span class="token comment">///   remove any existing objects with the same name (if the name is not &quot;&quot;)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Append</span><span class="hljs-params">(TObject *obj, Bool_t replace = kFALSE)</span></span>;
+<span class="hljs-comment">/// Append object to this directory.</span>
+<span class="hljs-comment">/// If `replace` is true:</span>
+<span class="hljs-comment">///   remove any existing objects with the same name (if the name is not &quot;&quot;)</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Add</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Bool_t replace <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Append</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span>replace<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">AppendKey</span><span class="token punctuation">(</span>TKey <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Browse</span><span class="token punctuation">(</span>TBrowser <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Browse the content of the directory.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Build</span><span class="token punctuation">(</span>TFile<span class="token operator">*</span> motherFile <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> TDirectory<span class="token operator">*</span> motherDir <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Initialise directory to defaults.</span>
-<span class="token comment">/// If directory is created via default ctor (when dir is read from file)</span>
-<span class="token comment">/// don&apos;t add it here to the directory since its name is not yet known.</span>
-<span class="token comment">/// It will be added to the directory in TKey::ReadObj().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Add</span><span class="hljs-params">(TObject *obj, Bool_t replace = kFALSE)</span> </span>{ Append(obj,replace); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">AppendKey</span><span class="hljs-params">(TKey *)</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Browse</span><span class="hljs-params">(TBrowser *b)</span></span>;<span class="hljs-comment">/// Browse the content of the directory.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Build</span><span class="hljs-params">(TFile* motherFile = <span class="hljs-number">0</span>, TDirectory* motherDir = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Initialise directory to defaults.</span>
+<span class="hljs-comment">/// If directory is created via default ctor (when dir is read from file)</span>
+<span class="hljs-comment">/// don&apos;t add it here to the directory since its name is not yet known.</span>
+<span class="hljs-comment">/// It will be added to the directory in TKey::ReadObj().</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Clear</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Delete all objects from a Directory list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Clear</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Delete all objects from a Directory list.</span>
 
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">CloneObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> Bool_t autoadd <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Clone an object.</span>
-<span class="token comment">/// This function is called when the directory is not a TDirectoryFile.</span>
-<span class="token comment">/// This version has to load the I/O package, hence via Cling.</span>
-<span class="token comment">/// If autoadd is true and if the object class has a</span>
-<span class="token comment">/// DirectoryAutoAdd function, it will be called at the end of the</span>
-<span class="token comment">/// function with the parameter gDirector.  This usually means that</span>
-<span class="token comment">/// the object will be appended to the current ROOT directory.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject    *<span class="hljs-title">CloneObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj, Bool_t autoadd = kTRUE)</span></span>;
+<span class="hljs-comment">/// Clone an object.</span>
+<span class="hljs-comment">/// This function is called when the directory is not a TDirectoryFile.</span>
+<span class="hljs-comment">/// This version has to load the I/O package, hence via Cling.</span>
+<span class="hljs-comment">/// If autoadd is true and if the object class has a</span>
+<span class="hljs-comment">/// DirectoryAutoAdd function, it will be called at the end of the</span>
+<span class="hljs-comment">/// function with the parameter gDirector.  This usually means that</span>
+<span class="hljs-comment">/// the object will be appended to the current ROOT directory.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Close</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Delete all objects from memory and directory structure itself.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Close</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Delete all objects from memory and directory structure itself.</span>
 
-   <span class="token keyword">static</span> TDirectory <span class="token operator">*</span><span class="token operator">&amp;</span><span class="token function">CurrentDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Return the current directory for this thread.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Copy</span><span class="token punctuation">(</span>TObject <span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token function">MayNotUse</span><span class="token punctuation">(</span><span class="token string">&quot;Copy(TObject &amp;)&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">cd</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Change current directory to &quot;this&quot; directory.</span>
-<span class="token comment">/// Using path one can change the current directory to &quot;path&quot;. The absolute path</span>
-<span class="token comment">/// syntax is: `file.root:/dir1/dir2`</span>
-<span class="token comment">/// where `file.root` is the file and `/dir1/dir2` the desired subdirectory</span>
-<span class="token comment">/// in the file.</span>
-<span class="token comment">/// Relative syntax is relative to &quot;this&quot; directory. E.g: `../aa`.</span>
-<span class="token comment">/// Returns kTRUE in case of success.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> TDirectory *&amp;<span class="hljs-title">CurrentDirectory</span><span class="hljs-params">()</span></span>;  <span class="hljs-comment">// Return the current directory for this thread.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;)</span> <span class="hljs-keyword">const</span> </span>{ MayNotUse(<span class="hljs-string">&quot;Copy(TObject &amp;)&quot;</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">cd</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *path = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Change current directory to &quot;this&quot; directory.</span>
+<span class="hljs-comment">/// Using path one can change the current directory to &quot;path&quot;. The absolute path</span>
+<span class="hljs-comment">/// syntax is: `file.root:/dir1/dir2`</span>
+<span class="hljs-comment">/// where `file.root` is the file and `/dir1/dir2` the desired subdirectory</span>
+<span class="hljs-comment">/// in the file.</span>
+<span class="hljs-comment">/// Relative syntax is relative to &quot;this&quot; directory. E.g: `../aa`.</span>
+<span class="hljs-comment">/// Returns kTRUE in case of success.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">DeleteAll</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Delete all objects from memory.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">DeleteAll</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Delete all objects from memory.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Delete</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>namecycle<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Delete Objects or/and keys in a directory.</span>
-<span class="token comment">///  - namecycle has the format name;cycle</span>
-<span class="token comment">///  - namecycle = &quot;&quot; same as namecycle =&quot;T*&quot;</span>
-<span class="token comment">///  - name  = * means all</span>
-<span class="token comment">///  - cycle = * means all cycles (memory and keys)</span>
-<span class="token comment">///  - cycle = &quot;&quot; or cycle = 9999 ==&gt; apply to a memory object</span>
-<span class="token comment">///    When name=* use T* to delete subdirectories also</span>
-<span class="token comment">/// To delete one directory, you must specify the directory cycle,</span>
-<span class="token comment">/// eg.  `file.Delete(&quot;dir1;1&quot;);`</span>
-<span class="token comment">/// examples:</span>
-<span class="token comment">///  - foo   : delete object named foo in memory</span>
-<span class="token comment">///  - foo*  : delete all objects with a name starting with foo</span>
-<span class="token comment">///  - foo;1 : delete cycle 1 of foo on file</span>
-<span class="token comment">///  - foo;* : delete all cycles of foo on file and also from memory</span>
-<span class="token comment">///  - *;2   : delete all objects on file having the cycle 2</span>
-<span class="token comment">///  - *;*   : delete all objects from memory and file</span>
-<span class="token comment">///  - T*;*  : delete all objects from memory and file and all subdirectories</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Delete</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *namecycle=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Delete Objects or/and keys in a directory.</span>
+<span class="hljs-comment">///  - namecycle has the format name;cycle</span>
+<span class="hljs-comment">///  - namecycle = &quot;&quot; same as namecycle =&quot;T*&quot;</span>
+<span class="hljs-comment">///  - name  = * means all</span>
+<span class="hljs-comment">///  - cycle = * means all cycles (memory and keys)</span>
+<span class="hljs-comment">///  - cycle = &quot;&quot; or cycle = 9999 ==&gt; apply to a memory object</span>
+<span class="hljs-comment">///    When name=* use T* to delete subdirectories also</span>
+<span class="hljs-comment">/// To delete one directory, you must specify the directory cycle,</span>
+<span class="hljs-comment">/// eg.  `file.Delete(&quot;dir1;1&quot;);`</span>
+<span class="hljs-comment">/// examples:</span>
+<span class="hljs-comment">///  - foo   : delete object named foo in memory</span>
+<span class="hljs-comment">///  - foo*  : delete all objects with a name starting with foo</span>
+<span class="hljs-comment">///  - foo;1 : delete cycle 1 of foo on file</span>
+<span class="hljs-comment">///  - foo;* : delete all cycles of foo on file and also from memory</span>
+<span class="hljs-comment">///  - *;2   : delete all objects on file having the cycle 2</span>
+<span class="hljs-comment">///  - *;*   : delete all objects from memory and file</span>
+<span class="hljs-comment">///  - T*;*  : delete all objects from memory and file and all subdirectories</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Draw</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Fill Graphics Structure and Paint.</span>
-<span class="token comment">/// Loop on all objects (memory or file) and all subdirectories</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Draw</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Fill Graphics Structure and Paint.</span>
+<span class="hljs-comment">/// Loop on all objects (memory or file) and all subdirectories</span>
 
-   <span class="token keyword">virtual</span> TKey       <span class="token operator">*</span><span class="token function">FindKey</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*keyname*/</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TKey       <span class="token operator">*</span><span class="token function">FindKeyAny</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*keyname*/</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find object in the list of memory objects.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TKey       *<span class="hljs-title">FindKey</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*keyname*/</span>)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TKey       *<span class="hljs-title">FindKeyAny</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*keyname*/</span>)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject    *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find object in the list of memory objects.</span>
 
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">FindObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find object by name in the list of memory objects.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject    *<span class="hljs-title">FindObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find object by name in the list of memory objects.</span>
 
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">FindObjectAny</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find object by name in the list of memory objects of the current</span>
-<span class="token comment">/// directory or its sub-directories.</span>
-<span class="token comment">/// After this call the current directory is not changed.</span>
-<span class="token comment">/// To automatically set the current directory where the object is found,</span>
-<span class="token comment">/// use FindKeyAny(aname)-&gt;ReadObj().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject    *<span class="hljs-title">FindObjectAny</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Find object by name in the list of memory objects of the current</span>
+<span class="hljs-comment">/// directory or its sub-directories.</span>
+<span class="hljs-comment">/// After this call the current directory is not changed.</span>
+<span class="hljs-comment">/// To automatically set the current directory where the object is found,</span>
+<span class="hljs-comment">/// use FindKeyAny(aname)-&gt;ReadObj().</span>
 
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">FindObjectAnyFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*name*/</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>namecycle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pointer to object identified by namecycle.</span>
-<span class="token comment">///   namecycle has the format name;cycle</span>
-<span class="token comment">///  - name  = * is illegal, cycle = * is illegal</span>
-<span class="token comment">///  - cycle = &quot;&quot; or cycle = 9999 ==&gt; apply to a memory object</span>
-<span class="token comment">/// examples:</span>
-<span class="token comment">///  - foo   : get object named foo in memory</span>
-<span class="token comment">///                if object is not in memory, try with highest cycle from file</span>
-<span class="token comment">///  - foo;1 : get cycle 1 of foo on file</span>
-<span class="token comment">///  The retrieved object should in principle derive from TObject.</span>
-<span class="token comment">///  If not, the function TDirectory::GetObject should be called.</span>
-<span class="token comment">///  However, this function will still work for a non-TObject, providing that</span>
-<span class="token comment">///  the calling application cast the return type to the correct type (which</span>
-<span class="token comment">///  is the actual type of the object).</span>
-<span class="token comment">///  NOTE:</span>
-<span class="token comment">///  The method GetObject offer better protection and avoid the need</span>
-<span class="token comment">///  for any cast:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///      MyClass *obj;</span>
-<span class="token comment">///      directory-&gt;GetObject(&quot;some object&quot;,obj);</span>
-<span class="token comment">///      if (obj) { ... the object exist and inherits from MyClass ... }</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">///  VERY IMPORTANT NOTE:</span>
-<span class="token comment">///  In case the class of this object derives from TObject but not</span>
-<span class="token comment">///  as a first inheritance, one must use dynamic_cast&lt;&gt;().</span>
-<span class="token comment">/// #### Example 1: Normal case:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///      class MyClass : public TObject, public AnotherClass</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">///   then on return, one can do:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///      MyClass *obj = (MyClass*)directory-&gt;Get(&quot;some object of MyClass&quot;);</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">/// #### Example 2: Special case:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///      class MyClass : public AnotherClass, public TObject</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">///  then on return, one must do:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///      MyClass *obj = dynamic_cast&lt;MyClass*&gt;(directory-&gt;Get(&quot;some object of MyClass&quot;));</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">///  Of course, dynamic_cast&lt;&gt; can also be used in the example 1.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject    *<span class="hljs-title">FindObjectAnyFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*name*/</span>)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject    *<span class="hljs-title">Get</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *namecycle)</span></span>;
+<span class="hljs-comment">/// Return pointer to object identified by namecycle.</span>
+<span class="hljs-comment">///   namecycle has the format name;cycle</span>
+<span class="hljs-comment">///  - name  = * is illegal, cycle = * is illegal</span>
+<span class="hljs-comment">///  - cycle = &quot;&quot; or cycle = 9999 ==&gt; apply to a memory object</span>
+<span class="hljs-comment">/// examples:</span>
+<span class="hljs-comment">///  - foo   : get object named foo in memory</span>
+<span class="hljs-comment">///                if object is not in memory, try with highest cycle from file</span>
+<span class="hljs-comment">///  - foo;1 : get cycle 1 of foo on file</span>
+<span class="hljs-comment">///  The retrieved object should in principle derive from TObject.</span>
+<span class="hljs-comment">///  If not, the function TDirectory::GetObject should be called.</span>
+<span class="hljs-comment">///  However, this function will still work for a non-TObject, providing that</span>
+<span class="hljs-comment">///  the calling application cast the return type to the correct type (which</span>
+<span class="hljs-comment">///  is the actual type of the object).</span>
+<span class="hljs-comment">///  <span class="hljs-doctag">NOTE:</span></span>
+<span class="hljs-comment">///  The method GetObject offer better protection and avoid the need</span>
+<span class="hljs-comment">///  for any cast:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///      MyClass *obj;</span>
+<span class="hljs-comment">///      directory-&gt;GetObject(&quot;some object&quot;,obj);</span>
+<span class="hljs-comment">///      if (obj) { ... the object exist and inherits from MyClass ... }</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///  VERY IMPORTANT <span class="hljs-doctag">NOTE:</span></span>
+<span class="hljs-comment">///  In case the class of this object derives from TObject but not</span>
+<span class="hljs-comment">///  as a first inheritance, one must use dynamic_cast&lt;&gt;().</span>
+<span class="hljs-comment">/// #### Example 1: Normal case:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///      class MyClass : public TObject, public AnotherClass</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///   then on return, one can do:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///      MyClass *obj = (MyClass*)directory-&gt;Get(&quot;some object of MyClass&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// #### Example 2: Special case:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///      class MyClass : public AnotherClass, public TObject</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///  then on return, one must do:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///      MyClass *obj = dynamic_cast&lt;MyClass*&gt;(directory-&gt;Get(&quot;some object of MyClass&quot;));</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///  Of course, dynamic_cast&lt;&gt; can also be used in the example 1.</span>
 
-   <span class="token keyword">virtual</span> TDirectory <span class="token operator">*</span><span class="token function">GetDirectory</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>namecycle<span class="token punctuation">,</span> Bool_t printError <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>funcname <span class="token operator">=</span> <span class="token string">&quot;GetDirectory&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Find a directory using apath.</span>
-<span class="token comment">/// It apath is null or empty, returns &quot;this&quot; directory.</span>
-<span class="token comment">/// Otherwise use apath to find a directory.</span>
-<span class="token comment">/// The absolute path syntax is: `file.root:/dir1/dir2`</span>
-<span class="token comment">/// where file.root is the file and /dir1/dir2 the desired subdirectory</span>
-<span class="token comment">/// in the file. Relative syntax is relative to &quot;this&quot; directory. E.g: `../aa`.</span>
-<span class="token comment">/// Returns 0 in case path does not exist.</span>
-<span class="token comment">/// If printError is true, use Error with &apos;funcname&apos; to issue an error message.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TDirectory *<span class="hljs-title">GetDirectory</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *namecycle, Bool_t printError = <span class="hljs-literal">false</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *funcname = <span class="hljs-string">&quot;GetDirectory&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Find a directory using apath.</span>
+<span class="hljs-comment">/// It apath is null or empty, returns &quot;this&quot; directory.</span>
+<span class="hljs-comment">/// Otherwise use apath to find a directory.</span>
+<span class="hljs-comment">/// The absolute path syntax is: `file.root:/dir1/dir2`</span>
+<span class="hljs-comment">/// where file.root is the file and /dir1/dir2 the desired subdirectory</span>
+<span class="hljs-comment">/// in the file. Relative syntax is relative to &quot;this&quot; directory. E.g: `../aa`.</span>
+<span class="hljs-comment">/// Returns 0 in case path does not exist.</span>
+<span class="hljs-comment">/// If printError is true, use Error with &apos;funcname&apos; to issue an error message.</span>
 
-   <span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">&gt;</span> <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">GetObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> namecycle<span class="token punctuation">,</span> T<span class="token operator">*</span><span class="token operator">&amp;</span> ptr<span class="token punctuation">)</span> <span class="token comment">// See TDirectory::Get for information</span>
-      <span class="token punctuation">{</span>
-         ptr <span class="token operator">=</span> <span class="token punctuation">(</span>T<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">GetObjectChecked</span><span class="token punctuation">(</span>namecycle<span class="token punctuation">,</span>TBuffer<span class="token operator">::</span><span class="token function">GetClass</span><span class="token punctuation">(</span><span class="token keyword">typeid</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token operator">*</span><span class="token function">GetObjectChecked</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>namecycle<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> classname<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// See documentation of TDirectory::GetObjectCheck(const char *namecycle, const TClass *cl)</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* namecycle, T*&amp; ptr)</span> <span class="hljs-comment">// See TDirectory::Get for information</span>
+      </span>{
+         ptr = (T*)GetObjectChecked(namecycle,TBuffer::GetClass(<span class="hljs-keyword">typeid</span>(T)));
+      }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       *<span class="hljs-title">GetObjectChecked</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *namecycle, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* classname)</span></span>;
+<span class="hljs-comment">/// See documentation of TDirectory::GetObjectCheck(const char *namecycle, const TClass *cl)</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token operator">*</span><span class="token function">GetObjectChecked</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>namecycle<span class="token punctuation">,</span> <span class="token keyword">const</span> TClass<span class="token operator">*</span> cl<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pointer to object identified by namecycle if and only if the actual</span>
-<span class="token comment">/// object is a type suitable to be stored as a pointer to a &quot;expectedClass&quot;</span>
-<span class="token comment">/// If expectedClass is null, no check is performed.</span>
-<span class="token comment">/// namecycle has the format `name;cycle`</span>
-<span class="token comment">///  - name  = * is illegal, cycle = * is illegal</span>
-<span class="token comment">///  - cycle = &quot;&quot; or cycle = 9999 ==&gt; apply to a memory object</span>
-<span class="token comment">///  VERY IMPORTANT NOTE:</span>
-<span class="token comment">///  The calling application must cast the returned pointer to</span>
-<span class="token comment">///  the type described by the 2 arguments (i.e. cl):</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///      MyClass *obj = (MyClass*)directory-&gt;GetObjectChecked(&quot;some object of MyClass&quot;,&quot;MyClass&quot;));</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">///  Note: We recommend using the method TDirectory::GetObject:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///      MyClass *obj = 0;</span>
-<span class="token comment">///      directory-&gt;GetObject(&quot;some object inheriting from MyClass&quot;,obj);</span>
-<span class="token comment">///      if (obj) { ... we found what we are looking for ... }</span>
-<span class="token comment">/// ~~~</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       *<span class="hljs-title">GetObjectChecked</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *namecycle, <span class="hljs-keyword">const</span> TClass* cl)</span></span>;
+<span class="hljs-comment">/// Return pointer to object identified by namecycle if and only if the actual</span>
+<span class="hljs-comment">/// object is a type suitable to be stored as a pointer to a &quot;expectedClass&quot;</span>
+<span class="hljs-comment">/// If expectedClass is null, no check is performed.</span>
+<span class="hljs-comment">/// namecycle has the format `name;cycle`</span>
+<span class="hljs-comment">///  - name  = * is illegal, cycle = * is illegal</span>
+<span class="hljs-comment">///  - cycle = &quot;&quot; or cycle = 9999 ==&gt; apply to a memory object</span>
+<span class="hljs-comment">///  VERY IMPORTANT <span class="hljs-doctag">NOTE:</span></span>
+<span class="hljs-comment">///  The calling application must cast the returned pointer to</span>
+<span class="hljs-comment">///  the type described by the 2 arguments (i.e. cl):</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///      MyClass *obj = (MyClass*)directory-&gt;GetObjectChecked(&quot;some object of MyClass&quot;,&quot;MyClass&quot;));</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///  Note: We recommend using the method TDirectory::GetObject:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///      MyClass *obj = 0;</span>
+<span class="hljs-comment">///      directory-&gt;GetObject(&quot;some object inheriting from MyClass&quot;,obj);</span>
+<span class="hljs-comment">///      if (obj) { ... we found what we are looking for ... }</span>
+<span class="hljs-comment">/// ~~~</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>       <span class="token operator">*</span><span class="token function">GetObjectUnchecked</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>namecycle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pointer to object identified by namecycle.</span>
-<span class="token comment">/// The returned object may or may not derive from TObject.</span>
-<span class="token comment">///  - namecycle has the format name;cycle</span>
-<span class="token comment">///  - name  = * is illegal, cycle = * is illegal</span>
-<span class="token comment">///  - cycle = &quot;&quot; or cycle = 9999 ==&gt; apply to a memory object</span>
-<span class="token comment">///  VERY IMPORTANT NOTE:</span>
-<span class="token comment">///  The calling application must cast the returned object to</span>
-<span class="token comment">///  the final type, e.g.</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///      MyClass *obj = (MyClass*)directory-&gt;GetObject(&quot;some object of MyClass&quot;);</span>
-<span class="token comment">/// ~~~</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>       *<span class="hljs-title">GetObjectUnchecked</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *namecycle)</span></span>;
+<span class="hljs-comment">/// Return pointer to object identified by namecycle.</span>
+<span class="hljs-comment">/// The returned object may or may not derive from TObject.</span>
+<span class="hljs-comment">///  - namecycle has the format name;cycle</span>
+<span class="hljs-comment">///  - name  = * is illegal, cycle = * is illegal</span>
+<span class="hljs-comment">///  - cycle = &quot;&quot; or cycle = 9999 ==&gt; apply to a memory object</span>
+<span class="hljs-comment">///  VERY IMPORTANT <span class="hljs-doctag">NOTE:</span></span>
+<span class="hljs-comment">///  The calling application must cast the returned object to</span>
+<span class="hljs-comment">///  the final type, e.g.</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///      MyClass *obj = (MyClass*)directory-&gt;GetObject(&quot;some object of MyClass&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
 
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">GetBufferSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TFile      <span class="token operator">*</span><span class="token function">GetFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TKey       <span class="token operator">*</span><span class="token function">GetKey</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*name */</span><span class="token punctuation">,</span> Short_t <span class="token comment">/* cycle */</span><span class="token operator">=</span><span class="token number">9999</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TList      <span class="token operator">*</span><span class="token function">GetList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fList<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TList      <span class="token operator">*</span><span class="token function">GetListOfKeys</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">GetMother</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMother<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TDirectory <span class="token operator">*</span><span class="token function">GetMotherDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fMother<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> <span class="token keyword">dynamic_cast</span><span class="token operator">&lt;</span>TDirectory<span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>fMother<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">GetNbytesKeys</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">GetNkeys</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Long64_t    <span class="token function">GetSeekDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Long64_t    <span class="token function">GetSeekParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Long64_t    <span class="token function">GetSeekKeys</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetPathStatic</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns the full path of the directory. E.g. `file:/dir1/dir2`.</span>
-<span class="token comment">/// The returned path will be re-used by the next call to GetPath().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">GetBufferSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFile      *<span class="hljs-title">GetFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TKey       *<span class="hljs-title">GetKey</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*name */</span>, Short_t <span class="hljs-comment">/* cycle */</span>=<span class="hljs-number">9999</span>)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TList      *<span class="hljs-title">GetList</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fList; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TList      *<span class="hljs-title">GetListOfKeys</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject    *<span class="hljs-title">GetMother</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMother; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TDirectory *<span class="hljs-title">GetMotherDir</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fMother==<span class="hljs-number">0</span> ? <span class="hljs-number">0</span> : <span class="hljs-keyword">dynamic_cast</span>&lt;TDirectory*&gt;(fMother); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">GetNbytesKeys</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">GetNkeys</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t    <span class="hljs-title">GetSeekDir</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t    <span class="hljs-title">GetSeekParent</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Long64_t    <span class="hljs-title">GetSeekKeys</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetPathStatic</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the full path of the directory. E.g. `file:/dir1/dir2`.</span>
+<span class="hljs-comment">/// The returned path will be re-used by the next call to GetPath().</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">GetPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns the full path of the directory. E.g. `file:/dir1/dir2`.</span>
-<span class="token comment">/// The returned path will be re-used by the next call to GetPath().</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">GetPath</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the full path of the directory. E.g. `file:/dir1/dir2`.</span>
+<span class="hljs-comment">/// The returned path will be re-used by the next call to GetPath().</span>
 
-   TUUID               <span class="token function">GetUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> fUUID<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">IsFolder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kTRUE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">IsModified</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Bool_t      <span class="token function">IsWritable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> kFALSE<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// List Directory contents.</span>
-<span class="token comment">/// Indentation is used to identify the directory tree</span>
-<span class="token comment">/// Subdirectories are listed first, then objects in memory.</span>
-<span class="token comment">/// The option can has the following format:</span>
-<span class="token comment">///      [&lt;regexp&gt;]</span>
-<span class="token comment">/// The `&lt;regexp&gt;` will be used to match the name of the objects.</span>
-<span class="token comment">/// By default memory and disk objects are listed.</span>
+   <span class="hljs-function">TUUID               <span class="hljs-title">GetUUID</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fUUID;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">IsFolder</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kTRUE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">IsModified</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t      <span class="hljs-title">IsWritable</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> kFALSE; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// List Directory contents.</span>
+<span class="hljs-comment">/// Indentation is used to identify the directory tree</span>
+<span class="hljs-comment">/// Subdirectories are listed first, then objects in memory.</span>
+<span class="hljs-comment">/// The option can has the following format:</span>
+<span class="hljs-comment">///      [&lt;regexp&gt;]</span>
+<span class="hljs-comment">/// The `&lt;regexp&gt;` will be used to match the name of the objects.</span>
+<span class="hljs-comment">/// By default memory and disk objects are listed.</span>
 
-   <span class="token keyword">virtual</span> TDirectory <span class="token operator">*</span><span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create a sub-directory &quot;a&quot; or a hierarchy of sub-directories &quot;a/b/c/...&quot;.</span>
-<span class="token comment">/// Returns 0 in case of error or if a sub-directory (hierarchy) with the requested</span>
-<span class="token comment">/// name already exists.</span>
-<span class="token comment">/// Returns a pointer to the created sub-directory or to the top sub-directory of</span>
-<span class="token comment">/// the hierarchy (in the above example, the returned TDirectory * always points</span>
-<span class="token comment">/// to &quot;a&quot;).</span>
-<span class="token comment">/// In particular, the steps to create first a/b/c and then a/b/d without receiving</span>
-<span class="token comment">/// errors are:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///    TFile * file = new TFile(&quot;afile&quot;,&quot;RECREATE&quot;);</span>
-<span class="token comment">///    file-&gt;mkdir(&quot;a&quot;);</span>
-<span class="token comment">///    file-&gt;cd(&quot;a&quot;);</span>
-<span class="token comment">///    gDirectory-&gt;mkdir(&quot;b/c&quot;);</span>
-<span class="token comment">///    gDirectory-&gt;cd(&quot;b&quot;);</span>
-<span class="token comment">///    gDirectory-&gt;mkdir(&quot;d&quot;);</span>
-<span class="token comment">/// ~~~</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TDirectory *<span class="hljs-title">mkdir</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Create a sub-directory &quot;a&quot; or a hierarchy of sub-directories &quot;a/b/c/...&quot;.</span>
+<span class="hljs-comment">/// Returns 0 in case of error or if a sub-directory (hierarchy) with the requested</span>
+<span class="hljs-comment">/// name already exists.</span>
+<span class="hljs-comment">/// Returns a pointer to the created sub-directory or to the top sub-directory of</span>
+<span class="hljs-comment">/// the hierarchy (in the above example, the returned TDirectory * always points</span>
+<span class="hljs-comment">/// to &quot;a&quot;).</span>
+<span class="hljs-comment">/// In particular, the steps to create first a/b/c and then a/b/d without receiving</span>
+<span class="hljs-comment">/// errors are:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///    TFile * file = new TFile(&quot;afile&quot;,&quot;RECREATE&quot;);</span>
+<span class="hljs-comment">///    file-&gt;mkdir(&quot;a&quot;);</span>
+<span class="hljs-comment">///    file-&gt;cd(&quot;a&quot;);</span>
+<span class="hljs-comment">///    gDirectory-&gt;mkdir(&quot;b/c&quot;);</span>
+<span class="hljs-comment">///    gDirectory-&gt;cd(&quot;b&quot;);</span>
+<span class="hljs-comment">///    gDirectory-&gt;mkdir(&quot;d&quot;);</span>
+<span class="hljs-comment">/// ~~~</span>
 
-   <span class="token keyword">virtual</span> TFile      <span class="token operator">*</span><span class="token function">OpenFile</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*name*/</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
-                            <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*ftitle*/</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Int_t <span class="token comment">/*compress*/</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
-                            Int_t <span class="token comment">/*netopt*/</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Paint</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Paint all objects in the directory.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Print</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Print all objects in the directory.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Purge</span><span class="token punctuation">(</span>Short_t <span class="token comment">/*nkeep*/</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">pwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Print the path of the directory.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">ReadAll</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">ReadKeys</span><span class="token punctuation">(</span>Bool_t <span class="token comment">/*forceRead*/</span><span class="token operator">=</span>kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">ReadTObject</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span> <span class="token comment">/*obj*/</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*keyname*/</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TObject    <span class="token operator">*</span><span class="token function">Remove</span><span class="token punctuation">(</span>TObject<span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Remove an object from the in-memory list.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">RecursiveRemove</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Recursively remove object from a Directory.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">rmdir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Removes subdirectory from the directory</span>
-<span class="token comment">/// When directory is deleted, all keys in all subdirectories will be</span>
-<span class="token comment">/// read first and deleted from file (if exists)</span>
-<span class="token comment">/// Equivalent call is Delete(&quot;name;*&quot;);</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TFile      *<span class="hljs-title">OpenFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*name*/</span>, Option_t * <span class="hljs-comment">/*option*/</span> = <span class="hljs-string">&quot;&quot;</span>,
+                            <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*ftitle*/</span> = <span class="hljs-string">&quot;&quot;</span>, Int_t <span class="hljs-comment">/*compress*/</span> = <span class="hljs-number">1</span>,
+                            Int_t <span class="hljs-comment">/*netopt*/</span> = <span class="hljs-number">0</span>)</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;<span class="hljs-comment">/// Paint all objects in the directory.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Print all objects in the directory.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Purge</span><span class="hljs-params">(Short_t <span class="hljs-comment">/*nkeep*/</span>=<span class="hljs-number">1</span>)</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">pwd</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Print the path of the directory.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">ReadAll</span><span class="hljs-params">(Option_t * <span class="hljs-comment">/*option*/</span>=<span class="hljs-string">&quot;&quot;</span>)</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">ReadKeys</span><span class="hljs-params">(Bool_t <span class="hljs-comment">/*forceRead*/</span>=kTRUE)</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">ReadTObject</span><span class="hljs-params">(TObject * <span class="hljs-comment">/*obj*/</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*keyname*/</span>)</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TObject    *<span class="hljs-title">Remove</span><span class="hljs-params">(TObject*)</span></span>;<span class="hljs-comment">/// Remove an object from the in-memory list.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">RecursiveRemove</span><span class="hljs-params">(TObject *obj)</span></span>;<span class="hljs-comment">/// Recursively remove object from a Directory.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">rmdir</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span></span>;
+<span class="hljs-comment">/// Removes subdirectory from the directory</span>
+<span class="hljs-comment">/// When directory is deleted, all keys in all subdirectories will be</span>
+<span class="hljs-comment">/// read first and deleted from file (if exists)</span>
+<span class="hljs-comment">/// Equivalent call is Delete(&quot;name;*&quot;);</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">Save</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">SaveObjectAs</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span> <span class="token comment">/*obj*/</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*filename*/</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save object in filename,</span>
-<span class="token comment">/// if filename is 0 or &quot;&quot;, a file with &quot;objectname.root&quot; is created.</span>
-<span class="token comment">/// The name of the key is the object name.</span>
-<span class="token comment">/// If the operation is successful, it returns the number of bytes written to the file</span>
-<span class="token comment">/// otherwise it returns 0.</span>
-<span class="token comment">/// By default a message is printed. Use option &quot;q&quot; to not print the message.</span>
-<span class="token comment">/// If filename contains &quot;.json&quot; extension, JSON representation of the object</span>
-<span class="token comment">/// will be created and saved in the text file. Such file can be used in</span>
-<span class="token comment">/// JavaScript ROOT (https://root.cern.ch/js/) to display object in web browser</span>
-<span class="token comment">/// When creating JSON file, option string may contain compression level from 0 to 3 (default 0)</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">Save</span><span class="hljs-params">()</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">SaveObjectAs</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject * <span class="hljs-comment">/*obj*/</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*filename*/</span>=<span class="hljs-string">&quot;&quot;</span>, Option_t * <span class="hljs-comment">/*option*/</span>=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Save object in filename,</span>
+<span class="hljs-comment">/// if filename is 0 or &quot;&quot;, a file with &quot;objectname.root&quot; is created.</span>
+<span class="hljs-comment">/// The name of the key is the object name.</span>
+<span class="hljs-comment">/// If the operation is successful, it returns the number of bytes written to the file</span>
+<span class="hljs-comment">/// otherwise it returns 0.</span>
+<span class="hljs-comment">/// By default a message is printed. Use option &quot;q&quot; to not print the message.</span>
+<span class="hljs-comment">/// If filename contains &quot;.json&quot; extension, JSON representation of the object</span>
+<span class="hljs-comment">/// will be created and saved in the text file. Such file can be used in</span>
+<span class="hljs-comment">/// JavaScript ROOT (https://root.cern.ch/js/) to display object in web browser</span>
+<span class="hljs-comment">/// When creating JSON file, option string may contain compression level from 0 to 3 (default 0)</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SaveSelf</span><span class="token punctuation">(</span>Bool_t <span class="token comment">/*force*/</span> <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetBufferSize</span><span class="token punctuation">(</span>Int_t <span class="token comment">/* bufsize */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetModified</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetMother</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span>mother<span class="token punctuation">)</span> <span class="token punctuation">{</span>fMother <span class="token operator">=</span> <span class="token punctuation">(</span>TObject<span class="token operator">*</span><span class="token punctuation">)</span>mother<span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetName</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> newname<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the name for directory</span>
-<span class="token comment">/// If the directory name is changed after the directory was written once,</span>
-<span class="token comment">/// ROOT currently would NOT change the name of correspondent key in the</span>
-<span class="token comment">/// mother directory.</span>
-<span class="token comment">/// DO NOT use this method to &apos;rename a directory&apos;.</span>
-<span class="token comment">/// Renaming a directory is currently NOT supported.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SaveSelf</span><span class="hljs-params">(Bool_t <span class="hljs-comment">/*force*/</span> = kFALSE)</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetBufferSize</span><span class="hljs-params">(Int_t <span class="hljs-comment">/* bufsize */</span>)</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetModified</span><span class="hljs-params">()</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetMother</span><span class="hljs-params">(TObject *mother)</span> </span>{fMother = (TObject*)mother;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* newname)</span></span>;
+<span class="hljs-comment">/// Set the name for directory</span>
+<span class="hljs-comment">/// If the directory name is changed after the directory was written once,</span>
+<span class="hljs-comment">/// ROOT currently would NOT change the name of correspondent key in the</span>
+<span class="hljs-comment">/// mother directory.</span>
+<span class="hljs-comment">/// DO NOT use this method to &apos;rename a directory&apos;.</span>
+<span class="hljs-comment">/// Renaming a directory is currently NOT supported.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetTRefAction</span><span class="token punctuation">(</span>TObject <span class="token operator">*</span> <span class="token comment">/*ref*/</span><span class="token punctuation">,</span> TObject <span class="token operator">*</span> <span class="token comment">/*parent*/</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetSeekDir</span><span class="token punctuation">(</span>Long64_t<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">SetWritable</span><span class="token punctuation">(</span>Bool_t<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">Sizeof</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">Write</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*name*/</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t <span class="token comment">/*opt*/</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t <span class="token comment">/*bufsize*/</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">Write</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*name*/</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t <span class="token comment">/*opt*/</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Int_t <span class="token comment">/*bufsize*/</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">WriteTObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> TObject <span class="token operator">*</span>obj<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Int_t <span class="token comment">/*bufsize*/</span> <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// See TDirectoryFile::WriteTObject for details</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetTRefAction</span><span class="hljs-params">(TObject * <span class="hljs-comment">/*ref*/</span>, TObject * <span class="hljs-comment">/*parent*/</span>)</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetSeekDir</span><span class="hljs-params">(Long64_t)</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">SetWritable</span><span class="hljs-params">(Bool_t)</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">Sizeof</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*name*/</span>=<span class="hljs-number">0</span>, Int_t <span class="hljs-comment">/*opt*/</span>=<span class="hljs-number">0</span>, Int_t <span class="hljs-comment">/*bufsize*/</span>=<span class="hljs-number">0</span>)</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*name*/</span>=<span class="hljs-number">0</span>, Int_t <span class="hljs-comment">/*opt*/</span>=<span class="hljs-number">0</span>, Int_t <span class="hljs-comment">/*bufsize*/</span>=<span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">WriteTObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TObject *obj, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name =<span class="hljs-number">0</span>, Option_t * <span class="hljs-comment">/*option*/</span>=<span class="hljs-string">&quot;&quot;</span>, Int_t <span class="hljs-comment">/*bufsize*/</span> =<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// See TDirectoryFile::WriteTObject for details</span>
 
-   <span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">&gt;</span> <span class="token keyword">inline</span> Int_t <span class="token function">WriteObject</span><span class="token punctuation">(</span><span class="token keyword">const</span> T<span class="token operator">*</span> obj<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Int_t bufsize<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">// see TDirectory::WriteTObject or TDirectoryWriteObjectAny for explanation</span>
-      <span class="token punctuation">{</span>
-         <span class="token keyword">return</span> <span class="token function">WriteObjectAny</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span>TBuffer<span class="token operator">::</span><span class="token function">GetClass</span><span class="token punctuation">(</span><span class="token keyword">typeid</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>name<span class="token punctuation">,</span>option<span class="token punctuation">,</span>bufsize<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">WriteObjectAny</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*classname*/</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*name*/</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Int_t <span class="token comment">/*bufsize*/</span> <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t       <span class="token function">WriteObjectAny</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token keyword">const</span> TClass <span class="token operator">*</span> <span class="token comment">/*cl*/</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> <span class="token comment">/*name*/</span><span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token comment">/*option*/</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Int_t <span class="token comment">/*bufsize*/</span> <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">WriteDirHeader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>        <span class="token function">WriteKeys</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+   <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> Int_t <span class="hljs-title">WriteObject</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T* obj, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* name, Option_t *option=<span class="hljs-string">&quot;&quot;</span>, Int_t bufsize=<span class="hljs-number">0</span>)</span> <span class="hljs-comment">// see TDirectory::WriteTObject or TDirectoryWriteObjectAny for explanation</span>
+      </span>{
+         <span class="hljs-keyword">return</span> WriteObjectAny(obj,TBuffer::GetClass(<span class="hljs-keyword">typeid</span>(T)),name,option,bufsize);
+      }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">WriteObjectAny</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*classname*/</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*name*/</span>, Option_t * <span class="hljs-comment">/*option*/</span>=<span class="hljs-string">&quot;&quot;</span>, Int_t <span class="hljs-comment">/*bufsize*/</span> =<span class="hljs-number">0</span>)</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t       <span class="hljs-title">WriteObjectAny</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *, <span class="hljs-keyword">const</span> TClass * <span class="hljs-comment">/*cl*/</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-comment">/*name*/</span>, Option_t * <span class="hljs-comment">/*option*/</span>=<span class="hljs-string">&quot;&quot;</span>, Int_t <span class="hljs-comment">/*bufsize*/</span> =<span class="hljs-number">0</span>)</span> </span>{<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">WriteDirHeader</span><span class="hljs-params">()</span> </span>{}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>        <span class="hljs-title">WriteKeys</span><span class="hljs-params">()</span> </span>{}
 
-   <span class="token keyword">static</span> Bool_t       <span class="token function">Cd</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>         <span class="token function">DecodeNameCycle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>namecycle<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Short_t <span class="token operator">&amp;</span>cycle<span class="token punctuation">,</span> <span class="token keyword">const</span> size_t namesize <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Decode a namecycle &quot;aap;2&quot; into name &quot;aap&quot; and cycle &quot;2&quot;. Destination</span>
-<span class="token comment">/// buffer size for name (including string terminator) should be specified in</span>
-<span class="token comment">/// namesize.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t       <span class="hljs-title">Cd</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *path)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">DecodeNameCycle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *namecycle, <span class="hljs-keyword">char</span> *name, Short_t &amp;cycle, <span class="hljs-keyword">const</span> <span class="hljs-keyword">size_t</span> namesize = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-comment">/// Decode a namecycle &quot;aap;2&quot; into name &quot;aap&quot; and cycle &quot;2&quot;. Destination</span>
+<span class="hljs-comment">/// buffer size for name (including string terminator) should be specified in</span>
+<span class="hljs-comment">/// namesize.</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>         <span class="token function">EncodeNameCycle</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>buffer<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> Short_t cycle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// Encode the name and cycle into buffer like: &quot;aap;2&quot;.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">EncodeNameCycle</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *buffer, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, Short_t cycle)</span></span>;
+<span class="hljs-comment">// Encode the name and cycle into buffer like: &quot;aap;2&quot;.</span>
 </code></pre>
 <!-- TDirectory.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -4113,7 +4125,7 @@ R__EXTERN TDirectory <span class="token operator">*</span>gDirectory<span class=
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TDirectory*","level":"1.6.1","depth":2,"next":{"title":"TDirectoryFile*","level":"1.6.2","depth":2,"path":"class/TDirectoryFile.md","ref":"class/TDirectoryFile.md","articles":[]},"previous":{"title":"不常用类的使用","level":"1.6","depth":1,"path":"class/README.md","ref":"class/README.md","articles":[{"title":"TDirectory*","level":"1.6.1","depth":2,"path":"class/TDirectory.md","ref":"class/TDirectory.md","articles":[]},{"title":"TDirectoryFile*","level":"1.6.2","depth":2,"path":"class/TDirectoryFile.md","ref":"class/TDirectoryFile.md","articles":[]},{"title":"TObject*","level":"1.6.3","depth":2,"path":"class/TObject.md","ref":"class/TObject.md","articles":[]},{"title":"TSystemDirectory+","level":"1.6.4","depth":2,"path":"class/TSystemDirectory.md","ref":"class/TSystemDirectory.md","articles":[]},{"title":"TSystemFile+","level":"1.6.5","depth":2,"path":"class/TSystemFile.md","ref":"class/TSystemFile.md","articles":[]},{"title":"TTask+","level":"1.6.6","depth":2,"path":"class/TTask.md","ref":"class/TTask.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TDirectory.md","mtime":"2018-05-14T09:18:22.304Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TDirectory*","level":"1.6.1","depth":2,"next":{"title":"TDirectoryFile*","level":"1.6.2","depth":2,"path":"class/TDirectoryFile.md","ref":"class/TDirectoryFile.md","articles":[]},"previous":{"title":"不常用类的使用","level":"1.6","depth":1,"path":"class/README.md","ref":"class/README.md","articles":[{"title":"TDirectory*","level":"1.6.1","depth":2,"path":"class/TDirectory.md","ref":"class/TDirectory.md","articles":[]},{"title":"TDirectoryFile*","level":"1.6.2","depth":2,"path":"class/TDirectoryFile.md","ref":"class/TDirectoryFile.md","articles":[]},{"title":"TObject*","level":"1.6.3","depth":2,"path":"class/TObject.md","ref":"class/TObject.md","articles":[]},{"title":"TSystemDirectory+","level":"1.6.4","depth":2,"path":"class/TSystemDirectory.md","ref":"class/TSystemDirectory.md","articles":[]},{"title":"TSystemFile+","level":"1.6.5","depth":2,"path":"class/TSystemFile.md","ref":"class/TSystemFile.md","articles":[]},{"title":"TTask+","level":"1.6.6","depth":2,"path":"class/TTask.md","ref":"class/TTask.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TDirectory.md","mtime":"2018-05-14T09:18:22.304Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4145,6 +4157,18 @@ R__EXTERN TDirectory <span class="token operator">*</span>gDirectory<span class=
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

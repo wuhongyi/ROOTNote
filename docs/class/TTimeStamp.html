@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3700,102 +3712,102 @@
 //       If this experiment is still going when it becomes significant
 //       someone will have to deal with it.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token comment">// empty ctor (builds current time with nsec field incremented from static)</span>
-   <span class="token function">TTimeStamp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-comment">// empty ctor (builds current time with nsec field incremented from static)</span>
+   TTimeStamp();
 
-   <span class="token comment">// construction from timespec struct</span>
-   <span class="token function">TTimeStamp</span><span class="token punctuation">(</span><span class="token keyword">const</span> timespec_t <span class="token operator">&amp;</span>ts<span class="token punctuation">)</span> <span class="token operator">:</span>
-      <span class="token function">fSec</span><span class="token punctuation">(</span><span class="token function">Int_t</span><span class="token punctuation">(</span>ts<span class="token punctuation">.</span>tv_sec<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fNanoSec</span><span class="token punctuation">(</span>ts<span class="token punctuation">.</span>tv_nsec<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">NormalizeNanoSec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">// construction from timespec struct</span>
+   TTimeStamp(<span class="hljs-keyword">const</span> <span class="hljs-keyword">timespec_t</span> &amp;ts) :
+      fSec(Int_t(ts.tv_sec)), fNanoSec(ts.tv_nsec) { NormalizeNanoSec(); }
 
-   <span class="token comment">// construction from time_t and separate nsec</span>
-   <span class="token function">TTimeStamp</span><span class="token punctuation">(</span>time_t t<span class="token punctuation">,</span> Int_t nsec<span class="token punctuation">)</span> <span class="token operator">:</span>
-      <span class="token function">fSec</span><span class="token punctuation">(</span><span class="token function">Int_t</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">fNanoSec</span><span class="token punctuation">(</span>nsec<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">NormalizeNanoSec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">// construction from time_t and separate nsec</span>
+   TTimeStamp(<span class="hljs-keyword">time_t</span> t, Int_t nsec) :
+      fSec(Int_t(t)), fNanoSec(nsec) { NormalizeNanoSec(); }
 
-   <span class="token comment">// construction from bits and pieces</span>
-   <span class="token function">TTimeStamp</span><span class="token punctuation">(</span>UInt_t year<span class="token punctuation">,</span> UInt_t month<span class="token punctuation">,</span>
-              UInt_t day<span class="token punctuation">,</span>  UInt_t hour<span class="token punctuation">,</span>
-              UInt_t min<span class="token punctuation">,</span>  UInt_t sec<span class="token punctuation">,</span>
-              UInt_t nsec <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Bool_t isUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// construction from bits and pieces</span>
+   TTimeStamp(UInt_t year, UInt_t month,
+              UInt_t day,  UInt_t hour,
+              UInt_t min,  UInt_t sec,
+              UInt_t nsec = <span class="hljs-number">0</span>, Bool_t isUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>);
 
-   <span class="token comment">// compatibility with TDatime</span>
-   <span class="token function">TTimeStamp</span><span class="token punctuation">(</span>UInt_t date<span class="token punctuation">,</span> UInt_t time<span class="token punctuation">,</span> UInt_t nsec<span class="token punctuation">,</span>
-              Bool_t isUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// compatibility with TDatime</span>
+   TTimeStamp(UInt_t date, UInt_t time, UInt_t nsec,
+              Bool_t isUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>);
 
-   <span class="token comment">// compatability with time() and DOS date</span>
-   <span class="token function">TTimeStamp</span><span class="token punctuation">(</span>UInt_t tloc<span class="token punctuation">,</span> Bool_t isUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-              Bool_t dosDate <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// compatability with time() and DOS date</span>
+   TTimeStamp(UInt_t tloc, Bool_t isUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>,
+              Bool_t dosDate = kFALSE);
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TTimeStamp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+   <span class="hljs-keyword">virtual</span> ~TTimeStamp() { }
 
-   <span class="token comment">// initialize to current time with nsec field incremented from static</span>
-   <span class="token keyword">void</span> <span class="token function">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// initialize to current time with nsec field incremented from static</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set</span><span class="hljs-params">()</span></span>;
 
-   <span class="token comment">// construction from bits and pieces</span>
-   <span class="token keyword">void</span> <span class="token function">Set</span><span class="token punctuation">(</span>Int_t year<span class="token punctuation">,</span> Int_t month<span class="token punctuation">,</span>  Int_t day<span class="token punctuation">,</span>
-            Int_t hour<span class="token punctuation">,</span> Int_t min<span class="token punctuation">,</span>    Int_t sec<span class="token punctuation">,</span>
-            Int_t nsec<span class="token punctuation">,</span> Bool_t isUTC<span class="token punctuation">,</span> Int_t secOffset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// construction from bits and pieces</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set</span><span class="hljs-params">(Int_t year, Int_t month,  Int_t day,
+            Int_t hour, Int_t min,    Int_t sec,
+            Int_t nsec, Bool_t isUTC, Int_t secOffset)</span></span>;
 
-   <span class="token comment">// compatibility with TDatime</span>
-   <span class="token keyword">void</span> <span class="token function">Set</span><span class="token punctuation">(</span>Int_t date<span class="token punctuation">,</span>   Int_t time<span class="token punctuation">,</span> Int_t nsec<span class="token punctuation">,</span>
-            Bool_t isUTC<span class="token punctuation">,</span> Int_t secOffset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// compatibility with TDatime</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set</span><span class="hljs-params">(Int_t date,   Int_t time, Int_t nsec,
+            Bool_t isUTC, Int_t secOffset)</span></span>;
 
-   <span class="token comment">// compatability with time() and DOS date</span>
-   <span class="token keyword">void</span> <span class="token function">Set</span><span class="token punctuation">(</span>UInt_t tloc<span class="token punctuation">,</span> Bool_t isUTC<span class="token punctuation">,</span> Int_t secOffset<span class="token punctuation">,</span> Bool_t dosDate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// compatability with time() and DOS date</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set</span><span class="hljs-params">(UInt_t tloc, Bool_t isUTC, Int_t secOffset, Bool_t dosDate)</span></span>;
 
-   <span class="token comment">// direct setters</span>
-   <span class="token keyword">void</span> <span class="token function">SetSec</span><span class="token punctuation">(</span>Int_t sec<span class="token punctuation">)</span> <span class="token punctuation">{</span> fSec <span class="token operator">=</span> sec<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">SetNanoSec</span><span class="token punctuation">(</span>Int_t nsec<span class="token punctuation">)</span> <span class="token punctuation">{</span> fNanoSec <span class="token operator">=</span> nsec<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">// direct setters</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetSec</span><span class="hljs-params">(Int_t sec)</span> </span>{ fSec = sec; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetNanoSec</span><span class="hljs-params">(Int_t nsec)</span> </span>{ fNanoSec = nsec; }
 
-   timespec_t   <span class="token function">GetTimeSpec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-      <span class="token punctuation">{</span> timespec_t value <span class="token operator">=</span> <span class="token punctuation">{</span>fSec<span class="token punctuation">,</span>fNanoSec<span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token keyword">return</span> value<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   time_t       <span class="token function">GetSec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fSec<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t        <span class="token function">GetNanoSec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fNanoSec<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-keyword">timespec_t</span>   GetTimeSpec() <span class="hljs-keyword">const</span>
+      { <span class="hljs-keyword">timespec_t</span> value = {fSec,fNanoSec}; <span class="hljs-keyword">return</span> value; }
+   <span class="hljs-keyword">time_t</span>       GetSec() <span class="hljs-keyword">const</span> { <span class="hljs-keyword">return</span> fSec; }
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetNanoSec</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNanoSec; }
 
-   Double_t     <span class="token function">AsDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fSec <span class="token operator">+</span> <span class="token number">1e-9</span> <span class="token operator">*</span> fNanoSec<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Double_t     <span class="token function">AsJulianDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">AsDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">86400.0</span> <span class="token operator">+</span> <span class="token number">2440587.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsDouble</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fSec + <span class="hljs-number">1e-9</span> * fNanoSec; }
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsJulianDate</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> (AsDouble()/<span class="hljs-number">86400.0</span> + <span class="hljs-number">2440587.5</span>); }
 
-   <span class="token comment">// return stored time values converted to sidereal time</span>
-   Double_t     <span class="token function">AsGMST</span><span class="token punctuation">(</span>Double_t UT1Offset <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment">/*milliseconds*/</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">//rval in hours</span>
-   Double_t     <span class="token function">AsGAST</span><span class="token punctuation">(</span>Double_t UT1Offset <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment">/*milliseconds*/</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">//rval in hours</span>
-   Double_t     <span class="token function">AsLMST</span><span class="token punctuation">(</span>Double_t Longitude <span class="token comment">/*degrees*/</span><span class="token punctuation">,</span> Double_t UT1Offset <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment">/*milliseconds*/</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">//rval in hours</span>
-   Double_t     <span class="token function">AsLAST</span><span class="token punctuation">(</span>Double_t Longitude <span class="token comment">/*degrees*/</span><span class="token punctuation">,</span> Double_t UT1Offset <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment">/*milliseconds*/</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">//rval in hours</span>
+   <span class="hljs-comment">// return stored time values converted to sidereal time</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsGMST</span><span class="hljs-params">(Double_t UT1Offset = <span class="hljs-number">0</span> <span class="hljs-comment">/*milliseconds*/</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//rval in hours</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsGAST</span><span class="hljs-params">(Double_t UT1Offset = <span class="hljs-number">0</span> <span class="hljs-comment">/*milliseconds*/</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//rval in hours</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsLMST</span><span class="hljs-params">(Double_t Longitude <span class="hljs-comment">/*degrees*/</span>, Double_t UT1Offset = <span class="hljs-number">0</span> <span class="hljs-comment">/*milliseconds*/</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//rval in hours</span>
+   <span class="hljs-function">Double_t     <span class="hljs-title">AsLAST</span><span class="hljs-params">(Double_t Longitude <span class="hljs-comment">/*degrees*/</span>, Double_t UT1Offset = <span class="hljs-number">0</span> <span class="hljs-comment">/*milliseconds*/</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">//rval in hours</span>
 
-   <span class="token keyword">const</span> <span class="token keyword">char</span>  <span class="token operator">*</span><span class="token function">AsString</span><span class="token punctuation">(</span><span class="token keyword">const</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>  *<span class="hljs-title">AsString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token keyword">void</span>         <span class="token function">Copy</span><span class="token punctuation">(</span>TTimeStamp <span class="token operator">&amp;</span>ts<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   UInt_t       <span class="token function">GetDate</span><span class="token punctuation">(</span>Bool_t inUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                        UInt_t <span class="token operator">*</span>year <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t <span class="token operator">*</span>month <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                        UInt_t <span class="token operator">*</span>day <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   UInt_t       <span class="token function">GetTime</span><span class="token punctuation">(</span>Bool_t inUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                        UInt_t <span class="token operator">*</span>hour <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> UInt_t <span class="token operator">*</span>min <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                        UInt_t <span class="token operator">*</span>sec <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Int_t        <span class="token function">GetDayOfYear</span><span class="token punctuation">(</span>Bool_t inUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Int_t        <span class="token function">GetDayOfWeek</span><span class="token punctuation">(</span>Bool_t inUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Int_t        <span class="token function">GetMonth</span><span class="token punctuation">(</span>Bool_t inUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Int_t        <span class="token function">GetWeek</span><span class="token punctuation">(</span>Bool_t inUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   Bool_t       <span class="token function">IsLeapYear</span><span class="token punctuation">(</span>Bool_t inUTC <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Int_t secOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Copy</span><span class="hljs-params">(TTimeStamp &amp;ts)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">UInt_t       <span class="hljs-title">GetDate</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>,
+                        UInt_t *year = <span class="hljs-number">0</span>, UInt_t *month = <span class="hljs-number">0</span>,
+                        UInt_t *day = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">UInt_t       <span class="hljs-title">GetTime</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>,
+                        UInt_t *hour = <span class="hljs-number">0</span>, UInt_t *min = <span class="hljs-number">0</span>,
+                        UInt_t *sec = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetDayOfYear</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetDayOfWeek</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetMonth</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Int_t        <span class="hljs-title">GetWeek</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function">Bool_t       <span class="hljs-title">IsLeapYear</span><span class="hljs-params">(Bool_t inUTC = kTRUE, Int_t secOffset = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token keyword">void</span>         <span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">const</span> TTimeStamp <span class="token operator">&amp;</span>offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TTimeStamp &amp;offset)</span></span>;
 
-   <span class="token keyword">void</span>         <span class="token function">Print</span><span class="token punctuation">(</span><span class="token keyword">const</span> Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>         <span class="hljs-title">Print</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token keyword">operator</span> <span class="token keyword">double</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">AsDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">double</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> AsDouble(); }
 
-   <span class="token comment">// Utility functions</span>
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetZoneOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> time_t  <span class="token function">MktimeFromUTC</span><span class="token punctuation">(</span>tm_t <span class="token operator">*</span>tmstruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">DumpTMStruct</span><span class="token punctuation">(</span><span class="token keyword">const</span> tm_t <span class="token operator">&amp;</span>tmstruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetDayOfYear</span><span class="token punctuation">(</span>Int_t day<span class="token punctuation">,</span> Int_t month<span class="token punctuation">,</span> Int_t year<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetDayOfWeek</span><span class="token punctuation">(</span>Int_t day<span class="token punctuation">,</span> Int_t month<span class="token punctuation">,</span> Int_t year<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetWeek</span><span class="token punctuation">(</span>Int_t day<span class="token punctuation">,</span> Int_t month<span class="token punctuation">,</span> Int_t year<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> Bool_t  <span class="token function">IsLeapYear</span><span class="token punctuation">(</span>Int_t year<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-comment">// Utility functions</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetZoneOffset</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> time_t  <span class="hljs-title">MktimeFromUTC</span><span class="hljs-params">(<span class="hljs-keyword">tm_t</span> *tmstruct)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">DumpTMStruct</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">tm_t</span> &amp;tmstruct)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetDayOfYear</span><span class="hljs-params">(Int_t day, Int_t month, Int_t year)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetDayOfWeek</span><span class="hljs-params">(Int_t day, Int_t month, Int_t year)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetWeek</span><span class="hljs-params">(Int_t day, Int_t month, Int_t year)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">IsLeapYear</span><span class="hljs-params">(Int_t year)</span></span>;
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TTimeStamp.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3838,7 +3850,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TTimeStamp","level":"1.2.103","depth":2,"next":{"title":"TTree*","level":"1.2.104","depth":2,"path":"class/TTree.md","ref":"class/TTree.md","articles":[]},"previous":{"title":"TTimer*","level":"1.2.102","depth":2,"path":"class/TTimer.md","ref":"class/TTimer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TTimeStamp.md","mtime":"2018-05-14T09:18:21.188Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TTimeStamp","level":"1.2.103","depth":2,"next":{"title":"TTree*","level":"1.2.104","depth":2,"path":"class/TTree.md","ref":"class/TTree.md","articles":[]},"previous":{"title":"TTimer*","level":"1.2.102","depth":2,"path":"class/TTimer.md","ref":"class/TTimer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TTimeStamp.md","mtime":"2018-05-14T09:18:21.188Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3870,6 +3882,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3685,152 +3697,152 @@ and also for a discussion on text speed and font quality.</p>
 One can draw in NDC coordinates [0,1] if the function SetNDC
 is called for a TText object.</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TText</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TText</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">wchar_t</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token function">TText</span><span class="token punctuation">(</span><span class="token keyword">const</span> TText <span class="token operator">&amp;</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">void</span>             <span class="token function">Copy</span><span class="token punctuation">(</span>TObject <span class="token operator">&amp;</span>text<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Copy this text to text.</span>
+<pre><code class="lang-cpp">   TText();
+   TText(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text);
+   TText(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *text);
+   TText(<span class="hljs-keyword">const</span> TText &amp;text);
+   <span class="hljs-keyword">virtual</span> ~TText();
+   <span class="hljs-function"><span class="hljs-keyword">void</span>             <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Copy this text to text.</span>
 
-   <span class="token keyword">virtual</span> Int_t    <span class="token function">DistancetoPrimitive</span><span class="token punctuation">(</span>Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Compute distance from point px,py to a string.</span>
-<span class="token comment">/// The rectangle surrounding this string is evaluated.</span>
-<span class="token comment">/// If the point (px,py) is in the rectangle, the distance is set to zero.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t    <span class="hljs-title">DistancetoPrimitive</span><span class="hljs-params">(Int_t px, Int_t py)</span></span>;
+<span class="hljs-comment">/// Compute distance from point px,py to a string.</span>
+<span class="hljs-comment">/// The rectangle surrounding this string is evaluated.</span>
+<span class="hljs-comment">/// If the point (px,py) is in the rectangle, the distance is set to zero.</span>
 
-   <span class="token keyword">virtual</span> TText   <span class="token operator">*</span><span class="token function">DrawText</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw this text with new coordinates.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TText   *<span class="hljs-title">DrawText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates.</span>
 
-   <span class="token keyword">virtual</span> TText   <span class="token operator">*</span><span class="token function">DrawText</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">wchar_t</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw this text with new coordinates.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TText   *<span class="hljs-title">DrawText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates.</span>
 
-   <span class="token keyword">virtual</span> TText   <span class="token operator">*</span><span class="token function">DrawTextNDC</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw this text with new coordinates in NDC.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TText   *<span class="hljs-title">DrawTextNDC</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates in NDC.</span>
 
-   <span class="token keyword">virtual</span> TText   <span class="token operator">*</span><span class="token function">DrawTextNDC</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">wchar_t</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw this text with new coordinates in NDC.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TText   *<span class="hljs-title">DrawTextNDC</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates in NDC.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">ExecuteEvent</span><span class="token punctuation">(</span>Int_t event<span class="token punctuation">,</span> Int_t px<span class="token punctuation">,</span> Int_t py<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Execute action corresponding to one event.</span>
-<span class="token comment">///  This member function must be implemented to realize the action</span>
-<span class="token comment">///  corresponding to the mouse click on the object in the window</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ExecuteEvent</span><span class="hljs-params">(Int_t event, Int_t px, Int_t py)</span></span>;
+<span class="hljs-comment">/// Execute action corresponding to one event.</span>
+<span class="hljs-comment">///  This member function must be implemented to realize the action</span>
+<span class="hljs-comment">///  corresponding to the mouse click on the object in the window</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">GetControlBox</span><span class="token punctuation">(</span>Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">,</span> Double_t theta<span class="token punctuation">,</span>
-                                  Int_t cBoxX<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> Int_t cBoxY<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return the text control box. The text position coordinates is (x,y) and</span>
-<span class="token comment">/// the text angle is theta. The control box coordinates are returned in cBoxX</span>
-<span class="token comment">/// and cBoxY.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetControlBox</span><span class="hljs-params">(Int_t x, Int_t y, Double_t theta,
+                                  Int_t cBoxX[<span class="hljs-number">4</span>], Int_t cBoxY[<span class="hljs-number">4</span>])</span></span>;
+<span class="hljs-comment">/// Return the text control box. The text position coordinates is (x,y) and</span>
+<span class="hljs-comment">/// the text angle is theta. The control box coordinates are returned in cBoxX</span>
+<span class="hljs-comment">/// and cBoxY.</span>
 
-   Double_t         <span class="token function">GetX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>  <span class="token punctuation">{</span> <span class="token keyword">return</span> fX<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">GetBoundingBox</span><span class="token punctuation">(</span>UInt_t <span class="token operator">&amp;</span>w<span class="token punctuation">,</span> UInt_t <span class="token operator">&amp;</span>h<span class="token punctuation">,</span> Bool_t angle <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return text size in pixels. By default the size returned does not take</span>
-<span class="token comment">/// into account the text angle (angle = kFALSE). If angle is set to kTRUE</span>
-<span class="token comment">/// w and h take the angle into account.</span>
+   <span class="hljs-function">Double_t         <span class="hljs-title">GetX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{ <span class="hljs-keyword">return</span> fX; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetBoundingBox</span><span class="hljs-params">(UInt_t &amp;w, UInt_t &amp;h, Bool_t angle = kFALSE)</span></span>;
+<span class="hljs-comment">/// Return text size in pixels. By default the size returned does not take</span>
+<span class="hljs-comment">/// into account the text angle (angle = kFALSE). If angle is set to kTRUE</span>
+<span class="hljs-comment">/// w and h take the angle into account.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">GetTextAscentDescent</span><span class="token punctuation">(</span>UInt_t <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> UInt_t <span class="token operator">&amp;</span>d<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return text ascent and descent for string text</span>
-<span class="token comment">///  - in a return total text ascent</span>
-<span class="token comment">///  - in d return text descent</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextAscentDescent</span><span class="hljs-params">(UInt_t &amp;a, UInt_t &amp;d, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text ascent and descent for string text</span>
+<span class="hljs-comment">///  - in a return total text ascent</span>
+<span class="hljs-comment">///  - in d return text descent</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">GetTextAscentDescent</span><span class="token punctuation">(</span>UInt_t <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> UInt_t <span class="token operator">&amp;</span>d<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">wchar_t</span> <span class="token operator">*</span>text<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return text ascent and descent for string text</span>
-<span class="token comment">///  - in a return total text ascent</span>
-<span class="token comment">///  - in d return text descent</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextAscentDescent</span><span class="hljs-params">(UInt_t &amp;a, UInt_t &amp;d, <span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text ascent and descent for string text</span>
+<span class="hljs-comment">///  - in a return total text ascent</span>
+<span class="hljs-comment">///  - in d return text descent</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">GetTextExtent</span><span class="token punctuation">(</span>UInt_t <span class="token operator">&amp;</span>w<span class="token punctuation">,</span> UInt_t <span class="token operator">&amp;</span>h<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return text extent for string text</span>
-<span class="token comment">///  - in w return total text width</span>
-<span class="token comment">///  - in h return text height</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextExtent</span><span class="hljs-params">(UInt_t &amp;w, UInt_t &amp;h, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text extent for string text</span>
+<span class="hljs-comment">///  - in w return total text width</span>
+<span class="hljs-comment">///  - in h return text height</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">GetTextExtent</span><span class="token punctuation">(</span>UInt_t <span class="token operator">&amp;</span>w<span class="token punctuation">,</span> UInt_t <span class="token operator">&amp;</span>h<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">wchar_t</span> <span class="token operator">*</span>text<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return text extent for string text</span>
-<span class="token comment">///  - in w return total text width</span>
-<span class="token comment">///  - in h return text height</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextExtent</span><span class="hljs-params">(UInt_t &amp;w, UInt_t &amp;h, <span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *text)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text extent for string text</span>
+<span class="hljs-comment">///  - in w return total text width</span>
+<span class="hljs-comment">///  - in h return text height</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">GetTextAdvance</span><span class="token punctuation">(</span>UInt_t <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">,</span> <span class="token keyword">const</span> Bool_t kern<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return text advance for string text</span>
-<span class="token comment">/// if kern is true (default) kerning is taken into account. If it is false</span>
-<span class="token comment">/// the kerning is not taken into account.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">GetTextAdvance</span><span class="hljs-params">(UInt_t &amp;a, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text, <span class="hljs-keyword">const</span> Bool_t kern=kTRUE)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return text advance for string text</span>
+<span class="hljs-comment">/// if kern is true (default) kerning is taken into account. If it is false</span>
+<span class="hljs-comment">/// the kerning is not taken into account.</span>
 
-   <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>     <span class="token function">GetWcsTitle</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Returns the text as UNICODE.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *     <span class="hljs-title">GetWcsTitle</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Returns the text as UNICODE.</span>
 
-   Double_t         <span class="token function">GetY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>  <span class="token punctuation">{</span> <span class="token keyword">return</span> fY<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function">Double_t         <span class="hljs-title">GetY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>  </span>{ <span class="hljs-keyword">return</span> fY; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// List this text with its attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// List this text with its attributes.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Paint</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Paint this text with its current attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Paint</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Paint this text with its current attributes.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">PaintControlBox</span><span class="token punctuation">(</span>Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">,</span> Double_t theta<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Paint the text control box. (x,y) are the coordinates where the control</span>
-<span class="token comment">/// box should be painted and theta is the angle of the box.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintControlBox</span><span class="hljs-params">(Int_t x, Int_t y, Double_t theta)</span></span>;
+<span class="hljs-comment">/// Paint the text control box. (x,y) are the coordinates where the control</span>
+<span class="hljs-comment">/// box should be painted and theta is the angle of the box.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">PaintText</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw this text with new coordinates.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">PaintText</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">wchar_t</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw this text with new coordinates.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">PaintTextNDC</span><span class="token punctuation">(</span>Double_t u<span class="token punctuation">,</span> Double_t v<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw this text with new coordinates in NDC.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintTextNDC</span><span class="hljs-params">(Double_t u, Double_t v, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates in NDC.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">PaintTextNDC</span><span class="token punctuation">(</span>Double_t u<span class="token punctuation">,</span> Double_t v<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">wchar_t</span> <span class="token operator">*</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Draw this text with new coordinates in NDC.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">PaintTextNDC</span><span class="hljs-params">(Double_t u, Double_t v, <span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *text)</span></span>;
+<span class="hljs-comment">/// Draw this text with new coordinates in NDC.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">Print</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Dump this text with its attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Dump this text with its attributes.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save primitive as a C++ statement(s) on output stream out</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save primitive as a C++ statement(s) on output stream out</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetMbTitle</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">wchar_t</span> <span class="token operator">*</span>title<span class="token operator">=</span>L<span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// *MENU*</span>
-<span class="token comment">/// Change (i.e. set) the title of the TNamed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetMbTitle</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *title=<span class="hljs-string">L&quot;&quot;</span>)</span></span>; <span class="hljs-comment">// *MENU*</span>
+<span class="hljs-comment">/// Change (i.e. set) the title of the TNamed.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetNDC</span><span class="token punctuation">(</span>Bool_t isNDC<span class="token operator">=</span>kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set NDC mode on if isNDC = kTRUE, off otherwise</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetNDC</span><span class="hljs-params">(Bool_t isNDC=kTRUE)</span></span>;
+<span class="hljs-comment">/// Set NDC mode on if isNDC = kTRUE, off otherwise</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetText</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">)</span> <span class="token punctuation">{</span>fX<span class="token operator">=</span>x<span class="token punctuation">;</span> fY<span class="token operator">=</span>y<span class="token punctuation">;</span> <span class="token function">SetTitle</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span> <span class="token comment">// *MENU* *ARGS={x=&gt;fX,y=&gt;fY,text=&gt;fTitle}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetText</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">,</span> Double_t y<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">wchar_t</span> <span class="token operator">*</span>text<span class="token punctuation">)</span> <span class="token punctuation">{</span>fX<span class="token operator">=</span>x<span class="token punctuation">;</span> fY<span class="token operator">=</span>y<span class="token punctuation">;</span> <span class="token function">SetMbTitle</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetX</span><span class="token punctuation">(</span>Double_t x<span class="token punctuation">)</span> <span class="token punctuation">{</span> fX <span class="token operator">=</span> x<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>     <span class="token function">SetY</span><span class="token punctuation">(</span>Double_t y<span class="token punctuation">)</span> <span class="token punctuation">{</span> fY <span class="token operator">=</span> y<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *text)</span> </span>{fX=x; fY=y; SetTitle(text);} <span class="hljs-comment">// *MENU* *ARGS={x=&gt;fX,y=&gt;fY,text=&gt;fTitle}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetText</span><span class="hljs-params">(Double_t x, Double_t y, <span class="hljs-keyword">const</span> <span class="hljs-keyword">wchar_t</span> *text)</span> </span>{fX=x; fY=y; SetMbTitle(text);}
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetX</span><span class="hljs-params">(Double_t x)</span> </span>{ fX = x; } <span class="hljs-comment">// *MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>     <span class="hljs-title">SetY</span><span class="hljs-params">(Double_t y)</span> </span>{ fY = y; } <span class="hljs-comment">// *MENU*</span>
 
-   <span class="token keyword">virtual</span> Rectangle_t  <span class="token function">GetBBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return the &quot;bounding Box&quot; of the Box</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Rectangle_t  <span class="hljs-title">GetBBox</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Return the &quot;bounding Box&quot; of the Box</span>
 
-   <span class="token keyword">virtual</span> TPoint       <span class="token function">GetBBoxCenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return the point given by Alignment as &apos;center&apos;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TPoint       <span class="hljs-title">GetBBoxCenter</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Return the point given by Alignment as &apos;center&apos;</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxCenter</span><span class="token punctuation">(</span><span class="token keyword">const</span> TPoint <span class="token operator">&amp;</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set the point given by Alignment as &apos;center&apos;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenter</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TPoint &amp;p)</span></span>;
+<span class="hljs-comment">/// Set the point given by Alignment as &apos;center&apos;</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxCenterX</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set X coordinate of the point given by Alignment as &apos;center&apos;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenterX</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>;
+<span class="hljs-comment">/// Set X coordinate of the point given by Alignment as &apos;center&apos;</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxCenterY</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set Y coordinate of the point given by Alignment as &apos;center&apos;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxCenterY</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>;
+<span class="hljs-comment">/// Set Y coordinate of the point given by Alignment as &apos;center&apos;</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxX1</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Not Implemented</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxX2</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Not Implemented</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxY1</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Not Implemented</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>         <span class="token function">SetBBoxY2</span><span class="token punctuation">(</span><span class="token keyword">const</span> Int_t y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Not Implemented</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxX1</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>; <span class="hljs-comment">//Not Implemented</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxX2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t x)</span></span>; <span class="hljs-comment">//Not Implemented</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxY1</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>; <span class="hljs-comment">//Not Implemented</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>         <span class="hljs-title">SetBBoxY2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Int_t y)</span></span>; <span class="hljs-comment">//Not Implemented</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// By default, the text is drawn in the pad coordinates system. One can draw in NDC coordinates [0,1] if the function SetNDC is called for a TText object.</span>
-   TText <span class="token operator">*</span>t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TText</span><span class="token punctuation">(</span><span class="token number">.5</span><span class="token punctuation">,</span><span class="token number">.5</span><span class="token punctuation">,</span><span class="token string">&quot;Hello World !&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   t<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextAlign</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   t<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextColor</span><span class="token punctuation">(</span>kRed<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   t<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextFont</span><span class="token punctuation">(</span><span class="token number">43</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   t<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextSize</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   t<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextAngle</span><span class="token punctuation">(</span><span class="token number">45</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   t<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// By default, the text is drawn in the pad coordinates system. One can draw in NDC coordinates [0,1] if the function SetNDC is called for a TText object.</span>
+   TText *t = <span class="hljs-keyword">new</span> TText(<span class="hljs-number">.5</span>,<span class="hljs-number">.5</span>,<span class="hljs-string">&quot;Hello World !&quot;</span>);
+   t-&gt;SetTextAlign(<span class="hljs-number">22</span>);
+   t-&gt;SetTextColor(kRed+<span class="hljs-number">2</span>);
+   t-&gt;SetTextFont(<span class="hljs-number">43</span>);
+   t-&gt;SetTextSize(<span class="hljs-number">40</span>);
+   t-&gt;SetTextAngle(<span class="hljs-number">45</span>);
+   t-&gt;Draw();
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TText.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -3873,7 +3885,7 @@ is called for a TText object.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TText*","level":"1.2.97","depth":2,"next":{"title":"TThread","level":"1.2.98","depth":2,"path":"class/TThread.md","ref":"class/TThread.md","articles":[]},"previous":{"title":"TSystem*","level":"1.2.96","depth":2,"path":"class/TSystem.md","ref":"class/TSystem.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TText.md","mtime":"2018-05-14T09:18:22.582Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TText*","level":"1.2.97","depth":2,"next":{"title":"TThread","level":"1.2.98","depth":2,"path":"class/TThread.md","ref":"class/TThread.md","articles":[]},"previous":{"title":"TSystem*","level":"1.2.96","depth":2,"path":"class/TSystem.md","ref":"class/TSystem.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TText.md","mtime":"2018-05-14T09:18:22.582Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3905,6 +3917,18 @@ is called for a TText object.</p>
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

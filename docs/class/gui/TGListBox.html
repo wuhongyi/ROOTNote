@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3680,107 +3692,107 @@
 <p>TGListBox &#x7EE7;&#x627F; TGCompositeFrame, TGWidget</p>
 <p>A TGListBox widget.</p>
 <p>A listbox is a box, possibly with scrollbar, containing entries.<br>Currently entries are simple text strings (TGTextLBEntry).<br>A TGListBox looks a lot like a TGCanvas. It has a TGViewPort<br>containing a TGLBContainer which contains the entries and it also<br>has a vertical scrollbar which becomes visible if there are more<br>items than fit in the visible part of the container.  </p>
-<pre class="language-"><code>Selecting an item in the listbox will generate the event:
+<pre><code>Selecting an item in the listbox will generate the event:
 kC_COMMAND, kCM_LISTBOX, listbox id, item id.
 </code></pre><h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGListBox</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
-             UInt_t options <span class="token operator">=</span> kSunkenFrame <span class="token operator">|</span> kDoubleBorder<span class="token punctuation">,</span>
-             Pixel_t back <span class="token operator">=</span> <span class="token function">GetWhitePixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGListBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   TGListBox(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Int_t id = <span class="hljs-number">-1</span>,
+             UInt_t options = kSunkenFrame | kDoubleBorder,
+             Pixel_t back = GetWhitePixel());
+   <span class="hljs-keyword">virtual</span> ~TGListBox();
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AddEntry</span><span class="token punctuation">(</span>TGString <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AddEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AddEntry</span><span class="token punctuation">(</span>TGLBEntry <span class="token operator">*</span>lbe<span class="token punctuation">,</span> TGLayoutHints <span class="token operator">*</span>lhints<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AddEntrySort</span><span class="token punctuation">(</span>TGString <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AddEntrySort</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AddEntrySort</span><span class="token punctuation">(</span>TGLBEntry <span class="token operator">*</span>lbe<span class="token punctuation">,</span> TGLayoutHints <span class="token operator">*</span>lhints<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">InsertEntry</span><span class="token punctuation">(</span>TGString <span class="token operator">*</span>s<span class="token punctuation">,</span> Int_t id<span class="token punctuation">,</span> Int_t afterID<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">InsertEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s <span class="token punctuation">,</span> Int_t id<span class="token punctuation">,</span> Int_t afterID<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">InsertEntry</span><span class="token punctuation">(</span>TGLBEntry <span class="token operator">*</span>lbe<span class="token punctuation">,</span> TGLayoutHints <span class="token operator">*</span>lhints<span class="token punctuation">,</span> Int_t afterID<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">NewEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token string">&quot;Entry&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">//*MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">RemoveEntry</span><span class="token punctuation">(</span>Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">//*MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">RemoveAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                   <span class="token comment">//*MENU*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">RemoveEntries</span><span class="token punctuation">(</span>Int_t from_ID<span class="token punctuation">,</span> Int_t to_ID<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">ChangeBackground</span><span class="token punctuation">(</span>Pixel_t back<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetTopEntry</span><span class="token punctuation">(</span>Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetMultipleSelections</span><span class="token punctuation">(</span>Bool_t multi <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span>
-                  <span class="token punctuation">{</span> fLbc<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetMultipleSelections</span><span class="token punctuation">(</span>multi<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>      <span class="token comment">//*TOGGLE* *GETTER=GetMultipleSelections</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">GetMultipleSelections</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-                  <span class="token punctuation">{</span> <span class="token keyword">return</span> fLbc<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetMultipleSelections</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t  <span class="token function">GetNumberOfEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-                  <span class="token punctuation">{</span> <span class="token keyword">return</span> fLbc<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGLBEntry    <span class="token operator">*</span><span class="token function">GetEntry</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGLBEntry    <span class="token operator">*</span><span class="token function">FindEntry</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> TGFrame      <span class="token operator">*</span><span class="token function">GetContainer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVport<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetContainer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGViewPort   <span class="token operator">*</span><span class="token function">GetViewPort</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVport<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGScrollBar  <span class="token operator">*</span><span class="token function">GetScrollBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVScrollbar<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGVScrollBar <span class="token operator">*</span><span class="token function">GetVScrollbar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fVScrollbar<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntry</span><span class="hljs-params">(TGString *s, Int_t id)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, Int_t id)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntry</span><span class="hljs-params">(TGLBEntry *lbe, TGLayoutHints *lhints)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntrySort</span><span class="hljs-params">(TGString *s, Int_t id)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntrySort</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s, Int_t id)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEntrySort</span><span class="hljs-params">(TGLBEntry *lbe, TGLayoutHints *lhints)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InsertEntry</span><span class="hljs-params">(TGString *s, Int_t id, Int_t afterID)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InsertEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s , Int_t id, Int_t afterID)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InsertEntry</span><span class="hljs-params">(TGLBEntry *lbe, TGLayoutHints *lhints, Int_t afterID)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">NewEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s = <span class="hljs-string">&quot;Entry&quot;</span>)</span></span>;             <span class="hljs-comment">//*MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveEntry</span><span class="hljs-params">(Int_t id = <span class="hljs-number">-1</span>)</span></span>;                    <span class="hljs-comment">//*MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveAll</span><span class="hljs-params">()</span></span>;                                   <span class="hljs-comment">//*MENU*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RemoveEntries</span><span class="hljs-params">(Int_t from_ID, Int_t to_ID)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ChangeBackground</span><span class="hljs-params">(Pixel_t back)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetTopEntry</span><span class="hljs-params">(Int_t id = <span class="hljs-number">-1</span>)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetMultipleSelections</span><span class="hljs-params">(Bool_t multi = kTRUE)</span>
+                  </span>{ fLbc-&gt;SetMultipleSelections(multi); }      <span class="hljs-comment">//*TOGGLE* *GETTER=GetMultipleSelections</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">GetMultipleSelections</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
+                  </span>{ <span class="hljs-keyword">return</span> fLbc-&gt;GetMultipleSelections(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t  <span class="hljs-title">GetNumberOfEntries</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
+                  </span>{ <span class="hljs-keyword">return</span> fLbc-&gt;GetList()-&gt;GetSize(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLBEntry    *<span class="hljs-title">GetEntry</span><span class="hljs-params">(Int_t id)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLBEntry    *<span class="hljs-title">FindEntry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s)</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGFrame      *<span class="hljs-title">GetContainer</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVport-&gt;GetContainer(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGViewPort   *<span class="hljs-title">GetViewPort</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVport; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGScrollBar  *<span class="hljs-title">GetScrollBar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVScrollbar; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGVScrollBar *<span class="hljs-title">GetVScrollbar</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fVScrollbar; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">DrawBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Resize</span><span class="token punctuation">(</span>UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Resize</span><span class="token punctuation">(</span>TGDimension size<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Resize</span><span class="token punctuation">(</span>size<span class="token punctuation">.</span>fWidth<span class="token punctuation">,</span> size<span class="token punctuation">.</span>fHeight<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">MoveResize</span><span class="token punctuation">(</span>Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">,</span> UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SetLayoutManager</span><span class="token punctuation">(</span>TGLayoutManager<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SortByName</span><span class="token punctuation">(</span>Bool_t ascend <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//*MENU*icon=bld_sortup.png*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">IntegralHeight</span><span class="token punctuation">(</span>Bool_t mode<span class="token punctuation">)</span> <span class="token punctuation">{</span> fIntegralHeight <span class="token operator">=</span> mode<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Resize</span><span class="hljs-params">(UInt_t w, UInt_t h)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Resize</span><span class="hljs-params">(TGDimension size)</span> </span>{ Resize(size.fWidth, size.fHeight); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MoveResize</span><span class="hljs-params">(Int_t x, Int_t y, UInt_t w, UInt_t h)</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Layout</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetLayoutManager</span><span class="hljs-params">(TGLayoutManager*)</span> </span>{ }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SortByName</span><span class="hljs-params">(Bool_t ascend = kTRUE)</span></span>;   <span class="hljs-comment">//*MENU*icon=bld_sortup.png*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">IntegralHeight</span><span class="hljs-params">(Bool_t mode)</span> </span>{ fIntegralHeight = mode; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">ProcessMessage</span><span class="token punctuation">(</span>Long_t msg<span class="token punctuation">,</span> Long_t parm1<span class="token punctuation">,</span> Long_t parm2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;
 
-   <span class="token keyword">virtual</span> TGLBEntry <span class="token operator">*</span><span class="token function">Select</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">,</span> Bool_t sel <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span>
-                                       <span class="token punctuation">{</span> <span class="token keyword">return</span> fLbc<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Select</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> sel<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Int_t <span class="token function">GetSelected</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">GetSelection</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLbc<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetSelection</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> TGLBEntry <span class="token operator">*</span><span class="token function">GetSelectedEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLbc<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetSelectedEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">GetSelectedEntries</span><span class="token punctuation">(</span>TList <span class="token operator">*</span>selected<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   UInt_t  <span class="token function">GetItemVsize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fItemVsize<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLBEntry *<span class="hljs-title">Select</span><span class="hljs-params">(Int_t id, Bool_t sel = kTRUE)</span>
+                                       </span>{ <span class="hljs-keyword">return</span> fLbc-&gt;Select(id, sel); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Int_t <span class="hljs-title">GetSelected</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">GetSelection</span><span class="hljs-params">(Int_t id)</span> </span>{ <span class="hljs-keyword">return</span> fLbc-&gt;GetSelection(id); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGLBEntry *<span class="hljs-title">GetSelectedEntry</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLbc-&gt;GetSelectedEntry(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetSelectedEntries</span><span class="hljs-params">(TList *selected)</span></span>;
+   <span class="hljs-function">UInt_t  <span class="hljs-title">GetItemVsize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fItemVsize; }
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span>option <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t *option = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Selected</span><span class="token punctuation">(</span>Int_t widgetId<span class="token punctuation">,</span> Int_t id<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Selected</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Selected(Int_t)&quot;</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Selected</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>txt<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;Selected(char*)&quot;</span><span class="token punctuation">,</span> txt<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//*SIGNAL</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">DoubleClicked</span><span class="token punctuation">(</span>Int_t widgetId<span class="token punctuation">,</span> Int_t id<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">DoubleClicked</span><span class="token punctuation">(</span>Int_t id<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;DoubleClicked(Int_t)&quot;</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">DoubleClicked</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>txt<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;DoubleClicked(char*)&quot;</span><span class="token punctuation">,</span> txt<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//*SIGNAL</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SelectionChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;SelectionChanged()&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Selected</span><span class="hljs-params">(Int_t widgetId, Int_t id)</span></span>;   <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Selected</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;Selected(Int_t)&quot;</span>, id); } <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Selected</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *txt)</span> </span>{ Emit(<span class="hljs-string">&quot;Selected(char*)&quot;</span>, txt); } <span class="hljs-comment">//*SIGNAL</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(Int_t widgetId, Int_t id)</span></span>;   <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(Int_t id)</span> </span>{ Emit(<span class="hljs-string">&quot;DoubleClicked(Int_t)&quot;</span>, id); } <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DoubleClicked</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *txt)</span> </span>{ Emit(<span class="hljs-string">&quot;DoubleClicked(char*)&quot;</span>, txt); } <span class="hljs-comment">//*SIGNAL</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SelectionChanged</span><span class="hljs-params">()</span> </span>{ Emit(<span class="hljs-string">&quot;SelectionChanged()&quot;</span>); } <span class="hljs-comment">//*SIGNAL*</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&quot;TGListBox.h&quot;</span></span>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TGListBox.h&quot;</span></span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// TGListBox</span>
-<span class="token comment">// &#x53EF;&#x9009;&#x62E9;&#x5217;&#x8868;&#xFF0C;&#x53EF;&#x5355;&#x9009;&#x3001;&#x591A;&#x9009;</span>
-TGListBox           <span class="token operator">*</span>fListBox<span class="token punctuation">;</span>
-TList               <span class="token operator">*</span>fSelected<span class="token punctuation">;</span>
-fListBox <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGListBox</span><span class="token punctuation">(</span>frame<span class="token punctuation">,</span> <span class="token number">89</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fSelected <span class="token operator">=</span> <span class="token keyword">new</span> TList<span class="token punctuation">;</span>
-<span class="token keyword">char</span> tmp<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">sprintf</span><span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> <span class="token string">&quot;Entry %i&quot;</span><span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddEntry</span><span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token comment">/*IDs*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Resize</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fListBox<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsTop <span class="token operator">|</span> kLHintsLeft <span class="token operator">|</span> kLHintsExpandX <span class="token operator">|</span> kLHintsExpandY<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetMultipleSelections</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token comment">/*0  1*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x8BBE;&#x7F6E;&#x662F;&#x5426;&#x53EF;&#x591A;&#x9009;</span>
-fSelected<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// Writes selected entries in TList if multiselection.</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetMultipleSelections</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Selected entries are:\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetSelectedEntries</span><span class="token punctuation">(</span>fSelected<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  fSelected<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">ls</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-  <span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Selected entries is: %d\n&quot;</span><span class="token punctuation">,</span> fListBox<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetSelected</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>fSelected<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//&#x4E0D;&#x7528;&#x4E4B;&#x540E;</span>
-  fSelected<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">delete</span> fSelected<span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// TGListBox</span>
+<span class="hljs-comment">// &#x53EF;&#x9009;&#x62E9;&#x5217;&#x8868;&#xFF0C;&#x53EF;&#x5355;&#x9009;&#x3001;&#x591A;&#x9009;</span>
+TGListBox           *fListBox;
+TList               *fSelected;
+fListBox = <span class="hljs-keyword">new</span> TGListBox(frame, <span class="hljs-number">89</span>);
+fSelected = <span class="hljs-keyword">new</span> TList;
+<span class="hljs-keyword">char</span> tmp[<span class="hljs-number">20</span>];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; ++i) {
+  <span class="hljs-built_in">sprintf</span>(tmp, <span class="hljs-string">&quot;Entry %i&quot;</span>, i+<span class="hljs-number">1</span>);
+  fListBox-&gt;AddEntry(tmp, i+<span class="hljs-number">1</span><span class="hljs-comment">/*IDs*/</span>);
+}
+fListBox-&gt;Resize(<span class="hljs-number">100</span>,<span class="hljs-number">150</span>);
+frame-&gt;AddFrame(fListBox, <span class="hljs-keyword">new</span> TGLayoutHints(kLHintsTop | kLHintsLeft | kLHintsExpandX | kLHintsExpandY, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>));
+fListBox-&gt;SetMultipleSelections(<span class="hljs-number">0</span><span class="hljs-comment">/*0  1*/</span>);<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x662F;&#x5426;&#x53EF;&#x591A;&#x9009;</span>
+fSelected-&gt;Clear();<span class="hljs-comment">// Writes selected entries in TList if multiselection.</span>
+<span class="hljs-keyword">if</span> (fListBox-&gt;GetMultipleSelections()) {
+  Printf(<span class="hljs-string">&quot;Selected entries are:\n&quot;</span>);
+  fListBox-&gt;GetSelectedEntries(fSelected);
+  fSelected-&gt;ls();
+ } <span class="hljs-keyword">else</span> {
+  Printf(<span class="hljs-string">&quot;Selected entries is: %d\n&quot;</span>, fListBox-&gt;GetSelected());
+ }
+<span class="hljs-keyword">if</span> (fSelected) {<span class="hljs-comment">//&#x4E0D;&#x7528;&#x4E4B;&#x540E;</span>
+  fSelected-&gt;Delete();
+  <span class="hljs-keyword">delete</span> fSelected;
+ }
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGListBox.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3823,7 +3835,7 @@ fSelected<span class="token operator">-</span><span class="token operator">&gt;<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGListBox+","level":"1.3.29","depth":2,"next":{"title":"TGListTree*","level":"1.3.30","depth":2,"path":"class/gui/TGListTree.md","ref":"class/gui/TGListTree.md","articles":[]},"previous":{"title":"TGLayout+","level":"1.3.28","depth":2,"path":"class/gui/TGLayout.md","ref":"class/gui/TGLayout.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGListBox.md","mtime":"2018-05-14T09:18:21.757Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGListBox+","level":"1.3.29","depth":2,"next":{"title":"TGListTree*","level":"1.3.30","depth":2,"path":"class/gui/TGListTree.md","ref":"class/gui/TGListTree.md","articles":[]},"previous":{"title":"TGLayout+","level":"1.3.28","depth":2,"path":"class/gui/TGLayout.md","ref":"class/gui/TGLayout.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGListBox.md","mtime":"2018-05-14T09:18:21.757Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3855,6 +3867,18 @@ fSelected<span class="token operator">-</span><span class="token operator">&gt;<
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

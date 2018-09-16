@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3681,7 +3693,7 @@
 <p>The TG16ColorSelector is a composite frame with 16 TGColorFrames.    </p>
 <p>The TGColorPopup is a popup containing a TG16ColorSelector and a<br>&quot;More...&quot; button which popups up a TGColorDialog allowing custom<br>color selection.                                                     </p>
 <p>The TGColorSelect widget is like a checkbutton but instead of the<br>check mark there is color area with a little down arrow. When<br>clicked on the arrow the TGColorPopup pops up.                       </p>
-<pre class="language-"><code>Selecting a color in this widget will generate the event:            
+<pre><code>Selecting a color in this widget will generate the event:            
 kC_COLORSEL, kCOL_SELCHANGED, widget id, pixel.                      
 and the signal:                                                      
 ColorSelected(Pixel_t pixel)
@@ -3691,85 +3703,85 @@ ColorSelected(Pixel_t pixel)
 <p>TGColorSelect &#x7EE7;&#x627F; TGCheckButton<br>Color selection checkbutton</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
 <p><strong>TGColorFrame</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGColorFrame</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Pixel_t c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Int_t n <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// TGColorFrame constructor.</span>
-<span class="token comment">/// The TGColorFrame is a small frame with border showing a specific color.</span>
+<pre><code class="lang-cpp">   TGColorFrame(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Pixel_t c = <span class="hljs-number">0</span>, Int_t n = <span class="hljs-number">1</span>);
+<span class="hljs-comment">/// TGColorFrame constructor.</span>
+<span class="hljs-comment">/// The TGColorFrame is a small frame with border showing a specific color.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGColorFrame</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+   <span class="hljs-keyword">virtual</span> ~TGColorFrame() { }
 
-   <span class="token keyword">virtual</span> Bool_t  <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle button events in TGColorFrame.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>    <span class="token function">DrawBorder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Draw TGColorFrame border.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t  <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle button events in TGColorFrame.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">DrawBorder</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Draw TGColorFrame border.</span>
 
-   <span class="token keyword">void</span>     <span class="token function">SetActive</span><span class="token punctuation">(</span>Bool_t in<span class="token punctuation">)</span> <span class="token punctuation">{</span> fActive <span class="token operator">=</span> in<span class="token punctuation">;</span> gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">NeedRedraw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Pixel_t  <span class="token function">GetColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fColor<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>     <span class="hljs-title">SetActive</span><span class="hljs-params">(Bool_t in)</span> </span>{ fActive = in; gClient-&gt;NeedRedraw(<span class="hljs-keyword">this</span>); }
+   <span class="hljs-function">Pixel_t  <span class="hljs-title">GetColor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fColor; }
 </code></pre>
 <p><strong>TG16ColorSelector</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TG16ColorSelector</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// TG16ColorSelector constructor.</span>
-<span class="token comment">/// The TG16ColorSelector is a composite frame with 16 TGColorFrames.</span>
+<pre><code class="lang-cpp">   TG16ColorSelector(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>);
+<span class="hljs-comment">/// TG16ColorSelector constructor.</span>
+<span class="hljs-comment">/// The TG16ColorSelector is a composite frame with 16 TGColorFrames.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TG16ColorSelector</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// TG16ColorSelector destructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TG16ColorSelector();<span class="hljs-comment">/// TG16ColorSelector destructor.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">ProcessMessage</span><span class="token punctuation">(</span>Long_t msg<span class="token punctuation">,</span> Long_t parm1<span class="token punctuation">,</span> Long_t parm2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Process messages for TG16ColorSelector.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;<span class="hljs-comment">/// Process messages for TG16ColorSelector.</span>
 
-   <span class="token keyword">void</span>    <span class="token function">SetActive</span><span class="token punctuation">(</span>Int_t newat<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set active color frame.</span>
-   Int_t   <span class="token function">GetActive</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fActive<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">SetActive</span><span class="hljs-params">(Int_t newat)</span></span>;<span class="hljs-comment">/// Set active color frame.</span>
+   <span class="hljs-function">Int_t   <span class="hljs-title">GetActive</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> fActive; }
 </code></pre>
 <p><strong>TGColorPopup</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGColorPopup</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">const</span> TGWindow <span class="token operator">*</span>m <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Pixel_t color <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// TGColorPopup constructor.</span>
-<span class="token comment">/// The TGColorPopup is a popup containing a TG16ColorSelector and a &quot;More...&quot;</span>
-<span class="token comment">/// button which popups up a TGColorDialog allowing custom color selection.</span>
+<pre><code class="lang-cpp">   TGColorPopup(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, <span class="hljs-keyword">const</span> TGWindow *m = <span class="hljs-number">0</span>, Pixel_t color = <span class="hljs-number">0</span>);
+<span class="hljs-comment">/// TGColorPopup constructor.</span>
+<span class="hljs-comment">/// The TGColorPopup is a popup containing a TG16ColorSelector and a &quot;More...&quot;</span>
+<span class="hljs-comment">/// button which popups up a TGColorDialog allowing custom color selection.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGColorPopup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// TGColorPopup destructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TGColorPopup();<span class="hljs-comment">/// TGColorPopup destructor.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle mouse button events for TGColorPopup.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">ProcessMessage</span><span class="token punctuation">(</span>Long_t msg<span class="token punctuation">,</span> Long_t parm1<span class="token punctuation">,</span> Long_t parm2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Process messages for TGColorPopup.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle mouse button events for TGColorPopup.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;<span class="hljs-comment">/// Process messages for TGColorPopup.</span>
 
-   <span class="token keyword">void</span>    <span class="token function">PlacePopup</span><span class="token punctuation">(</span>Int_t x<span class="token punctuation">,</span> Int_t y<span class="token punctuation">,</span> UInt_t w<span class="token punctuation">,</span> UInt_t h<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Popup TGColorPopup at x,y position</span>
-   <span class="token keyword">void</span>    <span class="token function">EndPopup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Ungrab pointer and unmap window.</span>
-   <span class="token keyword">void</span>    <span class="token function">PreviewColor</span><span class="token punctuation">(</span>Pixel_t color<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Emit a signal to see preview.</span>
-   <span class="token keyword">void</span>    <span class="token function">PreviewAlphaColor</span><span class="token punctuation">(</span>ULong_t color<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Emit a signal to see preview.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PlacePopup</span><span class="hljs-params">(Int_t x, Int_t y, UInt_t w, UInt_t h)</span></span>;<span class="hljs-comment">/// Popup TGColorPopup at x,y position</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">EndPopup</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Ungrab pointer and unmap window.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PreviewColor</span><span class="hljs-params">(Pixel_t color)</span></span>;<span class="hljs-comment">/// Emit a signal to see preview.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">PreviewAlphaColor</span><span class="hljs-params">(ULong_t color)</span></span>;<span class="hljs-comment">/// Emit a signal to see preview.</span>
 </code></pre>
 <p><strong>TGColorSelect</strong></p>
-<pre class="language-"><code class="lang-cpp">   <span class="token function">TGColorSelect</span><span class="token punctuation">(</span><span class="token keyword">const</span> TGWindow <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> Pixel_t color <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                 Int_t id <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// TGColorSelect constructor.</span>
-<span class="token comment">/// The TGColorSelect widget is like a checkbutton but instead of the check</span>
-<span class="token comment">/// mark there is color area with a little down arrow.</span>
-<span class="token comment">/// When clicked on the arrow the TGColorPopup pops up.</span>
+<pre><code class="lang-cpp">   TGColorSelect(<span class="hljs-keyword">const</span> TGWindow *p = <span class="hljs-number">0</span>, Pixel_t color = <span class="hljs-number">0</span>,
+                 Int_t id = <span class="hljs-number">-1</span>);
+<span class="hljs-comment">/// TGColorSelect constructor.</span>
+<span class="hljs-comment">/// The TGColorSelect widget is like a checkbutton but instead of the check</span>
+<span class="hljs-comment">/// mark there is color area with a little down arrow.</span>
+<span class="hljs-comment">/// When clicked on the arrow the TGColorPopup pops up.</span>
 
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TGColorSelect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// TGColorSelect destructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TGColorSelect();<span class="hljs-comment">/// TGColorSelect destructor.</span>
 
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">HandleButton</span><span class="token punctuation">(</span>Event_t <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Handle button events for TGColorSelect.</span>
-   <span class="token keyword">virtual</span> Bool_t <span class="token function">ProcessMessage</span><span class="token punctuation">(</span>Long_t msg<span class="token punctuation">,</span> Long_t parm1<span class="token punctuation">,</span> Long_t parm2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Process messages for TGColorSelect.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">HandleButton</span><span class="hljs-params">(Event_t *event)</span></span>;<span class="hljs-comment">/// Handle button events for TGColorSelect.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Bool_t <span class="hljs-title">ProcessMessage</span><span class="hljs-params">(Long_t msg, Long_t parm1, Long_t parm2)</span></span>;<span class="hljs-comment">/// Process messages for TGColorSelect.</span>
 
-   <span class="token keyword">void</span>    <span class="token function">SetColor</span><span class="token punctuation">(</span>Pixel_t color<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set color.</span>
-   <span class="token keyword">void</span>    <span class="token function">SetAlphaColor</span><span class="token punctuation">(</span>ULong_t color<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set color.</span>
-   Pixel_t <span class="token function">GetColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fColor<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span>    <span class="token function">Enable</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//*TOGGLE* *GETTER=IsEnabled  /// Set state of widget as enabled.</span>
-   <span class="token keyword">void</span>    <span class="token function">Disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Set state of widget as disabled.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">SetColor</span><span class="hljs-params">(Pixel_t color, Bool_t emit = kTRUE)</span></span>;<span class="hljs-comment">/// Set color.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">SetAlphaColor</span><span class="hljs-params">(ULong_t color, Bool_t emit = kTRUE)</span></span>;<span class="hljs-comment">/// Set color.</span>
+   <span class="hljs-function">Pixel_t <span class="hljs-title">GetColor</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fColor; }
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">Enable</span><span class="hljs-params">(Bool_t on = kTRUE)</span></span>;  <span class="hljs-comment">//*TOGGLE* *GETTER=IsEnabled  /// Set state of widget as enabled.</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>    <span class="hljs-title">Disable</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">/// Set state of widget as disabled.</span>
 
-   <span class="token comment">// dummy methods just to remove from context menu</span>
-   <span class="token keyword">void</span> <span class="token function">SetDown</span><span class="token punctuation">(</span>Bool_t on <span class="token operator">=</span> kTRUE<span class="token punctuation">,</span> Bool_t emit <span class="token operator">=</span> kFALSE<span class="token punctuation">)</span> <span class="token punctuation">{</span> TGButton<span class="token operator">::</span><span class="token function">SetDown</span><span class="token punctuation">(</span>on<span class="token punctuation">,</span> emit<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">Rename</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>title<span class="token punctuation">)</span>  <span class="token punctuation">{</span> TGTextButton<span class="token operator">::</span><span class="token function">SetTitle</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">SetEnabled</span><span class="token punctuation">(</span>Bool_t e <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span> <span class="token punctuation">{</span>TGButton<span class="token operator">::</span><span class="token function">SetEnabled</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   <span class="hljs-comment">// dummy methods just to remove from context menu</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetDown</span><span class="hljs-params">(Bool_t on = kTRUE, Bool_t emit = kFALSE)</span> </span>{ TGButton::SetDown(on, emit); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Rename</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *title)</span>  </span>{ TGTextButton::SetTitle(title); }
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetEnabled</span><span class="hljs-params">(Bool_t e = kTRUE)</span> </span>{TGButton::SetEnabled(e); }
 
-   <span class="token keyword">virtual</span> TGDimension <span class="token function">GetDefaultSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">TGDimension</span><span class="token punctuation">(</span><span class="token number">43</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">SavePrimitive</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Option_t <span class="token operator">*</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a color select widget as a C++ statement(s) on output stream out</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> TGDimension <span class="hljs-title">GetDefaultSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> TGDimension(<span class="hljs-number">43</span>, <span class="hljs-number">21</span>); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SavePrimitive</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Option_t * = <span class="hljs-string">&quot;&quot;</span>)</span></span>;
+<span class="hljs-comment">/// Save a color select widget as a C++ statement(s) on output stream out</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">ColorSelected</span><span class="token punctuation">(</span>Pixel_t color <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;ColorSelected(Pixel_t)&quot;</span><span class="token punctuation">,</span> color <span class="token operator">?</span> color <span class="token operator">:</span> <span class="token function">GetColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment">//*SIGNAL*</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">AlphaColorSelected</span><span class="token punctuation">(</span>ULong_t colptr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span> <span class="token function">Emit</span><span class="token punctuation">(</span><span class="token string">&quot;AlphaColorSelected(ULong_t)&quot;</span><span class="token punctuation">,</span> colptr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ColorSelected</span><span class="hljs-params">(Pixel_t color = <span class="hljs-number">0</span>)</span>
+            </span>{ Emit(<span class="hljs-string">&quot;ColorSelected(Pixel_t)&quot;</span>, color ? color : GetColor()); }  <span class="hljs-comment">//*SIGNAL*</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AlphaColorSelected</span><span class="hljs-params">(ULong_t colptr = <span class="hljs-number">0</span>)</span>
+            </span>{ Emit(<span class="hljs-string">&quot;AlphaColorSelected(ULong_t)&quot;</span>, colptr); }  <span class="hljs-comment">//*SIGNAL*</span>
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TGColorSelect.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:21
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:21 </span> </footer>
                                 
                                 </section>
                             
@@ -3812,7 +3824,7 @@ ColorSelected(Pixel_t pixel)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TGColorSelect*","level":"1.3.7","depth":2,"next":{"title":"TGComboBox*","level":"1.3.8","depth":2,"path":"class/gui/TGComboBox.md","ref":"class/gui/TGComboBox.md","articles":[]},"previous":{"title":"TGColorDialog*","level":"1.3.6","depth":2,"path":"class/gui/TGColorDialog.md","ref":"class/gui/TGColorDialog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGColorSelect.md","mtime":"2018-05-14T09:18:21.610Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TGColorSelect*","level":"1.3.7","depth":2,"next":{"title":"TGComboBox*","level":"1.3.8","depth":2,"path":"class/gui/TGComboBox.md","ref":"class/gui/TGComboBox.md","articles":[]},"previous":{"title":"TGColorDialog*","level":"1.3.6","depth":2,"path":"class/gui/TGColorDialog.md","ref":"class/gui/TGColorDialog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/TGColorSelect.md","mtime":"2018-05-14T09:18:21.610Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -3844,6 +3856,18 @@ ColorSelected(Pixel_t pixel)
     
         
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         

@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-ch" >
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -25,7 +25,19 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
                 
             
                 
@@ -45,11 +57,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
                 
             
                 
@@ -142,7 +154,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="輸入並搜尋" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -3628,7 +3640,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本書使用 GitBook 釋出
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -3679,664 +3691,664 @@
 <h1 id="tcolor"><a name="tcolor" class="plugin-anchor" href="#tcolor"><i class="fa fa-link" aria-hidden="true"></i></a>TColor</h1>
 <p>TColor : public TNamed</p>
 <h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token keyword">namespace</span> <span class="token punctuation">{</span>
-   <span class="token keyword">static</span> Bool_t<span class="token operator">&amp;</span> <span class="token function">TColor__GrayScaleMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">static</span> Bool_t grayScaleMode<span class="token punctuation">;</span>
-      <span class="token keyword">return</span> grayScaleMode<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   <span class="token keyword">static</span> TArrayI<span class="token operator">&amp;</span> <span class="token function">TColor__Palette</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">static</span> TArrayI <span class="token function">globalPalette</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">return</span> globalPalette<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-   <span class="token keyword">static</span> TArrayD<span class="token operator">&amp;</span> <span class="token function">TColor__PalettesList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">static</span> TArrayD <span class="token function">globalPalettesList</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">return</span> globalPalettesList<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-cpp"><span class="hljs-keyword">namespace</span> {
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t&amp; <span class="hljs-title">TColor__GrayScaleMode</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">static</span> Bool_t grayScaleMode;
+      <span class="hljs-keyword">return</span> grayScaleMode;
+   }
+   <span class="hljs-function"><span class="hljs-keyword">static</span> TArrayI&amp; <span class="hljs-title">TColor__Palette</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-function"><span class="hljs-keyword">static</span> TArrayI <span class="hljs-title">globalPalette</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;
+      <span class="hljs-keyword">return</span> globalPalette;
+   }
+   <span class="hljs-function"><span class="hljs-keyword">static</span> TArrayD&amp; <span class="hljs-title">TColor__PalettesList</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-function"><span class="hljs-keyword">static</span> TArrayD <span class="hljs-title">globalPalettesList</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;
+      <span class="hljs-keyword">return</span> globalPalettesList;
+   }
+}
 
-<span class="token keyword">static</span> Int_t gHighestColorIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">///&lt; Highest color index defined</span>
+<span class="hljs-keyword">static</span> Int_t gHighestColorIndex = <span class="hljs-number">0</span>; <span class="hljs-comment">///&lt; Highest color index defined</span>
 
-<span class="token macro property">#<span class="token directive keyword">define</span> fgGrayscaleMode TColor__GrayScaleMode()</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> fgPalette TColor__Palette()</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> fgPalettesList TColor__PalettesList()</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> fgGrayscaleMode TColor__GrayScaleMode()</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> fgPalette TColor__Palette()</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> fgPalettesList TColor__PalettesList()</span>
 
-<span class="token keyword">using</span> std<span class="token operator">::</span>floor<span class="token punctuation">;</span>
+<span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">floor</span>;
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">//class TColor : public TNamed</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">//class TColor : public TNamed</span>
 
-   <span class="token function">TColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Default constructor.</span>
-   <span class="token function">TColor</span><span class="token punctuation">(</span>Int_t color<span class="token punctuation">,</span> Float_t r<span class="token punctuation">,</span> Float_t g<span class="token punctuation">,</span> Float_t b<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> Float_t a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Normal color constructor. Initialize a color structure.</span>
-<span class="token comment">/// Compute the RGB and HLS color components.</span>
+   TColor();<span class="hljs-comment">/// Default constructor.</span>
+   TColor(Int_t color, Float_t r, Float_t g, Float_t b, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name=<span class="hljs-string">&quot;&quot;</span>, Float_t a = <span class="hljs-number">1</span>);
+<span class="hljs-comment">/// Normal color constructor. Initialize a color structure.</span>
+<span class="hljs-comment">/// Compute the RGB and HLS color components.</span>
 
-   <span class="token function">TColor</span><span class="token punctuation">(</span>Float_t r<span class="token punctuation">,</span> Float_t g<span class="token punctuation">,</span> Float_t b<span class="token punctuation">,</span> Float_t a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Fast TColor constructor. It creates a color with an index just above the</span>
-<span class="token comment">/// current highest one. It does not name the color.</span>
-<span class="token comment">/// This is useful to create palettes.</span>
+   TColor(Float_t r, Float_t g, Float_t b, Float_t a = <span class="hljs-number">1</span>);
+<span class="hljs-comment">/// Fast TColor constructor. It creates a color with an index just above the</span>
+<span class="hljs-comment">/// current highest one. It does not name the color.</span>
+<span class="hljs-comment">/// This is useful to create palettes.</span>
 
-   <span class="token function">TColor</span><span class="token punctuation">(</span><span class="token keyword">const</span> TColor <span class="token operator">&amp;</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Color copy constructor.</span>
-   <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">TColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">/// Color destructor.</span>
-   <span class="token keyword">const</span> <span class="token keyword">char</span>   <span class="token operator">*</span><span class="token function">AsHexString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return color as hexadecimal string. This string can be directly passed</span>
-<span class="token comment">/// to, for example, TGClient::GetColorByName(). String will be reused so</span>
-<span class="token comment">/// copy immediately if needed.</span>
+   TColor(<span class="hljs-keyword">const</span> TColor &amp;color);<span class="hljs-comment">/// Color copy constructor.</span>
+   <span class="hljs-keyword">virtual</span> ~TColor();<span class="hljs-comment">/// Color destructor.</span>
+   <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>   *<span class="hljs-title">AsHexString</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return color as hexadecimal string. This string can be directly passed</span>
+<span class="hljs-comment">/// to, for example, TGClient::GetColorByName(). String will be reused so</span>
+<span class="hljs-comment">/// copy immediately if needed.</span>
 
-   <span class="token keyword">void</span>          <span class="token function">Copy</span><span class="token punctuation">(</span>TObject <span class="token operator">&amp;</span>color<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Copy this color to obj.</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>   <span class="token function">CreateColorWheel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>   <span class="token function">CreateColorsGray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create the Gray scale colors in the Color Wheel</span>
+   <span class="hljs-function"><span class="hljs-keyword">void</span>          <span class="hljs-title">Copy</span><span class="hljs-params">(TObject &amp;color)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Copy this color to obj.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">CreateColorWheel</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">CreateColorsGray</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Create the Gray scale colors in the Color Wheel</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>   <span class="token function">CreateColorsCircle</span><span class="token punctuation">(</span>Int_t offset<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> UChar_t <span class="token operator">*</span>rgb<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create the &quot;circle&quot; colors in the color wheel.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">CreateColorsCircle</span><span class="hljs-params">(Int_t offset, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, UChar_t *rgb)</span></span>;
+<span class="hljs-comment">/// Create the &quot;circle&quot; colors in the color wheel.</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>   <span class="token function">CreateColorsRectangle</span><span class="token punctuation">(</span>Int_t offset<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">,</span> UChar_t <span class="token operator">*</span>rgb<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Create the &quot;rectangular&quot; colors in the color wheel.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>   <span class="hljs-title">CreateColorsRectangle</span><span class="hljs-params">(Int_t offset, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, UChar_t *rgb)</span></span>;
+<span class="hljs-comment">/// Create the &quot;rectangular&quot; colors in the color wheel.</span>
 
-   <span class="token keyword">static</span> Int_t  <span class="token function">CreateGradientColorTable</span><span class="token punctuation">(</span>UInt_t Number<span class="token punctuation">,</span> Double_t<span class="token operator">*</span> Stops<span class="token punctuation">,</span>
-                    Double_t<span class="token operator">*</span> Red<span class="token punctuation">,</span> Double_t<span class="token operator">*</span> Green<span class="token punctuation">,</span> Double_t<span class="token operator">*</span> Blue<span class="token punctuation">,</span> UInt_t NColors<span class="token punctuation">,</span> Float_t alpha<span class="token operator">=</span><span class="token number">1.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static function creating a color table with several connected linear gradients.</span>
-<span class="token comment">///   - Number: The number of end point colors that will form the gradients.</span>
-<span class="token comment">///             Must be at least 2.</span>
-<span class="token comment">///   - Stops: Where in the whole table the end point colors should lie.</span>
-<span class="token comment">///            Each entry must be on [0, 1], each entry must be greater than</span>
-<span class="token comment">///            the previous entry.</span>
-<span class="token comment">///   - Red, Green, Blue: The end point color values.</span>
-<span class="token comment">///                       Each entry must be on [0, 1]</span>
-<span class="token comment">///   - NColors: Total number of colors in the table. Must be at least 1.</span>
-<span class="token comment">/// Returns a positive value on success and -1 on error.</span>
-<span class="token comment">/// The table is constructed by tracing lines between the given points in</span>
-<span class="token comment">/// RGB space.  Each color value may have a value between 0 and 1.  The</span>
-<span class="token comment">/// difference between consecutive &quot;Stops&quot; values gives the fraction of</span>
-<span class="token comment">/// space in the whole table that should be used for the interval between</span>
-<span class="token comment">/// the corresponding color values.</span>
-<span class="token comment">/// Normally the first element of Stops should be 0 and the last should be 1.</span>
-<span class="token comment">/// If this is not true, fewer than NColors will be used in proportion with</span>
-<span class="token comment">/// the total interval between the first and last elements of Stops.</span>
-<span class="token comment">/// This definition is similar to the povray-definition of gradient</span>
-<span class="token comment">/// color tables.</span>
-<span class="token comment">/// For instance:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">/// UInt_t Number = 3;</span>
-<span class="token comment">/// Double_t Red[3]   = { 0.0, 1.0, 1.0 };</span>
-<span class="token comment">/// Double_t Green[3] = { 0.0, 0.0, 1.0 };</span>
-<span class="token comment">/// Double_t Blue[3]  = { 1.0, 0.0, 1.0 };</span>
-<span class="token comment">/// Double_t Stops[3] = { 0.0, 0.4, 1.0 };</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">/// This defines a table in which there are three color end points:</span>
-<span class="token comment">/// RGB = {0, 0, 1}, {1, 0, 0}, and {1, 1, 1} = blue, red, white</span>
-<span class="token comment">/// The first 40% of the table is used to go linearly from blue to red.</span>
-<span class="token comment">/// The remaining 60% of the table is used to go linearly from red to white.</span>
-<span class="token comment">/// If you define a very short interval such that less than one color fits</span>
-<span class="token comment">/// in it, no colors at all will be allocated.  If this occurs for all</span>
-<span class="token comment">/// intervals, ROOT will revert to the default palette.</span>
-<span class="token comment">/// Original code by Andreas Zoglauer (zog@mpe.mpg.de)</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t  <span class="hljs-title">CreateGradientColorTable</span><span class="hljs-params">(UInt_t Number, Double_t* Stops,
+                    Double_t* Red, Double_t* Green, Double_t* Blue, UInt_t NColors, Float_t alpha=<span class="hljs-number">1.</span>)</span></span>;
+<span class="hljs-comment">/// Static function creating a color table with several connected linear gradients.</span>
+<span class="hljs-comment">///   - Number: The number of end point colors that will form the gradients.</span>
+<span class="hljs-comment">///             Must be at least 2.</span>
+<span class="hljs-comment">///   - Stops: Where in the whole table the end point colors should lie.</span>
+<span class="hljs-comment">///            Each entry must be on [0, 1], each entry must be greater than</span>
+<span class="hljs-comment">///            the previous entry.</span>
+<span class="hljs-comment">///   - Red, Green, Blue: The end point color values.</span>
+<span class="hljs-comment">///                       Each entry must be on [0, 1]</span>
+<span class="hljs-comment">///   - NColors: Total number of colors in the table. Must be at least 1.</span>
+<span class="hljs-comment">/// Returns a positive value on success and -1 on error.</span>
+<span class="hljs-comment">/// The table is constructed by tracing lines between the given points in</span>
+<span class="hljs-comment">/// RGB space.  Each color value may have a value between 0 and 1.  The</span>
+<span class="hljs-comment">/// difference between consecutive &quot;Stops&quot; values gives the fraction of</span>
+<span class="hljs-comment">/// space in the whole table that should be used for the interval between</span>
+<span class="hljs-comment">/// the corresponding color values.</span>
+<span class="hljs-comment">/// Normally the first element of Stops should be 0 and the last should be 1.</span>
+<span class="hljs-comment">/// If this is not true, fewer than NColors will be used in proportion with</span>
+<span class="hljs-comment">/// the total interval between the first and last elements of Stops.</span>
+<span class="hljs-comment">/// This definition is similar to the povray-definition of gradient</span>
+<span class="hljs-comment">/// color tables.</span>
+<span class="hljs-comment">/// For instance:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">/// UInt_t Number = 3;</span>
+<span class="hljs-comment">/// Double_t Red[3]   = { 0.0, 1.0, 1.0 };</span>
+<span class="hljs-comment">/// Double_t Green[3] = { 0.0, 0.0, 1.0 };</span>
+<span class="hljs-comment">/// Double_t Blue[3]  = { 1.0, 0.0, 1.0 };</span>
+<span class="hljs-comment">/// Double_t Stops[3] = { 0.0, 0.4, 1.0 };</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// This defines a table in which there are three color end points:</span>
+<span class="hljs-comment">/// RGB = {0, 0, 1}, {1, 0, 0}, and {1, 1, 1} = blue, red, white</span>
+<span class="hljs-comment">/// The first 40% of the table is used to go linearly from blue to red.</span>
+<span class="hljs-comment">/// The remaining 60% of the table is used to go linearly from red to white.</span>
+<span class="hljs-comment">/// If you define a very short interval such that less than one color fits</span>
+<span class="hljs-comment">/// in it, no colors at all will be allocated.  If this occurs for all</span>
+<span class="hljs-comment">/// intervals, ROOT will revert to the default palette.</span>
+<span class="hljs-comment">/// Original code by Andreas Zoglauer (zog@mpe.mpg.de)</span>
 
-   <span class="token keyword">static</span> Int_t  <span class="token function">GetColorPalette</span><span class="token punctuation">(</span>Int_t i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static function returning the color number i in current palette.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t  <span class="hljs-title">GetColorPalette</span><span class="hljs-params">(Int_t i)</span></span>;
+<span class="hljs-comment">/// Static function returning the color number i in current palette.</span>
 
-   <span class="token keyword">static</span> Int_t  <span class="token function">GetNumberOfColors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static function returning number of colors in the color palette.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t  <span class="hljs-title">GetNumberOfColors</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Static function returning number of colors in the color palette.</span>
 
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">GetRGB</span><span class="token punctuation">(</span>Float_t <span class="token operator">&amp;</span>r<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>g<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>b<span class="token punctuation">)</span> <span class="token keyword">const</span>
-                    <span class="token punctuation">{</span> r<span class="token operator">=</span><span class="token function">GetRed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> g<span class="token operator">=</span><span class="token function">GetGreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> b<span class="token operator">=</span><span class="token function">GetBlue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">GetHLS</span><span class="token punctuation">(</span>Float_t <span class="token operator">&amp;</span>h<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>l<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>s<span class="token punctuation">)</span> <span class="token keyword">const</span>
-                    <span class="token punctuation">{</span> h<span class="token operator">=</span><span class="token function">GetHue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> l<span class="token operator">=</span><span class="token function">GetLight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> s<span class="token operator">=</span><span class="token function">GetSaturation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Int_t         <span class="token function">GetNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fNumber<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   ULong_t       <span class="token function">GetPixel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return pixel value corresponding to this color. This pixel value can</span>
-<span class="token comment">/// be used in the GUI classes. This call does not work in batch mode since</span>
-<span class="token comment">/// it needs to communicate with the graphics system.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">GetRGB</span><span class="hljs-params">(Float_t &amp;r, Float_t &amp;g, Float_t &amp;b)</span> <span class="hljs-keyword">const</span>
+                    </span>{ r=GetRed(); g=GetGreen(); b=GetBlue(); }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">GetHLS</span><span class="hljs-params">(Float_t &amp;h, Float_t &amp;l, Float_t &amp;s)</span> <span class="hljs-keyword">const</span>
+                    </span>{ h=GetHue(); l=GetLight(); s=GetSaturation(); }
+   <span class="hljs-function">Int_t         <span class="hljs-title">GetNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fNumber; }
+   <span class="hljs-function">ULong_t       <span class="hljs-title">GetPixel</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-comment">/// Return pixel value corresponding to this color. This pixel value can</span>
+<span class="hljs-comment">/// be used in the GUI classes. This call does not work in batch mode since</span>
+<span class="hljs-comment">/// it needs to communicate with the graphics system.</span>
 
-   Float_t       <span class="token function">GetRed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">GetGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> fRed<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Float_t       <span class="token function">GetGreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">GetGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> fGreen<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Float_t       <span class="token function">GetBlue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">GetGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> fBlue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Float_t       <span class="token function">GetHue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fHue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Float_t       <span class="token function">GetLight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fLight<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Float_t       <span class="token function">GetSaturation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">IsGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> fSaturation<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   Float_t       <span class="token function">GetAlpha</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> fAlpha<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> Float_t <span class="token function">GetGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token comment">/*ITU*/</span> <span class="token keyword">return</span> <span class="token number">0.299f</span><span class="token operator">*</span>fRed <span class="token operator">+</span> <span class="token number">0.587f</span><span class="token operator">*</span>fGreen <span class="token operator">+</span> <span class="token number">0.114f</span><span class="token operator">*</span>fBlue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">ls</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// List this color with its attributes.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">Print</span><span class="token punctuation">(</span>Option_t <span class="token operator">*</span>option<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span><span class="token comment">/// Dump this color with its attributes.</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">SetAlpha</span><span class="token punctuation">(</span>Float_t a<span class="token punctuation">)</span> <span class="token punctuation">{</span> fAlpha <span class="token operator">=</span> a<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">virtual</span> <span class="token keyword">void</span>  <span class="token function">SetRGB</span><span class="token punctuation">(</span>Float_t r<span class="token punctuation">,</span> Float_t g<span class="token punctuation">,</span> Float_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Initialize this color and its associated colors.</span>
+   <span class="hljs-function">Float_t       <span class="hljs-title">GetRed</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsGrayscale() ? GetGrayscale() : fRed; }
+   <span class="hljs-function">Float_t       <span class="hljs-title">GetGreen</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsGrayscale() ? GetGrayscale() : fGreen; }
+   <span class="hljs-function">Float_t       <span class="hljs-title">GetBlue</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsGrayscale() ? GetGrayscale() : fBlue; }
+   <span class="hljs-function">Float_t       <span class="hljs-title">GetHue</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fHue; }
+   <span class="hljs-function">Float_t       <span class="hljs-title">GetLight</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fLight; }
+   <span class="hljs-function">Float_t       <span class="hljs-title">GetSaturation</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> IsGrayscale() ? <span class="hljs-number">0</span> : fSaturation; }
+   <span class="hljs-function">Float_t       <span class="hljs-title">GetAlpha</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> fAlpha; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> Float_t <span class="hljs-title">GetGrayscale</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-comment">/*ITU*/</span> <span class="hljs-keyword">return</span> <span class="hljs-number">0.299f</span>*fRed + <span class="hljs-number">0.587f</span>*fGreen + <span class="hljs-number">0.114f</span>*fBlue; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">ls</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// List this color with its attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">Print</span><span class="hljs-params">(Option_t *option=<span class="hljs-string">&quot;&quot;</span>)</span> <span class="hljs-keyword">const</span></span>;<span class="hljs-comment">/// Dump this color with its attributes.</span>
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetAlpha</span><span class="hljs-params">(Float_t a)</span> </span>{ fAlpha = a; }
+   <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span>  <span class="hljs-title">SetRGB</span><span class="hljs-params">(Float_t r, Float_t g, Float_t b)</span></span>;
+<span class="hljs-comment">/// Initialize this color and its associated colors.</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">InitializeColors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Initialize colors used by the TCanvas based graphics (via TColor objects).</span>
-<span class="token comment">/// This method should be called before the ApplicationImp is created (which</span>
-<span class="token comment">/// initializes the GUI colors).</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">InitializeColors</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Initialize colors used by the TCanvas based graphics (via TColor objects).</span>
+<span class="hljs-comment">/// This method should be called before the ApplicationImp is created (which</span>
+<span class="hljs-comment">/// initializes the GUI colors).</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">HLS2RGB</span><span class="token punctuation">(</span>Float_t h<span class="token punctuation">,</span> Float_t l<span class="token punctuation">,</span> Float_t s<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>r<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>g<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method to compute RGB from HLS. The l and s are between [0,1]</span>
-<span class="token comment">/// and h is between [0,360]. The returned r,g,b triplet is between [0,1].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">HLS2RGB</span><span class="hljs-params">(Float_t h, Float_t l, Float_t s, Float_t &amp;r, Float_t &amp;g, Float_t &amp;b)</span></span>;
+<span class="hljs-comment">/// Static method to compute RGB from HLS. The l and s are between [0,1]</span>
+<span class="hljs-comment">/// and h is between [0,360]. The returned r,g,b triplet is between [0,1].</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">HLS2RGB</span><span class="token punctuation">(</span>Int_t h<span class="token punctuation">,</span> Int_t l<span class="token punctuation">,</span> Int_t s<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>r<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>g<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method to compute RGB from HLS. The h,l,s are between [0,255].</span>
-<span class="token comment">/// The returned r,g,b triplet is between [0,255].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">HLS2RGB</span><span class="hljs-params">(Int_t h, Int_t l, Int_t s, Int_t &amp;r, Int_t &amp;g, Int_t &amp;b)</span></span>;
+<span class="hljs-comment">/// Static method to compute RGB from HLS. The h,l,s are between [0,255].</span>
+<span class="hljs-comment">/// The returned r,g,b triplet is between [0,255].</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">HLStoRGB</span><span class="token punctuation">(</span>Float_t h<span class="token punctuation">,</span> Float_t l<span class="token punctuation">,</span> Float_t s<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>r<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>g<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>b<span class="token punctuation">)</span>
-                     <span class="token punctuation">{</span> TColor<span class="token operator">::</span><span class="token function">HLS2RGB</span><span class="token punctuation">(</span>h<span class="token punctuation">,</span> l<span class="token punctuation">,</span> s<span class="token punctuation">,</span> r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// backward compatible</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">HSV2RGB</span><span class="token punctuation">(</span>Float_t h<span class="token punctuation">,</span> Float_t s<span class="token punctuation">,</span> Float_t v<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>r<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>g<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method to compute RGB from HSV:</span>
-<span class="token comment">///  -  The hue value runs from 0 to 360.</span>
-<span class="token comment">///  -  The saturation is the degree of strength or purity and is from 0 to 1.</span>
-<span class="token comment">///     Purity is how much white is added to the color, so S=1 makes the purest</span>
-<span class="token comment">///     color (no white).</span>
-<span class="token comment">///  -  Brightness value also ranges from 0 to 1, where 0 is the black.</span>
-<span class="token comment">/// The returned r,g,b triplet is between [0,1].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">HLStoRGB</span><span class="hljs-params">(Float_t h, Float_t l, Float_t s, Float_t &amp;r, Float_t &amp;g, Float_t &amp;b)</span>
+                     </span>{ TColor::HLS2RGB(h, l, s, r, g, b); } <span class="hljs-comment">// backward compatible</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">HSV2RGB</span><span class="hljs-params">(Float_t h, Float_t s, Float_t v, Float_t &amp;r, Float_t &amp;g, Float_t &amp;b)</span></span>;
+<span class="hljs-comment">/// Static method to compute RGB from HSV:</span>
+<span class="hljs-comment">///  -  The hue value runs from 0 to 360.</span>
+<span class="hljs-comment">///  -  The saturation is the degree of strength or purity and is from 0 to 1.</span>
+<span class="hljs-comment">///     Purity is how much white is added to the color, so S=1 makes the purest</span>
+<span class="hljs-comment">///     color (no white).</span>
+<span class="hljs-comment">///  -  Brightness value also ranges from 0 to 1, where 0 is the black.</span>
+<span class="hljs-comment">/// The returned r,g,b triplet is between [0,1].</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">RGB2HLS</span><span class="token punctuation">(</span>Float_t r<span class="token punctuation">,</span> Float_t g<span class="token punctuation">,</span> Float_t b<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>h<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>l<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method to compute HLS from RGB. The r,g,b triplet is between</span>
-<span class="token comment">/// [0,1], hue is between [0,360], light and satur are [0,1].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">RGB2HLS</span><span class="hljs-params">(Float_t r, Float_t g, Float_t b, Float_t &amp;h, Float_t &amp;l, Float_t &amp;s)</span></span>;
+<span class="hljs-comment">/// Static method to compute HLS from RGB. The r,g,b triplet is between</span>
+<span class="hljs-comment">/// [0,1], hue is between [0,360], light and satur are [0,1].</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">RGB2HLS</span><span class="token punctuation">(</span>Int_t r<span class="token punctuation">,</span> Int_t g<span class="token punctuation">,</span> Int_t b<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>h<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>l<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method to compute HLS from RGB. The r,g,b triplet is between</span>
-<span class="token comment">/// [0,255], hue, light and satur are between [0,255].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">RGB2HLS</span><span class="hljs-params">(Int_t r, Int_t g, Int_t b, Int_t &amp;h, Int_t &amp;l, Int_t &amp;s)</span></span>;
+<span class="hljs-comment">/// Static method to compute HLS from RGB. The r,g,b triplet is between</span>
+<span class="hljs-comment">/// [0,255], hue, light and satur are between [0,255].</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">RGBtoHLS</span><span class="token punctuation">(</span>Float_t r<span class="token punctuation">,</span> Float_t g<span class="token punctuation">,</span> Float_t b<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>h<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>l<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>s<span class="token punctuation">)</span>
-                     <span class="token punctuation">{</span> TColor<span class="token operator">::</span><span class="token function">RGB2HLS</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">,</span> h<span class="token punctuation">,</span> l<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// backward compatible</span>
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">RGB2HSV</span><span class="token punctuation">(</span>Float_t r<span class="token punctuation">,</span> Float_t g<span class="token punctuation">,</span> Float_t b<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>h<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method to compute HSV from RGB.</span>
-<span class="token comment">///  -  The input values:</span>
-<span class="token comment">///    -  r,g,b triplet is between [0,1].</span>
-<span class="token comment">///  -  The returned values:</span>
-<span class="token comment">///    -  The hue value runs from 0 to 360.</span>
-<span class="token comment">///    -  The saturation is the degree of strength or purity and is from 0 to 1.</span>
-<span class="token comment">///       Purity is how much white is added to the color, so S=1 makes the purest</span>
-<span class="token comment">///       color (no white).</span>
-<span class="token comment">///    -  Brightness value also ranges from 0 to 1, where 0 is the black.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">RGBtoHLS</span><span class="hljs-params">(Float_t r, Float_t g, Float_t b, Float_t &amp;h, Float_t &amp;l, Float_t &amp;s)</span>
+                     </span>{ TColor::RGB2HLS(r, g, b, h, l, s); } <span class="hljs-comment">// backward compatible</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">RGB2HSV</span><span class="hljs-params">(Float_t r, Float_t g, Float_t b, Float_t &amp;h, Float_t &amp;s, Float_t &amp;v)</span></span>;
+<span class="hljs-comment">/// Static method to compute HSV from RGB.</span>
+<span class="hljs-comment">///  -  The input values:</span>
+<span class="hljs-comment">///    -  r,g,b triplet is between [0,1].</span>
+<span class="hljs-comment">///  -  The returned values:</span>
+<span class="hljs-comment">///    -  The hue value runs from 0 to 360.</span>
+<span class="hljs-comment">///    -  The saturation is the degree of strength or purity and is from 0 to 1.</span>
+<span class="hljs-comment">///       Purity is how much white is added to the color, so S=1 makes the purest</span>
+<span class="hljs-comment">///       color (no white).</span>
+<span class="hljs-comment">///    -  Brightness value also ranges from 0 to 1, where 0 is the black.</span>
 
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetColor</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>hexcolor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method returning color number for color specified by</span>
-<span class="token comment">/// hex color string of form: &quot;#rrggbb&quot;, where rr, gg and bb are in</span>
-<span class="token comment">/// hex between [0,FF], e.g. &quot;#c0c0c0&quot;.</span>
-<span class="token comment">/// If specified color does not exist it will be created with as</span>
-<span class="token comment">/// name &quot;#rrggbb&quot; with rr, gg and bb in hex between [0,FF].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetColor</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *hexcolor)</span></span>;
+<span class="hljs-comment">/// Static method returning color number for color specified by</span>
+<span class="hljs-comment">/// hex color string of form: &quot;#rrggbb&quot;, where rr, gg and bb are in</span>
+<span class="hljs-comment">/// hex between [0,FF], e.g. &quot;#c0c0c0&quot;.</span>
+<span class="hljs-comment">/// If specified color does not exist it will be created with as</span>
+<span class="hljs-comment">/// name &quot;#rrggbb&quot; with rr, gg and bb in hex between [0,FF].</span>
 
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetColor</span><span class="token punctuation">(</span>Float_t r<span class="token punctuation">,</span> Float_t g<span class="token punctuation">,</span> Float_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method returning color number for color specified by</span>
-<span class="token comment">/// r, g and b. The r,g,b should be in the range [0,1].</span>
-<span class="token comment">/// If specified color does not exist it will be created</span>
-<span class="token comment">/// with as name &quot;#rrggbb&quot; with rr, gg and bb in hex between</span>
-<span class="token comment">/// [0,FF].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetColor</span><span class="hljs-params">(Float_t r, Float_t g, Float_t b)</span></span>;
+<span class="hljs-comment">/// Static method returning color number for color specified by</span>
+<span class="hljs-comment">/// r, g and b. The r,g,b should be in the range [0,1].</span>
+<span class="hljs-comment">/// If specified color does not exist it will be created</span>
+<span class="hljs-comment">/// with as name &quot;#rrggbb&quot; with rr, gg and bb in hex between</span>
+<span class="hljs-comment">/// [0,FF].</span>
 
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetColor</span><span class="token punctuation">(</span>Int_t r<span class="token punctuation">,</span> Int_t g<span class="token punctuation">,</span> Int_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method returning color number for color specified by</span>
-<span class="token comment">/// r, g and b. The r,g,b should be in the range [0,255].</span>
-<span class="token comment">/// If the specified color does not exist it will be created</span>
-<span class="token comment">/// with as name &quot;#rrggbb&quot; with rr, gg and bb in hex between</span>
-<span class="token comment">/// [0,FF].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetColor</span><span class="hljs-params">(Int_t r, Int_t g, Int_t b)</span></span>;
+<span class="hljs-comment">/// Static method returning color number for color specified by</span>
+<span class="hljs-comment">/// r, g and b. The r,g,b should be in the range [0,255].</span>
+<span class="hljs-comment">/// If the specified color does not exist it will be created</span>
+<span class="hljs-comment">/// with as name &quot;#rrggbb&quot; with rr, gg and bb in hex between</span>
+<span class="hljs-comment">/// [0,FF].</span>
 
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetColor</span><span class="token punctuation">(</span>ULong_t pixel<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method returning color number for color specified by</span>
-<span class="token comment">/// system dependent pixel value. Pixel values can be obtained, e.g.,</span>
-<span class="token comment">/// from the GUI color picker.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetColor</span><span class="hljs-params">(ULong_t pixel)</span></span>;
+<span class="hljs-comment">/// Static method returning color number for color specified by</span>
+<span class="hljs-comment">/// system dependent pixel value. Pixel values can be obtained, e.g.,</span>
+<span class="hljs-comment">/// from the GUI color picker.</span>
 
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetColorBright</span><span class="token punctuation">(</span>Int_t color<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static function: Returns the bright color number corresponding to n</span>
-<span class="token comment">/// If the TColor object does not exist, it is created.</span>
-<span class="token comment">/// The convention is that the bright color nb = n+150</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetColorBright</span><span class="hljs-params">(Int_t color)</span></span>;
+<span class="hljs-comment">/// Static function: Returns the bright color number corresponding to n</span>
+<span class="hljs-comment">/// If the TColor object does not exist, it is created.</span>
+<span class="hljs-comment">/// The convention is that the bright color nb = n+150</span>
 
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetColorDark</span><span class="token punctuation">(</span>Int_t color<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static function: Returns the dark color number corresponding to n</span>
-<span class="token comment">/// If the TColor object does not exist, it is created.</span>
-<span class="token comment">/// The convention is that the dark color nd = n+100</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetColorDark</span><span class="hljs-params">(Int_t color)</span></span>;
+<span class="hljs-comment">/// Static function: Returns the dark color number corresponding to n</span>
+<span class="hljs-comment">/// If the TColor object does not exist, it is created.</span>
+<span class="hljs-comment">/// The convention is that the dark color nd = n+100</span>
 
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetColorTransparent</span><span class="token punctuation">(</span>Int_t color<span class="token punctuation">,</span> Float_t a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static function: Returns the transparent color number corresponding to n.</span>
-<span class="token comment">/// The transparency level is given by the alpha value a.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetColorTransparent</span><span class="hljs-params">(Int_t color, Float_t a)</span></span>;
+<span class="hljs-comment">/// Static function: Returns the transparent color number corresponding to n.</span>
+<span class="hljs-comment">/// The transparency level is given by the alpha value a.</span>
 
-   <span class="token keyword">static</span> Int_t   <span class="token function">GetFreeColorIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static function: Returns a free color index which can be used to define</span>
-<span class="token comment">/// a user custom color.</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">///   Int_t ci = TColor::GetFreeColorIndex();</span>
-<span class="token comment">///   TColor *color = new TColor(ci, 0.1, 0.2, 0.3);</span>
-<span class="token comment">/// ~~~</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Int_t   <span class="hljs-title">GetFreeColorIndex</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Static function: Returns a free color index which can be used to define</span>
+<span class="hljs-comment">/// a user custom color.</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">///   Int_t ci = TColor::GetFreeColorIndex();</span>
+<span class="hljs-comment">///   TColor *color = new TColor(ci, 0.1, 0.2, 0.3);</span>
+<span class="hljs-comment">/// ~~~</span>
 
-   <span class="token keyword">static</span> ULong_t <span class="token function">Number2Pixel</span><span class="token punctuation">(</span>Int_t ci<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static method that given a color index number, returns the corresponding</span>
-<span class="token comment">/// pixel value. This pixel value can be used in the GUI classes. This call</span>
-<span class="token comment">/// does not work in batch mode since it needs to communicate with the</span>
-<span class="token comment">/// graphics system.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> ULong_t <span class="hljs-title">Number2Pixel</span><span class="hljs-params">(Int_t ci)</span></span>;
+<span class="hljs-comment">/// Static method that given a color index number, returns the corresponding</span>
+<span class="hljs-comment">/// pixel value. This pixel value can be used in the GUI classes. This call</span>
+<span class="hljs-comment">/// does not work in batch mode since it needs to communicate with the</span>
+<span class="hljs-comment">/// graphics system.</span>
 
-   <span class="token keyword">static</span> ULong_t <span class="token function">RGB2Pixel</span><span class="token punctuation">(</span>Int_t r<span class="token punctuation">,</span> Int_t g<span class="token punctuation">,</span> Int_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Convert r,g,b to graphics system dependent pixel value.</span>
-<span class="token comment">/// The r,g,b triplet must be [0,255].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> ULong_t <span class="hljs-title">RGB2Pixel</span><span class="hljs-params">(Int_t r, Int_t g, Int_t b)</span></span>;
+<span class="hljs-comment">/// Convert r,g,b to graphics system dependent pixel value.</span>
+<span class="hljs-comment">/// The r,g,b triplet must be [0,255].</span>
 
-   <span class="token keyword">static</span> ULong_t <span class="token function">RGB2Pixel</span><span class="token punctuation">(</span>Float_t r<span class="token punctuation">,</span> Float_t g<span class="token punctuation">,</span> Float_t b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Convert r,g,b to graphics system dependent pixel value.</span>
-<span class="token comment">/// The r,g,b triplet must be [0,1].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> ULong_t <span class="hljs-title">RGB2Pixel</span><span class="hljs-params">(Float_t r, Float_t g, Float_t b)</span></span>;
+<span class="hljs-comment">/// Convert r,g,b to graphics system dependent pixel value.</span>
+<span class="hljs-comment">/// The r,g,b triplet must be [0,1].</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">Pixel2RGB</span><span class="token punctuation">(</span>ULong_t pixel<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>r<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>g<span class="token punctuation">,</span> Int_t <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Convert machine dependent pixel value (obtained via RGB2Pixel or</span>
-<span class="token comment">/// via Number2Pixel() or via TColor::GetPixel()) to r,g,b triplet.</span>
-<span class="token comment">/// The r,g,b triplet will be [0,255].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">Pixel2RGB</span><span class="hljs-params">(ULong_t pixel, Int_t &amp;r, Int_t &amp;g, Int_t &amp;b)</span></span>;
+<span class="hljs-comment">/// Convert machine dependent pixel value (obtained via RGB2Pixel or</span>
+<span class="hljs-comment">/// via Number2Pixel() or via TColor::GetPixel()) to r,g,b triplet.</span>
+<span class="hljs-comment">/// The r,g,b triplet will be [0,255].</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">Pixel2RGB</span><span class="token punctuation">(</span>ULong_t pixel<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>r<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>g<span class="token punctuation">,</span> Float_t <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Convert machine dependent pixel value (obtained via RGB2Pixel or</span>
-<span class="token comment">/// via Number2Pixel() or via TColor::GetPixel()) to r,g,b triplet.</span>
-<span class="token comment">/// The r,g,b triplet will be [0,1].</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">Pixel2RGB</span><span class="hljs-params">(ULong_t pixel, Float_t &amp;r, Float_t &amp;g, Float_t &amp;b)</span></span>;
+<span class="hljs-comment">/// Convert machine dependent pixel value (obtained via RGB2Pixel or</span>
+<span class="hljs-comment">/// via Number2Pixel() or via TColor::GetPixel()) to r,g,b triplet.</span>
+<span class="hljs-comment">/// The r,g,b triplet will be [0,1].</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">PixelAsHexString</span><span class="token punctuation">(</span>ULong_t pixel<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Convert machine dependent pixel value (obtained via RGB2Pixel or</span>
-<span class="token comment">/// via Number2Pixel() or via TColor::GetPixel()) to a hexadecimal string.</span>
-<span class="token comment">/// This string can be directly passed to, for example,</span>
-<span class="token comment">/// TGClient::GetColorByName(). String will be reused so copy immediately</span>
-<span class="token comment">/// if needed.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-title">PixelAsHexString</span><span class="hljs-params">(ULong_t pixel)</span></span>;
+<span class="hljs-comment">/// Convert machine dependent pixel value (obtained via RGB2Pixel or</span>
+<span class="hljs-comment">/// via Number2Pixel() or via TColor::GetPixel()) to a hexadecimal string.</span>
+<span class="hljs-comment">/// This string can be directly passed to, for example,</span>
+<span class="hljs-comment">/// TGClient::GetColorByName(). String will be reused so copy immediately</span>
+<span class="hljs-comment">/// if needed.</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">SaveColor</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream <span class="token operator">&amp;</span>out<span class="token punctuation">,</span> Int_t ci<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Save a color with index &gt; 228 as a C++ statement(s) on output stream out.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SaveColor</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;out, Int_t ci)</span></span>;
+<span class="hljs-comment">/// Save a color with index &gt; 228 as a C++ statement(s) on output stream out.</span>
 
-   <span class="token keyword">static</span> Bool_t  <span class="token function">IsGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Return whether all colors return grayscale values.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> Bool_t  <span class="hljs-title">IsGrayscale</span><span class="hljs-params">()</span></span>;
+<span class="hljs-comment">/// Return whether all colors return grayscale values.</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">SetGrayscale</span><span class="token punctuation">(</span>Bool_t set <span class="token operator">=</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Set whether all colors should return grayscale values.</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SetGrayscale</span><span class="hljs-params">(Bool_t <span class="hljs-built_in">set</span> = kTRUE)</span></span>;
+<span class="hljs-comment">/// Set whether all colors should return grayscale values.</span>
 
-   <span class="token keyword">static</span> <span class="token keyword">void</span>    <span class="token function">SetPalette</span><span class="token punctuation">(</span>Int_t ncolors<span class="token punctuation">,</span> Int_t <span class="token operator">*</span>colors<span class="token punctuation">,</span>Float_t alpha<span class="token operator">=</span><span class="token number">1.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/// Static function.</span>
-<span class="token comment">/// The color palette is used by the histogram classes</span>
-<span class="token comment">///  (see TH1::Draw options).</span>
-<span class="token comment">/// For example TH1::Draw(&quot;col&quot;) draws a 2-D histogram with cells</span>
-<span class="token comment">/// represented by a box filled with a color CI function of the cell content.</span>
-<span class="token comment">/// if the cell content is N, the color CI used will be the color number</span>
-<span class="token comment">/// in colors[N],etc. If the maximum cell content is &gt; ncolors, all</span>
-<span class="token comment">/// cell contents are scaled to ncolors.</span>
-<span class="token comment">///</span>
-<span class="token comment">/// `if ncolors &lt;= 0` a default palette (see below) of 50 colors is</span>
-<span class="token comment">/// defined. The colors defined in this palette are OK for coloring pads, labels.</span>
-<span class="token comment">///</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">/// index 0-&gt;9   : grey colors from light to dark grey</span>
-<span class="token comment">/// index 10-&gt;19 : &quot;brown&quot; colors</span>
-<span class="token comment">/// index 20-&gt;29 : &quot;blueish&quot; colors</span>
-<span class="token comment">/// index 30-&gt;39 : &quot;redish&quot; colors</span>
-<span class="token comment">/// index 40-&gt;49 : basic colors</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">///</span>
-<span class="token comment">/// `if ncolors == 1 &amp;&amp; colors == 0`, a Rainbow Color map is created</span>
-<span class="token comment">/// with 50 colors. It is kept for backward compatibility. Better palettes like</span>
-<span class="token comment">/// kBird are recommended.</span>
-<span class="token comment">///</span>
-<span class="token comment">/// High quality predefined palettes with 255 colors are available when `colors == 0`.</span>
-<span class="token comment">/// The following value of `ncolors` give access to:</span>
-<span class="token comment">///</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">/// if ncolors = 51 and colors=0, a Deep Sea palette is used.</span>
-<span class="token comment">/// if ncolors = 52 and colors=0, a Grey Scale palette is used.</span>
-<span class="token comment">/// if ncolors = 53 and colors=0, a Dark Body Radiator palette is used.</span>
-<span class="token comment">/// if ncolors = 54 and colors=0, a Two-Color Hue palette is used.(dark blue through neutral gray to bright yellow)</span>
-<span class="token comment">/// if ncolors = 55 and colors=0, a Rain Bow palette is used.</span>
-<span class="token comment">/// if ncolors = 56 and colors=0, an Inverted Dark Body Radiator palette is used.</span>
-<span class="token comment">/// if ncolors = 57 and colors=0, a monotonically increasing L value palette is used.</span>
-<span class="token comment">/// if ncolors = 58 and colors=0, a Cubehelix palette is used</span>
-<span class="token comment">///                                 (Cf. Dave Green&apos;s &quot;cubehelix&quot; colour scheme at http://www.mrao.cam.ac.uk/~dag/CUBEHELIX/)</span>
-<span class="token comment">/// if ncolors = 59 and colors=0, a Green Red Violet palette is used.</span>
-<span class="token comment">/// if ncolors = 60 and colors=0, a Blue Red Yellow palette is used.</span>
-<span class="token comment">/// if ncolors = 61 and colors=0, an Ocean palette is used.</span>
-<span class="token comment">/// if ncolors = 62 and colors=0, a Color Printable On Grey palette is used.</span>
-<span class="token comment">/// if ncolors = 63 and colors=0, an Alpine palette is used.</span>
-<span class="token comment">/// if ncolors = 64 and colors=0, an Aquamarine palette is used.</span>
-<span class="token comment">/// if ncolors = 65 and colors=0, an Army palette is used.</span>
-<span class="token comment">/// if ncolors = 66 and colors=0, an Atlantic palette is used.</span>
-<span class="token comment">/// if ncolors = 67 and colors=0, an Aurora palette is used.</span>
-<span class="token comment">/// if ncolors = 68 and colors=0, an Avocado palette is used.</span>
-<span class="token comment">/// if ncolors = 69 and colors=0, a Beach palette is used.</span>
-<span class="token comment">/// if ncolors = 70 and colors=0, a Black Body palette is used.</span>
-<span class="token comment">/// if ncolors = 71 and colors=0, a Blue Green Yellow palette is used.</span>
-<span class="token comment">/// if ncolors = 72 and colors=0, a Brown Cyan palette is used.</span>
-<span class="token comment">/// if ncolors = 73 and colors=0, a CMYK palette is used.</span>
-<span class="token comment">/// if ncolors = 74 and colors=0, a Candy palette is used.</span>
-<span class="token comment">/// if ncolors = 75 and colors=0, a Cherry palette is used.</span>
-<span class="token comment">/// if ncolors = 76 and colors=0, a Coffee palette is used.</span>
-<span class="token comment">/// if ncolors = 77 and colors=0, a Dark Rain Bow palette is used.</span>
-<span class="token comment">/// if ncolors = 78 and colors=0, a Dark Terrain palette is used.</span>
-<span class="token comment">/// if ncolors = 79 and colors=0, a Fall palette is used.</span>
-<span class="token comment">/// if ncolors = 80 and colors=0, a Fruit Punch palette is used.</span>
-<span class="token comment">/// if ncolors = 81 and colors=0, a Fuchsia palette is used.</span>
-<span class="token comment">/// if ncolors = 82 and colors=0, a Grey Yellow palette is used.</span>
-<span class="token comment">/// if ncolors = 83 and colors=0, a Green Brown Terrain palette is used.</span>
-<span class="token comment">/// if ncolors = 84 and colors=0, a Green Pink palette is used.</span>
-<span class="token comment">/// if ncolors = 85 and colors=0, an Island palette is used.</span>
-<span class="token comment">/// if ncolors = 86 and colors=0, a Lake palette is used.</span>
-<span class="token comment">/// if ncolors = 87 and colors=0, a Light Temperature palette is used.</span>
-<span class="token comment">/// if ncolors = 88 and colors=0, a Light Terrain palette is used.</span>
-<span class="token comment">/// if ncolors = 89 and colors=0, a Mint palette is used.</span>
-<span class="token comment">/// if ncolors = 90 and colors=0, a Neon palette is used.</span>
-<span class="token comment">/// if ncolors = 91 and colors=0, a Pastel palette is used.</span>
-<span class="token comment">/// if ncolors = 92 and colors=0, a Pearl palette is used.</span>
-<span class="token comment">/// if ncolors = 93 and colors=0, a Pigeon palette is used.</span>
-<span class="token comment">/// if ncolors = 94 and colors=0, a Plum palette is used.</span>
-<span class="token comment">/// if ncolors = 95 and colors=0, a Red Blue palette is used.</span>
-<span class="token comment">/// if ncolors = 96 and colors=0, a Rose palette is used.</span>
-<span class="token comment">/// if ncolors = 97 and colors=0, a Rust palette is used.</span>
-<span class="token comment">/// if ncolors = 98 and colors=0, a Sandy Terrain palette is used.</span>
-<span class="token comment">/// if ncolors = 99 and colors=0, a Sienna palette is used.</span>
-<span class="token comment">/// if ncolors = 100 and colors=0, a Solar palette is used.</span>
-<span class="token comment">/// if ncolors = 101 and colors=0, a South West palette is used.</span>
-<span class="token comment">/// if ncolors = 102 and colors=0, a Starry Night palette is used.</span>
-<span class="token comment">/// if ncolors = 103 and colors=0, a Sunset palette is used.</span>
-<span class="token comment">/// if ncolors = 104 and colors=0, a Temperature Map palette is used.</span>
-<span class="token comment">/// if ncolors = 105 and colors=0, a Thermometer palette is used.</span>
-<span class="token comment">/// if ncolors = 106 and colors=0, a Valentine palette is used.</span>
-<span class="token comment">/// if ncolors = 107 and colors=0, a Visible Spectrum palette is used.</span>
-<span class="token comment">/// if ncolors = 108 and colors=0, a Water Melon palette is used.</span>
-<span class="token comment">/// if ncolors = 109 and colors=0, a Cool palette is used.</span>
-<span class="token comment">/// if ncolors = 110 and colors=0, a Copper palette is used.</span>
-<span class="token comment">/// if ncolors = 111 and colors=0, a Gist Earth palette is used.</span>
-<span class="token comment">/// if ncolors = 112 and colors=0, a Viridis palette is used.</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">/// These palettes can also be accessed by names:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">/// kDeepSea=51,          kGreyScale=52,    kDarkBodyRadiator=53,</span>
-<span class="token comment">/// kBlueYellow= 54,      kRainBow=55,      kInvertedDarkBodyRadiator=56,</span>
-<span class="token comment">/// kBird=57,             kCubehelix=58,    kGreenRedViolet=59,</span>
-<span class="token comment">/// kBlueRedYellow=60,    kOcean=61,        kColorPrintableOnGrey=62,</span>
-<span class="token comment">/// kAlpine=63,           kAquamarine=64,   kArmy=65,</span>
-<span class="token comment">/// kAtlantic=66,         kAurora=67,       kAvocado=68,</span>
-<span class="token comment">/// kBeach=69,            kBlackBody=70,    kBlueGreenYellow=71,</span>
-<span class="token comment">/// kBrownCyan=72,        kCMYK=73,         kCandy=74,</span>
-<span class="token comment">/// kCherry=75,           kCoffee=76,       kDarkRainBow=77,</span>
-<span class="token comment">/// kDarkTerrain=78,      kFall=79,         kFruitPunch=80,</span>
-<span class="token comment">/// kFuchsia=81,          kGreyYellow=82,   kGreenBrownTerrain=83,</span>
-<span class="token comment">/// kGreenPink=84,        kIsland=85,       kLake=86,</span>
-<span class="token comment">/// kLightTemperature=87, kLightTerrain=88, kMint=89,</span>
-<span class="token comment">/// kNeon=90,             kPastel=91,       kPearl=92,</span>
-<span class="token comment">/// kPigeon=93,           kPlum=94,         kRedBlue=95,</span>
-<span class="token comment">/// kRose=96,             kRust=97,         kSandyTerrain=98,</span>
-<span class="token comment">/// kSienna=99,           kSolar=100,       kSouthWest=101,</span>
-<span class="token comment">/// kStarryNight=102,     kSunset=103,      kTemperatureMap=104,</span>
-<span class="token comment">/// kThermometer=105,     kValentine=106,   kVisibleSpectrum=107,</span>
-<span class="token comment">/// kWaterMelon=108,      kCool=109,        kCopper=110,</span>
-<span class="token comment">/// kGistEarth=111        kViridis=112</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">/// For example:</span>
-<span class="token comment">/// ~~~ {.cpp}</span>
-<span class="token comment">/// gStyle-&gt;SetPalette(kBird);</span>
-<span class="token comment">/// ~~~</span>
-<span class="token comment">/// Set the current palette as &quot;Bird&quot; (number 57).</span>
-<span class="token comment">///</span>
-<span class="token comment">/// The color numbers specified in the palette can be viewed by selecting</span>
-<span class="token comment">/// the item &quot;colors&quot; in the &quot;VIEW&quot; menu of the canvas toolbar.</span>
-<span class="token comment">/// The color parameters can be changed via TColor::SetRGB.</span>
-<span class="token comment">///</span>
-<span class="token comment">/// Note that when drawing a 2D histogram `h2` with the option &quot;COL&quot; or</span>
-<span class="token comment">/// &quot;COLZ&quot; or with any &quot;CONT&quot; options using the color map, the number of colors</span>
-<span class="token comment">/// used is defined by the number of contours `n` specified with:</span>
-<span class="token comment">/// `h2-&gt;SetContour(n)`</span>
+   <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span>    <span class="hljs-title">SetPalette</span><span class="hljs-params">(Int_t ncolors, Int_t *colors,Float_t alpha=<span class="hljs-number">1.</span>)</span></span>;
+<span class="hljs-comment">/// Static function.</span>
+<span class="hljs-comment">/// The color palette is used by the histogram classes</span>
+<span class="hljs-comment">///  (see TH1::Draw options).</span>
+<span class="hljs-comment">/// For example TH1::Draw(&quot;col&quot;) draws a 2-D histogram with cells</span>
+<span class="hljs-comment">/// represented by a box filled with a color CI function of the cell content.</span>
+<span class="hljs-comment">/// if the cell content is N, the color CI used will be the color number</span>
+<span class="hljs-comment">/// in colors[N],etc. If the maximum cell content is &gt; ncolors, all</span>
+<span class="hljs-comment">/// cell contents are scaled to ncolors.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// `if ncolors &lt;= 0` a default palette (see below) of 50 colors is</span>
+<span class="hljs-comment">/// defined. The colors defined in this palette are OK for coloring pads, labels.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">/// index 0-&gt;9   : grey colors from light to dark grey</span>
+<span class="hljs-comment">/// index 10-&gt;19 : &quot;brown&quot; colors</span>
+<span class="hljs-comment">/// index 20-&gt;29 : &quot;blueish&quot; colors</span>
+<span class="hljs-comment">/// index 30-&gt;39 : &quot;redish&quot; colors</span>
+<span class="hljs-comment">/// index 40-&gt;49 : basic colors</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// `if ncolors == 1 &amp;&amp; colors == 0`, a Rainbow Color map is created</span>
+<span class="hljs-comment">/// with 50 colors. It is kept for backward compatibility. Better palettes like</span>
+<span class="hljs-comment">/// kBird are recommended.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// High quality predefined palettes with 255 colors are available when `colors == 0`.</span>
+<span class="hljs-comment">/// The following value of `ncolors` give access to:</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">/// if ncolors = 51 and colors=0, a Deep Sea palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 52 and colors=0, a Grey Scale palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 53 and colors=0, a Dark Body Radiator palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 54 and colors=0, a Two-Color Hue palette is used.(dark blue through neutral gray to bright yellow)</span>
+<span class="hljs-comment">/// if ncolors = 55 and colors=0, a Rain Bow palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 56 and colors=0, an Inverted Dark Body Radiator palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 57 and colors=0, a monotonically increasing L value palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 58 and colors=0, a Cubehelix palette is used</span>
+<span class="hljs-comment">///                                 (Cf. Dave Green&apos;s &quot;cubehelix&quot; colour scheme at http://www.mrao.cam.ac.uk/~dag/CUBEHELIX/)</span>
+<span class="hljs-comment">/// if ncolors = 59 and colors=0, a Green Red Violet palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 60 and colors=0, a Blue Red Yellow palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 61 and colors=0, an Ocean palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 62 and colors=0, a Color Printable On Grey palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 63 and colors=0, an Alpine palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 64 and colors=0, an Aquamarine palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 65 and colors=0, an Army palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 66 and colors=0, an Atlantic palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 67 and colors=0, an Aurora palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 68 and colors=0, an Avocado palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 69 and colors=0, a Beach palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 70 and colors=0, a Black Body palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 71 and colors=0, a Blue Green Yellow palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 72 and colors=0, a Brown Cyan palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 73 and colors=0, a CMYK palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 74 and colors=0, a Candy palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 75 and colors=0, a Cherry palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 76 and colors=0, a Coffee palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 77 and colors=0, a Dark Rain Bow palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 78 and colors=0, a Dark Terrain palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 79 and colors=0, a Fall palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 80 and colors=0, a Fruit Punch palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 81 and colors=0, a Fuchsia palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 82 and colors=0, a Grey Yellow palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 83 and colors=0, a Green Brown Terrain palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 84 and colors=0, a Green Pink palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 85 and colors=0, an Island palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 86 and colors=0, a Lake palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 87 and colors=0, a Light Temperature palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 88 and colors=0, a Light Terrain palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 89 and colors=0, a Mint palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 90 and colors=0, a Neon palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 91 and colors=0, a Pastel palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 92 and colors=0, a Pearl palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 93 and colors=0, a Pigeon palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 94 and colors=0, a Plum palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 95 and colors=0, a Red Blue palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 96 and colors=0, a Rose palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 97 and colors=0, a Rust palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 98 and colors=0, a Sandy Terrain palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 99 and colors=0, a Sienna palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 100 and colors=0, a Solar palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 101 and colors=0, a South West palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 102 and colors=0, a Starry Night palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 103 and colors=0, a Sunset palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 104 and colors=0, a Temperature Map palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 105 and colors=0, a Thermometer palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 106 and colors=0, a Valentine palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 107 and colors=0, a Visible Spectrum palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 108 and colors=0, a Water Melon palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 109 and colors=0, a Cool palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 110 and colors=0, a Copper palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 111 and colors=0, a Gist Earth palette is used.</span>
+<span class="hljs-comment">/// if ncolors = 112 and colors=0, a Viridis palette is used.</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// These palettes can also be accessed by names:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">/// kDeepSea=51,          kGreyScale=52,    kDarkBodyRadiator=53,</span>
+<span class="hljs-comment">/// kBlueYellow= 54,      kRainBow=55,      kInvertedDarkBodyRadiator=56,</span>
+<span class="hljs-comment">/// kBird=57,             kCubehelix=58,    kGreenRedViolet=59,</span>
+<span class="hljs-comment">/// kBlueRedYellow=60,    kOcean=61,        kColorPrintableOnGrey=62,</span>
+<span class="hljs-comment">/// kAlpine=63,           kAquamarine=64,   kArmy=65,</span>
+<span class="hljs-comment">/// kAtlantic=66,         kAurora=67,       kAvocado=68,</span>
+<span class="hljs-comment">/// kBeach=69,            kBlackBody=70,    kBlueGreenYellow=71,</span>
+<span class="hljs-comment">/// kBrownCyan=72,        kCMYK=73,         kCandy=74,</span>
+<span class="hljs-comment">/// kCherry=75,           kCoffee=76,       kDarkRainBow=77,</span>
+<span class="hljs-comment">/// kDarkTerrain=78,      kFall=79,         kFruitPunch=80,</span>
+<span class="hljs-comment">/// kFuchsia=81,          kGreyYellow=82,   kGreenBrownTerrain=83,</span>
+<span class="hljs-comment">/// kGreenPink=84,        kIsland=85,       kLake=86,</span>
+<span class="hljs-comment">/// kLightTemperature=87, kLightTerrain=88, kMint=89,</span>
+<span class="hljs-comment">/// kNeon=90,             kPastel=91,       kPearl=92,</span>
+<span class="hljs-comment">/// kPigeon=93,           kPlum=94,         kRedBlue=95,</span>
+<span class="hljs-comment">/// kRose=96,             kRust=97,         kSandyTerrain=98,</span>
+<span class="hljs-comment">/// kSienna=99,           kSolar=100,       kSouthWest=101,</span>
+<span class="hljs-comment">/// kStarryNight=102,     kSunset=103,      kTemperatureMap=104,</span>
+<span class="hljs-comment">/// kThermometer=105,     kValentine=106,   kVisibleSpectrum=107,</span>
+<span class="hljs-comment">/// kWaterMelon=108,      kCool=109,        kCopper=110,</span>
+<span class="hljs-comment">/// kGistEarth=111        kViridis=112</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// For example:</span>
+<span class="hljs-comment">/// ~~~ {.cpp}</span>
+<span class="hljs-comment">/// gStyle-&gt;SetPalette(kBird);</span>
+<span class="hljs-comment">/// ~~~</span>
+<span class="hljs-comment">/// Set the current palette as &quot;Bird&quot; (number 57).</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// The color numbers specified in the palette can be viewed by selecting</span>
+<span class="hljs-comment">/// the item &quot;colors&quot; in the &quot;VIEW&quot; menu of the canvas toolbar.</span>
+<span class="hljs-comment">/// The color parameters can be changed via TColor::SetRGB.</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">/// Note that when drawing a 2D histogram `h2` with the option &quot;COL&quot; or</span>
+<span class="hljs-comment">/// &quot;COLZ&quot; or with any &quot;CONT&quot; options using the color map, the number of colors</span>
+<span class="hljs-comment">/// used is defined by the number of contours `n` specified with:</span>
+<span class="hljs-comment">/// `h2-&gt;SetContour(n)`</span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp">   <span class="token keyword">enum</span> EColorPalette <span class="token punctuation">{</span>kDeepSea<span class="token operator">=</span><span class="token number">51</span><span class="token punctuation">,</span>          kGreyScale<span class="token operator">=</span><span class="token number">52</span><span class="token punctuation">,</span>    kDarkBodyRadiator<span class="token operator">=</span><span class="token number">53</span><span class="token punctuation">,</span>
-                       kBlueYellow<span class="token operator">=</span> <span class="token number">54</span><span class="token punctuation">,</span>      kRainBow<span class="token operator">=</span><span class="token number">55</span><span class="token punctuation">,</span>      kInvertedDarkBodyRadiator<span class="token operator">=</span><span class="token number">56</span><span class="token punctuation">,</span>
-                       kBird<span class="token operator">=</span><span class="token number">57</span><span class="token punctuation">,</span>             kCubehelix<span class="token operator">=</span><span class="token number">58</span><span class="token punctuation">,</span>    kGreenRedViolet<span class="token operator">=</span><span class="token number">59</span><span class="token punctuation">,</span>
-                       kBlueRedYellow<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">,</span>    kOcean<span class="token operator">=</span><span class="token number">61</span><span class="token punctuation">,</span>        kColorPrintableOnGrey<span class="token operator">=</span><span class="token number">62</span><span class="token punctuation">,</span>
-                       kAlpine<span class="token operator">=</span><span class="token number">63</span><span class="token punctuation">,</span>           kAquamarine<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">,</span>   kArmy<span class="token operator">=</span><span class="token number">65</span><span class="token punctuation">,</span>
-                       kAtlantic<span class="token operator">=</span><span class="token number">66</span><span class="token punctuation">,</span>         kAurora<span class="token operator">=</span><span class="token number">67</span><span class="token punctuation">,</span>       kAvocado<span class="token operator">=</span><span class="token number">68</span><span class="token punctuation">,</span>
-                       kBeach<span class="token operator">=</span><span class="token number">69</span><span class="token punctuation">,</span>            kBlackBody<span class="token operator">=</span><span class="token number">70</span><span class="token punctuation">,</span>    kBlueGreenYellow<span class="token operator">=</span><span class="token number">71</span><span class="token punctuation">,</span>
-                       kBrownCyan<span class="token operator">=</span><span class="token number">72</span><span class="token punctuation">,</span>        kCMYK<span class="token operator">=</span><span class="token number">73</span><span class="token punctuation">,</span>         kCandy<span class="token operator">=</span><span class="token number">74</span><span class="token punctuation">,</span>
-                       kCherry<span class="token operator">=</span><span class="token number">75</span><span class="token punctuation">,</span>           kCoffee<span class="token operator">=</span><span class="token number">76</span><span class="token punctuation">,</span>       kDarkRainBow<span class="token operator">=</span><span class="token number">77</span><span class="token punctuation">,</span>
-                       kDarkTerrain<span class="token operator">=</span><span class="token number">78</span><span class="token punctuation">,</span>      kFall<span class="token operator">=</span><span class="token number">79</span><span class="token punctuation">,</span>         kFruitPunch<span class="token operator">=</span><span class="token number">80</span><span class="token punctuation">,</span>
-                       kFuchsia<span class="token operator">=</span><span class="token number">81</span><span class="token punctuation">,</span>          kGreyYellow<span class="token operator">=</span><span class="token number">82</span><span class="token punctuation">,</span>   kGreenBrownTerrain<span class="token operator">=</span><span class="token number">83</span><span class="token punctuation">,</span>
-                       kGreenPink<span class="token operator">=</span><span class="token number">84</span><span class="token punctuation">,</span>        kIsland<span class="token operator">=</span><span class="token number">85</span><span class="token punctuation">,</span>       kLake<span class="token operator">=</span><span class="token number">86</span><span class="token punctuation">,</span>
-                       kLightTemperature<span class="token operator">=</span><span class="token number">87</span><span class="token punctuation">,</span> kLightTerrain<span class="token operator">=</span><span class="token number">88</span><span class="token punctuation">,</span> kMint<span class="token operator">=</span><span class="token number">89</span><span class="token punctuation">,</span>
-                       kNeon<span class="token operator">=</span><span class="token number">90</span><span class="token punctuation">,</span>             kPastel<span class="token operator">=</span><span class="token number">91</span><span class="token punctuation">,</span>       kPearl<span class="token operator">=</span><span class="token number">92</span><span class="token punctuation">,</span>
-                       kPigeon<span class="token operator">=</span><span class="token number">93</span><span class="token punctuation">,</span>           kPlum<span class="token operator">=</span><span class="token number">94</span><span class="token punctuation">,</span>         kRedBlue<span class="token operator">=</span><span class="token number">95</span><span class="token punctuation">,</span>
-                       kRose<span class="token operator">=</span><span class="token number">96</span><span class="token punctuation">,</span>             kRust<span class="token operator">=</span><span class="token number">97</span><span class="token punctuation">,</span>         kSandyTerrain<span class="token operator">=</span><span class="token number">98</span><span class="token punctuation">,</span>
-                       kSienna<span class="token operator">=</span><span class="token number">99</span><span class="token punctuation">,</span>           kSolar<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>       kSouthWest<span class="token operator">=</span><span class="token number">101</span><span class="token punctuation">,</span>
-                       kStarryNight<span class="token operator">=</span><span class="token number">102</span><span class="token punctuation">,</span>     kSunset<span class="token operator">=</span><span class="token number">103</span><span class="token punctuation">,</span>      kTemperatureMap<span class="token operator">=</span><span class="token number">104</span><span class="token punctuation">,</span>
-                       kThermometer<span class="token operator">=</span><span class="token number">105</span><span class="token punctuation">,</span>     kValentine<span class="token operator">=</span><span class="token number">106</span><span class="token punctuation">,</span>   kVisibleSpectrum<span class="token operator">=</span><span class="token number">107</span><span class="token punctuation">,</span>
-                       kWaterMelon<span class="token operator">=</span><span class="token number">108</span><span class="token punctuation">,</span>      kCool<span class="token operator">=</span><span class="token number">109</span><span class="token punctuation">,</span>        kCopper<span class="token operator">=</span><span class="token number">110</span><span class="token punctuation">,</span>
-                       kGistEarth<span class="token operator">=</span><span class="token number">111</span><span class="token punctuation">,</span>       kViridis<span class="token operator">=</span><span class="token number">112</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-cpp">   <span class="hljs-keyword">enum</span> EColorPalette {kDeepSea=<span class="hljs-number">51</span>,          kGreyScale=<span class="hljs-number">52</span>,    kDarkBodyRadiator=<span class="hljs-number">53</span>,
+                       kBlueYellow= <span class="hljs-number">54</span>,      kRainBow=<span class="hljs-number">55</span>,      kInvertedDarkBodyRadiator=<span class="hljs-number">56</span>,
+                       kBird=<span class="hljs-number">57</span>,             kCubehelix=<span class="hljs-number">58</span>,    kGreenRedViolet=<span class="hljs-number">59</span>,
+                       kBlueRedYellow=<span class="hljs-number">60</span>,    kOcean=<span class="hljs-number">61</span>,        kColorPrintableOnGrey=<span class="hljs-number">62</span>,
+                       kAlpine=<span class="hljs-number">63</span>,           kAquamarine=<span class="hljs-number">64</span>,   kArmy=<span class="hljs-number">65</span>,
+                       kAtlantic=<span class="hljs-number">66</span>,         kAurora=<span class="hljs-number">67</span>,       kAvocado=<span class="hljs-number">68</span>,
+                       kBeach=<span class="hljs-number">69</span>,            kBlackBody=<span class="hljs-number">70</span>,    kBlueGreenYellow=<span class="hljs-number">71</span>,
+                       kBrownCyan=<span class="hljs-number">72</span>,        kCMYK=<span class="hljs-number">73</span>,         kCandy=<span class="hljs-number">74</span>,
+                       kCherry=<span class="hljs-number">75</span>,           kCoffee=<span class="hljs-number">76</span>,       kDarkRainBow=<span class="hljs-number">77</span>,
+                       kDarkTerrain=<span class="hljs-number">78</span>,      kFall=<span class="hljs-number">79</span>,         kFruitPunch=<span class="hljs-number">80</span>,
+                       kFuchsia=<span class="hljs-number">81</span>,          kGreyYellow=<span class="hljs-number">82</span>,   kGreenBrownTerrain=<span class="hljs-number">83</span>,
+                       kGreenPink=<span class="hljs-number">84</span>,        kIsland=<span class="hljs-number">85</span>,       kLake=<span class="hljs-number">86</span>,
+                       kLightTemperature=<span class="hljs-number">87</span>, kLightTerrain=<span class="hljs-number">88</span>, kMint=<span class="hljs-number">89</span>,
+                       kNeon=<span class="hljs-number">90</span>,             kPastel=<span class="hljs-number">91</span>,       kPearl=<span class="hljs-number">92</span>,
+                       kPigeon=<span class="hljs-number">93</span>,           kPlum=<span class="hljs-number">94</span>,         kRedBlue=<span class="hljs-number">95</span>,
+                       kRose=<span class="hljs-number">96</span>,             kRust=<span class="hljs-number">97</span>,         kSandyTerrain=<span class="hljs-number">98</span>,
+                       kSienna=<span class="hljs-number">99</span>,           kSolar=<span class="hljs-number">100</span>,       kSouthWest=<span class="hljs-number">101</span>,
+                       kStarryNight=<span class="hljs-number">102</span>,     kSunset=<span class="hljs-number">103</span>,      kTemperatureMap=<span class="hljs-number">104</span>,
+                       kThermometer=<span class="hljs-number">105</span>,     kValentine=<span class="hljs-number">106</span>,   kVisibleSpectrum=<span class="hljs-number">107</span>,
+                       kWaterMelon=<span class="hljs-number">108</span>,      kCool=<span class="hljs-number">109</span>,        kCopper=<span class="hljs-number">110</span>,
+                       kGistEarth=<span class="hljs-number">111</span>,       kViridis=<span class="hljs-number">112</span>};
 </code></pre>
 <h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// Colors are defined by their red, green and blue components, simply called the</span>
-<span class="token comment">// RGB components. The colors are also known by the hue, light and saturation</span>
-<span class="token comment">// components also known as the HLS components. When a new color is created the</span>
-<span class="token comment">// components of both color systems are computed.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Colors are defined by their red, green and blue components, simply called the</span>
+<span class="hljs-comment">// RGB components. The colors are also known by the hue, light and saturation</span>
+<span class="hljs-comment">// components also known as the HLS components. When a new color is created the</span>
+<span class="hljs-comment">// components of both color systems are computed.</span>
 
-<span class="token comment">// At initialization time, a table of colors is generated. An existing color can</span>
-<span class="token comment">// be retrieved by its index:</span>
+<span class="hljs-comment">// At initialization time, a table of colors is generated. An existing color can</span>
+<span class="hljs-comment">// be retrieved by its index:</span>
 
-TColor <span class="token operator">*</span>color <span class="token operator">=</span> gROOT<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetColor</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+TColor *color = gROOT-&gt;GetColor(<span class="hljs-number">10</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// Then it can be manipulated. For example its RGB components can be modified:</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Then it can be manipulated. For example its RGB components can be modified:</span>
 
-color<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetRGB</span><span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+color-&gt;SetRGB(<span class="hljs-number">0.1</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.3</span>);
 
-<span class="token comment">// A new color can be created the following way:</span>
+<span class="hljs-comment">// A new color can be created the following way:</span>
 
-Int_t ci <span class="token operator">=</span> <span class="token number">1756</span><span class="token punctuation">;</span> <span class="token comment">// color index</span>
-TColor <span class="token operator">*</span>color <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TColor</span><span class="token punctuation">(</span>ci<span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Int_t ci = <span class="hljs-number">1756</span>; <span class="hljs-comment">// color index</span>
+TColor *color = <span class="hljs-keyword">new</span> TColor(ci, <span class="hljs-number">0.1</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.3</span>);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// The following image displays the 50 basic colors.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// The following image displays the 50 basic colors.</span>
 
-<span class="token punctuation">{</span>
-   TCanvas <span class="token operator">*</span>c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Fill Area colors&quot;</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   c<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">DrawColorTable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">return</span> c<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+{
+   TCanvas *c = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-string">&quot;Fill Area colors&quot;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">500</span>,<span class="hljs-number">200</span>);
+   c-&gt;DrawColorTable();
+   <span class="hljs-keyword">return</span> c;
+}
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// The wheel contains the recommended 216 colors to be used in web applications.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// The wheel contains the recommended 216 colors to be used in web applications.</span>
 
-<span class="token comment">// The colors in the color wheel are created by `TColor::CreateColorWheel`.</span>
+<span class="hljs-comment">// The colors in the color wheel are created by `TColor::CreateColorWheel`.</span>
 
-<span class="token comment">// Using this color set for your text, background or graphics will give your</span>
-yapplication a consistent appearance across different platforms <span class="token operator">and</span> browsers<span class="token punctuation">.</span>
+<span class="hljs-comment">// Using this color set for your text, background or graphics will give your</span>
+yapplication a consistent appearance across different platforms and browsers.
 
-<span class="token comment">// Colors are grouped by hue, the aspect most important in human perception.</span>
-<span class="token comment">// Touching color chips have the same hue, but with different brightness and</span>
-<span class="token comment">// vividness.</span>
+<span class="hljs-comment">// Colors are grouped by hue, the aspect most important in human perception.</span>
+<span class="hljs-comment">// Touching color chips have the same hue, but with different brightness and</span>
+<span class="hljs-comment">// vividness.</span>
 
-<span class="token comment">// Colors of slightly different hues clash. If you intend to display</span>
-<span class="token comment">// colors of the same hue together, you should pick them from the same group.</span>
+<span class="hljs-comment">// Colors of slightly different hues clash. If you intend to display</span>
+<span class="hljs-comment">// colors of the same hue together, you should pick them from the same group.</span>
 
-<span class="token comment">// Each color chip is identified by a mnemonic (e.g. kYellow) and a number.</span>
-<span class="token comment">// The keywords, kRed, kBlue, kYellow, kPink, etc are defined in the header file</span>
-<span class="token comment">// Rtypes.h that is included in all ROOT other header files. It is better</span>
-<span class="token comment">// to use these keywords in user code instead of hardcoded color numbers, e.g.:</span>
+<span class="hljs-comment">// Each color chip is identified by a mnemonic (e.g. kYellow) and a number.</span>
+<span class="hljs-comment">// The keywords, kRed, kBlue, kYellow, kPink, etc are defined in the header file</span>
+<span class="hljs-comment">// Rtypes.h that is included in all ROOT other header files. It is better</span>
+<span class="hljs-comment">// to use these keywords in user code instead of hardcoded color numbers, e.g.:</span>
 
-myObject<span class="token punctuation">.</span><span class="token function">SetFillColor</span><span class="token punctuation">(</span>kRed<span class="token punctuation">)</span><span class="token punctuation">;</span>
-myObject<span class="token punctuation">.</span><span class="token function">SetFillColor</span><span class="token punctuation">(</span>kYellow<span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-myLine<span class="token punctuation">.</span><span class="token function">SetLineColor</span><span class="token punctuation">(</span>kMagenta<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myObject.SetFillColor(kRed);
+myObject.SetFillColor(kYellow<span class="hljs-number">-10</span>);
+myLine.SetLineColor(kMagenta+<span class="hljs-number">2</span>);
 
 
-<span class="token punctuation">{</span>
-   TColorWheel <span class="token operator">*</span>w <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TColorWheel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   w<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">return</span> w<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetCanvas</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+{
+   TColorWheel *w = <span class="hljs-keyword">new</span> TColorWheel();
+   w-&gt;Draw();
+   <span class="hljs-keyword">return</span> w-&gt;GetCanvas();
+}
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// The dark and bright color are used to give 3-D effects when drawing various</span>
-<span class="token comment">// boxes (see TWbox, TPave, TPaveText, TPaveLabel, etc).</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// The dark and bright color are used to give 3-D effects when drawing various</span>
+<span class="hljs-comment">// boxes (see TWbox, TPave, TPaveText, TPaveLabel, etc).</span>
 
-<span class="token comment">//   - The dark colors have an index = color_index+100</span>
-<span class="token comment">//   - The bright colors have an index = color_index+150</span>
-<span class="token comment">//   - Two static functions return the bright and dark color number</span>
-<span class="token comment">//     corresponding to a color index. If the bright or dark color does not</span>
-<span class="token comment">//     exist, they are created:</span>
+<span class="hljs-comment">//   - The dark colors have an index = color_index+100</span>
+<span class="hljs-comment">//   - The bright colors have an index = color_index+150</span>
+<span class="hljs-comment">//   - Two static functions return the bright and dark color number</span>
+<span class="hljs-comment">//     corresponding to a color index. If the bright or dark color does not</span>
+<span class="hljs-comment">//     exist, they are created:</span>
 
-Int_t dark   <span class="token operator">=</span> TColor<span class="token operator">::</span><span class="token function">GetColorDark</span><span class="token punctuation">(</span>color_index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-Int_t bright <span class="token operator">=</span> TColor<span class="token operator">::</span><span class="token function">GetColorBright</span><span class="token punctuation">(</span>color_index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Int_t dark   = TColor::GetColorDark(color_index);
+Int_t bright = TColor::GetColorBright(color_index);
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// One can toggle between a grayscale preview and the regular colored mode using</span>
-<span class="token comment">// `TCanvas::SetGrayscale()`. Note that in grayscale mode, access via RGB</span>
-<span class="token comment">// will return grayscale values according to ITU standards (and close to b&amp;w</span>
-<span class="token comment">// printer gray-scales), while access via HLS returns de-saturated gray-scales. The</span>
-<span class="token comment">// image below shows the ROOT color wheel in grayscale mode.</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// One can toggle between a grayscale preview and the regular colored mode using</span>
+<span class="hljs-comment">// `TCanvas::SetGrayscale()`. Note that in grayscale mode, access via RGB</span>
+<span class="hljs-comment">// will return grayscale values according to ITU standards (and close to b&amp;w</span>
+<span class="hljs-comment">// printer gray-scales), while access via HLS returns de-saturated gray-scales. The</span>
+<span class="hljs-comment">// image below shows the ROOT color wheel in grayscale mode.</span>
 
-<span class="token punctuation">{</span>
-   TColorWheel <span class="token operator">*</span>w <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TColorWheel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   w<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   w<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetCanvas</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetGrayscale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   w<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetCanvas</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Modified</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   w<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetCanvas</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">return</span> w<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetCanvas</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+{
+   TColorWheel *w = <span class="hljs-keyword">new</span> TColorWheel();
+   w-&gt;Draw();
+   w-&gt;GetCanvas()-&gt;SetGrayscale();
+   w-&gt;GetCanvas()-&gt;Modified();
+   w-&gt;GetCanvas()-&gt;Update();
+   <span class="hljs-keyword">return</span> w-&gt;GetCanvas();
+}
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// It is often very useful to represent a variable with a color map. The concept</span>
-<span class="token comment">// of &quot;color palette&quot; allows to do that. One color palette is active at any time.</span>
-<span class="token comment">// This &quot;current palette&quot; is set using:</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// It is often very useful to represent a variable with a color map. The concept</span>
+<span class="hljs-comment">// of &quot;color palette&quot; allows to do that. One color palette is active at any time.</span>
+<span class="hljs-comment">// This &quot;current palette&quot; is set using:</span>
 
-gStyle<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetPalette</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-
-<span class="token comment">// This function has two parameters: the number of colors in the palette and an</span>
-<span class="token comment">// array of containing the indices of colors in the palette. The following small</span>
-<span class="token comment">// example demonstrates how to define and use the color palette:</span>
-<span class="token punctuation">{</span>
-   TCanvas <span class="token operator">*</span>c1  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;c1&quot;</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">600</span><span class="token punctuation">,</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TF2 <span class="token operator">*</span>f1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TF2</span><span class="token punctuation">(</span><span class="token string">&quot;f1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;0.1+(1-(x-2)*(x-2))*(1-(y-2)*(y-2))&quot;</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   Int_t palette<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-   palette<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">;</span>
-   palette<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
-   palette<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">23</span><span class="token punctuation">;</span>
-   palette<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
-   palette<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">;</span>
-   gStyle<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetPalette</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span>palette<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f1<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;colz&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">return</span> c1<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
+gStyle-&gt;SetPalette(...);
 
 
-<span class="token comment">//  To define more a complex palette with a continuous gradient of color, one</span>
-<span class="token comment">// should use the static function `TColor::CreateGradientColorTable()`.</span>
-<span class="token comment">// The following example demonstrates how to proceed:</span>
+<span class="hljs-comment">// This function has two parameters: the number of colors in the palette and an</span>
+<span class="hljs-comment">// array of containing the indices of colors in the palette. The following small</span>
+<span class="hljs-comment">// example demonstrates how to define and use the color palette:</span>
+{
+   TCanvas *c1  = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-string">&quot;c1&quot;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">600</span>,<span class="hljs-number">400</span>);
+   TF2 *f1 = <span class="hljs-keyword">new</span> TF2(<span class="hljs-string">&quot;f1&quot;</span>,<span class="hljs-string">&quot;0.1+(1-(x-2)*(x-2))*(1-(y-2)*(y-2))&quot;</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>);
+   Int_t palette[<span class="hljs-number">5</span>];
+   palette[<span class="hljs-number">0</span>] = <span class="hljs-number">15</span>;
+   palette[<span class="hljs-number">1</span>] = <span class="hljs-number">20</span>;
+   palette[<span class="hljs-number">2</span>] = <span class="hljs-number">23</span>;
+   palette[<span class="hljs-number">3</span>] = <span class="hljs-number">30</span>;
+   palette[<span class="hljs-number">4</span>] = <span class="hljs-number">32</span>;
+   gStyle-&gt;SetPalette(<span class="hljs-number">5</span>,palette);
+   f1-&gt;Draw(<span class="hljs-string">&quot;colz&quot;</span>);
+   <span class="hljs-keyword">return</span> c1;
+   }
 
 
-<span class="token punctuation">{</span>
-   TCanvas <span class="token operator">*</span>c2  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c2&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;c2&quot;</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">600</span><span class="token punctuation">,</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TF2 <span class="token operator">*</span>f2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TF2</span><span class="token punctuation">(</span><span class="token string">&quot;f2&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;0.1+(1-(x-2)*(x-2))*(1-(y-2)*(y-2))&quot;</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">const</span> Int_t Number <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-   Double_t Red<span class="token punctuation">[</span>Number<span class="token punctuation">]</span>    <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">1.00</span><span class="token punctuation">,</span> <span class="token number">0.00</span><span class="token punctuation">,</span> <span class="token number">0.00</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-   Double_t Green<span class="token punctuation">[</span>Number<span class="token punctuation">]</span>  <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0.00</span><span class="token punctuation">,</span> <span class="token number">1.00</span><span class="token punctuation">,</span> <span class="token number">0.00</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-   Double_t Blue<span class="token punctuation">[</span>Number<span class="token punctuation">]</span>   <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">1.00</span><span class="token punctuation">,</span> <span class="token number">0.00</span><span class="token punctuation">,</span> <span class="token number">1.00</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-   Double_t Length<span class="token punctuation">[</span>Number<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0.00</span><span class="token punctuation">,</span> <span class="token number">0.50</span><span class="token punctuation">,</span> <span class="token number">1.00</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-   Int_t nb<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">;</span>
-   TColor<span class="token operator">::</span><span class="token function">CreateGradientColorTable</span><span class="token punctuation">(</span>Number<span class="token punctuation">,</span>Length<span class="token punctuation">,</span>Red<span class="token punctuation">,</span>Green<span class="token punctuation">,</span>Blue<span class="token punctuation">,</span>nb<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetContour</span><span class="token punctuation">(</span>nb<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLineWidth</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetLineColor</span><span class="token punctuation">(</span>kBlack<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;surf1z&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">return</span> c2<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="hljs-comment">//  To define more a complex palette with a continuous gradient of color, one</span>
+<span class="hljs-comment">// should use the static function `TColor::CreateGradientColorTable()`.</span>
+<span class="hljs-comment">// The following example demonstrates how to proceed:</span>
 
 
-<span class="token comment">// The function `TColor::CreateGradientColorTable()` automatically</span>
-<span class="token comment">// calls `gStyle-&gt;SetPalette()`, so there is not need to add one.</span>
+{
+   TCanvas *c2  = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c2&quot;</span>,<span class="hljs-string">&quot;c2&quot;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">600</span>,<span class="hljs-number">400</span>);
+   TF2 *f2 = <span class="hljs-keyword">new</span> TF2(<span class="hljs-string">&quot;f2&quot;</span>,<span class="hljs-string">&quot;0.1+(1-(x-2)*(x-2))*(1-(y-2)*(y-2))&quot;</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>);
+   <span class="hljs-keyword">const</span> Int_t Number = <span class="hljs-number">3</span>;
+   Double_t Red[Number]    = { <span class="hljs-number">1.00</span>, <span class="hljs-number">0.00</span>, <span class="hljs-number">0.00</span>};
+   Double_t Green[Number]  = { <span class="hljs-number">0.00</span>, <span class="hljs-number">1.00</span>, <span class="hljs-number">0.00</span>};
+   Double_t Blue[Number]   = { <span class="hljs-number">1.00</span>, <span class="hljs-number">0.00</span>, <span class="hljs-number">1.00</span>};
+   Double_t Length[Number] = { <span class="hljs-number">0.00</span>, <span class="hljs-number">0.50</span>, <span class="hljs-number">1.00</span> };
+   Int_t nb=<span class="hljs-number">50</span>;
+   TColor::CreateGradientColorTable(Number,Length,Red,Green,Blue,nb);
+   f2-&gt;SetContour(nb);
+   f2-&gt;SetLineWidth(<span class="hljs-number">1</span>);
+   f2-&gt;SetLineColor(kBlack);
+   f2-&gt;Draw(<span class="hljs-string">&quot;surf1z&quot;</span>);
+   <span class="hljs-keyword">return</span> c2;
+}
 
-<span class="token comment">// After a call to `TColor::CreateGradientColorTable()` it is sometimes</span>
-<span class="token comment">// useful to store the newly create palette for further use. In particular, it is</span>
-<span class="token comment">// recommended to do if one wants to switch between several user define palettes.</span>
-<span class="token comment">// To store a palette in an array it is enough to do:</span>
 
-<span class="token punctuation">{</span>
-   Int_t MyPalette<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-   Double_t Red<span class="token punctuation">[</span><span class="token punctuation">]</span>    <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0.</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-   Double_t Green<span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0.</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-   Double_t Blue<span class="token punctuation">[</span><span class="token punctuation">]</span>   <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0.</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-   Double_t Length<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0.</span><span class="token punctuation">,</span> <span class="token number">.25</span><span class="token punctuation">,</span> <span class="token number">.50</span><span class="token punctuation">,</span> <span class="token number">.75</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-   Int_t FI <span class="token operator">=</span> TColor<span class="token operator">::</span><span class="token function">CreateGradientColorTable</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> Length<span class="token punctuation">,</span> Red<span class="token punctuation">,</span> Green<span class="token punctuation">,</span> Blue<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">100</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> MyPalette<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> FI<span class="token operator">+</span>i<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="hljs-comment">// The function `TColor::CreateGradientColorTable()` automatically</span>
+<span class="hljs-comment">// calls `gStyle-&gt;SetPalette()`, so there is not need to add one.</span>
 
-<span class="token comment">// Later on to reuse the palette `MyPalette` it will be enough to do</span>
+<span class="hljs-comment">// After a call to `TColor::CreateGradientColorTable()` it is sometimes</span>
+<span class="hljs-comment">// useful to store the newly create palette for further use. In particular, it is</span>
+<span class="hljs-comment">// recommended to do if one wants to switch between several user define palettes.</span>
+<span class="hljs-comment">// To store a palette in an array it is enough to do:</span>
 
-gStyle<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetPalette</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> MyPalette<span class="token punctuation">)</span><span class="token punctuation">;</span>
+{
+   Int_t MyPalette[<span class="hljs-number">100</span>];
+   Double_t Red[]    = {<span class="hljs-number">0.</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>};
+   Double_t Green[]  = {<span class="hljs-number">0.</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>};
+   Double_t Blue[]   = {<span class="hljs-number">0.</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>};
+   Double_t Length[] = {<span class="hljs-number">0.</span>, <span class="hljs-number">.25</span>, <span class="hljs-number">.50</span>, <span class="hljs-number">.75</span>, <span class="hljs-number">1.0</span>};
+   Int_t FI = TColor::CreateGradientColorTable(<span class="hljs-number">5</span>, Length, Red, Green, Blue, <span class="hljs-number">100</span>);
+   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">100</span>;i++) MyPalette[i] = FI+i;
+}
 
-<span class="token comment">// As only one palette is active, one need to use `TExec` to be able to</span>
-<span class="token comment">// display plots using different palettes on the same pad.</span>
-<span class="token comment">// The following macro illustrate this feature.</span>
+<span class="hljs-comment">// Later on to reuse the palette `MyPalette` it will be enough to do</span>
+
+gStyle-&gt;SetPalette(<span class="hljs-number">100</span>, MyPalette);
+
+<span class="hljs-comment">// As only one palette is active, one need to use `TExec` to be able to</span>
+<span class="hljs-comment">// display plots using different palettes on the same pad.</span>
+<span class="hljs-comment">// The following macro illustrate this feature.</span>
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// \since **6.04:**</span>
-<span class="token comment">// 62 high quality palettes are predefined with 255 colors each.</span>
-<span class="token comment">// Despite the [disadvantages of the Rainbow color map](https://root.cern.ch/rainbow-color-map),</span>
-<span class="token comment">// it was kept in the list of predefined color maps.</span>
-<span class="token comment">// These palettes can be accessed &quot;by name&quot; with `gStyle-&gt;SetPalette(num)`.</span>
-<span class="token comment">// `num` can be taken within the following enum:</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// \since **6.04:**</span>
+<span class="hljs-comment">// 62 high quality palettes are predefined with 255 colors each.</span>
+<span class="hljs-comment">// Despite the [disadvantages of the Rainbow color map](https://root.cern.ch/rainbow-color-map),</span>
+<span class="hljs-comment">// it was kept in the list of predefined color maps.</span>
+<span class="hljs-comment">// These palettes can be accessed &quot;by name&quot; with `gStyle-&gt;SetPalette(num)`.</span>
+<span class="hljs-comment">// `num` can be taken within the following enum:</span>
 
-kDeepSea<span class="token operator">=</span><span class="token number">51</span><span class="token punctuation">,</span>          kGreyScale<span class="token operator">=</span><span class="token number">52</span><span class="token punctuation">,</span>    kDarkBodyRadiator<span class="token operator">=</span><span class="token number">53</span><span class="token punctuation">,</span>
-kBlueYellow<span class="token operator">=</span> <span class="token number">54</span><span class="token punctuation">,</span>      kRainBow<span class="token operator">=</span><span class="token number">55</span><span class="token punctuation">,</span>      kInvertedDarkBodyRadiator<span class="token operator">=</span><span class="token number">56</span><span class="token punctuation">,</span>
-kBird<span class="token operator">=</span><span class="token number">57</span><span class="token punctuation">,</span>             kCubehelix<span class="token operator">=</span><span class="token number">58</span><span class="token punctuation">,</span>    kGreenRedViolet<span class="token operator">=</span><span class="token number">59</span><span class="token punctuation">,</span>
-kBlueRedYellow<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">,</span>    kOcean<span class="token operator">=</span><span class="token number">61</span><span class="token punctuation">,</span>        kColorPrintableOnGrey<span class="token operator">=</span><span class="token number">62</span><span class="token punctuation">,</span>
-kAlpine<span class="token operator">=</span><span class="token number">63</span><span class="token punctuation">,</span>           kAquamarine<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">,</span>   kArmy<span class="token operator">=</span><span class="token number">65</span><span class="token punctuation">,</span>
-kAtlantic<span class="token operator">=</span><span class="token number">66</span><span class="token punctuation">,</span>         kAurora<span class="token operator">=</span><span class="token number">67</span><span class="token punctuation">,</span>       kAvocado<span class="token operator">=</span><span class="token number">68</span><span class="token punctuation">,</span>
-kBeach<span class="token operator">=</span><span class="token number">69</span><span class="token punctuation">,</span>            kBlackBody<span class="token operator">=</span><span class="token number">70</span><span class="token punctuation">,</span>    kBlueGreenYellow<span class="token operator">=</span><span class="token number">71</span><span class="token punctuation">,</span>
-kBrownCyan<span class="token operator">=</span><span class="token number">72</span><span class="token punctuation">,</span>        kCMYK<span class="token operator">=</span><span class="token number">73</span><span class="token punctuation">,</span>         kCandy<span class="token operator">=</span><span class="token number">74</span><span class="token punctuation">,</span>
-kCherry<span class="token operator">=</span><span class="token number">75</span><span class="token punctuation">,</span>           kCoffee<span class="token operator">=</span><span class="token number">76</span><span class="token punctuation">,</span>       kDarkRainBow<span class="token operator">=</span><span class="token number">77</span><span class="token punctuation">,</span>
-kDarkTerrain<span class="token operator">=</span><span class="token number">78</span><span class="token punctuation">,</span>      kFall<span class="token operator">=</span><span class="token number">79</span><span class="token punctuation">,</span>         kFruitPunch<span class="token operator">=</span><span class="token number">80</span><span class="token punctuation">,</span>
-kFuchsia<span class="token operator">=</span><span class="token number">81</span><span class="token punctuation">,</span>          kGreyYellow<span class="token operator">=</span><span class="token number">82</span><span class="token punctuation">,</span>   kGreenBrownTerrain<span class="token operator">=</span><span class="token number">83</span><span class="token punctuation">,</span>
-kGreenPink<span class="token operator">=</span><span class="token number">84</span><span class="token punctuation">,</span>        kIsland<span class="token operator">=</span><span class="token number">85</span><span class="token punctuation">,</span>       kLake<span class="token operator">=</span><span class="token number">86</span><span class="token punctuation">,</span>
-kLightTemperature<span class="token operator">=</span><span class="token number">87</span><span class="token punctuation">,</span> kLightTerrain<span class="token operator">=</span><span class="token number">88</span><span class="token punctuation">,</span> kMint<span class="token operator">=</span><span class="token number">89</span><span class="token punctuation">,</span>
-kNeon<span class="token operator">=</span><span class="token number">90</span><span class="token punctuation">,</span>             kPastel<span class="token operator">=</span><span class="token number">91</span><span class="token punctuation">,</span>       kPearl<span class="token operator">=</span><span class="token number">92</span><span class="token punctuation">,</span>
-kPigeon<span class="token operator">=</span><span class="token number">93</span><span class="token punctuation">,</span>           kPlum<span class="token operator">=</span><span class="token number">94</span><span class="token punctuation">,</span>         kRedBlue<span class="token operator">=</span><span class="token number">95</span><span class="token punctuation">,</span>
-kRose<span class="token operator">=</span><span class="token number">96</span><span class="token punctuation">,</span>             kRust<span class="token operator">=</span><span class="token number">97</span><span class="token punctuation">,</span>         kSandyTerrain<span class="token operator">=</span><span class="token number">98</span><span class="token punctuation">,</span>
-kSienna<span class="token operator">=</span><span class="token number">99</span><span class="token punctuation">,</span>           kSolar<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>       kSouthWest<span class="token operator">=</span><span class="token number">101</span><span class="token punctuation">,</span>
-kStarryNight<span class="token operator">=</span><span class="token number">102</span><span class="token punctuation">,</span>     kSunset<span class="token operator">=</span><span class="token number">103</span><span class="token punctuation">,</span>      kTemperatureMap<span class="token operator">=</span><span class="token number">104</span><span class="token punctuation">,</span>
-kThermometer<span class="token operator">=</span><span class="token number">105</span><span class="token punctuation">,</span>     kValentine<span class="token operator">=</span><span class="token number">106</span><span class="token punctuation">,</span>   kVisibleSpectrum<span class="token operator">=</span><span class="token number">107</span><span class="token punctuation">,</span>
-kWaterMelon<span class="token operator">=</span><span class="token number">108</span><span class="token punctuation">,</span>      kCool<span class="token operator">=</span><span class="token number">109</span><span class="token punctuation">,</span>        kCopper<span class="token operator">=</span><span class="token number">110</span><span class="token punctuation">,</span>
-kGistEarth<span class="token operator">=</span><span class="token number">111</span><span class="token punctuation">,</span>       kViridis<span class="token operator">=</span><span class="token number">112</span>
+kDeepSea=<span class="hljs-number">51</span>,          kGreyScale=<span class="hljs-number">52</span>,    kDarkBodyRadiator=<span class="hljs-number">53</span>,
+kBlueYellow= <span class="hljs-number">54</span>,      kRainBow=<span class="hljs-number">55</span>,      kInvertedDarkBodyRadiator=<span class="hljs-number">56</span>,
+kBird=<span class="hljs-number">57</span>,             kCubehelix=<span class="hljs-number">58</span>,    kGreenRedViolet=<span class="hljs-number">59</span>,
+kBlueRedYellow=<span class="hljs-number">60</span>,    kOcean=<span class="hljs-number">61</span>,        kColorPrintableOnGrey=<span class="hljs-number">62</span>,
+kAlpine=<span class="hljs-number">63</span>,           kAquamarine=<span class="hljs-number">64</span>,   kArmy=<span class="hljs-number">65</span>,
+kAtlantic=<span class="hljs-number">66</span>,         kAurora=<span class="hljs-number">67</span>,       kAvocado=<span class="hljs-number">68</span>,
+kBeach=<span class="hljs-number">69</span>,            kBlackBody=<span class="hljs-number">70</span>,    kBlueGreenYellow=<span class="hljs-number">71</span>,
+kBrownCyan=<span class="hljs-number">72</span>,        kCMYK=<span class="hljs-number">73</span>,         kCandy=<span class="hljs-number">74</span>,
+kCherry=<span class="hljs-number">75</span>,           kCoffee=<span class="hljs-number">76</span>,       kDarkRainBow=<span class="hljs-number">77</span>,
+kDarkTerrain=<span class="hljs-number">78</span>,      kFall=<span class="hljs-number">79</span>,         kFruitPunch=<span class="hljs-number">80</span>,
+kFuchsia=<span class="hljs-number">81</span>,          kGreyYellow=<span class="hljs-number">82</span>,   kGreenBrownTerrain=<span class="hljs-number">83</span>,
+kGreenPink=<span class="hljs-number">84</span>,        kIsland=<span class="hljs-number">85</span>,       kLake=<span class="hljs-number">86</span>,
+kLightTemperature=<span class="hljs-number">87</span>, kLightTerrain=<span class="hljs-number">88</span>, kMint=<span class="hljs-number">89</span>,
+kNeon=<span class="hljs-number">90</span>,             kPastel=<span class="hljs-number">91</span>,       kPearl=<span class="hljs-number">92</span>,
+kPigeon=<span class="hljs-number">93</span>,           kPlum=<span class="hljs-number">94</span>,         kRedBlue=<span class="hljs-number">95</span>,
+kRose=<span class="hljs-number">96</span>,             kRust=<span class="hljs-number">97</span>,         kSandyTerrain=<span class="hljs-number">98</span>,
+kSienna=<span class="hljs-number">99</span>,           kSolar=<span class="hljs-number">100</span>,       kSouthWest=<span class="hljs-number">101</span>,
+kStarryNight=<span class="hljs-number">102</span>,     kSunset=<span class="hljs-number">103</span>,      kTemperatureMap=<span class="hljs-number">104</span>,
+kThermometer=<span class="hljs-number">105</span>,     kValentine=<span class="hljs-number">106</span>,   kVisibleSpectrum=<span class="hljs-number">107</span>,
+kWaterMelon=<span class="hljs-number">108</span>,      kCool=<span class="hljs-number">109</span>,        kCopper=<span class="hljs-number">110</span>,
+kGistEarth=<span class="hljs-number">111</span>,       kViridis=<span class="hljs-number">112</span>
 
-<span class="token punctuation">{</span>
-   c  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TCanvas</span><span class="token punctuation">(</span><span class="token string">&quot;c&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;c&quot;</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">300</span><span class="token punctuation">,</span><span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   TF2 <span class="token operator">*</span>f2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TF2</span><span class="token punctuation">(</span><span class="token string">&quot;f2&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;0.1+(1-(x-2)*(x-2))*(1-(y-2)*(y-2))&quot;</span><span class="token punctuation">,</span><span class="token number">0.999</span><span class="token punctuation">,</span><span class="token number">3.002</span><span class="token punctuation">,</span><span class="token number">0.999</span><span class="token punctuation">,</span><span class="token number">3.002</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+{
+   c  = <span class="hljs-keyword">new</span> TCanvas(<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">300</span>,<span class="hljs-number">300</span>);
+   TF2 *f2 = <span class="hljs-keyword">new</span> TF2(<span class="hljs-string">&quot;f2&quot;</span>,<span class="hljs-string">&quot;0.1+(1-(x-2)*(x-2))*(1-(y-2)*(y-2))&quot;</span>,<span class="hljs-number">0.999</span>,<span class="hljs-number">3.002</span>,<span class="hljs-number">0.999</span>,<span class="hljs-number">3.002</span>);
 
 
-   f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetContour</span><span class="token punctuation">(</span><span class="token number">99</span><span class="token punctuation">)</span><span class="token punctuation">;</span> gStyle<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetPalette</span><span class="token punctuation">(</span>kDeepSea<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;surf2Z&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token string">&quot;kDeepSea&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   f2-&gt;SetContour(<span class="hljs-number">99</span>); gStyle-&gt;SetPalette(kDeepSea);
+   f2-&gt;Draw(<span class="hljs-string">&quot;surf2Z&quot;</span>); f2-&gt;SetTitle(<span class="hljs-string">&quot;kDeepSea&quot;</span>);
 
-   f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetContour</span><span class="token punctuation">(</span><span class="token number">99</span><span class="token punctuation">)</span><span class="token punctuation">;</span> gStyle<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetPalette</span><span class="token punctuation">(</span>kGreyScale<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token string">&quot;surf2Z&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> f2<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTitle</span><span class="token punctuation">(</span><span class="token string">&quot;kGreyScale&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   f2-&gt;SetContour(<span class="hljs-number">99</span>); gStyle-&gt;SetPalette(kGreyScale);
+   f2-&gt;Draw(<span class="hljs-string">&quot;surf2Z&quot;</span>); f2-&gt;SetTitle(<span class="hljs-string">&quot;kGreyScale&quot;</span>);
 
-<span class="token comment">// ...</span>
-<span class="token punctuation">}</span>
+<span class="hljs-comment">// ...</span>
+}
 </code></pre>
-<pre class="language-"><code class="lang-cpp"><span class="token comment">// To make a graphics object transparent it is enough to set its color to a</span>
-<span class="token comment">// transparent one. The color transparency is defined via its alpha component. The</span>
-<span class="token comment">// alpha value varies from `0.` (fully transparent) to `1.` (fully</span>
-<span class="token comment">// opaque). To set the alpha value of an existing color it is enough to do:</span>
+<pre><code class="lang-cpp"><span class="hljs-comment">// To make a graphics object transparent it is enough to set its color to a</span>
+<span class="hljs-comment">// transparent one. The color transparency is defined via its alpha component. The</span>
+<span class="hljs-comment">// alpha value varies from `0.` (fully transparent) to `1.` (fully</span>
+<span class="hljs-comment">// opaque). To set the alpha value of an existing color it is enough to do:</span>
 
 
-TColor <span class="token operator">*</span>col26 <span class="token operator">=</span> gROOT<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetColor</span><span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-col26<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetAlpha</span><span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+TColor *col26 = gROOT-&gt;GetColor(<span class="hljs-number">26</span>);
+col26-&gt;SetAlpha(<span class="hljs-number">0.01</span>);
 
 
-<span class="token comment">// A new color can be created transparent the following way:</span>
+<span class="hljs-comment">// A new color can be created transparent the following way:</span>
 
 
-Int_t ci <span class="token operator">=</span> <span class="token number">1756</span><span class="token punctuation">;</span>
-TColor <span class="token operator">*</span>color <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TColor</span><span class="token punctuation">(</span>ci<span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">,</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// alpha = 0.5</span>
+Int_t ci = <span class="hljs-number">1756</span>;
+TColor *color = <span class="hljs-keyword">new</span> TColor(ci, <span class="hljs-number">0.1</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.3</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-number">0.5</span>); <span class="hljs-comment">// alpha = 0.5</span>
 
 
-<span class="token comment">// An example of transparency usage with parallel coordinates can be found</span>
-<span class="token comment">// in parallelcoordtrans.C.</span>
+<span class="hljs-comment">// An example of transparency usage with parallel coordinates can be found</span>
+<span class="hljs-comment">// in parallelcoordtrans.C.</span>
 
-<span class="token comment">// To ease the creation of a transparent color the static method</span>
-<span class="token comment">// `GetColorTransparent(Int_t color, Float_t a)` is provided.</span>
-<span class="token comment">// In the following example the `trans_red` color index point to</span>
-<span class="token comment">// a red color 30% transparent. The alpha value of the color index</span>
-<span class="token comment">// `kRed` is not modified.</span>
+<span class="hljs-comment">// To ease the creation of a transparent color the static method</span>
+<span class="hljs-comment">// `GetColorTransparent(Int_t color, Float_t a)` is provided.</span>
+<span class="hljs-comment">// In the following example the `trans_red` color index point to</span>
+<span class="hljs-comment">// a red color 30% transparent. The alpha value of the color index</span>
+<span class="hljs-comment">// `kRed` is not modified.</span>
 
-Int_t trans_red <span class="token operator">=</span> <span class="token function">GetColorTransparent</span><span class="token punctuation">(</span>kRed<span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Int_t trans_red = GetColorTransparent(kRed, <span class="hljs-number">0.3</span>);
 
 
-<span class="token comment">// This function is also used in the methods</span>
-<span class="token comment">// `SetFillColorAlpha()`, `SetLineColorAlpha()`,</span>
-<span class="token comment">// `SetMarkerColorAlpha()` and `SetTextColorAlpha()`.</span>
-<span class="token comment">// In the following example the fill color of the histogram `histo`</span>
-<span class="token comment">// is set to blue with a transparency of 35%. The color `kBlue`</span>
-<span class="token comment">// itself remains fully opaque.</span>
+<span class="hljs-comment">// This function is also used in the methods</span>
+<span class="hljs-comment">// `SetFillColorAlpha()`, `SetLineColorAlpha()`,</span>
+<span class="hljs-comment">// `SetMarkerColorAlpha()` and `SetTextColorAlpha()`.</span>
+<span class="hljs-comment">// In the following example the fill color of the histogram `histo`</span>
+<span class="hljs-comment">// is set to blue with a transparency of 35%. The color `kBlue`</span>
+<span class="hljs-comment">// itself remains fully opaque.</span>
 
-histo<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetFillColorAlpha</span><span class="token punctuation">(</span>kBlue<span class="token punctuation">,</span> <span class="token number">0.35</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+histo-&gt;SetFillColorAlpha(kBlue, <span class="hljs-number">0.35</span>);
 
-<span class="token comment">// The transparency is available on all platforms when the flag `OpenGL.CanvasPreferGL` is set to `1`</span>
-<span class="token comment">// in `$ROOTSYS/etc/system.rootrc`, or on Mac with the Cocoa backend. On the file output</span>
-<span class="token comment">// it is visible with PDF, PNG, Gif, JPEG, SVG ... but not PostScript.</span>
+<span class="hljs-comment">// The transparency is available on all platforms when the flag `OpenGL.CanvasPreferGL` is set to `1`</span>
+<span class="hljs-comment">// in `$ROOTSYS/etc/system.rootrc`, or on Mac with the Cocoa backend. On the file output</span>
+<span class="hljs-comment">// it is visible with PDF, PNG, Gif, JPEG, SVG ... but not PostScript.</span>
 </code></pre>
 <h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
 <!-- TColor.md ends here -->
-<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
-2018-05-14 17:18:22
-</span></footer>
+<script type="text/javascript">var className='atoc';</script>
+
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
                                 
                                 </section>
                             
@@ -4379,7 +4391,7 @@ histo<span class="token operator">-</span><span class="token operator">&gt;</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TColor","level":"1.2.12","depth":2,"next":{"title":"TCut*","level":"1.2.13","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"previous":{"title":"TCollection*-","level":"1.2.11","depth":2,"path":"class/TCollection.md","ref":"class/TCollection.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TColor.md","mtime":"2018-05-14T09:18:22.061Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TColor","level":"1.2.12","depth":2,"next":{"title":"TCut*","level":"1.2.13","depth":2,"path":"class/TCut.md","ref":"class/TCut.md","articles":[]},"previous":{"title":"TCollection*-","level":"1.2.11","depth":2,"path":"class/TCollection.md","ref":"class/TCollection.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TColor.md","mtime":"2018-05-14T09:18:22.061Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T06:43:38.582Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -4411,6 +4423,18 @@ histo<span class="token operator">-</span><span class="token operator">&gt;</spa
     
         
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
         
     
         
