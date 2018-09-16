@@ -1,0 +1,4325 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-ch" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>图形界面的使用 · Geant4 Note</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Hongyi Wu(吴鸿毅)">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-latex-codecogs/latex-codecogs.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sectionx/sectionx.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mcqx/mcqx.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fbqx/fbqx.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-spoiler/spoiler.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-youtubex/player.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="GuiTypes.html" />
+    
+    
+    <link rel="prev" href="../TVirtualFitter.html" />
+    
+
+    </head>
+    <body>
+        
+  <script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  </script>
+  
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    常用类的使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../FitResult.html">
+            
+                <a href="../FitResult.html">
+            
+                    
+                    FitResult
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../TAttAxis.html">
+            
+                <a href="../TAttAxis.html">
+            
+                    
+                    TAttAxis*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../TAxis.html">
+            
+                <a href="../TAxis.html">
+            
+                    
+                    TAxis*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../TBackCompFitter.html">
+            
+                <a href="../TBackCompFitter.html">
+            
+                    
+                    TBackCompFitter*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../TBenchmark.html">
+            
+                <a href="../TBenchmark.html">
+            
+                    
+                    TBenchmark+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../TBranch.html">
+            
+                <a href="../TBranch.html">
+            
+                    
+                    TBranch*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../TBuffer.html">
+            
+                <a href="../TBuffer.html">
+            
+                    
+                    TBuffer+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../TBufferFile.html">
+            
+                <a href="../TBufferFile.html">
+            
+                    
+                    TBufferFile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../TCanvas.html">
+            
+                <a href="../TCanvas.html">
+            
+                    
+                    TCanvas*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../TChain.html">
+            
+                <a href="../TChain.html">
+            
+                    
+                    TChain*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../TCollection.html">
+            
+                <a href="../TCollection.html">
+            
+                    
+                    TCollection*-
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../TColor.html">
+            
+                <a href="../TColor.html">
+            
+                    
+                    TColor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../TCut.html">
+            
+                <a href="../TCut.html">
+            
+                    
+                    TCut*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="../TCutG.html">
+            
+                <a href="../TCutG.html">
+            
+                    
+                    TCutG*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="../TEllipse.html">
+            
+                <a href="../TEllipse.html">
+            
+                    
+                    TEllipse
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="../TEventList.html">
+            
+                <a href="../TEventList.html">
+            
+                    
+                    TEventList*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="../TF1.html">
+            
+                <a href="../TF1.html">
+            
+                    
+                    TF1*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="../TF2.html">
+            
+                <a href="../TF2.html">
+            
+                    
+                    TF2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="../TF3.html">
+            
+                <a href="../TF3.html">
+            
+                    
+                    TF3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="../TFile.html">
+            
+                <a href="../TFile.html">
+            
+                    
+                    TFile*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="../TFileCacheWrite.html">
+            
+                <a href="../TFileCacheWrite.html">
+            
+                    
+                    TFileCacheWrite
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="../TFileMerger.html">
+            
+                <a href="../TFileMerger.html">
+            
+                    
+                    TFileMerger
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.23" data-path="../TFitter.html">
+            
+                <a href="../TFitter.html">
+            
+                    
+                    TFitter*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.24" data-path="../TFitResult.html">
+            
+                <a href="../TFitResult.html">
+            
+                    
+                    TFitResult
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="../TFitResultPtr.html">
+            
+                <a href="../TFitResultPtr.html">
+            
+                    
+                    TFitResultPtr
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="../TFractionFitter.html">
+            
+                <a href="../TFractionFitter.html">
+            
+                    
+                    TFractionFitter*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.27" data-path="../TGaxis.html">
+            
+                <a href="../TGaxis.html">
+            
+                    
+                    TGaxis*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.28" data-path="../TGraph.html">
+            
+                <a href="../TGraph.html">
+            
+                    
+                    TGraph*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.29" data-path="../TGraph2D.html">
+            
+                <a href="../TGraph2D.html">
+            
+                    
+                    TGraph2D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.30" data-path="../TGraph2DErrors.html">
+            
+                <a href="../TGraph2DErrors.html">
+            
+                    
+                    TGraph2DErrors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.31" data-path="../TGraphErrors.html">
+            
+                <a href="../TGraphErrors.html">
+            
+                    
+                    TGraphErrors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.32" data-path="../TGraphPolar.html">
+            
+                <a href="../TGraphPolar.html">
+            
+                    
+                    TGraphPolar
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.33" data-path="../TH1.html">
+            
+                <a href="../TH1.html">
+            
+                    
+                    TH1*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.34" data-path="../TH2.html">
+            
+                <a href="../TH2.html">
+            
+                    
+                    TH2+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.35" data-path="../TH2Poly.html">
+            
+                <a href="../TH2Poly.html">
+            
+                    
+                    TH2Poly*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.36" data-path="../TH3.html">
+            
+                <a href="../TH3.html">
+            
+                    
+                    TH3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.37" data-path="../TLatex.html">
+            
+                <a href="../TLatex.html">
+            
+                    
+                    TLatex*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.38" data-path="../TLegend.html">
+            
+                <a href="../TLegend.html">
+            
+                    
+                    TLegend*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.39" data-path="../TLegendEntry.html">
+            
+                <a href="../TLegendEntry.html">
+            
+                    
+                    TLegendEntry*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.40" data-path="../TLine.html">
+            
+                <a href="../TLine.html">
+            
+                    
+                    TLine*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.41" data-path="../TLinearFitter.html">
+            
+                <a href="../TLinearFitter.html">
+            
+                    
+                    TLinearFitter*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.42" data-path="../TList.html">
+            
+                <a href="../TList.html">
+            
+                    
+                    TList*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.43" data-path="../TMath.html">
+            
+                <a href="../TMath.html">
+            
+                    
+                    TMath*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.44" data-path="../TMathBase.html">
+            
+                <a href="../TMathBase.html">
+            
+                    
+                    TMathBase*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.45" data-path="../TMatrixT.html">
+            
+                <a href="../TMatrixT.html">
+            
+                    
+                    TMatrixT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.46" data-path="../TMatrixTBase.html">
+            
+                <a href="../TMatrixTBase.html">
+            
+                    
+                    TMatrixTBase
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.47" data-path="../TMatrixTSparse.html">
+            
+                <a href="../TMatrixTSparse.html">
+            
+                    
+                    TMatrixTSparse
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.48" data-path="../TMatrixTSym.html">
+            
+                <a href="../TMatrixTSym.html">
+            
+                    
+                    TMatrixTSym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.49" data-path="../TMemFile.html">
+            
+                <a href="../TMemFile.html">
+            
+                    
+                    TMemFile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.50" data-path="../TMinuit.html">
+            
+                <a href="../TMinuit.html">
+            
+                    
+                    TMinuit*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.51" data-path="../TMinuitMinimizer.html">
+            
+                <a href="../TMinuitMinimizer.html">
+            
+                    
+                    TMinuitMinimizer*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.52" data-path="../TMLPAnalyzer.html">
+            
+                <a href="../TMLPAnalyzer.html">
+            
+                    
+                    TMLPAnalyzer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.53" data-path="../TMonitor.html">
+            
+                <a href="../TMonitor.html">
+            
+                    
+                    TMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.54" data-path="../TMultiGraph.html">
+            
+                <a href="../TMultiGraph.html">
+            
+                    
+                    TMultiGraph+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.55" data-path="../TMultiLayerPerceptron.html">
+            
+                <a href="../TMultiLayerPerceptron.html">
+            
+                    
+                    TMultiLayerPerceptron
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.56" data-path="../TNamed.html">
+            
+                <a href="../TNamed.html">
+            
+                    
+                    TNamed+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.57" data-path="../TNeuron.html">
+            
+                <a href="../TNeuron.html">
+            
+                    
+                    TNeuron
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.58" data-path="../TNtuple.html">
+            
+                <a href="../TNtuple.html">
+            
+                    
+                    TNtuple*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.59" data-path="../TNtupleD.html">
+            
+                <a href="../TNtupleD.html">
+            
+                    
+                    TNtupleD*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.60" data-path="../TPad.html">
+            
+                <a href="../TPad.html">
+            
+                    
+                    TPad*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.61" data-path="../TPaveStats.html">
+            
+                <a href="../TPaveStats.html">
+            
+                    
+                    TPaveStats*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.62" data-path="../TPolyMarker.html">
+            
+                <a href="../TPolyMarker.html">
+            
+                    
+                    TPolyMarker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.63" data-path="../TPaveText.html">
+            
+                <a href="../TPaveText.html">
+            
+                    
+                    TPaveText*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.64" data-path="../TPolyMarker3D.html">
+            
+                <a href="../TPolyMarker3D.html">
+            
+                    
+                    TPolyMarker3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.65" data-path="../TProfile.html">
+            
+                <a href="../TProfile.html">
+            
+                    
+                    TProfile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.66" data-path="../TProfile2D.html">
+            
+                <a href="../TProfile2D.html">
+            
+                    
+                    TProfile2D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.67" data-path="../TProfile3D.html">
+            
+                <a href="../TProfile3D.html">
+            
+                    
+                    TProfile3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.68" data-path="../TPServerSocket.html">
+            
+                <a href="../TPServerSocket.html">
+            
+                    
+                    TPServerSocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.69" data-path="../TPSocket.html">
+            
+                <a href="../TPSocket.html">
+            
+                    
+                    TPSocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.70" data-path="../TRandom.html">
+            
+                <a href="../TRandom.html">
+            
+                    
+                    TRandom*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.71" data-path="../TRandom1.html">
+            
+                <a href="../TRandom1.html">
+            
+                    
+                    TRandom1*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.72" data-path="../TRandom2.html">
+            
+                <a href="../TRandom2.html">
+            
+                    
+                    TRandom2*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.73" data-path="../TRandom3.html">
+            
+                <a href="../TRandom3.html">
+            
+                    
+                    TRandom3*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.74" data-path="../TROOT.html">
+            
+                <a href="../TROOT.html">
+            
+                    
+                    TROOT*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.75" data-path="../TSelector.html">
+            
+                <a href="../TSelector.html">
+            
+                    
+                    TSelector-
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.76" data-path="../TSelectorCint.html">
+            
+                <a href="../TSelectorCint.html">
+            
+                    
+                    TSelectorCint
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.77" data-path="../TSelectorDraw.html">
+            
+                <a href="../TSelectorDraw.html">
+            
+                    
+                    TSelectorDraw
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.78" data-path="../TSelectorEntries.html">
+            
+                <a href="../TSelectorEntries.html">
+            
+                    
+                    TSelectorEntries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.79" data-path="../TSelectorList.html">
+            
+                <a href="../TSelectorList.html">
+            
+                    
+                    TSelectorList-
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.80" data-path="../TSelectorScalar.html">
+            
+                <a href="../TSelectorScalar.html">
+            
+                    
+                    TSelectorScalar
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.81" data-path="../TSeqCollection.html">
+            
+                <a href="../TSeqCollection.html">
+            
+                    
+                    TSeqCollection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.82" data-path="../TServerSocket.html">
+            
+                <a href="../TServerSocket.html">
+            
+                    
+                    TServerSocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.83" data-path="../TSocket.html">
+            
+                <a href="../TSocket.html">
+            
+                    
+                    TSocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.84" data-path="../TSpectrum.html">
+            
+                <a href="../TSpectrum.html">
+            
+                    
+                    TSpectrum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.85" data-path="../TSpectrum2.html">
+            
+                <a href="../TSpectrum2.html">
+            
+                    
+                    TSpectrum2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.86" data-path="../TSpectrum2Fit.html">
+            
+                <a href="../TSpectrum2Fit.html">
+            
+                    
+                    TSpectrum2Fit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.87" data-path="../TSpectrum2Painter.html">
+            
+                <a href="../TSpectrum2Painter.html">
+            
+                    
+                    TSpectrum2Painter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.88" data-path="../TSpectrum2Transform.html">
+            
+                <a href="../TSpectrum2Transform.html">
+            
+                    
+                    TSpectrum2Transform
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.89" data-path="../TSpectrum3.html">
+            
+                <a href="../TSpectrum3.html">
+            
+                    
+                    TSpectrum3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.90" data-path="../TSpectrumFit.html">
+            
+                <a href="../TSpectrumFit.html">
+            
+                    
+                    TSpectrumFit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.91" data-path="../TSpectrumTransform.html">
+            
+                <a href="../TSpectrumTransform.html">
+            
+                    
+                    TSpectrumTransform
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.92" data-path="../TSpline.html">
+            
+                <a href="../TSpline.html">
+            
+                    
+                    TSpline+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.93" data-path="../TStopwatch.html">
+            
+                <a href="../TStopwatch.html">
+            
+                    
+                    TStopwatch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.94" data-path="../TString.html">
+            
+                <a href="../TString.html">
+            
+                    
+                    TString+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.95" data-path="../TStyle.html">
+            
+                <a href="../TStyle.html">
+            
+                    
+                    TStyle+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.96" data-path="../TSystem.html">
+            
+                <a href="../TSystem.html">
+            
+                    
+                    TSystem*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.97" data-path="../TText.html">
+            
+                <a href="../TText.html">
+            
+                    
+                    TText*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.98" data-path="../TThread.html">
+            
+                <a href="../TThread.html">
+            
+                    
+                    TThread
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.99" data-path="../TThreadFactory.html">
+            
+                <a href="../TThreadFactory.html">
+            
+                    
+                    TThreadFactory
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.100" data-path="../TThreadImp.html">
+            
+                <a href="../TThreadImp.html">
+            
+                    
+                    TThreadImp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.101" data-path="../TTime.html">
+            
+                <a href="../TTime.html">
+            
+                    
+                    TTime*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.102" data-path="../TTimer.html">
+            
+                <a href="../TTimer.html">
+            
+                    
+                    TTimer*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.103" data-path="../TTimeStamp.html">
+            
+                <a href="../TTimeStamp.html">
+            
+                    
+                    TTimeStamp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.104" data-path="../TTree.html">
+            
+                <a href="../TTree.html">
+            
+                    
+                    TTree*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.105" data-path="../TTreePlayer.html">
+            
+                <a href="../TTreePlayer.html">
+            
+                    
+                    TTreePlayer*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.106" data-path="../TVector2.html">
+            
+                <a href="../TVector2.html">
+            
+                    
+                    TVector2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.107" data-path="../TVector3.html">
+            
+                <a href="../TVector3.html">
+            
+                    
+                    TVector3*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.108" data-path="../TVectorT.html">
+            
+                <a href="../TVectorT.html">
+            
+                    
+                    TVectorT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.109" data-path="../TVirtualFitter.html">
+            
+                <a href="../TVirtualFitter.html">
+            
+                    
+                    TVirtualFitter*
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    图形界面的使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="GuiTypes.html">
+            
+                <a href="GuiTypes.html">
+            
+                    
+                    GuiTypes*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="TGButton.html">
+            
+                <a href="TGButton.html">
+            
+                    
+                    TGButton*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="TGButtonGroup.html">
+            
+                <a href="TGButtonGroup.html">
+            
+                    
+                    TGButtonGroup*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="TGCanvas.html">
+            
+                <a href="TGCanvas.html">
+            
+                    
+                    TGCanvas*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="TGClient.html">
+            
+                <a href="TGClient.html">
+            
+                    
+                    TGClient*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="TGColorDialog.html">
+            
+                <a href="TGColorDialog.html">
+            
+                    
+                    TGColorDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="TGColorSelect.html">
+            
+                <a href="TGColorSelect.html">
+            
+                    
+                    TGColorSelect*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="TGComboBox.html">
+            
+                <a href="TGComboBox.html">
+            
+                    
+                    TGComboBox*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="TGCommandPlugin.html">
+            
+                <a href="TGCommandPlugin.html">
+            
+                    
+                    TGCommandPlugin*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="TGDimension.html">
+            
+                <a href="TGDimension.html">
+            
+                    
+                    TGDimension*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="TGDNDManager.html">
+            
+                <a href="TGDNDManager.html">
+            
+                    
+                    TGDNDManager*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="TGDockableFrame.html">
+            
+                <a href="TGDockableFrame.html">
+            
+                    
+                    TGDockableFrame*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="TGDoubleSlider.html">
+            
+                <a href="TGDoubleSlider.html">
+            
+                    
+                    TGDoubleSlider*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="TGEventHandler.html">
+            
+                <a href="TGEventHandler.html">
+            
+                    
+                    TGEventHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="TGFileBrowser.html">
+            
+                <a href="TGFileBrowser.html">
+            
+                    
+                    TGFileBrowser
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="TGFileDialog.html">
+            
+                <a href="TGFileDialog.html">
+            
+                    
+                    TGFileDialog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="TGFont.html">
+            
+                <a href="TGFont.html">
+            
+                    
+                    TGFont*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="TGFontDialog.html">
+            
+                <a href="TGFontDialog.html">
+            
+                    
+                    TGFontDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="TGFrame.html">
+            
+                <a href="TGFrame.html">
+            
+                    
+                    TGFrame*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="TGFSComboBox.html">
+            
+                <a href="TGFSComboBox.html">
+            
+                    
+                    TGFSComboBox
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="TGFSContainer.html">
+            
+                <a href="TGFSContainer.html">
+            
+                    
+                    TGFSContainer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="TGGC.html">
+            
+                <a href="TGGC.html">
+            
+                    
+                    TGGC*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.23" data-path="TGIcon.html">
+            
+                <a href="TGIcon.html">
+            
+                    
+                    TGIcon*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.24" data-path="TGIdleHandler.html">
+            
+                <a href="TGIdleHandler.html">
+            
+                    
+                    TGIdleHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.25" data-path="TGImageMap.html">
+            
+                <a href="TGImageMap.html">
+            
+                    
+                    TGImageMap*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.26" data-path="TGInputDialog.html">
+            
+                <a href="TGInputDialog.html">
+            
+                    
+                    TGInputDialog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.27" data-path="TGLabel.html">
+            
+                <a href="TGLabel.html">
+            
+                    
+                    TGLabel*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.28" data-path="TGLayout.html">
+            
+                <a href="TGLayout.html">
+            
+                    
+                    TGLayout+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.29" data-path="TGListBox.html">
+            
+                <a href="TGListBox.html">
+            
+                    
+                    TGListBox+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.30" data-path="TGListTree.html">
+            
+                <a href="TGListTree.html">
+            
+                    
+                    TGListTree*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.31" data-path="TGListView.html">
+            
+                <a href="TGListView.html">
+            
+                    
+                    TGListView+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.32" data-path="TGMdiDecorFrame.html">
+            
+                <a href="TGMdiDecorFrame.html">
+            
+                    
+                    TGMdiDecorFrame
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.33" data-path="TGMdiFrame.html">
+            
+                <a href="TGMdiFrame.html">
+            
+                    
+                    TGMdiFrame
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.34" data-path="TGMdiMainFrame.html">
+            
+                <a href="TGMdiMainFrame.html">
+            
+                    
+                    TGMdiMainFrame
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.35" data-path="TGMdiMenu.html">
+            
+                <a href="TGMdiMenu.html">
+            
+                    
+                    TGMdiMenu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.36" data-path="TGMenu.html">
+            
+                <a href="TGMenu.html">
+            
+                    
+                    TGMenu+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.37" data-path="TGMimeTypes.html">
+            
+                <a href="TGMimeTypes.html">
+            
+                    
+                    TGMimeTypes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.38" data-path="TGMsgBox.html">
+            
+                <a href="TGMsgBox.html">
+            
+                    
+                    TGMsgBox
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.39" data-path="TGNumberEntry.html">
+            
+                <a href="TGNumberEntry.html">
+            
+                    
+                    TGNumberEntry+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.40" data-path="TGObject.html">
+            
+                <a href="TGObject.html">
+            
+                    
+                    TGObject*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.41" data-path="TGPack.html">
+            
+                <a href="TGPack.html">
+            
+                    
+                    TGPack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.42" data-path="TGPasswdDialog.html">
+            
+                <a href="TGPasswdDialog.html">
+            
+                    
+                    TGPasswdDialog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.43" data-path="TGPicture.html">
+            
+                <a href="TGPicture.html">
+            
+                    
+                    TGPicture+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.44" data-path="TGProgressBar.html">
+            
+                <a href="TGProgressBar.html">
+            
+                    
+                    TGProgressBar*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.45" data-path="TGRedirectOutputGuard.html">
+            
+                <a href="TGRedirectOutputGuard.html">
+            
+                    
+                    TGRedirectOutputGuard
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.46" data-path="TGResourcePool.html">
+            
+                <a href="TGResourcePool.html">
+            
+                    
+                    TGResourcePool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.47" data-path="TGScrollBar.html">
+            
+                <a href="TGScrollBar.html">
+            
+                    
+                    TGScrollBar+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.48" data-path="TGShapedFrame.html">
+            
+                <a href="TGShapedFrame.html">
+            
+                    
+                    TGShapedFrame
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.49" data-path="TGShutter.html">
+            
+                <a href="TGShutter.html">
+            
+                    
+                    TGShutter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.50" data-path="TGSimpleTable.html">
+            
+                <a href="TGSimpleTable.html">
+            
+                    
+                    TGSimpleTable+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.51" data-path="TGSimpleTableInterface.html">
+            
+                <a href="TGSimpleTableInterface.html">
+            
+                    
+                    TGSimpleTableInterface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.52" data-path="TGSlider.html">
+            
+                <a href="TGSlider.html">
+            
+                    
+                    TGSlider+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.53" data-path="TGSpeedo.html">
+            
+                <a href="TGSpeedo.html">
+            
+                    
+                    TGSpeedo*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.54" data-path="TGSplitFrame.html">
+            
+                <a href="TGSplitFrame.html">
+            
+                    
+                    TGSplitFrame
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.55" data-path="TGSplitter.html">
+            
+                <a href="TGSplitter.html">
+            
+                    
+                    TGSplitter*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.56" data-path="TGStatusBar.html">
+            
+                <a href="TGStatusBar.html">
+            
+                    
+                    TGStatusBar*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.57" data-path="TGString.html">
+            
+                <a href="TGString.html">
+            
+                    
+                    TGString
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.58" data-path="TGTab.html">
+            
+                <a href="TGTab.html">
+            
+                    
+                    TGTab*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.59" data-path="TGTable.html">
+            
+                <a href="TGTable.html">
+            
+                    
+                    TGTable*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.60" data-path="TGTableCell.html">
+            
+                <a href="TGTableCell.html">
+            
+                    
+                    TGTableCell-
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.61" data-path="TGTableContainer.html">
+            
+                <a href="TGTableContainer.html">
+            
+                    
+                    TGTableContainer-
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.62" data-path="TGTableHeader.html">
+            
+                <a href="TGTableHeader.html">
+            
+                    
+                    TGTableHeader-
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.63" data-path="TGTableLayout.html">
+            
+                <a href="TGTableLayout.html">
+            
+                    
+                    TGTableLayout-
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.64" data-path="TGText.html">
+            
+                <a href="TGText.html">
+            
+                    
+                    TGText
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.65" data-path="TGTextBuffer.html">
+            
+                <a href="TGTextBuffer.html">
+            
+                    
+                    TGTextBuffer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.66" data-path="TGTextEdit.html">
+            
+                <a href="TGTextEdit.html">
+            
+                    
+                    TGTextEdit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.67" data-path="TGTextEditDialogs.html">
+            
+                <a href="TGTextEditDialogs.html">
+            
+                    
+                    TGTextEditDialogs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.68" data-path="TGTextEditor.html">
+            
+                <a href="TGTextEditor.html">
+            
+                    
+                    TGTextEditor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.69" data-path="TGTextEntry.html">
+            
+                <a href="TGTextEntry.html">
+            
+                    
+                    TGTextEntry*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.70" data-path="TGTextView.html">
+            
+                <a href="TGTextView.html">
+            
+                    
+                    TGTextView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.71" data-path="TGTextViewStream.html">
+            
+                <a href="TGTextViewStream.html">
+            
+                    
+                    TGTextViewStream*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.72" data-path="TGToolBar.html">
+            
+                <a href="TGToolBar.html">
+            
+                    
+                    TGToolBar
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.73" data-path="TGToolTip.html">
+            
+                <a href="TGToolTip.html">
+            
+                    
+                    TGToolTip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.74" data-path="TGTripleSlider.html">
+            
+                <a href="TGTripleSlider.html">
+            
+                    
+                    TGTripleSlider*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.75" data-path="TGuiBuilder.html">
+            
+                <a href="TGuiBuilder.html">
+            
+                    
+                    TGuiBuilder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.76" data-path="TGView.html">
+            
+                <a href="TGView.html">
+            
+                    
+                    TGView*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.77" data-path="TGWidget.html">
+            
+                <a href="TGWidget.html">
+            
+                    
+                    TGWidget*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.78" data-path="TGWindow.html">
+            
+                <a href="TGWindow.html">
+            
+                    
+                    TGWindow*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.79" data-path="TGXYLayout.html">
+            
+                <a href="TGXYLayout.html">
+            
+                    
+                    TGXYLayout
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.80" data-path="TQObject.html">
+            
+                <a href="TQObject.html">
+            
+                    
+                    TQObject*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.81" data-path="TRootEmbeddedCanvas.html">
+            
+                <a href="TRootEmbeddedCanvas.html">
+            
+                    
+                    TRootEmbeddedCanvas*
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../graf3d/">
+            
+                <a href="../graf3d/">
+            
+                    
+                    GRAF3D
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../graf3d/TAxis3D.html">
+            
+                <a href="../graf3d/TAxis3D.html">
+            
+                    
+                    TAxis3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../graf3d/TBRIK.html">
+            
+                <a href="../graf3d/TBRIK.html">
+            
+                    
+                    TBRIK*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../graf3d/TCONE.html">
+            
+                <a href="../graf3d/TCONE.html">
+            
+                    
+                    TCONE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../graf3d/TCONS.html">
+            
+                <a href="../graf3d/TCONS.html">
+            
+                    
+                    TCONS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../graf3d/TCTUB.html">
+            
+                <a href="../graf3d/TCTUB.html">
+            
+                    
+                    TCTUB
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../graf3d/TELTU.html">
+            
+                <a href="../graf3d/TELTU.html">
+            
+                    
+                    TELTU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../graf3d/TGeometry.html">
+            
+                <a href="../graf3d/TGeometry.html">
+            
+                    
+                    TGeometry
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../graf3d/TGTRA.html">
+            
+                <a href="../graf3d/TGTRA.html">
+            
+                    
+                    TGTRA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../graf3d/THelix.html">
+            
+                <a href="../graf3d/THelix.html">
+            
+                    
+                    THelix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../graf3d/THYPE.html">
+            
+                <a href="../graf3d/THYPE.html">
+            
+                    
+                    THYPE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../graf3d/TMarker3DBox.html">
+            
+                <a href="../graf3d/TMarker3DBox.html">
+            
+                    
+                    TMarker3DBox
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../graf3d/TMaterial.html">
+            
+                <a href="../graf3d/TMaterial.html">
+            
+                    
+                    TMaterial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="../graf3d/TMixture.html">
+            
+                <a href="../graf3d/TMixture.html">
+            
+                    
+                    TMixture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="../graf3d/TNodeDiv.html">
+            
+                <a href="../graf3d/TNodeDiv.html">
+            
+                    
+                    TNodeDiv
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="../graf3d/TNode.html">
+            
+                <a href="../graf3d/TNode.html">
+            
+                    
+                    TNode*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="../graf3d/TPARA.html">
+            
+                <a href="../graf3d/TPARA.html">
+            
+                    
+                    TPARA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="../graf3d/TPCON.html">
+            
+                <a href="../graf3d/TPCON.html">
+            
+                    
+                    TPCON
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.18" data-path="../graf3d/TPGON.html">
+            
+                <a href="../graf3d/TPGON.html">
+            
+                    
+                    TPGON
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.19" data-path="../graf3d/TPoints3DABC.html">
+            
+                <a href="../graf3d/TPoints3DABC.html">
+            
+                    
+                    TPoints3DABC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.20" data-path="../graf3d/TPointSet3D.html">
+            
+                <a href="../graf3d/TPointSet3D.html">
+            
+                    
+                    TPointSet3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.21" data-path="../graf3d/TPolyLine3D.html">
+            
+                <a href="../graf3d/TPolyLine3D.html">
+            
+                    
+                    TPolyLine3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.22" data-path="../graf3d/TPolyMarker3D.html">
+            
+                <a href="../graf3d/TPolyMarker3D.html">
+            
+                    
+                    TPolyMarker3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.23" data-path="../graf3d/TRotMatrix.html">
+            
+                <a href="../graf3d/TRotMatrix.html">
+            
+                    
+                    TRotMatrix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.24" data-path="../graf3d/TShape.html">
+            
+                <a href="../graf3d/TShape.html">
+            
+                    
+                    TShape*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.25" data-path="../graf3d/TSPHE.html">
+            
+                <a href="../graf3d/TSPHE.html">
+            
+                    
+                    TSPHE*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.26" data-path="../graf3d/TTRAP.html">
+            
+                <a href="../graf3d/TTRAP.html">
+            
+                    
+                    TTRAP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.27" data-path="../graf3d/TTRD1.html">
+            
+                <a href="../graf3d/TTRD1.html">
+            
+                    
+                    TTRD1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.28" data-path="../graf3d/TTRD2.html">
+            
+                <a href="../graf3d/TTRD2.html">
+            
+                    
+                    TTRD2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.29" data-path="../graf3d/TTUBE.html">
+            
+                <a href="../graf3d/TTUBE.html">
+            
+                    
+                    TTUBE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.30" data-path="../graf3d/TTUBS.html">
+            
+                <a href="../graf3d/TTUBS.html">
+            
+                    
+                    TTUBS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.31" data-path="../graf3d/TView3D.html">
+            
+                <a href="../graf3d/TView3D.html">
+            
+                    
+                    TView3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.32" data-path="../graf3d/TXTRU.html">
+            
+                <a href="../graf3d/TXTRU.html">
+            
+                    
+                    TXTRU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.33" data-path="../graf3d/X3DBuffer.html">
+            
+                <a href="../graf3d/X3DBuffer.html">
+            
+                    
+                    X3DBuffer
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../net/">
+            
+                <a href="../net/">
+            
+                    
+                    net
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../net/TCivetweb.html">
+            
+                <a href="../net/TCivetweb.html">
+            
+                    
+                    http/TCivetweb
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../net/TFastCgi.html">
+            
+                <a href="../net/TFastCgi.html">
+            
+                    
+                    http/TFastCgi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../net/THttpCallArg.html">
+            
+                <a href="../net/THttpCallArg.html">
+            
+                    
+                    http/THttpCallArg
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../net/THttpEngine.html">
+            
+                <a href="../net/THttpEngine.html">
+            
+                    
+                    http/THttpEngine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../net/THttpServer.html">
+            
+                <a href="../net/THttpServer.html">
+            
+                    
+                    http/THttpServer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../net/THttpWSEngine.html">
+            
+                <a href="../net/THttpWSEngine.html">
+            
+                    
+                    http/THttpWSEngine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../net/THttpWSHandler.html">
+            
+                <a href="../net/THttpWSHandler.html">
+            
+                    
+                    http/THttpWSHandler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../net/TRootSniffer.html">
+            
+                <a href="../net/TRootSniffer.html">
+            
+                    
+                    http/TRootSniffer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../net/TRootSnifferStore.html">
+            
+                <a href="../net/TRootSnifferStore.html">
+            
+                    
+                    http/TRootSnifferStore
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    不常用类的使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../TDirectory.html">
+            
+                <a href="../TDirectory.html">
+            
+                    
+                    TDirectory*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../TDirectoryFile.html">
+            
+                <a href="../TDirectoryFile.html">
+            
+                    
+                    TDirectoryFile*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../TObject.html">
+            
+                <a href="../TObject.html">
+            
+                    
+                    TObject*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../TSystemDirectory.html">
+            
+                <a href="../TSystemDirectory.html">
+            
+                    
+                    TSystemDirectory+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../TSystemFile.html">
+            
+                <a href="../TSystemFile.html">
+            
+                    
+                    TSystemFile+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../TTask.html">
+            
+                <a href="../TTask.html">
+            
+                    
+                    TTask+
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../structure/">
+            
+                <a href="../../structure/">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../structure/datarecord.html">
+            
+                <a href="../../structure/datarecord.html">
+            
+                    
+                    datarecord
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../structure/dobject.html">
+            
+                <a href="../../structure/dobject.html">
+            
+                    
+                    dobject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../structure/freesegments.html">
+            
+                <a href="../../structure/freesegments.html">
+            
+                    
+                    freesegments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../structure/gap.html">
+            
+                <a href="../../structure/gap.html">
+            
+                    
+                    gap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../structure/header.html">
+            
+                <a href="../../structure/header.html">
+            
+                    
+                    header
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../structure/keyslist.html">
+            
+                <a href="../../structure/keyslist.html">
+            
+                    
+                    keyslist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../structure/StreamerInfo.html">
+            
+                <a href="../../structure/StreamerInfo.html">
+            
+                    
+                    StreamerInfo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../../structure/TClonesArray.html">
+            
+                <a href="../../structure/TClonesArray.html">
+            
+                    
+                    TClonesArray
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../../structure/TDirectory.html">
+            
+                <a href="../../structure/TDirectory.html">
+            
+                    
+                    TDirectory
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../../structure/TFile.html">
+            
+                <a href="../../structure/TFile.html">
+            
+                    
+                    TFile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../../structure/TObject.html">
+            
+                <a href="../../structure/TObject.html">
+            
+                    
+                    TObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../../structure/TProcessID.html">
+            
+                <a href="../../structure/TProcessID.html">
+            
+                    
+                    TProcessID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.13" data-path="../../structure/TRefArray.html">
+            
+                <a href="../../structure/TRefArray.html">
+            
+                    
+                    TRefArray
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.14" data-path="../../structure/TRef.html">
+            
+                <a href="../../structure/TRef.html">
+            
+                    
+                    TRef
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.15" data-path="../../structure/TTree.html">
+            
+                <a href="../../structure/TTree.html">
+            
+                    
+                    TTree
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../define/">
+            
+                <a href="../../define/">
+            
+                    
+                    预定义
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../define/RVersion.html">
+            
+                <a href="../../define/RVersion.html">
+            
+                    
+                    RVersion
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../version/version.html">
+            
+                <a href="../../version/version.html">
+            
+                    
+                    文件版本
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >图形界面的使用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <!-- README.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 六 6月 25 16:11:28 2016 (+0800)
+;; Last-Updated: 一 9月  4 15:32:54 2017 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 55
+;; URL: http://wuhongyi.cn -->
+<h1 id="readme"><a name="readme" class="plugin-anchor" href="#readme"><i class="fa fa-link" aria-hidden="true"></i></a>README</h1>
+<pre class="language-"><code class="lang-cpp"><span class="token comment">// System predefined widget message types. Message types are constants  </span>
+<span class="token comment">// that indicate which widget sent the message and by which widget      </span>
+<span class="token comment">// function (sub-message). Make sure your own message types don&apos;t clash  </span>
+<span class="token comment">// whith the ones defined in this file. ROOT reserves all message ids   </span>
+<span class="token comment">// between 0 - 1000. User defined messages should be in the range       </span>
+<span class="token comment">// 1001 - 10000. Sub-messages must always be in the range 1-255.        </span>
+<span class="token comment">// To use MK_MSG() just cast your message id&apos;s to an EWidgetMessageType.</span>
+
+<span class="token comment">// WidgetMessageTypes</span>
+<span class="token keyword">enum</span> EWidgetMessageTypes <span class="token punctuation">{</span>
+   kC_COMMAND          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kCM_MENU            <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kCM_MENUSELECT      <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      kCM_BUTTON          <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      kCM_CHECKBUTTON     <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
+      kCM_RADIOBUTTON     <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
+      kCM_LISTBOX         <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
+      kCM_COMBOBOX        <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span>
+      kCM_TAB             <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
+   kC_HSCROLL          <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+   kC_VSCROLL          <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      kSB_LINEUP          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kSB_LINEDOWN        <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      kSB_PAGEUP          <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      kSB_PAGEDOWN        <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
+      kSB_SLIDERTRACK     <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
+      kSB_SLIDERPOS       <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
+   kC_TEXTENTRY        <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
+      kTE_TEXTCHANGED     <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kTE_ENTER           <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      kTE_TAB             <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      kTE_KEY             <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
+   kC_CONTAINER        <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
+      kCT_ITEMCLICK       <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kCT_ITEMDBLCLICK    <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      kCT_SELCHANGED      <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      kCT_KEY             <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
+   kC_HSLIDER          <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
+   kC_VSLIDER          <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span>
+      kSL_POS             <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kSL_TRACK           <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      kSL_PRESS           <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      kSL_RELEASE         <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
+      kSL_POINTER         <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
+   kC_LISTTREE         <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
+   kC_TEXTVIEW         <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">,</span>
+      kTXT_ISMARKED       <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kTXT_DATACHANGE     <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      kTXT_CLICK2         <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      kTXT_CLICK3         <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
+      kTXT_F3             <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>
+      kTXT_OPEN           <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
+      kTXT_CLOSE          <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span>
+      kTXT_SAVE           <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
+   kC_COLORSEL         <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span>
+      kCOL_CLICK          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kCOL_SELCHANGED     <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+   kC_PATTERNSEL       <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">,</span>
+      kPAT_CLICK          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kPAT_SELCHANGED     <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+   kC_MARKERSEL        <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">,</span>
+      kMAR_CLICK          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kMAR_SELCHANGED     <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+   kC_POPUP            <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">,</span>
+      kPOP_HIDE           <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+   kC_DOCK             <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>
+      kDOCK_DOCK          <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kDOCK_UNDOCK        <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      kDOCK_SHOW          <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      kDOCK_HIDE          <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
+   kC_MDI              <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">,</span>
+      kMDI_CURRENT        <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      kMDI_CREATE         <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      kMDI_CLOSE          <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>
+      kMDI_RESTORE        <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>
+      kMDI_MOVE           <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">,</span>
+      kMDI_SIZE           <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span>
+      kMDI_MINIMIZE       <span class="token operator">=</span> <span class="token number">64</span><span class="token punctuation">,</span>
+      kMDI_MAXIMIZE       <span class="token operator">=</span> <span class="token number">128</span><span class="token punctuation">,</span>
+      kMDI_HELP           <span class="token operator">=</span> <span class="token number">256</span><span class="token punctuation">,</span>
+      kMDI_MENU           <span class="token operator">=</span> <span class="token number">512</span><span class="token punctuation">,</span>
+   kC_USER             <span class="token operator">=</span> <span class="token number">1001</span><span class="token punctuation">,</span>
+   kC_MSGMAX           <span class="token operator">=</span> <span class="token number">10000</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class="language-"><code class="lang-cpp"><span class="token comment">//Buttons.h</span>
+<span class="token keyword">enum</span> EEventType <span class="token punctuation">{</span>
+   kNoEvent       <span class="token operator">=</span>  <span class="token number">0</span><span class="token punctuation">,</span>
+   kButton1Down   <span class="token operator">=</span>  <span class="token number">1</span><span class="token punctuation">,</span> kButton2Down   <span class="token operator">=</span>  <span class="token number">2</span><span class="token punctuation">,</span> kButton3Down   <span class="token operator">=</span>  <span class="token number">3</span><span class="token punctuation">,</span> kKeyDown  <span class="token operator">=</span>  <span class="token number">4</span><span class="token punctuation">,</span>
+   kWheelUp       <span class="token operator">=</span>  <span class="token number">5</span><span class="token punctuation">,</span> kWheelDown     <span class="token operator">=</span>  <span class="token number">6</span><span class="token punctuation">,</span> kButton1Shift  <span class="token operator">=</span>  <span class="token number">7</span><span class="token punctuation">,</span> kButton1ShiftMotion  <span class="token operator">=</span>  <span class="token number">8</span><span class="token punctuation">,</span>
+   kButton1Up     <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">,</span> kButton2Up     <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">,</span> kButton3Up     <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">,</span> kKeyUp    <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span>
+   kButton1Motion <span class="token operator">=</span> <span class="token number">21</span><span class="token punctuation">,</span> kButton2Motion <span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">,</span> kButton3Motion <span class="token operator">=</span> <span class="token number">23</span><span class="token punctuation">,</span> kKeyPress <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">,</span>
+   kArrowKeyPress <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">,</span> kArrowKeyRelease <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">,</span>
+   kButton1Locate <span class="token operator">=</span> <span class="token number">41</span><span class="token punctuation">,</span> kButton2Locate <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">,</span> kButton3Locate <span class="token operator">=</span> <span class="token number">43</span><span class="token punctuation">,</span> kESC      <span class="token operator">=</span> <span class="token number">27</span><span class="token punctuation">,</span>
+   kMouseMotion   <span class="token operator">=</span> <span class="token number">51</span><span class="token punctuation">,</span> kMouseEnter    <span class="token operator">=</span> <span class="token number">52</span><span class="token punctuation">,</span> kMouseLeave    <span class="token operator">=</span> <span class="token number">53</span><span class="token punctuation">,</span>
+   kButton1Double <span class="token operator">=</span> <span class="token number">61</span><span class="token punctuation">,</span> kButton2Double <span class="token operator">=</span> <span class="token number">62</span><span class="token punctuation">,</span> kButton3Double <span class="token operator">=</span> <span class="token number">63</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">enum</span> EEditMode <span class="token punctuation">{</span>
+   kPolyLine  <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>  kSPolyLine <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>  kPolyGone  <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span>
+   kSPolyGone <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span>  kBox       <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span>  kDelete    <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">,</span>
+   kPad       <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span>  kText      <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">,</span>  kEditor    <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">,</span>
+   kExit      <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> kPave      <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">,</span> kPaveLabel <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">,</span>
+   kPaveText  <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">,</span> kPavesText <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">,</span> kEllipse   <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">,</span>
+   kArc       <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">,</span> kLine      <span class="token operator">=</span> <span class="token number">17</span><span class="token punctuation">,</span> kArrow     <span class="token operator">=</span> <span class="token number">18</span><span class="token punctuation">,</span>
+   kGraph     <span class="token operator">=</span> <span class="token number">19</span><span class="token punctuation">,</span> kMarker    <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span> kPolyMarker<span class="token operator">=</span> <span class="token number">21</span><span class="token punctuation">,</span>
+   kPolyLine3D<span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">,</span> kWbox      <span class="token operator">=</span> <span class="token number">23</span><span class="token punctuation">,</span> kGaxis     <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">,</span>
+   kF1        <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">,</span> kF2        <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">,</span> kF3        <span class="token operator">=</span> <span class="token number">27</span><span class="token punctuation">,</span>
+   kDiamond   <span class="token operator">=</span> <span class="token number">28</span><span class="token punctuation">,</span> kPolyMarker3D <span class="token operator">=</span> <span class="token number">29</span><span class="token punctuation">,</span> kButton <span class="token operator">=</span> <span class="token number">101</span><span class="token punctuation">,</span>
+   kCutG      <span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> kCurlyLine <span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">,</span> kCurlyArc  <span class="token operator">=</span> <span class="token number">201</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li>TGCheckButton</li>
+<li>TGComboBox</li>
+<li>TGGroupFrame</li>
+<li>TGIcon</li>
+<li>TGLabel</li>
+<li>TGListBox</li>
+<li>TGMenuBar</li>
+<li>TGNumberEntry</li>
+<li>TGPicture</li>
+<li>TGPicturePool</li>
+<li>TGPopupMenu</li>
+<li>TGRadioButton</li>
+<li>TGSplitButton</li>
+<li>TGTextEntry</li>
+<li>TGTripleSlider</li>
+<li>TGVButtonGroup</li>
+<li>TGTextButton</li>
+</ul>
+<pre class="language-"><code class="lang-cpp"><span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGButton, TGTextButton, TGPictureButton, TGCheckButton TGRadioButton //</span>
+<span class="token comment">// and TGSplitButton                                                    //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// This header defines all GUI button widgets.                          //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGButton is a button abstract base class. It defines general button  //</span>
+<span class="token comment">// behaviour.                                                           //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Selecting a text or picture button will generate the event:          //</span>
+<span class="token comment">// kC_COMMAND, kCM_BUTTON, button id, user data.                        //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Selecting a check button will generate the event:                    //</span>
+<span class="token comment">// kC_COMMAND, kCM_CHECKBUTTON, button id, user data.                   //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Selecting a radio button will generate the event:                    //</span>
+<span class="token comment">// kC_COMMAND, kCM_RADIOBUTTON, button id, user data.                   //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// If a command string has been specified (via SetCommand()) then this  //</span>
+<span class="token comment">// command string will be executed via the interpreter whenever a       //</span>
+<span class="token comment">// button is selected. A command string can contain the macros:         //</span>
+<span class="token comment">// $MSG   -- kC_COMMAND, kCM[CHECK|RADIO]BUTTON packed message          //</span>
+<span class="token comment">//           (use GET_MSG() and GET_SUBMSG() to unpack)                 //</span>
+<span class="token comment">// $PARM1 -- button id                                                  //</span>
+<span class="token comment">// $PARM2 -- user data pointer                                          //</span>
+<span class="token comment">// Before executing these macros are expanded into the respective       //</span>
+<span class="token comment">// Long_t&apos;s                                                             //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGColorPalette, TGColorPick and TGColorDialog.                       //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGColorPalette is a widget showing an matrix of color cells. The //</span>
+<span class="token comment">// colors can be set and selected.                                      //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGColorPick is a widget which allows a color to be picked from   //</span>
+<span class="token comment">// HLS space. It consists of two elements: a color map window from      //</span>
+<span class="token comment">// where the user can select the hue and saturation level of a color,   //</span>
+<span class="token comment">// and a slider to select color&apos;s lightness.                            //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Selecting a color in these two widgets will generate the event:      //</span>
+<span class="token comment">// kC_COLORSEL, kCOL_CLICK, widget id, 0.                               //</span>
+<span class="token comment">// and the signal:                                                      //</span>
+<span class="token comment">// ColorSelected(Pixel_t color)                                         //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGColorDialog presents a full featured color selection dialog.   //</span>
+<span class="token comment">// It uses 2 TGColorPalette&apos;s and the TGColorPick widgets.              //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGColorFrame, TG16ColorSelector, TGColorPopup and TGColorSelect.     //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGColorFrame is a small frame with border showing a specific     //</span>
+<span class="token comment">// color.                                                               //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TG16ColorSelector is a composite frame with 16 TGColorFrames.    //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGColorPopup is a popup containing a TG16ColorSelector and a     //</span>
+<span class="token comment">// &quot;More...&quot; button which popups up a TGColorDialog allowing custom     //</span>
+<span class="token comment">// color selection.                                                     //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGColorSelect widget is like a checkbutton but instead of the    //</span>
+<span class="token comment">// check mark there is color area with a little down arrow. When        //</span>
+<span class="token comment">// clicked on the arrow the TGColorPopup pops up.                       //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Selecting a color in this widget will generate the event:            //</span>
+<span class="token comment">// kC_COLORSEL, kCOL_SELCHANGED, widget id, pixel.                      //</span>
+<span class="token comment">// and the signal:                                                      //</span>
+<span class="token comment">// ColorSelected(Pixel_t pixel)                                         //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGComboBox, TGComboBoxPopup                                          //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// A combobox (also known as a drop down listbox) allows the selection  //</span>
+<span class="token comment">// of one item out of a list of items. The selected item is visible in  //</span>
+<span class="token comment">// a little window. To view the list of possible items one has to click //</span>
+<span class="token comment">// on a button on the right of the little window. This will drop down   //</span>
+<span class="token comment">// a listbox. After selecting an item from the listbox the box will     //</span>
+<span class="token comment">// disappear and the newly selected item will be shown in the little    //</span>
+<span class="token comment">// window.                                                              //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGComboBox is user callable. The TGComboBoxPopup is a service    //</span>
+<span class="token comment">// class of the combobox.                                               //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Selecting an item in the combobox will generate the event:           //</span>
+<span class="token comment">// kC_COMMAND, kCM_COMBOBOX, combobox id, item id.                      //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGDoubleSlider, TGDoubleVSlider and TGDoubleHSlider                  //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// DoubleSlider widgets allow easy selection of a min and a max value   //</span>
+<span class="token comment">// out of a range.                                                      //</span>
+<span class="token comment">// DoubleSliders can be either horizontal or vertical oriented and      //</span>
+<span class="token comment">// there is a choice of three different types of tick marks.            //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// To change the min value press the mouse near to the left / bottom    //</span>
+<span class="token comment">// edge of the slider.                                                  //</span>
+<span class="token comment">// To change the max value press the mouse near to the right / top      //</span>
+<span class="token comment">// edge of the slider.                                                  //</span>
+<span class="token comment">// To change both values simultaneously press the mouse near to the     //</span>
+<span class="token comment">// center of the slider.                                                //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGDoubleSlider is an abstract base class. Use the concrete           //</span>
+<span class="token comment">// TGDoubleVSlider and TGDoubleHSlider.                                 //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Dragging the slider will generate the event:                         //</span>
+<span class="token comment">// kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             //</span>
+<span class="token comment">// kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Pressing the mouse will generate the event:                          //</span>
+<span class="token comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
+<span class="token comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Releasing the mouse will generate the event:                         //</span>
+<span class="token comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
+<span class="token comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Use the functions GetMinPosition(), GetMaxPosition() and             //</span>
+<span class="token comment">// GetPosition() to retrieve the position of the slider.                //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGListBox, TGLBContainer, TGLBEntry and TGTextLBEntry                //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// A listbox is a box, possibly with scrollbar, containing entries.     //</span>
+<span class="token comment">// Currently entries are simple text strings (TGTextLBEntry).           //</span>
+<span class="token comment">// A TGListBox looks a lot like a TGCanvas. It has a TGViewPort         //</span>
+<span class="token comment">// containing a TGLBContainer which contains the entries and it also    //</span>
+<span class="token comment">// has a vertical scrollbar which becomes visible if there are more     //</span>
+<span class="token comment">// items than fit in the visible part of the container.                 //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGListBox is user callable. The other classes are service        //</span>
+<span class="token comment">// classes of the listbox.                                              //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Selecting an item in the listbox will generate the event:            //</span>
+<span class="token comment">// kC_COMMAND, kCM_LISTBOX, listbox id, item id.                        //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGListTree and TGListTreeItem                                        //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// A list tree is a widget that can contain a number of items           //</span>
+<span class="token comment">// arranged in a tree structure. The items are represented by small     //</span>
+<span class="token comment">// folder icons that can be either open or closed.                      //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGListTree is user callable. The TGListTreeItem is a service     //</span>
+<span class="token comment">// class of the list tree.                                              //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// A list tree can generate the following events:                       //</span>
+<span class="token comment">// kC_LISTTREE, kCT_ITEMCLICK, which button, location (y&lt;&lt;16|x).        //</span>
+<span class="token comment">// kC_LISTTREE, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).     //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGListView, TGLVContainer and TGLVEntry                              //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// A list view is a widget that can contain a number of items           //</span>
+<span class="token comment">// arranged in a grid or list. The items can be represented either      //</span>
+<span class="token comment">// by a string or by an icon.                                           //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGListView is user callable. The other classes are service       //</span>
+<span class="token comment">// classes of the list view.                                            //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// A list view can generate the following events:                       //</span>
+<span class="token comment">// kC_CONTAINER, kCT_SELCHANGED, total items, selected items.           //</span>
+<span class="token comment">// kC_CONTAINER, kCT_ITEMCLICK, which button, location (y&lt;&lt;16|x).       //</span>
+<span class="token comment">// kC_CONTAINER, kCT_ITEMDBLCLICK, which button, location (y&lt;&lt;16|x).    //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGMenuBar, TGPopupMenu, TGMenuTitle and TGMenuEntry                  //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// This header contains all different menu classes.                     //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Selecting a menu item will generate the event:                       //</span>
+<span class="token comment">// kC_COMMAND, kCM_MENU, menu id, user data.                            //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGScrollBar and TGScrollBarElement                                   //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The classes in this file implement scrollbars. Scrollbars can be     //</span>
+<span class="token comment">// either placed horizontal or vertical. A scrollbar contains three     //</span>
+<span class="token comment">// TGScrollBarElements: The &quot;head&quot;, &quot;tail&quot; and &quot;slider&quot;. The head and   //</span>
+<span class="token comment">// tail are fixed at either end and have the typical arrows in them.    //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGHScrollBar will generate the following event messages:         //</span>
+<span class="token comment">// kC_HSCROLL, kSB_SLIDERPOS, position, 0                               //</span>
+<span class="token comment">// kC_HSCROLL, kSB_SLIDERTRACK, position, 0                             //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGVScrollBar will generate the following event messages:         //</span>
+<span class="token comment">// kC_VSCROLL, kSB_SLIDERPOS, position, 0                               //</span>
+<span class="token comment">// kC_VSCROLL, kSB_SLIDERTRACK, position, 0                             //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGSlider, TGVSlider and TGHSlider                                    //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Slider widgets allow easy selection of a range.                      //</span>
+<span class="token comment">// Sliders can be either horizontal or vertical oriented and there is   //</span>
+<span class="token comment">// a choice of two different slider types and three different types     //</span>
+<span class="token comment">// of tick marks.                                                       //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGSlider is an abstract base class. Use the concrete TGVSlider and   //</span>
+<span class="token comment">// TGHSlider.                                                           //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Dragging the slider will generate the event:                         //</span>
+<span class="token comment">// kC_VSLIDER, kSL_POS, slider id, position  (for vertical slider)      //</span>
+<span class="token comment">// kC_HSLIDER, kSL_POS, slider id, position  (for horizontal slider)    //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Pressing the mouse will generate the event:                          //</span>
+<span class="token comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
+<span class="token comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Releasing the mouse will generate the event:                         //</span>
+<span class="token comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
+<span class="token comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGTab, TGTabElement, TGTabLayout                                     //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// A tab widget contains a set of composite frames each with a little   //</span>
+<span class="token comment">// tab with a name (like a set of folders with tabs).                   //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGTab is user callable. The TGTabElement and TGTabLayout are     //</span>
+<span class="token comment">// is a service classes of the tab widget.                              //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Clicking on a tab will bring the associated composite frame to the   //</span>
+<span class="token comment">// front and generate the following event:                              //</span>
+<span class="token comment">// kC_COMMAND, kCM_TAB, tab id, 0.                                      //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGTextEntry                                                          //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// A TGTextEntry is a one line text input widget.                       //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Changing text in the text entry widget will generate the event:      //</span>
+<span class="token comment">// kC_TEXTENTRY, kTE_TEXTCHANGED, widget id, 0.                         //</span>
+<span class="token comment">// Hitting the enter key will generate:                                 //</span>
+<span class="token comment">// kC_TEXTENTRY, kTE_ENTER, widget id, 0.                               //</span>
+<span class="token comment">// Hitting the tab key will generate:                                   //</span>
+<span class="token comment">// kC_TEXTENTRY, kTE_TAB, widget id, 0.                                 //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGTripleVSlider and TGTripleHSlider                                  //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TripleSlider inherit from DoubleSlider widgets and allow easy        //</span>
+<span class="token comment">// selection of a min, max and pointer value out of a range.            //</span>
+<span class="token comment">// The pointer position can be constrained to edges of slider and / or  //</span>
+<span class="token comment">// can be relative to the slider position.                              //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// To change the min value press the mouse near to the left / bottom    //</span>
+<span class="token comment">// edge of the slider.                                                  //</span>
+<span class="token comment">// To change the max value press the mouse near to the right / top      //</span>
+<span class="token comment">// edge of the slider.                                                  //</span>
+<span class="token comment">// To change both values simultaneously press the mouse near to the     //</span>
+<span class="token comment">// center of the slider.                                                //</span>
+<span class="token comment">// To change pointer value press the mouse on the pointer and drag it   //</span>
+<span class="token comment">// to the desired position                                              //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Dragging the slider will generate the event:                         //</span>
+<span class="token comment">// kC_VSLIDER, kSL_POS, slider id, 0  (for vertical slider)             //</span>
+<span class="token comment">// kC_HSLIDER, kSL_POS, slider id, 0  (for horizontal slider)           //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Pressing the mouse will generate the event:                          //</span>
+<span class="token comment">// kC_VSLIDER, kSL_PRESS, slider id, 0  (for vertical slider)           //</span>
+<span class="token comment">// kC_HSLIDER, kSL_PRESS, slider id, 0  (for horizontal slider)         //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Releasing the mouse will generate the event:                         //</span>
+<span class="token comment">// kC_VSLIDER, kSL_RELEASE, slider id, 0  (for vertical slider)         //</span>
+<span class="token comment">// kC_HSLIDER, kSL_RELEASE, slider id, 0  (for horizontal slider)       //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Moving the pointer will generate the event:                          //</span>
+<span class="token comment">// kC_VSLIDER, kSL_POINTER, slider id, 0  (for vertical slider)         //</span>
+<span class="token comment">// kC_HSLIDER, kSL_POINTER, slider id, 0  (for horizontal slider)       //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// Use the functions GetMinPosition(), GetMaxPosition() and             //</span>
+<span class="token comment">// GetPosition() to retrieve the position of the slider.                //</span>
+<span class="token comment">// Use the function GetPointerPosition() to retrieve the position of    //</span>
+<span class="token comment">// the pointer                                                          //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// TGView                                                               //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// A TGView provides the infrastructure for text viewer and editor      //</span>
+<span class="token comment">// widgets. It provides a canvas (TGViewFrame) and (optionally) a       //</span>
+<span class="token comment">// vertical and horizontal scrollbar and methods for marking and        //</span>
+<span class="token comment">// scrolling.                                                           //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">// The TGView (and derivatives) will generate the following             //</span>
+<span class="token comment">// event messages:                                                      //</span>
+<span class="token comment">// kC_TEXTVIEW, kTXT_ISMARKED, widget id, [true|false]                  //</span>
+<span class="token comment">// kC_TEXTVIEW, kTXT_DATACHANGE, widget id, 0                           //</span>
+<span class="token comment">// kC_TEXTVIEW, kTXT_CLICK2, widget id, position (y &lt;&lt; 16) | x)         //</span>
+<span class="token comment">// kC_TEXTVIEW, kTXT_CLICK3, widget id, position (y &lt;&lt; 16) | x)         //</span>
+<span class="token comment">// kC_TEXTVIEW, kTXT_F3, widget id, true                                //</span>
+<span class="token comment">//                                                                      //</span>
+<span class="token comment">//////////////////////////////////////////////////////////////////////////</span>
+</code></pre>
+<pre class="language-"><code class="lang-cpp"><span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>gFonts<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>    <span class="token comment">//   unix name,     name</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>                                           <span class="token string">&quot;&quot;</span>                         <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//not used</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-times-medium-i-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>     <span class="token string">&quot;1. times italic&quot;</span>          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-times-bold-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>       <span class="token string">&quot;2. times bold&quot;</span>            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-times-bold-i-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>       <span class="token string">&quot;3. times bold italic&quot;</span>     <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;4. helvetica&quot;</span>             <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-helvetica-medium-o-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;5. helvetica italic&quot;</span>      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-helvetica-bold-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>   <span class="token string">&quot;6. helvetica bold&quot;</span>        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-helvetica-bold-o-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>   <span class="token string">&quot;7. helvetica bold italic&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-courier-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>   <span class="token string">&quot;8. courier&quot;</span>               <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-courier-medium-o-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>   <span class="token string">&quot;9. courier italic&quot;</span>        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-courier-bold-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>     <span class="token string">&quot;10. courier bold&quot;</span>         <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-courier-bold-o-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>     <span class="token string">&quot;11. courier bold italic&quot;</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-symbol-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>    <span class="token string">&quot;12. symbol&quot;</span>               <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token string">&quot;-*-times-medium-r-*-*-12-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">,</span>     <span class="token string">&quot;13. times&quot;</span>                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class="language-"><code class="lang-cpp">
+TGGC <span class="token operator">*</span>fTextGC<span class="token punctuation">;</span>
+<span class="token keyword">const</span> TGFont <span class="token operator">*</span>font <span class="token operator">=</span> gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetFont</span><span class="token punctuation">(</span><span class="token string">&quot;-*-times-bold-r-*-*-18-*-*-*-*-*-*-*&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>font<span class="token punctuation">)</span> font <span class="token operator">=</span> gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetResourcePool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetDefaultFont</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+FontStruct_t labelfont <span class="token operator">=</span> font<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetFontStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+GCValues_t   gval<span class="token punctuation">;</span>
+gval<span class="token punctuation">.</span>fMask <span class="token operator">=</span> kGCBackground <span class="token operator">|</span> kGCFont <span class="token operator">|</span> kGCForeground<span class="token punctuation">;</span>
+gval<span class="token punctuation">.</span>fFont <span class="token operator">=</span> font<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetFontHandle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetColorByName</span><span class="token punctuation">(</span><span class="token string">&quot;yellow&quot;</span><span class="token punctuation">,</span> gval<span class="token punctuation">.</span>fBackground<span class="token punctuation">)</span><span class="token punctuation">;</span>
+fTextGC <span class="token operator">=</span> gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetGC</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>gval<span class="token punctuation">,</span> kTRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ULong_t bcolor<span class="token punctuation">,</span> ycolor<span class="token punctuation">;</span>
+gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetColorByName</span><span class="token punctuation">(</span><span class="token string">&quot;yellow&quot;</span><span class="token punctuation">,</span> ycolor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gClient<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetColorByName</span><span class="token punctuation">(</span><span class="token string">&quot;blue&quot;</span><span class="token punctuation">,</span> bcolor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+fStatus <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TGLabel</span><span class="token punctuation">(</span>frame<span class="token punctuation">,</span> <span class="token string">&quot;OwnFont &amp; Bck/ForgrColor&quot;</span><span class="token punctuation">,</span> fTextGC<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">GetGC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> labelfont<span class="token punctuation">,</span> kChildFrame<span class="token punctuation">,</span> bcolor<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//</span>
+fStatus<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">SetTextColor</span><span class="token punctuation">(</span>ycolor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// fStatus-&gt;ChangeOptions(fStatus-&gt;GetOptions() | kFixedSize);</span>
+<span class="token comment">// fStatus-&gt;Resize(350, 80);</span>
+frame<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">AddFrame</span><span class="token punctuation">(</span>fStatus<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token function">TGLayoutHints</span><span class="token punctuation">(</span>kLHintsNormal<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<!-- README.md ends here -->
+<footer class="page-footer"><span class="copyright">&amp;Hongyi Wu all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Last-Modified&#xFF1A;
+2018-05-14 17:18:21
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../TVirtualFitter.html" class="navigation navigation-prev " aria-label="Previous page: TVirtualFitter*">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="GuiTypes.html" class="navigation navigation-next " aria-label="Next page: GuiTypes*">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"图形界面的使用","level":"1.3","depth":1,"next":{"title":"GuiTypes*","level":"1.3.1","depth":2,"path":"class/gui/GuiTypes.md","ref":"class/gui/GuiTypes.md","articles":[]},"previous":{"title":"TVirtualFitter*","level":"1.2.109","depth":2,"path":"class/TVirtualFitter.md","ref":"class/TVirtualFitter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","-highlight","github","prism","splitter","sitemap","image-captions","anchors","latex-codecogs","mermaid","tbfed-pagefooter","ace","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&Hongyi Wu","modify_label":"Last-Modified：","modify_format":"YYYY-MM-DD HH:mm:ss"},"latex-codecogs":{"type":"gif"},"prism":{},"spoiler":{},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sectionx":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"Geant4 Note","language":"zh-ch","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/gui/README.md","mtime":"2018-05-14T09:18:21.567Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T01:57:59.498Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mcqx/js.cookie.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mcqx/mcqx.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fbqx/fbqx.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-spoiler/spoiler.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-youtubex/player.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+
+    </body>
+</html>
+
