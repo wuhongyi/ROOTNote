@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 28 13:12:27 2016 (+0800)
-;; Last-Updated: 一 11月 28 13:47:39 2016 (+0800)
+;; Last-Updated: 六 1月  5 11:50:01 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # TBackCompFitter
@@ -195,6 +195,8 @@ TBackCompFitter 继承 TVirtualFitter
 /// Recreate a minimizer instance using the function and data
 /// set objective function in minimizers function to re-create FCN from stored data object and fit options
 ```
+
+
 
 ## code
 

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 一 11月  7 21:50:42 2016 (+0800)
+;; Last-Updated: 六 11月  3 10:30:18 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 15
+;;     Update #: 16
 ;; URL: http://wuhongyi.cn -->
 
 # TGraph
@@ -562,6 +562,23 @@ Bool_t CompareErrors(const TGraph* gr, Int_t i, Int_t j) {
   return (ge->GetEY()[i]>ge->GetEY()[j]); }
 // sort using the above comparison function, largest errors first
 graph->Sort(&CompareErrors, kFALSE);
+```
+
+```cpp
+// 保持 N 个点，适合于online监视
+
+Int_t n = fEventRate->GetN();
+if (n == 100) {
+   fEventRate->RemovePoint(0);
+   n--;
+}
+
+TTimeStamp tm, tm0;
+tm0.Set(1995,1,1,0,0,0,0,kTRUE,0);
+fEventRate->SetPoint(n, tm.AsDouble() - tm0.AsDouble(), r->GetRate());
+fEventRate->GetXaxis()->SetTimeDisplay(1);
+fEventRate->GetXaxis()->SetTimeFormat("%H:%M:%S");
+fEventRate->GetYaxis()->SetTitle("Events/s");
 ```
 
 

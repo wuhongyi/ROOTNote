@@ -4,13 +4,14 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 9月 13 19:58:48 2016 (+0800)
-;; Last-Updated: 二 9月 13 20:09:39 2016 (+0800)
+;; Last-Updated: 六 1月  5 12:01:04 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # TTimeStamp
 
+```cpp
 // The TTimeStamp encapsulates seconds and ns since EPOCH
 //
 // This extends (and isolates) struct timespec
@@ -33,6 +34,7 @@
 //       Jan 18, 19:14:07, 2038.
 //       If this experiment is still going when it becomes significant
 //       someone will have to deal with it.
+```
 
 
 ## class

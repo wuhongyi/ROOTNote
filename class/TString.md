@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 8月 13 20:33:51 2016 (+0800)
-;; Last-Updated: 六 8月 13 20:38:30 2016 (+0800)
+;; Last-Updated: 六 1月  5 11:59:41 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
 # TString
@@ -208,6 +208,7 @@ TString provides Short String Optimization (SSO) so that short strings (<15 on 6
    ;
 ```
 
+----
 
 ## code
 

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 8月 13 19:05:04 2016 (+0800)
-;; Last-Updated: 六 5月  6 16:57:43 2017 (+0800)
+;; Last-Updated: 六 1月  5 11:57:31 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 5
+;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
 
 # TROOT
@@ -437,6 +437,8 @@ Using the gROOT pointer one has access to basically every object created in a RO
    static const char**&GetExtraInterpreterArgs();
    static const char *GetTutorialsDir();/// Get the tutorials directory in the installation. Static utility function.
 ```
+
+----
 
 ## code
 

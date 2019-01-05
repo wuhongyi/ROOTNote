@@ -4,15 +4,15 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 28 21:31:47 2016 (+0800)
-;; Last-Updated: 一 11月 28 21:37:47 2016 (+0800)
+;; Last-Updated: 六 1月  5 12:02:15 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 # TVirtualFitter
 
 
-// Abstract base class for fitting
+Abstract base class for fitting
 
 TVirtualFitter 继承 TNamed
 
@@ -118,6 +118,8 @@ TVirtualFitter 继承 TNamed
 /// For example for MIGRAD this is tolerance value passed as second argument
 /// (see http://wwwasdoc.web.cern.ch/wwwasdoc/minuit/node18.html )
 ```
+
+----
 
 ## code
 
