@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 8月 13 19:14:29 2016 (+0800)
-;; Last-Updated: 六 9月  9 15:31:11 2017 (+0800)
+;; Last-Updated: 日 1月  6 16:12:16 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
 # TDirectory
@@ -16,6 +16,31 @@ v6.10.04
 继承TNamed
 
 Describe directory structure in memory.
+
+```
+This class defines an abstract interface that must be implemented    
+by all classes that contain dictionary information.                  
+                                                                     
+The dictionary is defined by the followling classes:                 
+TDataType                              (typedef definitions)         
+TGlobal                                (global variables)            
+TFunction                              (global functions)            
+TClass                                 (classes)                     
+   TBaseClass                          (base classes)                
+   TDataMember                         (class datamembers)           
+   TMethod                             (class methods)               
+      TMethodArg                       (method arguments)            
+                                                                     
+All the above classes implement the TDictionary abstract interface   
+(note: the indentation shows aggregation not inheritance).           
+The ROOT dictionary system provides a very extensive RTTI            
+environment that facilitates a.o. object inspectors, object I/O,     
+ROOT Trees, etc. Most of the type information is provided by the     
+CINT C++ interpreter.                                                
+                                                                     
+TMethodCall                            (method call environment)     
+```
+
 
 ## class
 
