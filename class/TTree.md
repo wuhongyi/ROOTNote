@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 3月 14 08:35:28 2015 (+0800)
-;; Last-Updated: 一 6月  4 06:49:15 2018 (+0800)
+;; Last-Updated: 一 1月 14 22:13:42 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 9
+;;     Update #: 10
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -2615,6 +2615,43 @@ t->SetEstimate(-1);
 t->Draw("energy");
 std::vector<Double_t> Vals(t->GetV1(), t->GetV1() + t->GetSelectedRows());
 ```
+
+
+写数据的同时另一个程序读取
+
+```cpp
+// The use of the non-default TObject::kOverwrite is fatal in this case. TObject::kOverwrite is an explicit to first remove the previous copy and then write the new copy (lightly in place of the hold one) into the file. This significantly increase the risk that the writing happens while the reader in not yet done reading.
+// If you want the write the object safely while still disabling the keeping of cycle (backup copy) use TObject::kWriteDelete (which write then deletes).
+// You can also use SaveSelf rather than Flush but then need to explicitly store each historgram.
+#include "TFile.h"
+#include "TH1F.h"
+
+void writer() {
+   TFile *f = new TFile("test.root","RECREATE");
+   TH1F *h = new TH1F("h","h",100,-2,2);
+   f->Write(0,TObject::kReadWrite);
+   int count = 0;
+   while(1) {
+      printf("Loop %d\r",count++);
+      fflush(stdout);
+      h->FillRandom("gaus",100);
+      h->Write(0,TObject::kReadWrite);
+      f->SaveSelf();
+      sleep(1);
+   }
+}
+
+// To refresh the information on the reader side, use ReadKeys:
+
+void reading(const TFile *f, const char *name="gaus") {
+   f->ReadKeys();
+   delete f->FindObject(name);
+   TH1F *h;  f->GetObject(name,h);
+   h->Draw();
+}
+```
+
+
 
 
 
