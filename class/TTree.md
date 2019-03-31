@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 3月 14 08:35:28 2015 (+0800)
-;; Last-Updated: 一 1月 14 22:13:42 2019 (+0800)
+;; Last-Updated: 日 3月 31 18:50:01 2019 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 10
+;;     Update #: 11
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -34,6 +34,10 @@ The options string can contains the following parameters:
 -  col=xxx
       - Where 'xxx' is colon (:) delimited list of printing format for each column. The format string should follow the printf format specification.  The value given will be prefixed by % and, if no conversion specifier is given, will be suffixed by the letter g. before being passed to fprintf.  If no format is specified for a column, the default is used  (aka ${colsize}.${precision}g )
 
+### function Draw()
+
+- `Entry$`:  
+	- A TTree::Draw formula can use the special variable `Entry$` to access the entry number being read.
 
 
 ## class
