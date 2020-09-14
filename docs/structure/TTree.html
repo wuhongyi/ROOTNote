@@ -1,4481 +1,635 @@
 
-<!DOCTYPE HTML>
-<html lang="" >
-    <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>TTree · ROOT Note</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
-        <meta name="author" content="Hongyi Wu(吴鸿毅)">
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
 
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-latex-codecogs/latex-codecogs.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sectionx/sectionx.css">
-                
-            
-                
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-mcqx/mcqx.css">
-                
-            
-                
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fbqx/fbqx.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-spoiler/spoiler.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-youtubex/player.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
-                
-            
-        
-
-    
-
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="../define/" />
-    
-    
-    <link rel="prev" href="TRef.html" />
-    
-
-    </head>
-    <body>
-        
-  <script>
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  </script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-<div class="book">
-    <div class="book-summary">
-        
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TTree &mdash; ROOT Note 1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="预定义" href="../define/README.html" />
+    <link rel="prev" title="TRef" href="TRef.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ROOT Note
+          
+
+          
+          </a>
+
+          
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
 
-            
-                <nav role="navigation">
-                
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    简介
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../class/">
-            
-                <a href="../class/">
-            
-                    
-                    base类的使用
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.2.1" data-path="../class/TObject.html">
-            
-                <a href="../class/TObject.html">
-            
-                    
-                    TObject*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../class/TTask.html">
-            
-                <a href="../class/TTask.html">
-            
-                    
-                    TTask+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.3" data-path="../class/Buttons.html">
-            
-                <a href="../class/Buttons.html">
-            
-                    
-                    Buttons*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="../class/TNamed.html">
-            
-                <a href="../class/TNamed.html">
-            
-                    
-                    TNamed+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.5" data-path="../class/TStyle.html">
-            
-                <a href="../class/TStyle.html">
-            
-                    
-                    TStyle+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.6" data-path="../class/TSystem.html">
-            
-                <a href="../class/TSystem.html">
-            
-                    
-                    TSystem*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.7" data-path="../class/TROOT.html">
-            
-                <a href="../class/TROOT.html">
-            
-                    
-                    TROOT*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.8" data-path="../class/TFolder.html">
-            
-                <a href="../class/TFolder.html">
-            
-                    
-                    TFolder
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.9" data-path="../class/TEnv.html">
-            
-                <a href="../class/TEnv.html">
-            
-                    
-                    TEnv
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.10" data-path="../class/TMacro.html">
-            
-                <a href="../class/TMacro.html">
-            
-                    
-                    TMacro
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.11" data-path="../class/TApplication.html">
-            
-                <a href="../class/TApplication.html">
-            
-                    
-                    TApplication
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.12" data-path="../class/TProcessID.html">
-            
-                <a href="../class/TProcessID.html">
-            
-                    
-                    TProcessID
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.13" data-path="../class/TProcessUUID.html">
-            
-                <a href="../class/TProcessUUID.html">
-            
-                    
-                    TProcessUUID
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.14" data-path="../class/TString.html">
-            
-                <a href="../class/TString.html">
-            
-                    
-                    TString+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.15" data-path="../class/TColor.html">
-            
-                <a href="../class/TColor.html">
-            
-                    
-                    TColor*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.16" data-path="../class/TBase64.html">
-            
-                <a href="../class/TBase64.html">
-            
-                    
-                    TBase64
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.17" data-path="../class/TMD5.html">
-            
-                <a href="../class/TMD5.html">
-            
-                    
-                    TMD5
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="../class/">
-            
-                <a href="../class/">
-            
-                    
-                    IO类的使用
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="../class/TKey.html">
-            
-                <a href="../class/TKey.html">
-            
-                    
-                    TKey*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="../class/TDirectory.html">
-            
-                <a href="../class/TDirectory.html">
-            
-                    
-                    TDirectory*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="../class/TDirectoryFile.html">
-            
-                <a href="../class/TDirectoryFile.html">
-            
-                    
-                    TDirectoryFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="../class/TSystemFile.html">
-            
-                <a href="../class/TSystemFile.html">
-            
-                    
-                    TSystemFile+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.5" data-path="../class/TSystemDirectory.html">
-            
-                <a href="../class/TSystemDirectory.html">
-            
-                    
-                    TSystemDirectory+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.6" data-path="../class/TFile.html">
-            
-                <a href="../class/TFile.html">
-            
-                    
-                    TFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.7" data-path="../class/TFileCacheWrite.html">
-            
-                <a href="../class/TFileCacheWrite.html">
-            
-                    
-                    TFileCacheWrite*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.8" data-path="../class/TFileCacheRead.html">
-            
-                <a href="../class/TFileCacheRead.html">
-            
-                    
-                    TFileCacheRead*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.9" data-path="../class/TFileMerger.html">
-            
-                <a href="../class/TFileMerger.html">
-            
-                    
-                    TFileMerger*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.10" data-path="../class/TMemFile.html">
-            
-                <a href="../class/TMemFile.html">
-            
-                    
-                    TMemFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.11" data-path="../class/TKeyMapFile.html">
-            
-                <a href="../class/TKeyMapFile.html">
-            
-                    
-                    TKeyMapFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.12" data-path="../class/TMapFile.html">
-            
-                <a href="../class/TMapFile.html">
-            
-                    
-                    TMapFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.13" data-path="../class/TArchiveFile.html">
-            
-                <a href="../class/TArchiveFile.html">
-            
-                    
-                    TArchiveFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.14" data-path="../class/TZIPFile.html">
-            
-                <a href="../class/TZIPFile.html">
-            
-                    
-                    TZIPFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.15" data-path="../class/TFilePrefetch.html">
-            
-                <a href="../class/TFilePrefetch.html">
-            
-                    
-                    TFilePrefetch*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.16" data-path="../class/TFPBlock.html">
-            
-                <a href="../class/TFPBlock.html">
-            
-                    
-                    TFPBlock*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.17" data-path="../class/THDFSFile.html">
-            
-                <a href="../class/THDFSFile.html">
-            
-                    
-                    THDFSFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.18" data-path="../class/TBuffer.html">
-            
-                <a href="../class/TBuffer.html">
-            
-                    
-                    TBuffer+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.19" data-path="../class/TBufferFile.html">
-            
-                <a href="../class/TBufferFile.html">
-            
-                    
-                    TBufferFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.20" data-path="../class/TBufferJSON.html">
-            
-                <a href="../class/TBufferJSON.html">
-            
-                    
-                    TBufferJSON*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.21" data-path="../class/TKeySQL.html">
-            
-                <a href="../class/TKeySQL.html">
-            
-                    
-                    TKeySQL*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.22" data-path="../class/TSQLObjectData.html">
-            
-                <a href="../class/TSQLObjectData.html">
-            
-                    
-                    TSQLObjectData*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.23" data-path="../class/TSQLStructure.html">
-            
-                <a href="../class/TSQLStructure.html">
-            
-                    
-                    TSQLStructure-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.24" data-path="../class/TSQLClassInfo.html">
-            
-                <a href="../class/TSQLClassInfo.html">
-            
-                    
-                    TSQLClassInfo*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.25" data-path="../class/TBufferSQL2.html">
-            
-                <a href="../class/TBufferSQL2.html">
-            
-                    
-                    TBufferSQL2*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.26" data-path="../class/TSQLFile.html">
-            
-                <a href="../class/TSQLFile.html">
-            
-                    
-                    TSQLFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.27" data-path="../class/TXMLEngine.html">
-            
-                <a href="../class/TXMLEngine.html">
-            
-                    
-                    TXMLEngine-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.28" data-path="../class/TBufferXML.html">
-            
-                <a href="../class/TBufferXML.html">
-            
-                    
-                    TBufferXML-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.29" data-path="../class/TXMLSetup.html">
-            
-                <a href="../class/TXMLSetup.html">
-            
-                    
-                    TXMLSetup-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.30" data-path="../class/TKeyXML.html">
-            
-                <a href="../class/TKeyXML.html">
-            
-                    
-                    TKeyXML-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.31" data-path="../class/TXMLPlayer.html">
-            
-                <a href="../class/TXMLPlayer.html">
-            
-                    
-                    TXMLPlayer-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.32" data-path="../class/TXMLFile.html">
-            
-                <a href="../class/TXMLFile.html">
-            
-                    
-                    TXMLFile-
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="../class/">
-            
-                <a href="../class/">
-            
-                    
-                    常用类的使用
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.4.1" data-path="../class/TTree.html">
-            
-                <a href="../class/TTree.html">
-            
-                    
-                    TTree*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.2" data-path="../class/TCut.html">
-            
-                <a href="../class/TCut.html">
-            
-                    
-                    TCut*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.3" data-path="../class/TTreePlayer.html">
-            
-                <a href="../class/TTreePlayer.html">
-            
-                    
-                    TTreePlayer*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.4" data-path="../class/TChain.html">
-            
-                <a href="../class/TChain.html">
-            
-                    
-                    TChain*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.5" data-path="../class/TEventList.html">
-            
-                <a href="../class/TEventList.html">
-            
-                    
-                    TEventList*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.6" data-path="../class/TBranch.html">
-            
-                <a href="../class/TBranch.html">
-            
-                    
-                    TBranch*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.7" data-path="../class/TNtuple.html">
-            
-                <a href="../class/TNtuple.html">
-            
-                    
-                    TNtuple*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.8" data-path="../class/TNtupleD.html">
-            
-                <a href="../class/TNtupleD.html">
-            
-                    
-                    TNtupleD*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.9" data-path="../class/TCollection.html">
-            
-                <a href="../class/TCollection.html">
-            
-                    
-                    TCollection*-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.10" data-path="../class/TSeqCollection.html">
-            
-                <a href="../class/TSeqCollection.html">
-            
-                    
-                    TSeqCollection*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.11" data-path="../class/TList.html">
-            
-                <a href="../class/TList.html">
-            
-                    
-                    TList*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.12" data-path="../class/TVirtualFitter.html">
-            
-                <a href="../class/TVirtualFitter.html">
-            
-                    
-                    TVirtualFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.13" data-path="../class/TBackCompFitter.html">
-            
-                <a href="../class/TBackCompFitter.html">
-            
-                    
-                    TBackCompFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.14" data-path="../class/FitResult.html">
-            
-                <a href="../class/FitResult.html">
-            
-                    
-                    FitResult
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.15" data-path="../class/TFitter.html">
-            
-                <a href="../class/TFitter.html">
-            
-                    
-                    TFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.16" data-path="../class/TFitResult.html">
-            
-                <a href="../class/TFitResult.html">
-            
-                    
-                    TFitResult
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.17" data-path="../class/TFitResultPtr.html">
-            
-                <a href="../class/TFitResultPtr.html">
-            
-                    
-                    TFitResultPtr
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.18" data-path="../class/TFractionFitter.html">
-            
-                <a href="../class/TFractionFitter.html">
-            
-                    
-                    TFractionFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.19" data-path="../class/TLinearFitter.html">
-            
-                <a href="../class/TLinearFitter.html">
-            
-                    
-                    TLinearFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.20" data-path="../class/TAttAxis.html">
-            
-                <a href="../class/TAttAxis.html">
-            
-                    
-                    TAttAxis*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.21" data-path="../class/TAxis.html">
-            
-                <a href="../class/TAxis.html">
-            
-                    
-                    TAxis*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.22" data-path="../class/TGaxis.html">
-            
-                <a href="../class/TGaxis.html">
-            
-                    
-                    TGaxis*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.23" data-path="../class/TText.html">
-            
-                <a href="../class/TText.html">
-            
-                    
-                    TText*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.24" data-path="../class/TPaveStats.html">
-            
-                <a href="../class/TPaveStats.html">
-            
-                    
-                    TPaveStats*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.25" data-path="../class/TPolyMarker.html">
-            
-                <a href="../class/TPolyMarker.html">
-            
-                    
-                    TPolyMarker
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.26" data-path="../class/TPaveText.html">
-            
-                <a href="../class/TPaveText.html">
-            
-                    
-                    TPaveText*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.27" data-path="../class/TPolyMarker3D.html">
-            
-                <a href="../class/TPolyMarker3D.html">
-            
-                    
-                    TPolyMarker3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.28" data-path="../class/TLatex.html">
-            
-                <a href="../class/TLatex.html">
-            
-                    
-                    TLatex*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.29" data-path="../class/TLegend.html">
-            
-                <a href="../class/TLegend.html">
-            
-                    
-                    TLegend*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.30" data-path="../class/TLegendEntry.html">
-            
-                <a href="../class/TLegendEntry.html">
-            
-                    
-                    TLegendEntry*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.31" data-path="../class/TLine.html">
-            
-                <a href="../class/TLine.html">
-            
-                    
-                    TLine*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.32" data-path="../class/TVirtualPad.html">
-            
-                <a href="../class/TVirtualPad.html">
-            
-                    
-                    TVirtualPad*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.33" data-path="../class/TPad.html">
-            
-                <a href="../class/TPad.html">
-            
-                    
-                    TPad*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.34" data-path="../class/TCanvas.html">
-            
-                <a href="../class/TCanvas.html">
-            
-                    
-                    TCanvas*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.35" data-path="../class/TF1.html">
-            
-                <a href="../class/TF1.html">
-            
-                    
-                    TF1*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.36" data-path="../class/TF2.html">
-            
-                <a href="../class/TF2.html">
-            
-                    
-                    TF2
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.37" data-path="../class/TF3.html">
-            
-                <a href="../class/TF3.html">
-            
-                    
-                    TF3
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.38" data-path="../class/TGraph.html">
-            
-                <a href="../class/TGraph.html">
-            
-                    
-                    TGraph*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.39" data-path="../class/TCutG.html">
-            
-                <a href="../class/TCutG.html">
-            
-                    
-                    TCutG*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.40" data-path="../class/TMultiGraph.html">
-            
-                <a href="../class/TMultiGraph.html">
-            
-                    
-                    TMultiGraph+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.41" data-path="../class/TGraph2D.html">
-            
-                <a href="../class/TGraph2D.html">
-            
-                    
-                    TGraph2D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.42" data-path="../class/TGraph2DErrors.html">
-            
-                <a href="../class/TGraph2DErrors.html">
-            
-                    
-                    TGraph2DErrors
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.43" data-path="../class/TGraphErrors.html">
-            
-                <a href="../class/TGraphErrors.html">
-            
-                    
-                    TGraphErrors
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.44" data-path="../class/TGraphPolar.html">
-            
-                <a href="../class/TGraphPolar.html">
-            
-                    
-                    TGraphPolar
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.45" data-path="../class/TH1.html">
-            
-                <a href="../class/TH1.html">
-            
-                    
-                    TH1*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.46" data-path="../class/TH2.html">
-            
-                <a href="../class/TH2.html">
-            
-                    
-                    TH2+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.47" data-path="../class/TH2Poly.html">
-            
-                <a href="../class/TH2Poly.html">
-            
-                    
-                    TH2Poly*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.48" data-path="../class/TH3.html">
-            
-                <a href="../class/TH3.html">
-            
-                    
-                    TH3
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.49" data-path="../class/TProfile.html">
-            
-                <a href="../class/TProfile.html">
-            
-                    
-                    TProfile
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.50" data-path="../class/TProfile2D.html">
-            
-                <a href="../class/TProfile2D.html">
-            
-                    
-                    TProfile2D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.51" data-path="../class/TProfile3D.html">
-            
-                <a href="../class/TProfile3D.html">
-            
-                    
-                    TProfile3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.52" data-path="../class/TMath.html">
-            
-                <a href="../class/TMath.html">
-            
-                    
-                    TMath*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.53" data-path="../class/TMathBase.html">
-            
-                <a href="../class/TMathBase.html">
-            
-                    
-                    TMathBase*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.54" data-path="../class/TMatrixT.html">
-            
-                <a href="../class/TMatrixT.html">
-            
-                    
-                    TMatrixT
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.55" data-path="../class/TMatrixTBase.html">
-            
-                <a href="../class/TMatrixTBase.html">
-            
-                    
-                    TMatrixTBase
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.56" data-path="../class/TMatrixTSparse.html">
-            
-                <a href="../class/TMatrixTSparse.html">
-            
-                    
-                    TMatrixTSparse
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.57" data-path="../class/TMatrixTSym.html">
-            
-                <a href="../class/TMatrixTSym.html">
-            
-                    
-                    TMatrixTSym
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.58" data-path="../class/TSpline.html">
-            
-                <a href="../class/TSpline.html">
-            
-                    
-                    TSpline+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.59" data-path="../class/TMinuit.html">
-            
-                <a href="../class/TMinuit.html">
-            
-                    
-                    TMinuit*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.60" data-path="../class/TMinuitMinimizer.html">
-            
-                <a href="../class/TMinuitMinimizer.html">
-            
-                    
-                    TMinuitMinimizer*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.61" data-path="../class/TRandom.html">
-            
-                <a href="../class/TRandom.html">
-            
-                    
-                    TRandom*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.62" data-path="../class/TRandom1.html">
-            
-                <a href="../class/TRandom1.html">
-            
-                    
-                    TRandom1*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.63" data-path="../class/TRandom2.html">
-            
-                <a href="../class/TRandom2.html">
-            
-                    
-                    TRandom2*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.64" data-path="../class/TRandom3.html">
-            
-                <a href="../class/TRandom3.html">
-            
-                    
-                    TRandom3*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.65" data-path="../class/TSelector.html">
-            
-                <a href="../class/TSelector.html">
-            
-                    
-                    TSelector-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.66" data-path="../class/TSelectorCint.html">
-            
-                <a href="../class/TSelectorCint.html">
-            
-                    
-                    TSelectorCint
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.67" data-path="../class/TSelectorDraw.html">
-            
-                <a href="../class/TSelectorDraw.html">
-            
-                    
-                    TSelectorDraw
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.68" data-path="../class/TSelectorEntries.html">
-            
-                <a href="../class/TSelectorEntries.html">
-            
-                    
-                    TSelectorEntries
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.69" data-path="../class/TSelectorList.html">
-            
-                <a href="../class/TSelectorList.html">
-            
-                    
-                    TSelectorList-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.70" data-path="../class/TSelectorScalar.html">
-            
-                <a href="../class/TSelectorScalar.html">
-            
-                    
-                    TSelectorScalar
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.71" data-path="../class/TSpectrum.html">
-            
-                <a href="../class/TSpectrum.html">
-            
-                    
-                    TSpectrum*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.72" data-path="../class/TSpectrum2.html">
-            
-                <a href="../class/TSpectrum2.html">
-            
-                    
-                    TSpectrum2
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.73" data-path="../class/TSpectrum2Fit.html">
-            
-                <a href="../class/TSpectrum2Fit.html">
-            
-                    
-                    TSpectrum2Fit
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.74" data-path="../class/TSpectrum2Painter.html">
-            
-                <a href="../class/TSpectrum2Painter.html">
-            
-                    
-                    TSpectrum2Painter
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.75" data-path="../class/TSpectrum2Transform.html">
-            
-                <a href="../class/TSpectrum2Transform.html">
-            
-                    
-                    TSpectrum2Transform
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.76" data-path="../class/TSpectrum3.html">
-            
-                <a href="../class/TSpectrum3.html">
-            
-                    
-                    TSpectrum3
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.77" data-path="../class/TSpectrumFit.html">
-            
-                <a href="../class/TSpectrumFit.html">
-            
-                    
-                    TSpectrumFit
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.78" data-path="../class/TSpectrumTransform.html">
-            
-                <a href="../class/TSpectrumTransform.html">
-            
-                    
-                    TSpectrumTransform
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.79" data-path="../class/TTime.html">
-            
-                <a href="../class/TTime.html">
-            
-                    
-                    TTime*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.80" data-path="../class/TTimer.html">
-            
-                <a href="../class/TTimer.html">
-            
-                    
-                    TTimer*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.81" data-path="../class/TTimeStamp.html">
-            
-                <a href="../class/TTimeStamp.html">
-            
-                    
-                    TTimeStamp
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.82" data-path="../class/TStopwatch.html">
-            
-                <a href="../class/TStopwatch.html">
-            
-                    
-                    TStopwatch
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.83" data-path="../class/TBenchmark.html">
-            
-                <a href="../class/TBenchmark.html">
-            
-                    
-                    TBenchmark+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.84" data-path="../class/TThread.html">
-            
-                <a href="../class/TThread.html">
-            
-                    
-                    TThread
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.85" data-path="../class/TThreadFactory.html">
-            
-                <a href="../class/TThreadFactory.html">
-            
-                    
-                    TThreadFactory
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.86" data-path="../class/TThreadImp.html">
-            
-                <a href="../class/TThreadImp.html">
-            
-                    
-                    TThreadImp
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.87" data-path="../class/TServerSocket.html">
-            
-                <a href="../class/TServerSocket.html">
-            
-                    
-                    TServerSocket
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.88" data-path="../class/TSocket.html">
-            
-                <a href="../class/TSocket.html">
-            
-                    
-                    TSocket
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.89" data-path="../class/TPServerSocket.html">
-            
-                <a href="../class/TPServerSocket.html">
-            
-                    
-                    TPServerSocket
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.90" data-path="../class/TPSocket.html">
-            
-                <a href="../class/TPSocket.html">
-            
-                    
-                    TPSocket
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.91" data-path="../class/TEllipse.html">
-            
-                <a href="../class/TEllipse.html">
-            
-                    
-                    TEllipse
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.92" data-path="../class/TNeuron.html">
-            
-                <a href="../class/TNeuron.html">
-            
-                    
-                    TNeuron
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.93" data-path="../class/TMLPAnalyzer.html">
-            
-                <a href="../class/TMLPAnalyzer.html">
-            
-                    
-                    TMLPAnalyzer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.94" data-path="../class/TMonitor.html">
-            
-                <a href="../class/TMonitor.html">
-            
-                    
-                    TMonitor
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.95" data-path="../class/TMultiLayerPerceptron.html">
-            
-                <a href="../class/TMultiLayerPerceptron.html">
-            
-                    
-                    TMultiLayerPerceptron
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="../class/gui/">
-            
-                <a href="../class/gui/">
-            
-                    
-                    图形界面的使用
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="../class/gui/GuiTypes.html">
-            
-                <a href="../class/gui/GuiTypes.html">
-            
-                    
-                    GuiTypes*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="../class/gui/TGButton.html">
-            
-                <a href="../class/gui/TGButton.html">
-            
-                    
-                    TGButton*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="../class/gui/TGButtonGroup.html">
-            
-                <a href="../class/gui/TGButtonGroup.html">
-            
-                    
-                    TGButtonGroup*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.4" data-path="../class/gui/TGCanvas.html">
-            
-                <a href="../class/gui/TGCanvas.html">
-            
-                    
-                    TGCanvas*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.5" data-path="../class/gui/TGClient.html">
-            
-                <a href="../class/gui/TGClient.html">
-            
-                    
-                    TGClient*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.6" data-path="../class/gui/TGColorDialog.html">
-            
-                <a href="../class/gui/TGColorDialog.html">
-            
-                    
-                    TGColorDialog*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.7" data-path="../class/gui/TGColorSelect.html">
-            
-                <a href="../class/gui/TGColorSelect.html">
-            
-                    
-                    TGColorSelect*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.8" data-path="../class/gui/TGComboBox.html">
-            
-                <a href="../class/gui/TGComboBox.html">
-            
-                    
-                    TGComboBox*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.9" data-path="../class/gui/TGCommandPlugin.html">
-            
-                <a href="../class/gui/TGCommandPlugin.html">
-            
-                    
-                    TGCommandPlugin*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.10" data-path="../class/gui/TGDimension.html">
-            
-                <a href="../class/gui/TGDimension.html">
-            
-                    
-                    TGDimension*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.11" data-path="../class/gui/TGDNDManager.html">
-            
-                <a href="../class/gui/TGDNDManager.html">
-            
-                    
-                    TGDNDManager*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.12" data-path="../class/gui/TGDockableFrame.html">
-            
-                <a href="../class/gui/TGDockableFrame.html">
-            
-                    
-                    TGDockableFrame*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.13" data-path="../class/gui/TGDoubleSlider.html">
-            
-                <a href="../class/gui/TGDoubleSlider.html">
-            
-                    
-                    TGDoubleSlider*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.14" data-path="../class/gui/TGEventHandler.html">
-            
-                <a href="../class/gui/TGEventHandler.html">
-            
-                    
-                    TGEventHandler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.15" data-path="../class/gui/TGFileBrowser.html">
-            
-                <a href="../class/gui/TGFileBrowser.html">
-            
-                    
-                    TGFileBrowser
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.16" data-path="../class/gui/TGFileDialog.html">
-            
-                <a href="../class/gui/TGFileDialog.html">
-            
-                    
-                    TGFileDialog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.17" data-path="../class/gui/TGFont.html">
-            
-                <a href="../class/gui/TGFont.html">
-            
-                    
-                    TGFont*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.18" data-path="../class/gui/TGFontDialog.html">
-            
-                <a href="../class/gui/TGFontDialog.html">
-            
-                    
-                    TGFontDialog*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.19" data-path="../class/gui/TGFrame.html">
-            
-                <a href="../class/gui/TGFrame.html">
-            
-                    
-                    TGFrame*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.20" data-path="../class/gui/TGFSComboBox.html">
-            
-                <a href="../class/gui/TGFSComboBox.html">
-            
-                    
-                    TGFSComboBox
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.21" data-path="../class/gui/TGFSContainer.html">
-            
-                <a href="../class/gui/TGFSContainer.html">
-            
-                    
-                    TGFSContainer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.22" data-path="../class/gui/TGGC.html">
-            
-                <a href="../class/gui/TGGC.html">
-            
-                    
-                    TGGC*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.23" data-path="../class/gui/TGIcon.html">
-            
-                <a href="../class/gui/TGIcon.html">
-            
-                    
-                    TGIcon*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.24" data-path="../class/gui/TGIdleHandler.html">
-            
-                <a href="../class/gui/TGIdleHandler.html">
-            
-                    
-                    TGIdleHandler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.25" data-path="../class/gui/TGImageMap.html">
-            
-                <a href="../class/gui/TGImageMap.html">
-            
-                    
-                    TGImageMap*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.26" data-path="../class/gui/TGInputDialog.html">
-            
-                <a href="../class/gui/TGInputDialog.html">
-            
-                    
-                    TGInputDialog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.27" data-path="../class/gui/TGLabel.html">
-            
-                <a href="../class/gui/TGLabel.html">
-            
-                    
-                    TGLabel*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.28" data-path="../class/gui/TGLayout.html">
-            
-                <a href="../class/gui/TGLayout.html">
-            
-                    
-                    TGLayout+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.29" data-path="../class/gui/TGListBox.html">
-            
-                <a href="../class/gui/TGListBox.html">
-            
-                    
-                    TGListBox+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.30" data-path="../class/gui/TGListTree.html">
-            
-                <a href="../class/gui/TGListTree.html">
-            
-                    
-                    TGListTree*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.31" data-path="../class/gui/TGListView.html">
-            
-                <a href="../class/gui/TGListView.html">
-            
-                    
-                    TGListView+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.32" data-path="../class/gui/TGMdiDecorFrame.html">
-            
-                <a href="../class/gui/TGMdiDecorFrame.html">
-            
-                    
-                    TGMdiDecorFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.33" data-path="../class/gui/TGMdiFrame.html">
-            
-                <a href="../class/gui/TGMdiFrame.html">
-            
-                    
-                    TGMdiFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.34" data-path="../class/gui/TGMdiMainFrame.html">
-            
-                <a href="../class/gui/TGMdiMainFrame.html">
-            
-                    
-                    TGMdiMainFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.35" data-path="../class/gui/TGMdiMenu.html">
-            
-                <a href="../class/gui/TGMdiMenu.html">
-            
-                    
-                    TGMdiMenu
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.36" data-path="../class/gui/TGMenu.html">
-            
-                <a href="../class/gui/TGMenu.html">
-            
-                    
-                    TGMenu+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.37" data-path="../class/gui/TGMimeTypes.html">
-            
-                <a href="../class/gui/TGMimeTypes.html">
-            
-                    
-                    TGMimeTypes
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.38" data-path="../class/gui/TGMsgBox.html">
-            
-                <a href="../class/gui/TGMsgBox.html">
-            
-                    
-                    TGMsgBox
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.39" data-path="../class/gui/TGNumberEntry.html">
-            
-                <a href="../class/gui/TGNumberEntry.html">
-            
-                    
-                    TGNumberEntry+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.40" data-path="../class/gui/TGObject.html">
-            
-                <a href="../class/gui/TGObject.html">
-            
-                    
-                    TGObject*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.41" data-path="../class/gui/TGPack.html">
-            
-                <a href="../class/gui/TGPack.html">
-            
-                    
-                    TGPack
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.42" data-path="../class/gui/TGPasswdDialog.html">
-            
-                <a href="../class/gui/TGPasswdDialog.html">
-            
-                    
-                    TGPasswdDialog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.43" data-path="../class/gui/TGPicture.html">
-            
-                <a href="../class/gui/TGPicture.html">
-            
-                    
-                    TGPicture+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.44" data-path="../class/gui/TGProgressBar.html">
-            
-                <a href="../class/gui/TGProgressBar.html">
-            
-                    
-                    TGProgressBar*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.45" data-path="../class/gui/TGRedirectOutputGuard.html">
-            
-                <a href="../class/gui/TGRedirectOutputGuard.html">
-            
-                    
-                    TGRedirectOutputGuard
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.46" data-path="../class/gui/TGResourcePool.html">
-            
-                <a href="../class/gui/TGResourcePool.html">
-            
-                    
-                    TGResourcePool
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.47" data-path="../class/gui/TGScrollBar.html">
-            
-                <a href="../class/gui/TGScrollBar.html">
-            
-                    
-                    TGScrollBar+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.48" data-path="../class/gui/TGShapedFrame.html">
-            
-                <a href="../class/gui/TGShapedFrame.html">
-            
-                    
-                    TGShapedFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.49" data-path="../class/gui/TGShutter.html">
-            
-                <a href="../class/gui/TGShutter.html">
-            
-                    
-                    TGShutter
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.50" data-path="../class/gui/TGSimpleTable.html">
-            
-                <a href="../class/gui/TGSimpleTable.html">
-            
-                    
-                    TGSimpleTable+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.51" data-path="../class/gui/TGSimpleTableInterface.html">
-            
-                <a href="../class/gui/TGSimpleTableInterface.html">
-            
-                    
-                    TGSimpleTableInterface
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.52" data-path="../class/gui/TGSlider.html">
-            
-                <a href="../class/gui/TGSlider.html">
-            
-                    
-                    TGSlider+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.53" data-path="../class/gui/TGSpeedo.html">
-            
-                <a href="../class/gui/TGSpeedo.html">
-            
-                    
-                    TGSpeedo*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.54" data-path="../class/gui/TGSplitFrame.html">
-            
-                <a href="../class/gui/TGSplitFrame.html">
-            
-                    
-                    TGSplitFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.55" data-path="../class/gui/TGSplitter.html">
-            
-                <a href="../class/gui/TGSplitter.html">
-            
-                    
-                    TGSplitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.56" data-path="../class/gui/TGStatusBar.html">
-            
-                <a href="../class/gui/TGStatusBar.html">
-            
-                    
-                    TGStatusBar*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.57" data-path="../class/gui/TGString.html">
-            
-                <a href="../class/gui/TGString.html">
-            
-                    
-                    TGString
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.58" data-path="../class/gui/TGTab.html">
-            
-                <a href="../class/gui/TGTab.html">
-            
-                    
-                    TGTab*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.59" data-path="../class/gui/TGTable.html">
-            
-                <a href="../class/gui/TGTable.html">
-            
-                    
-                    TGTable*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.60" data-path="../class/gui/TGTableCell.html">
-            
-                <a href="../class/gui/TGTableCell.html">
-            
-                    
-                    TGTableCell-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.61" data-path="../class/gui/TGTableContainer.html">
-            
-                <a href="../class/gui/TGTableContainer.html">
-            
-                    
-                    TGTableContainer-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.62" data-path="../class/gui/TGTableHeader.html">
-            
-                <a href="../class/gui/TGTableHeader.html">
-            
-                    
-                    TGTableHeader-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.63" data-path="../class/gui/TGTableLayout.html">
-            
-                <a href="../class/gui/TGTableLayout.html">
-            
-                    
-                    TGTableLayout-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.64" data-path="../class/gui/TGText.html">
-            
-                <a href="../class/gui/TGText.html">
-            
-                    
-                    TGText
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.65" data-path="../class/gui/TGTextBuffer.html">
-            
-                <a href="../class/gui/TGTextBuffer.html">
-            
-                    
-                    TGTextBuffer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.66" data-path="../class/gui/TGTextEdit.html">
-            
-                <a href="../class/gui/TGTextEdit.html">
-            
-                    
-                    TGTextEdit
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.67" data-path="../class/gui/TGTextEditDialogs.html">
-            
-                <a href="../class/gui/TGTextEditDialogs.html">
-            
-                    
-                    TGTextEditDialogs
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.68" data-path="../class/gui/TGTextEditor.html">
-            
-                <a href="../class/gui/TGTextEditor.html">
-            
-                    
-                    TGTextEditor
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.69" data-path="../class/gui/TGTextEntry.html">
-            
-                <a href="../class/gui/TGTextEntry.html">
-            
-                    
-                    TGTextEntry*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.70" data-path="../class/gui/TGTextView.html">
-            
-                <a href="../class/gui/TGTextView.html">
-            
-                    
-                    TGTextView
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.71" data-path="../class/gui/TGTextViewStream.html">
-            
-                <a href="../class/gui/TGTextViewStream.html">
-            
-                    
-                    TGTextViewStream*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.72" data-path="../class/gui/TGToolBar.html">
-            
-                <a href="../class/gui/TGToolBar.html">
-            
-                    
-                    TGToolBar
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.73" data-path="../class/gui/TGToolTip.html">
-            
-                <a href="../class/gui/TGToolTip.html">
-            
-                    
-                    TGToolTip
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.74" data-path="../class/gui/TGTripleSlider.html">
-            
-                <a href="../class/gui/TGTripleSlider.html">
-            
-                    
-                    TGTripleSlider*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.75" data-path="../class/gui/TGuiBuilder.html">
-            
-                <a href="../class/gui/TGuiBuilder.html">
-            
-                    
-                    TGuiBuilder
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.76" data-path="../class/gui/TGView.html">
-            
-                <a href="../class/gui/TGView.html">
-            
-                    
-                    TGView*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.77" data-path="../class/gui/TGWidget.html">
-            
-                <a href="../class/gui/TGWidget.html">
-            
-                    
-                    TGWidget*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.78" data-path="../class/gui/TGWindow.html">
-            
-                <a href="../class/gui/TGWindow.html">
-            
-                    
-                    TGWindow*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.79" data-path="../class/gui/TGXYLayout.html">
-            
-                <a href="../class/gui/TGXYLayout.html">
-            
-                    
-                    TGXYLayout
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.80" data-path="../class/gui/TQObject.html">
-            
-                <a href="../class/gui/TQObject.html">
-            
-                    
-                    TQObject*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.81" data-path="../class/gui/TRootEmbeddedCanvas.html">
-            
-                <a href="../class/gui/TRootEmbeddedCanvas.html">
-            
-                    
-                    TRootEmbeddedCanvas*
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="../class/graf3d/">
-            
-                <a href="../class/graf3d/">
-            
-                    
-                    GRAF3D
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="../class/graf3d/TAxis3D.html">
-            
-                <a href="../class/graf3d/TAxis3D.html">
-            
-                    
-                    TAxis3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="../class/graf3d/TBRIK.html">
-            
-                <a href="../class/graf3d/TBRIK.html">
-            
-                    
-                    TBRIK*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="../class/graf3d/TCONE.html">
-            
-                <a href="../class/graf3d/TCONE.html">
-            
-                    
-                    TCONE
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.4" data-path="../class/graf3d/TCONS.html">
-            
-                <a href="../class/graf3d/TCONS.html">
-            
-                    
-                    TCONS
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.5" data-path="../class/graf3d/TCTUB.html">
-            
-                <a href="../class/graf3d/TCTUB.html">
-            
-                    
-                    TCTUB
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6" data-path="../class/graf3d/TELTU.html">
-            
-                <a href="../class/graf3d/TELTU.html">
-            
-                    
-                    TELTU
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.7" data-path="../class/graf3d/TGeometry.html">
-            
-                <a href="../class/graf3d/TGeometry.html">
-            
-                    
-                    TGeometry
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.8" data-path="../class/graf3d/TGTRA.html">
-            
-                <a href="../class/graf3d/TGTRA.html">
-            
-                    
-                    TGTRA
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.9" data-path="../class/graf3d/THelix.html">
-            
-                <a href="../class/graf3d/THelix.html">
-            
-                    
-                    THelix
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.10" data-path="../class/graf3d/THYPE.html">
-            
-                <a href="../class/graf3d/THYPE.html">
-            
-                    
-                    THYPE
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.11" data-path="../class/graf3d/TMarker3DBox.html">
-            
-                <a href="../class/graf3d/TMarker3DBox.html">
-            
-                    
-                    TMarker3DBox
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.12" data-path="../class/graf3d/TMaterial.html">
-            
-                <a href="../class/graf3d/TMaterial.html">
-            
-                    
-                    TMaterial
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.13" data-path="../class/graf3d/TMixture.html">
-            
-                <a href="../class/graf3d/TMixture.html">
-            
-                    
-                    TMixture
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.14" data-path="../class/graf3d/TNodeDiv.html">
-            
-                <a href="../class/graf3d/TNodeDiv.html">
-            
-                    
-                    TNodeDiv
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.15" data-path="../class/graf3d/TNode.html">
-            
-                <a href="../class/graf3d/TNode.html">
-            
-                    
-                    TNode*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.16" data-path="../class/graf3d/TPARA.html">
-            
-                <a href="../class/graf3d/TPARA.html">
-            
-                    
-                    TPARA
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.17" data-path="../class/graf3d/TPCON.html">
-            
-                <a href="../class/graf3d/TPCON.html">
-            
-                    
-                    TPCON
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.18" data-path="../class/graf3d/TPGON.html">
-            
-                <a href="../class/graf3d/TPGON.html">
-            
-                    
-                    TPGON
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.19" data-path="../class/graf3d/TPoints3DABC.html">
-            
-                <a href="../class/graf3d/TPoints3DABC.html">
-            
-                    
-                    TPoints3DABC
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.20" data-path="../class/graf3d/TPointSet3D.html">
-            
-                <a href="../class/graf3d/TPointSet3D.html">
-            
-                    
-                    TPointSet3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.21" data-path="../class/graf3d/TPolyLine3D.html">
-            
-                <a href="../class/graf3d/TPolyLine3D.html">
-            
-                    
-                    TPolyLine3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.22" data-path="../class/graf3d/TPolyMarker3D.html">
-            
-                <a href="../class/graf3d/TPolyMarker3D.html">
-            
-                    
-                    TPolyMarker3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.23" data-path="../class/graf3d/TRotMatrix.html">
-            
-                <a href="../class/graf3d/TRotMatrix.html">
-            
-                    
-                    TRotMatrix
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.24" data-path="../class/graf3d/TShape.html">
-            
-                <a href="../class/graf3d/TShape.html">
-            
-                    
-                    TShape*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.25" data-path="../class/graf3d/TSPHE.html">
-            
-                <a href="../class/graf3d/TSPHE.html">
-            
-                    
-                    TSPHE*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.26" data-path="../class/graf3d/TTRAP.html">
-            
-                <a href="../class/graf3d/TTRAP.html">
-            
-                    
-                    TTRAP
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.27" data-path="../class/graf3d/TTRD1.html">
-            
-                <a href="../class/graf3d/TTRD1.html">
-            
-                    
-                    TTRD1
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.28" data-path="../class/graf3d/TTRD2.html">
-            
-                <a href="../class/graf3d/TTRD2.html">
-            
-                    
-                    TTRD2
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.29" data-path="../class/graf3d/TTUBE.html">
-            
-                <a href="../class/graf3d/TTUBE.html">
-            
-                    
-                    TTUBE
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.30" data-path="../class/graf3d/TTUBS.html">
-            
-                <a href="../class/graf3d/TTUBS.html">
-            
-                    
-                    TTUBS
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.31" data-path="../class/graf3d/TView3D.html">
-            
-                <a href="../class/graf3d/TView3D.html">
-            
-                    
-                    TView3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.32" data-path="../class/graf3d/TXTRU.html">
-            
-                <a href="../class/graf3d/TXTRU.html">
-            
-                    
-                    TXTRU
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.33" data-path="../class/graf3d/X3DBuffer.html">
-            
-                <a href="../class/graf3d/X3DBuffer.html">
-            
-                    
-                    X3DBuffer
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="../class/math/">
-            
-                <a href="../class/math/">
-            
-                    
-                    physics
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.1" data-path="../class/math/TFeldmanCousins.html">
-            
-                <a href="../class/math/TFeldmanCousins.html">
-            
-                    
-                    TFeldmanCousins*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.2" data-path="../class/math/TGenPhaseSpace.html">
-            
-                <a href="../class/math/TGenPhaseSpace.html">
-            
-                    
-                    TGenPhaseSpace*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.3" data-path="../class/math/TLorentzRotation.html">
-            
-                <a href="../class/math/TLorentzRotation.html">
-            
-                    
-                    TLorentzRotation*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.4" data-path="../class/math/TLorentzVector.html">
-            
-                <a href="../class/math/TLorentzVector.html">
-            
-                    
-                    TLorentzVector*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.5" data-path="../class/math/TQuaternion.html">
-            
-                <a href="../class/math/TQuaternion.html">
-            
-                    
-                    TQuaternion*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.6" data-path="../class/math/TRobustEstimator.html">
-            
-                <a href="../class/math/TRobustEstimator.html">
-            
-                    
-                    TRobustEstimator*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7" data-path="../class/math/TRolke.html">
-            
-                <a href="../class/math/TRolke.html">
-            
-                    
-                    TRolke*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.8" data-path="../class/math/TRotation.html">
-            
-                <a href="../class/math/TRotation.html">
-            
-                    
-                    TRotation*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.9" data-path="../class/math/TVectorT.html">
-            
-                <a href="../class/math/TVectorT.html">
-            
-                    
-                    TVectorT
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.10" data-path="../class/math/TVector2.html">
-            
-                <a href="../class/math/TVector2.html">
-            
-                    
-                    TVector2
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.11" data-path="../class/math/TVector3.html">
-            
-                <a href="../class/math/TVector3.html">
-            
-                    
-                    TVector3*
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" data-path="../class/net/">
-            
-                <a href="../class/net/">
-            
-                    
-                    net
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1" data-path="../class/net/TCivetweb.html">
-            
-                <a href="../class/net/TCivetweb.html">
-            
-                    
-                    http/TCivetweb
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="../class/net/TFastCgi.html">
-            
-                <a href="../class/net/TFastCgi.html">
-            
-                    
-                    http/TFastCgi
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.3" data-path="../class/net/THttpCallArg.html">
-            
-                <a href="../class/net/THttpCallArg.html">
-            
-                    
-                    http/THttpCallArg
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.4" data-path="../class/net/THttpEngine.html">
-            
-                <a href="../class/net/THttpEngine.html">
-            
-                    
-                    http/THttpEngine
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.5" data-path="../class/net/THttpServer.html">
-            
-                <a href="../class/net/THttpServer.html">
-            
-                    
-                    http/THttpServer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.6" data-path="../class/net/THttpWSEngine.html">
-            
-                <a href="../class/net/THttpWSEngine.html">
-            
-                    
-                    http/THttpWSEngine
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.7" data-path="../class/net/THttpWSHandler.html">
-            
-                <a href="../class/net/THttpWSHandler.html">
-            
-                    
-                    http/THttpWSHandler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.8" data-path="../class/net/TRootSniffer.html">
-            
-                <a href="../class/net/TRootSniffer.html">
-            
-                    
-                    http/TRootSniffer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.9" data-path="../class/net/TRootSnifferStore.html">
-            
-                <a href="../class/net/TRootSnifferStore.html">
-            
-                    
-                    http/TRootSnifferStore
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    数据结构
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.9.1" data-path="datarecord.html">
-            
-                <a href="datarecord.html">
-            
-                    
-                    datarecord
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2" data-path="dobject.html">
-            
-                <a href="dobject.html">
-            
-                    
-                    dobject
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.3" data-path="freesegments.html">
-            
-                <a href="freesegments.html">
-            
-                    
-                    freesegments
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.4" data-path="gap.html">
-            
-                <a href="gap.html">
-            
-                    
-                    gap
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.5" data-path="header.html">
-            
-                <a href="header.html">
-            
-                    
-                    header
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.6" data-path="keyslist.html">
-            
-                <a href="keyslist.html">
-            
-                    
-                    keyslist
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.7" data-path="StreamerInfo.html">
-            
-                <a href="StreamerInfo.html">
-            
-                    
-                    StreamerInfo
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.8" data-path="TClonesArray.html">
-            
-                <a href="TClonesArray.html">
-            
-                    
-                    TClonesArray
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.9" data-path="TDirectory.html">
-            
-                <a href="TDirectory.html">
-            
-                    
-                    TDirectory
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.10" data-path="TFile.html">
-            
-                <a href="TFile.html">
-            
-                    
-                    TFile
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.11" data-path="TObject.html">
-            
-                <a href="TObject.html">
-            
-                    
-                    TObject
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.12" data-path="TProcessID.html">
-            
-                <a href="TProcessID.html">
-            
-                    
-                    TProcessID
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.13" data-path="TRefArray.html">
-            
-                <a href="TRefArray.html">
-            
-                    
-                    TRefArray
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.14" data-path="TRef.html">
-            
-                <a href="TRef.html">
-            
-                    
-                    TRef
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.9.15" data-path="TTree.html">
-            
-                <a href="TTree.html">
-            
-                    
-                    TTree
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.10" data-path="../define/">
-            
-                <a href="../define/">
-            
-                    
-                    预定义
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.10.1" data-path="../define/RVersion.html">
-            
-                <a href="../define/RVersion.html">
-            
-                    
-                    RVersion
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.11" data-path="../version/version.html">
-            
-                <a href="../version/version.html">
-            
-                    
-                    文件版本
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">简介</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">简介</a></li>
+</ul>
+<p class="caption"><span class="caption-text">base类的使用</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class/README.html">类的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TObject.html">TObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TTask.html">TTask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/Buttons.html">Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TNamed.html">TNamed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TStyle.html">TStyle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSystem.html">TSystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TROOT.html">TROOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFolder.html">TFolder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TEnv.html">TEnv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMacro.html">TMacro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TApplication.html">TApplication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TProcessID.html">TProcessID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TProcessUUID.html">TProcessUUID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TString.html">TString</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TColor.html">TColor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TBase64.html">TBase64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMD5.html">TMD5</a></li>
+</ul>
+<p class="caption"><span class="caption-text">IO类的使用</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class/README.html">类的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TKey.html">TKey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TDirectory.html">TDirectory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TDirectoryFile.html">TDirectoryFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSystemFile.html">TSystemFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSystemDirectory.html">TSystemDirectory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFile.html">TFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFileCacheWrite.html">TFileCacheWrite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFileCacheRead.html">TFileCacheRead</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFileMerger.html">TFileMerger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMemFile.html">TMemFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TKeyMapFile.html">TKeyMapFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMapFile.html">TMapFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TArchiveFile.html">TArchiveFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TZIPFile.html">TZIPFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFilePrefetch.html">TFilePrefetch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFPBlock.html">TFPBlock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/THDFSFile.html">THDFSFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TBuffer.html">TBuffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TBufferFile.html">TBufferFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TBufferJSON.html">TBufferJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TKeySQL.html">TKeySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSQLObjectData.html">TSQLObjectData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSQLStructure.html">TSQLStructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSQLClassInfo.html">TSQLClassInfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TBufferSQL2.html">TBufferSQL2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSQLFile.html">TSQLFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TXMLEngine.html">TXMLEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TBufferXML.html">TBufferXML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TXMLSetup.html">TXMLSetup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TKeyXML.html">TKeyXML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TXMLPlayer.html">TXMLPlayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TXMLFile.html">TXMLFile</a></li>
+</ul>
+<p class="caption"><span class="caption-text">常用类的使用</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class/README.html">类的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TTree.html">TTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TCut.html">TCut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TTreePlayer.html">TTreePlayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TChain.html">TChain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TEventList.html">TEventList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TBranch.html">TBranch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TNtuple.html">TNtuple</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TNtupleD.html">TNtupleD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TNtupleD.html#example">example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TCollection.html">TCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSeqCollection.html">TSeqCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TList.html">TList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TVirtualFitter.html">TVirtualFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TBackCompFitter.html">TBackCompFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/FitResult.html">FitResult</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFitter.html">TFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFitResult.html">TFitResult</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFitResultPtr.html">TFitResultPtr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TFractionFitter.html">TFractionFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TLinearFitter.html">TLinearFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TAttAxis.html">TAttAxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TAxis.html">TAxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TGaxis.html">TGaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TGaxis.html#example">example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TText.html">TText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TPaveStats.html">TPaveStats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TPolyMarker.html">TPolyMarker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TPaveText.html">TPaveText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TPolyMarker3D.html">TPolyMarker3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TLatex.html">TLatex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TLegend.html">TLegend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TLegendEntry.html">TLegendEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TLine.html">TLine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TVirtualPad.html">TVirtualPad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TPad.html">TPad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TCanvas.html">TCanvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TF1.html">TF1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TF2.html">TF2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TF3.html">TF3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TGraph.html">TGraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TCutG.html">TCutG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMultiGraph.html">TMultiGraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TGraph2D.html">TGraph2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TGraph2DErrors.html">TGraph2DErrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TGraphErrors.html">TGraphErrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TGraphPolar.html">TGraphPolar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TH1.html">TH1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TH2.html">TH2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TH2Poly.html">TH2Poly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TH3.html">TH3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TProfile.html">TProfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TProfile2D.html">TProfile2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TProfile3D.html">TProfile3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMath.html">TMath</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMathBase.html">TMathBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMatrixT.html">TMatrixT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMatrixTBase.html">TMatrixTBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMatrixTSparse.html">TMatrixTSparse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMatrixTSym.html">TMatrixTSym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSpline.html">TSpline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMinuit.html">TMinuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMinuitMinimizer.html">TMinuitMinimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TRandom.html">TRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TRandom1.html">TRandom1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TRandom2.html">TRandom2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TRandom3.html">TRandom3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSelector.html">TSelector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSelectorCint.html">TSelectorCint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSelectorDraw.html">TSelectorDraw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSelectorEntries.html">TSelectorEntries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSelectorList.html">TSelectorList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSelectorScalar.html">TSelectorScalar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSpectrum.html">TSpectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSpectrum2.html">TSpectrum2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSpectrum2Fit.html">TSpectrum2Fit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSpectrum2Painter.html">TSpectrum2Painter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSpectrum2Transform.html">TSpectrum2Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSpectrum3.html">TSpectrum3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSpectrumFit.html">TSpectrumFit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSpectrumTransform.html">TSpectrumTransform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TTime.html">TTime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TTimer.html">TTimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TTimeStamp.html">TTimeStamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TStopwatch.html">TStopwatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TBenchmark.html">TBenchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TThread.html">TThread</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TThreadFactory.html">TThreadFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TThreadImp.html">TThreadImp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TServerSocket.html">TServerSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TSocket.html">TSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TPServerSocket.html">TPServerSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TPSocket.html">TPSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TEllipse.html">TEllipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TNeuron.html">TNeuron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMLPAnalyzer.html">TMLPAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMonitor.html">TMonitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/TMultiLayerPerceptron.html">TMultiLayerPerceptron</a></li>
+</ul>
+<p class="caption"><span class="caption-text">图形界面的使用</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/GuiTypes.html">GuiTypes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGButton.html">TGButton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGButtonGroup.html">TGButtonGroup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGCanvas.html">TGCanvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGClient.html">TGClient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGColorDialog.html">TGColorDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGColorSelect.html">TGColorSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGComboBox.html">TGComboBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGCommandPlugin.html">TGCommandPlugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGDimension.html">TGDimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGDNDManager.html">TGDNDManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGDockableFrame.html">TGDockableFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGDoubleSlider.html">TGDoubleSlider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGEventHandler.html">TGEventHandler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGFileBrowser.html">TGFileBrowser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGFileDialog.html">TGFileDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGFont.html">TGFont</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGFontDialog.html">TGFontDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGFrame.html">TGFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGFSComboBox.html">TGFSComboBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGFSContainer.html">TGFSContainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGGC.html">TGGC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGIcon.html">TGIcon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGIdleHandler.html">TGIdleHandler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGImageMap.html">TGImageMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGInputDialog.html">TGInputDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGLabel.html">TGLabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGLayout.html">TGLayout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGListBox.html">TGListBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGListTree.html">TGListTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGListView.html">TGListView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGMdiDecorFrame.html">TGMdiDecorFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGMdiFrame.html">TGMdiFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGMdiMainFrame.html">TGMdiMainFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGMdiMenu.html">TGMdiMenu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGMenu.html">TGMenu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGMimeTypes.html">TGMimeTypes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGMsgBox.html">TGMsgBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGNumberEntry.html">TGNumberEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGObject.html">TGObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGPack.html">TGPack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGPasswdDialog.html">TGPasswdDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGPicture.html">TGPicture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGProgressBar.html">TGProgressBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGRedirectOutputGuard.html">TGRedirectOutputGuard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGResourcePool.html">TGResourcePool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGScrollBar.html">TGScrollBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGShapedFrame.html">TGShapedFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGShutter.html">TGShutter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGSimpleTable.html">TGSimpleTable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGSimpleTableInterface.html">TGSimpleTableInterface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGSlider.html">TGSlider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGSpeedo.html">TGSpeedo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGSplitFrame.html">TGSplitFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGSplitter.html">TGSplitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGStatusBar.html">TGStatusBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGString.html">TGString</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTab.html">TGTab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTable.html">TGTable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTableCell.html">TGTableCell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTableContainer.html">TGTableContainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTableHeader.html">TGTableHeader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTableLayout.html">TGTableLayout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGText.html">TGText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTextBuffer.html">TGTextBuffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTextEdit.html">TGTextEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTextEditDialogs.html">TGTextEditDialogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTextEditor.html">TGTextEditor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTextEntry.html">TGTextEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTextView.html">TGTextView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTextViewStream.html">TGTextViewStream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGToolBar.html">TGToolBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGToolTip.html">TGToolTip</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGTripleSlider.html">TGTripleSlider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGuiBuilder.html">TGuiBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGView.html">TGView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGWidget.html">TGWidget</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGWindow.html">TGWindow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TGXYLayout.html">TGXYLayout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TQObject.html">TQObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/gui/TRootEmbeddedCanvas.html">TRootEmbeddedCanvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GRAF3D</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TAxis3D.html">TAxis3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TBRIK.html">TBRIK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TCONE.html">TCONE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TCONS.html">TCONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TCTUB.html">TCTUB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TELTU.html">TELTU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TGeometry.html">TGeometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TGTRA.html">TGTRA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/THelix.html">THelix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/THYPE.html">THYPE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TMarker3DBox.html">TMarker3DBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TMaterial.html">TMaterial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TMixture.html">TMixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TNodeDiv.html">TNodeDiv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TNode.html">TNode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TPARA.html">TPARA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TPCON.html">TPCON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TPGON.html">TPGON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TPoints3DABC.html">TPoints3DABC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TPointSet3D.html">TPointSet3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TPolyLine3D.html">TPolyLine3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TPolyMarker3D.html">TPolyMarker3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TRotMatrix.html">TRotMatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TShape.html">TShape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TSPHE.html">TSPHE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TTRAP.html">TTRAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TTRD1.html">TTRD1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TTRD2.html">TTRD2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TTUBE.html">TTUBE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TTUBS.html">TTUBS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TView3D.html">TView3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/TXTRU.html">TXTRU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/graf3d/X3DBuffer.html">X3DBuffer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">physics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TFeldmanCousins.html">TFeldmanCousins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TGenPhaseSpace.html">TGenPhaseSpace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TLorentzRotation.html">TLorentzRotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TLorentzVector.html">TLorentzVector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TQuaternion.html">TQuaternion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TRobustEstimator.html">TRobustEstimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TRolke.html">TRolke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TRotation.html">TRotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TVectorT.html">TVectorT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TVector2.html">TVector2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/math/TVector3.html">TVector3</a></li>
+</ul>
+<p class="caption"><span class="caption-text">net</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/TCivetweb.html">TCivetweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/TFastCgi.html">TFastCgi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/THttpCallArg.html">THttpCallArg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/THttpEngine.html">THttpEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/THttpServer.html">THttpServer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/THttpWSEngine.html">THttpWSEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/THttpWSHandler.html">THttpWSHandler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/TRootSniffer.html">TRootSniffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class/net/TRootSnifferStore.html">TRootSnifferStore</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数据结构</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">数据结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datarecord.html">datarecord</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dobject.html">dataobject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freesegments.html">FreeSegments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gap.html">gap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="header.html">header</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyslist.html">KeysList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StreamerInfo.html">StreamerInfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TClonesArray.html">TClonesArray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TDirectory.html">TDirectory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFile.html">TFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TObject.html">TObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProcessID.html">TProcessID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TRefArray.html">TRefArray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TRef.html">TRef</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TTree</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ttree-txt">TTree.txt</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">预定义</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../define/README.html">预定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../define/RVersion.html">RVersion</a></li>
+</ul>
+<p class="caption"><span class="caption-text">文件版本</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../version/version.html">文件更新版本</a></li>
 </ul>
 
-
-                </nav>
             
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TTree</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="ttree"><a name="ttree" class="plugin-anchor" href="#ttree"><i class="fa fa-link" aria-hidden="true"></i></a>TTree</h1>
-<h2 id="ttreetxt"><a name="ttreetxt" class="plugin-anchor" href="#ttreetxt"><i class="fa fa-link" aria-hidden="true"></i></a>TTree.txt</h2>
-<pre><code>Here is the streamer information for TTree related classes in release 3.02.06:
-(For the explanation of the meaning of the type, see &quot;fType&quot; in &quot;streamerinfo.txt&quot;.)
-----------------------------------------------------
-StreamerInfo for class: TTree, version=6
-  BASE          TNamed          offset=  0 type=67 The basis for a named object (name, title)
-  BASE          TAttLine        offset=  0 type= 0 Line attributes
-  BASE          TAttFill        offset=  0 type= 0 Fill area attributes
-  BASE          TAttMarker      offset=  0 type= 0 Marker attributes
-  Stat_t        fEntries        offset=  0 type= 8 Number of entries
-  Stat_t        fTotBytes       offset=  0 type= 8 Total number of bytes in all branches before compression
-  Stat_t        fZipBytes       offset=  0 type= 8 Total number of bytes in all branches after compression
-  Stat_t        fSavedBytes     offset=  0 type= 8 Number of autosaved bytes
-  Int_t         fTimerInterval  offset=  0 type= 3 Timer interval in milliseconds
-  Int_t         fScanField      offset=  0 type= 3 Number of runs before prompting in Scan
-  Int_t         fUpdate         offset=  0 type= 3 Update frequency for EntryLoop
-  Int_t         fMaxEntryLoop   offset=  0 type= 3 Maximum number of entries to process
-  Int_t         fMaxVirtualSize offset=  0 type= 3 Maximum total size of buffers kept in memory
-  Int_t         fAutoSave       offset=  0 type= 3 Autosave tree when fAutoSave bytes produced
-  Int_t         fEstimate       offset=  0 type= 3 Number of entries to estimate histogram limits
-  TObjArray     fBranches       offset=  0 type=61 List of Branches
-  TObjArray     fLeaves         offset=  0 type=61 Direct pointers to individual branch leaves
-  TArrayD       fIndexValues    offset=  0 type=62 Sorted index values
-  TArrayI       fIndex          offset=  0 type=62 Index of sorted values
-  TList*        fFriends        offset=  0 type=64 pointer to list of friend elements
-
-StreamerInfo for class: TAttLine, version=1
-  Color_t       fLineColor      offset=  0 type= 2 line color
-  Style_t       fLineStyle      offset=  0 type= 2 line style
-  Width_t       fLineWidth      offset=  0 type= 2 line width
-
-StreamerInfo for class: TAttFill, version=1
-  Color_t       fFillColor      offset=  0 type= 2 fill area color
-  Style_t       fFillStyle      offset=  0 type= 2 fill area style
-
-StreamerInfo for class: TAttMarker, version=1
-  Color_t       fMarkerColor    offset=  0 type= 2 Marker color index
-  Style_t       fMarkerStyle    offset=  0 type= 2 Marker style
-  Size_t        fMarkerSize     offset=  0 type= 5 Marker size
-
-StreamerInfo for class: TBranch, version=7
-  BASE          TNamed          offset=  0 type=67 The basis for a named object (name, title)
-  Int_t         fCompress       offset=  0 type= 3 (=1 branch is compressed, 0 otherwise)
-  Int_t         fBasketSize     offset=  0 type= 3 Initial Size of  Basket Buffer
-  Int_t         fEntryOffsetLen offset=  0 type= 3 Initial Length of fEntryOffset table in the basket buffers
-  Int_t         fWriteBasket    offset=  0 type= 3 Last basket number written
-  Int_t         fEntryNumber    offset=  0 type= 3 Current entry number (last one filled in this branch)
-  Int_t         fOffset         offset=  0 type= 3 Offset of this branch
-  Int_t         fMaxBaskets     offset=  0 type= 6 Maximum number of Baskets so far
-  Int_t         fSplitLevel     offset=  0 type= 3 Branch split level
-  Stat_t        fEntries        offset=  0 type= 8 Number of entries
-  Stat_t        fTotBytes       offset=  0 type= 8 Total number of bytes in all leaves before compression
-  Stat_t        fZipBytes       offset=  0 type= 8 Total number of bytes in all leaves after compression
-  TObjArray     fBranches       offset=  0 type=61 -&gt; List of Branches of this branch
-  TObjArray     fLeaves         offset=  0 type=61 -&gt; List of leaves of this branch
-  TObjArray     fBaskets        offset=  0 type=61 -&gt; List of baskets of this branch
-  Int_t*        fBasketBytes    offset=  0 type=43 [fMaxBaskets] Length of baskets on file
-  Int_t*        fBasketEntry    offset=  0 type=43 [fMaxBaskets] Table of first entry in eack basket
-  Seek_t*       fBasketSeek     offset=  0 type=43 [fMaxBaskets] Addresses of baskets on file
-  TString       fFileName       offset=  0 type=65 Name of file where buffers are stored (&quot;&quot; if in same file as Tree header)
-
-StreamerInfo for class: TBranchElement, version=7
-  BASE          TBranch         offset=  0 type= 0 Branch descriptor
-  TString       fClassName      offset=  0 type=65 Class name of referenced object
-  TString       fParentName     offset=  0 type=65 Name of parent class
-  TString       fClonesName     offset=  0 type=65 Name of class in TClonesArray (if any)
-  Int_t         fClassVersion   offset=  0 type= 3 Version number of class
-  Int_t         fID             offset=  0 type= 3 element serial number in fInfo
-  Int_t         fType           offset=  0 type= 3 branch type
-  Int_t         fStreamerType   offset=  0 type= 3 branch streamer type
-  Int_t         fMaximum        offset=  0 type= 3 Maximum entries for a TClonesArray or variable array
-  TBranchElement*fBranchCount    offset=  0 type=64 pointer to primary branchcount branch
-  TBranchElement*fBranchCount2   offset=  0 type=64 pointer to secondary branchcount branch
-
-StreamerInfo for class: TLeaf, version=2
-  BASE          TNamed          offset=  0 type=67 The basis for a named object (name, title)
-  Int_t         fLen            offset=  0 type= 3 Number of fixed length elements
-  Int_t         fLenType        offset=  0 type= 3 Number of bytes for this data type
-  Int_t         fOffset         offset=  0 type= 3 Offset in ClonesArray object (if one)
-  Bool_t        fIsRange        offset=  0 type=11 (=kTRUE if leaf has a range, kFALSE otherwise)
-  Bool_t        fIsUnsigned     offset=  0 type=11 (=kTRUE if unsigned, kFALSE otherwise)
-  TLeaf*        fLeafCount      offset=  0 type=64 Pointer to Leaf count if variable length
-
-StreamerInfo for class: TLeafElement, version=1
-  BASE          TLeaf           offset=  0 type= 0 Leaf: description of a Branch data type
-  Int_t         fID             offset=  0 type= 3 element serial number in fInfo
-  Int_t         fType           offset=  0 type= 3 leaf type
-</code></pre><script type="text/javascript">var className='atoc';</script>
-
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:16:12 </span> </footer>
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
+          
         </div>
-        <div class="no-results">
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ROOT Note</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>TTree</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
             
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            <a href="../_sources/structure/TTree.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
+  <div class="section" id="ttree">
+<h1>TTree<a class="headerlink" href="#ttree" title="永久链接至标题">¶</a></h1>
+<div class="section" id="ttree-txt">
+<h2>TTree.txt<a class="headerlink" href="#ttree-txt" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Here</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">streamer</span> <span class="n">information</span> <span class="k">for</span> <span class="n">TTree</span> <span class="n">related</span> <span class="n">classes</span> <span class="ow">in</span> <span class="n">release</span> <span class="mf">3.02</span><span class="o">.</span><span class="mi">06</span><span class="p">:</span>
+<span class="p">(</span><span class="n">For</span> <span class="n">the</span> <span class="n">explanation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">meaning</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">type</span><span class="p">,</span> <span class="n">see</span> <span class="s2">&quot;fType&quot;</span> <span class="ow">in</span> <span class="s2">&quot;streamerinfo.txt&quot;</span><span class="o">.</span><span class="p">)</span>
+<span class="o">----------------------------------------------------</span>
+<span class="n">StreamerInfo</span> <span class="k">for</span> <span class="n">class</span><span class="p">:</span> <span class="n">TTree</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">6</span>
+  <span class="n">BASE</span>          <span class="n">TNamed</span>          <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">67</span> <span class="n">The</span> <span class="n">basis</span> <span class="k">for</span> <span class="n">a</span> <span class="n">named</span> <span class="nb">object</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+  <span class="n">BASE</span>          <span class="n">TAttLine</span>        <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">0</span> <span class="n">Line</span> <span class="n">attributes</span>
+  <span class="n">BASE</span>          <span class="n">TAttFill</span>        <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">0</span> <span class="n">Fill</span> <span class="n">area</span> <span class="n">attributes</span>
+  <span class="n">BASE</span>          <span class="n">TAttMarker</span>      <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">0</span> <span class="n">Marker</span> <span class="n">attributes</span>
+  <span class="n">Stat_t</span>        <span class="n">fEntries</span>        <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">8</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">entries</span>
+  <span class="n">Stat_t</span>        <span class="n">fTotBytes</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">8</span> <span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">branches</span> <span class="n">before</span> <span class="n">compression</span>
+  <span class="n">Stat_t</span>        <span class="n">fZipBytes</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">8</span> <span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">branches</span> <span class="n">after</span> <span class="n">compression</span>
+  <span class="n">Stat_t</span>        <span class="n">fSavedBytes</span>     <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">8</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">autosaved</span> <span class="nb">bytes</span>
+  <span class="n">Int_t</span>         <span class="n">fTimerInterval</span>  <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Timer</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">milliseconds</span>
+  <span class="n">Int_t</span>         <span class="n">fScanField</span>      <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">runs</span> <span class="n">before</span> <span class="n">prompting</span> <span class="ow">in</span> <span class="n">Scan</span>
+  <span class="n">Int_t</span>         <span class="n">fUpdate</span>         <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Update</span> <span class="n">frequency</span> <span class="k">for</span> <span class="n">EntryLoop</span>
+  <span class="n">Int_t</span>         <span class="n">fMaxEntryLoop</span>   <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Maximum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">entries</span> <span class="n">to</span> <span class="n">process</span>
+  <span class="n">Int_t</span>         <span class="n">fMaxVirtualSize</span> <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Maximum</span> <span class="n">total</span> <span class="n">size</span> <span class="n">of</span> <span class="n">buffers</span> <span class="n">kept</span> <span class="ow">in</span> <span class="n">memory</span>
+  <span class="n">Int_t</span>         <span class="n">fAutoSave</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Autosave</span> <span class="n">tree</span> <span class="n">when</span> <span class="n">fAutoSave</span> <span class="nb">bytes</span> <span class="n">produced</span>
+  <span class="n">Int_t</span>         <span class="n">fEstimate</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">entries</span> <span class="n">to</span> <span class="n">estimate</span> <span class="n">histogram</span> <span class="n">limits</span>
+  <span class="n">TObjArray</span>     <span class="n">fBranches</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">61</span> <span class="n">List</span> <span class="n">of</span> <span class="n">Branches</span>
+  <span class="n">TObjArray</span>     <span class="n">fLeaves</span>         <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">61</span> <span class="n">Direct</span> <span class="n">pointers</span> <span class="n">to</span> <span class="n">individual</span> <span class="n">branch</span> <span class="n">leaves</span>
+  <span class="n">TArrayD</span>       <span class="n">fIndexValues</span>    <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">62</span> <span class="n">Sorted</span> <span class="n">index</span> <span class="n">values</span>
+  <span class="n">TArrayI</span>       <span class="n">fIndex</span>          <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">62</span> <span class="n">Index</span> <span class="n">of</span> <span class="nb">sorted</span> <span class="n">values</span>
+  <span class="n">TList</span><span class="o">*</span>        <span class="n">fFriends</span>        <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">64</span> <span class="n">pointer</span> <span class="n">to</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">friend</span> <span class="n">elements</span>
+
+<span class="n">StreamerInfo</span> <span class="k">for</span> <span class="n">class</span><span class="p">:</span> <span class="n">TAttLine</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span>
+  <span class="n">Color_t</span>       <span class="n">fLineColor</span>      <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">2</span> <span class="n">line</span> <span class="n">color</span>
+  <span class="n">Style_t</span>       <span class="n">fLineStyle</span>      <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">2</span> <span class="n">line</span> <span class="n">style</span>
+  <span class="n">Width_t</span>       <span class="n">fLineWidth</span>      <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">2</span> <span class="n">line</span> <span class="n">width</span>
+
+<span class="n">StreamerInfo</span> <span class="k">for</span> <span class="n">class</span><span class="p">:</span> <span class="n">TAttFill</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span>
+  <span class="n">Color_t</span>       <span class="n">fFillColor</span>      <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">2</span> <span class="n">fill</span> <span class="n">area</span> <span class="n">color</span>
+  <span class="n">Style_t</span>       <span class="n">fFillStyle</span>      <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">2</span> <span class="n">fill</span> <span class="n">area</span> <span class="n">style</span>
+
+<span class="n">StreamerInfo</span> <span class="k">for</span> <span class="n">class</span><span class="p">:</span> <span class="n">TAttMarker</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span>
+  <span class="n">Color_t</span>       <span class="n">fMarkerColor</span>    <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">2</span> <span class="n">Marker</span> <span class="n">color</span> <span class="n">index</span>
+  <span class="n">Style_t</span>       <span class="n">fMarkerStyle</span>    <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">2</span> <span class="n">Marker</span> <span class="n">style</span>
+  <span class="n">Size_t</span>        <span class="n">fMarkerSize</span>     <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">5</span> <span class="n">Marker</span> <span class="n">size</span>
+
+<span class="n">StreamerInfo</span> <span class="k">for</span> <span class="n">class</span><span class="p">:</span> <span class="n">TBranch</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">7</span>
+  <span class="n">BASE</span>          <span class="n">TNamed</span>          <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">67</span> <span class="n">The</span> <span class="n">basis</span> <span class="k">for</span> <span class="n">a</span> <span class="n">named</span> <span class="nb">object</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+  <span class="n">Int_t</span>         <span class="n">fCompress</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="p">(</span><span class="o">=</span><span class="mi">1</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">compressed</span><span class="p">,</span> <span class="mi">0</span> <span class="n">otherwise</span><span class="p">)</span>
+  <span class="n">Int_t</span>         <span class="n">fBasketSize</span>     <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Initial</span> <span class="n">Size</span> <span class="n">of</span>  <span class="n">Basket</span> <span class="n">Buffer</span>
+  <span class="n">Int_t</span>         <span class="n">fEntryOffsetLen</span> <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Initial</span> <span class="n">Length</span> <span class="n">of</span> <span class="n">fEntryOffset</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">basket</span> <span class="n">buffers</span>
+  <span class="n">Int_t</span>         <span class="n">fWriteBasket</span>    <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Last</span> <span class="n">basket</span> <span class="n">number</span> <span class="n">written</span>
+  <span class="n">Int_t</span>         <span class="n">fEntryNumber</span>    <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Current</span> <span class="n">entry</span> <span class="n">number</span> <span class="p">(</span><span class="n">last</span> <span class="n">one</span> <span class="n">filled</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">branch</span><span class="p">)</span>
+  <span class="n">Int_t</span>         <span class="n">fOffset</span>         <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Offset</span> <span class="n">of</span> <span class="n">this</span> <span class="n">branch</span>
+  <span class="n">Int_t</span>         <span class="n">fMaxBaskets</span>     <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">6</span> <span class="n">Maximum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">Baskets</span> <span class="n">so</span> <span class="n">far</span>
+  <span class="n">Int_t</span>         <span class="n">fSplitLevel</span>     <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Branch</span> <span class="n">split</span> <span class="n">level</span>
+  <span class="n">Stat_t</span>        <span class="n">fEntries</span>        <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">8</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">entries</span>
+  <span class="n">Stat_t</span>        <span class="n">fTotBytes</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">8</span> <span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">leaves</span> <span class="n">before</span> <span class="n">compression</span>
+  <span class="n">Stat_t</span>        <span class="n">fZipBytes</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">8</span> <span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">leaves</span> <span class="n">after</span> <span class="n">compression</span>
+  <span class="n">TObjArray</span>     <span class="n">fBranches</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">61</span> <span class="o">-&gt;</span> <span class="n">List</span> <span class="n">of</span> <span class="n">Branches</span> <span class="n">of</span> <span class="n">this</span> <span class="n">branch</span>
+  <span class="n">TObjArray</span>     <span class="n">fLeaves</span>         <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">61</span> <span class="o">-&gt;</span> <span class="n">List</span> <span class="n">of</span> <span class="n">leaves</span> <span class="n">of</span> <span class="n">this</span> <span class="n">branch</span>
+  <span class="n">TObjArray</span>     <span class="n">fBaskets</span>        <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">61</span> <span class="o">-&gt;</span> <span class="n">List</span> <span class="n">of</span> <span class="n">baskets</span> <span class="n">of</span> <span class="n">this</span> <span class="n">branch</span>
+  <span class="n">Int_t</span><span class="o">*</span>        <span class="n">fBasketBytes</span>    <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">43</span> <span class="p">[</span><span class="n">fMaxBaskets</span><span class="p">]</span> <span class="n">Length</span> <span class="n">of</span> <span class="n">baskets</span> <span class="n">on</span> <span class="n">file</span>
+  <span class="n">Int_t</span><span class="o">*</span>        <span class="n">fBasketEntry</span>    <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">43</span> <span class="p">[</span><span class="n">fMaxBaskets</span><span class="p">]</span> <span class="n">Table</span> <span class="n">of</span> <span class="n">first</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">eack</span> <span class="n">basket</span>
+  <span class="n">Seek_t</span><span class="o">*</span>       <span class="n">fBasketSeek</span>     <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">43</span> <span class="p">[</span><span class="n">fMaxBaskets</span><span class="p">]</span> <span class="n">Addresses</span> <span class="n">of</span> <span class="n">baskets</span> <span class="n">on</span> <span class="n">file</span>
+  <span class="n">TString</span>       <span class="n">fFileName</span>       <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">65</span> <span class="n">Name</span> <span class="n">of</span> <span class="n">file</span> <span class="n">where</span> <span class="n">buffers</span> <span class="n">are</span> <span class="n">stored</span> <span class="p">(</span><span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="ow">in</span> <span class="n">same</span> <span class="n">file</span> <span class="k">as</span> <span class="n">Tree</span> <span class="n">header</span><span class="p">)</span>
+
+<span class="n">StreamerInfo</span> <span class="k">for</span> <span class="n">class</span><span class="p">:</span> <span class="n">TBranchElement</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">7</span>
+  <span class="n">BASE</span>          <span class="n">TBranch</span>         <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">0</span> <span class="n">Branch</span> <span class="n">descriptor</span>
+  <span class="n">TString</span>       <span class="n">fClassName</span>      <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">65</span> <span class="n">Class</span> <span class="n">name</span> <span class="n">of</span> <span class="n">referenced</span> <span class="nb">object</span>
+  <span class="n">TString</span>       <span class="n">fParentName</span>     <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">65</span> <span class="n">Name</span> <span class="n">of</span> <span class="n">parent</span> <span class="k">class</span>
+  <span class="nc">TString</span>       <span class="n">fClonesName</span>     <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">65</span> <span class="n">Name</span> <span class="n">of</span> <span class="k">class</span> <span class="nc">in</span> <span class="n">TClonesArray</span> <span class="p">(</span><span class="k">if</span> <span class="nb">any</span><span class="p">)</span>
+  <span class="n">Int_t</span>         <span class="n">fClassVersion</span>   <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Version</span> <span class="n">number</span> <span class="n">of</span> <span class="k">class</span>
+  <span class="nc">Int_t</span>         <span class="n">fID</span>             <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">element</span> <span class="n">serial</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">fInfo</span>
+  <span class="n">Int_t</span>         <span class="n">fType</span>           <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">branch</span> <span class="nb">type</span>
+  <span class="n">Int_t</span>         <span class="n">fStreamerType</span>   <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">branch</span> <span class="n">streamer</span> <span class="nb">type</span>
+  <span class="n">Int_t</span>         <span class="n">fMaximum</span>        <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Maximum</span> <span class="n">entries</span> <span class="k">for</span> <span class="n">a</span> <span class="n">TClonesArray</span> <span class="ow">or</span> <span class="n">variable</span> <span class="n">array</span>
+  <span class="n">TBranchElement</span><span class="o">*</span><span class="n">fBranchCount</span>    <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">64</span> <span class="n">pointer</span> <span class="n">to</span> <span class="n">primary</span> <span class="n">branchcount</span> <span class="n">branch</span>
+  <span class="n">TBranchElement</span><span class="o">*</span><span class="n">fBranchCount2</span>   <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">64</span> <span class="n">pointer</span> <span class="n">to</span> <span class="n">secondary</span> <span class="n">branchcount</span> <span class="n">branch</span>
+
+<span class="n">StreamerInfo</span> <span class="k">for</span> <span class="n">class</span><span class="p">:</span> <span class="n">TLeaf</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">2</span>
+  <span class="n">BASE</span>          <span class="n">TNamed</span>          <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">67</span> <span class="n">The</span> <span class="n">basis</span> <span class="k">for</span> <span class="n">a</span> <span class="n">named</span> <span class="nb">object</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+  <span class="n">Int_t</span>         <span class="n">fLen</span>            <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">fixed</span> <span class="n">length</span> <span class="n">elements</span>
+  <span class="n">Int_t</span>         <span class="n">fLenType</span>        <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Number</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="k">for</span> <span class="n">this</span> <span class="n">data</span> <span class="nb">type</span>
+  <span class="n">Int_t</span>         <span class="n">fOffset</span>         <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">Offset</span> <span class="ow">in</span> <span class="n">ClonesArray</span> <span class="nb">object</span> <span class="p">(</span><span class="k">if</span> <span class="n">one</span><span class="p">)</span>
+  <span class="n">Bool_t</span>        <span class="n">fIsRange</span>        <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">11</span> <span class="p">(</span><span class="o">=</span><span class="n">kTRUE</span> <span class="k">if</span> <span class="n">leaf</span> <span class="n">has</span> <span class="n">a</span> <span class="nb">range</span><span class="p">,</span> <span class="n">kFALSE</span> <span class="n">otherwise</span><span class="p">)</span>
+  <span class="n">Bool_t</span>        <span class="n">fIsUnsigned</span>     <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">11</span> <span class="p">(</span><span class="o">=</span><span class="n">kTRUE</span> <span class="k">if</span> <span class="n">unsigned</span><span class="p">,</span> <span class="n">kFALSE</span> <span class="n">otherwise</span><span class="p">)</span>
+  <span class="n">TLeaf</span><span class="o">*</span>        <span class="n">fLeafCount</span>      <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span><span class="mi">64</span> <span class="n">Pointer</span> <span class="n">to</span> <span class="n">Leaf</span> <span class="n">count</span> <span class="k">if</span> <span class="n">variable</span> <span class="n">length</span>
+
+<span class="n">StreamerInfo</span> <span class="k">for</span> <span class="n">class</span><span class="p">:</span> <span class="n">TLeafElement</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span>
+  <span class="n">BASE</span>          <span class="n">TLeaf</span>           <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">0</span> <span class="n">Leaf</span><span class="p">:</span> <span class="n">description</span> <span class="n">of</span> <span class="n">a</span> <span class="n">Branch</span> <span class="n">data</span> <span class="nb">type</span>
+  <span class="n">Int_t</span>         <span class="n">fID</span>             <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">element</span> <span class="n">serial</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">fInfo</span>
+  <span class="n">Int_t</span>         <span class="n">fType</span>           <span class="n">offset</span><span class="o">=</span>  <span class="mi">0</span> <span class="nb">type</span><span class="o">=</span> <span class="mi">3</span> <span class="n">leaf</span> <span class="nb">type</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../define/README.html" class="btn btn-neutral float-right" title="预定义" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="TRef.html" class="btn btn-neutral float-left" title="TRef" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
-    </div>
-</div>
+      </div>
 
-                        </div>
-                    </div>
-                
-            </div>
+    </section>
 
-            
-                
-                <a href="TRef.html" class="navigation navigation-prev " aria-label="Previous page: TRef">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="../define/" class="navigation navigation-next " aria-label="Next page: 预定义">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
-
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TTree","level":"1.9.15","depth":2,"next":{"title":"预定义","level":"1.10","depth":1,"path":"define/README.md","ref":"define/README.md","articles":[{"title":"RVersion","level":"1.10.1","depth":2,"path":"define/RVersion.md","ref":"define/RVersion.md","articles":[]}]},"previous":{"title":"TRef","level":"1.9.14","depth":2,"path":"structure/TRef.md","ref":"structure/TRef.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"ROOT Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"structure/TTree.md","mtime":"2018-05-14T09:16:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-03-31T11:19:06.525Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
-</div>
+  </div>
+  
 
 
-        
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-ace/ace.js"></script>
-        
-    
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
-        
-    
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-mcqx/js.cookie.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-mcqx/mcqx.js"></script>
-        
-    
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fbqx/fbqx.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-spoiler/spoiler.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-youtubex/player.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
 
-    </body>
+  
+  
+    
+   
+
+</body>
 </html>
-

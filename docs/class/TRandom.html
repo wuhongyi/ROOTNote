@@ -1,4242 +1,496 @@
 
-<!DOCTYPE HTML>
-<html lang="" >
-    <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>TRandom* · ROOT Note</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
-        <meta name="author" content="Hongyi Wu(吴鸿毅)">
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
 
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ad/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-alerts/style.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-atoc/atoc.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-latex-codecogs/latex-codecogs.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sectionx/sectionx.css">
-                
-            
-                
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-mcqx/mcqx.css">
-                
-            
-                
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fbqx/fbqx.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-spoiler/spoiler.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-youtubex/player.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
-                
-            
-        
-
-    
-
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="TRandom1.html" />
-    
-    
-    <link rel="prev" href="TMinuitMinimizer.html" />
-    
-
-    </head>
-    <body>
-        
-  <script>
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  </script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-<div class="book">
-    <div class="book-summary">
-        
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TRandom &mdash; ROOT Note 1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="TRandom1" href="TRandom1.html" />
+    <link rel="prev" title="TMinuitMinimizer" href="TMinuitMinimizer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ROOT Note
+          
+
+          
+          </a>
+
+          
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
 
-            
-                <nav role="navigation">
-                
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    简介
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    base类的使用
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.2.1" data-path="TObject.html">
-            
-                <a href="TObject.html">
-            
-                    
-                    TObject*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="TTask.html">
-            
-                <a href="TTask.html">
-            
-                    
-                    TTask+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.3" data-path="Buttons.html">
-            
-                <a href="Buttons.html">
-            
-                    
-                    Buttons*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="TNamed.html">
-            
-                <a href="TNamed.html">
-            
-                    
-                    TNamed+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.5" data-path="TStyle.html">
-            
-                <a href="TStyle.html">
-            
-                    
-                    TStyle+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.6" data-path="TSystem.html">
-            
-                <a href="TSystem.html">
-            
-                    
-                    TSystem*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.7" data-path="TROOT.html">
-            
-                <a href="TROOT.html">
-            
-                    
-                    TROOT*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.8" data-path="TFolder.html">
-            
-                <a href="TFolder.html">
-            
-                    
-                    TFolder
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.9" data-path="TEnv.html">
-            
-                <a href="TEnv.html">
-            
-                    
-                    TEnv
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.10" data-path="TMacro.html">
-            
-                <a href="TMacro.html">
-            
-                    
-                    TMacro
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.11" data-path="TApplication.html">
-            
-                <a href="TApplication.html">
-            
-                    
-                    TApplication
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.12" data-path="TProcessID.html">
-            
-                <a href="TProcessID.html">
-            
-                    
-                    TProcessID
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.13" data-path="TProcessUUID.html">
-            
-                <a href="TProcessUUID.html">
-            
-                    
-                    TProcessUUID
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.14" data-path="TString.html">
-            
-                <a href="TString.html">
-            
-                    
-                    TString+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.15" data-path="TColor.html">
-            
-                <a href="TColor.html">
-            
-                    
-                    TColor*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.16" data-path="TBase64.html">
-            
-                <a href="TBase64.html">
-            
-                    
-                    TBase64
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.17" data-path="TMD5.html">
-            
-                <a href="TMD5.html">
-            
-                    
-                    TMD5
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    IO类的使用
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="TKey.html">
-            
-                <a href="TKey.html">
-            
-                    
-                    TKey*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="TDirectory.html">
-            
-                <a href="TDirectory.html">
-            
-                    
-                    TDirectory*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="TDirectoryFile.html">
-            
-                <a href="TDirectoryFile.html">
-            
-                    
-                    TDirectoryFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="TSystemFile.html">
-            
-                <a href="TSystemFile.html">
-            
-                    
-                    TSystemFile+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.5" data-path="TSystemDirectory.html">
-            
-                <a href="TSystemDirectory.html">
-            
-                    
-                    TSystemDirectory+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.6" data-path="TFile.html">
-            
-                <a href="TFile.html">
-            
-                    
-                    TFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.7" data-path="TFileCacheWrite.html">
-            
-                <a href="TFileCacheWrite.html">
-            
-                    
-                    TFileCacheWrite*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.8" data-path="TFileCacheRead.html">
-            
-                <a href="TFileCacheRead.html">
-            
-                    
-                    TFileCacheRead*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.9" data-path="TFileMerger.html">
-            
-                <a href="TFileMerger.html">
-            
-                    
-                    TFileMerger*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.10" data-path="TMemFile.html">
-            
-                <a href="TMemFile.html">
-            
-                    
-                    TMemFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.11" data-path="TKeyMapFile.html">
-            
-                <a href="TKeyMapFile.html">
-            
-                    
-                    TKeyMapFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.12" data-path="TMapFile.html">
-            
-                <a href="TMapFile.html">
-            
-                    
-                    TMapFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.13" data-path="TArchiveFile.html">
-            
-                <a href="TArchiveFile.html">
-            
-                    
-                    TArchiveFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.14" data-path="TZIPFile.html">
-            
-                <a href="TZIPFile.html">
-            
-                    
-                    TZIPFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.15" data-path="TFilePrefetch.html">
-            
-                <a href="TFilePrefetch.html">
-            
-                    
-                    TFilePrefetch*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.16" data-path="TFPBlock.html">
-            
-                <a href="TFPBlock.html">
-            
-                    
-                    TFPBlock*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.17" data-path="THDFSFile.html">
-            
-                <a href="THDFSFile.html">
-            
-                    
-                    THDFSFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.18" data-path="TBuffer.html">
-            
-                <a href="TBuffer.html">
-            
-                    
-                    TBuffer+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.19" data-path="TBufferFile.html">
-            
-                <a href="TBufferFile.html">
-            
-                    
-                    TBufferFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.20" data-path="TBufferJSON.html">
-            
-                <a href="TBufferJSON.html">
-            
-                    
-                    TBufferJSON*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.21" data-path="TKeySQL.html">
-            
-                <a href="TKeySQL.html">
-            
-                    
-                    TKeySQL*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.22" data-path="TSQLObjectData.html">
-            
-                <a href="TSQLObjectData.html">
-            
-                    
-                    TSQLObjectData*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.23" data-path="TSQLStructure.html">
-            
-                <a href="TSQLStructure.html">
-            
-                    
-                    TSQLStructure-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.24" data-path="TSQLClassInfo.html">
-            
-                <a href="TSQLClassInfo.html">
-            
-                    
-                    TSQLClassInfo*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.25" data-path="TBufferSQL2.html">
-            
-                <a href="TBufferSQL2.html">
-            
-                    
-                    TBufferSQL2*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.26" data-path="TSQLFile.html">
-            
-                <a href="TSQLFile.html">
-            
-                    
-                    TSQLFile*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.27" data-path="TXMLEngine.html">
-            
-                <a href="TXMLEngine.html">
-            
-                    
-                    TXMLEngine-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.28" data-path="TBufferXML.html">
-            
-                <a href="TBufferXML.html">
-            
-                    
-                    TBufferXML-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.29" data-path="TXMLSetup.html">
-            
-                <a href="TXMLSetup.html">
-            
-                    
-                    TXMLSetup-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.30" data-path="TKeyXML.html">
-            
-                <a href="TKeyXML.html">
-            
-                    
-                    TKeyXML-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.31" data-path="TXMLPlayer.html">
-            
-                <a href="TXMLPlayer.html">
-            
-                    
-                    TXMLPlayer-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.32" data-path="TXMLFile.html">
-            
-                <a href="TXMLFile.html">
-            
-                    
-                    TXMLFile-
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="./">
-            
-                <a href="./">
-            
-                    
-                    常用类的使用
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.4.1" data-path="TTree.html">
-            
-                <a href="TTree.html">
-            
-                    
-                    TTree*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.2" data-path="TCut.html">
-            
-                <a href="TCut.html">
-            
-                    
-                    TCut*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.3" data-path="TTreePlayer.html">
-            
-                <a href="TTreePlayer.html">
-            
-                    
-                    TTreePlayer*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.4" data-path="TChain.html">
-            
-                <a href="TChain.html">
-            
-                    
-                    TChain*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.5" data-path="TEventList.html">
-            
-                <a href="TEventList.html">
-            
-                    
-                    TEventList*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.6" data-path="TBranch.html">
-            
-                <a href="TBranch.html">
-            
-                    
-                    TBranch*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.7" data-path="TNtuple.html">
-            
-                <a href="TNtuple.html">
-            
-                    
-                    TNtuple*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.8" data-path="TNtupleD.html">
-            
-                <a href="TNtupleD.html">
-            
-                    
-                    TNtupleD*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.9" data-path="TCollection.html">
-            
-                <a href="TCollection.html">
-            
-                    
-                    TCollection*-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.10" data-path="TSeqCollection.html">
-            
-                <a href="TSeqCollection.html">
-            
-                    
-                    TSeqCollection*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.11" data-path="TList.html">
-            
-                <a href="TList.html">
-            
-                    
-                    TList*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.12" data-path="TVirtualFitter.html">
-            
-                <a href="TVirtualFitter.html">
-            
-                    
-                    TVirtualFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.13" data-path="TBackCompFitter.html">
-            
-                <a href="TBackCompFitter.html">
-            
-                    
-                    TBackCompFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.14" data-path="FitResult.html">
-            
-                <a href="FitResult.html">
-            
-                    
-                    FitResult
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.15" data-path="TFitter.html">
-            
-                <a href="TFitter.html">
-            
-                    
-                    TFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.16" data-path="TFitResult.html">
-            
-                <a href="TFitResult.html">
-            
-                    
-                    TFitResult
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.17" data-path="TFitResultPtr.html">
-            
-                <a href="TFitResultPtr.html">
-            
-                    
-                    TFitResultPtr
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.18" data-path="TFractionFitter.html">
-            
-                <a href="TFractionFitter.html">
-            
-                    
-                    TFractionFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.19" data-path="TLinearFitter.html">
-            
-                <a href="TLinearFitter.html">
-            
-                    
-                    TLinearFitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.20" data-path="TAttAxis.html">
-            
-                <a href="TAttAxis.html">
-            
-                    
-                    TAttAxis*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.21" data-path="TAxis.html">
-            
-                <a href="TAxis.html">
-            
-                    
-                    TAxis*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.22" data-path="TGaxis.html">
-            
-                <a href="TGaxis.html">
-            
-                    
-                    TGaxis*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.23" data-path="TText.html">
-            
-                <a href="TText.html">
-            
-                    
-                    TText*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.24" data-path="TPaveStats.html">
-            
-                <a href="TPaveStats.html">
-            
-                    
-                    TPaveStats*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.25" data-path="TPolyMarker.html">
-            
-                <a href="TPolyMarker.html">
-            
-                    
-                    TPolyMarker
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.26" data-path="TPaveText.html">
-            
-                <a href="TPaveText.html">
-            
-                    
-                    TPaveText*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.27" data-path="TPolyMarker3D.html">
-            
-                <a href="TPolyMarker3D.html">
-            
-                    
-                    TPolyMarker3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.28" data-path="TLatex.html">
-            
-                <a href="TLatex.html">
-            
-                    
-                    TLatex*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.29" data-path="TLegend.html">
-            
-                <a href="TLegend.html">
-            
-                    
-                    TLegend*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.30" data-path="TLegendEntry.html">
-            
-                <a href="TLegendEntry.html">
-            
-                    
-                    TLegendEntry*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.31" data-path="TLine.html">
-            
-                <a href="TLine.html">
-            
-                    
-                    TLine*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.32" data-path="TVirtualPad.html">
-            
-                <a href="TVirtualPad.html">
-            
-                    
-                    TVirtualPad*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.33" data-path="TPad.html">
-            
-                <a href="TPad.html">
-            
-                    
-                    TPad*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.34" data-path="TCanvas.html">
-            
-                <a href="TCanvas.html">
-            
-                    
-                    TCanvas*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.35" data-path="TF1.html">
-            
-                <a href="TF1.html">
-            
-                    
-                    TF1*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.36" data-path="TF2.html">
-            
-                <a href="TF2.html">
-            
-                    
-                    TF2
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.37" data-path="TF3.html">
-            
-                <a href="TF3.html">
-            
-                    
-                    TF3
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.38" data-path="TGraph.html">
-            
-                <a href="TGraph.html">
-            
-                    
-                    TGraph*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.39" data-path="TCutG.html">
-            
-                <a href="TCutG.html">
-            
-                    
-                    TCutG*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.40" data-path="TMultiGraph.html">
-            
-                <a href="TMultiGraph.html">
-            
-                    
-                    TMultiGraph+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.41" data-path="TGraph2D.html">
-            
-                <a href="TGraph2D.html">
-            
-                    
-                    TGraph2D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.42" data-path="TGraph2DErrors.html">
-            
-                <a href="TGraph2DErrors.html">
-            
-                    
-                    TGraph2DErrors
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.43" data-path="TGraphErrors.html">
-            
-                <a href="TGraphErrors.html">
-            
-                    
-                    TGraphErrors
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.44" data-path="TGraphPolar.html">
-            
-                <a href="TGraphPolar.html">
-            
-                    
-                    TGraphPolar
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.45" data-path="TH1.html">
-            
-                <a href="TH1.html">
-            
-                    
-                    TH1*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.46" data-path="TH2.html">
-            
-                <a href="TH2.html">
-            
-                    
-                    TH2+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.47" data-path="TH2Poly.html">
-            
-                <a href="TH2Poly.html">
-            
-                    
-                    TH2Poly*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.48" data-path="TH3.html">
-            
-                <a href="TH3.html">
-            
-                    
-                    TH3
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.49" data-path="TProfile.html">
-            
-                <a href="TProfile.html">
-            
-                    
-                    TProfile
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.50" data-path="TProfile2D.html">
-            
-                <a href="TProfile2D.html">
-            
-                    
-                    TProfile2D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.51" data-path="TProfile3D.html">
-            
-                <a href="TProfile3D.html">
-            
-                    
-                    TProfile3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.52" data-path="TMath.html">
-            
-                <a href="TMath.html">
-            
-                    
-                    TMath*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.53" data-path="TMathBase.html">
-            
-                <a href="TMathBase.html">
-            
-                    
-                    TMathBase*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.54" data-path="TMatrixT.html">
-            
-                <a href="TMatrixT.html">
-            
-                    
-                    TMatrixT
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.55" data-path="TMatrixTBase.html">
-            
-                <a href="TMatrixTBase.html">
-            
-                    
-                    TMatrixTBase
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.56" data-path="TMatrixTSparse.html">
-            
-                <a href="TMatrixTSparse.html">
-            
-                    
-                    TMatrixTSparse
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.57" data-path="TMatrixTSym.html">
-            
-                <a href="TMatrixTSym.html">
-            
-                    
-                    TMatrixTSym
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.58" data-path="TSpline.html">
-            
-                <a href="TSpline.html">
-            
-                    
-                    TSpline+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.59" data-path="TMinuit.html">
-            
-                <a href="TMinuit.html">
-            
-                    
-                    TMinuit*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.60" data-path="TMinuitMinimizer.html">
-            
-                <a href="TMinuitMinimizer.html">
-            
-                    
-                    TMinuitMinimizer*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.4.61" data-path="TRandom.html">
-            
-                <a href="TRandom.html">
-            
-                    
-                    TRandom*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.62" data-path="TRandom1.html">
-            
-                <a href="TRandom1.html">
-            
-                    
-                    TRandom1*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.63" data-path="TRandom2.html">
-            
-                <a href="TRandom2.html">
-            
-                    
-                    TRandom2*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.64" data-path="TRandom3.html">
-            
-                <a href="TRandom3.html">
-            
-                    
-                    TRandom3*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.65" data-path="TSelector.html">
-            
-                <a href="TSelector.html">
-            
-                    
-                    TSelector-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.66" data-path="TSelectorCint.html">
-            
-                <a href="TSelectorCint.html">
-            
-                    
-                    TSelectorCint
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.67" data-path="TSelectorDraw.html">
-            
-                <a href="TSelectorDraw.html">
-            
-                    
-                    TSelectorDraw
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.68" data-path="TSelectorEntries.html">
-            
-                <a href="TSelectorEntries.html">
-            
-                    
-                    TSelectorEntries
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.69" data-path="TSelectorList.html">
-            
-                <a href="TSelectorList.html">
-            
-                    
-                    TSelectorList-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.70" data-path="TSelectorScalar.html">
-            
-                <a href="TSelectorScalar.html">
-            
-                    
-                    TSelectorScalar
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.71" data-path="TSpectrum.html">
-            
-                <a href="TSpectrum.html">
-            
-                    
-                    TSpectrum*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.72" data-path="TSpectrum2.html">
-            
-                <a href="TSpectrum2.html">
-            
-                    
-                    TSpectrum2
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.73" data-path="TSpectrum2Fit.html">
-            
-                <a href="TSpectrum2Fit.html">
-            
-                    
-                    TSpectrum2Fit
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.74" data-path="TSpectrum2Painter.html">
-            
-                <a href="TSpectrum2Painter.html">
-            
-                    
-                    TSpectrum2Painter
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.75" data-path="TSpectrum2Transform.html">
-            
-                <a href="TSpectrum2Transform.html">
-            
-                    
-                    TSpectrum2Transform
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.76" data-path="TSpectrum3.html">
-            
-                <a href="TSpectrum3.html">
-            
-                    
-                    TSpectrum3
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.77" data-path="TSpectrumFit.html">
-            
-                <a href="TSpectrumFit.html">
-            
-                    
-                    TSpectrumFit
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.78" data-path="TSpectrumTransform.html">
-            
-                <a href="TSpectrumTransform.html">
-            
-                    
-                    TSpectrumTransform
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.79" data-path="TTime.html">
-            
-                <a href="TTime.html">
-            
-                    
-                    TTime*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.80" data-path="TTimer.html">
-            
-                <a href="TTimer.html">
-            
-                    
-                    TTimer*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.81" data-path="TTimeStamp.html">
-            
-                <a href="TTimeStamp.html">
-            
-                    
-                    TTimeStamp
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.82" data-path="TStopwatch.html">
-            
-                <a href="TStopwatch.html">
-            
-                    
-                    TStopwatch
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.83" data-path="TBenchmark.html">
-            
-                <a href="TBenchmark.html">
-            
-                    
-                    TBenchmark+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.84" data-path="TThread.html">
-            
-                <a href="TThread.html">
-            
-                    
-                    TThread
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.85" data-path="TThreadFactory.html">
-            
-                <a href="TThreadFactory.html">
-            
-                    
-                    TThreadFactory
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.86" data-path="TThreadImp.html">
-            
-                <a href="TThreadImp.html">
-            
-                    
-                    TThreadImp
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.87" data-path="TServerSocket.html">
-            
-                <a href="TServerSocket.html">
-            
-                    
-                    TServerSocket
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.88" data-path="TSocket.html">
-            
-                <a href="TSocket.html">
-            
-                    
-                    TSocket
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.89" data-path="TPServerSocket.html">
-            
-                <a href="TPServerSocket.html">
-            
-                    
-                    TPServerSocket
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.90" data-path="TPSocket.html">
-            
-                <a href="TPSocket.html">
-            
-                    
-                    TPSocket
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.91" data-path="TEllipse.html">
-            
-                <a href="TEllipse.html">
-            
-                    
-                    TEllipse
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.92" data-path="TNeuron.html">
-            
-                <a href="TNeuron.html">
-            
-                    
-                    TNeuron
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.93" data-path="TMLPAnalyzer.html">
-            
-                <a href="TMLPAnalyzer.html">
-            
-                    
-                    TMLPAnalyzer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.94" data-path="TMonitor.html">
-            
-                <a href="TMonitor.html">
-            
-                    
-                    TMonitor
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.95" data-path="TMultiLayerPerceptron.html">
-            
-                <a href="TMultiLayerPerceptron.html">
-            
-                    
-                    TMultiLayerPerceptron
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="gui/">
-            
-                <a href="gui/">
-            
-                    
-                    图形界面的使用
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="gui/GuiTypes.html">
-            
-                <a href="gui/GuiTypes.html">
-            
-                    
-                    GuiTypes*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="gui/TGButton.html">
-            
-                <a href="gui/TGButton.html">
-            
-                    
-                    TGButton*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="gui/TGButtonGroup.html">
-            
-                <a href="gui/TGButtonGroup.html">
-            
-                    
-                    TGButtonGroup*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.4" data-path="gui/TGCanvas.html">
-            
-                <a href="gui/TGCanvas.html">
-            
-                    
-                    TGCanvas*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.5" data-path="gui/TGClient.html">
-            
-                <a href="gui/TGClient.html">
-            
-                    
-                    TGClient*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.6" data-path="gui/TGColorDialog.html">
-            
-                <a href="gui/TGColorDialog.html">
-            
-                    
-                    TGColorDialog*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.7" data-path="gui/TGColorSelect.html">
-            
-                <a href="gui/TGColorSelect.html">
-            
-                    
-                    TGColorSelect*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.8" data-path="gui/TGComboBox.html">
-            
-                <a href="gui/TGComboBox.html">
-            
-                    
-                    TGComboBox*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.9" data-path="gui/TGCommandPlugin.html">
-            
-                <a href="gui/TGCommandPlugin.html">
-            
-                    
-                    TGCommandPlugin*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.10" data-path="gui/TGDimension.html">
-            
-                <a href="gui/TGDimension.html">
-            
-                    
-                    TGDimension*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.11" data-path="gui/TGDNDManager.html">
-            
-                <a href="gui/TGDNDManager.html">
-            
-                    
-                    TGDNDManager*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.12" data-path="gui/TGDockableFrame.html">
-            
-                <a href="gui/TGDockableFrame.html">
-            
-                    
-                    TGDockableFrame*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.13" data-path="gui/TGDoubleSlider.html">
-            
-                <a href="gui/TGDoubleSlider.html">
-            
-                    
-                    TGDoubleSlider*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.14" data-path="gui/TGEventHandler.html">
-            
-                <a href="gui/TGEventHandler.html">
-            
-                    
-                    TGEventHandler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.15" data-path="gui/TGFileBrowser.html">
-            
-                <a href="gui/TGFileBrowser.html">
-            
-                    
-                    TGFileBrowser
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.16" data-path="gui/TGFileDialog.html">
-            
-                <a href="gui/TGFileDialog.html">
-            
-                    
-                    TGFileDialog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.17" data-path="gui/TGFont.html">
-            
-                <a href="gui/TGFont.html">
-            
-                    
-                    TGFont*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.18" data-path="gui/TGFontDialog.html">
-            
-                <a href="gui/TGFontDialog.html">
-            
-                    
-                    TGFontDialog*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.19" data-path="gui/TGFrame.html">
-            
-                <a href="gui/TGFrame.html">
-            
-                    
-                    TGFrame*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.20" data-path="gui/TGFSComboBox.html">
-            
-                <a href="gui/TGFSComboBox.html">
-            
-                    
-                    TGFSComboBox
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.21" data-path="gui/TGFSContainer.html">
-            
-                <a href="gui/TGFSContainer.html">
-            
-                    
-                    TGFSContainer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.22" data-path="gui/TGGC.html">
-            
-                <a href="gui/TGGC.html">
-            
-                    
-                    TGGC*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.23" data-path="gui/TGIcon.html">
-            
-                <a href="gui/TGIcon.html">
-            
-                    
-                    TGIcon*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.24" data-path="gui/TGIdleHandler.html">
-            
-                <a href="gui/TGIdleHandler.html">
-            
-                    
-                    TGIdleHandler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.25" data-path="gui/TGImageMap.html">
-            
-                <a href="gui/TGImageMap.html">
-            
-                    
-                    TGImageMap*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.26" data-path="gui/TGInputDialog.html">
-            
-                <a href="gui/TGInputDialog.html">
-            
-                    
-                    TGInputDialog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.27" data-path="gui/TGLabel.html">
-            
-                <a href="gui/TGLabel.html">
-            
-                    
-                    TGLabel*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.28" data-path="gui/TGLayout.html">
-            
-                <a href="gui/TGLayout.html">
-            
-                    
-                    TGLayout+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.29" data-path="gui/TGListBox.html">
-            
-                <a href="gui/TGListBox.html">
-            
-                    
-                    TGListBox+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.30" data-path="gui/TGListTree.html">
-            
-                <a href="gui/TGListTree.html">
-            
-                    
-                    TGListTree*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.31" data-path="gui/TGListView.html">
-            
-                <a href="gui/TGListView.html">
-            
-                    
-                    TGListView+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.32" data-path="gui/TGMdiDecorFrame.html">
-            
-                <a href="gui/TGMdiDecorFrame.html">
-            
-                    
-                    TGMdiDecorFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.33" data-path="gui/TGMdiFrame.html">
-            
-                <a href="gui/TGMdiFrame.html">
-            
-                    
-                    TGMdiFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.34" data-path="gui/TGMdiMainFrame.html">
-            
-                <a href="gui/TGMdiMainFrame.html">
-            
-                    
-                    TGMdiMainFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.35" data-path="gui/TGMdiMenu.html">
-            
-                <a href="gui/TGMdiMenu.html">
-            
-                    
-                    TGMdiMenu
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.36" data-path="gui/TGMenu.html">
-            
-                <a href="gui/TGMenu.html">
-            
-                    
-                    TGMenu+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.37" data-path="gui/TGMimeTypes.html">
-            
-                <a href="gui/TGMimeTypes.html">
-            
-                    
-                    TGMimeTypes
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.38" data-path="gui/TGMsgBox.html">
-            
-                <a href="gui/TGMsgBox.html">
-            
-                    
-                    TGMsgBox
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.39" data-path="gui/TGNumberEntry.html">
-            
-                <a href="gui/TGNumberEntry.html">
-            
-                    
-                    TGNumberEntry+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.40" data-path="gui/TGObject.html">
-            
-                <a href="gui/TGObject.html">
-            
-                    
-                    TGObject*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.41" data-path="gui/TGPack.html">
-            
-                <a href="gui/TGPack.html">
-            
-                    
-                    TGPack
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.42" data-path="gui/TGPasswdDialog.html">
-            
-                <a href="gui/TGPasswdDialog.html">
-            
-                    
-                    TGPasswdDialog
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.43" data-path="gui/TGPicture.html">
-            
-                <a href="gui/TGPicture.html">
-            
-                    
-                    TGPicture+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.44" data-path="gui/TGProgressBar.html">
-            
-                <a href="gui/TGProgressBar.html">
-            
-                    
-                    TGProgressBar*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.45" data-path="gui/TGRedirectOutputGuard.html">
-            
-                <a href="gui/TGRedirectOutputGuard.html">
-            
-                    
-                    TGRedirectOutputGuard
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.46" data-path="gui/TGResourcePool.html">
-            
-                <a href="gui/TGResourcePool.html">
-            
-                    
-                    TGResourcePool
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.47" data-path="gui/TGScrollBar.html">
-            
-                <a href="gui/TGScrollBar.html">
-            
-                    
-                    TGScrollBar+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.48" data-path="gui/TGShapedFrame.html">
-            
-                <a href="gui/TGShapedFrame.html">
-            
-                    
-                    TGShapedFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.49" data-path="gui/TGShutter.html">
-            
-                <a href="gui/TGShutter.html">
-            
-                    
-                    TGShutter
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.50" data-path="gui/TGSimpleTable.html">
-            
-                <a href="gui/TGSimpleTable.html">
-            
-                    
-                    TGSimpleTable+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.51" data-path="gui/TGSimpleTableInterface.html">
-            
-                <a href="gui/TGSimpleTableInterface.html">
-            
-                    
-                    TGSimpleTableInterface
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.52" data-path="gui/TGSlider.html">
-            
-                <a href="gui/TGSlider.html">
-            
-                    
-                    TGSlider+
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.53" data-path="gui/TGSpeedo.html">
-            
-                <a href="gui/TGSpeedo.html">
-            
-                    
-                    TGSpeedo*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.54" data-path="gui/TGSplitFrame.html">
-            
-                <a href="gui/TGSplitFrame.html">
-            
-                    
-                    TGSplitFrame
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.55" data-path="gui/TGSplitter.html">
-            
-                <a href="gui/TGSplitter.html">
-            
-                    
-                    TGSplitter*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.56" data-path="gui/TGStatusBar.html">
-            
-                <a href="gui/TGStatusBar.html">
-            
-                    
-                    TGStatusBar*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.57" data-path="gui/TGString.html">
-            
-                <a href="gui/TGString.html">
-            
-                    
-                    TGString
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.58" data-path="gui/TGTab.html">
-            
-                <a href="gui/TGTab.html">
-            
-                    
-                    TGTab*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.59" data-path="gui/TGTable.html">
-            
-                <a href="gui/TGTable.html">
-            
-                    
-                    TGTable*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.60" data-path="gui/TGTableCell.html">
-            
-                <a href="gui/TGTableCell.html">
-            
-                    
-                    TGTableCell-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.61" data-path="gui/TGTableContainer.html">
-            
-                <a href="gui/TGTableContainer.html">
-            
-                    
-                    TGTableContainer-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.62" data-path="gui/TGTableHeader.html">
-            
-                <a href="gui/TGTableHeader.html">
-            
-                    
-                    TGTableHeader-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.63" data-path="gui/TGTableLayout.html">
-            
-                <a href="gui/TGTableLayout.html">
-            
-                    
-                    TGTableLayout-
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.64" data-path="gui/TGText.html">
-            
-                <a href="gui/TGText.html">
-            
-                    
-                    TGText
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.65" data-path="gui/TGTextBuffer.html">
-            
-                <a href="gui/TGTextBuffer.html">
-            
-                    
-                    TGTextBuffer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.66" data-path="gui/TGTextEdit.html">
-            
-                <a href="gui/TGTextEdit.html">
-            
-                    
-                    TGTextEdit
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.67" data-path="gui/TGTextEditDialogs.html">
-            
-                <a href="gui/TGTextEditDialogs.html">
-            
-                    
-                    TGTextEditDialogs
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.68" data-path="gui/TGTextEditor.html">
-            
-                <a href="gui/TGTextEditor.html">
-            
-                    
-                    TGTextEditor
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.69" data-path="gui/TGTextEntry.html">
-            
-                <a href="gui/TGTextEntry.html">
-            
-                    
-                    TGTextEntry*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.70" data-path="gui/TGTextView.html">
-            
-                <a href="gui/TGTextView.html">
-            
-                    
-                    TGTextView
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.71" data-path="gui/TGTextViewStream.html">
-            
-                <a href="gui/TGTextViewStream.html">
-            
-                    
-                    TGTextViewStream*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.72" data-path="gui/TGToolBar.html">
-            
-                <a href="gui/TGToolBar.html">
-            
-                    
-                    TGToolBar
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.73" data-path="gui/TGToolTip.html">
-            
-                <a href="gui/TGToolTip.html">
-            
-                    
-                    TGToolTip
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.74" data-path="gui/TGTripleSlider.html">
-            
-                <a href="gui/TGTripleSlider.html">
-            
-                    
-                    TGTripleSlider*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.75" data-path="gui/TGuiBuilder.html">
-            
-                <a href="gui/TGuiBuilder.html">
-            
-                    
-                    TGuiBuilder
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.76" data-path="gui/TGView.html">
-            
-                <a href="gui/TGView.html">
-            
-                    
-                    TGView*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.77" data-path="gui/TGWidget.html">
-            
-                <a href="gui/TGWidget.html">
-            
-                    
-                    TGWidget*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.78" data-path="gui/TGWindow.html">
-            
-                <a href="gui/TGWindow.html">
-            
-                    
-                    TGWindow*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.79" data-path="gui/TGXYLayout.html">
-            
-                <a href="gui/TGXYLayout.html">
-            
-                    
-                    TGXYLayout
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.80" data-path="gui/TQObject.html">
-            
-                <a href="gui/TQObject.html">
-            
-                    
-                    TQObject*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.81" data-path="gui/TRootEmbeddedCanvas.html">
-            
-                <a href="gui/TRootEmbeddedCanvas.html">
-            
-                    
-                    TRootEmbeddedCanvas*
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="graf3d/">
-            
-                <a href="graf3d/">
-            
-                    
-                    GRAF3D
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="graf3d/TAxis3D.html">
-            
-                <a href="graf3d/TAxis3D.html">
-            
-                    
-                    TAxis3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="graf3d/TBRIK.html">
-            
-                <a href="graf3d/TBRIK.html">
-            
-                    
-                    TBRIK*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="graf3d/TCONE.html">
-            
-                <a href="graf3d/TCONE.html">
-            
-                    
-                    TCONE
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.4" data-path="graf3d/TCONS.html">
-            
-                <a href="graf3d/TCONS.html">
-            
-                    
-                    TCONS
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.5" data-path="graf3d/TCTUB.html">
-            
-                <a href="graf3d/TCTUB.html">
-            
-                    
-                    TCTUB
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6" data-path="graf3d/TELTU.html">
-            
-                <a href="graf3d/TELTU.html">
-            
-                    
-                    TELTU
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.7" data-path="graf3d/TGeometry.html">
-            
-                <a href="graf3d/TGeometry.html">
-            
-                    
-                    TGeometry
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.8" data-path="graf3d/TGTRA.html">
-            
-                <a href="graf3d/TGTRA.html">
-            
-                    
-                    TGTRA
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.9" data-path="graf3d/THelix.html">
-            
-                <a href="graf3d/THelix.html">
-            
-                    
-                    THelix
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.10" data-path="graf3d/THYPE.html">
-            
-                <a href="graf3d/THYPE.html">
-            
-                    
-                    THYPE
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.11" data-path="graf3d/TMarker3DBox.html">
-            
-                <a href="graf3d/TMarker3DBox.html">
-            
-                    
-                    TMarker3DBox
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.12" data-path="graf3d/TMaterial.html">
-            
-                <a href="graf3d/TMaterial.html">
-            
-                    
-                    TMaterial
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.13" data-path="graf3d/TMixture.html">
-            
-                <a href="graf3d/TMixture.html">
-            
-                    
-                    TMixture
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.14" data-path="graf3d/TNodeDiv.html">
-            
-                <a href="graf3d/TNodeDiv.html">
-            
-                    
-                    TNodeDiv
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.15" data-path="graf3d/TNode.html">
-            
-                <a href="graf3d/TNode.html">
-            
-                    
-                    TNode*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.16" data-path="graf3d/TPARA.html">
-            
-                <a href="graf3d/TPARA.html">
-            
-                    
-                    TPARA
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.17" data-path="graf3d/TPCON.html">
-            
-                <a href="graf3d/TPCON.html">
-            
-                    
-                    TPCON
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.18" data-path="graf3d/TPGON.html">
-            
-                <a href="graf3d/TPGON.html">
-            
-                    
-                    TPGON
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.19" data-path="graf3d/TPoints3DABC.html">
-            
-                <a href="graf3d/TPoints3DABC.html">
-            
-                    
-                    TPoints3DABC
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.20" data-path="graf3d/TPointSet3D.html">
-            
-                <a href="graf3d/TPointSet3D.html">
-            
-                    
-                    TPointSet3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.21" data-path="graf3d/TPolyLine3D.html">
-            
-                <a href="graf3d/TPolyLine3D.html">
-            
-                    
-                    TPolyLine3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.22" data-path="graf3d/TPolyMarker3D.html">
-            
-                <a href="graf3d/TPolyMarker3D.html">
-            
-                    
-                    TPolyMarker3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.23" data-path="graf3d/TRotMatrix.html">
-            
-                <a href="graf3d/TRotMatrix.html">
-            
-                    
-                    TRotMatrix
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.24" data-path="graf3d/TShape.html">
-            
-                <a href="graf3d/TShape.html">
-            
-                    
-                    TShape*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.25" data-path="graf3d/TSPHE.html">
-            
-                <a href="graf3d/TSPHE.html">
-            
-                    
-                    TSPHE*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.26" data-path="graf3d/TTRAP.html">
-            
-                <a href="graf3d/TTRAP.html">
-            
-                    
-                    TTRAP
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.27" data-path="graf3d/TTRD1.html">
-            
-                <a href="graf3d/TTRD1.html">
-            
-                    
-                    TTRD1
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.28" data-path="graf3d/TTRD2.html">
-            
-                <a href="graf3d/TTRD2.html">
-            
-                    
-                    TTRD2
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.29" data-path="graf3d/TTUBE.html">
-            
-                <a href="graf3d/TTUBE.html">
-            
-                    
-                    TTUBE
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.30" data-path="graf3d/TTUBS.html">
-            
-                <a href="graf3d/TTUBS.html">
-            
-                    
-                    TTUBS
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.31" data-path="graf3d/TView3D.html">
-            
-                <a href="graf3d/TView3D.html">
-            
-                    
-                    TView3D
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.32" data-path="graf3d/TXTRU.html">
-            
-                <a href="graf3d/TXTRU.html">
-            
-                    
-                    TXTRU
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.33" data-path="graf3d/X3DBuffer.html">
-            
-                <a href="graf3d/X3DBuffer.html">
-            
-                    
-                    X3DBuffer
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="math/">
-            
-                <a href="math/">
-            
-                    
-                    physics
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.1" data-path="math/TFeldmanCousins.html">
-            
-                <a href="math/TFeldmanCousins.html">
-            
-                    
-                    TFeldmanCousins*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.2" data-path="math/TGenPhaseSpace.html">
-            
-                <a href="math/TGenPhaseSpace.html">
-            
-                    
-                    TGenPhaseSpace*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.3" data-path="math/TLorentzRotation.html">
-            
-                <a href="math/TLorentzRotation.html">
-            
-                    
-                    TLorentzRotation*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.4" data-path="math/TLorentzVector.html">
-            
-                <a href="math/TLorentzVector.html">
-            
-                    
-                    TLorentzVector*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.5" data-path="math/TQuaternion.html">
-            
-                <a href="math/TQuaternion.html">
-            
-                    
-                    TQuaternion*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.6" data-path="math/TRobustEstimator.html">
-            
-                <a href="math/TRobustEstimator.html">
-            
-                    
-                    TRobustEstimator*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7" data-path="math/TRolke.html">
-            
-                <a href="math/TRolke.html">
-            
-                    
-                    TRolke*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.8" data-path="math/TRotation.html">
-            
-                <a href="math/TRotation.html">
-            
-                    
-                    TRotation*
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.9" data-path="math/TVectorT.html">
-            
-                <a href="math/TVectorT.html">
-            
-                    
-                    TVectorT
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.10" data-path="math/TVector2.html">
-            
-                <a href="math/TVector2.html">
-            
-                    
-                    TVector2
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.11" data-path="math/TVector3.html">
-            
-                <a href="math/TVector3.html">
-            
-                    
-                    TVector3*
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" data-path="net/">
-            
-                <a href="net/">
-            
-                    
-                    net
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1" data-path="net/TCivetweb.html">
-            
-                <a href="net/TCivetweb.html">
-            
-                    
-                    http/TCivetweb
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="net/TFastCgi.html">
-            
-                <a href="net/TFastCgi.html">
-            
-                    
-                    http/TFastCgi
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.3" data-path="net/THttpCallArg.html">
-            
-                <a href="net/THttpCallArg.html">
-            
-                    
-                    http/THttpCallArg
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.4" data-path="net/THttpEngine.html">
-            
-                <a href="net/THttpEngine.html">
-            
-                    
-                    http/THttpEngine
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.5" data-path="net/THttpServer.html">
-            
-                <a href="net/THttpServer.html">
-            
-                    
-                    http/THttpServer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.6" data-path="net/THttpWSEngine.html">
-            
-                <a href="net/THttpWSEngine.html">
-            
-                    
-                    http/THttpWSEngine
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.7" data-path="net/THttpWSHandler.html">
-            
-                <a href="net/THttpWSHandler.html">
-            
-                    
-                    http/THttpWSHandler
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.8" data-path="net/TRootSniffer.html">
-            
-                <a href="net/TRootSniffer.html">
-            
-                    
-                    http/TRootSniffer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.9" data-path="net/TRootSnifferStore.html">
-            
-                <a href="net/TRootSnifferStore.html">
-            
-                    
-                    http/TRootSnifferStore
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" data-path="../structure/">
-            
-                <a href="../structure/">
-            
-                    
-                    数据结构
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.9.1" data-path="../structure/datarecord.html">
-            
-                <a href="../structure/datarecord.html">
-            
-                    
-                    datarecord
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2" data-path="../structure/dobject.html">
-            
-                <a href="../structure/dobject.html">
-            
-                    
-                    dobject
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.3" data-path="../structure/freesegments.html">
-            
-                <a href="../structure/freesegments.html">
-            
-                    
-                    freesegments
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.4" data-path="../structure/gap.html">
-            
-                <a href="../structure/gap.html">
-            
-                    
-                    gap
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.5" data-path="../structure/header.html">
-            
-                <a href="../structure/header.html">
-            
-                    
-                    header
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.6" data-path="../structure/keyslist.html">
-            
-                <a href="../structure/keyslist.html">
-            
-                    
-                    keyslist
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.7" data-path="../structure/StreamerInfo.html">
-            
-                <a href="../structure/StreamerInfo.html">
-            
-                    
-                    StreamerInfo
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.8" data-path="../structure/TClonesArray.html">
-            
-                <a href="../structure/TClonesArray.html">
-            
-                    
-                    TClonesArray
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.9" data-path="../structure/TDirectory.html">
-            
-                <a href="../structure/TDirectory.html">
-            
-                    
-                    TDirectory
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.10" data-path="../structure/TFile.html">
-            
-                <a href="../structure/TFile.html">
-            
-                    
-                    TFile
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.11" data-path="../structure/TObject.html">
-            
-                <a href="../structure/TObject.html">
-            
-                    
-                    TObject
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.12" data-path="../structure/TProcessID.html">
-            
-                <a href="../structure/TProcessID.html">
-            
-                    
-                    TProcessID
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.13" data-path="../structure/TRefArray.html">
-            
-                <a href="../structure/TRefArray.html">
-            
-                    
-                    TRefArray
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.14" data-path="../structure/TRef.html">
-            
-                <a href="../structure/TRef.html">
-            
-                    
-                    TRef
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.15" data-path="../structure/TTree.html">
-            
-                <a href="../structure/TTree.html">
-            
-                    
-                    TTree
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.10" data-path="../define/">
-            
-                <a href="../define/">
-            
-                    
-                    预定义
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.10.1" data-path="../define/RVersion.html">
-            
-                <a href="../define/RVersion.html">
-            
-                    
-                    RVersion
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.11" data-path="../version/version.html">
-            
-                <a href="../version/version.html">
-            
-                    
-                    文件版本
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">简介</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">简介</a></li>
+</ul>
+<p class="caption"><span class="caption-text">base类的使用</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">类的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TObject.html">TObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTask.html">TTask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Buttons.html">Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNamed.html">TNamed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TStyle.html">TStyle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSystem.html">TSystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TROOT.html">TROOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFolder.html">TFolder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TEnv.html">TEnv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMacro.html">TMacro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TApplication.html">TApplication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProcessID.html">TProcessID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProcessUUID.html">TProcessUUID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TString.html">TString</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TColor.html">TColor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBase64.html">TBase64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMD5.html">TMD5</a></li>
+</ul>
+<p class="caption"><span class="caption-text">IO类的使用</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">类的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TKey.html">TKey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TDirectory.html">TDirectory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TDirectoryFile.html">TDirectoryFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSystemFile.html">TSystemFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSystemDirectory.html">TSystemDirectory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFile.html">TFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFileCacheWrite.html">TFileCacheWrite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFileCacheRead.html">TFileCacheRead</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFileMerger.html">TFileMerger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMemFile.html">TMemFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TKeyMapFile.html">TKeyMapFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMapFile.html">TMapFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TArchiveFile.html">TArchiveFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TZIPFile.html">TZIPFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFilePrefetch.html">TFilePrefetch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFPBlock.html">TFPBlock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="THDFSFile.html">THDFSFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBuffer.html">TBuffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBufferFile.html">TBufferFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBufferJSON.html">TBufferJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TKeySQL.html">TKeySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSQLObjectData.html">TSQLObjectData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSQLStructure.html">TSQLStructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSQLClassInfo.html">TSQLClassInfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBufferSQL2.html">TBufferSQL2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSQLFile.html">TSQLFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXMLEngine.html">TXMLEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBufferXML.html">TBufferXML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXMLSetup.html">TXMLSetup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TKeyXML.html">TKeyXML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXMLPlayer.html">TXMLPlayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXMLFile.html">TXMLFile</a></li>
+</ul>
+<p class="caption"><span class="caption-text">常用类的使用</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">类的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTree.html">TTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TCut.html">TCut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTreePlayer.html">TTreePlayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TChain.html">TChain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TEventList.html">TEventList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBranch.html">TBranch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNtuple.html">TNtuple</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNtupleD.html">TNtupleD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNtupleD.html#example">example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TCollection.html">TCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSeqCollection.html">TSeqCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TList.html">TList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TVirtualFitter.html">TVirtualFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBackCompFitter.html">TBackCompFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FitResult.html">FitResult</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFitter.html">TFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFitResult.html">TFitResult</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFitResultPtr.html">TFitResultPtr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFractionFitter.html">TFractionFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLinearFitter.html">TLinearFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TAttAxis.html">TAttAxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TAxis.html">TAxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGaxis.html">TGaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGaxis.html#example">example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TText.html">TText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPaveStats.html">TPaveStats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPolyMarker.html">TPolyMarker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPaveText.html">TPaveText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPolyMarker3D.html">TPolyMarker3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLatex.html">TLatex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLegend.html">TLegend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLegendEntry.html">TLegendEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLine.html">TLine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TVirtualPad.html">TVirtualPad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPad.html">TPad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TCanvas.html">TCanvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TF1.html">TF1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TF2.html">TF2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TF3.html">TF3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraph.html">TGraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TCutG.html">TCutG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMultiGraph.html">TMultiGraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraph2D.html">TGraph2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraph2DErrors.html">TGraph2DErrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraphErrors.html">TGraphErrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraphPolar.html">TGraphPolar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TH1.html">TH1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TH2.html">TH2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TH2Poly.html">TH2Poly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TH3.html">TH3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProfile.html">TProfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProfile2D.html">TProfile2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProfile3D.html">TProfile3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMath.html">TMath</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMathBase.html">TMathBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMatrixT.html">TMatrixT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMatrixTBase.html">TMatrixTBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMatrixTSparse.html">TMatrixTSparse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMatrixTSym.html">TMatrixTSym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpline.html">TSpline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMinuit.html">TMinuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMinuitMinimizer.html">TMinuitMinimizer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TRandom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#class">class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code">code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TRandom1.html">TRandom1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TRandom2.html">TRandom2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TRandom3.html">TRandom3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelector.html">TSelector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorCint.html">TSelectorCint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorDraw.html">TSelectorDraw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorEntries.html">TSelectorEntries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorList.html">TSelectorList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorScalar.html">TSelectorScalar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum.html">TSpectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum2.html">TSpectrum2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum2Fit.html">TSpectrum2Fit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum2Painter.html">TSpectrum2Painter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum2Transform.html">TSpectrum2Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum3.html">TSpectrum3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrumFit.html">TSpectrumFit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrumTransform.html">TSpectrumTransform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTime.html">TTime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTimer.html">TTimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTimeStamp.html">TTimeStamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TStopwatch.html">TStopwatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBenchmark.html">TBenchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TThread.html">TThread</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TThreadFactory.html">TThreadFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TThreadImp.html">TThreadImp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TServerSocket.html">TServerSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSocket.html">TSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPServerSocket.html">TPServerSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPSocket.html">TPSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TEllipse.html">TEllipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNeuron.html">TNeuron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMLPAnalyzer.html">TMLPAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMonitor.html">TMonitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMultiLayerPerceptron.html">TMultiLayerPerceptron</a></li>
+</ul>
+<p class="caption"><span class="caption-text">图形界面的使用</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gui/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/GuiTypes.html">GuiTypes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGButton.html">TGButton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGButtonGroup.html">TGButtonGroup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGCanvas.html">TGCanvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGClient.html">TGClient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGColorDialog.html">TGColorDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGColorSelect.html">TGColorSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGComboBox.html">TGComboBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGCommandPlugin.html">TGCommandPlugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGDimension.html">TGDimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGDNDManager.html">TGDNDManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGDockableFrame.html">TGDockableFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGDoubleSlider.html">TGDoubleSlider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGEventHandler.html">TGEventHandler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFileBrowser.html">TGFileBrowser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFileDialog.html">TGFileDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFont.html">TGFont</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFontDialog.html">TGFontDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFrame.html">TGFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFSComboBox.html">TGFSComboBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFSContainer.html">TGFSContainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGGC.html">TGGC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGIcon.html">TGIcon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGIdleHandler.html">TGIdleHandler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGImageMap.html">TGImageMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGInputDialog.html">TGInputDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGLabel.html">TGLabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGLayout.html">TGLayout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGListBox.html">TGListBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGListTree.html">TGListTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGListView.html">TGListView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMdiDecorFrame.html">TGMdiDecorFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMdiFrame.html">TGMdiFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMdiMainFrame.html">TGMdiMainFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMdiMenu.html">TGMdiMenu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMenu.html">TGMenu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMimeTypes.html">TGMimeTypes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMsgBox.html">TGMsgBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGNumberEntry.html">TGNumberEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGObject.html">TGObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGPack.html">TGPack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGPasswdDialog.html">TGPasswdDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGPicture.html">TGPicture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGProgressBar.html">TGProgressBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGRedirectOutputGuard.html">TGRedirectOutputGuard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGResourcePool.html">TGResourcePool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGScrollBar.html">TGScrollBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGShapedFrame.html">TGShapedFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGShutter.html">TGShutter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSimpleTable.html">TGSimpleTable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSimpleTableInterface.html">TGSimpleTableInterface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSlider.html">TGSlider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSpeedo.html">TGSpeedo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSplitFrame.html">TGSplitFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSplitter.html">TGSplitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGStatusBar.html">TGStatusBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGString.html">TGString</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTab.html">TGTab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTable.html">TGTable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTableCell.html">TGTableCell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTableContainer.html">TGTableContainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTableHeader.html">TGTableHeader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTableLayout.html">TGTableLayout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGText.html">TGText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextBuffer.html">TGTextBuffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextEdit.html">TGTextEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextEditDialogs.html">TGTextEditDialogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextEditor.html">TGTextEditor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextEntry.html">TGTextEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextView.html">TGTextView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextViewStream.html">TGTextViewStream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGToolBar.html">TGToolBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGToolTip.html">TGToolTip</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTripleSlider.html">TGTripleSlider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGuiBuilder.html">TGuiBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGView.html">TGView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGWidget.html">TGWidget</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGWindow.html">TGWindow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGXYLayout.html">TGXYLayout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TQObject.html">TQObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TRootEmbeddedCanvas.html">TRootEmbeddedCanvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GRAF3D</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TAxis3D.html">TAxis3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TBRIK.html">TBRIK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TCONE.html">TCONE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TCONS.html">TCONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TCTUB.html">TCTUB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TELTU.html">TELTU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TGeometry.html">TGeometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TGTRA.html">TGTRA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/THelix.html">THelix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/THYPE.html">THYPE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TMarker3DBox.html">TMarker3DBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TMaterial.html">TMaterial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TMixture.html">TMixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TNodeDiv.html">TNodeDiv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TNode.html">TNode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPARA.html">TPARA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPCON.html">TPCON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPGON.html">TPGON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPoints3DABC.html">TPoints3DABC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPointSet3D.html">TPointSet3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPolyLine3D.html">TPolyLine3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPolyMarker3D.html">TPolyMarker3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TRotMatrix.html">TRotMatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TShape.html">TShape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TSPHE.html">TSPHE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTRAP.html">TTRAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTRD1.html">TTRD1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTRD2.html">TTRD2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTUBE.html">TTUBE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTUBS.html">TTUBS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TView3D.html">TView3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TXTRU.html">TXTRU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/X3DBuffer.html">X3DBuffer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">physics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="math/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TFeldmanCousins.html">TFeldmanCousins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TGenPhaseSpace.html">TGenPhaseSpace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TLorentzRotation.html">TLorentzRotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TLorentzVector.html">TLorentzVector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TQuaternion.html">TQuaternion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TRobustEstimator.html">TRobustEstimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TRolke.html">TRolke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TRotation.html">TRotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TVectorT.html">TVectorT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TVector2.html">TVector2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TVector3.html">TVector3</a></li>
+</ul>
+<p class="caption"><span class="caption-text">net</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="net/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/TCivetweb.html">TCivetweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/TFastCgi.html">TFastCgi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpCallArg.html">THttpCallArg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpEngine.html">THttpEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpServer.html">THttpServer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpWSEngine.html">THttpWSEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpWSHandler.html">THttpWSHandler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/TRootSniffer.html">TRootSniffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/TRootSnifferStore.html">TRootSnifferStore</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数据结构</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../structure/README.html">数据结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/datarecord.html">datarecord</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/dobject.html">dataobject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/freesegments.html">FreeSegments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/gap.html">gap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/header.html">header</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/keyslist.html">KeysList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/StreamerInfo.html">StreamerInfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TClonesArray.html">TClonesArray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TDirectory.html">TDirectory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TFile.html">TFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TObject.html">TObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TProcessID.html">TProcessID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TRefArray.html">TRefArray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TRef.html">TRef</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TTree.html">TTree</a></li>
+</ul>
+<p class="caption"><span class="caption-text">预定义</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../define/README.html">预定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../define/RVersion.html">RVersion</a></li>
+</ul>
+<p class="caption"><span class="caption-text">文件版本</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../version/version.html">文件更新版本</a></li>
 </ul>
 
-
-                </nav>
             
-        
-    </div>
+          
+        </div>
+      </div>
+    </nav>
 
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
-<div class="book-header" role="navigation">
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ROOT Note</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
     
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>TRandom</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/class/TRandom.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
 
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >TRandom*</a>
-    </h1>
+  
+  <hr/>
 </div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <!-- TRandom.md --- 
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!-- TRandom.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
@@ -4245,315 +499,222 @@
 ;; Last-Updated: 六 5月  6 16:12:39 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 9
-;; URL: http://wuhongyi.cn -->
-<h1 id="trandom"><a name="trandom" class="plugin-anchor" href="#trandom"><i class="fa fa-link" aria-hidden="true"></i></a>TRandom</h1>
-<p><strong>&#x7EE7;&#x627F; TNamed</strong></p>
-<pre><code>This is the base class for the ROOT Random number generators. 
-This class defines the ROOT Random number interface and it should not be instantiated directly but used via its derived classes (e.g. TRandom1, TRandom2 or TRandom3). 
-Note that this class implements also a very simple generator (linear congruential) with periodicity = 10**9
-which is known to have defects (the lower random bits are correlated) and therefore should NOT be used in any statistical study.
-One should use instead TRandom1, TRandom2 or TRandom3.
-TRandom3, is based on the &quot;Mersenne Twister generator&quot;, and is the recommended one, since it has good random proprieties (period of about 10**6000 ) and it is fast.
-TRandom1, based on the RANLUX algorithm, has mathematically proven random proprieties and a period of about 10**171. It is however slower than the others.
-TRandom2, is based on the Tausworthe generator of L&apos;Ecuyer, and it has the advantage of being fast and using only 3 words (of 32 bits) for the state. The period is 10**26.
+;; URL: http://wuhongyi.cn --><div class="section" id="trandom">
+<h1>TRandom<a class="headerlink" href="#trandom" title="永久链接至标题">¶</a></h1>
+<p><strong>继承 TNamed</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">base</span> <span class="k">class</span> <span class="nc">for</span> <span class="n">the</span> <span class="n">ROOT</span> <span class="n">Random</span> <span class="n">number</span> <span class="n">generators</span><span class="o">.</span> 
+<span class="n">This</span> <span class="k">class</span> <span class="nc">defines</span> <span class="n">the</span> <span class="n">ROOT</span> <span class="n">Random</span> <span class="n">number</span> <span class="n">interface</span> <span class="ow">and</span> <span class="n">it</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">instantiated</span> <span class="n">directly</span> <span class="n">but</span> <span class="n">used</span> <span class="n">via</span> <span class="n">its</span> <span class="n">derived</span> <span class="n">classes</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">TRandom1</span><span class="p">,</span> <span class="n">TRandom2</span> <span class="ow">or</span> <span class="n">TRandom3</span><span class="p">)</span><span class="o">.</span> 
+<span class="n">Note</span> <span class="n">that</span> <span class="n">this</span> <span class="k">class</span> <span class="nc">implements</span> <span class="n">also</span> <span class="n">a</span> <span class="n">very</span> <span class="n">simple</span> <span class="n">generator</span> <span class="p">(</span><span class="n">linear</span> <span class="n">congruential</span><span class="p">)</span> <span class="k">with</span> <span class="n">periodicity</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">9</span>
+<span class="n">which</span> <span class="ow">is</span> <span class="n">known</span> <span class="n">to</span> <span class="n">have</span> <span class="n">defects</span> <span class="p">(</span><span class="n">the</span> <span class="n">lower</span> <span class="n">random</span> <span class="n">bits</span> <span class="n">are</span> <span class="n">correlated</span><span class="p">)</span> <span class="ow">and</span> <span class="n">therefore</span> <span class="n">should</span> <span class="n">NOT</span> <span class="n">be</span> <span class="n">used</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">statistical</span> <span class="n">study</span><span class="o">.</span>
+<span class="n">One</span> <span class="n">should</span> <span class="n">use</span> <span class="n">instead</span> <span class="n">TRandom1</span><span class="p">,</span> <span class="n">TRandom2</span> <span class="ow">or</span> <span class="n">TRandom3</span><span class="o">.</span>
+<span class="n">TRandom3</span><span class="p">,</span> <span class="ow">is</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="s2">&quot;Mersenne Twister generator&quot;</span><span class="p">,</span> <span class="ow">and</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">recommended</span> <span class="n">one</span><span class="p">,</span> <span class="n">since</span> <span class="n">it</span> <span class="n">has</span> <span class="n">good</span> <span class="n">random</span> <span class="n">proprieties</span> <span class="p">(</span><span class="n">period</span> <span class="n">of</span> <span class="n">about</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6000</span> <span class="p">)</span> <span class="ow">and</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">fast</span><span class="o">.</span>
+<span class="n">TRandom1</span><span class="p">,</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">RANLUX</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">has</span> <span class="n">mathematically</span> <span class="n">proven</span> <span class="n">random</span> <span class="n">proprieties</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">period</span> <span class="n">of</span> <span class="n">about</span> <span class="mi">10</span><span class="o">**</span><span class="mf">171.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">however</span> <span class="n">slower</span> <span class="n">than</span> <span class="n">the</span> <span class="n">others</span><span class="o">.</span>
+<span class="n">TRandom2</span><span class="p">,</span> <span class="ow">is</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">Tausworthe</span> <span class="n">generator</span> <span class="n">of</span> <span class="n">L</span><span class="s1">&#39;Ecuyer, and it has the advantage of being fast and using only 3 words (of 32 bits) for the state. The period is 10**26.</span>
 
-The following table shows some timings (in nanoseconds/call) for the random numbers obtained using an Intel Pentium 3.0 GHz running Linux and using the gcc 3.2.3 compiler
+<span class="n">The</span> <span class="n">following</span> <span class="n">table</span> <span class="n">shows</span> <span class="n">some</span> <span class="n">timings</span> <span class="p">(</span><span class="ow">in</span> <span class="n">nanoseconds</span><span class="o">/</span><span class="n">call</span><span class="p">)</span> <span class="k">for</span> <span class="n">the</span> <span class="n">random</span> <span class="n">numbers</span> <span class="n">obtained</span> <span class="n">using</span> <span class="n">an</span> <span class="n">Intel</span> <span class="n">Pentium</span> <span class="mf">3.0</span> <span class="n">GHz</span> <span class="n">running</span> <span class="n">Linux</span> <span class="ow">and</span> <span class="n">using</span> <span class="n">the</span> <span class="n">gcc</span> <span class="mf">3.2</span><span class="o">.</span><span class="mi">3</span> <span class="n">compiler</span>
 
--   TRandom           34   ns/call     (BAD Generator)
--   TRandom1          242  ns/call
--   TRandom2          37   ns/call
--   TRandom3          45   ns/call
+<span class="o">-</span>   <span class="n">TRandom</span>           <span class="mi">34</span>   <span class="n">ns</span><span class="o">/</span><span class="n">call</span>     <span class="p">(</span><span class="n">BAD</span> <span class="n">Generator</span><span class="p">)</span>
+<span class="o">-</span>   <span class="n">TRandom1</span>          <span class="mi">242</span>  <span class="n">ns</span><span class="o">/</span><span class="n">call</span>
+<span class="o">-</span>   <span class="n">TRandom2</span>          <span class="mi">37</span>   <span class="n">ns</span><span class="o">/</span><span class="n">call</span>
+<span class="o">-</span>   <span class="n">TRandom3</span>          <span class="mi">45</span>   <span class="n">ns</span><span class="o">/</span><span class="n">call</span>
 
-Random numbers distributed according to 1-d, 2-d or 3-d distributions contained in TF1, TF2 or TF3 objects can also be generated. 
-For example, to get a random number distributed following abs(sin(x)/x)*sqrt(x)
-you can do :
+<span class="n">Random</span> <span class="n">numbers</span> <span class="n">distributed</span> <span class="n">according</span> <span class="n">to</span> <span class="mi">1</span><span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="mi">2</span><span class="o">-</span><span class="n">d</span> <span class="ow">or</span> <span class="mi">3</span><span class="o">-</span><span class="n">d</span> <span class="n">distributions</span> <span class="n">contained</span> <span class="ow">in</span> <span class="n">TF1</span><span class="p">,</span> <span class="n">TF2</span> <span class="ow">or</span> <span class="n">TF3</span> <span class="n">objects</span> <span class="n">can</span> <span class="n">also</span> <span class="n">be</span> <span class="n">generated</span><span class="o">.</span> 
+<span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">to</span> <span class="n">get</span> <span class="n">a</span> <span class="n">random</span> <span class="n">number</span> <span class="n">distributed</span> <span class="n">following</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">you</span> <span class="n">can</span> <span class="n">do</span> <span class="p">:</span>
 
-  TF1 *f1 = new TF1(&quot;f1&quot;,&quot;abs(sin(x)/x)*sqrt(x)&quot;,0,10);
-  double r = f1-&gt;GetRandom();
+  <span class="n">TF1</span> <span class="o">*</span><span class="n">f1</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TF1</span><span class="p">(</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span><span class="s2">&quot;abs(sin(x)/x)*sqrt(x)&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+  <span class="n">double</span> <span class="n">r</span> <span class="o">=</span> <span class="n">f1</span><span class="o">-&gt;</span><span class="n">GetRandom</span><span class="p">();</span>
 
-or you can use the UNURAN package. You need in this case to initialize UNURAN
-to the function you would like to generate.
+<span class="ow">or</span> <span class="n">you</span> <span class="n">can</span> <span class="n">use</span> <span class="n">the</span> <span class="n">UNURAN</span> <span class="n">package</span><span class="o">.</span> <span class="n">You</span> <span class="n">need</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">case</span> <span class="n">to</span> <span class="n">initialize</span> <span class="n">UNURAN</span>
+<span class="n">to</span> <span class="n">the</span> <span class="n">function</span> <span class="n">you</span> <span class="n">would</span> <span class="n">like</span> <span class="n">to</span> <span class="n">generate</span><span class="o">.</span>
 
-  TUnuran u;
-  u.Init(TUnuranDistrCont(f1));
-  double r = u.Sample();
-</code></pre><h2 id="class"><a name="class" class="plugin-anchor" href="#class"><i class="fa fa-link" aria-hidden="true"></i></a>class</h2>
-<p>&#x9ED8;&#x8BA4;&#x968F;&#x673A;&#x79CD;&#x5B50; 65539</p>
+  <span class="n">TUnuran</span> <span class="n">u</span><span class="p">;</span>
+  <span class="n">u</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">TUnuranDistrCont</span><span class="p">(</span><span class="n">f1</span><span class="p">));</span>
+  <span class="n">double</span> <span class="n">r</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Sample</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="class">
+<h2>class<a class="headerlink" href="#class" title="永久链接至标题">¶</a></h2>
+<p>默认随机种子 65539</p>
 <p>Simple Random number generator (periodicity = 10**9)</p>
-<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">virtual</span>  Int_t    <span class="hljs-title">Binomial</span><span class="hljs-params">(Int_t ntot, Double_t prob)</span></span>;<span class="hljs-comment">//&#x4E8C;&#x9879;&#x5206;&#x5E03;</span>
-<span class="hljs-comment">/// Generates a random integer N according to the binomial law.</span>
-<span class="hljs-comment">/// Coded from Los Alamos report LA-5061-MS.</span>
-<span class="hljs-comment">/// N is binomially distributed between 0 and ntot inclusive</span>
-<span class="hljs-comment">/// with mean prob*ntot and prob is between 0 and 1.</span>
-<span class="hljs-comment">/// Note: This function should not be used when ntot is large (say &gt;100).</span>
-<span class="hljs-comment">/// The normal approximation is then recommended instead</span>
-<span class="hljs-comment">/// (with mean =*ntot+0.5 and standard deviation sqrt(ntot*prob*(1-prob)).</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span>  <span class="n">Int_t</span>    <span class="nf">Binomial</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">ntot</span><span class="p">,</span> <span class="n">Double_t</span> <span class="n">prob</span><span class="p">);</span><span class="c1">//二项分布</span>
+<span class="c1">/// Generates a random integer N according to the binomial law.</span>
+<span class="c1">/// Coded from Los Alamos report LA-5061-MS.</span>
+<span class="c1">/// N is binomially distributed between 0 and ntot inclusive</span>
+<span class="c1">/// with mean prob*ntot and prob is between 0 and 1.</span>
+<span class="c1">/// Note: This function should not be used when ntot is large (say &gt;100).</span>
+<span class="c1">/// The normal approximation is then recommended instead</span>
+<span class="c1">/// (with mean =*ntot+0.5 and standard deviation sqrt(ntot*prob*(1-prob)).</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">BreitWigner</span><span class="hljs-params">(Double_t mean=<span class="hljs-number">0</span>, Double_t gamma=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//Brei-Wigner&#x5206;&#x5E03;</span>
-<span class="hljs-comment">/// Return a number distributed following a BreitWigner function with mean and gamma.</span>
+<span class="k">virtual</span>  <span class="n">Double_t</span> <span class="nf">BreitWigner</span><span class="p">(</span><span class="n">Double_t</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Double_t</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span><span class="c1">//Brei-Wigner分布</span>
+<span class="c1">/// Return a number distributed following a BreitWigner function with mean and gamma.</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">Circle</span><span class="hljs-params">(Double_t &amp;x, Double_t &amp;y, Double_t r)</span></span>;
-<span class="hljs-comment">/// Generates random vectors, uniformly distributed over a circle of given radius.</span>
-<span class="hljs-comment">///   Input : r = circle radius</span>
-<span class="hljs-comment">///   Output: x,y a random 2-d vector of length r</span>
+<span class="k">virtual</span>  <span class="kt">void</span>     <span class="nf">Circle</span><span class="p">(</span><span class="n">Double_t</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">Double_t</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">,</span> <span class="n">Double_t</span> <span class="n">r</span><span class="p">);</span>
+<span class="c1">/// Generates random vectors, uniformly distributed over a circle of given radius.</span>
+<span class="c1">///   Input : r = circle radius</span>
+<span class="c1">///   Output: x,y a random 2-d vector of length r</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Exp</span><span class="hljs-params">(Double_t tau)</span></span>;<span class="hljs-comment">//&#x6307;&#x6570;&#x5206;&#x5E03;</span>
-<span class="hljs-comment">/// Returns an exponential deviate.</span>
-<span class="hljs-comment">///          exp( -t/tau )</span>
+<span class="k">virtual</span>  <span class="n">Double_t</span> <span class="nf">Exp</span><span class="p">(</span><span class="n">Double_t</span> <span class="n">tau</span><span class="p">);</span><span class="c1">//指数分布</span>
+<span class="c1">/// Returns an exponential deviate.</span>
+<span class="c1">///          exp( -t/tau )</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Gaus</span><span class="hljs-params">(Double_t mean=<span class="hljs-number">0</span>, Double_t sigma=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//&#x9AD8;&#x65AF;&#x5206;&#x5E03;</span>
-<span class="hljs-comment">/// Samples a random number from the standard Normal (Gaussian) Distribution</span>
-<span class="hljs-comment">/// with the given mean and sigma.</span>
-<span class="hljs-comment">/// Uses the Acceptance-complement ratio from W. Hoermann and G. Derflinger</span>
-<span class="hljs-comment">/// This is one of the fastest existing method for generating normal random variables.</span>
-<span class="hljs-comment">/// It is a factor 2/3 faster than the polar (Box-Muller) method used in the previous</span>
-<span class="hljs-comment">/// version of TRandom::Gaus. The speed is comparable to the Ziggurat method (from Marsaglia)</span>
-<span class="hljs-comment">/// implemented for example in GSL and available in the MathMore library.</span>
-<span class="hljs-comment">/// REFERENCE:  - W. Hoermann and G. Derflinger (1990):</span>
-<span class="hljs-comment">///              The ACR Method for generating normal random variables,</span>
-<span class="hljs-comment">///              OR Spektrum 12 (1990), 181-185.</span>
-<span class="hljs-comment">/// Implementation taken from</span>
-<span class="hljs-comment">/// UNURAN (c) 2000  W. Hoermann &amp; J. Leydold, Institut f. Statistik, WU Wien</span>
+<span class="k">virtual</span>  <span class="n">Double_t</span> <span class="nf">Gaus</span><span class="p">(</span><span class="n">Double_t</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Double_t</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span><span class="c1">//高斯分布</span>
+<span class="c1">/// Samples a random number from the standard Normal (Gaussian) Distribution</span>
+<span class="c1">/// with the given mean and sigma.</span>
+<span class="c1">/// Uses the Acceptance-complement ratio from W. Hoermann and G. Derflinger</span>
+<span class="c1">/// This is one of the fastest existing method for generating normal random variables.</span>
+<span class="c1">/// It is a factor 2/3 faster than the polar (Box-Muller) method used in the previous</span>
+<span class="c1">/// version of TRandom::Gaus. The speed is comparable to the Ziggurat method (from Marsaglia)</span>
+<span class="c1">/// implemented for example in GSL and available in the MathMore library.</span>
+<span class="c1">/// REFERENCE:  - W. Hoermann and G. Derflinger (1990):</span>
+<span class="c1">///              The ACR Method for generating normal random variables,</span>
+<span class="c1">///              OR Spektrum 12 (1990), 181-185.</span>
+<span class="c1">/// Implementation taken from</span>
+<span class="c1">/// UNURAN (c) 2000  W. Hoermann &amp; J. Leydold, Institut f. Statistik, WU Wien</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  UInt_t   <span class="hljs-title">GetSeed</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{<span class="hljs-keyword">return</span> fSeed;}<span class="hljs-comment">//&#x83B7;&#x5F97;&#x968F;&#x673A;&#x79CD;&#x5B50;</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  UInt_t   <span class="hljs-title">Integer</span><span class="hljs-params">(UInt_t imax)</span></span>;<span class="hljs-comment">//&#xFF08;0&#xFF0C;imax-1&#xFF09;&#x968F;&#x673A;&#x6574;&#x6570;</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Landau</span><span class="hljs-params">(Double_t mean=<span class="hljs-number">0</span>, Double_t sigma=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//Landau&#x5206;&#x5E03;</span>
-<span class="hljs-comment">/// Generate a random number following a Landau distribution</span>
-<span class="hljs-comment">/// with location parameter mu and scale parameter sigma:</span>
-<span class="hljs-comment">///      Landau( (x-mu)/sigma )</span>
-<span class="hljs-comment">/// Note that mu is not the mpv(most probable value) of the Landa distribution</span>
-<span class="hljs-comment">/// and sigma is not the standard deviation of the distribution which is not defined.</span>
-<span class="hljs-comment">/// For mu  =0 and sigma=1, the mpv = -0.22278</span>
-<span class="hljs-comment">/// The Landau random number generation is implemented using the</span>
-<span class="hljs-comment">/// function landau_quantile(x,sigma), which provides</span>
-<span class="hljs-comment">/// the inverse of the landau cumulative distribution.</span>
-<span class="hljs-comment">/// landau_quantile has been converted from CERNLIB ranlan(G110).</span>
+<span class="k">virtual</span>  <span class="n">UInt_t</span>   <span class="nf">GetSeed</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="n">fSeed</span><span class="p">;}</span><span class="c1">//获得随机种子</span>
+<span class="k">virtual</span>  <span class="n">UInt_t</span>   <span class="nf">Integer</span><span class="p">(</span><span class="n">UInt_t</span> <span class="n">imax</span><span class="p">);</span><span class="c1">//（0，imax-1）随机整数</span>
+<span class="k">virtual</span>  <span class="n">Double_t</span> <span class="nf">Landau</span><span class="p">(</span><span class="n">Double_t</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Double_t</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span><span class="c1">//Landau分布</span>
+<span class="c1">/// Generate a random number following a Landau distribution</span>
+<span class="c1">/// with location parameter mu and scale parameter sigma:</span>
+<span class="c1">///      Landau( (x-mu)/sigma )</span>
+<span class="c1">/// Note that mu is not the mpv(most probable value) of the Landa distribution</span>
+<span class="c1">/// and sigma is not the standard deviation of the distribution which is not defined.</span>
+<span class="c1">/// For mu  =0 and sigma=1, the mpv = -0.22278</span>
+<span class="c1">/// The Landau random number generation is implemented using the</span>
+<span class="c1">/// function landau_quantile(x,sigma), which provides</span>
+<span class="c1">/// the inverse of the landau cumulative distribution.</span>
+<span class="c1">/// landau_quantile has been converted from CERNLIB ranlan(G110).</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Int_t    <span class="hljs-title">Poisson</span><span class="hljs-params">(Double_t mean)</span></span>;<span class="hljs-comment">//&#x6CCA;&#x677E;&#x5206;&#x5E03;&#xFF08;&#x8FD4;&#x56DE;int&#xFF09;</span>
-<span class="hljs-comment">/// Generates a random integer N according to a Poisson law.</span>
-<span class="hljs-comment">/// Prob(N) = exp(-mean)*mean^N/Factorial(N)</span>
-<span class="hljs-comment">/// Use a different procedure according to the mean value.</span>
-<span class="hljs-comment">/// The algorithm is the same used by CLHEP.</span>
-<span class="hljs-comment">/// For lower value (mean &lt; 25) use the rejection method based on</span>
-<span class="hljs-comment">/// the exponential.</span>
-<span class="hljs-comment">/// For higher values use a rejection method comparing with a Lorentzian</span>
-<span class="hljs-comment">/// distribution, as suggested by several authors.</span>
-<span class="hljs-comment">/// This routine since is returning 32 bits integer will not work for values</span>
-<span class="hljs-comment">/// larger than 2*10**9.</span>
-<span class="hljs-comment">/// One should then use the Trandom::PoissonD for such large values.</span>
+<span class="k">virtual</span>  <span class="n">Int_t</span>    <span class="nf">Poisson</span><span class="p">(</span><span class="n">Double_t</span> <span class="n">mean</span><span class="p">);</span><span class="c1">//泊松分布（返回int）</span>
+<span class="c1">/// Generates a random integer N according to a Poisson law.</span>
+<span class="c1">/// Prob(N) = exp(-mean)*mean^N/Factorial(N)</span>
+<span class="c1">/// Use a different procedure according to the mean value.</span>
+<span class="c1">/// The algorithm is the same used by CLHEP.</span>
+<span class="c1">/// For lower value (mean &lt; 25) use the rejection method based on</span>
+<span class="c1">/// the exponential.</span>
+<span class="c1">/// For higher values use a rejection method comparing with a Lorentzian</span>
+<span class="c1">/// distribution, as suggested by several authors.</span>
+<span class="c1">/// This routine since is returning 32 bits integer will not work for values</span>
+<span class="c1">/// larger than 2*10**9.</span>
+<span class="c1">/// One should then use the Trandom::PoissonD for such large values.</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">PoissonD</span><span class="hljs-params">(Double_t mean)</span></span>;<span class="hljs-comment">//&#x6CCA;&#x677E;&#x5206;&#x5E03;&#xFF08;&#x8FD4;&#x56DE;double&#xFF09;</span>
-<span class="hljs-comment">/// Generates a random number according to a Poisson law.</span>
-<span class="hljs-comment">/// Prob(N) = exp(-mean)*mean^N/Factorial(N)</span>
-<span class="hljs-comment">/// This function is a variant of TRandom::Poisson returning a double</span>
-<span class="hljs-comment">/// instead of an integer.</span>
+<span class="k">virtual</span>  <span class="n">Double_t</span> <span class="nf">PoissonD</span><span class="p">(</span><span class="n">Double_t</span> <span class="n">mean</span><span class="p">);</span><span class="c1">//泊松分布（返回double）</span>
+<span class="c1">/// Generates a random number according to a Poisson law.</span>
+<span class="c1">/// Prob(N) = exp(-mean)*mean^N/Factorial(N)</span>
+<span class="c1">/// This function is a variant of TRandom::Poisson returning a double</span>
+<span class="c1">/// instead of an integer.</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">Rannor</span><span class="hljs-params">(Float_t &amp;a, Float_t &amp;b)</span></span>;<span class="hljs-comment">//Return 2 numbers distributed following a gaussian with mean=0 and sigma=1.</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">Rannor</span><span class="hljs-params">(Double_t &amp;a, Double_t &amp;b)</span></span>;<span class="hljs-comment">//Return 2 numbers distributed following a gaussian with mean=0 and sigma=1.</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">ReadRandom</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename)</span></span>;<span class="hljs-comment">//&#x4ECE;root&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x968F;&#x673A;&#x6570;&#x4EA7;&#x751F;&#x5668;</span>
-<span class="hljs-comment">/// Reads saved random generator status from filename.</span>
+<span class="k">virtual</span>  <span class="kt">void</span>     <span class="nf">Rannor</span><span class="p">(</span><span class="n">Float_t</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">Float_t</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span><span class="c1">//Return 2 numbers distributed following a gaussian with mean=0 and sigma=1.</span>
+<span class="k">virtual</span>  <span class="kt">void</span>     <span class="nf">Rannor</span><span class="p">(</span><span class="n">Double_t</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">Double_t</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span><span class="c1">//Return 2 numbers distributed following a gaussian with mean=0 and sigma=1.</span>
+<span class="k">virtual</span>  <span class="kt">void</span>     <span class="nf">ReadRandom</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">filename</span><span class="p">);</span><span class="c1">//从root文件中读取随机数产生器</span>
+<span class="c1">/// Reads saved random generator status from filename.</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">SetSeed</span><span class="hljs-params">(UInt_t seed=<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x968F;&#x673A;&#x79CD;&#x5B50;</span>
-<span class="hljs-comment">/// Set the random generator seed. Note that default value is zero, which is</span>
-<span class="hljs-comment">/// different than the default value used when constructing the class.</span>
-<span class="hljs-comment">/// If the seed is zero the seed is set to a random value</span>
-<span class="hljs-comment">/// which in case of TRandom depends on the lowest 4 bytes of TUUID</span>
-<span class="hljs-comment">/// The UUID will be identical if SetSeed(0) is called with time smaller than 100 ns</span>
-<span class="hljs-comment">/// Instead if a different generator implementation is used (TRandom1, 2 or 3)</span>
-<span class="hljs-comment">/// the seed is generated using a 128 bit UUID. This results in different seeds</span>
-<span class="hljs-comment">/// and then random sequence for every SetSeed(0) call.</span>
+<span class="k">virtual</span>  <span class="kt">void</span>     <span class="nf">SetSeed</span><span class="p">(</span><span class="n">UInt_t</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span><span class="c1">//设置随机种子</span>
+<span class="c1">/// Set the random generator seed. Note that default value is zero, which is</span>
+<span class="c1">/// different than the default value used when constructing the class.</span>
+<span class="c1">/// If the seed is zero the seed is set to a random value</span>
+<span class="c1">/// which in case of TRandom depends on the lowest 4 bytes of TUUID</span>
+<span class="c1">/// The UUID will be identical if SetSeed(0) is called with time smaller than 100 ns</span>
+<span class="c1">/// Instead if a different generator implementation is used (TRandom1, 2 or 3)</span>
+<span class="c1">/// the seed is generated using a 128 bit UUID. This results in different seeds</span>
+<span class="c1">/// and then random sequence for every SetSeed(0) call.</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Rndm</span><span class="hljs-params">(Int_t i=<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">//&#xFF08;0&#xFF0C;1]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
-<span class="hljs-comment">///  Machine independent random number generator.</span>
-<span class="hljs-comment">///  Based on the BSD Unix (Rand) Linear congrential generator.</span>
-<span class="hljs-comment">///  Produces uniformly-distributed floating points between 0 and 1.</span>
-<span class="hljs-comment">///  Identical sequence on all machines of &gt;= 32 bits.</span>
-<span class="hljs-comment">///  Periodicity = 2**31, generates a number in (0,1).</span>
-<span class="hljs-comment">///  Note that this is a generator which is known to have defects</span>
-<span class="hljs-comment">///  (the lower random bits are correlated) and therefore should NOT be</span>
-<span class="hljs-comment">///  used in any statistical study).</span>
+<span class="k">virtual</span>  <span class="n">Double_t</span> <span class="nf">Rndm</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span><span class="c1">//（0，1]均匀分布</span>
+<span class="c1">///  Machine independent random number generator.</span>
+<span class="c1">///  Based on the BSD Unix (Rand) Linear congrential generator.</span>
+<span class="c1">///  Produces uniformly-distributed floating points between 0 and 1.</span>
+<span class="c1">///  Identical sequence on all machines of &gt;= 32 bits.</span>
+<span class="c1">///  Periodicity = 2**31, generates a number in (0,1).</span>
+<span class="c1">///  Note that this is a generator which is known to have defects</span>
+<span class="c1">///  (the lower random bits are correlated) and therefore should NOT be</span>
+<span class="c1">///  used in any statistical study).</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">RndmArray</span><span class="hljs-params">(Int_t n, Float_t *<span class="hljs-built_in">array</span>)</span></span>;<span class="hljs-comment">/// Return an array of n random numbers uniformly distributed in ]0,1].</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">RndmArray</span><span class="hljs-params">(Int_t n, Double_t *<span class="hljs-built_in">array</span>)</span></span>;<span class="hljs-comment">/// Return an array of n random numbers uniformly distributed in ]0,1].</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">Sphere</span><span class="hljs-params">(Double_t &amp;x, Double_t &amp;y, Double_t &amp;z, Double_t r)</span></span>;<span class="hljs-comment">//&#x83B7;&#x5F97;&#x5404;&#x5411;&#x540C;&#x6027;&#x7684;&#x62BD;&#x6837;</span>
-<span class="hljs-comment">/// Generates random vectors, uniformly distributed over the surface</span>
-<span class="hljs-comment">/// of a sphere of given radius.</span>
-<span class="hljs-comment">///   Input : r = sphere radius</span>
-<span class="hljs-comment">///   Output: x,y,z a random 3-d vector of length r</span>
-<span class="hljs-comment">/// Method: (based on algorithm suggested by Knuth and attributed to Robert E Knop)</span>
-<span class="hljs-comment">///         which uses less random numbers than the CERNLIB RN23DIM algorithm</span>
+<span class="k">virtual</span>  <span class="kt">void</span>     <span class="nf">RndmArray</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">Float_t</span> <span class="o">*</span><span class="n">array</span><span class="p">);</span><span class="c1">/// Return an array of n random numbers uniformly distributed in ]0,1].</span>
+<span class="k">virtual</span>  <span class="kt">void</span>     <span class="nf">RndmArray</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">Double_t</span> <span class="o">*</span><span class="n">array</span><span class="p">);</span><span class="c1">/// Return an array of n random numbers uniformly distributed in ]0,1].</span>
+<span class="k">virtual</span>  <span class="kt">void</span>     <span class="nf">Sphere</span><span class="p">(</span><span class="n">Double_t</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">Double_t</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">,</span> <span class="n">Double_t</span> <span class="o">&amp;</span><span class="n">z</span><span class="p">,</span> <span class="n">Double_t</span> <span class="n">r</span><span class="p">);</span><span class="c1">//获得各向同性的抽样</span>
+<span class="c1">/// Generates random vectors, uniformly distributed over the surface</span>
+<span class="c1">/// of a sphere of given radius.</span>
+<span class="c1">///   Input : r = sphere radius</span>
+<span class="c1">///   Output: x,y,z a random 3-d vector of length r</span>
+<span class="c1">/// Method: (based on algorithm suggested by Knuth and attributed to Robert E Knop)</span>
+<span class="c1">///         which uses less random numbers than the CERNLIB RN23DIM algorithm</span>
 
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Uniform</span><span class="hljs-params">(Double_t x1=<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">/// Returns a uniform deviate on the interval  (0, x1).</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  Double_t <span class="hljs-title">Uniform</span><span class="hljs-params">(Double_t x1, Double_t x2)</span></span>;<span class="hljs-comment">//&#xFF08;x1&#xFF0C;x2]&#x5747;&#x5300;&#x5206;&#x5E03;</span>
-<span class="hljs-function"><span class="hljs-keyword">virtual</span>  <span class="hljs-keyword">void</span>     <span class="hljs-title">WriteRandom</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename)</span></span>;<span class="hljs-comment">//&#x5C06;&#x8BE5;&#x968F;&#x673A;&#x6570;&#x4EA7;&#x751F;&#x5668;&#x5B58;&#x4E3A;root&#x6587;&#x4EF6; Writes random generator status to filename.</span>
-</code></pre>
-<h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>code</h2>
-<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;TRandom.h&quot;</span></span>
-TRandom r;
-r.Rndm();
-r.Gaus();
-r.Gaus(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>);
-</code></pre>
-<pre><code class="lang-cpp"><span class="hljs-comment">// A TRandom object may be written to a Root file : as part of another object or with its own key </span>
-gRandom-&gt;Write(<span class="hljs-string">&quot;Random&quot;</span>);
-</code></pre>
-<h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>example</h2>
-<pre><code class="lang-cpp">
-
-</code></pre>
-<!-- TRandom.md ends here -->
-<script type="text/javascript">var className='atoc';</script>
-
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="http://wuhongyi.cn/" target="_blank">&#xA9; Hongyi Wu</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated:</i> 2018-05-14 17:18:22 </span> </footer>
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
+<span class="k">virtual</span>  <span class="n">Double_t</span> <span class="nf">Uniform</span><span class="p">(</span><span class="n">Double_t</span> <span class="n">x1</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span><span class="c1">/// Returns a uniform deviate on the interval  (0, x1).</span>
+<span class="k">virtual</span>  <span class="n">Double_t</span> <span class="nf">Uniform</span><span class="p">(</span><span class="n">Double_t</span> <span class="n">x1</span><span class="p">,</span> <span class="n">Double_t</span> <span class="n">x2</span><span class="p">);</span><span class="c1">//（x1，x2]均匀分布</span>
+<span class="k">virtual</span>  <span class="kt">void</span>     <span class="nf">WriteRandom</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">filename</span><span class="p">);</span><span class="c1">//将该随机数产生器存为root文件 Writes random generator status to filename.</span>
+</pre></div>
 </div>
-
-                        </div>
-                    </div>
-                
-            </div>
-
-            
-                
-                <a href="TMinuitMinimizer.html" class="navigation navigation-prev " aria-label="Previous page: TMinuitMinimizer*">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="TRandom1.html" class="navigation navigation-next " aria-label="Next page: TRandom1*">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
-
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TRandom*","level":"1.4.61","depth":2,"next":{"title":"TRandom1*","level":"1.4.62","depth":2,"path":"class/TRandom1.md","ref":"class/TRandom1.md","articles":[]},"previous":{"title":"TMinuitMinimizer*","level":"1.4.60","depth":2,"path":"class/TMinuitMinimizer.md","ref":"class/TMinuitMinimizer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["search","sharing","fontsettings","livereload","highlight","github","-prism","ad","alerts","atoc","splitter","sitemap","image-captions","anchors","latex-codecogs","-katex","mermaid","ace","page-footer-ex","sectionx","mcqx","fbqx","spoiler","anchor-navigation","youtubex","redirect","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"spoiler":{},"ad":{"contentBottom":"","contentTop":""},"ace":{},"github":{"url":"https://github.com/wuhongyi"},"fbqx":{},"livereload":{},"page-footer-ex":{"copyright":"[© Hongyi Wu](http://wuhongyi.cn/)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated:</i>"},"atoc":{"addClass":true,"className":"atoc"},"splitter":{},"search":{},"mermaid":{},"anchor-navigation":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"serif","size":2,"theme":"sepia"},"sectionx":{},"highlight":{},"sitemap":{"hostname":"http://wuhongyi.cn/"},"youtubex":{"embedDescription":{"de":"Eingebettetes Video:","default":"Embedded video:"}},"alerts":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"redirect":{},"mcqx":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"variable_name":"_pictures"}},"theme":"default","author":"Hongyi Wu(吴鸿毅)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[]},"title":"ROOT Note","gitbook":"*","description":"吴鸿毅笔记"},"file":{"path":"class/TRandom.md","mtime":"2018-05-14T09:18:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2019-03-31T11:19:06.525Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
+</div>
+<div class="section" id="code">
+<h2>code<a class="headerlink" href="#code" title="永久链接至标题">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;TRandom.h&quot;</span><span class="cp"></span>
+<span class="n">TRandom</span> <span class="n">r</span><span class="p">;</span>
+<span class="n">r</span><span class="p">.</span><span class="n">Rndm</span><span class="p">();</span>
+<span class="n">r</span><span class="p">.</span><span class="n">Gaus</span><span class="p">();</span>
+<span class="n">r</span><span class="p">.</span><span class="n">Gaus</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// A TRandom object may be written to a Root file : as part of another object or with its own key </span>
+<span class="n">gRandom</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">(</span><span class="s">&quot;Random&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>example<a class="headerlink" href="#example" title="永久链接至标题">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<!-- TRandom.md ends here --></div>
 </div>
 
 
-        
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-ad/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-alerts/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-atoc/atoc.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-ace/ace.js"></script>
-        
-    
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
-        
-    
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-mcqx/js.cookie.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-mcqx/mcqx.js"></script>
-        
-    
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fbqx/fbqx.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-spoiler/spoiler.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-youtubex/player.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="TRandom1.html" class="btn btn-neutral float-right" title="TRandom1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="TMinuitMinimizer.html" class="btn btn-neutral float-left" title="TMinuitMinimizer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-    </body>
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
 </html>
-

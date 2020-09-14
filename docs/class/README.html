@@ -1,0 +1,943 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>类的使用 &mdash; ROOT Note 1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="TObject" href="TObject.html" />
+    <link rel="prev" title="简介" href="../README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ROOT Note
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">简介</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">简介</a></li>
+</ul>
+<p class="caption"><span class="caption-text">base类的使用</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">类的使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">画图参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">未分类</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TObject.html">TObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTask.html">TTask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Buttons.html">Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNamed.html">TNamed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TStyle.html">TStyle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSystem.html">TSystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TROOT.html">TROOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFolder.html">TFolder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TEnv.html">TEnv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMacro.html">TMacro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TApplication.html">TApplication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProcessID.html">TProcessID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProcessUUID.html">TProcessUUID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TString.html">TString</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TColor.html">TColor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBase64.html">TBase64</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMD5.html">TMD5</a></li>
+</ul>
+<p class="caption"><span class="caption-text">IO类的使用</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">类的使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">画图参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">未分类</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TKey.html">TKey</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TDirectory.html">TDirectory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TDirectoryFile.html">TDirectoryFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSystemFile.html">TSystemFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSystemDirectory.html">TSystemDirectory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFile.html">TFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFileCacheWrite.html">TFileCacheWrite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFileCacheRead.html">TFileCacheRead</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFileMerger.html">TFileMerger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMemFile.html">TMemFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TKeyMapFile.html">TKeyMapFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMapFile.html">TMapFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TArchiveFile.html">TArchiveFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TZIPFile.html">TZIPFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFilePrefetch.html">TFilePrefetch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFPBlock.html">TFPBlock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="THDFSFile.html">THDFSFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBuffer.html">TBuffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBufferFile.html">TBufferFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBufferJSON.html">TBufferJSON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TKeySQL.html">TKeySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSQLObjectData.html">TSQLObjectData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSQLStructure.html">TSQLStructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSQLClassInfo.html">TSQLClassInfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBufferSQL2.html">TBufferSQL2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSQLFile.html">TSQLFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXMLEngine.html">TXMLEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBufferXML.html">TBufferXML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXMLSetup.html">TXMLSetup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TKeyXML.html">TKeyXML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXMLPlayer.html">TXMLPlayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TXMLFile.html">TXMLFile</a></li>
+</ul>
+<p class="caption"><span class="caption-text">常用类的使用</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">类的使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">画图参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">未分类</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TTree.html">TTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TCut.html">TCut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTreePlayer.html">TTreePlayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TChain.html">TChain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TEventList.html">TEventList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBranch.html">TBranch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNtuple.html">TNtuple</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNtupleD.html">TNtupleD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNtupleD.html#example">example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TCollection.html">TCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSeqCollection.html">TSeqCollection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TList.html">TList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TVirtualFitter.html">TVirtualFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBackCompFitter.html">TBackCompFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FitResult.html">FitResult</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFitter.html">TFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFitResult.html">TFitResult</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFitResultPtr.html">TFitResultPtr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TFractionFitter.html">TFractionFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLinearFitter.html">TLinearFitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TAttAxis.html">TAttAxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TAxis.html">TAxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGaxis.html">TGaxis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGaxis.html#example">example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TText.html">TText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPaveStats.html">TPaveStats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPolyMarker.html">TPolyMarker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPaveText.html">TPaveText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPolyMarker3D.html">TPolyMarker3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLatex.html">TLatex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLegend.html">TLegend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLegendEntry.html">TLegendEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TLine.html">TLine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TVirtualPad.html">TVirtualPad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPad.html">TPad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TCanvas.html">TCanvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TF1.html">TF1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TF2.html">TF2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TF3.html">TF3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraph.html">TGraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TCutG.html">TCutG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMultiGraph.html">TMultiGraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraph2D.html">TGraph2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraph2DErrors.html">TGraph2DErrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraphErrors.html">TGraphErrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TGraphPolar.html">TGraphPolar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TH1.html">TH1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TH2.html">TH2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TH2Poly.html">TH2Poly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TH3.html">TH3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProfile.html">TProfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProfile2D.html">TProfile2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TProfile3D.html">TProfile3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMath.html">TMath</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMathBase.html">TMathBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMatrixT.html">TMatrixT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMatrixTBase.html">TMatrixTBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMatrixTSparse.html">TMatrixTSparse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMatrixTSym.html">TMatrixTSym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpline.html">TSpline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMinuit.html">TMinuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMinuitMinimizer.html">TMinuitMinimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TRandom.html">TRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TRandom1.html">TRandom1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TRandom2.html">TRandom2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TRandom3.html">TRandom3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelector.html">TSelector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorCint.html">TSelectorCint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorDraw.html">TSelectorDraw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorEntries.html">TSelectorEntries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorList.html">TSelectorList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSelectorScalar.html">TSelectorScalar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum.html">TSpectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum2.html">TSpectrum2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum2Fit.html">TSpectrum2Fit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum2Painter.html">TSpectrum2Painter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum2Transform.html">TSpectrum2Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrum3.html">TSpectrum3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrumFit.html">TSpectrumFit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSpectrumTransform.html">TSpectrumTransform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTime.html">TTime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTimer.html">TTimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTimeStamp.html">TTimeStamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TStopwatch.html">TStopwatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TBenchmark.html">TBenchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TThread.html">TThread</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TThreadFactory.html">TThreadFactory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TThreadImp.html">TThreadImp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TServerSocket.html">TServerSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TSocket.html">TSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPServerSocket.html">TPServerSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TPSocket.html">TPSocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TEllipse.html">TEllipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TNeuron.html">TNeuron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMLPAnalyzer.html">TMLPAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMonitor.html">TMonitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TMultiLayerPerceptron.html">TMultiLayerPerceptron</a></li>
+</ul>
+<p class="caption"><span class="caption-text">图形界面的使用</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gui/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/GuiTypes.html">GuiTypes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGButton.html">TGButton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGButtonGroup.html">TGButtonGroup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGCanvas.html">TGCanvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGClient.html">TGClient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGColorDialog.html">TGColorDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGColorSelect.html">TGColorSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGComboBox.html">TGComboBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGCommandPlugin.html">TGCommandPlugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGDimension.html">TGDimension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGDNDManager.html">TGDNDManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGDockableFrame.html">TGDockableFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGDoubleSlider.html">TGDoubleSlider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGEventHandler.html">TGEventHandler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFileBrowser.html">TGFileBrowser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFileDialog.html">TGFileDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFont.html">TGFont</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFontDialog.html">TGFontDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFrame.html">TGFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFSComboBox.html">TGFSComboBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGFSContainer.html">TGFSContainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGGC.html">TGGC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGIcon.html">TGIcon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGIdleHandler.html">TGIdleHandler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGImageMap.html">TGImageMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGInputDialog.html">TGInputDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGLabel.html">TGLabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGLayout.html">TGLayout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGListBox.html">TGListBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGListTree.html">TGListTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGListView.html">TGListView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMdiDecorFrame.html">TGMdiDecorFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMdiFrame.html">TGMdiFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMdiMainFrame.html">TGMdiMainFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMdiMenu.html">TGMdiMenu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMenu.html">TGMenu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMimeTypes.html">TGMimeTypes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGMsgBox.html">TGMsgBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGNumberEntry.html">TGNumberEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGObject.html">TGObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGPack.html">TGPack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGPasswdDialog.html">TGPasswdDialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGPicture.html">TGPicture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGProgressBar.html">TGProgressBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGRedirectOutputGuard.html">TGRedirectOutputGuard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGResourcePool.html">TGResourcePool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGScrollBar.html">TGScrollBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGShapedFrame.html">TGShapedFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGShutter.html">TGShutter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSimpleTable.html">TGSimpleTable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSimpleTableInterface.html">TGSimpleTableInterface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSlider.html">TGSlider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSpeedo.html">TGSpeedo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSplitFrame.html">TGSplitFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGSplitter.html">TGSplitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGStatusBar.html">TGStatusBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGString.html">TGString</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTab.html">TGTab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTable.html">TGTable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTableCell.html">TGTableCell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTableContainer.html">TGTableContainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTableHeader.html">TGTableHeader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTableLayout.html">TGTableLayout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGText.html">TGText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextBuffer.html">TGTextBuffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextEdit.html">TGTextEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextEditDialogs.html">TGTextEditDialogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextEditor.html">TGTextEditor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextEntry.html">TGTextEntry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextView.html">TGTextView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTextViewStream.html">TGTextViewStream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGToolBar.html">TGToolBar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGToolTip.html">TGToolTip</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGTripleSlider.html">TGTripleSlider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGuiBuilder.html">TGuiBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGView.html">TGView</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGWidget.html">TGWidget</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGWindow.html">TGWindow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TGXYLayout.html">TGXYLayout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TQObject.html">TQObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui/TRootEmbeddedCanvas.html">TRootEmbeddedCanvas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GRAF3D</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TAxis3D.html">TAxis3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TBRIK.html">TBRIK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TCONE.html">TCONE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TCONS.html">TCONS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TCTUB.html">TCTUB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TELTU.html">TELTU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TGeometry.html">TGeometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TGTRA.html">TGTRA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/THelix.html">THelix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/THYPE.html">THYPE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TMarker3DBox.html">TMarker3DBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TMaterial.html">TMaterial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TMixture.html">TMixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TNodeDiv.html">TNodeDiv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TNode.html">TNode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPARA.html">TPARA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPCON.html">TPCON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPGON.html">TPGON</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPoints3DABC.html">TPoints3DABC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPointSet3D.html">TPointSet3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPolyLine3D.html">TPolyLine3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TPolyMarker3D.html">TPolyMarker3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TRotMatrix.html">TRotMatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TShape.html">TShape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TSPHE.html">TSPHE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTRAP.html">TTRAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTRD1.html">TTRD1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTRD2.html">TTRD2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTUBE.html">TTUBE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TTUBS.html">TTUBS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TView3D.html">TView3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/TXTRU.html">TXTRU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graf3d/X3DBuffer.html">X3DBuffer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">physics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="math/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TFeldmanCousins.html">TFeldmanCousins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TGenPhaseSpace.html">TGenPhaseSpace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TLorentzRotation.html">TLorentzRotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TLorentzVector.html">TLorentzVector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TQuaternion.html">TQuaternion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TRobustEstimator.html">TRobustEstimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TRolke.html">TRolke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TRotation.html">TRotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TVectorT.html">TVectorT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TVector2.html">TVector2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/TVector3.html">TVector3</a></li>
+</ul>
+<p class="caption"><span class="caption-text">net</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="net/README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/TCivetweb.html">TCivetweb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/TFastCgi.html">TFastCgi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpCallArg.html">THttpCallArg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpEngine.html">THttpEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpServer.html">THttpServer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpWSEngine.html">THttpWSEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/THttpWSHandler.html">THttpWSHandler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/TRootSniffer.html">TRootSniffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net/TRootSnifferStore.html">TRootSnifferStore</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数据结构</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../structure/README.html">数据结构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/datarecord.html">datarecord</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/dobject.html">dataobject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/freesegments.html">FreeSegments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/gap.html">gap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/header.html">header</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/keyslist.html">KeysList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/StreamerInfo.html">StreamerInfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TClonesArray.html">TClonesArray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TDirectory.html">TDirectory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TFile.html">TFile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TObject.html">TObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TProcessID.html">TProcessID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TRefArray.html">TRefArray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TRef.html">TRef</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structure/TTree.html">TTree</a></li>
+</ul>
+<p class="caption"><span class="caption-text">预定义</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../define/README.html">预定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../define/RVersion.html">RVersion</a></li>
+</ul>
+<p class="caption"><span class="caption-text">文件版本</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../version/version.html">文件更新版本</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ROOT Note</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>类的使用</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/class/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!-- README.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 五 12月  5 11:27:32 2014 (+0800)
+;; Last-Updated: 一 10月 31 21:53:53 2016 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 17
+;; URL: http://wuhongyi.cn --><div class="section" id="id1">
+<h1>类的使用<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<!-- A B C D E F G H I J K L M N O P Q R S T U V W X Y Z --><p>本章主要介绍常用类中的函数</p>
+<p>包括：函数的使用、函数的参数设置、示例代码等</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Char_t</span>      <span class="c1">//Signed Character 1 byte</span>
+<span class="n">UChar_t</span>     <span class="c1">//Unsigned Character 1 byte</span>
+<span class="n">Short_t</span>      <span class="c1">//Signed Short integer 2 bytes</span>
+<span class="n">UShort_t</span>    <span class="c1">//Unsigned Short integer 2 bytes</span>
+<span class="n">Int_t</span>       <span class="c1">//Signed integer 4 bytes</span>
+<span class="n">UInt_t</span>      <span class="c1">//Unsigned integer 4 bytes</span>
+<span class="n">Long64_t</span>    <span class="c1">//Portable signed long integer 8 bytes</span>
+<span class="n">ULong64_t</span>   <span class="c1">//Portable unsigned long integer 8 bytes</span>
+<span class="n">Float_t</span>     <span class="c1">//Float 4 bytes</span>
+<span class="n">Double_t</span>    <span class="c1">//Float 8 bytes</span>
+<span class="n">Double32_t</span>  <span class="c1">//Double 8 bytes in memory, written as a Float 4 bytes</span>
+<span class="n">Bool_t</span>      <span class="c1">//Boolean (0=false, 1=true)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The symbols used for the type are:
+C: a character string terminated by the 0 character
+B: an 8 bit signed integer
+b: an 8 bit unsigned integer
+S: a 16 bit signed integer
+s: a 16 bit unsigned integer
+I: a 32 bit signed integer
+i: a 32 bit unsigned integer
+L: a 64 bit signed integer
+l: a 64 bit unsigned integer
+F: a 32 bit floating point
+D: a 64 bit floating point
+O: [the letter ‘o’, not a zero] a boolean (Bool_t)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">information</span> <span class="n">shown</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">histogram</span> <span class="n">statistics</span> <span class="n">box</span> <span class="n">can</span> <span class="n">be</span> <span class="n">selected</span> <span class="k">with</span><span class="p">:</span>
+      <span class="n">gStyle</span><span class="o">-&gt;</span><span class="n">SetOptStat</span><span class="p">(</span><span class="n">mode</span><span class="p">);</span>
+
+<span class="n">The</span> <span class="s2">&quot;mode&quot;</span> <span class="n">has</span> <span class="n">up</span> <span class="n">to</span> <span class="n">nine</span> <span class="n">digits</span> <span class="n">that</span> <span class="n">can</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">on</span> <span class="p">(</span><span class="mi">1</span> <span class="ow">or</span> <span class="mi">2</span><span class="p">),</span> <span class="n">off</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span>
+
+      <span class="n">mode</span> <span class="o">=</span> <span class="n">ksiourmen</span>  <span class="p">(</span><span class="n">default</span> <span class="o">=</span> <span class="mi">000001111</span><span class="p">)</span>
+      <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">kurtosis</span> <span class="n">printed</span>
+      <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="n">kurtosis</span> <span class="ow">and</span> <span class="n">kurtosis</span> <span class="n">error</span> <span class="n">printed</span>
+      <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">skewness</span> <span class="n">printed</span>
+      <span class="n">s</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="n">skewness</span> <span class="ow">and</span> <span class="n">skewness</span> <span class="n">error</span> <span class="n">printed</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">integral</span> <span class="n">of</span> <span class="n">bins</span> <span class="n">printed</span>
+      <span class="n">o</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">number</span> <span class="n">of</span> <span class="n">overflows</span> <span class="n">printed</span>
+      <span class="n">u</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">number</span> <span class="n">of</span> <span class="n">underflows</span> <span class="n">printed</span>
+      <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">rms</span> <span class="n">printed</span>
+      <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="n">rms</span> <span class="ow">and</span> <span class="n">rms</span> <span class="n">error</span> <span class="n">printed</span>
+      <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">mean</span> <span class="n">value</span> <span class="n">printed</span>
+      <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="n">mean</span> <span class="ow">and</span> <span class="n">mean</span> <span class="n">error</span> <span class="n">values</span> <span class="n">printed</span>
+      <span class="n">e</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">number</span> <span class="n">of</span> <span class="n">entries</span> <span class="n">printed</span>
+      <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">name</span> <span class="n">of</span> <span class="n">histogram</span> <span class="ow">is</span> <span class="n">printed</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfClasses</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfColors</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfTypes</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfGlobals</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfGlobalFunctions</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfFiles</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfMappedFiles</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfSockets</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfCanvases</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfStyles</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfFunctions</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfSpecials</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfGeometries</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfBrowsers</span><span class="p">()</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfMessageHandlers</span><span class="p">()</span>
+<span class="c1">//These methods return a TSeqCollection, meaning a collection of objects, and they can be used to do list operations such as finding an object, or traversing the list and calling a method for each of the members. See the TCollection class description for the full set of methods supported for a collection. For example, to find a canvas called c1you can do:</span>
+<span class="n">root</span><span class="p">[]</span> <span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">GetListOfCanvases</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">FindObject</span><span class="p">(</span><span class="s">&quot;c1&quot;</span><span class="p">)</span>
+<span class="c1">//This returns a pointer to a TObject, and before you can use it as a canvas you need to cast it to a TCanvas*.</span>
+
+
+<span class="c1">//A graphic object is always drawn on the active pad. It is convenient to access the active pad, no matter what it is. For that, we have gPad that is always pointing to the active pad. For example, if you want to change the fill color of the active pad to blue, but you do not know its name, you can use gPad .</span>
+<span class="n">root</span><span class="p">[]</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetFillColor</span><span class="p">(</span><span class="mi">38</span><span class="p">)</span>
+
+<span class="c1">// gRandom 默认调用 TRandom3</span>
+
+<span class="c1">//gRandom is a pointer to the current random number generator. By default, it points to a TRandom3 object, based on the “Mersenne-Twister” generator. This generator is very fast and has very good random proprieties (a very long period of 10600 ). Setting the seed to 0 implies that the seed will be uniquely generated using the TUUID. Any other value will be used as a constant. The following basic random distributions are provided: Rndm() or Uniform(min,max), Gaus(mean,sigma), Exp(tau), BreitWigner(mean,sigma), Landau(mean,sigma), Poisson(mean), Binomial(ntot,prob). You can customize your ROOT session by replacing the random number generator. You can delete gRandom and recreate it with your own. For example:</span>
+<span class="n">root</span><span class="p">[]</span> <span class="k">delete</span> <span class="n">gRandom</span><span class="p">;</span>
+<span class="n">root</span><span class="p">[]</span> <span class="n">gRandom</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TRandom2</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//seed=0</span>
+<span class="c1">//TRandom2 is another generator, which is also very fast and uses only three words for its state.</span>
+
+
+<span class="c1">//gFile is the pointer to the current opened file in the ROOT session.</span>
+
+<span class="c1">//gDirectory is a pointer to the current directory. The concept and role of a directory is explained in the chapter “Input/Output”.</span>
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h2>画图参数<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//Fitting Histograms
+
+• *fname:The name of the fitted function (the model) is passed as the first parameter. This name may be one of ROOT pre-defined function names or a user-defined function. The functions below are predefined, and can be used with the TH1::Fit method:
+• “gaus” Gaussian function with 3 parameters: f(x) = p0*exp(-0.5*((x-p1)/p2)ˆ2)
+• “expo”An Exponential with 2 parameters: f(x) = exp(p0+p1*x)
+• “polN ” A polynomial of degree N : f(x) = p0 + p1*x + p2*x2 +...
+• “landau” Landau function with mean and sigma. This function has been adaptedfrom the CERNLIB routine G110 denlan.
+• *option:The second parameter is the fitting option. Here is the list of fitting options:
+• “W” Set all weights to 1 for non empty bins; ignore error bars
+• “WW” Set all weights to 1 including empty bins; ignore error bars
+• “I” Use integral of function in bin instead of value at bin center
+• “L” Use log likelihood method (default is chi-square method)
+• “U” Use a user specified fitting algorithm
+• “Q” Quiet mode (minimum printing)
+• “V” Verbose mode (default is between Q and V)
+• “E” Perform better errors estimation using the Minos technique
+• “M” Improve fit results
+• “R” Use the range specified in the function range
+• “N” Do not store the graphics function, do not draw
+• “0” Do not plot the result of the fit. By default the fitted function is drawn unless the option “N” above is specified.
+• “+” Add this new fitted function to the list of fitted functions (by default, the previous function is deleted and only the last one is kept)
+• “B”Use this option when you want to fix one or more parameters and the fitting function is like polN, expo, landau, gaus.
+• “LL”An improved Log Likelihood fit in case of very low statistics and when bincontentsare not integers. Do not use this option if bin contents are large (greater than 100).
+• “C”In case of linear fitting, don’t calculate the chisquare (saves time).
+• “F”If fitting a polN, switch to Minuit fitter (by default, polN functions are fitted by the linear fitter).
+• *goption:The third parameter is the graphics option that is the same as in the TH1::Draw (see the chapter Draw Options).
+• xxmin, xxmax:Thee fourth and fifth parameters specify the range over which to apply the fit.
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//Graph Draw Options
+The various drawing options for a graph are explained in TGraph::PaintGraph. They are:
+• “L” A simple poly-line between every points is drawn   //折线图,将每个bin用线连接
+• “F” A fill area is drawn
+• “F1” Idem as “F” but fill area is no more repartee around X=0 or Y=0
+• “F2” draw a fill area poly line connecting the center of bins
+• “A” Axis are drawn around the graph
+• “C” A smooth curve is drawn  //将每个bin用一条光滑的曲线连接起来
+• “*” A star is plotted at each point//每个点用*表示
+• “P” The current marker of the graph is plotted at each point
+• “B” A bar chart is drawn at each point
+• “[]” Only the end vertical/horizontal lines of the error bars are drawn. This option only applies to the TGraphAsymmErrors.
+• “1” ylow = rwymin
+
+The TGraphPolar drawing options are:
+“O” Polar labels are paint orthogonally to the polargram radius.
+“P” Polymarker are paint at each point position.
+“E” Paint error bars.
+“F” Paint fill area (closed polygon).
+“A”Force axis redrawing even if a polagram already exists.
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//Draw Options                   //eg. h-&gt;Draw(&quot;E1SAME&quot;); 或 h-&gt;SetOption(&quot;lego&quot;);h-&gt;Draw();
+The following draw options are supported on all histogram classes:
+• “AXIS”: Draw only the axis.
+• “HIST”: When a histogram has errors, it is visualized by default with error bars. To visualize it without errors use HIST together with the required option (e.g. “HIST SAME C”).
+• “SAME”: Superimpose on previous picture in the same pad.
+• “CYL”: Use cylindrical coordinates.
+• “POL”: Use polar coordinates.
+• “SPH”: Use spherical coordinates.
+• “PSR”: Use pseudo-rapidity/phi coordinates.  //通常的二维直方图
+• “LEGO”: Draw a lego plot with hidden line removal.
+• “LEGO1”: Draw a lego plot with hidden surface removal.
+• “LEGO2”: Draw a lego plot using colors to show the cell contents.
+• “SURF”: Draw a surface plot with hidden line removal.
+• “SURF1”: Draw a surface plot with hidden surface removal.
+• “SURF2”: Draw a surface plot using colors to show the cell contents.
+• “SURF3”: Same as SURF with a contour view on the top.
+• “SURF4”: Draw a surface plot using Gouraud shading.
+• “SURF5”: Same as SURF3 but only the colored contour is drawn. Used with option CYL , SPH or PSR it allows to draw colored contours on a sphere, a cylinder or in a pseudo rapidly space. In Cartesian or polar coordinates,option SURF3 is used.
+
+The following options are supported for 1-D histogram classes:
+• “AH”: Draw the histogram, but not the axis labels and tick marks
+• “B”: Draw a bar chart
+• “C”: Draw a smooth curve through the histogram bins  //将每个bin用一条光滑的曲线连接起来
+• “E”: Draw the error bars    //“E0”- “E4” 与误差有关的参数
+• “E0”: Draw the error bars including bins with 0 contents
+• “E1”: Draw the error bars with perpendicular lines at the edges  //垂直方向的误差棒
+• “E2”: Draw the error bars with rectangles
+• “E3”: Draw a fill area through the end points of the vertical error bars
+• “E4”: Draw a smoothed filled area through the end points of the error bars
+• “L”: Draw a line through the bin contents  //将每个bin用线连接
+• “P”: Draw a (poly)marker at each bin using the histogram’s current marker style
+• “P0”: Draw current marker at each bin including empty bins
+• “PIE”: Draw a Pie Chart
+• “*H”: Draw histogram with a * at each bin
+• “LF2”: Draw histogram as with option “L” but with a fill area. Note that “L” also draws a fill area if the histogram fill color is set but the fill area corresponds to the histogram contour.
+• “9”: Force histogram to be drawn in high resolution mode. By default, the histogram is drawn in low resolution in case the number of bins is greater than the number of pixels in the current pad
+• “][”: Draw histogram without the vertical lines for the first and the last bin. Use it when superposing many histograms on the same picture.
+
+The following options are supported for 2-D histogram classes:
+• “ARR”: Arrow mode. Shows gradient between adjacent cells
+• “BOX”: Draw a box for each cell with surface proportional to contents  //每个单元画一BOX，Box面积正比于bin contents
+• “BOX1”: A sunken button is drawn for negative values, a raised one for positive values
+• “COL”: Draw a box for each cell with a color scale varying with contents  //每个单元画一个box，颜色与 bin contents相关
+• “COLZ”: Same as “COL” with a drawn color palette  //同col，但是画一个条显示颜色与内容对应关系
+• “CONT”: Draw a contour plot (same as CONT0 )  //画轮廓图
+• “CONTZ”: Same as “CONT” with a drawn color palette
+• “CONT0”: Draw a contour plot using surface colors to distinguish contours
+• “CONT1”: Draw a contour plot using line styles to distinguish contours
+• “CONT2”: Draw a contour plot using the same line style for all contours
+• “CONT3”: Draw a contour plot using fill area colors
+• “CONT4”: Draw a contour plot using surface colors (SURF2 option at theta = 0)
+• &quot;CONT5&quot;: Use Delaunay triangles to compute the contours
+• “LIST”: Generate a list of TGraph objects for each contour
+• “FB”: To be used with LEGO or SURFACE , suppress the Front-Box
+• “BB”: To be used with LEGO or SURFACE , suppress the Back-Box
+• “A”: To be used with LEGO or SURFACE , suppress the axis
+• “SCAT”: Draw a scatter-plot (default)  //绘制散点图
+• “SPEC”: Use TSpectrum2Painter tool for drawing
+• “TEXT”: Draw bin contents as text (format set via gStyle-&gt;SetPaintTextFormat) .
+• “TEXTnn”: Draw bin contents as text at angle nn ( 0&lt;nn&lt;90 ).
+• “[cutg]”: Draw only the sub-range selected by the TCutG name “cutg”.
+• “Z”: The “Z” option can be specified with the options: BOX, COL, CONT, SURF, and LEGO to display the color palette with an axis indicating the value of the corresponding color on the right side ofthe picture.
+
+The following options are supported for 3-D histogram classes:
+• &quot; &quot; : Draw a 3D scatter plot.
+• “BOX”: Draw a box for each cell with volume proportional to contents
+• “LEGO”: Same as “BOX”
+• “ISO”: Draw an iso surface
+• “FB”: Suppress the Front-Box
+• “BB”: Suppress the Back-Box
+• “A”: Suppress the axis
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>未分类<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//支持中文显示</span>
+<span class="s">&quot;</span><span class="se">\\</span><span class="s">hbox{RHIC スピン物理 Нью-Йорк}&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//直方图上不要TPave</span>
+<span class="n">gStyle</span><span class="o">-&gt;</span><span class="n">SetOptStat</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">title</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="n">TObjArray</span> <span class="nf">Hlist</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">TH1F</span><span class="o">*</span> <span class="n">h</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">Int_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">sprintf</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="s">&quot;h%d&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>   <span class="c1">//把格式化的数据写入字符串中</span>
+<span class="n">sprintf</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="s">&quot;histo nr:%d&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+<span class="n">h</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1F</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">Hlist</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">h</span><span class="o">-&gt;</span><span class="n">FillRandom</span><span class="p">(</span><span class="s">&quot;gaus&quot;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);}</span>
+<span class="n">TFile</span> <span class="n">f</span><span class="p">(</span><span class="s">&quot;demo.root&quot;</span><span class="p">,</span><span class="s">&quot;recreate&quot;</span><span class="p">);</span>
+<span class="n">Hlist</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
+<span class="n">f</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TH3D</span> <span class="o">*</span><span class="n">h3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH3D</span><span class="p">(</span><span class="s">&quot;h3&quot;</span><span class="p">,</span> <span class="s">&quot;h3&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="n">Double_t</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">Int_t</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">gRandom</span><span class="o">-&gt;</span><span class="n">Rannor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>     
+<span class="n">z</span><span class="o">=</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">;</span>
+<span class="n">h3</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">h3</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;iso&quot;</span><span class="p">);</span>
+
+<span class="n">TF3</span> <span class="o">*</span><span class="n">fun3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TF3</span><span class="p">(</span><span class="s">&quot;fun3&quot;</span><span class="p">,</span><span class="s">&quot;sin(x*x+y*y+z*z-36)&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">fun3</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//进度滑动条</span>
+<span class="n">TCanvas</span> <span class="o">*</span><span class="n">c1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCanvas</span><span class="p">(</span><span class="s">&quot;c1&quot;</span><span class="p">,</span><span class="s">&quot;The HSUM example&quot;</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">400</span><span class="p">);</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetGrid</span><span class="p">();</span>
+<span class="n">gBenchmark</span><span class="o">-&gt;</span><span class="n">Start</span><span class="p">(</span><span class="s">&quot;hsum&quot;</span><span class="p">);</span>
+<span class="c1">// Create some histograms.</span>
+<span class="k">auto</span> <span class="n">total</span>  <span class="o">=</span> <span class="k">new</span> <span class="n">TH1F</span><span class="p">(</span><span class="s">&quot;total&quot;</span><span class="p">,</span><span class="s">&quot;This is the total distribution&quot;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">main</span>   <span class="o">=</span> <span class="k">new</span> <span class="n">TH1F</span><span class="p">(</span><span class="s">&quot;main&quot;</span><span class="p">,</span><span class="s">&quot;Main contributor&quot;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">s1</span>     <span class="o">=</span> <span class="k">new</span> <span class="n">TH1F</span><span class="p">(</span><span class="s">&quot;s1&quot;</span><span class="p">,</span><span class="s">&quot;This is the first signal&quot;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">s2</span>     <span class="o">=</span> <span class="k">new</span> <span class="n">TH1F</span><span class="p">(</span><span class="s">&quot;s2&quot;</span><span class="p">,</span><span class="s">&quot;This is the second signal&quot;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">total</span><span class="o">-&gt;</span><span class="n">Sumw2</span><span class="p">();</span>  <span class="c1">// store the sum of squares of weights</span>
+<span class="n">total</span><span class="o">-&gt;</span><span class="n">SetMarkerStyle</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span>
+<span class="n">total</span><span class="o">-&gt;</span><span class="n">SetMarkerSize</span><span class="p">(</span><span class="mf">0.7</span><span class="p">);</span>
+<span class="n">main</span><span class="o">-&gt;</span><span class="n">SetFillColor</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+<span class="n">s1</span><span class="o">-&gt;</span><span class="n">SetFillColor</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+<span class="n">s2</span><span class="o">-&gt;</span><span class="n">SetFillColor</span><span class="p">(</span><span class="mi">46</span><span class="p">);</span>
+<span class="n">TSlider</span> <span class="o">*</span><span class="n">slider</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="c1">////////滑动条</span>
+
+<span class="c1">// Fill histograms randomly</span>
+<span class="n">gRandom</span><span class="o">-&gt;</span><span class="n">SetSeed</span><span class="p">();</span>
+<span class="k">const</span> <span class="n">Int_t</span> <span class="n">kUPDATE</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+<span class="n">Float_t</span> <span class="n">xs1</span><span class="p">,</span> <span class="n">xs2</span><span class="p">,</span> <span class="n">xmain</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span> <span class="n">Int_t</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">xmain</span> <span class="o">=</span> <span class="n">gRandom</span><span class="o">-&gt;</span><span class="n">Gaus</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span>
+  <span class="n">xs1</span>   <span class="o">=</span> <span class="n">gRandom</span><span class="o">-&gt;</span><span class="n">Gaus</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>
+  <span class="n">xs2</span>   <span class="o">=</span> <span class="n">gRandom</span><span class="o">-&gt;</span><span class="n">Landau</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.15</span><span class="p">);</span>
+  <span class="n">main</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">xmain</span><span class="p">);</span>
+  <span class="n">s1</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">xs1</span><span class="p">,</span><span class="mf">0.3</span><span class="p">);</span>
+  <span class="n">s2</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">);</span>
+  <span class="n">total</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">xmain</span><span class="p">);</span>
+  <span class="n">total</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">xs1</span><span class="p">,</span><span class="mf">0.3</span><span class="p">);</span>
+  <span class="n">total</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="n">kUPDATE</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">kUPDATE</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">total</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;e1p&quot;</span><span class="p">);</span>
+      <span class="n">main</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;same&quot;</span><span class="p">);</span>
+      <span class="n">s1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;same&quot;</span><span class="p">);</span>
+      <span class="n">s2</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;same&quot;</span><span class="p">);</span>
+      <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span>
+      <span class="n">slider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TSlider</span><span class="p">(</span><span class="s">&quot;slider&quot;</span><span class="p">,</span>
+			   <span class="s">&quot;test&quot;</span><span class="p">,</span><span class="mf">4.2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">4.6</span><span class="p">,</span><span class="n">total</span><span class="o">-&gt;</span><span class="n">GetMaximum</span><span class="p">(),</span><span class="mi">38</span><span class="p">);</span>
+      <span class="n">slider</span><span class="o">-&gt;</span><span class="n">SetFillColor</span><span class="p">(</span><span class="mi">46</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">slider</span><span class="p">)</span> <span class="n">slider</span><span class="o">-&gt;</span><span class="n">SetRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">Float_t</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="mf">10000.</span><span class="p">);</span>
+    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Modified</span><span class="p">();</span>
+    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span>
+  <span class="p">}</span>
+ <span class="p">}</span>
+<span class="n">slider</span><span class="o">-&gt;</span><span class="n">SetRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">total</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;sameaxis&quot;</span><span class="p">);</span> <span class="c1">// to redraw axis hidden by the fill area</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Modified</span><span class="p">();</span>
+<span class="n">gBenchmark</span><span class="o">-&gt;</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;hsum&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TPaveLabel</span> <span class="n">pl</span><span class="p">;</span>
+
+<span class="c1">//basic 2-d options</span>
+<span class="n">Float_t</span> <span class="n">xMin</span><span class="o">=</span><span class="mf">0.67</span><span class="p">,</span> <span class="n">yMin</span><span class="o">=</span><span class="mf">0.875</span><span class="p">,</span> <span class="n">xMax</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">yMax</span><span class="o">=</span><span class="mf">0.95</span><span class="p">;</span>
+<span class="n">Int_t</span> <span class="n">cancolor</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span>
+<span class="n">TCanvas</span> <span class="nf">c2h</span><span class="p">(</span><span class="s">&quot;c2h&quot;</span><span class="p">,</span><span class="s">&quot;2-d options&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">);</span>
+<span class="n">c2h</span><span class="p">.</span><span class="n">Divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">c2h</span><span class="p">.</span><span class="n">SetFillColor</span><span class="p">(</span><span class="n">cancolor</span><span class="p">);</span>
+<span class="n">c2h</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">();</span>       <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;SCAT&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">c2h</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;box&quot;</span><span class="p">);</span>  <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;BOX&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">c2h</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;arr&quot;</span><span class="p">);</span>  <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;ARR&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">c2h</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;colz&quot;</span><span class="p">);</span> <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;COLZ&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">c2h</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span>
+
+<span class="c1">//text option</span>
+<span class="n">TCanvas</span> <span class="nf">ctext</span><span class="p">(</span><span class="s">&quot;ctext&quot;</span><span class="p">,</span><span class="s">&quot;text option&quot;</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">);</span>
+<span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetGrid</span><span class="p">();</span>
+<span class="n">ctext</span><span class="p">.</span><span class="n">SetFillColor</span><span class="p">(</span><span class="n">cancolor</span><span class="p">);</span>
+<span class="n">ctext</span><span class="p">.</span><span class="n">SetGrid</span><span class="p">();</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">);</span> <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;TEXT&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">ctext</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span>
+
+<span class="c1">//contour options</span>
+<span class="n">TCanvas</span> <span class="nf">cont</span><span class="p">(</span><span class="s">&quot;contours&quot;</span><span class="p">,</span><span class="s">&quot;contours&quot;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">);</span>
+<span class="n">cont</span><span class="p">.</span><span class="n">Divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetGrid</span><span class="p">();</span>
+<span class="n">cont</span><span class="p">.</span><span class="n">SetFillColor</span><span class="p">(</span><span class="n">cancolor</span><span class="p">);</span>
+<span class="n">cont</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;contz&quot;</span><span class="p">);</span> <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;CONTZ&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">cont</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetGrid</span><span class="p">();</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;cont1&quot;</span><span class="p">);</span> <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;CONT1&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">cont</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetGrid</span><span class="p">();</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;cont2&quot;</span><span class="p">);</span> <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;CONT2&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">cont</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetGrid</span><span class="p">();</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;cont3&quot;</span><span class="p">);</span> <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;CONT3&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">cont</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span>
+
+<span class="c1">//lego options</span>
+<span class="n">TCanvas</span> <span class="nf">lego</span><span class="p">(</span><span class="s">&quot;lego&quot;</span><span class="p">,</span><span class="s">&quot;lego options&quot;</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">);</span>
+<span class="n">lego</span><span class="p">.</span><span class="n">Divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">lego</span><span class="p">.</span><span class="n">SetFillColor</span><span class="p">(</span><span class="n">cancolor</span><span class="p">);</span>
+<span class="n">lego</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;lego&quot;</span><span class="p">);</span>     <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;LEGO&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">lego</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;lego1&quot;</span><span class="p">);</span>    <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;LEGO1&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">lego</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetTheta</span><span class="p">(</span><span class="mi">61</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetPhi</span><span class="p">(</span><span class="o">-</span><span class="mi">82</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;surf1pol&quot;</span><span class="p">);</span> <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;SURF1POL&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">lego</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetTheta</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetPhi</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;surf1cyl&quot;</span><span class="p">);</span> <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;SURF1CYL&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">lego</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span>
+
+<span class="c1">//surface options</span>
+<span class="n">TCanvas</span> <span class="nf">surf</span><span class="p">(</span><span class="s">&quot;surfopt&quot;</span><span class="p">,</span><span class="s">&quot;surface options&quot;</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">);</span>
+<span class="n">surf</span><span class="p">.</span><span class="n">Divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">surf</span><span class="p">.</span><span class="n">SetFillColor</span><span class="p">(</span><span class="n">cancolor</span><span class="p">);</span>
+<span class="n">surf</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;surf1&quot;</span><span class="p">);</span>   <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;SURF1&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">surf</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;surf2z&quot;</span><span class="p">);</span>  <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;SURF2Z&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">surf</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;surf3&quot;</span><span class="p">);</span>   <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;SURF3&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">surf</span><span class="p">.</span><span class="n">cd</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">h2</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;surf4&quot;</span><span class="p">);</span>   <span class="n">pl</span><span class="p">.</span><span class="n">DrawPaveLabel</span><span class="p">(</span><span class="n">xMin</span><span class="p">,</span><span class="n">yMin</span><span class="p">,</span><span class="n">xMax</span><span class="p">,</span><span class="n">yMax</span><span class="p">,</span><span class="s">&quot;SURF4&quot;</span><span class="p">,</span><span class="s">&quot;brNDC&quot;</span><span class="p">);</span>
+<span class="n">surf</span><span class="p">.</span><span class="n">Update</span><span class="p">();</span>
+</pre></div>
+</div>
+<!-- README.md ends here --></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="TObject.html" class="btn btn-neutral float-right" title="TObject" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../README.html" class="btn btn-neutral float-left" title="简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Hongyi Wu(吴鸿毅)
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
