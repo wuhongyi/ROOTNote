@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 一 1月 15 13:31:31 2018 (+0800)
+;; Last-Updated: 三 9月 16 12:51:40 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 23
+;;     Update #: 24
 ;; URL: http://wuhongyi.cn -->
 
-# TH1
+# TH1*
 
 继承 public TNamed, public TAttLine, public TAttFill, public TAttMarker
 

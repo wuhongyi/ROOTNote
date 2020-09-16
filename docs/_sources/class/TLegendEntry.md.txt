@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 10月 31 23:32:48 2016 (+0800)
-;; Last-Updated: 二 11月  1 12:35:35 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:49:12 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TLegendEntry
+# TLegendEntry*
 
 继承 TObject, TAttText, TAttLine, TAttFill, TAttMarker
 

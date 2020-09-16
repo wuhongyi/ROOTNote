@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:52:37 2014 (+0800)
-;; Last-Updated: 六 10月 29 21:32:29 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:51:13 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
+;;     Update #: 5
 ;; URL: http://wuhongyi.cn -->
 
-# TMultiGraph
+# TMultiGraph+
 
 继承 TNamed
 

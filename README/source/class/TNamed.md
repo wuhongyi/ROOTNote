@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 8月 13 14:44:03 2016 (+0800)
-;; Last-Updated: 六 10月 29 21:15:00 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:28:12 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
+;;     Update #: 5
 ;; URL: http://wuhongyi.cn -->
 
-# TNamed
+# TNamed+
 
 **继承 TObject**
 

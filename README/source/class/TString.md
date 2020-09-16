@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 8月 13 20:33:51 2016 (+0800)
-;; Last-Updated: 六 1月  5 11:59:41 2019 (+0800)
+;; Last-Updated: 三 9月 16 10:28:57 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TString
+# TString+
 
 Cannot be stored in a TCollection... use TObjString instead.
 

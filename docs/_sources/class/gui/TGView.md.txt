@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 15:35:27 2016 (+0800)
-;; Last-Updated: 三 12月  7 15:43:58 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:17:08 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TGView
+# TGView*
 
 TGView 继承 TGCompositeFrame, TGWidget , friend TGViewFrame
 

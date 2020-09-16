@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 8月 13 16:22:48 2016 (+0800)
-;; Last-Updated: 六 9月  9 14:58:30 2017 (+0800)
+;; Last-Updated: 三 9月 16 10:01:56 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TObject
+# TObject*
 
 v6.10.04
 

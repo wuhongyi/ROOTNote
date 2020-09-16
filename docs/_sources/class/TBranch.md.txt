@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 9月 13 20:58:30 2016 (+0800)
-;; Last-Updated: 二 11月  1 20:02:25 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:44:12 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
+;;     Update #: 5
 ;; URL: http://wuhongyi.cn -->
 
-# TBranch
+# TBranch*
 
 继承 TNamed , TAttFill
 

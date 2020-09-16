@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 10:18:00 2016 (+0800)
-;; Last-Updated: 六 11月 19 13:30:31 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:56:59 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 6
+;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
 
-# TGButton
+# TGButton*
 
 ```cpp
 //////////////////////////////////////////////////////////////////////////

@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 一 9月 14 19:03:25 2020 (+0800)
+;; Last-Updated: 三 9月 16 12:50:27 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 19
+;;     Update #: 20
 ;; URL: http://wuhongyi.cn -->
 
-# TCanvas
+# TCanvas*
 
 继承 TPad
 

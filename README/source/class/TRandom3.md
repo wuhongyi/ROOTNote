@@ -4,13 +4,13 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:29:55 2014 (+0800)
-;; Last-Updated: 六 5月  6 16:19:54 2017 (+0800)
+;; Last-Updated: 三 9月 16 12:58:30 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
+;;     Update #: 5
 ;; URL: http://wuhongyi.cn -->
 
 
-# TRandom3
+# TRandom3*
 
 **继承 TRandom**
 

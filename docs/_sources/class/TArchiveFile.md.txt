@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 日 1月  6 13:34:45 2019 (+0800)
-;; Last-Updated: 日 1月  6 13:40:43 2019 (+0800)
+;; Last-Updated: 三 9月 16 10:32:49 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TArchiveFile
+# TArchiveFile*
 
 Class describing an archive file containing multiple sub-files, like a ZIP or TAR archive.
 

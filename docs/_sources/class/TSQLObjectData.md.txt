@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 1月  7 15:21:00 2019 (+0800)
-;; Last-Updated: 一 1月  7 15:28:04 2019 (+0800)
+;; Last-Updated: 三 9月 16 10:38:43 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TSQLObjectData
+# TSQLObjectData*
 
 TSQLObjectData is used in TBufferSQL2 class in reading procedure.
 It contains data, request from database table for one specific

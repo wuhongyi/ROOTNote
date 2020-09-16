@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  1 22:45:16 2016 (+0800)
-;; Last-Updated: 二 11月  1 22:54:33 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:44:19 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TNtuple
+# TNtuple*
 
 继承 TTree
 

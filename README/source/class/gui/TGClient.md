@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 20:20:22 2016 (+0800)
-;; Last-Updated: 六 11月 19 15:01:40 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:57:21 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGClient
+# TGClient*
 
 TGClient 继承 TObject, TQObject , friend TGCocoa
 

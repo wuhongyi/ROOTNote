@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 28 13:57:41 2016 (+0800)
-;; Last-Updated: 一 11月 28 14:08:03 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:46:54 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TFractionFitter
+# TFractionFitter*
 
 The virtue of this fit is that it takes into account both data and Monte Carlo
 statistical uncertainties. The way in which this is done is through a standard

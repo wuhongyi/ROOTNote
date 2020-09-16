@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 日 1月  6 12:10:43 2019 (+0800)
-;; Last-Updated: 日 1月  6 12:53:51 2019 (+0800)
+;; Last-Updated: 三 9月 16 10:37:39 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TBufferFile
+# TBufferFile*
 
 The concrete implementation of TBuffer for writing/reading to/from a ROOT file or socket.
 

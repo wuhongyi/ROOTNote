@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 19:46:57 2016 (+0800)
-;; Last-Updated: 六 11月 19 15:18:19 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:57:37 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGColorDialog
+# TGColorDialog*
 
 The TGColorPalette is a widget showing an matrix of color cells. The 
 colors can be set and selected.                                      

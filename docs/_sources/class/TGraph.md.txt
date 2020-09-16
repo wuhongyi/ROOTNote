@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 六 11月  3 10:30:18 2018 (+0800)
+;; Last-Updated: 三 9月 16 12:50:44 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 16
+;;     Update #: 17
 ;; URL: http://wuhongyi.cn -->
 
-# TGraph
+# TGraph*
 
 继承 TNamed, TAttLine, TAttFill, TAttMarker 
 

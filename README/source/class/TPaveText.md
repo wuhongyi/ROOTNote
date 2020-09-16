@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 一 10月 31 21:31:09 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:48:26 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TPaveText
+# TPaveText*
 
 继承 public TPave, TAttText
 

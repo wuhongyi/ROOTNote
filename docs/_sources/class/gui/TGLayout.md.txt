@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 21:14:31 2016 (+0800)
-;; Last-Updated: 二 11月  8 21:27:11 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:59:17 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TGLayout
+# TGLayout+
 
 A number of different layout classes (TGLayoutManager,               
 TGVerticalLayout, TGHorizontalLayout, TGLayoutHints, etc.).

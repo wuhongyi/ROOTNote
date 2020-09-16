@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 09:42:03 2016 (+0800)
-;; Last-Updated: 三 11月  9 11:09:28 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:58:42 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 5
+;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
 
-# TGFrame
+# TGFrame*
 
 ```
 This source is based on Xclass95, a Win95-looking GUI toolkit.

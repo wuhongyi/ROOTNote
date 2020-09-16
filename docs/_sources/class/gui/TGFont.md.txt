@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 11月  9 15:30:31 2016 (+0800)
-;; Last-Updated: 六 11月 19 16:10:43 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:58:30 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGFont
+# TGFont*
 
 TGFont and TGFontPool                                                
                                                                      

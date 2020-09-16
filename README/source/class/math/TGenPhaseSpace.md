@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 10月 11 02:42:12 2018 (+0800)
-;; Last-Updated: 四 10月 11 08:52:26 2018 (+0800)
+;; Last-Updated: 三 9月 16 10:43:33 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TGenPhaseSpace
+# TGenPhaseSpace*
 
 **public TObject**
 

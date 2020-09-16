@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 12:20:31 2016 (+0800)
-;; Last-Updated: 二 11月  8 20:46:09 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:59:55 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TGMenu
+# TGMenu+
 
 TGMenuEntry 继承 TObject , friend TGPopupMenu , TGMenuBar  
 This class contains all information about a menu entry.  

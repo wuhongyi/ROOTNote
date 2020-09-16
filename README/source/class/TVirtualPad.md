@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 1月  5 12:30:05 2019 (+0800)
-;; Last-Updated: 六 1月  5 12:34:04 2019 (+0800)
+;; Last-Updated: 三 9月 16 12:49:35 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TVirtualPad
+# TVirtualPad*
 
 Abstract base class for Pads and Canvases
 

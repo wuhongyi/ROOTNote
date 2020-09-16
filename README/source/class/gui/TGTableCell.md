@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 11月  9 15:25:47 2016 (+0800)
-;; Last-Updated: 三 12月  7 19:52:51 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:15:40 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGTableCell
+# TGTableCell-
 
 TGTableCell is the class that represents a single cell in a TGTable.  This class is for internal use in TGTable only.
 

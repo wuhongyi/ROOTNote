@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 1月 13 16:23:57 2018 (+0800)
-;; Last-Updated: 六 1月 13 16:27:59 2018 (+0800)
+;; Last-Updated: 三 9月 16 10:44:24 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TShape
+# TShape*
 
 继承 public TNamed, public TAttLine, public TAttFill, public TAtt3D
 

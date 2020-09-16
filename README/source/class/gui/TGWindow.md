@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 11月  9 15:00:20 2016 (+0800)
-;; Last-Updated: 三 11月  9 15:09:11 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:17:21 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGWindow
+# TGWindow*
 
 TGWindow 继承 TGObject , friend TGClient  
 ROOT GUI Window base class.

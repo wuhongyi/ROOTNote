@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 二 9月 13 16:50:16 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:51:45 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 9
+;;     Update #: 10
 ;; URL: http://wuhongyi.cn -->
 
-# TH2
+# TH2+
 
 继承 TH1
 

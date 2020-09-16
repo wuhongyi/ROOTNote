@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 1月 27 21:45:34 2017 (+0800)
-;; Last-Updated: 五 1月 27 21:48:35 2017 (+0800)
+;; Last-Updated: 三 9月 16 10:57:55 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TGCommandPlugin
+# TGCommandPlugin*
 
 TGCommandPlugin 继承 TGMainFrame
 

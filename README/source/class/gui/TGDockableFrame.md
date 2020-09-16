@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 1月 27 22:13:25 2017 (+0800)
-;; Last-Updated: 五 1月 27 22:42:35 2017 (+0800)
+;; Last-Updated: 三 9月 16 10:58:15 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TGDockableFrame
+# TGDockableFrame*
 
 A TGDockableFrame is a frame with handles that allow it to be        
 undocked (i.e. put in a transient frame of its own) and to be docked  

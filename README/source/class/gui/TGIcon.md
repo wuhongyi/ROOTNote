@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 14:00:50 2016 (+0800)
-;; Last-Updated: 四 11月 10 21:04:38 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:58:54 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGIcon
+# TGIcon*
 
 TGIcon 继承 TGFrame
 

@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 1月  7 15:30:05 2019 (+0800)
-;; Last-Updated: 一 1月  7 15:32:43 2019 (+0800)
+;; Last-Updated: 三 9月 16 10:39:40 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TSQLStructure
+# TSQLStructure-
 
 This is hierarchical structure, which is created when data is written
 by TBufferSQL2. It contains data all structural information such:

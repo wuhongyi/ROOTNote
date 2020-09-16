@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 16:10:15 2016 (+0800)
-;; Last-Updated: 二 11月  8 16:36:38 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:11:59 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TGSlider
+# TGSlider+
 
 Slider widgets allow easy selection of a range.                      
 Sliders can be either horizontal or vertical oriented and there is   

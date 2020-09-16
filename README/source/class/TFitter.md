@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 28 13:48:37 2016 (+0800)
-;; Last-Updated: 一 11月 28 13:56:29 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:46:34 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TFitter
+# TFitter*
 
 The ROOT standard fitter based on TMinuit
 

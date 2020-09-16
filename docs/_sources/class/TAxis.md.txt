@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 二 11月  1 18:55:41 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:47:15 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 13
+;;     Update #: 14
 ;; URL: http://wuhongyi.cn -->
 
-# TAxis
+# TAxis*
 
 继承 TNamed, TAttAxis
 

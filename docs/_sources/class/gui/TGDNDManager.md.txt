@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 1月 27 21:54:09 2017 (+0800)
-;; Last-Updated: 五 1月 27 22:12:57 2017 (+0800)
+;; Last-Updated: 三 9月 16 10:58:06 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TGDNDManager
+# TGDNDManager*
 
 
 TGDragWindow 继承 TGFrame  

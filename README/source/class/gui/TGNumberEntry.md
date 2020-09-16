@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 11:58:28 2016 (+0800)
-;; Last-Updated: 二 11月  8 20:44:52 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:02:12 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGNumberEntry
+# TGNumberEntry+
 
 TGNumberEntryField 继承 TGTextEntry, TGNumberFormat
 

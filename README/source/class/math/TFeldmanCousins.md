@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 10月 11 02:38:21 2018 (+0800)
-;; Last-Updated: 四 10月 11 02:42:03 2018 (+0800)
+;; Last-Updated: 三 9月 16 10:43:44 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TFeldmanCousins
+# TFeldmanCousins*
 
 **public TObject**
 

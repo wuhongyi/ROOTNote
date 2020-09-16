@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:38:01 2014 (+0800)
-;; Last-Updated: 六 9月  9 16:24:43 2017 (+0800)
+;; Last-Updated: 三 9月 16 10:31:10 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 22
+;;     Update #: 23
 ;; URL: http://wuhongyi.cn -->
 
-# TFile
+# TFile*
 
 
 继承TDirectoryFile

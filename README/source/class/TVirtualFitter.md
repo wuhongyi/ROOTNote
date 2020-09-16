@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 28 21:31:47 2016 (+0800)
-;; Last-Updated: 六 1月  5 12:02:15 2019 (+0800)
+;; Last-Updated: 三 9月 16 12:45:26 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TVirtualFitter
+# TVirtualFitter*
 
 
 Abstract base class for fitting

@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 19:35:20 2016 (+0800)
-;; Last-Updated: 六 11月 19 15:26:03 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:57:41 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGColorSelect
+# TGColorSelect*
 
 The TGColorFrame is a small frame with border showing a specific color.       
 

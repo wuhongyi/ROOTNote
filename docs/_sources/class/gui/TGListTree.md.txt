@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 19:09:08 2016 (+0800)
-;; Last-Updated: 日 4月 23 20:27:48 2017 (+0800)
+;; Last-Updated: 三 9月 16 10:59:37 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TGListTree
+# TGListTree*
 
 A list tree is a widget that can contain a number of items           
 arranged in a tree structure. The items are represented by small     

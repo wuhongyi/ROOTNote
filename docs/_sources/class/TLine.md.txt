@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 10月 31 23:23:26 2016 (+0800)
-;; Last-Updated: 一 10月 31 23:32:10 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:49:22 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TLine
+# TLine*
 
 继承 TObject, TAttLine, TAttBBox2D
 

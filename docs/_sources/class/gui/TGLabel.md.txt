@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 13:39:02 2016 (+0800)
-;; Last-Updated: 四 11月 10 20:59:32 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:59:11 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TGLabel
+# TGLabel*
 
 TGLabel 继承 TGFrame
 

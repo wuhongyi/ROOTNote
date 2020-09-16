@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 28 13:12:27 2016 (+0800)
-;; Last-Updated: 六 1月  5 11:50:01 2019 (+0800)
+;; Last-Updated: 三 9月 16 12:46:24 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TBackCompFitter
+# TBackCompFitter*
 
 Backward compatible implementation of TVirtualFitter using the
 class ROOT::Fit::Fitter. This class is created after fitting an

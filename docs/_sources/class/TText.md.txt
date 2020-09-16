@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 9月 13 17:13:44 2016 (+0800)
-;; Last-Updated: 一 10月 31 21:04:32 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:47:48 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TText
+# TText*
 
 继承 TNamed, TAttText, TAttBBox2D
 

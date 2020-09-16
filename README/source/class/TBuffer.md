@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 9月 13 20:54:28 2016 (+0800)
-;; Last-Updated: 二 9月 13 20:57:04 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:37:33 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TBuffer
+# TBuffer+
 
 继承 TObject
 

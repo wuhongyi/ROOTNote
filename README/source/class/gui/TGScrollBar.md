@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 16:37:11 2016 (+0800)
-;; Last-Updated: 二 11月  8 16:54:01 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:11:38 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGScrollBar
+# TGScrollBar+
 
 The classes in this file implement scrollbars. Scrollbars can be     
 either placed horizontal or vertical. A scrollbar contains three     

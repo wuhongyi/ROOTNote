@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 1月  7 14:30:00 2019 (+0800)
-;; Last-Updated: 一 1月  7 14:36:32 2019 (+0800)
+;; Last-Updated: 三 9月 16 10:38:09 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TKeySQL
+# TKeySQL*
 
 TKeySQL represents meta-inforamtion about object, which was written to
 SQL database. It keeps object id, which used to locate object data

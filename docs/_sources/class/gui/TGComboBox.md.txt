@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 10:55:03 2016 (+0800)
-;; Last-Updated: 六 11月 19 15:40:00 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:57:47 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TGComboBox
+# TGComboBox*
 
 TGComboBox 继承 TGCompositeFrame, TGWidget
 

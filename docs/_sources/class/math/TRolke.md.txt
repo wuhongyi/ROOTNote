@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 10月 11 08:48:33 2018 (+0800)
-;; Last-Updated: 四 10月 11 08:49:29 2018 (+0800)
+;; Last-Updated: 三 9月 16 10:42:23 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TRolke
+# TRolke*
 
 **public TObject**
 

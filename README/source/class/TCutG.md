@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:48:25 2014 (+0800)
-;; Last-Updated: 二 11月  1 19:11:37 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:51:00 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
+;;     Update #: 8
 ;; URL: http://wuhongyi.cn -->
 
-# TCutG
+# TCutG*
 
 继承 TGraph
 

@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 1月 13 16:17:58 2018 (+0800)
-;; Last-Updated: 六 1月 13 16:23:31 2018 (+0800)
+;; Last-Updated: 三 9月 16 10:44:19 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TSPHE
+# TSPHE*
 
 继承 TShape
 

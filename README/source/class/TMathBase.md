@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 日 11月 27 21:31:45 2016 (+0800)
-;; Last-Updated: 日 11月 27 21:37:00 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:52:17 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TMathBase
+# TMathBase*
 
 Define the functions Min, Max, Abs, Sign, Range for all types.
 NB: These functions are unfortunately not available in a portable

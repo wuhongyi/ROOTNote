@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 12:32:36 2014 (+0800)
-;; Last-Updated: 一 6月  4 03:10:21 2018 (+0800)
+;; Last-Updated: 三 9月 16 12:50:33 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 16
+;;     Update #: 17
 ;; URL: http://wuhongyi.cn -->
 
-# TF1
+# TF1*
 
 继承于 TNamed, TAttLine, TAttFill, TAttMarker
 

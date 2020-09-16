@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 8月 13 19:01:37 2016 (+0800)
-;; Last-Updated: 六 8月 13 19:03:16 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:28:22 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TStyle
+# TStyle+
 
 继承 TNamed, TAttLine, TAttFill, TAttMarker, TAttText
 

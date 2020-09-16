@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 14:33:53 2016 (+0800)
-;; Last-Updated: 三 12月  7 19:47:05 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:15:32 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGTable
+# TGTable*
 
 TGTable 继承 TGCompositeFrame, TGWidget
 

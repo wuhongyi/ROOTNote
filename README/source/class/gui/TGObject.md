@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 11月  9 14:18:24 2016 (+0800)
-;; Last-Updated: 三 11月  9 14:53:33 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:11:00 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGObject
+# TGObject*
 
 This class is the baseclass for all ROOT GUI widgets.                
 The ROOT GUI components emulate the Win95 look and feel and the code  

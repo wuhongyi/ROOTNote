@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 二 11月  1 12:59:22 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:49:05 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 12
+;;     Update #: 13
 ;; URL: http://wuhongyi.cn -->
 
-# TLegend
+# TLegend*
 
 继承 TPave , TAttText
 

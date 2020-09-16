@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 14:43:14 2016 (+0800)
-;; Last-Updated: 三 12月  7 21:08:19 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:59:06 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
+;;     Update #: 5
 ;; URL: http://wuhongyi.cn -->
 
-# TGImageMap
+# TGImageMap*
 
 A TGImageMap provides the functionality like a clickable image in    
 a web browser with sensitive regions (MAP HTML tag).

@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 四 1月 18 23:35:51 2018 (+0800)
-;; Last-Updated: 四 1月 18 23:49:55 2018 (+0800)
+;; Last-Updated: 三 9月 16 12:44:34 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TCollection
+# TCollection*
 
 继承 public TObject
 

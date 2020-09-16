@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 28 14:25:40 2016 (+0800)
-;; Last-Updated: 一 11月 28 14:41:21 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:47:00 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TLinearFitter
+# TLinearFitter*
 
 The Linear Fitter - fitting functions that are LINEAR IN PARAMETERS
 

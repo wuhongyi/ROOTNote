@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 11月  9 15:21:17 2016 (+0800)
-;; Last-Updated: 六 11月 19 13:48:57 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:57:04 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGButtonGroup
+# TGButtonGroup*
 
 TGButtonGroup, TGVButtonGroup and TGHButtonGroup  
 This header defines button group frames.

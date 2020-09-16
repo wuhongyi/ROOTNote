@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 10月  5 10:40:31 2016 (+0800)
-;; Last-Updated: 三 10月  5 10:54:57 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:57:49 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TSpline
+# TSpline+
 
 直接使用的插值类：TSpline3、TSpline5
 

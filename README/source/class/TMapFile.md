@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 日 1月  6 14:46:33 2019 (+0800)
-;; Last-Updated: 日 1月  6 15:03:24 2019 (+0800)
+;; Last-Updated: 三 9月 16 10:32:35 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TMapFile
+# TMapFile*
 
 ```
 This class implements a shared memory region mapped to a file.

@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 一 10月 31 23:20:21 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:50:17 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 30
+;;     Update #: 31
 ;; URL: http://wuhongyi.cn -->
 
-# TPad
+# TPad*
 
 继承 TVirtualPad, TAttBBox2D
 

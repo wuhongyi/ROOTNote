@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 10月 29 20:56:42 2016 (+0800)
-;; Last-Updated: 六 10月 29 21:00:25 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:18:15 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TCut
+# TCut*
 
 继承 TNamed
 

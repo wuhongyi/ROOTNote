@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 11月  9 15:29:49 2016 (+0800)
-;; Last-Updated: 三 12月  7 20:56:38 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:58:48 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGGC
+# TGGC*
 
 Encapsulate a graphics context used in the low level graphics.       
 TGGCPool provides a pool of graphics contexts.

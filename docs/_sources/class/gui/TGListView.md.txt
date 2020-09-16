@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 16:55:40 2016 (+0800)
-;; Last-Updated: 二 11月  8 18:23:00 2016 (+0800)
+;; Last-Updated: 三 9月 16 10:59:41 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TGListView
+# TGListView+
 
 A list view is a widget that can contain a number of items           
 arranged in a grid or list. The items can be represented either      

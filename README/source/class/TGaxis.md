@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  1 16:41:34 2016 (+0800)
-;; Last-Updated: 二 11月  1 17:13:27 2016 (+0800)
+;; Last-Updated: 三 9月 16 12:47:24 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TGaxis
+# TGaxis*
 
 继承 TLine, TAttText
 

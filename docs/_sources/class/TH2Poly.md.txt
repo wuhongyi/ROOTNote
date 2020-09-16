@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 日 1月 14 13:53:25 2018 (+0800)
-;; Last-Updated: 一 1月 15 13:30:09 2018 (+0800)
+;; Last-Updated: 三 9月 16 12:51:51 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TH2Poly
+# TH2Poly*
 
 继承 public TH2
 

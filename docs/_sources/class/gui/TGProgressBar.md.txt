@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 11月 14 20:16:55 2016 (+0800)
-;; Last-Updated: 一 11月 14 20:28:40 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:11:28 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# TGProgressBar
+# TGProgressBar*
 
 TGProgressBar, TGHProgressBar and TGVProgressBar                     
                                                                       

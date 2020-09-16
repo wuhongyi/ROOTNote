@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 11月  8 13:52:02 2016 (+0800)
-;; Last-Updated: 三 12月  7 16:41:41 2016 (+0800)
+;; Last-Updated: 三 9月 16 11:16:44 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
+;;     Update #: 5
 ;; URL: http://wuhongyi.cn -->
 
-# TGTextEntry
+# TGTextEntry*
 
 ```cpp
 // A TGTextEntry is a one line text input widget.                       

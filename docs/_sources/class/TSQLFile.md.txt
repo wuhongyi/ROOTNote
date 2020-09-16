@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 1月  7 14:41:27 2019 (+0800)
-;; Last-Updated: 一 1月  7 15:20:26 2019 (+0800)
+;; Last-Updated: 三 9月 16 10:40:01 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TSQLFile
+# TSQLFile*
 
 ```
 Access an SQL db via the TFile interface.

@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 3月 21 21:17:15 2018 (+0800)
-;; Last-Updated: 三 3月 21 21:39:11 2018 (+0800)
+;; Last-Updated: 三 9月 16 10:41:55 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 3
+;;     Update #: 4
 ;; URL: http://wuhongyi.cn -->
 
-# TVector3
+# TVector3*
 
 继承 public TObject
 

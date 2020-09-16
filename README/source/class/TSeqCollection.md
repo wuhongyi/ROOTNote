@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 9月 15 13:23:07 2018 (+0800)
-;; Last-Updated: 六 1月  5 12:42:39 2019 (+0800)
+;; Last-Updated: 三 9月 16 12:44:55 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 2
+;;     Update #: 3
 ;; URL: http://wuhongyi.cn -->
 
-# TSeqCollection
+# TSeqCollection*
 
 Sequenceable collection abstract base class. 
 TSeqCollection's have an ordering relation, i.e. there is a first and last element.

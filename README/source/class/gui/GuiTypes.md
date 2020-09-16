@@ -4,12 +4,12 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 二 5月  1 14:41:20 2018 (+0800)
-;; Last-Updated: 二 5月  1 14:42:30 2018 (+0800)
+;; Last-Updated: 三 9月 16 10:56:55 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
 
-# GuiTypes
+# GuiTypes*
 
 Types used by the GUI classes. 
 
