@@ -1,15 +1,15 @@
-3<!-- TChain.md --- 
+<!-- TChain.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 一 9月 26 22:08:06 2016 (+0800)
-;; Last-Updated: 二 11月  1 21:45:06 2016 (+0800)
+;; Last-Updated: 三 9月 16 09:36:23 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 4
+;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
 
-# TChain
+# TChain*
 
 ## class
 

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:44:41 2014 (+0800)
-;; Last-Updated: 一 1月  7 18:53:29 2019 (+0800)
+;; Last-Updated: 一 9月 14 19:03:25 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 18
+;;     Update #: 19
 ;; URL: http://wuhongyi.cn -->
 
 # TCanvas
@@ -369,6 +369,12 @@ canv->SetBottomMargin(0.01);
 // and in the batch mode simply do:
 
       c->SetCanvasSize(w,h);
+```
+
+
+```cpp
+// 不能手动关闭画板
+((TRootCanvas *)c1->GetCanvasImp())->SetMWMHints(kMWMDecorAll, kMWMFuncResize | kMWMFuncMaximize | kMWMFuncMinimize | kMWMFuncMove, kMWMInputModeless);
 ```
 
 
