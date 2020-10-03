@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:27:32 2014 (+0800)
-;; Last-Updated: 一 10月 31 21:53:53 2016 (+0800)
+;; Last-Updated: 六 9月 26 10:04:48 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 17
+;;     Update #: 20
 ;; URL: http://wuhongyi.cn -->
 
 # 类的使用
@@ -240,6 +240,87 @@ The following options are supported for 3-D histogram classes:
 • “A”: Suppress the axis
 ```
        
+## EStatusBits
+
+```cpp
+// TObject
+
+   //----- Global bits (can be set for any object and should not be reused).
+   //----- Bits 0 - 13 are reserved as global bits. Bits 14 - 23 can be used
+   //----- in different class hierarchies (make sure there is no overlap in
+   //----- any given hierarchy).
+   enum EStatusBits {
+      kCanDelete        = BIT(0),   ///< if object in a list can be deleted
+      // 2 is taken by TDataMember
+      kMustCleanup      = BIT(3),   ///< if object destructor must call RecursiveRemove()
+      kIsReferenced     = BIT(4),   ///< if object is referenced by a TRef or TRefArray
+      kHasUUID          = BIT(5),   ///< if object has a TUUID (its fUniqueID=UUIDNumber)
+      kCannotPick       = BIT(6),   ///< if object in a pad cannot be picked
+      // 7 is taken by TAxis and TClass.
+      kNoContextMenu    = BIT(8),   ///< if object does not want context menu
+      // 9, 10 are taken by TH1, TF1, TAxis and a few others
+      // 12 is taken by TAxis
+      kInvalidObject    = BIT(13)   ///< if object ctor succeeded but object should not be used
+   };
+
+
+
+// TH1
+
+   enum EStatusBits {
+      kNoStats     = BIT(9),   ///< don't draw stats box
+      kUserContour = BIT(10),  ///< user specified contour levels
+      // kCanRebin    = BIT(11), ///< FIXME DEPRECATED - to be removed, replaced by SetCanExtend / CanExtendAllAxes
+      kLogX        = BIT(15),  ///< X-axis in log scale
+      kIsZoomed   = BIT(16),   ///< bit set when zooming on Y axis
+      kNoTitle     = BIT(17),  ///< don't draw the histogram title
+      kIsAverage   = BIT(18),  ///< Bin contents are average (used by Add)
+      kIsNotW      = BIT(19),  ///< Histogram is forced to be not weighted even when the histogram is filled with weighted
+                               /// different than 1.
+      kAutoBinPTwo = BIT(20),  ///< Use Power(2)-based algorithm for autobinning
+      kIsHighlight = BIT(21)   ///< bit set if histo is highlight
+   };
+   // size of statistics data (size of  array used in GetStats()/ PutStats )
+   // s[0]  = sumw       s[1]  = sumw2
+   // s[2]  = sumwx      s[3]  = sumwx2
+   // s[4]  = sumwy      s[5]  = sumwy2   s[6]  = sumwxy
+   // s[7]  = sumwz      s[8]  = sumwz2   s[9]  = sumwxz   s[10]  = sumwyz
+   // s[11] = sumwt      s[12] = sumwt2                 (11 and 12 used only by TProfile3D)
+   enum {
+      kNstat       = 13  // size of statistics data (up to TProfile3D)
+   };
+
+
+// TGraph
+
+   enum EStatusBits {
+      kClipFrame     = BIT(10),  ///< clip to the frame boundary
+      kResetHisto    = BIT(17),  ///< fHistogram must be reset in GetHistogram
+      kNotEditable   = BIT(18),  ///< bit set if graph is non editable
+      kIsSortedX     = BIT(19),  ///< graph is sorted in X points
+      kIsHighlight   = BIT(20)   ///< bit set if graph is highlight
+   };
+
+
+// TF1
+
+   enum EStatusBits {
+      kNotGlobal   = BIT(10),  // don't register in global list of functions
+      kNotDraw     = BIT(9)  // don't draw the function when in a TH1
+   };
+
+
+
+
+
+// 示例
+
+h->SetBit(TH1::kCanRebin);
+```
+
+
+
+
 
 ## 未分类
 

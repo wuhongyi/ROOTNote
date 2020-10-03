@@ -90,6 +90,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">类的使用</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">画图参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estatusbits">EStatusBits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">未分类</a></li>
 </ul>
 </li>
@@ -115,6 +116,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">类的使用</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">画图参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estatusbits">EStatusBits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">未分类</a></li>
 </ul>
 </li>
@@ -155,6 +157,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">类的使用</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">画图参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estatusbits">EStatusBits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">未分类</a></li>
 </ul>
 </li>
@@ -502,9 +505,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月  5 11:27:32 2014 (+0800)
-;; Last-Updated: 一 10月 31 21:53:53 2016 (+0800)
+;; Last-Updated: 六 9月 26 10:04:48 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 17
+;;     Update #: 20
 ;; URL: http://wuhongyi.cn --><div class="section" id="id1">
 <h1>类的使用<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <!-- A B C D E F G H I J K L M N O P Q R S T U V W X Y Z --><p>本章主要介绍常用类中的函数</p>
@@ -719,6 +722,84 @@ The following options are supported for 3-D histogram classes:
 • “FB”: Suppress the Front-Box
 • “BB”: Suppress the Back-Box
 • “A”: Suppress the axis
+</pre></div>
+</div>
+</div>
+<div class="section" id="estatusbits">
+<h2>EStatusBits<a class="headerlink" href="#estatusbits" title="永久链接至标题">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// TObject</span>
+
+   <span class="c1">//----- Global bits (can be set for any object and should not be reused).</span>
+   <span class="c1">//----- Bits 0 - 13 are reserved as global bits. Bits 14 - 23 can be used</span>
+   <span class="c1">//----- in different class hierarchies (make sure there is no overlap in</span>
+   <span class="c1">//----- any given hierarchy).</span>
+   <span class="k">enum</span> <span class="n">EStatusBits</span> <span class="p">{</span>
+      <span class="n">kCanDelete</span>        <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>   <span class="c1">///&lt; if object in a list can be deleted</span>
+      <span class="c1">// 2 is taken by TDataMember</span>
+      <span class="n">kMustCleanup</span>      <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>   <span class="c1">///&lt; if object destructor must call RecursiveRemove()</span>
+      <span class="n">kIsReferenced</span>     <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>   <span class="c1">///&lt; if object is referenced by a TRef or TRefArray</span>
+      <span class="n">kHasUUID</span>          <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>   <span class="c1">///&lt; if object has a TUUID (its fUniqueID=UUIDNumber)</span>
+      <span class="n">kCannotPick</span>       <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>   <span class="c1">///&lt; if object in a pad cannot be picked</span>
+      <span class="c1">// 7 is taken by TAxis and TClass.</span>
+      <span class="n">kNoContextMenu</span>    <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>   <span class="c1">///&lt; if object does not want context menu</span>
+      <span class="c1">// 9, 10 are taken by TH1, TF1, TAxis and a few others</span>
+      <span class="c1">// 12 is taken by TAxis</span>
+      <span class="n">kInvalidObject</span>    <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>   <span class="c1">///&lt; if object ctor succeeded but object should not be used</span>
+   <span class="p">};</span>
+
+
+
+<span class="c1">// TH1</span>
+
+   <span class="k">enum</span> <span class="n">EStatusBits</span> <span class="p">{</span>
+      <span class="n">kNoStats</span>     <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>   <span class="c1">///&lt; don&#39;t draw stats box</span>
+      <span class="n">kUserContour</span> <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>  <span class="c1">///&lt; user specified contour levels</span>
+      <span class="c1">// kCanRebin    = BIT(11), ///&lt; FIXME DEPRECATED - to be removed, replaced by SetCanExtend / CanExtendAllAxes</span>
+      <span class="n">kLogX</span>        <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>  <span class="c1">///&lt; X-axis in log scale</span>
+      <span class="n">kIsZoomed</span>   <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span>   <span class="c1">///&lt; bit set when zooming on Y axis</span>
+      <span class="n">kNoTitle</span>     <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">17</span><span class="p">),</span>  <span class="c1">///&lt; don&#39;t draw the histogram title</span>
+      <span class="n">kIsAverage</span>   <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">18</span><span class="p">),</span>  <span class="c1">///&lt; Bin contents are average (used by Add)</span>
+      <span class="n">kIsNotW</span>      <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">19</span><span class="p">),</span>  <span class="c1">///&lt; Histogram is forced to be not weighted even when the histogram is filled with weighted</span>
+                               <span class="c1">/// different than 1.</span>
+      <span class="n">kAutoBinPTwo</span> <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>  <span class="c1">///&lt; Use Power(2)-based algorithm for autobinning</span>
+      <span class="n">kIsHighlight</span> <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>   <span class="c1">///&lt; bit set if histo is highlight</span>
+   <span class="p">};</span>
+   <span class="c1">// size of statistics data (size of  array used in GetStats()/ PutStats )</span>
+   <span class="c1">// s[0]  = sumw       s[1]  = sumw2</span>
+   <span class="c1">// s[2]  = sumwx      s[3]  = sumwx2</span>
+   <span class="c1">// s[4]  = sumwy      s[5]  = sumwy2   s[6]  = sumwxy</span>
+   <span class="c1">// s[7]  = sumwz      s[8]  = sumwz2   s[9]  = sumwxz   s[10]  = sumwyz</span>
+   <span class="c1">// s[11] = sumwt      s[12] = sumwt2                 (11 and 12 used only by TProfile3D)</span>
+   <span class="k">enum</span> <span class="p">{</span>
+      <span class="n">kNstat</span>       <span class="o">=</span> <span class="mi">13</span>  <span class="c1">// size of statistics data (up to TProfile3D)</span>
+   <span class="p">};</span>
+
+
+<span class="c1">// TGraph</span>
+
+   <span class="k">enum</span> <span class="n">EStatusBits</span> <span class="p">{</span>
+      <span class="n">kClipFrame</span>     <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>  <span class="c1">///&lt; clip to the frame boundary</span>
+      <span class="n">kResetHisto</span>    <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">17</span><span class="p">),</span>  <span class="c1">///&lt; fHistogram must be reset in GetHistogram</span>
+      <span class="n">kNotEditable</span>   <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">18</span><span class="p">),</span>  <span class="c1">///&lt; bit set if graph is non editable</span>
+      <span class="n">kIsSortedX</span>     <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">19</span><span class="p">),</span>  <span class="c1">///&lt; graph is sorted in X points</span>
+      <span class="n">kIsHighlight</span>   <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>   <span class="c1">///&lt; bit set if graph is highlight</span>
+   <span class="p">};</span>
+
+
+<span class="c1">// TF1</span>
+
+   <span class="k">enum</span> <span class="n">EStatusBits</span> <span class="p">{</span>
+      <span class="n">kNotGlobal</span>   <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>  <span class="c1">// don&#39;t register in global list of functions</span>
+      <span class="n">kNotDraw</span>     <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>  <span class="c1">// don&#39;t draw the function when in a TH1</span>
+   <span class="p">};</span>
+
+
+
+
+
+<span class="c1">// 示例</span>
+
+<span class="n">h</span><span class="o">-&gt;</span><span class="n">SetBit</span><span class="p">(</span><span class="n">TH1</span><span class="o">::</span><span class="n">kCanRebin</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
