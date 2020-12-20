@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 六 3月 14 08:35:28 2015 (+0800)
-;; Last-Updated: 三 9月 16 11:18:03 2020 (+0800)
+;; Last-Updated: 日 12月 20 23:25:59 2020 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 12
+;;     Update #: 13
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -38,6 +38,76 @@ The options string can contains the following parameters:
 
 - `Entry$`:  
 	- A TTree::Draw formula can use the special variable `Entry$` to access the entry number being read.
+
+```
+For example to draw every other entry use:
+
+tree.Draw("myvar","Entry$%2==0");
+Entry$ : return the current entry number (== TTree::GetReadEntry())
+LocalEntry$ : return the current entry number in the current tree of a chain (== GetTree()->GetReadEntry())
+Entries$ : return the total number of entries (== TTree::GetEntries())
+LocalEntries$ : return the total number of entries in the current tree of a chain (== GetTree()->TTree::GetEntries())
+Length$ : return the total number of element of this formula for this entry (==TTreeFormula::GetNdata())
+Iteration$ : return the current iteration over this formula for this entry (i.e. varies from 0 to Length$).
+Length$(formula ) : return the total number of element of the formula given as a parameter.
+Sum$(formula ) : return the sum of the value of the elements of the formula given as a parameter. For example the mean for all the elements in one entry can be calculated with: Sum$(formula )/Length$(formula )
+Min$(formula ) : return the minimun (within one TTree entry) of the value of the elements of the formula given as a parameter.
+Max$(formula ) : return the maximum (within one TTree entry) of the value of the elements of the formula given as a parameter.
+MinIf$(formula,condition)
+MaxIf$(formula,condition) : return the minimum (maximum) (within one TTree entry) of the value of the elements of the formula given as a parameter if they match the condition. If no element matches the condition, the result is zero. To avoid the resulting peak at zero, use the pattern:
+  tree->Draw("MinIf$(formula,condition)","condition");
+  which will avoid calculation `MinIf$` for the entries that have no match for the condition.
+Alt$(primary,alternate) : return the value of "primary" if it is available for the current iteration otherwise return the value of "alternate". For example, with arr1[3] and arr2[2]
+  tree->Draw("arr1+Alt$(arr2,0)");
+  will draw arr1[0]+arr2[0] ; arr1[1]+arr2[1] and arr1[2]+0
+  Or with a variable size array arr3
+  tree->Draw("Alt$(arr3[0],0)+Alt$(arr3[1],0)+Alt$(arr3[2],0)");
+  will draw the sum arr3 for the index 0 to min(2,actual_size_of_arr3-1)
+  As a comparison
+  tree->Draw("arr3[0]+arr3[1]+arr3[2]");
+  will draw the sum arr3 for the index 0 to 2 only if the actual_size_of_arr3 is greater or equal to 3.
+  Note that the array in 'primary' is flattened/linearized thus using
+  `Alt$` with multi-dimensional arrays of different dimensions in unlikely to yield the expected results.  To visualize a bit more what elements would be matched by TTree::Draw, TTree::Scan can be used:
+  tree->Scan("arr1:Alt$(arr2,0)");
+  will print on one line the value of arr1 and (arr2,0) that will be matched by
+  tree->Draw("arr1-Alt$(arr2,0)");
+  The ternary operator is not directly supported in TTree::Draw however, to plot the equivalent of var2<20 ? -99 : var1, you can use:
+  tree->Draw("(var2<20)*99+(var2>=20)*var1","");
+```
+
+```
+Once TTree::Draw has been called, it is possible to access useful information still stored in the TTree object via the following functions:
+
+GetSelectedRows() // return the number of values accepted by the selection expression. In case where no selection was specified, returns the number of values processed.
+GetV1() // returns a pointer to the double array of V1
+GetV2() // returns a pointer to the double array of V2
+GetV3() // returns a pointer to the double array of V3
+GetV4() // returns a pointer to the double array of V4
+GetW() // returns a pointer to the double array of Weights where weight equal the result of the selection expression.
+where V1,V2,V3 correspond to the expressions in
+
+TTree::Draw("V1:V2:V3:V4",selection);
+If the expression has more than 4 component use GetVal(index)
+
+Example:
+
+Root > ntuple->Draw("py:px","pz>4");
+Root > TGraph *gr = new TGraph(ntuple->GetSelectedRows(),
+                              ntuple->GetV2(), ntuple->GetV1());
+Root > gr->Draw("ap"); //draw graph in current pad
+A more complete complete tutorial (treegetval.C) shows how to use the GetVal() method.
+
+creates a TGraph object with a number of points corresponding to the number of entries selected by the expression "pz>4", the x points of the graph being the px values of the Tree and the y points the py values.
+
+Important note: By default TTree::Draw creates the arrays obtained with GetW, GetV1, GetV2, GetV3, GetV4, GetVal with a length corresponding to the parameter fEstimate. The content will be the last GetSelectedRows() % GetEstimate() values calculated. By default fEstimate=1000000 and can be modified via TTree::SetEstimate. To keep in memory all the results (in case where there is only one result per entry), use
+
+tree->SetEstimate(tree->GetEntries()+1); // same as tree->SetEstimate(-1);
+You must call SetEstimate if the expected number of selected rows you need to look at is greater than 1000000.
+
+You can use the option "goff" to turn off the graphics output of TTree::Draw in the above example.
+```
+
+
 
 
 ## class
